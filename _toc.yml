@@ -1,0 +1,14 @@
+# Table of contents
+format: jb-book
+root: BrainComputation
+#  numbered: false
+chapters:
+- file: Introduction
+- file: Neurons
+- file: Supervised
+- file: Reinforcement
+- file: Unsupervised
+- file: Bayesian
+- file: Deep
+- file: Multiple
+- file: Meta
