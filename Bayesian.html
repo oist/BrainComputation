@@ -1,0 +1,1655 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Chatper 6. Bayesian Approaches &#8212; Brain Computation</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Chapter 7: Deep Learning" href="Deep.html" />
+    <link rel="prev" title="Chapter 5. Unsupervised Learning" href="Unsupervised.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/BC_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Brain Computation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="BrainComputation.html">
+                    Brain Computation: A Hands-on Guidebook
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Introduction.html">
+   Chapter 1. Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Neurons.html">
+   Chapter 2. Neural Modeling and Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Supervised.html">
+   Chapter 3: Supervised Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Reinforcement.html">
+   Chapter 4. Reinforcement Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Unsupervised.html">
+   Chapter 5. Unsupervised Learning
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Chatper 6. Bayesian Approaches
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Deep.html">
+   Chapter 7: Deep Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Multiple.html">
+   Chapter 8. Multiple Agents
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Meta.html">
+   Chapter 9. Meta-Learning
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/Bayesian.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/Bayesian.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#contents">
+   Contents
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bayes-theorem">
+   Bayes’ Theorem
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-mouse-in-a-bush">
+     Example: mouse in a bush
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#iterative-bayesian-inference">
+   Iterative Bayesian Inference
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#coin-toss">
+     Coin toss
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bayesian-approaches-in-machine-learning">
+   Bayesian approaches in machine learning
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bayesian-linear-regression">
+   Bayesian Linear Regression
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#predictive-distribution">
+     Predictive distribution
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bayesian-model-comparison">
+   Bayesian model comparison
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#computing-model-evidence">
+     Computing model evidence
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bayesian-networks">
+   Bayesian networks
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#inference-on-a-chain">
+   Inference on a chain
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#markov-chain">
+     Markov chain
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dynamic-bayesian-inference">
+   Dynamic Bayesian Inference
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hidden-markov-model">
+     Hidden Markov model
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bayesian-sensorimotor-processing">
+   Bayesian sensorimotor processing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bayesian-computation-in-the-brain">
+   Bayesian computation in the brain
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bayesian-sensorimotor-integration">
+     Bayesian sensorimotor integration
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#probabilistic-population-codes">
+     Probabilistic population codes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#baysian-inference-in-the-cortical-circuit">
+     Baysian inference in the cortical circuit
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise">
+   Exercise
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Chatper 6. Bayesian Approaches</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#contents">
+   Contents
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bayes-theorem">
+   Bayes’ Theorem
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-mouse-in-a-bush">
+     Example: mouse in a bush
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#iterative-bayesian-inference">
+   Iterative Bayesian Inference
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#coin-toss">
+     Coin toss
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bayesian-approaches-in-machine-learning">
+   Bayesian approaches in machine learning
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bayesian-linear-regression">
+   Bayesian Linear Regression
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#predictive-distribution">
+     Predictive distribution
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bayesian-model-comparison">
+   Bayesian model comparison
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#computing-model-evidence">
+     Computing model evidence
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bayesian-networks">
+   Bayesian networks
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#inference-on-a-chain">
+   Inference on a chain
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#markov-chain">
+     Markov chain
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dynamic-bayesian-inference">
+   Dynamic Bayesian Inference
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hidden-markov-model">
+     Hidden Markov model
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bayesian-sensorimotor-processing">
+   Bayesian sensorimotor processing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bayesian-computation-in-the-brain">
+   Bayesian computation in the brain
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bayesian-sensorimotor-integration">
+     Bayesian sensorimotor integration
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#probabilistic-population-codes">
+     Probabilistic population codes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#baysian-inference-in-the-cortical-circuit">
+     Baysian inference in the cortical circuit
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise">
+   Exercise
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="chatper-6-bayesian-approaches">
+<h1>Chatper 6. Bayesian Approaches<a class="headerlink" href="#chatper-6-bayesian-approaches" title="Permalink to this headline">#</a></h1>
+<div class="math notranslate nohighlight">
+\[ % Latex macros
+\newcommand{\mat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\newcommand{\p}[2]{\frac{\partial #1}{\partial #2}}
+\renewcommand{\b}[1]{\boldsymbol{#1}}
+\newcommand{\c}[1]{\mathcal{#1}}
+\]</div>
+<section id="contents">
+<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Bayes’ theorem</p></li>
+<li><p>Bayesian linear regression (Bishop, Chater 3)</p></li>
+<li><p>Bayesian model comparison</p></li>
+<li><p>Bayesian networks  (Bishop, Chater 8)</p></li>
+<li><p>Dynamic Bayesian inference</p></li>
+<li><p>Bayesian Brain</p>
+<ul>
+<li><p>Sensory psychophysics</p></li>
+<li><p>Cortical circuit</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="bayes-theorem">
+<h2>Bayes’ Theorem<a class="headerlink" href="#bayes-theorem" title="Permalink to this headline">#</a></h2>
+<p>Let us recall the two fundamental rules of probability regarding random variables <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>:</p>
+<ul class="simple">
+<li><p>Sum rule:
+$<span class="math notranslate nohighlight">\( p(X) = \sum_Y p(X, Y) \)</span>$</p></li>
+<li><p>Product rule:
+$<span class="math notranslate nohighlight">\( p(X,Y) = p(Y|X)P(X) \)</span>$</p></li>
+</ul>
+<p>From the symmetry of joint probability <span class="math notranslate nohighlight">\(p(X,Y)=p(Y,X)\)</span>,</p>
+<p>we have the relationship <span class="math notranslate nohighlight">\(p(X|Y)p(Y) = p(Y|X)p(X)\)</span>,</p>
+<p>which brings us to Bayes’ theorem:
+$<span class="math notranslate nohighlight">\( p(X|Y) = \frac{p(Y|X)p(X)}{p(Y)}. \)</span>$</p>
+<p>Using Bayes’ theorem, we can convert one conditional probability to the other.
+This simple formula has turned out to be very insightful in the context of sensory processing and learning.</p>
+<p>Suppose <span class="math notranslate nohighlight">\(X\)</span> is the variable of your interest, such as the existence of your target, and <span class="math notranslate nohighlight">\(Y\)</span> is a noisey sensory input. What sensory input <span class="math notranslate nohighlight">\(Y\)</span> you would receive if your target exists or not is represented by a sensory model <span class="math notranslate nohighlight">\(p(Y|X)\)</span>.</p>
+<ul class="simple">
+<li><p>Your knowledge or assumption about existence of your target is represented by <span class="math notranslate nohighlight">\(p(X)\)</span>, called <em>prior probability</em>.</p></li>
+<li><p>For a given sensory input <span class="math notranslate nohighlight">\(y\)</span>, <span class="math notranslate nohighlight">\(p(Y=y|X)\)</span> as a function of <span class="math notranslate nohighlight">\(X\)</span> is called the <em>likelihood</em> of the state <span class="math notranslate nohighlight">\(X\)</span>.</p></li>
+<li><p>The probability of the target <span class="math notranslate nohighlight">\(X\)</span> existing after observing <span class="math notranslate nohighlight">\(y\)</span>, <span class="math notranslate nohighlight">\(p(X|Y=y)\)</span> is called the <em>posterior probability</em>.</p></li>
+</ul>
+<p>Bayes’ theorem gives a theoretical basis for the intuition that the posterior probability is proportional to the product of the prior prbability and the likelihood.</p>
+<section id="example-mouse-in-a-bush">
+<h3>Example: mouse in a bush<a class="headerlink" href="#example-mouse-in-a-bush" title="Permalink to this headline">#</a></h3>
+<p>You are a cat chasing a mouse and heard a rustuling sound from a bush.
+About half of the case a hiding mouse makes a sound, but about 10% of the time you hear rustling just by the wind.
+How would you estimate the probability for a mouse hiding in the bush?</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p><span class="math notranslate nohighlight">\( \)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(X\)</span>: mouse</p></th>
+<th class="text-align:center head"><p>not in bush</p></th>
+<th class="text-align:center head"><p>in bush</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p><span class="math notranslate nohighlight">\(Y\)</span>: sound</p></td>
+<td class="text-align:center"><p>$p(Y</p></td>
+<td class="text-align:center"><p>X)$</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(X=0\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>not heard</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(Y=0\)</span></p></td>
+<td class="text-align:center"><p>0.9</p></td>
+<td class="text-align:center"><p>0.5</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>heard</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(Y=1\)</span></p></td>
+<td class="text-align:center"><p>0.1</p></td>
+<td class="text-align:center"><p>0.5</p></td>
+</tr>
+</tbody>
+</table>
+<p>For example, if you heard a sound, <span class="math notranslate nohighlight">\(Y=1\)</span>, what is the probability of a mouse hiding behind the bush, <span class="math notranslate nohighlight">\(p(X=1|Y=1)\)</span>?
+From the above table, 0.5?</p>
+<p>No, actually. In the ‘heard’ row, 0.1 and 0.5 do not sum up to one. They are likelihoods <span class="math notranslate nohighlight">\(p(Y=1|X)\)</span>, but not probability distribution <span class="math notranslate nohighlight">\(p(X|Y=1)\)</span> for the mouse to be in the bush or not.</p>
+<p>The mouse ran into other nearby bushes, so you assume that the prior probability of the mouse in this bush is 30%:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p><span class="math notranslate nohighlight">\(X\)</span>: mouse</p></th>
+<th class="text-align:center head"><p>not in bush</p></th>
+<th class="text-align:center head"><p>in bush</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>prior</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(X=0\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(X=1\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p><span class="math notranslate nohighlight">\(p(X)\)</span></p></td>
+<td class="text-align:center"><p>0.7</p></td>
+<td class="text-align:center"><p>0.3</p></td>
+</tr>
+</tbody>
+</table>
+<p>By having this prior probability, we can use Bayes’ theorem:
+$<span class="math notranslate nohighlight">\(
+    p(X=1|Y=1) = \frac{p(Y=1|X=1)p(X=1)}{p(Y=1|X=0)p(X=0)+p(Y=1|X=1)p(X=1)}
+\)</span>$$<span class="math notranslate nohighlight">\(
+    = \frac{0.5*0.3}{0.1*0.7+0.5*0.3}
+    = \frac{0.15}{0.07+0.15} 
+    = \frac{0.15}{0.22} \simeq 0.68
+\)</span>$</p>
+</section>
+</section>
+<section id="iterative-bayesian-inference">
+<h2>Iterative Bayesian Inference<a class="headerlink" href="#iterative-bayesian-inference" title="Permalink to this headline">#</a></h2>
+<p>A useful property of Bayesian inference is that you can apply it iteratively to incoming data stream.</p>
+<p>We denote the sequence of observations up to time <span class="math notranslate nohighlight">\(t\)</span> as
+$<span class="math notranslate nohighlight">\(
+    y_{1:t}=(y_1,...,y_t)
+\)</span><span class="math notranslate nohighlight">\(
+and want to estimate the cause \)</span>x<span class="math notranslate nohighlight">\( of these observations
+\)</span><span class="math notranslate nohighlight">\(
+    p(x|y_{1:t}) = \frac{p(y_{1:t}|x)\ p(x)}{p(y_{1:t})}
+\)</span>$</p>
+<p>If the observations are independent, their joint distribution is a product
+$<span class="math notranslate nohighlight">\(
+    p(y_{1:t}|x) = p(y_1|x)\cdots p(y_t|x)
+\)</span><span class="math notranslate nohighlight">\(
+and thus the posterior can be decomposed as
+\)</span><span class="math notranslate nohighlight">\(
+    p(x|y_{1:t}) = \frac{p(y_1|x)\cdots p(y_{t-1}|x)\ p(y_t|x)\ p(x)}{p(y_1)\cdots p(y_{t-1})\ p(y_t)}
+\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(
+    = \frac{p(y_1|x)\cdots p(y_{t-1}|x)\ p(x)}{p(y_1)\cdots p(y_{t-1}) }\ \frac{p(y_t|x)}{p(y_t)}
+\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(
+    = \frac{p(x|y_{1:t-1})\ p(y_t|x)}{p(y_t)}.
+\)</span>$</p>
+<p>This means that the posterior <span class="math notranslate nohighlight">\(p(x|y_{1:t-1})\)</span> that you computed by time <span class="math notranslate nohighlight">\(t-1\)</span> serves as the prior to be combined with the likelihood for the new coming data <span class="math notranslate nohighlight">\(p(y_t|x)\)</span> for computing the new posterior <span class="math notranslate nohighlight">\(p(x|y_{1:t})\)</span>.</p>
+<p>This iterative update of the posterior is practically helpful in online inference utilizing whatever data available so far.</p>
+<section id="coin-toss">
+<h3>Coin toss<a class="headerlink" href="#coin-toss" title="Permalink to this headline">#</a></h3>
+<p>Here is a simple example of estimating the parameter <span class="math notranslate nohighlight">\(\mu\)</span>, probability for a coin to land head up, during multiple tosses.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># take samples</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="mf">0.3</span>  <span class="c1"># probability of head</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">6</span>   <span class="c1"># number of samples</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="o">-</span><span class="n">mu</span><span class="p">,</span> <span class="n">mu</span><span class="p">])</span> <span class="c1"># binary observation sequence</span>
+<span class="n">y</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 1, 1, 0, 1, 0])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dx</span> <span class="o">=</span> <span class="mf">0.01</span>  <span class="c1"># plot step</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dx</span><span class="p">)</span>  <span class="c1"># range of the parameter</span>
+<span class="n">prior</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>  <span class="c1"># Assume a uniform prior</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>  <span class="c1"># a new figure</span>
+    <span class="c1"># prior</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">x</span><span class="p">,</span> <span class="n">prior</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span>
+    <span class="c1"># observation</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">N</span><span class="p">,</span> <span class="s1">&#39;ko&#39;</span><span class="p">)</span>
+    <span class="c1"># likelihood</span>
+    <span class="n">likelihood</span> <span class="o">=</span> <span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">y</span><span class="p">[</span><span class="n">t</span><span class="p">])</span> <span class="c1"># theta if head, 1-theta if tail</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">x</span><span class="p">,</span> <span class="n">likelihood</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">)</span>
+    <span class="c1"># product</span>
+    <span class="n">prilik</span> <span class="o">=</span> <span class="n">prior</span><span class="o">*</span><span class="n">likelihood</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">x</span><span class="p">,</span> <span class="n">prilik</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
+    <span class="c1"># posterior by normalization</span>
+    <span class="n">marginal</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">prilik</span><span class="p">)</span><span class="o">*</span><span class="n">dx</span>    <span class="c1"># integrate over the parameter range</span>
+    <span class="n">posterior</span> <span class="o">=</span> <span class="n">prilik</span><span class="o">/</span><span class="n">marginal</span>  <span class="c1"># normalize</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">x</span><span class="p">,</span> <span class="n">posterior</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$\mu$&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s1">&#39;prior&#39;</span><span class="p">,</span> <span class="s1">&#39;observation&#39;</span><span class="p">,</span> <span class="s1">&#39;likelihood&#39;</span><span class="p">,</span> <span class="s1">&#39;prior*like.&#39;</span><span class="p">,</span> <span class="s1">&#39;posterior&#39;</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;t = </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+    <span class="c1"># posterior as a new prior</span>
+    <span class="n">prior</span> <span class="o">=</span> <span class="n">posterior</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Bayesian_10_0.png" src="_images/Bayesian_10_0.png" />
+<img alt="_images/Bayesian_10_1.png" src="_images/Bayesian_10_1.png" />
+<img alt="_images/Bayesian_10_2.png" src="_images/Bayesian_10_2.png" />
+<img alt="_images/Bayesian_10_3.png" src="_images/Bayesian_10_3.png" />
+<img alt="_images/Bayesian_10_4.png" src="_images/Bayesian_10_4.png" />
+<img alt="_images/Bayesian_10_5.png" src="_images/Bayesian_10_5.png" />
+</div>
+</div>
+<p>As more data are collected, the posterior distribution of <span class="math notranslate nohighlight">\(\mu\)</span> becomes sharper and colser to the true value.</p>
+</section>
+</section>
+<section id="bayesian-approaches-in-machine-learning">
+<h2>Bayesian approaches in machine learning<a class="headerlink" href="#bayesian-approaches-in-machine-learning" title="Permalink to this headline">#</a></h2>
+<p>“Bayesian” is quite popular in machine learning, but it is used for different meanings:</p>
+<ul class="simple">
+<li><p>To combine prior knowledge and the likelihood from observation</p></li>
+<li><p>To assume a graphical model of data generation for estimation of the causes</p></li>
+<li><p>To estimate the distribution of a variable, not a single point</p></li>
+</ul>
+<p>In unsupervised learing:</p>
+<ul class="simple">
+<li><p>infer hidden variables behind data</p>
+<ul>
+<li><p>e.g. responsibility in Mixtures of Gaussians</p></li>
+</ul>
+</li>
+</ul>
+<p>In supervised learning:</p>
+<ul class="simple">
+<li><p>avoid over fitting by introducing a prior distribution on the parameters</p></li>
+<li><p>compare models by their probability of producing oberved data</p></li>
+</ul>
+<p>In reinforcement learning:</p>
+<ul class="simple">
+<li><p>infer the environmental state from imcomplete observation</p></li>
+<li><p>estimate the distribution of reward, not just the expectation</p></li>
+</ul>
+</section>
+<section id="bayesian-linear-regression">
+<h2>Bayesian Linear Regression<a class="headerlink" href="#bayesian-linear-regression" title="Permalink to this headline">#</a></h2>
+<p>The standard linear regression (Chapter 3) assumes a linear regression function with additive noise
+$<span class="math notranslate nohighlight">\( t_n = \b{w}^T\b{x}_n + \epsilon \)</span><span class="math notranslate nohighlight">\(
+where \)</span>p(\epsilon)=\mathcal{N}(0,\beta^{-1})$.</p>
+<p>In Bayesian linear regression, we assume that the weights are sampled from a prior distribution <span class="math notranslate nohighlight">\(p(\b{w})=\mathcal{N}(\b{0},\alpha^{-1}I)\)</span>.</p>
+<p>The likelihood of the parameter <span class="math notranslate nohighlight">\(\b{w}\)</span> for the target output <span class="math notranslate nohighlight">\(\b{t}\)</span> is
+$<span class="math notranslate nohighlight">\( p(\b{t}|X, \b{w}, \beta) = \prod_{n=1}^N \mathcal{N}(t_n|\b{w}^T\b{x},\beta^{-1}) \)</span>$</p>
+<p>When both the prior and likelihood are Gaussian, the posterior will also be Gaussian and have the form:
+$<span class="math notranslate nohighlight">\( p(\b{w}|\b{t}) = \mathcal{N}(\b{w}|\b{m},S) \)</span><span class="math notranslate nohighlight">\(
+where
+\)</span><span class="math notranslate nohighlight">\( \b{m} = \beta S X^T \bf{t} \)</span><span class="math notranslate nohighlight">\(
+and
+\)</span><span class="math notranslate nohighlight">\( S = (\alpha I + \beta X^T X)^{-1} \)</span>$</p>
+<p>If we let <span class="math notranslate nohighlight">\(\alpha=0\)</span>, i.e. infinitely large variance for the weight prior, this is equivalent to regular linear regression. Introducing a penalty term is commonly done in linear regression as
+$$ E(\b{w}) = \frac{\beta}{2}\sum_{n=1}^N {t_n - \b{w}^T \b{x}_n}^2</p>
+<ul class="simple">
+<li><p>\frac{\alpha}{2} \b{w}^T\b{w} $<span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\( = \frac{\beta}{2} ||\b{t} - X \b{w}||^2 + \frac{\alpha}{2} ||\b{w}||^2. \)</span><span class="math notranslate nohighlight">\(
+The Bayesian regression gives a probabilistic interpretation on the role of the regularization parameter \)</span>\alpha$.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We will use this frequently</span>
+<span class="k">def</span> <span class="nf">gauss</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Gaussian distribution&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">((</span><span class="n">x</span><span class="o">-</span><span class="n">mu</span><span class="p">)</span><span class="o">/</span><span class="n">sigma</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span><span class="o">*</span><span class="n">sigma</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Distributions in the parameter and data spaces</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">1.</span>  <span class="c1"># inverse variance of weight prior</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># inverse variance of observation noise</span>
+<span class="c1"># prior distribution of weights</span>
+<span class="n">W</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">W0</span><span class="p">,</span> <span class="n">W1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">W</span><span class="p">)</span>
+<span class="n">pw</span> <span class="o">=</span> <span class="n">gauss</span><span class="p">(</span><span class="n">W0</span><span class="p">)</span><span class="o">*</span><span class="n">gauss</span><span class="p">(</span><span class="n">W1</span><span class="p">)</span>
+<span class="c1"># plot the distribution</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">pw</span><span class="p">)</span>  
+<span class="c1"># sample weight from prior distribution</span>
+<span class="n">K</span> <span class="o">=</span> <span class="mi">10</span>  
+<span class="n">wpri</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="n">alpha</span><span class="o">**-</span><span class="mf">0.5</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">K</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">K</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wpri</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">wpri</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;r+&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;square&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Prior&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;w0&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;w1&quot;</span><span class="p">);</span>
+<span class="c1"># plot model samples</span>
+<span class="n">xrange</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">])</span>   <span class="c1"># range of input x</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">K</span><span class="p">):</span>
+    <span class="c1">#wpri[1,k]*X</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xrange</span><span class="p">,</span> <span class="n">wpri</span><span class="p">[</span><span class="n">k</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">wpri</span><span class="p">[</span><span class="n">k</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">xrange</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Model samples&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">);</span>    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Bayesian_17_0.png" src="_images/Bayesian_17_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># after observation of data</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">wt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>  <span class="c1"># &#39;true&#39; weights</span>
+<span class="c1"># sample data</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">xrange</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">xrange</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">N</span><span class="p">),</span> <span class="n">X</span><span class="p">]</span>  <span class="c1"># prepend 1 in the leftmost column</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">wt</span><span class="nd">@X</span><span class="o">.</span><span class="n">T</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">N</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">beta</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># start from top right</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xrange</span><span class="p">,</span> <span class="n">wt</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">wt</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">xrange</span><span class="p">,</span> <span class="s2">&quot;g&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">t</span><span class="p">,</span> <span class="s2">&quot;r.&quot;</span><span class="p">)</span>  <span class="c1"># training data</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">xrange</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Data&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">);</span>
+<span class="c1"># likelihood</span>
+<span class="n">like</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">like</span> <span class="o">=</span> <span class="n">like</span><span class="o">*</span><span class="n">gauss</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">-</span> <span class="p">(</span><span class="n">W0</span><span class="o">+</span><span class="n">W1</span><span class="o">*</span><span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span> <span class="n">sigma</span><span class="o">=</span><span class="n">beta</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>   <span class="c1"># top left</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">like</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;square&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Likelihood&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;w0&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;w1&quot;</span><span class="p">);</span>
+<span class="c1"># new posterior</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">post</span> <span class="o">=</span> <span class="n">pw</span><span class="o">*</span><span class="n">like</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">post</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;square&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Posterior&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;w0&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;w1&quot;</span><span class="p">);</span>
+<span class="n">S</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">alpha</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">beta</span><span class="o">*</span><span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="nd">@X</span><span class="p">)</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">beta</span><span class="o">*</span><span class="n">S</span><span class="nd">@X</span><span class="o">.</span><span class="n">T</span><span class="nd">@t</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;m =&#39;</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;S =&#39;</span><span class="p">,</span> <span class="n">S</span><span class="p">)</span>
+<span class="c1"># sample weights</span>
+<span class="n">wpost</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wpost</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">wpost</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;r+&quot;</span><span class="p">)</span>
+<span class="c1"># plot model samples</span>
+<span class="n">xrange</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">])</span>   <span class="c1"># range of input x</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">K</span><span class="p">):</span>
+    <span class="c1">#wpri[1,k]*X</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xrange</span><span class="p">,</span> <span class="n">wpost</span><span class="p">[</span><span class="n">k</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">wpost</span><span class="p">[</span><span class="n">k</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">xrange</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">t</span><span class="p">,</span> <span class="s2">&quot;r.&quot;</span><span class="p">)</span>  <span class="c1"># training data</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Model samples&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>  <span class="c1"># adjust subplot margins</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>m = [-0.46640762 -0.28203167]
+S = [[ 0.31770843 -0.41257437]
+ [-0.41257437  0.75052072]]
+</pre></div>
+</div>
+<img alt="_images/Bayesian_18_1.png" src="_images/Bayesian_18_1.png" />
+</div>
+</div>
+<section id="predictive-distribution">
+<h3>Predictive distribution<a class="headerlink" href="#predictive-distribution" title="Permalink to this headline">#</a></h3>
+<p>In Bayesian regression, the result is not one weight vector, but a distribution in the weight space. Then it is reasonable to consider the distribution of the output considering such uncertainty in the weigts.</p>
+<p>The output <span class="math notranslate nohighlight">\(y\)</span> for a new input <span class="math notranslate nohighlight">\(\b{x}\)</span> should have the distribution
+$<span class="math notranslate nohighlight">\( p(y|\b{x},\b{t},\alpha,\beta) 
+ = \int p(y|\b{x},\b{w},\beta)  p(\b{w}|\b{t},\alpha,\beta) d\b{w} \)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\( = \mathcal{N}(t|\b{m}^T \b{x}, \sigma^2(\b{x})) \)</span><span class="math notranslate nohighlight">\(
+where the variance of the output is given by
+\)</span><span class="math notranslate nohighlight">\( \sigma^2(\b{x}) = \beta^{-1} + \b{x}^T S \b{x} \)</span>$</p>
+<p>Let us see the example of approximating a sine function by Gaussian basis functions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1D Gaussian basis functions </span>
+<span class="k">def</span> <span class="nf">gbf1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">xrange</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span><span class="mf">1.</span><span class="p">],</span> <span class="n">M</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Gaussian basis functions: x can be a 1D array&quot;&quot;&quot;</span>
+    <span class="n">xc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">xrange</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">xrange</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">num</span><span class="o">=</span><span class="n">M</span><span class="p">)</span>  <span class="c1"># centers</span>
+    <span class="n">xd</span> <span class="o">=</span> <span class="p">(</span><span class="n">xc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">xc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># interval</span>
+    <span class="c1"># x can be an array for N data points</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">x</span><span class="p">,[</span><span class="n">M</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">T</span> <span class="o">-</span> <span class="n">xc</span><span class="p">)</span><span class="o">/</span><span class="n">xd</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1"># example</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">gbf1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">M</span><span class="o">=</span><span class="mi">5</span><span class="p">));</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;phi&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Bayesian_22_0.png" src="_images/Bayesian_22_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">blr</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mf">10.</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Bayesian linear regression</span>
+<span class="sd">    alpha: inv. variance of weight prior </span>
+<span class="sd">    beta: inv. variance of observation noise</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">N</span><span class="p">,</span> <span class="n">D</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">S</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">alpha</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">D</span><span class="p">)</span> <span class="o">+</span> <span class="n">beta</span><span class="o">*</span><span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="nd">@X</span><span class="p">)</span> <span class="c1"># posterior covariance</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">beta</span><span class="o">*</span><span class="n">S</span><span class="nd">@X</span><span class="o">.</span><span class="n">T</span><span class="nd">@t</span>   <span class="c1"># posterior mean</span>
+    <span class="k">return</span> <span class="n">m</span><span class="p">,</span> <span class="n">S</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">target</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Target function&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Training data</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">eps</span> <span class="o">=</span> <span class="mf">0.2</span>  <span class="c1"># noise size</span>
+<span class="n">xr</span> <span class="o">=</span> <span class="mi">4</span>   <span class="c1"># range of x</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="n">xr</span><span class="p">,</span> <span class="n">xr</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>  
+<span class="n">f</span> <span class="o">=</span> <span class="n">target</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># target function</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">f</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="n">eps</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">N</span><span class="p">)</span> <span class="c1"># with noise</span>
+<span class="c1"># data for testing/plotting</span>
+<span class="n">Np</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">xp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">xr</span><span class="p">,</span> <span class="n">xr</span><span class="p">,</span> <span class="n">Np</span><span class="p">)</span>
+<span class="n">fp</span> <span class="o">=</span> <span class="n">target</span><span class="p">(</span><span class="n">xp</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="s2">&quot;g&quot;</span><span class="p">)</span>  <span class="c1"># target function</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="s2">&quot;ro&quot;</span><span class="p">);</span>  <span class="c1"># training data</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Bayesian_25_0.png" src="_images/Bayesian_25_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">M</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># number of basis functions</span>
+<span class="n">Phi</span> <span class="o">=</span> <span class="n">gbf1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="n">xr</span><span class="p">,</span><span class="n">xr</span><span class="p">],</span> <span class="n">M</span><span class="p">)</span>  <span class="c1"># Gaussian basis functions</span>
+<span class="n">m</span><span class="p">,</span> <span class="n">S</span> <span class="o">=</span> <span class="n">blr</span><span class="p">(</span><span class="n">Phi</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>  <span class="c1"># Bayesian linear regression</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="c1"># test data</span>
+<span class="n">Phip</span> <span class="o">=</span> <span class="n">gbf1</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="n">xr</span><span class="p">,</span><span class="n">xr</span><span class="p">],</span> <span class="n">M</span><span class="p">)</span>
+<span class="n">yp</span> <span class="o">=</span> <span class="n">Phip</span><span class="nd">@m</span><span class="o">.</span><span class="n">T</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="s2">&quot;g&quot;</span><span class="p">)</span>  <span class="c1"># target function</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="s2">&quot;ro&quot;</span><span class="p">);</span>  <span class="c1"># training data</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span> <span class="n">yp</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">);</span>  <span class="c1"># MAP estimate</span>
+<span class="c1"># predictive distribution</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">beta</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Phip</span><span class="nd">@S</span><span class="o">*</span><span class="n">Phip</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span> <span class="n">yp</span><span class="o">+</span><span class="n">sigma</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span> <span class="n">yp</span><span class="o">-</span><span class="n">sigma</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 0.03926999  0.17582933 -0.51768838 -1.50583105  0.09285804  0.50224783
+  0.52280232  0.51076276  0.44113232 -1.09639253]
+</pre></div>
+</div>
+<img alt="_images/Bayesian_26_1.png" src="_images/Bayesian_26_1.png" />
+</div>
+</div>
+<p>See how <span class="math notranslate nohighlight">\(N\)</span>, <span class="math notranslate nohighlight">\(M\)</span>, <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> affect the performance.</p>
+</section>
+</section>
+<section id="bayesian-model-comparison">
+<h2>Bayesian model comparison<a class="headerlink" href="#bayesian-model-comparison" title="Permalink to this headline">#</a></h2>
+<p>We have so far considered Bayesian inference of the parameter <span class="math notranslate nohighlight">\(\b{w}\)</span> for a given model <span class="math notranslate nohighlight">\(\c{M}\)</span>, such as a regression model with some input variables, but we can also think of Bayesian inference of probability over models <span class="math notranslate nohighlight">\(\c{M}_i\)</span>, such as regression models with different choices of input variables, given data <span class="math notranslate nohighlight">\(\c{D}\)</span>
+$<span class="math notranslate nohighlight">\( p(\c{M}_i|\c{D}) \propto p(\c{M}_i) p(\c{D}|\c{M}_i). \)</span>$</p>
+<p>Here <span class="math notranslate nohighlight">\(p(\c{D}|\c{M}_i)\)</span>, the likelihood of a model given data, is called the <em>evidence</em> of the model.</p>
+<p>If we include a model explicitly in our Bayesian parameter estimation, we have
+$<span class="math notranslate nohighlight">\( p(\b{w}|\c{D},\c{M}_i) = \frac{p(\c{D}|\b{w},\c{M}_i)p(\b{w}|\c{M}_i)}{p(\c{D}|\c{M}_i)}, \)</span><span class="math notranslate nohighlight">\(
+where we have the *evidence* as the normalizing denominator
+\)</span><span class="math notranslate nohighlight">\( p(\c{D}|\c{M}_i) = \int p(\c{D}|\b{w},\c{M}_i)p(\b{w}|\c{M}_i) d\b{w}. \)</span>$
+This is also called <em>marginal likelihood</em> becuase it is the likelihood of the model with its parameters marginalized.</p>
+<section id="computing-model-evidence">
+<h3>Computing model evidence<a class="headerlink" href="#computing-model-evidence" title="Permalink to this headline">#</a></h3>
+<p>In Bayesian linear regression, the model evidence with the <em>hyperparamters</em> <span class="math notranslate nohighlight">\(\alpha\)</span> (weight prior) and <span class="math notranslate nohighlight">\(\beta\)</span> (observation noise) is given by integration over all the range of the weight parameters <span class="math notranslate nohighlight">\(\b{w}\)</span>:
+$<span class="math notranslate nohighlight">\( p(\b{t}|\alpha,\beta) = \int p(\b{t}|\b{w},\beta)p(\b{w}|\alpha) d\b{w}, \)</span>$</p>
+<p>By further integrating this over the prior distribution of <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> we have the evidence for the full model.</p>
+<p>A practical approximation is to find <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> that maximize <span class="math notranslate nohighlight">\(p(\b{t}|\alpha,\beta)\)</span>.</p>
+<p>The log evidence is given as (Bishop, Chapter 3.5)
+$<span class="math notranslate nohighlight">\( \log p(\b{t}|\alpha,\beta) 
+    = -\frac{\beta}{2} ||\b{t}-X\b{m}||^2 - \frac{\alpha}{2} ||\b{m}||^2 
+    + \frac{1}{2}\log|S| + \frac{D}{2}\log\alpha + \frac{N}{2}(\log\beta - \log(2\pi)) \)</span><span class="math notranslate nohighlight">\(
+where \)</span>\b{m}<span class="math notranslate nohighlight">\( and \)</span>S<span class="math notranslate nohighlight">\( also depend on \)</span>\alpha<span class="math notranslate nohighlight">\( and \)</span>\beta$.</p>
+<p>For <span class="math notranslate nohighlight">\(N&gt;&gt;D\)</span>, the evidence is maximized by
+$<span class="math notranslate nohighlight">\( \alpha^{-1} = \frac{1}{D}||\b{m}||^2 \)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\( \beta^{-1} = \frac{1}{N}||\b{t} - X \b{w}||^2. \)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">logev</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">S</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;log evidence for Bayesian regression</span>
+<span class="sd">    m: posterior mean</span>
+<span class="sd">    S: posterior covariance</span>
+<span class="sd">    alpha: inv. variance of weight prior </span>
+<span class="sd">    beta: inv. variance of observation noise</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">N</span><span class="p">,</span> <span class="n">D</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span>
+    <span class="c1">#S = np.linalg.inv(alpha*np.eye(D) + beta*X.T@X) # posterior covariance</span>
+    <span class="c1">#m = beta*S@X.T@t   # posterior mean</span>
+    <span class="n">em</span> <span class="o">=</span> <span class="n">t</span> <span class="o">-</span> <span class="n">X</span><span class="nd">@m</span><span class="o">.</span><span class="n">T</span>  <span class="c1"># error with MAP estimate</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="n">D</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">m</span><span class="p">)</span>
+    <span class="n">beta</span> <span class="o">=</span> <span class="n">N</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">em</span><span class="p">,</span><span class="n">em</span><span class="p">)</span>
+    <span class="c1"># log evidence</span>
+    <span class="n">lev</span> <span class="o">=</span> <span class="o">-</span><span class="n">beta</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">em</span><span class="p">,</span><span class="n">em</span><span class="p">)</span> <span class="o">-</span> <span class="n">alpha</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">m</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">S</span><span class="p">)))</span><span class="o">/</span><span class="mi">2</span> <span class="o">+</span> <span class="n">D</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span> <span class="o">+</span> <span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">beta</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">lev</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Try computing log evidence for different <span class="math notranslate nohighlight">\(M\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># try different values of M</span>
+<span class="n">Max</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># max number of basis functions</span>
+<span class="n">mse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Max</span><span class="p">)</span>  <span class="c1"># mean square errors</span>
+<span class="n">lev</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Max</span><span class="p">)</span>  <span class="c1"># log evidences</span>
+<span class="k">for</span> <span class="n">M</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">Max</span><span class="p">):</span>
+    <span class="n">Phi</span> <span class="o">=</span> <span class="n">gbf1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="n">xr</span><span class="p">,</span><span class="n">xr</span><span class="p">],</span> <span class="n">M</span><span class="p">)</span>  <span class="c1"># Gaussian basis functions</span>
+    <span class="n">m</span><span class="p">,</span> <span class="n">S</span> <span class="o">=</span> <span class="n">blr</span><span class="p">(</span><span class="n">Phi</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+    <span class="n">lev</span><span class="p">[</span><span class="n">M</span><span class="p">],</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span> <span class="o">=</span> <span class="n">logev</span><span class="p">(</span><span class="n">Phi</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">S</span><span class="p">)</span>
+    <span class="c1"># test data</span>
+    <span class="n">Phip</span> <span class="o">=</span> <span class="n">gbf1</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="n">xr</span><span class="p">,</span><span class="n">xr</span><span class="p">],</span> <span class="n">M</span><span class="p">)</span>  <span class="c1"># Gaussian basis functions</span>
+    <span class="n">err</span> <span class="o">=</span> <span class="n">fp</span> <span class="o">-</span> <span class="n">Phip</span><span class="nd">@m</span><span class="o">.</span><span class="n">T</span>  <span class="c1"># validation error</span>
+    <span class="n">mse</span><span class="p">[</span><span class="n">M</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">err</span><span class="p">,</span><span class="n">err</span><span class="p">)</span><span class="o">/</span><span class="n">Np</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">lev</span><span class="p">[</span><span class="n">M</span><span class="p">],</span> <span class="n">mse</span><span class="p">[</span><span class="n">M</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">Max</span><span class="p">),</span> <span class="n">mse</span><span class="p">[</span><span class="mi">2</span><span class="p">:],</span> <span class="s2">&quot;r&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;mse&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">Max</span><span class="p">),</span> <span class="n">lev</span><span class="p">[</span><span class="mi">2</span><span class="p">:],</span> <span class="s2">&quot;b&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;log evidence&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;M&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 1.0706650213894728 2.110011684370048 -26.804270993452775 0.43958617400913363
+3 0.40303196712191347 3.4373642524310313 -25.60461238883947 0.7314413301914398
+4 0.28601998624476027 15.678882284600832 -13.586869810857749 0.02524398904197285
+5 0.6706680986743957 16.987358696853807 -12.96539953114643 0.006849290033281135
+6 1.1185382812068845 17.75620609986284 -13.00887659217899 0.005694745176662665
+7 0.9908531912988692 42.80116562108143 -6.326818701829151 0.05292275332443031
+8 1.3926269074467288 41.32108628741145 -6.865119144632537 0.06103982225318761
+9 1.8911291817272702 48.083725248105075 -5.378239254485511 0.06834726744362773
+</pre></div>
+</div>
+<img alt="_images/Bayesian_33_1.png" src="_images/Bayesian_33_1.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="bayesian-networks">
+<h2>Bayesian networks<a class="headerlink" href="#bayesian-networks" title="Permalink to this headline">#</a></h2>
+<p>As we have seen in the example of Bayesian linear regression, statistical machine learning assumes a <em>generative model</em> of the observed data and infer the posterior probability of variables of your interest, after marginalizing other unobserved variables.</p>
+<p>In doing so, representation of the relationships by graphs with random variables as nodes (or vertices) and joint or conditional probabilities as links (or edges or arcs)) havea turned out to be very useful. They are called <em>graphical models</em>.</p>
+<p>Directed graphs representing conditional probabilities by arrows (directed edges) are called <em>Bayesian networks</em>.</p>
+<p>For example, Bayesion linear regression can be represented as a Bayesian network as below.
+<img src="figures/BN_blr.png" width="150"></p>
+<p>Inference in Bayesian network goes like this: as values of some variables are observed,</p>
+<ul class="simple">
+<li><p><em>clamp</em> the values of the nodes where observation was made.</p></li>
+<li><p>compute the posterior distributions of the nodes along the graph by repeating Bayesian inference and marginalization</p></li>
+</ul>
+<p>In doing this, the <em>conditional independence</em> of the nodes allows efficient computation.</p>
+</section>
+<section id="inference-on-a-chain">
+<h2>Inference on a chain<a class="headerlink" href="#inference-on-a-chain" title="Permalink to this headline">#</a></h2>
+<p>Here we consider the simplest case of a chain of discrete random variables.</p>
+<p><img alt="Chain" src="_images/BN_chain.png" /></p>
+<p>For each node, the variable takes an integer value <span class="math notranslate nohighlight">\(x_n \in \{1,...,K_n\}\)</span> and we consider the joint distribution over the entire nodes:
+$<span class="math notranslate nohighlight">\(
+    p(x_1,...,x_N) = p(x_1)p(x_2|x_1) \cdots p(x_{N-1}|x_{N-2})p(x_N|x_{N-1}). 
+\)</span>$</p>
+<p>When an observation <span class="math notranslate nohighlight">\(x_N=k\)</span> is made at the end node, we would consider the posterior distribution
+$<span class="math notranslate nohighlight">\(
+    p(x_1,...,x_{N-1}|x_N=k) \propto 
+    p(x_1)p(x_2|x_1) \cdots p(x_{N-1}|x_{N-2})p(x_N=k|x_{N-1}).
+\)</span>$</p>
+<p>The posterior distribution of each node <span class="math notranslate nohighlight">\(x_n\)</span> is given by marginalization
+$<span class="math notranslate nohighlight">\(
+    p(x_n|x_N=k) \propto \sum_{x_1}\cdots\sum_{x_{n-1}}\ 
+    \sum_{x_{n+1}}\cdots\sum_{x_N}p(x_1,...,x_{N-1}|x_N=k). 
+\)</span>$$<span class="math notranslate nohighlight">\(
+    = \left\{\sum_{x_{n-1}}p(x_n|x_{n-1}) \cdots
+    \sum_{x_1}p(x_2|x_1)p(x_1)\right\}
+    \times \left\{\sum_{x_{n+1}}p(x_{n+1}|x_n) \cdots 
+    \sum_{x_{N-1}}p(x_{N-1}|x_{N-2}) \sum_{x_N}p(x_N=k|x_{N-1})\right\}
+\)</span>$</p>
+<p>This can be computed efficiently by passing two <em>messages</em>:</p>
+<ul class="simple">
+<li><p>Forward message <span class="math notranslate nohighlight">\(\alpha_n\)</span> of prior:
+$<span class="math notranslate nohighlight">\( \alpha_1 = p(x_1)\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\( \alpha_n = \sum_{x_{n-1}} p(x_n|x_{n-1}) \alpha_{n-1} \)</span>$</p></li>
+<li><p>Backward message <span class="math notranslate nohighlight">\(\beta_n\)</span> of likelihood:
+$<span class="math notranslate nohighlight">\( \beta_N = (0,...,1,...0) \)</span><span class="math notranslate nohighlight">\(
+with \)</span>1<span class="math notranslate nohighlight">\( at \)</span>k<span class="math notranslate nohighlight">\(-th component and
+\)</span><span class="math notranslate nohighlight">\( \beta_n = \sum_{x_{n+1}} p(x_{n+1}|x_n) \beta_{n+1} \)</span>$</p></li>
+</ul>
+<p>The marginal distribution for each node is then given by their product
+$<span class="math notranslate nohighlight">\( 
+    p(x_n|x_N=k) \propto \alpha_n \beta_n.
+\)</span>$</p>
+<p>This is called <em>forward-backward</em> algorithm.</p>
+<p>This can be generalized to tree-like networks and the algorithm using forward and backward message passing is known as <em>belief propagation</em>.</p>
+<section id="markov-chain">
+<h3>Markov chain<a class="headerlink" href="#markov-chain" title="Permalink to this headline">#</a></h3>
+<p>Here is an example of inference in a Markov chain.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Markov</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Class for a Markov chain&quot;&quot;&quot;</span>
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ptr</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a new environment&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ptr</span> <span class="o">=</span> <span class="n">ptr</span>  <span class="c1"># transition matrix p(x&#39;|x)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Ns</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ptr</span><span class="p">)</span>  <span class="c1"># number of states</span>
+        
+    <span class="k">def</span> <span class="nf">sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;generate a sample sequence from x0&quot;&quot;&quot;</span>
+        <span class="n">seq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">step</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span> <span class="c1"># sequence buffer</span>
+        <span class="n">seq</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">x0</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">step</span><span class="p">):</span>
+            <span class="n">pt1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ptr</span><span class="p">[:,</span> <span class="n">seq</span><span class="p">[</span><span class="n">t</span><span class="p">]]</span> <span class="c1"># prob. of new states</span>
+            <span class="n">seq</span><span class="p">[</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Ns</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">pt1</span><span class="p">)</span> <span class="c1"># sample </span>
+        <span class="k">return</span> <span class="n">seq</span>
+    
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;forward message from initial distribution p0&quot;&quot;&quot;</span>
+        <span class="n">alpha</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">step</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Ns</span><span class="p">))</span> <span class="c1"># priors</span>
+        <span class="n">alpha</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">p0</span>  <span class="c1"># initial distribution</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">step</span><span class="p">):</span>
+            <span class="n">alpha</span><span class="p">[</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ptr</span> <span class="o">@</span> <span class="n">alpha</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> 
+        <span class="k">return</span> <span class="n">alpha</span>
+
+    <span class="k">def</span> <span class="nf">backward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obs</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;backward message from terminal observaion&quot;&quot;&quot;</span>
+        <span class="n">beta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">step</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Ns</span><span class="p">))</span> <span class="c1"># likelihoods</span>
+        <span class="n">beta</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">obs</span>  <span class="c1"># observation</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">step</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span> <span class="c1"># toward 0</span>
+            <span class="n">beta</span><span class="p">[</span><span class="n">t</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">beta</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">ptr</span>
+        <span class="k">return</span> <span class="n">beta</span>
+    
+    <span class="k">def</span> <span class="nf">posterior</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">obs</span><span class="p">,</span> <span class="n">step</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;forward-backward algorithm&quot;&quot;&quot;</span>
+        <span class="n">alpha</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">p0</span><span class="p">,</span> <span class="n">step</span><span class="p">)</span>
+        <span class="n">beta</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">obs</span><span class="p">,</span> <span class="n">step</span><span class="p">)</span>
+        <span class="n">post</span> <span class="o">=</span> <span class="n">alpha</span><span class="o">*</span><span class="n">beta</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">step</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">post</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">post</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">/</span><span class="nb">sum</span><span class="p">(</span><span class="n">post</span><span class="p">[</span><span class="n">t</span><span class="p">])</span>  <span class="c1"># normalize        </span>
+        <span class="k">return</span> <span class="n">post</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here is an example of directed random walk on a ring.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># stochastic cycling on a ring</span>
+<span class="n">ns</span> <span class="o">=</span> <span class="mi">6</span>   <span class="c1"># ring size</span>
+<span class="n">ps</span> <span class="o">=</span> <span class="mf">0.3</span>  <span class="c1"># shift probability</span>
+<span class="n">Ptr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">ns</span><span class="p">,</span> <span class="n">ns</span><span class="p">))</span>  <span class="c1"># transition matrix</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ns</span><span class="p">):</span>
+    <span class="n">Ptr</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">ps</span>
+    <span class="n">Ptr</span><span class="p">[(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">%</span><span class="k">ns</span>, i] = ps
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">Ptr</span><span class="p">)</span>
+<span class="c1"># create a Markov chain</span>
+<span class="n">ring</span> <span class="o">=</span> <span class="n">Markov</span><span class="p">(</span><span class="n">Ptr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Bayesian_41_0.png" src="_images/Bayesian_41_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># a sample trajectory</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">ring</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># forward message passing</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="n">ring</span><span class="o">.</span><span class="n">forward</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">T</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">alpha</span><span class="o">.</span><span class="n">T</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Bayesian_43_0.png" src="_images/Bayesian_43_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># backward message passing</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="n">ring</span><span class="o">.</span><span class="n">backward</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">T</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">beta</span><span class="o">.</span><span class="n">T</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Bayesian_44_0.png" src="_images/Bayesian_44_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># posterior by their products</span>
+<span class="n">post</span> <span class="o">=</span> <span class="n">ring</span><span class="o">.</span><span class="n">posterior</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">T</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">post</span><span class="o">.</span><span class="n">T</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Bayesian_45_0.png" src="_images/Bayesian_45_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># a little shifted observation</span>
+<span class="n">post</span> <span class="o">=</span> <span class="n">ring</span><span class="o">.</span><span class="n">posterior</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">T</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">post</span><span class="o">.</span><span class="n">T</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Bayesian_46_0.png" src="_images/Bayesian_46_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># longer sequence</span>
+<span class="n">post</span> <span class="o">=</span> <span class="n">ring</span><span class="o">.</span><span class="n">posterior</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="mi">3</span><span class="o">*</span><span class="n">T</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">post</span><span class="o">.</span><span class="n">T</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Bayesian_47_0.png" src="_images/Bayesian_47_0.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="dynamic-bayesian-inference">
+<h2>Dynamic Bayesian Inference<a class="headerlink" href="#dynamic-bayesian-inference" title="Permalink to this headline">#</a></h2>
+<p>Iterative Bayesian inference can be generalized to the case when the hidden variable <span class="math notranslate nohighlight">\(x\)</span> changes dynamically.</p>
+<p>We denote the sequence of observation as
+$<span class="math notranslate nohighlight">\(
+    y_{1:t}=(y_1,..,y_t)
+\)</span><span class="math notranslate nohighlight">\(
+and the history of underlying state variable as
+\)</span><span class="math notranslate nohighlight">\(
+    x_{1:t}=(x_1,..,x_t).
+\)</span>$</p>
+<p>We assume two conditional probability distributions:</p>
+<ul class="simple">
+<li><p>Dynamics model: <span class="math notranslate nohighlight">\(p(x’|x)\)</span></p></li>
+<li><p>Observation model: <span class="math notranslate nohighlight">\(p(y|x)\)</span></p></li>
+</ul>
+<p>Using the posterior <span class="math notranslate nohighlight">\(p(x_t|y_{1:t})\)</span> computed from the data up to time <span class="math notranslate nohighlight">\(t\)</span>, we use the dymamics model to computer the <em>predictive prior</em>:
+$<span class="math notranslate nohighlight">\(
+    p(x_{t+1}|y_{1:t}) = \int p(x_{t+1}|x_t) p(x_t|y_{1:t}) dx_t
+\)</span><span class="math notranslate nohighlight">\(
+by integrating or summing over the possible range of \)</span>x$.</p>
+<p>We can combine this prior with the new coming data <span class="math notranslate nohighlight">\(y_{t+1}\)</span> to update the posterior as:
+$<span class="math notranslate nohighlight">\(
+    p(x_{t+1}|y_{1:t+1}) 
+ = \frac{p(y_{t+1}|x_{t+1}) p(x_{t+1}|y_{1:t})}{ p(y_{1:t+1})}.
+\)</span>$</p>
+<p>This is called <em>dynamic Bayesian inference</em> and allows real-time tracking of hidden variables from noisy observations.</p>
+<p>When <span class="math notranslate nohighlight">\(x\)</span> is discrete, the process is called <em>hidden Markov model (HMM)</em>, which has been used extensively speech processing.</p>
+<p>Another example is <em>Kalman filter</em>, in which <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> are continuous and the dynamics and observation models are linear mapping with Gaussian noise.</p>
+<section id="hidden-markov-model">
+<h3>Hidden Markov model<a class="headerlink" href="#hidden-markov-model" title="Permalink to this headline">#</a></h3>
+<p>Here is a simple implementaion of HMM based on the Markov chain above.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">HMM</span><span class="p">(</span><span class="n">Markov</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Hidden Markov model&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ptr</span><span class="p">,</span> <span class="n">pobs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create HMM with transition and observation models&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">ptr</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pobs</span> <span class="o">=</span> <span class="n">pobs</span>  <span class="c1"># observation model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">No</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">pobs</span><span class="p">)</span>  <span class="c1"># number of observations</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pst</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Ns</span><span class="p">)</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">Ns</span>  <span class="c1"># state distribution</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Ns</span><span class="p">)</span>  <span class="c1"># predictive distribution</span>
+
+    <span class="k">def</span> <span class="nf">sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;generate a sample sequence from x0&quot;&quot;&quot;</span>
+        <span class="n">xt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">step</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span> <span class="c1"># state sequence</span>
+        <span class="n">yt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">step</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span> <span class="c1"># observation sequence</span>
+        <span class="n">xt</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">x0</span>
+        <span class="n">po</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pobs</span><span class="p">[:,</span> <span class="n">x0</span><span class="p">]</span> <span class="c1"># prob. of observation</span>
+        <span class="n">yt</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">No</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">po</span><span class="p">)</span> <span class="c1"># observe</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">step</span><span class="p">):</span>
+            <span class="n">ps</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ptr</span><span class="p">[:,</span> <span class="n">xt</span><span class="p">[</span><span class="n">t</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>  <span class="c1"># prob. of new states</span>
+            <span class="n">xt</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Ns</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">ps</span><span class="p">)</span> <span class="c1"># transit </span>
+            <span class="n">po</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pobs</span><span class="p">[:,</span> <span class="n">xt</span><span class="p">[</span><span class="n">t</span><span class="p">]]</span>   <span class="c1"># prob. of observation</span>
+            <span class="n">yt</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">No</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">po</span><span class="p">)</span> <span class="c1"># observe </span>
+        <span class="k">return</span> <span class="n">xt</span><span class="p">,</span> <span class="n">yt</span>
+
+    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;predictive prior by transition model&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pred</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ptr</span> <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">pst</span>
+    
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;update posterior by observation&quot;&quot;&quot;</span>
+        <span class="n">prl</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pobs</span><span class="p">[</span><span class="n">obs</span><span class="p">]</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">pred</span> <span class="c1"># likelihood*prior</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pst</span> <span class="o">=</span> <span class="n">prl</span><span class="o">/</span><span class="nb">sum</span><span class="p">(</span><span class="n">prl</span><span class="p">)</span>  <span class="c1">#normalize</span>
+
+    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;reset state probability&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pst</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Ns</span><span class="p">)</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">Ns</span>  <span class="c1"># uniform</span>
+
+    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;one step of dynamic bayesian inference&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">obs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pst</span>  <span class="c1"># new prior</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here is an example of directed random walk on a ring, like a mouse walking on a circular track.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># random walk on a ring</span>
+<span class="n">ns</span> <span class="o">=</span> <span class="mi">6</span>   <span class="c1"># ring size</span>
+<span class="n">ps</span> <span class="o">=</span> <span class="mf">0.3</span>  <span class="c1"># shift probability</span>
+<span class="n">Ptr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">ns</span><span class="p">,</span> <span class="n">ns</span><span class="p">))</span>  <span class="c1"># transition matrix</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ns</span><span class="p">):</span>
+    <span class="n">Ptr</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">ps</span>
+    <span class="n">Ptr</span><span class="p">[(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">%</span><span class="k">ns</span>, i] = ps
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">Ptr</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;state&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;next state&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Bayesian_53_0.png" src="_images/Bayesian_53_0.png" />
+</div>
+</div>
+<p>Suppose we have three coarse position sensors, which send signal only intermittently, and we want to estimate where the mouse is.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Blurred intermittent observation model</span>
+<span class="n">no</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">po</span> <span class="o">=</span> <span class="mf">0.3</span>
+<span class="n">Pobs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">no</span><span class="p">,</span> <span class="n">ns</span><span class="p">))</span>  <span class="c1"># p(obs|state)</span>
+<span class="n">Pobs</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">po</span>  <span class="c1"># no information</span>
+<span class="n">Pobs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">Pobs</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">Pobs</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="n">po</span>
+<span class="n">Pobs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">Pobs</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">Pobs</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">Pobs</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">po</span><span class="o">/</span><span class="mi">2</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">Pobs</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;state&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;observation&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Bayesian_55_0.png" src="_images/Bayesian_55_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># crate a HMM</span>
+<span class="n">ring</span> <span class="o">=</span> <span class="n">HMM</span><span class="p">(</span><span class="n">Ptr</span><span class="p">,</span> <span class="n">Pobs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># sample a state trajectory and observations</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">xt</span><span class="p">,</span> <span class="n">yt</span><span class="p">,</span> <span class="o">=</span> <span class="n">ring</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xt</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">yt</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;ro&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Bayesian_57_0.png" src="_images/Bayesian_57_0.png" />
+</div>
+</div>
+<p>From such noisy intermittent observations, how can we estimate the state?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Dynamic Bayesian inference in HMM</span>
+<span class="n">post</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">T</span><span class="p">,</span> <span class="n">ns</span><span class="p">))</span>  <span class="c1"># posterior trajectory</span>
+<span class="n">ring</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
+    <span class="n">post</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">ring</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">yt</span><span class="p">[</span><span class="n">t</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">post</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;state&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Bayesian_59_0.png" src="_images/Bayesian_59_0.png" />
+</div>
+</div>
+<p>Even when there is no useful sensory input, you can predict the state distribution by the dynamic model.
+When a sensory input becomes available, prediction is corrected and sharpened.</p>
+<p>After sensory input, you can also reflect back and consider which previous states were more likely using <em>forward-backward</em> algorithms.</p>
+</section>
+</section>
+<section id="bayesian-sensorimotor-processing">
+<h2>Bayesian sensorimotor processing<a class="headerlink" href="#bayesian-sensorimotor-processing" title="Permalink to this headline">#</a></h2>
+<p>Our life is full of uncertainty. In sensory perception, we need to cope with noise, delay and occulusion and also overcome fundamental ill-posedness, such as to identify the 3D location of your target from 2D retinal images or sounds to two ears.</p>
+<p>To find a practical solution to such ill-posed problems, we need to make use of some prior assumptions, such as the light usually comes from the top or objects don’t jump abruptly.</p>
+<p>Bayesian inference provides a principled way for combining any prior knowledge with sensory evidence. Indeed there are several lines of psychological evidence suggesting that humans and animals integrate knowledge from prior experience or multi-modal sensory information as predicted by Bayesian inference (Knill &amp; Pouget 2004, Kording &amp; Wolpert 2004, Doya et al. 2007).</p>
+<blockquote>
+<div><p><img alt="Koerding04" src="_images/Koerding04.png" /></p>
+<p>While the subject tries to move the cursor to the target, a random shift is introduced to the hand-to-curs mapping. The subjects acquire a prior distribution of the cursor shift and combine that with sensory observations with variable uncertainties, as predicted by Bayesian inference (from Koerding &amp; Wolpert, 2004).</p>
+</div></blockquote>
+</section>
+<section id="bayesian-computation-in-the-brain">
+<h2>Bayesian computation in the brain<a class="headerlink" href="#bayesian-computation-in-the-brain" title="Permalink to this headline">#</a></h2>
+<p>How such Bayesian computation realized in the brain? How does the brain represent and manipulate probability distributions?</p>
+<p>One possibility is that the <em>receptive field</em> of a neuron represents a basis function in the sensory space and the activities of a population of neurons represent a probability distribution. This idea is called <em>probabilistic population code</em> (Zemel et al. 2004, Ma et al. 2006).</p>
+<p>The cerebral cortex has a hierarchical organization and bi-directional connections between lower and higher areas originating from specific layers.
+There have been serveral hypotheses about how such hierarchical recurrent network can realize Bayesian inference, such a belif propagation (Lochmann &amp; Deneve 2011) and variational <em>free energy</em> approximation (Friston 2005, 2010; Bogacz 2017).</p>
+<blockquote>
+<div><p><img alt="Bogacz17" src="_images/Bogacz17.png" /></p>
+<p>This tutorial illustrates how variational free-energy approximation of posterior probability works and how such mechanims might be mapped onto the cortical circuit (from Bobacz 2017).</p>
+</div></blockquote>
+<p>There has been only scarse attempts at directly testing those hypotheses, but a recent two-photon imaging experiment showed the evidence for dynamic Bayesian inference by populations of neurons in the parietal cortex (Funamizu et al. 2016).</p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Bishop CM (2006) Pattern Recognition and Machine Learning. Springer.</p>
+<ul>
+<li><p>Chapter 3: Bayesian linear regression</p></li>
+<li><p>Chapter 8: Graphical models</p></li>
+</ul>
+</li>
+</ul>
+<section id="bayesian-sensorimotor-integration">
+<h3>Bayesian sensorimotor integration<a class="headerlink" href="#bayesian-sensorimotor-integration" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Knill DC, Pouget A (2004) The Bayesian brain: the role of uncertainty in neural coding and computation. Trends in neurosciences 27:712-719.</p></li>
+<li><p>Körding KP, Wolpert DM (2004) Bayesian integration in sensorimotor learning. Nature 427:244-247.</p></li>
+<li><p>Doya K, Ishii S, Pouget A, Rao R (2007) Bayesian Brain: Probabilistic Approach to Neural Coding and Learning. MIT Press.</p></li>
+</ul>
+</section>
+<section id="probabilistic-population-codes">
+<h3>Probabilistic population codes<a class="headerlink" href="#probabilistic-population-codes" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Zemel RS, Dayan P, Pouget A (1998) Probabilistic interpretation of population codes. Neural computation 10:403-430.</p></li>
+<li><p>Ma WJ, Beck JM, Latham PE, Pouget A (2006) Bayesian inference with probabilistic population codes. Nature neuroscience 9:1432-1438.</p></li>
+</ul>
+</section>
+<section id="baysian-inference-in-the-cortical-circuit">
+<h3>Baysian inference in the cortical circuit<a class="headerlink" href="#baysian-inference-in-the-cortical-circuit" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Bogacz R (2017) A tutorial on the free-energy framework for modelling perception and learning. Journal of Mathematical Psychology. 76, 198–211.</p></li>
+<li><p>Friston K (2005). A theory of cortical responses. Philos Trans R Soc Lond B Biol Sci, 360, 815-36. <a class="reference external" href="http://doi.org/10.1098/rstb.2005.1622">http://doi.org/10.1098/rstb.2005.1622</a></p></li>
+<li><p>Friston K (2010). The free-energy principle: a unified brain theory? Nat Rev Neurosci, 11, 127-38. <a class="reference external" href="http://doi.org/10.1038/nrn2787">http://doi.org/10.1038/nrn2787</a></p></li>
+<li><p>Lochmann T, Deneve S (2011) Neural processing as causal inference. Current opinion in neurobiology 21:774-781.</p></li>
+<li><p>Funamizu A, Kuhn B, Doya K (2016) Neural substrate of dynamic Bayesian inference in the cerebral cortex. Nature Neuroscience 19:1682-1689.</p></li>
+</ul>
+</section>
+</section>
+<section id="exercise">
+<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">#</a></h2>
+<ol class="simple">
+<li><p>Apply Bayesian linear regression with gaussian basis functions to a data sampled from a nonlionear function of your interest and see how <span class="math notranslate nohighlight">\(\alpha\)</span>, <span class="math notranslate nohighlight">\(\beta\)</span>, <span class="math notranslate nohighlight">\(M\)</span> and <span class="math notranslate nohighlight">\(N\)</span> affect the performance.</p></li>
+</ol>
+<ol class="simple">
+<li><p>Compute the log evidence for the above models and see how that is related to the predictin errors.</p></li>
+</ol>
+<ol class="simple">
+<li><p>Try forward-backward algorithm with different chains and inputs.</p></li>
+</ol>
+<ol class="simple">
+<li><p>In the above chain example, we assumed that only one of the <span class="math notranslate nohighlight">\(K\)</span> bits is one. If we allow simultaneous activation, the number of states increases to <span class="math notranslate nohighlight">\(2^K\)</span>, such that the conditional probability has <span class="math notranslate nohighlight">\(2^{K_n}2^{K_{n+1}}\)</span> parameters.</p></li>
+</ol>
+<p>By using a stochastic neural network,
+$<span class="math notranslate nohighlight">\( p(x_{n+1,j}|x_n) = f( \sum_{k=1}^{K_n} w_{jk} x_{nk}) \)</span><span class="math notranslate nohighlight">\(
+where \)</span>f(x)=\frac{1}{1+e^{-x}}<span class="math notranslate nohighlight">\(, the conditional probabilty can be defined by \)</span>K_nK_{n+1}$ parameters.</p>
+<p>Try implementing data sampling and inference in such a chain.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="Unsupervised.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Chapter 5. Unsupervised Learning</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Deep.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 7: Deep Learning</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Kenji Doya<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,880 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Chapter 9. Meta-Learning &#8212; Brain Computation</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Chapter 8. Multiple Agents" href="Multiple.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/BC_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Brain Computation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="BrainComputation.html">
+                    Brain Computation: A Hands-on Guidebook
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Introduction.html">
+   Chapter 1. Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Neurons.html">
+   Chapter 2. Neural Modeling and Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Supervised.html">
+   Chapter 3: Supervised Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Reinforcement.html">
+   Chapter 4. Reinforcement Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Unsupervised.html">
+   Chapter 5. Unsupervised Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Bayesian.html">
+   Chatper 6. Bayesian Approaches
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Deep.html">
+   Chapter 7: Deep Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Multiple.html">
+   Chapter 8. Multiple Agents
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Chapter 9. Meta-Learning
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/Meta.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/Meta.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#contents">
+   Contents
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tuning-meta-parameters">
+   Tuning meta-parameters
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#learning-rate">
+     Learning Rate
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exploration-exploitation">
+     Exploration-Exploitation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#temporal-discount-factor">
+     Temporal discount factor
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#self-tuning-of-meta-parameters">
+   Self-tuning of  meta-parameters
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#neuromodulators">
+   Neuromodulators
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#serotonin-and-delayed-reward">
+   Serotonin and delayed reward
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#acetylcholine-noradrenaline-and-learning">
+   Acetylcholine, noradrenaline and learning
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sensory-representation-learning">
+   Sensory representation learning
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#models-and-latent-variables">
+   Models and latent variables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modularity-and-compositionality">
+   Modularity and compositionality
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pathway-gating">
+   Pathway gating
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#learning-rate-and-exploration">
+     Learning rate and exploration
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#serotonin">
+     Serotonin:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#acetylcholine-and-noradrenaline-norepinephrine">
+     Acetylcholine and noradrenaline (norepinephrine)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#representation-learning">
+     Representation learning
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model-based-strategies">
+     Model-based strategies
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Modularity and compositionality
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Pathway gating
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise">
+   Exercise
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Chapter 9. Meta-Learning</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#contents">
+   Contents
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tuning-meta-parameters">
+   Tuning meta-parameters
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#learning-rate">
+     Learning Rate
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exploration-exploitation">
+     Exploration-Exploitation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#temporal-discount-factor">
+     Temporal discount factor
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#self-tuning-of-meta-parameters">
+   Self-tuning of  meta-parameters
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#neuromodulators">
+   Neuromodulators
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#serotonin-and-delayed-reward">
+   Serotonin and delayed reward
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#acetylcholine-noradrenaline-and-learning">
+   Acetylcholine, noradrenaline and learning
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sensory-representation-learning">
+   Sensory representation learning
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#models-and-latent-variables">
+   Models and latent variables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modularity-and-compositionality">
+   Modularity and compositionality
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pathway-gating">
+   Pathway gating
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#learning-rate-and-exploration">
+     Learning rate and exploration
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#serotonin">
+     Serotonin:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#acetylcholine-and-noradrenaline-norepinephrine">
+     Acetylcholine and noradrenaline (norepinephrine)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#representation-learning">
+     Representation learning
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model-based-strategies">
+     Model-based strategies
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Modularity and compositionality
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Pathway gating
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise">
+   Exercise
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-9-meta-learning">
+<h1>Chapter 9. Meta-Learning<a class="headerlink" href="#chapter-9-meta-learning" title="Permalink to this headline">#</a></h1>
+<div class="math notranslate nohighlight">
+\[ % Latex macros
+\newcommand{\mat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\newcommand{\p}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\b}[1]{\boldsymbol{#1}}
+\newcommand{\c}[1]{\mathcal{#1}}
+\newcommand{\w}{\boldsymbol{w}}
+\newcommand{\x}{\boldsymbol{x}}
+\]</div>
+<section id="contents">
+<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Tuning meta-parameters</p></li>
+<li><p>Reuse of representations</p></li>
+<li><p>Reuse of models</p></li>
+<li><p>Modularity and compositionality</p></li>
+</ul>
+<p>We learn to understand and control many things in our life and learning one task often makes learning another task easier. This observation has been a target of study under variaous keywords, such as</p>
+<ul class="simple">
+<li><p>Lifelong learning (Thrun 1996)</p></li>
+<li><p>Meta learning (Doya 2002)</p></li>
+<li><p>Transfer learning (Taylor &amp; Stone 2009)</p></li>
+</ul>
+</section>
+<section id="tuning-meta-parameters">
+<h2>Tuning meta-parameters<a class="headerlink" href="#tuning-meta-parameters" title="Permalink to this headline">#</a></h2>
+<p>Learning algorithms change the parameters of the model, such as the weights of neural networks, but most algorithms have higher-level paramters that control how learning goes on.
+They are called <em>hyperparamters</em> or <em>metaparameters</em> and control the balance of various trade-offs.
+Those meta paramteres are often tuned by machine learning engineers based on domain knowldge or past experience, but making the paramter tuning automatic or unnecessary is an important research topic.</p>
+<p>How that is done in our brain is also an important question in neuroscience.</p>
+<section id="learning-rate">
+<h3>Learning Rate<a class="headerlink" href="#learning-rate" title="Permalink to this headline">#</a></h3>
+<p>The learning rate parameter deals with the trade-off of quick learning and stable memory.
+Stochastic gradient decent and other online learning algorithms take the form
+$<span class="math notranslate nohighlight">\( w(t+1) = w(t) + \alpha(u(t) - w(t)) \)</span><span class="math notranslate nohighlight">\(
+where \)</span>u(t)$ is the input for the parameter update.</p>
+<p>This can be re-formulated as
+$<span class="math notranslate nohighlight">\( w(t+1) = \sum_{s=1}^t \alpha(1-\alpha)^{t-s}u(s)\)</span><span class="math notranslate nohighlight">\(
+showing that \)</span>w<span class="math notranslate nohighlight">\( is an exponentially weighted average of past inputs \)</span>u(s)<span class="math notranslate nohighlight">\( with the decaying factor \)</span>1-\alpha<span class="math notranslate nohighlight">\(.
+With a large \)</span>\alpha$ close to one, past experiences are quickly forgotten.</p>
+<p>To effectively average over about <span class="math notranslate nohighlight">\(N\)</span> past samples, the learning rate has to be set at the scale of <span class="math notranslate nohighlight">\(\alpha\simeq\frac{1}{N}\)</span></p>
+<p>In a stationary environment, a good strategy is to take an even average of past inputs
+$<span class="math notranslate nohighlight">\( w(t+1) = \frac{1}{t}\sum_{s=1}^t u(s) \)</span><span class="math notranslate nohighlight">\(
+This can be realized by hyperbolically decaying learning rate
+\)</span>\alpha=\frac{1}{t}<span class="math notranslate nohighlight">\( because
+\)</span><span class="math notranslate nohighlight">\( w(t+1) = \frac{1}{t}(\sum_{s=1}^{t-1}u(s) + u(t))
+ = \frac{1}{t}((t-1)w(t) + u(t)) \)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\( = w(t) + \frac{1}{t}(u(t) - w(t)) \)</span>$</p>
+</section>
+<section id="exploration-exploitation">
+<h3>Exploration-Exploitation<a class="headerlink" href="#exploration-exploitation" title="Permalink to this headline">#</a></h3>
+<p>In reinforcement learning, the balance of exploration of novel actions and exploitation by an action that is known to be good is controlled by <span class="math notranslate nohighlight">\(\epsilon\)</span> in <span class="math notranslate nohighlight">\(\epsilon\)</span>-greedy action selection and the <em>inverse temerature</em> <span class="math notranslate nohighlight">\(\beta\)</span> in the <em>softmax</em> or <em>Boltzmann</em> action selection
+$<span class="math notranslate nohighlight">\( p(a|s) = \frac{e^{\beta Q(s,a)}}{\sum_{a'\in\c{A}}e^{\beta Q(s,a')}} \)</span><span class="math notranslate nohighlight">\(
+where \)</span>\c{A}$ is the set of available actions.</p>
+<p>This can be seen as maximization of the negative free energy
+$<span class="math notranslate nohighlight">\( –F = E[ Q(s,a) - \frac{1}{\beta}\log p(a|s)] \)</span>$
+which is a sum of expected action value and the entropy of action selection probability.</p>
+<p>As learning goes on, to reduce exploration and to promote exploitation, the inverse temperature is gradually increased, or the temperature <span class="math notranslate nohighlight">\(\tau=\frac{1}{\beta}\)</span> is reduced.
+This is called <em>annealing</em>.</p>
+<p>Another ways to promote exploration in early stage of learning is to give an additional reward for the states or stat-action pairs that have not been tried before.
+This is known as <em>novelty bonus</em> (Dayan).
+A similar effect can be realized by optimistic initial setting of the value functions.</p>
+<p>Further sophistication is <em>Bayesian reinforcement learning</em> which tries to learn not just the expected reward but the distribution of the reward <span class="math notranslate nohighlight">\(P(r|s,a)\)</span>.
+Starting from a flat prior distribution, as the reward distribution becomes sharper, there is less need for exploration.
+Knowledge of the reward distribution further allows optimistic, risk-seeking action selection or conservative, risk-avoiding action selection.</p>
+</section>
+<section id="temporal-discount-factor">
+<h3>Temporal discount factor<a class="headerlink" href="#temporal-discount-factor" title="Permalink to this headline">#</a></h3>
+<p>The temporal discount factor <span class="math notranslate nohighlight">\(\gamma\)</span> defines the temporal scale of maximization of future rewards
+$<span class="math notranslate nohighlight">\( E[ r_t + \gamma r_{t+1} + \gamma^2 r_{t+2} + ...] \)</span>$</p>
+<p>A low setting of <span class="math notranslate nohighlight">\(\gamma\)</span> can result in a short-sighted or impulsive behaviors which neglect long-term consequences of an action.</p>
+<p>Although a high setting of <span class="math notranslate nohighlight">\(\gamma\)</span> promotes a long-term optimal behaviors, setting <span class="math notranslate nohighlight">\(\gamma\)</span> very close to one can make prediction more demanding, thus takes long time to learn.</p>
+<p>For an average reward <span class="math notranslate nohighlight">\(r_t\sim r_0\)</span>, the value function takes the order of
+$<span class="math notranslate nohighlight">\( V \simeq \frac{r_0}{1-\gamma} \)</span><span class="math notranslate nohighlight">\(
+which grows very large as \)</span>\gamma<span class="math notranslate nohighlight">\( is set close to one.
+Then the temporal difference error
+\)</span><span class="math notranslate nohighlight">\( \delta_t = r_{t+1} + \gamma V(s_{t+1}) - V(s_t) \)</span><span class="math notranslate nohighlight">\(
+is dominated by the temporal difference of value functions, responding less to the encountered reward \)</span>r_{t+1}$.</p>
+<p>If it is known that approximately <span class="math notranslate nohighlight">\(n\)</span> steps are necessary from the initial state of the goal states, the temporal discounting should be set at the order of <span class="math notranslate nohighlight">\(\frac{1}{1-\gamma}=n\)</span>, i.e., <span class="math notranslate nohighlight">\(\gamma=1-\frac{1}{n}\)</span>.</p>
+</section>
+</section>
+<section id="self-tuning-of-meta-parameters">
+<h2>Self-tuning of  meta-parameters<a class="headerlink" href="#self-tuning-of-meta-parameters" title="Permalink to this headline">#</a></h2>
+<p>Can we use reinforcement learning or evolutionary algorithms to find good  meta-paramteres for a given range of tasks or environments?</p>
+<p>That idea had been tested with reinforcement learning (Schweighofer, Doya 2003) and evolutinary algorithm (Elfwing et al. 2011).</p>
+<p>More recently, the idea of automatizing parameter tuning and model selection has been addressed in the project of <em>AutoML</em></p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://automl.chalearn.org">http://automl.chalearn.org</a></p></li>
+<li><p><a class="reference external" href="https://cloud.google.com/automl/">https://cloud.google.com/automl/</a></p></li>
+</ul>
+</section>
+<section id="neuromodulators">
+<h2>Neuromodulators<a class="headerlink" href="#neuromodulators" title="Permalink to this headline">#</a></h2>
+<p><em>Neuromodulators</em> are a subset of neurotransmitters that are not simply excitatory or inhibitory, but have complex, sometimes long lasting effects depending on the receptors.
+The most representative neuromodulators are <em>dopamine (DA)</em>, <em>serotonin (5HT)</em>, <em>noradrenaline (NA)</em> (also called <em>norepinephrine (NE)</em>), and <em>acetylcholine (ACh)</em>.</p>
+<p>The neurons that synthesize those neuromodulators are located in specific areas in the brain stem and their axons project broadly to the cerebral cortex and other brain areas.</p>
+<p>From these features, neuromodulators are proposed to broadcast some signals and to regulate some global parameters of brain function.</p>
+<blockquote>
+<div><p><img alt="Neuromodulators" src="_images/Modulators.png" />
+Major neuromodulators and their projections.
+Red: <em>dopamine (DA)</em> from  <em>ventral tegmental area (VTA)</em> and the <em>substantia nigra pars compacta (SNc)</em>.
+Green: <em>serotonin (5HT)</em> from the <em>dorsal raphe (DR)</em> and <em>median raphe (MR)</em> nuclei.
+Blue: <em>noradrenaline (NA)</em>, or <em>norepinephrine (NE)</em>, from the <em>locus ceorelues (LC)</em>.
+Magenta: <em>acetylcholine (ACh)</em> from the <em>septum (S)</em>, <em>mynert (M)</em> nucleus, and the <em>pedunculo pontine nucleus (PPTN)</em>.
+(from Doya, 2002).</p>
+</div></blockquote>
+<p>Dopamine neurons in the <em>ventral tegmental area (VTA)</em> and the <em>substantia nigra pars compacta (SNc)</em> have been shown to represent the reward prediction error signal, the most important global learing signal <span class="math notranslate nohighlight">\(\delta\)</span> in reinforcement learning (Schultz 1998).</p>
+<p>Building up on this notion, Doya (2002) proposed other major neuromodulators also encode and regulate global signals in reinforcement learing, namely, sorotonin for the temporal discount factor <span class="math notranslate nohighlight">\(\gamma\)</span>, noradrenaline for the inverse temperature <span class="math notranslate nohighlight">\(\beta\)</span>, and acetylcholine for the learning rate <span class="math notranslate nohighlight">\(\alpha\)</span>.</p>
+</section>
+<section id="serotonin-and-delayed-reward">
+<h2>Serotonin and delayed reward<a class="headerlink" href="#serotonin-and-delayed-reward" title="Permalink to this headline">#</a></h2>
+<p>Motivated by the hypothesis, there has been a series of studies assessing the role of serotonin in regulating the behaviors for delayed rewards.</p>
+<p>For example, Miyazaki et al. (2011) showed that serotonergic neurons int the dorsal raphe nucleus increase firing when rats kept weighting for a food pellet or water spout to come out.</p>
+<p>More recently, it was shown in multiple laboratories that optogenetic activation of dorsal raphe serotoin neurons promote behaviors for delayed rewards (Miyazaki et al. 2014, 2018; Lottem et al. 2018).</p>
+<p>However, the dorsal raphe serotonin neurons have been implicated in other behaviors as well, such as flexible switching of choice in the reversal task (Matias et al. 2017).</p>
+</section>
+<section id="acetylcholine-noradrenaline-and-learning">
+<h2>Acetylcholine, noradrenaline and learning<a class="headerlink" href="#acetylcholine-noradrenaline-and-learning" title="Permalink to this headline">#</a></h2>
+<p>Acetylcholine have been shown to facilitate learning from new sensory inputs (Hasselmo &amp; Sarter 2010).</p>
+<p>Noradrenalinergic neurons in the locus coeruleus has been shown to have phasic and tonic modes of operation. While phasic activation was suggested to promote selection of the optimal response for exploitation (Usher et al. 1999), tonic activities have been suggested to promote exploration of suboptimal actions (Aston-Jones &amp; Cohen 2005).</p>
+<p>Based on a Bayesian framework of learning, Yu and Dayan (2005) proposed a theory of differential roles of acetylcholine and noradrenaline; acetylcholine for expected uncertainty and noradrenaline for unexpected uncertainty.</p>
+</section>
+<section id="sensory-representation-learning">
+<h2>Sensory representation learning<a class="headerlink" href="#sensory-representation-learning" title="Permalink to this headline">#</a></h2>
+<p>When animal learn a behavior, such as classical conditioning, a big challenge is to figure out which of the sensory inputs, such as visition, audition and odor, is relevant for any responses.
+One animal realizes which senosory input to pay attention to, such as sound, subsequent learning can be much faster, for example, linking other sounds to action or reward.</p>
+<p>Courville and colleageus derived a Bayesian framework of how an animal infere the hiddden cause of stimuli and reward (Courville et al. 2005).</p>
+<p>Having appropriate set of sensory features is critical in pattern recognition and other tasks (Bengio et al. 2012).
+A common practice in visual object recognition is to re-use the features learned in the hidden layers of a deep neural network trained by a big dataset by re-training only the weights in the upper layers for a new but similar task.</p>
+</section>
+<section id="models-and-latent-variables">
+<h2>Models and latent variables<a class="headerlink" href="#models-and-latent-variables" title="Permalink to this headline">#</a></h2>
+<p>In reinforcement learing, an agent learns a policy given the environmental dynamics and reward setting. In the <em>model-free</em> approach, an agent learns  a policy for each setting of the environemt.</p>
+<p>In the <em>model-based</em> approach, an agent learns internal models of the state dynamics and reward function, and use internal computation to infer what is the best action. This indirectness gives computational burden for real-time execution, but may provide a benefit in adaptiation, such as in the case where only the goal or the reward setting is changed but the state dynamics stays the same.</p>
+<p>The behavioral benefit and neural mechanisms for model-based reinforcement learning were demonstrated by Glascher et al. (2010) by asking Caltech students to first learn a tree-like state transition, then disclosing the rewards at leaf nodes and finally letting them to find the right action seqeunce.</p>
+<p>Daw et al. (2011) took a similar two-step task and analyzed how subjects respond to a large reward following a rare transition in the first step.</p>
+<p>Wang et al. (2018) trained a recurrent neural network to perform a reinforcement learning task with variable parameters, such as variable reward probabilities for left and right choices in a bandit task.
+After sufficient training, they found that the network cand adapt to new parameter setting even when their weights are fixed.
+That was because some of the some hidden neurons had learned to change their statew depending of the laten variable of the task, such as the reward probabilities to two options, and the network output was changed by the latent variables.</p>
+</section>
+<section id="modularity-and-compositionality">
+<h2>Modularity and compositionality<a class="headerlink" href="#modularity-and-compositionality" title="Permalink to this headline">#</a></h2>
+<p>In learning the model of the environment, rather than to learn a monolithic model to predict everything, it is more practical to learn multiple models for different situations or aspects of the environment and select or combine them as required.</p>
+<p>Learning and use of modular internal models have been demonstrated, for eaxample, in motor control tasks (Ghaharamani &amp; Wolpert 1997).
+Such notions promoted computational architecutres for modular learning and control, such as the MOSAIC architecture (Wolpert et al. 2003).</p>
+<p>In reinforcement learning and optimal contorol theory, how to design controllers that can be efficiently combined is an area of active research (Todorov 2009).</p>
+<p>Yang et al. (2018) trained a single recurrent neural network to perform 20 different cognitive tasks and anlayized how the hidden neurons are used in different tasks.
+They found different sets of hidden neurons develp into multiple clusters specialized for different cognitive processes, allowing compositional reuse of learned modules.</p>
+<p>In cognitive science, compositionality of models and skills is also regarded as a major component in human intelligence (Lake et al. 2017).</p>
+</section>
+<section id="pathway-gating">
+<h2>Pathway gating<a class="headerlink" href="#pathway-gating" title="Permalink to this headline">#</a></h2>
+<p>Most studies of functional MRI assume that, when a subject is asked to perform a certain task, computational modules requires for that are activated and identify brain areas specialized in particular computations.
+However, it is unknown how those required modules are activated and connected appropriately.
+This poses us interesting problems both at computational and biophysical implementation levels.</p>
+<p>Wang and Yang (2018) termed this as the <em>pathway gating</em> problem.
+They considered possible biophysical mechanisms, focusing on the roles of different inhibitory neurons in the cortical circuit.</p>
+<blockquote>
+<div><p><img alt="PathwayGating" src="_images/WangYang2018conb.jpg" />
+Possible mechanisms of information gating in the brain. (Wang &amp; Yang, 2018).</p>
+</div></blockquote>
+<p>Fernando et al. (2017) proposed <em>Pathnet</em> to use evolutionary optimization to find out which pathway in a deep neural network is to be used for each particular task.</p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Thrun S, Pratt L, eds. (1998) Learning to Learn: Springer.</p></li>
+<li><p>Taylor ME, Stone P (2009) Transfer learning for reinforcement learning domains: A survey. Journal of Machine Learning Research, 10:1633-1685.</p></li>
+<li><p>Doya K (2002) Metalearning and Neuromodulation. Neural Networks, 15:495–506.</p></li>
+<li><p>Doya K (2008) Modulators of decision making. Nature neuroscience,11:410-416.</p></li>
+<li><p>Schweighofer N, Doya K (2003) Meta-learning in reinforcement learning. Neural Networks, 16:5-9.</p></li>
+<li><p>Elfwing S, Uchibe E, Doya K, Christensen HI (2011) Darwinian embodied evolution of the learning ability for survival. Adaptive Behavior 19:101-120.</p></li>
+</ul>
+<section id="learning-rate-and-exploration">
+<h3>Learning rate and exploration<a class="headerlink" href="#learning-rate-and-exploration" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Kakade S, Dayan P (2002) Dopamine: generalization and bonuses. Neural Networks 15:549-559.</p></li>
+</ul>
+</section>
+<section id="serotonin">
+<h3>Serotonin:<a class="headerlink" href="#serotonin" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Miyazaki K, Miyazaki KW, Doya K (2011) Activation of dorsal raphe serotonin neurons underlies waiting for delayed rewards. The Journal of neuroscience, 31:469-479.</p></li>
+<li><p>Miyazaki KW, Miyazaki K, Tanaka KF, Yamanaka A, Takahashi A, Tabuchi S, Doya K (2014) Optogenetic activation of dorsal raphe serotonin neurons enhances patience for future rewards. Current biology, 24:2033-2040.</p></li>
+<li><p>Miyazaki K, Miyazaki KW, Yamanaka A, Tokuda T, Tanaka KF, Doya K (2018) Reward probability and timing uncertainty alter the effect of dorsal raphe serotonin neurons on patience. Nature communications, 9:2048.</p></li>
+<li><p>Lottem E, Banerjee D, Vertechi P, Sarra D, Lohuis MO, Mainen ZF (2018) Activation of serotonin neurons promotes active persistence in a probabilistic foraging task. Nature communications, 9:1000.</p></li>
+</ul>
+</section>
+<section id="acetylcholine-and-noradrenaline-norepinephrine">
+<h3>Acetylcholine and noradrenaline (norepinephrine)<a class="headerlink" href="#acetylcholine-and-noradrenaline-norepinephrine" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Hasselmo ME, Sarter M (2011). Modes and models of forebrain cholinergic neuromodulation of cognition. Neuropsychopharmacology, 36, 52-73. <a class="reference external" href="http://doi.org/10.1038/npp.2010.104">http://doi.org/10.1038/npp.2010.104</a></p></li>
+<li><p>Usher M, Cohen JD, Servan-Schreiber D, Rajkowski J, Aston-Jones G (1999). The role of Locus Coeruleus in the regulation of cognitive performance. Science, 283, 549-554. <a class="reference external" href="http://doi.org/10.1126/science.283.5401.549">http://doi.org/10.1126/science.283.5401.549</a></p></li>
+<li><p>Aston-Jones G, Cohen JD (2005). An integrative theory of locus coeruleus-norepinephrine function: adaptive gain and optimal performance. Annual Reviews in Neuroscience, 28, 403-50. <a class="reference external" href="http://doi.org/10.1146/annurev.neuro.28.061604.135709">http://doi.org/10.1146/annurev.neuro.28.061604.135709</a></p></li>
+<li><p>Yu AJ, Dayan P (2005). Uncertainty, neuromodulation, and attention. Neuron, 46, 681-92. <a class="reference external" href="http://doi.org/10.1016/j.neuron.2005.04.026">http://doi.org/10.1016/j.neuron.2005.04.026</a></p></li>
+</ul>
+</section>
+<section id="representation-learning">
+<h3>Representation learning<a class="headerlink" href="#representation-learning" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Courville AC, Daw ND, Touretzky DS (2006) Bayesian theories of conditioning in a changing world. Trends in Cognitive Sciences 10:294-300.</p></li>
+<li><p>Bengio Y, Courville A, Vincent P (2013) Representation learning: a review and new perspectives. IEEE Trans Pattern Anal Mach Intell 35:1798-1828.</p></li>
+<li><p>Wang JX, Kurth-Nelson Z, Kumaran D, Tirumala D, Soyer H, Leibo JZ, Hassabis D, Botvinick M (2018). Prefrontal cortex as a meta-reinforcement learning system. Nat Neurosci, 21, 860-868. <a class="reference external" href="https://doi.org/10.1038/s41593-018-0147-8">https://doi.org/10.1038/s41593-018-0147-8</a></p></li>
+<li><p>Yang GR, Joglekar MR, Song HF, Newsome WT, Wang XJ (2019). Task representations in neural networks trained to perform many cognitive tasks. Nat Neurosci. <a class="reference external" href="https://doi.org/10.1038/s41593-018-0310-2">https://doi.org/10.1038/s41593-018-0310-2</a></p></li>
+</ul>
+</section>
+<section id="model-based-strategies">
+<h3>Model-based strategies<a class="headerlink" href="#model-based-strategies" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Glascher J, Daw N, Dayan P, O’Doherty JP (2010). States versus rewards: dissociable neural prediction error signals underlying model-based and model-free reinforcement learning. Neuron, 66, 585-95. <a class="reference external" href="http://doi.org/10.1016/j.neuron.2010.04.016">http://doi.org/10.1016/j.neuron.2010.04.016</a></p></li>
+<li><p>Daw ND, Gershman SJ, Seymour B, Dayan P, Dolan RJ (2011). Model-based influences on humans’ choices and striatal prediction errors. Neuron, 69, 1204-15. <a class="reference external" href="https://doi.org/10.1016/j.neuron.2011.02.027">https://doi.org/10.1016/j.neuron.2011.02.027</a></p></li>
+</ul>
+</section>
+<section id="id1">
+<h3>Modularity and compositionality<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Ghahramani Z, Wolpert DM (1997). Modular decomposition in visuomotor learning. Nature, 386, 392-395. <a class="reference external" href="http://doi.org/10.1038/386392a0">http://doi.org/10.1038/386392a0</a></p></li>
+<li><p>Wolpert DM, Doya K, Kawato M (2003). A unifying computational framework for motor control and social interaction. Philos Trans R Soc Lond B Biol Sci, 358, 593-602. <a class="reference external" href="http://doi.org/10.1098/rstb.2002.1238">http://doi.org/10.1098/rstb.2002.1238</a></p></li>
+<li><p>Todorov E (2009). Efficient computation of optimal actions. Proc Natl Acad Sci U S A, 106, 11478-83. <a class="reference external" href="https://doi.org/10.1073/pnas.0710743106">https://doi.org/10.1073/pnas.0710743106</a></p></li>
+<li><p>Lake BM, Ullman TD, Tenenbaum JB, Gershman SJ (2017). Building machines that learn and think like people. Behav Brain Sci, 40, e253. <a class="reference external" href="http://doi.org/10.1017/S0140525X16001837">http://doi.org/10.1017/S0140525X16001837</a></p></li>
+</ul>
+</section>
+<section id="id2">
+<h3>Pathway gating<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Wang XJ, Yang GR (2018). A disinhibitory circuit motif and flexible information routing in the brain. Curr Opin Neurobiol, 49, 75-83. <a class="reference external" href="https://doi.org/10.1016/j.conb.2018.01.002">https://doi.org/10.1016/j.conb.2018.01.002</a></p></li>
+<li><p>Fernando C, Banarse D, Blundell C, Zwols Y, Ha D, Rusu AA, Pritzel A, Wierstra D (2017). Pathnet: Evolution channels gradient descent in super neural networks. arXiv:1701.08734.</p></li>
+</ul>
+</section>
+</section>
+<section id="exercise">
+<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">#</a></h2>
+<ol class="simple">
+<li><p>Come up with daily-life examples of “learning to learn” and consider what computational processes may be involved.</p></li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="Multiple.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Chapter 8. Multiple Agents</p>
+        </div>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Kenji Doya<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

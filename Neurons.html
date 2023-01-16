@@ -1,0 +1,1456 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Chapter 2. Neural Modeling and Analysis &#8212; Brain Computation</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Chapter 3: Supervised Learning" href="Supervised.html" />
+    <link rel="prev" title="Chapter 1. Introduction" href="Introduction.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/BC_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Brain Computation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="BrainComputation.html">
+                    Brain Computation: A Hands-on Guidebook
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Introduction.html">
+   Chapter 1. Introduction
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Chapter 2. Neural Modeling and Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Supervised.html">
+   Chapter 3: Supervised Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Reinforcement.html">
+   Chapter 4. Reinforcement Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Unsupervised.html">
+   Chapter 5. Unsupervised Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Bayesian.html">
+   Chatper 6. Bayesian Approaches
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Deep.html">
+   Chapter 7: Deep Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Multiple.html">
+   Chapter 8. Multiple Agents
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Meta.html">
+   Chapter 9. Meta-Learning
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/Neurons.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/Neurons.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#biophysical-neuron-models">
+   2.1 Biophysical neuron models
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hodgkin-huxley-neuron-models">
+     Hodgkin-Huxley neuron models
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#integrate-and-fire-neuron-models">
+     Integrate-and-fire neuron models
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#f-i-curve">
+     F-I curve
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#noisy-integrate-and-fire-model">
+     Noisy integrate-and-fire model
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#linear-nonlinear-poisson-models">
+     Linear-nonlinear-Poisson models
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#alpha-function-model-of-synaptic-current">
+     Alpha function model of synaptic current
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cable-equation-and-compartment-models">
+     Cable equation and compartment models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#abstract-neuron-models">
+   Abstract neuron models
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mean-field-models">
+     Mean-field models
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#wilson-cowan-model">
+       Wilson-Cowan model
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#artificial-neural-network-models">
+     Artificial neural network models
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#feed-forward-neural-networks">
+     Feed-forward neural networks
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#activation-functions-sigmoid-relu-and-binary">
+       Activation functions: Sigmoid, ReLU, and binary
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#softmax-function">
+     Softmax function
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#models-of-plasticity">
+   Models of plasticity
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hebb-rule">
+     Hebb rule
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#spike-timining-dependent-placticity-stdp">
+     Spike timining dependent placticity (STDP)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#theories-of-neural-coding">
+   Theories of neural coding
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rate-coding">
+     Rate coding
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#population-coding">
+     Population coding
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#temporal-coding">
+     Temporal coding
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#methods-for-spike-analysis-decoding">
+   Methods for spike analysis/decoding
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#peristimulus-time-histogram-psth">
+     Peristimulus time histogram (PSTH)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#spike-triggered-average-sta">
+     Spike-triggered average (STA)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#neurons-models">
+     Neurons models
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#neural-coding-and-analysis">
+     Neural coding and analysis
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise">
+   Exercise
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Chapter 2. Neural Modeling and Analysis</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#biophysical-neuron-models">
+   2.1 Biophysical neuron models
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hodgkin-huxley-neuron-models">
+     Hodgkin-Huxley neuron models
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#integrate-and-fire-neuron-models">
+     Integrate-and-fire neuron models
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#f-i-curve">
+     F-I curve
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#noisy-integrate-and-fire-model">
+     Noisy integrate-and-fire model
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#linear-nonlinear-poisson-models">
+     Linear-nonlinear-Poisson models
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#alpha-function-model-of-synaptic-current">
+     Alpha function model of synaptic current
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cable-equation-and-compartment-models">
+     Cable equation and compartment models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#abstract-neuron-models">
+   Abstract neuron models
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mean-field-models">
+     Mean-field models
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#wilson-cowan-model">
+       Wilson-Cowan model
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#artificial-neural-network-models">
+     Artificial neural network models
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#feed-forward-neural-networks">
+     Feed-forward neural networks
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#activation-functions-sigmoid-relu-and-binary">
+       Activation functions: Sigmoid, ReLU, and binary
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#softmax-function">
+     Softmax function
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#models-of-plasticity">
+   Models of plasticity
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hebb-rule">
+     Hebb rule
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#spike-timining-dependent-placticity-stdp">
+     Spike timining dependent placticity (STDP)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#theories-of-neural-coding">
+   Theories of neural coding
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rate-coding">
+     Rate coding
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#population-coding">
+     Population coding
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#temporal-coding">
+     Temporal coding
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#methods-for-spike-analysis-decoding">
+   Methods for spike analysis/decoding
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#peristimulus-time-histogram-psth">
+     Peristimulus time histogram (PSTH)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#spike-triggered-average-sta">
+     Spike-triggered average (STA)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#neurons-models">
+     Neurons models
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#neural-coding-and-analysis">
+     Neural coding and analysis
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise">
+   Exercise
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-2-neural-modeling-and-analysis">
+<h1>Chapter 2. Neural Modeling and Analysis<a class="headerlink" href="#chapter-2-neural-modeling-and-analysis" title="Permalink to this headline">#</a></h1>
+<ul class="simple">
+<li><p>2.1 Biophysical neuron models:</p>
+<ul>
+<li><p>HH model, IaF model, alpha function</p></li>
+</ul>
+</li>
+<li><p>2.2 Abstract neuron models: f-I curve, sigmoid, MP neuron</p></li>
+<li><p>2.3 Models of plasticity: Hebb rule, STDP</p></li>
+<li><p>2.4 Theories of neural coding: rate, population, coincidence, synchrony, waves</p></li>
+<li><p>2.5 Methods of neural decoding: PESH, PESC, STA, STC</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">odeint</span><span class="p">,</span> <span class="n">ode</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="biophysical-neuron-models">
+<h2>2.1 Biophysical neuron models<a class="headerlink" href="#biophysical-neuron-models" title="Permalink to this headline">#</a></h2>
+<p>Among variety of cells that compose animal body, what is striking about neurons is their complex shapes: branches of dendrites and long-projecting axons.
+For example, check <a class="reference external" href="http://neuromorpho.org">NeuroMorpho.org</a> for 3D morphological data of thousansa of neurons.
+There are non-neural cells that show electric activities and chemical signaling, but neurons are specialized for collecting signals from thousands of different neurons and sending the output to target neurons far apart.</p>
+<p>Here we introduce basic mathematical models that capture biophysical properties of neurons, namely, electirc excitation, synaptic transmission, and dendritic integtion.</p>
+<section id="hodgkin-huxley-neuron-models">
+<h3>Hodgkin-Huxley neuron models<a class="headerlink" href="#hodgkin-huxley-neuron-models" title="Permalink to this headline">#</a></h3>
+<p>The Hodgkin-Huxley (HH) model considers a neuron as an electric circuit as depicted below.
+<img alt="HH model" src="_images/hhmodel.jpg" /></p>
+<p>On the cellular membrane, there are <em>ionic channels</em> that pass specific type of ions. Sodium ions (Na<span class="math notranslate nohighlight">\(^+\)</span>) are scarce inside the cell, so that when sodium channel opens, positive charges flood into the cell to cause excitation. Potassium ions (K<span class="math notranslate nohighlight">\(^+\)</span>) are rich inside the cell, so that when potassium channel opens, positive charges flood out of the cell to cause inhibition. The HH model assumes a ‘leak’ current that put together all other ionic currents.</p>
+<p>The ingeniety of Hodgkin and Huxley is that they inferred from careful data analysis that a single sodium channel consists of three <em>activation</em> gates and one <em>inactivation</em> gate, and a single potassium channel consists of four activation gates. Such structures were later confirmed by genomics and imaging.</p>
+<p>The electric potential inside the neuron <span class="math notranslate nohighlight">\(V\)</span> follows the following equation:</p>
+<div class="math notranslate nohighlight">
+\[C \frac{dV}{dt} = g_{Na}m^3h(E_{Na}-V) + g_Kn^4(E_K-V) + g_L(E_L-V) + I\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(m\)</span>, <span class="math notranslate nohighlight">\(h\)</span>, and <span class="math notranslate nohighlight">\(n\)</span> represent the proportions of opening of sodium activation, sodium inactivation, and potassium activation gates, respectively.
+They follow the following differential equations with their rates of opening and closing, <span class="math notranslate nohighlight">\(\alpha(V)\)</span> and <span class="math notranslate nohighlight">\(\beta(V)\)</span>, depending on the membrane voltage <span class="math notranslate nohighlight">\(V\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\frac{dm}{dt} = \alpha_m(V)(1-m) - \beta_m(V)m\]</div>
+<div class="math notranslate nohighlight">
+\[\frac{dh}{dt} = \alpha_h(V)(1-h) - \beta_h(V)h\]</div>
+<div class="math notranslate nohighlight">
+\[\frac{dn}{dt} = \alpha_n(V)(1-n) - \beta_n(V)n\]</div>
+<p>These compose a system of four-dimensional non-linear differential equations. Another amazing thing about Hodgkin and Huxley is that they could simulate the solutions of these differential equations by a hand-powered computer.</p>
+<p>Below is a code to simulate the HH model by Python. Much easier!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HH: Hodgkin-Huxley (1952) model</span>
+<span class="n">C</span> <span class="o">=</span> <span class="mf">1.</span>    <span class="c1"># membrane capacitance (uF/cm^2)</span>
+<span class="c1"># maximum conductances (uS/cm^2)</span>
+<span class="n">gna</span> <span class="o">=</span> <span class="mf">120.</span>  <span class="c1"># sodium</span>
+<span class="n">gk</span> <span class="o">=</span> <span class="mf">36.</span>    <span class="c1"># potassium</span>
+<span class="n">gl</span> <span class="o">=</span> <span class="mf">0.3</span>   <span class="c1"># leak</span>
+<span class="c1"># reversal potentials (mV)</span>
+<span class="n">Ena</span> <span class="o">=</span> <span class="mf">50.</span>   <span class="c1"># sodium</span>
+<span class="n">Ek</span> <span class="o">=</span> <span class="o">-</span><span class="mf">77.</span>   <span class="c1"># potassium</span>
+<span class="n">El</span> <span class="o">=</span> <span class="o">-</span><span class="mf">54.4</span> <span class="c1"># leak</span>
+<span class="k">def</span> <span class="nf">hh</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">stim</span><span class="o">=</span><span class="mf">0.</span><span class="p">):</span>    
+    <span class="c1"># state variables: potential and activation/inactivation</span>
+    <span class="n">v</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">y</span>
+    <span class="c1"># membrane potential</span>
+    <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="n">stim</span><span class="p">):</span>
+        <span class="n">I</span> <span class="o">=</span> <span class="n">stim</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>  <span class="c1"># time-dependent</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">I</span> <span class="o">=</span> <span class="n">stim</span>  <span class="c1"># constant</span>
+    <span class="n">dv</span> <span class="o">=</span> <span class="p">(</span><span class="n">gna</span><span class="o">*</span><span class="n">m</span><span class="o">**</span><span class="mi">3</span><span class="o">*</span><span class="n">h</span><span class="o">*</span><span class="p">(</span><span class="n">Ena</span><span class="o">-</span><span class="n">v</span><span class="p">)</span> <span class="o">+</span> <span class="n">gk</span><span class="o">*</span><span class="n">n</span><span class="o">**</span><span class="mi">4</span><span class="o">*</span><span class="p">(</span><span class="n">Ek</span><span class="o">-</span><span class="n">v</span><span class="p">)</span> <span class="o">+</span> <span class="n">gl</span><span class="o">*</span><span class="p">(</span><span class="n">El</span><span class="o">-</span><span class="n">v</span><span class="p">)</span> <span class="o">+</span> <span class="n">I</span><span class="p">)</span><span class="o">/</span><span class="n">C</span>
+    <span class="c1"># sodium current activation</span>
+    <span class="n">am</span> <span class="o">=</span> <span class="mf">0.1</span><span class="o">*</span><span class="p">(</span><span class="n">v</span><span class="o">+</span><span class="mi">40</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">v</span><span class="o">+</span><span class="mi">40</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span><span class="p">))</span>
+    <span class="n">bm</span> <span class="o">=</span> <span class="mi">4</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">v</span><span class="o">+</span><span class="mi">65</span><span class="p">)</span><span class="o">/</span><span class="mi">18</span><span class="p">);</span>
+    <span class="n">dm</span> <span class="o">=</span> <span class="n">am</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">m</span><span class="p">)</span> <span class="o">-</span> <span class="n">bm</span><span class="o">*</span><span class="n">m</span>
+    <span class="c1"># sodium current inactivation</span>
+    <span class="n">ah</span> <span class="o">=</span> <span class="mf">0.07</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">v</span><span class="o">+</span><span class="mi">65</span><span class="p">)</span><span class="o">/</span><span class="mi">20</span><span class="p">)</span>
+    <span class="n">bh</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">v</span><span class="o">+</span><span class="mi">35</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span><span class="p">))</span>
+    <span class="n">dh</span> <span class="o">=</span> <span class="n">ah</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">h</span><span class="p">)</span> <span class="o">-</span> <span class="n">bh</span><span class="o">*</span><span class="n">h</span>
+    <span class="c1"># potassium current activation</span>
+    <span class="n">an</span> <span class="o">=</span> <span class="mf">0.01</span><span class="o">*</span><span class="p">(</span><span class="n">v</span><span class="o">+</span><span class="mi">55</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">v</span><span class="o">+</span><span class="mi">55</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span><span class="p">))</span>
+    <span class="n">bn</span> <span class="o">=</span> <span class="mf">0.125</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">v</span><span class="o">+</span><span class="mi">65</span><span class="p">)</span><span class="o">/</span><span class="mi">80</span><span class="p">)</span>
+    <span class="n">dn</span> <span class="o">=</span> <span class="n">an</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">n</span><span class="p">)</span> <span class="o">-</span> <span class="n">bn</span><span class="o">*</span><span class="n">n</span>
+    <span class="k">return</span> <span class="p">[</span> <span class="n">dv</span><span class="p">,</span> <span class="n">dm</span><span class="p">,</span> <span class="n">dh</span><span class="p">,</span> <span class="n">dn</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>See the response to a ramp (gradually increasing) current.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># current stimulus I (uA/cm^2)</span>
+<span class="k">def</span> <span class="nf">ramp</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mf">0.1</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>  <span class="c1"># ramp current</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># run a simulation</span>
+<span class="n">tt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>  <span class="c1"># time to be simulated</span>
+<span class="n">y0</span> <span class="o">=</span> <span class="p">[</span> <span class="o">-</span><span class="mi">70</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">]</span>  <span class="c1"># initial state: V, m, h, n</span>
+<span class="n">yt</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">hh</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">tt</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">ramp</span><span class="p">,))</span>   <span class="c1"># simulated output</span>
+<span class="c1"># plot in separate rows</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tt</span><span class="p">,</span> <span class="n">ramp</span><span class="p">(</span><span class="n">tt</span><span class="p">));</span>  <span class="c1"># stim</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tt</span><span class="p">,</span> <span class="n">yt</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]);</span>   <span class="c1"># Ie, V</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;I, V&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s2">&quot;I(t)&quot;</span><span class="p">,</span> <span class="s2">&quot;V(t)&quot;</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tt</span><span class="p">,</span> <span class="n">yt</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:]);</span>  <span class="c1"># m, h, n</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;m, h, n&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s2">&quot;m(t)&quot;</span><span class="p">,</span> <span class="s2">&quot;h(t)&quot;</span><span class="p">,</span> <span class="s2">&quot;n(t)&quot;</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Neurons_9_0.png" src="_images/Neurons_9_0.png" />
+</div>
+</div>
+</section>
+<section id="integrate-and-fire-neuron-models">
+<h3>Integrate-and-fire neuron models<a class="headerlink" href="#integrate-and-fire-neuron-models" title="Permalink to this headline">#</a></h3>
+<p>The HH model explaines why a spike is generataed and followed by a refractory period based on the activation and inactionvation of sodium and potassium channels.
+We are, however, often interested in how a spike is triggered, rather than and electric mechanisms to create a spike.</p>
+<p><em>Integrate-and-fire</em> (IaF) neurons models considers the dynamics of sub-threshold accumulation of input currents up to a spiking threshold, but take a spike as just an event and then reset the potential. From the HH equation, by removing the sodium and potassium current, we have</p>
+<div class="math notranslate nohighlight">
+\[C \frac{dV(t)}{dt} = g_L(E_L-V(t)) + I\]</div>
+<p>By defining the membrane resistance <span class="math notranslate nohighlight">\(R=\frac{1}{g_L}\)</span> and the time constant <span class="math notranslate nohighlight">\(\tau=RC\)</span>, we have the equation of <em>leaky integration</em></p>
+<div class="math notranslate nohighlight">
+\[\tau\frac{dV(t)}{dt} = -V(t) + E_L + R I(t)\]</div>
+<p>When the membrane potential <span class="math notranslate nohighlight">\(V\)</span> reaches to a threhold <span class="math notranslate nohighlight">\(V_\theta\)</span>, a spike is generated and the membrane potential is reset to <span class="math notranslate nohighlight">\(V_r\)</span>.
+$<span class="math notranslate nohighlight">\(V(t) = V_r  \quad\mbox{ if } V(t) \ge V_\theta\)</span>$</p>
+<p>Below is an example of an IaF model. Here we use <code class="docutils literal notranslate"><span class="pre">ode()</span></code> function to detect reaching to the threshold by the <code class="docutils literal notranslate"><span class="pre">solout</span></code> option.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tau</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">R</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">El</span> <span class="o">=</span> <span class="o">-</span><span class="mi">50</span>  <span class="c1"># resting potential</span>
+<span class="n">Vth</span> <span class="o">=</span> <span class="o">-</span><span class="mi">40</span>  <span class="c1"># threshold</span>
+<span class="n">Vs</span> <span class="o">=</span> <span class="mi">40</span>  <span class="c1"># spike height</span>
+<span class="n">Vr</span> <span class="o">=</span> <span class="o">-</span><span class="mi">80</span>  <span class="c1"># reset</span>
+<span class="k">def</span> <span class="nf">integ</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">stim</span><span class="o">=</span><span class="mf">0.</span><span class="p">):</span>  <span class="c1"># integrate</span>
+    <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="n">stim</span><span class="p">):</span>
+        <span class="n">I</span> <span class="o">=</span> <span class="n">stim</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>  <span class="c1"># time-dependent</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">I</span> <span class="o">=</span> <span class="n">stim</span>  <span class="c1"># constant</span>
+    <span class="k">return</span> <span class="p">(</span><span class="o">-</span><span class="n">v</span> <span class="o">+</span> <span class="n">El</span> <span class="o">+</span> <span class="n">R</span><span class="o">*</span><span class="n">I</span><span class="p">)</span><span class="o">/</span><span class="n">tau</span>
+<span class="k">def</span> <span class="nf">fire</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>  <span class="c1"># fire</span>
+    <span class="k">return</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="k">if</span> <span class="n">v</span><span class="o">&gt;=</span><span class="n">Vth</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># stop if v&gt;=V1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iaf</span> <span class="o">=</span> <span class="n">ode</span><span class="p">(</span><span class="n">integ</span><span class="p">)</span>
+<span class="n">iaf</span><span class="o">.</span><span class="n">set_integrator</span><span class="p">(</span><span class="s1">&#39;dopri5&#39;</span><span class="p">)</span>  <span class="c1"># Runke-Kutta with step size control</span>
+<span class="n">iaf</span><span class="o">.</span><span class="n">set_solout</span><span class="p">(</span><span class="n">fire</span><span class="p">)</span>  <span class="c1"># stop when threshold is reached</span>
+<span class="n">iaf</span><span class="o">.</span><span class="n">set_initial_value</span><span class="p">(</span><span class="n">Vr</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">iaf</span><span class="o">.</span><span class="n">set_f_params</span><span class="p">(</span><span class="n">ramp</span><span class="p">)</span>  <span class="c1"># stimulus</span>
+<span class="n">V</span> <span class="o">=</span> <span class="p">[</span><span class="n">Vr</span><span class="p">]</span>
+<span class="n">T</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">tend</span> <span class="o">=</span> <span class="mi">300</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="k">while</span> <span class="n">iaf</span><span class="o">.</span><span class="n">successful</span><span class="p">()</span> <span class="ow">and</span> <span class="n">iaf</span><span class="o">.</span><span class="n">t</span> <span class="o">&lt;=</span> <span class="n">tend</span><span class="p">:</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">iaf</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">iaf</span><span class="o">.</span><span class="n">t</span><span class="o">+</span><span class="n">dt</span><span class="p">)</span>  <span class="c1"># step</span>
+    <span class="n">V</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>       <span class="c1"># record V</span>
+    <span class="n">T</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">iaf</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>   <span class="c1"># record t</span>
+    <span class="k">if</span> <span class="n">v</span> <span class="o">&gt;=</span> <span class="n">Vth</span><span class="p">:</span>  <span class="c1"># threshold reached</span>
+        <span class="n">iaf</span><span class="o">.</span><span class="n">set_initial_value</span><span class="p">(</span><span class="n">Vr</span><span class="p">,</span> <span class="n">iaf</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>  <span class="c1"># reset V</span>
+        <span class="n">V</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Vs</span><span class="p">)</span>  <span class="c1"># spike</span>
+        <span class="n">T</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">iaf</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+        <span class="n">V</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Vr</span><span class="p">)</span>  <span class="c1"># reset</span>
+        <span class="n">T</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">iaf</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">ramp</span><span class="p">(</span><span class="n">T</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">V</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;I, V&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s2">&quot;I(t)&quot;</span><span class="p">,</span> <span class="s2">&quot;V(t)&quot;</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/doya/miniforge3/lib/python3.9/site-packages/numpy/core/shape_base.py:65: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
+  ary = asanyarray(ary)
+</pre></div>
+</div>
+<img alt="_images/Neurons_12_1.png" src="_images/Neurons_12_1.png" />
+</div>
+</div>
+</section>
+<section id="f-i-curve">
+<h3>F-I curve<a class="headerlink" href="#f-i-curve" title="Permalink to this headline">#</a></h3>
+<p>In the HH or IaF models, as we increase the input current <span class="math notranslate nohighlight">\(I\)</span>, the spike firing frequency <span class="math notranslate nohighlight">\(F\)</span> increases. It is possible to characterize the property of a neuron by this <span class="math notranslate nohighlight">\(F-I\)</span> relationship.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">iafspikes</span><span class="p">(</span><span class="n">Ic</span><span class="p">):</span>  <span class="c1"># spike times with constant current</span>
+    <span class="n">iaf</span> <span class="o">=</span> <span class="n">ode</span><span class="p">(</span><span class="n">integ</span><span class="p">)</span><span class="o">.</span><span class="n">set_integrator</span><span class="p">(</span><span class="s1">&#39;dopri5&#39;</span><span class="p">)</span>
+    <span class="n">iaf</span><span class="o">.</span><span class="n">set_solout</span><span class="p">(</span><span class="n">fire</span><span class="p">)</span>  <span class="c1"># stop when threshold is reached</span>
+    <span class="n">iaf</span><span class="o">.</span><span class="n">set_f_params</span><span class="p">(</span><span class="n">Ic</span><span class="p">)</span>  <span class="c1"># stimulus</span>
+    <span class="n">iaf</span><span class="o">.</span><span class="n">set_initial_value</span><span class="p">(</span><span class="n">Vr</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">tinit</span> <span class="o">=</span> <span class="mi">200</span>  <span class="c1"># initial transient</span>
+    <span class="n">trun</span> <span class="o">=</span> <span class="mi">1000</span>  <span class="c1"># for 1000ms</span>
+    <span class="n">dt</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">tf</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># spike timing</span>
+    <span class="k">while</span> <span class="n">iaf</span><span class="o">.</span><span class="n">successful</span><span class="p">()</span> <span class="ow">and</span> <span class="n">iaf</span><span class="o">.</span><span class="n">t</span> <span class="o">&lt;=</span> <span class="n">tinit</span><span class="o">+</span><span class="n">trun</span><span class="p">:</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">iaf</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">iaf</span><span class="o">.</span><span class="n">t</span><span class="o">+</span><span class="n">dt</span><span class="p">)</span>  <span class="c1"># step</span>
+        <span class="k">if</span> <span class="n">v</span> <span class="o">&gt;=</span> <span class="n">Vth</span><span class="p">:</span>  <span class="c1"># threshold reached</span>
+            <span class="n">iaf</span><span class="o">.</span><span class="n">set_initial_value</span><span class="p">(</span><span class="n">Vr</span><span class="p">,</span> <span class="n">iaf</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>  <span class="c1"># reset V</span>
+            <span class="k">if</span> <span class="n">iaf</span><span class="o">.</span><span class="n">t</span><span class="o">&gt;=</span><span class="n">tinit</span><span class="p">:</span>  <span class="c1"># after transient</span>
+                <span class="n">tf</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">iaf</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">tf</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Is</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">Fs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">c</span><span class="p">,</span> <span class="n">Ic</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">Is</span><span class="p">):</span>
+    <span class="n">tf</span> <span class="o">=</span> <span class="n">iafspikes</span><span class="p">(</span><span class="n">Ic</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tf</span><span class="p">,</span> <span class="n">tf</span><span class="o">*</span><span class="mi">0</span><span class="o">+</span><span class="n">Ic</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+    <span class="n">Fs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tf</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;I&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Neurons_15_0.png" src="_images/Neurons_15_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Is</span><span class="p">,</span> <span class="n">Fs</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;I&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;F (Hz)&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Neurons_16_0.png" src="_images/Neurons_16_0.png" />
+</div>
+</div>
+</section>
+<section id="noisy-integrate-and-fire-model">
+<h3>Noisy integrate-and-fire model<a class="headerlink" href="#noisy-integrate-and-fire-model" title="Permalink to this headline">#</a></h3>
+<p>Try adding some noise to the neuron.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="o">=</span> <span class="mi">20</span>  <span class="c1"># noise size</span>
+<span class="n">noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1500</span><span class="p">)</span>  <span class="c1"># normal gaussian noise every 1ms</span>
+<span class="k">def</span> <span class="nf">Inoise</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">Ic</span> <span class="o">+</span> <span class="n">In</span><span class="o">*</span><span class="n">noise</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<span class="n">Fs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">c</span><span class="p">,</span> <span class="n">Ic</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">Is</span><span class="p">):</span>
+    <span class="n">tf</span> <span class="o">=</span> <span class="n">iafspikes</span><span class="p">(</span><span class="n">Inoise</span><span class="p">)</span>
+    <span class="c1">#plt.plot(tf, tf*0+c, &#39;.&#39;)</span>
+    <span class="n">Fs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tf</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Is</span><span class="p">,</span> <span class="n">Fs</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;I&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;F (Hz)&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Neurons_18_0.png" src="_images/Neurons_18_0.png" />
+</div>
+</div>
+<p>The firing threshold becomes smoother with noise.</p>
+</section>
+<section id="linear-nonlinear-poisson-models">
+<h3>Linear-nonlinear-Poisson models<a class="headerlink" href="#linear-nonlinear-poisson-models" title="Permalink to this headline">#</a></h3>
+<p>In some mathematical analysis, it is convenient to assume that a neuron collects synaptic inputs by linear weighted sum, sets its firing rate through a nonlinear function taking non-negative values, such as exponential and sigmoid function, and produces spikes stochastically according to its instantaneous firing rate.</p>
+<p>This is a <em>Poisson</em> process, for which the number of spiked generated in a time bin follows the Poisson distribution.</p>
+</section>
+<section id="alpha-function-model-of-synaptic-current">
+<h3>Alpha function model of synaptic current<a class="headerlink" href="#alpha-function-model-of-synaptic-current" title="Permalink to this headline">#</a></h3>
+<p>When a spike travels through an axon and reaches to a synpase, it causes release of neurotransmitter molecules in the synaptic junction, which binds to the receptors on the postsynapic membrane, and cause either opening of ionic channels of the receptor or trigger molecular reactions in the postsynaptic cell.</p>
+<p>A simple model to approximate the dynamics of this complex cascades is the <em>alpha function</em>, defined as
+$<span class="math notranslate nohighlight">\(u(t) = \frac{t}{\tau_s} e^{-\frac{t}{\tau_s}}\)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">alpha</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">taus</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">t</span><span class="o">/</span><span class="n">taus</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="o">/</span><span class="n">taus</span><span class="p">)</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">taus</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">alpha</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">taus</span><span class="p">));</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;u(t)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;u(t)&#39;)
+</pre></div>
+</div>
+<img alt="_images/Neurons_22_1.png" src="_images/Neurons_22_1.png" />
+</div>
+</div>
+<p>The alpha function is a solution of a second-order dyamics to an impulse input at t=0</p>
+<div class="math notranslate nohighlight">
+\[\tau_s\frac{du_1(t)}{dt} = -u_1(t) + \delta(t=0)\]</div>
+<div class="math notranslate nohighlight">
+\[\tau_s\frac{du_2(t)}{dt} = -u_2(t) + u_1(t)\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">falpha</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="c1"># dynamics for alpha function. u = [u1, u2]</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span><span class="o">/</span><span class="n">taus</span>
+<span class="n">ut</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">falpha</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">t</span><span class="p">)</span>  <span class="c1"># impulse input at t=0</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">ut</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">alpha</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">taus</span><span class="p">),</span> <span class="s1">&#39;:&#39;</span><span class="p">);</span>  <span class="c1"># analytic form in dotted line</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;u(t)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s2">&quot;u1&quot;</span><span class="p">,</span> <span class="s2">&quot;u2&quot;</span><span class="p">,</span> <span class="s2">&quot;u&quot;</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Neurons_24_0.png" src="_images/Neurons_24_0.png" />
+</div>
+</div>
+<p>Let us make a network of IaF neurons with alpha function synapses.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># IaF neuron network with alpha function synapses</span>
+<span class="c1">#I = 0   # bias current</span>
+<span class="c1"># Iaf neurons</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># number of neurons</span>
+<span class="n">tau</span> <span class="o">=</span> <span class="mi">50</span>  <span class="c1"># cellular time constant</span>
+<span class="n">V0</span> <span class="o">=</span> <span class="o">-</span><span class="mi">45</span>  <span class="c1"># resting near threshold</span>
+<span class="n">Vth</span> <span class="o">=</span> <span class="o">-</span><span class="mi">40</span>  <span class="c1"># threshold</span>
+<span class="n">Vs</span> <span class="o">=</span> <span class="mi">40</span>  <span class="c1"># spike height</span>
+<span class="n">Vr</span> <span class="o">=</span> <span class="o">-</span><span class="mi">80</span>  <span class="c1"># reset</span>
+<span class="c1"># Alpha synapses</span>
+<span class="n">taus</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># synaptic time constant</span>
+<span class="n">W</span> <span class="o">=</span> <span class="mi">40</span>   <span class="c1"># connection weight size; assume exponential distribution</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">N</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">N</span><span class="p">,</span><span class="n">N</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># remove self-connection</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">integnet</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">vu</span><span class="p">):</span>  <span class="c1"># integrate</span>
+    <span class="c1"># vu = [v, u]</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">vu</span><span class="p">[:</span><span class="n">N</span><span class="p">]</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">vu</span><span class="p">[</span><span class="n">N</span><span class="p">:]</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">N</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+    <span class="c1"># synaptic potential</span>
+    <span class="n">epsp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">w</span><span class="o">*</span><span class="n">u</span><span class="p">[:,:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># sum rows</span>
+    <span class="c1"># membrane dynamics</span>
+    <span class="n">dv</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">v</span> <span class="o">+</span> <span class="n">V0</span> <span class="o">+</span> <span class="n">epsp</span><span class="p">)</span><span class="o">/</span><span class="n">tau</span>
+    <span class="c1"># synaptic dynamics: for uniform taus, it can be reduced to N dim</span>
+    <span class="n">du</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">((</span><span class="o">-</span><span class="n">u</span><span class="p">[:,:,</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">taus</span><span class="p">,</span> <span class="p">(</span><span class="n">u</span><span class="p">[:,:,</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">u</span><span class="p">[:,:,</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="n">taus</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">dv</span><span class="p">,</span> <span class="n">du</span><span class="o">.</span><span class="n">flatten</span><span class="p">()])</span>
+<span class="k">def</span> <span class="nf">firenet</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">vu</span><span class="p">):</span>  <span class="c1"># fire</span>
+    <span class="k">return</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="k">if</span> <span class="nb">sum</span><span class="p">(</span><span class="n">vu</span><span class="p">[:</span><span class="n">N</span><span class="p">]</span><span class="o">&gt;=</span><span class="n">Vth</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># stop if any of v&gt;=V1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run a network simulation</span>
+<span class="n">iafnet</span> <span class="o">=</span> <span class="n">ode</span><span class="p">(</span><span class="n">integnet</span><span class="p">)</span><span class="o">.</span><span class="n">set_integrator</span><span class="p">(</span><span class="s1">&#39;dopri5&#39;</span><span class="p">)</span>
+<span class="n">iafnet</span><span class="o">.</span><span class="n">set_solout</span><span class="p">(</span><span class="n">firenet</span><span class="p">)</span>  <span class="c1"># stop when threshold is reached</span>
+<span class="n">v0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">Vr</span><span class="p">,</span> <span class="n">Vth</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>  <span class="c1"># initial state</span>
+<span class="n">u0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="o">*</span><span class="n">N</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># synapse state</span>
+<span class="n">iafnet</span><span class="o">.</span><span class="n">set_initial_value</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v0</span><span class="p">,</span> <span class="n">u0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">V</span> <span class="o">=</span> <span class="p">[</span><span class="n">v0</span><span class="p">]</span>
+<span class="n">T</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">tend</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">while</span> <span class="n">iafnet</span><span class="o">.</span><span class="n">successful</span><span class="p">()</span> <span class="ow">and</span> <span class="n">iafnet</span><span class="o">.</span><span class="n">t</span> <span class="o">&lt;=</span> <span class="n">tend</span><span class="p">:</span>
+    <span class="n">vu</span> <span class="o">=</span> <span class="n">iafnet</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">iafnet</span><span class="o">.</span><span class="n">t</span><span class="o">+</span><span class="n">dt</span><span class="p">)</span>  <span class="c1"># new v and u</span>
+    <span class="n">V</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">vu</span><span class="p">[:</span><span class="n">N</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>   <span class="c1"># record V</span>
+    <span class="n">T</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">iafnet</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>    <span class="c1"># record t</span>
+    <span class="k">if</span> <span class="nb">sum</span><span class="p">(</span><span class="n">vu</span><span class="p">[:</span><span class="n">N</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">Vth</span><span class="p">):</span>  <span class="c1"># any reached threshold</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>   <span class="c1"># check each neuron</span>
+            <span class="k">if</span> <span class="n">vu</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">Vth</span><span class="p">:</span>  <span class="c1"># reached threshold</span>
+                <span class="n">vu</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">Vr</span>   <span class="c1"># reset potential</span>
+                <span class="n">vu</span><span class="p">[</span><span class="n">N</span><span class="p">:]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="mi">2</span><span class="p">)[:,</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>  <span class="c1"># synaptic input</span>
+                <span class="n">V</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">Vs</span>  <span class="c1"># spike</span>
+        <span class="n">iafnet</span><span class="o">.</span><span class="n">set_initial_value</span><span class="p">(</span><span class="n">vu</span><span class="p">,</span> <span class="n">iafnet</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>  <span class="c1"># reset state</span>
+<span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>   <span class="c1"># list to array</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">V</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">N</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">);</span>  <span class="c1"># shift traces vertically</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;V(t)&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Neurons_29_0.png" src="_images/Neurons_29_0.png" />
+</div>
+</div>
+</section>
+<section id="cable-equation-and-compartment-models">
+<h3>Cable equation and compartment models<a class="headerlink" href="#cable-equation-and-compartment-models" title="Permalink to this headline">#</a></h3>
+<p>(To be written)</p>
+</section>
+</section>
+<section id="abstract-neuron-models">
+<h2>Abstract neuron models<a class="headerlink" href="#abstract-neuron-models" title="Permalink to this headline">#</a></h2>
+<section id="mean-field-models">
+<h3>Mean-field models<a class="headerlink" href="#mean-field-models" title="Permalink to this headline">#</a></h3>
+<p>In the invertebrate neuvous system with small number of neurons, each single neuron has a distinct identity and signals specifit information.
+In the mammarian brain with millons to billions of neurons, on the other hand, neural responses tend to be redundant and distributed.
+For example, in the visual cortex, neurons in the same <em>column</em> have similar sensory tuning, such as presentation of edges in the same orientation.
+Moreover, responses of each neuron to the same stimulus can be variable across trials.
+This suggest that information is reliably represented by a population of neurons sharing the same tuning.</p>
+<p><em>Mean-field</em> models, or neural <em>mass</em> model, capture the average firing rate of each population of neurons.</p>
+<p>The activity of a population of <span class="math notranslate nohighlight">\(N\)</span> neurons is defined as</p>
+<div class="math notranslate nohighlight">
+\[A(t) = \lim_{\Delta t\rightarrow 0} \frac{n(t;t+\Delta t)}{N\Delta t}\]</div>
+<p>where <span class="math notranslate nohighlight">\(n(t;t+\Delta t)\)</span> is the number of spikes in the short time duration <span class="math notranslate nohighlight">\(\Delta t\)</span>.</p>
+<p>For a population of identical IaF neurons with random homogeneous connections, the pupulation activity <span class="math notranslate nohighlight">\(A(t)\)</span> and average membrane potential <span class="math notranslate nohighlight">\(h(t)\)</span> can be apprximated by the following equations (Gerstner et al., 2014):</p>
+<div class="math notranslate nohighlight">
+\[A(t) = F(h(t))\]</div>
+<div class="math notranslate nohighlight">
+\[\tau \frac{dh(t)}{dt} = -h(t) + R I(t)\]</div>
+<p>The gain function <span class="math notranslate nohighlight">\(F\)</span> is often approximated by a sigmoid function</p>
+<div class="math notranslate nohighlight">
+\[F(h) = \frac{1}{1 + e^{-a(h-\theta)}}\]</div>
+<section id="wilson-cowan-model">
+<h4>Wilson-Cowan model<a class="headerlink" href="#wilson-cowan-model" title="Permalink to this headline">#</a></h4>
+<p>A classic example of a mean-field model is the Wilson-Cowan model, which consists of excitatory and inhibitory populations connected to each other.
+Depending on the connection strengths, we can observe point attractor or oscillating behaviors.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mean field network model</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># number of populations</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">])</span>
+<span class="n">tau</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="k">def</span> <span class="nf">gain</span><span class="p">(</span><span class="n">h</span><span class="p">):</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>  <span class="c1"># to accept list input</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">h</span><span class="p">))</span>
+<span class="k">def</span> <span class="nf">mfn</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="o">-</span><span class="n">h</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">gain</span><span class="p">(</span><span class="n">h</span><span class="p">))</span> <span class="o">-</span> <span class="n">theta</span><span class="p">)</span><span class="o">/</span><span class="n">tau</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>  <span class="c1"># time to be simulated</span>
+<span class="n">h0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>  <span class="c1"># initial state</span>
+<span class="n">ht</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">mfn</span><span class="p">,</span> <span class="n">h0</span><span class="p">,</span> <span class="n">tt</span><span class="p">)</span>   <span class="c1"># simulated output</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tt</span><span class="p">,</span> <span class="n">gain</span><span class="p">(</span><span class="n">ht</span><span class="p">));</span>   <span class="c1"># A(t) = F(h(t))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;A(t)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s2">&quot;excitatory&quot;</span><span class="p">,</span> <span class="s2">&quot;inhibitory&quot;</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Neurons_35_0.png" src="_images/Neurons_35_0.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="artificial-neural-network-models">
+<h3>Artificial neural network models<a class="headerlink" href="#artificial-neural-network-models" title="Permalink to this headline">#</a></h3>
+<p>Abstraction of linear weighted input and nonlinear gain function from those neuraon models brings us to <em>artificial neural networks</em> or <em>connectionist models</em>.</p>
+<div class="math notranslate nohighlight">
+\[x_i(t+1) = \sum_{j=1}^n w_{ij} f(x_j(t))\]</div>
+<p>This is a recurrent neural network.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Illustration of a recurrent neural network</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># number of neurons</span>
+<span class="n">W</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">*</span><span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>  <span class="c1"># random weights</span>
+<span class="n">i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>  <span class="c1"># neuron index</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">i</span><span class="o">/</span><span class="n">n</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">i</span><span class="o">/</span><span class="n">n</span><span class="p">)])</span><span class="o">.</span><span class="n">T</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>  <span class="c1"># target</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>  <span class="c1"># source</span>
+        <span class="c1"># edges from sources shifted inside, to target outside</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pos</span><span class="p">[[</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">],</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">[</span><span class="mf">.9</span><span class="p">,</span><span class="mf">1.1</span><span class="p">],</span> <span class="n">pos</span><span class="p">[[</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">],</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="p">[</span><span class="mf">.9</span><span class="p">,</span><span class="mf">1.1</span><span class="p">],</span>
+                 <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="nb">abs</span><span class="p">(</span><span class="n">W</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]),</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;r&#39;</span> <span class="k">if</span> <span class="n">W</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span> <span class="k">else</span> <span class="s1">&#39;b&#39;</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pos</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;oy&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Neurons_37_0.png" src="_images/Neurons_37_0.png" />
+</div>
+</div>
+</section>
+<section id="feed-forward-neural-networks">
+<h3>Feed-forward neural networks<a class="headerlink" href="#feed-forward-neural-networks" title="Permalink to this headline">#</a></h3>
+<p>A popular sub-class of artificial neural networks is <em>feed-forward</em> networks, which are organized by multiple layers and connections are uni-directional from lower to upper layers.</p>
+<div class="math notranslate nohighlight">
+\[x_i^{l+1} = \sum_{j=1}^n w_{ij}^l f(x_j^l)\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Illustration of a feed-forward neural network</span>
+<span class="n">n</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>  <span class="c1"># numbers of neurons in layers</span>
+<span class="n">W</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># empty list</span>
+<span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>  <span class="c1"># weights from bottom to top layers</span>
+    <span class="n">W</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">[</span><span class="n">l</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">n</span><span class="p">[</span><span class="n">l</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">n</span><span class="p">[</span><span class="n">l</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span><span class="n">n</span><span class="p">[</span><span class="n">l</span><span class="p">]))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">[</span><span class="n">l</span><span class="o">+</span><span class="mi">1</span><span class="p">]):</span>  <span class="c1"># target</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">[</span><span class="n">l</span><span class="p">]):</span>  <span class="c1"># source</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([(</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="p">[</span><span class="n">l</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="p">[</span><span class="n">l</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">)],</span> <span class="p">[</span><span class="n">l</span><span class="p">,</span> <span class="n">l</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span>
+                 <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="nb">abs</span><span class="p">(</span><span class="n">W</span><span class="p">[</span><span class="n">l</span><span class="p">][</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]),</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;r&#39;</span> <span class="k">if</span> <span class="n">W</span><span class="p">[</span><span class="n">l</span><span class="p">][</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span> <span class="k">else</span> <span class="s1">&#39;b&#39;</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n</span><span class="p">[</span><span class="n">l</span><span class="p">])</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="p">[</span><span class="n">l</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">n</span><span class="p">[</span><span class="n">l</span><span class="p">]),</span> <span class="s1">&#39;oy&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="s1">&#39;oy&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Neurons_39_0.png" src="_images/Neurons_39_0.png" />
+</div>
+</div>
+<section id="activation-functions-sigmoid-relu-and-binary">
+<h4>Activation functions: Sigmoid, ReLU, and binary<a class="headerlink" href="#activation-functions-sigmoid-relu-and-binary" title="Permalink to this headline">#</a></h4>
+<p>As the activation (or gain) function <span class="math notranslate nohighlight">\(f\)</span>, the most popular one is the (logistic) sigmoid function.
+$<span class="math notranslate nohighlight">\(f(x) = \frac{1}{1 + e^{-x}}\)</span>$</p>
+<p>The use of <em>rectified linear unit</em> (ReLU) is also becoming popular for deep layered networks.
+$<span class="math notranslate nohighlight">\(f(x) = \max(x, 0)\)</span>$</p>
+<p>The classic McCulloch-Pitts model took a binary activation function.
+$<span class="math notranslate nohighlight">\(f(x) = \begin{cases} 1 &amp; \mbox{if } x \ge 0 \\ 0 &amp; \mbox{if } x&lt;0 \end{cases}\)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Activation functions</span>
+<span class="k">def</span> <span class="nf">sigmoid</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">))</span>
+<span class="k">def</span> <span class="nf">relu</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">binary</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">&gt;=</span><span class="mi">0</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mf">4.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">relu</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">binary</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;f(x)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s2">&quot;sigmoid&quot;</span><span class="p">,</span> <span class="s2">&quot;ReLU&quot;</span><span class="p">,</span> <span class="s2">&quot;binary&quot;</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Neurons_41_0.png" src="_images/Neurons_41_0.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="softmax-function">
+<h3>Softmax function<a class="headerlink" href="#softmax-function" title="Permalink to this headline">#</a></h3>
+<p>For a layer where proabailistic intertretation is desired, <em>softmax</em> function whose sum over all units is one.
+$<span class="math notranslate nohighlight">\(f_i(x) = \frac{e^{x_i}}{\sum_j e^{x_j}}\)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Softmax function</span>
+<span class="k">def</span> <span class="nf">softmax</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;softmax function: x is a vector, or column vectors&quot;&quot;&quot;</span>
+    <span class="n">ex</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">beta</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="c1"># return ex/np.sum(ex)   # for one vector</span>
+    <span class="k">return</span> <span class="n">ex</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">ex</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># for column vectors</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span> <span class="p">(</span><span class="o">-</span><span class="n">u</span><span class="p">,</span> <span class="n">u</span><span class="o">*</span><span class="mi">0</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span> <span class="n">u</span><span class="p">))</span>  <span class="c1"># three components</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">softmax</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>   <span class="c1"># constrained in [0, 1]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;u&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;softmax(x)&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Neurons_44_0.png" src="_images/Neurons_44_0.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="models-of-plasticity">
+<h2>Models of plasticity<a class="headerlink" href="#models-of-plasticity" title="Permalink to this headline">#</a></h2>
+<section id="hebb-rule">
+<h3>Hebb rule<a class="headerlink" href="#hebb-rule" title="Permalink to this headline">#</a></h3>
+<p>“Cells fire together wire together” is the basic concept proposed by Donald Hebb [Hebb1952]. More specifically, the Hebbian synaptic plasticity rule takes the form
+$<span class="math notranslate nohighlight">\(\Delta w_{ij}(t) = \alpha y_i(t) y_j(t)\)</span><span class="math notranslate nohighlight">\(
+where \)</span>\alpha$ is the learning rate parameter.</p>
+</section>
+<section id="spike-timining-dependent-placticity-stdp">
+<h3>Spike timining dependent placticity (STDP)<a class="headerlink" href="#spike-timining-dependent-placticity-stdp" title="Permalink to this headline">#</a></h3>
+<p>It has been observed in hippocampus, cortex and other networks that synaptic plasiticity is dependent on the timing of pre- and post-synapic spikes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>  <span class="c1"># post-pre spike time difference</span>
+<span class="n">tau</span> <span class="o">=</span> <span class="mi">20</span>  <span class="c1"># time constant</span>
+<span class="n">dw</span> <span class="o">=</span> <span class="p">(</span><span class="n">t</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">t</span><span class="o">/</span><span class="n">tau</span><span class="p">))</span> <span class="o">+</span> <span class="p">(</span><span class="n">t</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="o">/</span><span class="n">tau</span><span class="p">)</span>  <span class="c1"># depression if t&lt;0</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">dw</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;post-pre spike time difference&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;synaptic weight change&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Neurons_48_0.png" src="_images/Neurons_48_0.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="theories-of-neural-coding">
+<h2>Theories of neural coding<a class="headerlink" href="#theories-of-neural-coding" title="Permalink to this headline">#</a></h2>
+<p>It is certain that neurons carry sensory, motor, or any cognitive information and perform computation by combining and transforming such information.
+But how exectly do they code a variety of information?
+This is not a trivial problem and there are many theories and debates.</p>
+<section id="rate-coding">
+<h3>Rate coding<a class="headerlink" href="#rate-coding" title="Permalink to this headline">#</a></h3>
+<p>Each neuron encodes a certain variable by its firing rate. This is most evident in sensory receptor neurons and motor neurons.
+For example, the firing rate of a retinal photoreceptor is monotinically related to the strength of the light hitting the cell.</p>
+</section>
+<section id="population-coding">
+<h3>Population coding<a class="headerlink" href="#population-coding" title="Permalink to this headline">#</a></h3>
+<p>For motor control and cognitive processing, the brain has to combine multiple modalities of information, such as vision, hearing, touch and proprioception.
+To represent particular combinations of such information, some kind of multi-dimensional non-linear basis functions are required.</p>
+<p><em>Population coding</em> is an idea in which a group of neurons with different response tuning functions represent information by their activity patterns.
+The recepient neurons can extract specific information by weighted sum of their activities.</p>
+</section>
+<section id="temporal-coding">
+<h3>Temporal coding<a class="headerlink" href="#temporal-coding" title="Permalink to this headline">#</a></h3>
+<p>In the rate coding framework, what matters is the frequency of spikes of neurons coding the same or related information.
+But there is a possiblity that not just the frequency, but the timing of each spike carry a certain information.</p>
+<p>For example, it is known that spikes of some auditory neurons are produced a certain phase of sound wave, which can be helpful for identification of sound source direction by detecting the time difference of the sound arriving in left and right ears.</p>
+<p>A more sophisticated idea is that even at the same firing frequencies, neurons represent related information by the synchrony of spikes.
+Experimental evidence suggests that visual cortex neurons that respond to line segments in a similar orientation spike synchronously for a single connected line, but asynchronously for separate line segments.</p>
+<p><img alt="Gray89" src="_images/gray89.jpg" />
+Top: responses of two visual cortex neurons to separate and continuous lines.<br />
+Bottom: the spike correlograms of the two neurons. From Gray et al. (1989).</p>
+</section>
+</section>
+<section id="methods-for-spike-analysis-decoding">
+<h2>Methods for spike analysis/decoding<a class="headerlink" href="#methods-for-spike-analysis-decoding" title="Permalink to this headline">#</a></h2>
+<section id="peristimulus-time-histogram-psth">
+<h3>Peristimulus time histogram (PSTH)<a class="headerlink" href="#peristimulus-time-histogram-psth" title="Permalink to this headline">#</a></h3>
+<p>A neuron’s repsonse to the same sensory stimulus can vary trial-by-trial.
+While primary sensory neurons respond reliably to sensory stimuli, sensory responses of cortical neurons are known to be highly variable across trials.</p>
+<p>To characterize the average response properties of a neuron, the most typical method is to align the spike trains from different trials at the stimulus onset and count the number of spikes in time bins of tens to hundreds of milliseconds.
+The original spike trains in multiple trials are often called <em>raster plot</em> and the average spike frequency around the time of stimulus onset is called <em>peristimulus time histogram (PSTH)</em>.</p>
+<p><img alt="Schultz97" src="_images/Schultz97.jpg" />
+The PSTH and raster plots of a midbrain dopamine neuron’s response to a visual stimulus followed by a juice reward after 1 second. From Schultz et al. (1997).</p>
+</section>
+<section id="spike-triggered-average-sta">
+<h3>Spike-triggered average (STA)<a class="headerlink" href="#spike-triggered-average-sta" title="Permalink to this headline">#</a></h3>
+<p>Charactering the response property of a neuron the other way round it to see what happened before a spike is generated.
+That is <em>spike-triggered average (STA)</em> of sensory stimuli.</p>
+<p><img alt="Ohzawa97" src="_images/Ohzawa97.jpg" />
+Spike-triggered average of random-dot visual stimuli of a motion-sensitive visual cortex neuron shows its spatio-temporal response property. From Ohzawa et al. (1997).</p>
+</section>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<section id="neurons-models">
+<h3>Neurons models<a class="headerlink" href="#neurons-models" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Hodgkin AL, Huxley AF (1952) A quantitative description of membrane current and its application to conduction and excitation in nerve. J. Physiol, 117(4):500–544.</p></li>
+<li><p>Gerstner W, Kistler WM, Naud R, Paninski L (2014) Neuronal Dynamics: From Single Neurons to Networks and Models of Cognition. <a class="reference external" href="https://www.cambridge.org/core/books/neuronal-dynamics/75375090046733765596191E23B2959D">Cambridge University Press</a>.
+(<a class="reference external" href="http://neuronaldynamics.epfl.ch/">online version and Python exercise</a>)</p></li>
+<li><p>Wilson HR, Cowan JD (1972) Excitatory and inhibitory interactions in localized populations of model neurons. Biophys. J., 12:1–24.</p></li>
+</ul>
+</section>
+<section id="neural-coding-and-analysis">
+<h3>Neural coding and analysis<a class="headerlink" href="#neural-coding-and-analysis" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Dayan P, Abott LF (2001) Theoretical Neuroscience: Compuational and
+Mathematical Modeling of Neural Systems. MIT Press.</p></li>
+<li><p>Gray CM, Konig P, Engel AK, Singer W (1989) Oscillatory responses in cat visual cortex exhibit inter-columnar synchronization which reflects global stimulus properties. Nature, 338:334–337.</p></li>
+<li><p>Schultz W, Dayan P, Montague PR (1997) A neural substrate of prediction and reward. Science, 275:1593–1599.</p></li>
+<li><p>Ohzawa I, DeAngelis GC, Freeman RD (1997) The neural coding of
+stereoscopic depth. Neuroreport, 8:3–12.</p></li>
+</ul>
+</section>
+</section>
+<section id="exercise">
+<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">#</a></h2>
+<ol class="simple">
+<li><p>Draw the F-I curve for the H-H model.</p></li>
+</ol>
+<ol class="simple">
+<li><p>Run a network of IF neurons with simple pulse-connection instead of <span class="math notranslate nohighlight">\(\alpha\)</span> function.</p></li>
+</ol>
+<ol class="simple">
+<li><p>Simulate an artificial recurrent neural network and see the behaviors with different connection weights.</p></li>
+</ol>
+<ol class="simple">
+<li><p>Implement Hebbian or STDP rule in the above network model and see how the network behavior and weights evolve with plasticity.</p></li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="Introduction.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Chapter 1. Introduction</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Supervised.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 3: Supervised Learning</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Kenji Doya<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

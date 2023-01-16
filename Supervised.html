@@ -1,0 +1,1637 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Chapter 3: Supervised Learning &#8212; Brain Computation</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Chapter 4. Reinforcement Learning" href="Reinforcement.html" />
+    <link rel="prev" title="Chapter 2. Neural Modeling and Analysis" href="Neurons.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/BC_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Brain Computation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="BrainComputation.html">
+                    Brain Computation: A Hands-on Guidebook
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Introduction.html">
+   Chapter 1. Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Neurons.html">
+   Chapter 2. Neural Modeling and Analysis
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Chapter 3: Supervised Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Reinforcement.html">
+   Chapter 4. Reinforcement Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Unsupervised.html">
+   Chapter 5. Unsupervised Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Bayesian.html">
+   Chatper 6. Bayesian Approaches
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Deep.html">
+   Chapter 7: Deep Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Multiple.html">
+   Chapter 8. Multiple Agents
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Meta.html">
+   Chapter 9. Meta-Learning
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/Supervised.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/Supervised.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#contents">
+   Contents
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#function-approximation">
+   3.1 Function Approximation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linear-regression">
+   Linear Regression
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#least-square-solution">
+     Least square solution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#maximum-likelihood-estimate">
+     Maximum likelihood estimate
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-arm-dynamics">
+     Example: Arm dynamics
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#online-learning">
+   Online Learning
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basis-functions">
+   Basis Functions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#radial-basis-functions">
+     Radial Basis Functions
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#example-non-linear-pendulum">
+       Example: non-linear pendulum
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pattern-recognition">
+   3.2 Pattern Recognition
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-perceptron">
+   The Perceptron
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#perceptron-learning-rule">
+     Perceptron Learning Rule
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-perceptron-in-2d-feature-space">
+     Example: Perceptron in 2D feature space
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#support-vector-machine">
+   Support Vector Machine
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#online-svm">
+     Online SVM
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#logistic-regression">
+   Logistic Regression
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#maximum-likelihood-by-iterative-least-squares">
+     Maximum likelihood by iterative least squares
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#online-logistic-regression">
+     Online logistic regression
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#classical-conditioning">
+   3.3 Classical Conditioning
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#eye-blink-conditioning">
+     Eye Blink Conditioning
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-cerebellum">
+   3.4 The Cerebellum
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cerebellar-perceptron-hyopthesis">
+     Cerebellar Perceptron Hyopthesis
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cerebellar-internal-model-hyopthesis">
+     Cerebellar Internal Model Hyopthesis
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Classical conditioning
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cerebellar-perceptron-hypothesis">
+     Cerebellar perceptron hypothesis
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cerebellar-internal-model-hypothesis">
+     Cerebellar internal model hypothesis
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise">
+   Exercise
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Chapter 3: Supervised Learning</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#contents">
+   Contents
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#function-approximation">
+   3.1 Function Approximation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linear-regression">
+   Linear Regression
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#least-square-solution">
+     Least square solution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#maximum-likelihood-estimate">
+     Maximum likelihood estimate
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-arm-dynamics">
+     Example: Arm dynamics
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#online-learning">
+   Online Learning
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basis-functions">
+   Basis Functions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#radial-basis-functions">
+     Radial Basis Functions
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#example-non-linear-pendulum">
+       Example: non-linear pendulum
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pattern-recognition">
+   3.2 Pattern Recognition
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-perceptron">
+   The Perceptron
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#perceptron-learning-rule">
+     Perceptron Learning Rule
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-perceptron-in-2d-feature-space">
+     Example: Perceptron in 2D feature space
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#support-vector-machine">
+   Support Vector Machine
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#online-svm">
+     Online SVM
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#logistic-regression">
+   Logistic Regression
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#maximum-likelihood-by-iterative-least-squares">
+     Maximum likelihood by iterative least squares
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#online-logistic-regression">
+     Online logistic regression
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#classical-conditioning">
+   3.3 Classical Conditioning
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#eye-blink-conditioning">
+     Eye Blink Conditioning
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-cerebellum">
+   3.4 The Cerebellum
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cerebellar-perceptron-hyopthesis">
+     Cerebellar Perceptron Hyopthesis
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cerebellar-internal-model-hyopthesis">
+     Cerebellar Internal Model Hyopthesis
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Classical conditioning
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cerebellar-perceptron-hypothesis">
+     Cerebellar perceptron hypothesis
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cerebellar-internal-model-hypothesis">
+     Cerebellar internal model hypothesis
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise">
+   Exercise
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-3-supervised-learning">
+<h1>Chapter 3: Supervised Learning<a class="headerlink" href="#chapter-3-supervised-learning" title="Permalink to this headline">#</a></h1>
+<div class="math notranslate nohighlight">
+\[ % Latex macros
+\newcommand{\mat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\newcommand{\p}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\b}[1]{\boldsymbol{#1}}
+\newcommand{\w}{\boldsymbol{w}}
+\newcommand{\x}{\boldsymbol{x}}
+\newcommand{\y}{\boldsymbol{y}}
+\]</div>
+<section id="contents">
+<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>3.1 Function Approximation (Bishop 2006, Chater 3)</p>
+<ul>
+<li><p>Linear regression</p></li>
+<li><p>Least squares – Maximum likelihood</p></li>
+<li><p>Online learning – Stochastic gradient descent</p></li>
+</ul>
+</li>
+<li><p>3.2 Pattern Recognition (Bishop 2006, Chapter 4)</p>
+<ul>
+<li><p>Perceptron</p></li>
+<li><p>Logistic regression</p></li>
+<li><p>Support vector machine</p></li>
+</ul>
+</li>
+<li><p>3.3 Classical Conditining</p></li>
+<li><p>3.4 Cerebellum</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The aim of <em>supervised learning</em> is to construct an input-output mapping
+$<span class="math notranslate nohighlight">\( \y = f(\x) \)</span><span class="math notranslate nohighlight">\(
+from pairs of samples \)</span>(\x_1,\y_1),…,(\x_N,\y_N)$.</p>
+<p>When <span class="math notranslate nohighlight">\(\y\)</span> is continuous, it is called <em>function approximation</em> or <em>regression</em>.</p>
+<p>When <span class="math notranslate nohighlight">\(\y\)</span> is discrete, it is called <em>pattern recognition</em> or <em>classification</em>.</p>
+<p>Here we focus on the case where the output is one dimension and computed from weighted sum of the inputs <span class="math notranslate nohighlight">\(x_1,...,x_D\)</span>
+$<span class="math notranslate nohighlight">\(
+    y = f(\x;\w) = g( w_0 + w_1 x_1 + ... + w_D x_D).
+\)</span>$</p>
+<p>This is considered as an artificial neuron unit with input synaptic weights <span class="math notranslate nohighlight">\(w_1,...,w_D\)</span>, bias <span class="math notranslate nohighlight">\(w_0\)</span> (or threshold <span class="math notranslate nohighlight">\(-w_0\)</span>), and the output function <span class="math notranslate nohighlight">\(g(\ )\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Illustration of a neuron unit</span>
+<span class="n">D</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="sa">r</span><span class="s2">&quot;$x_1$&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;$x_2$&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;$\vdots$ &quot;</span><span class="p">,</span><span class="sa">r</span><span class="s2">&quot;$x_D$&quot;</span><span class="p">]</span>
+<span class="n">w</span> <span class="o">=</span> <span class="p">[</span><span class="sa">r</span><span class="s2">&quot;$w_1$&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;$w_2$&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span><span class="sa">r</span><span class="s2">&quot;$w_D$&quot;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">1.5</span><span class="o">-</span><span class="n">i</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>  <span class="c1"># inputs</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.5</span><span class="o">-</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;k&quot;</span><span class="p">)</span>  <span class="c1"># inputs</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="p">(</span><span class="mf">1.5</span><span class="o">-</span><span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>  <span class="c1"># weights</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;k&quot;</span><span class="p">)</span>   <span class="c1"># output</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;ko&quot;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">markerfacecolor</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">1.6</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;$y$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>  <span class="c1"># output</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Supervised_5_0.png" src="_images/Supervised_5_0.png" />
+</div>
+</div>
+</section>
+<section id="function-approximation">
+<h2>3.1 Function Approximation<a class="headerlink" href="#function-approximation" title="Permalink to this headline">#</a></h2>
+<p>A typical case of function approximation in the brain is learning motor-sensory mapping; how does your arm respond to the activation of the muscles. In this case <span class="math notranslate nohighlight">\(\x\)</span> is the acitivation pattern of the arm muscles and <span class="math notranslate nohighlight">\(\y\)</span> is the changes in the arm joint angles, for example. Such an <em>internal model</em> of the body dynamics is very much helpful in motor control. In this case, the supervisor is your musculoskeletal system and sensory neurons.</p>
+</section>
+<section id="linear-regression">
+<h2>Linear Regression<a class="headerlink" href="#linear-regression" title="Permalink to this headline">#</a></h2>
+<p>In the simplest case, the output function is identity <span class="math notranslate nohighlight">\(g(u)=u\)</span>. This is the case of <em>linear regression</em>.</p>
+<p>For <span class="math notranslate nohighlight">\(D\)</span>-dimensional input
+$<span class="math notranslate nohighlight">\(\x = (x_1,...,x_D)^T,\)</span><span class="math notranslate nohighlight">\(
+we take a weight vector
+\)</span><span class="math notranslate nohighlight">\(\w = (w_0,w_1,...,w_D)^T\)</span><span class="math notranslate nohighlight">\(
+and give a scalar output
+\)</span><span class="math notranslate nohighlight">\(
+y = f(\x;\w) = w_0 + w_1 x_1 + ... + w_D x_D.
+\)</span><span class="math notranslate nohighlight">\(
+By considering a constant input \)</span>x_0=1<span class="math notranslate nohighlight">\( and redefining \)</span>\x<span class="math notranslate nohighlight">\( as 
+\)</span><span class="math notranslate nohighlight">\(\x = (1,x_1,...,x_D)^T,\)</span><span class="math notranslate nohighlight">\(
+we have a simple vector notation
+\)</span><span class="math notranslate nohighlight">\(
+y = f(\x;\w) = \w^T \x = \x^T \w.
+\)</span>$</p>
+<p>We represent a set of input data as a matrix
+$<span class="math notranslate nohighlight">\(X = \pmatrix{\x_1^T \\ \vdots \\ \x_N^T}
+    = \pmatrix{1 &amp; x_{11} &amp; \cdots &amp; x_{1D}\\
+    \vdots &amp;\vdots &amp; &amp; \vdots\\
+    1 &amp; x_{N1} &amp; \cdots &amp; x_{ND}} 
+\)</span><span class="math notranslate nohighlight">\(
+and the set of outputs is given in a vector form as
+\)</span><span class="math notranslate nohighlight">\(
+\y = \pmatrix{y_1\\ \vdots \\y_N} = X \w.
+\)</span>$</p>
+<p>When a set of target outputs
+$<span class="math notranslate nohighlight">\( \y^* = \pmatrix{y^*_1\\ \vdots \\y^*_N}\)</span><span class="math notranslate nohighlight">\(
+is given, how can we find the appropriate weight vector \)</span>\w<span class="math notranslate nohighlight">\( so that \)</span>\y<span class="math notranslate nohighlight">\( becomes close to \)</span>\y^*$?</p>
+<section id="least-square-solution">
+<h3>Least square solution<a class="headerlink" href="#least-square-solution" title="Permalink to this headline">#</a></h3>
+<p>A basic solution is to minimize the squared error between the target output and the model output
+$<span class="math notranslate nohighlight">\( E(\w) = \frac{1}{2}\sum_{n=1}^N (\w^T \x_n - y^*_n)^2 
+ = \frac{1}{2} ||X\w - \y^*||^2. \)</span>$</p>
+<p>To minimize this, we differentiate this error function with each weight parameter and set it equal to zero:
+$<span class="math notranslate nohighlight">\(
+    \p{E(\w)}{w_i} = \sum_{n=1}^N (\w^T \x_n - y^*_n)x_{ni} = 0.
+\)</span><span class="math notranslate nohighlight">\(
+These are represented in a vector form as
+\)</span><span class="math notranslate nohighlight">\(
+    \p{E(\w)}{\w} = X^T(X\w - \y^*) = (X^T X)\w - X^T\y^* = \b{0}.
+\)</span><span class="math notranslate nohighlight">\(
+Thus the solution to this minimization problem is given by
+\)</span><span class="math notranslate nohighlight">\(
+    \b{\hat{w}} = (X^T X)^{-1} X^T \y^*.
+\)</span>$</p>
+</section>
+<section id="maximum-likelihood-estimate">
+<h3>Maximum likelihood estimate<a class="headerlink" href="#maximum-likelihood-estimate" title="Permalink to this headline">#</a></h3>
+<p>A statstician would assume that the target output is generated by a linear model with additional noise
+$<span class="math notranslate nohighlight">\(
+    y^*_n = \w^T\x_n + \epsilon_n
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>\epsilon_n<span class="math notranslate nohighlight">\( is assumed to follow a Gaussian distribution \)</span>\mathcal{N}(0,\sigma^2)<span class="math notranslate nohighlight">\(.
+This is also re-written as
+\)</span><span class="math notranslate nohighlight">\(
+    y^*_n \sim \mathcal{N}(\w^T\x_n,\sigma^2)
+\)</span>$</p>
+<blockquote>
+<div><p>The Gaussian distribution is defined as:
+$<span class="math notranslate nohighlight">\(
+    p(x;\mu,\sigma^2) = \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}
+\)</span>$</p>
+</div></blockquote>
+<p>In this setup, the standard way of selecting the parameter is to find the one with the <em>maximum likelihood</em>, i.e. the probability of producing the data.</p>
+<p>The likelihood of weights <span class="math notranslate nohighlight">\(\w\)</span> for the set of observed data is the product of the likelihood for each data:
+$<span class="math notranslate nohighlight">\(
+    L(\w) = p(\y^*|X,\w,\sigma^2)
+    = \prod_{n=1}^N (2\pi\sigma^2)^{-\frac{1}{2}}
+    e^{-\frac{(y^*_n-\w^T\x_n)^2}{2\sigma^2}}.
+\)</span><span class="math notranslate nohighlight">\(
+In maximizing the likelihood, it is mathematically and computationally more convenient to take its logarithm
+\)</span><span class="math notranslate nohighlight">\(
+    l(\w) = \log p(\y^*|X,\w,\sigma^2)
+    = \sum_{n=1}^N -\frac{1}{2}\log(2\pi\sigma^2)
+    - \frac{(y^*_n-\w^T\x_n)^2}{2\sigma^2}
+\)</span>$$<span class="math notranslate nohighlight">\(
+    = - \frac{N}{2}\log(2\pi) - N\log\sigma  - \frac{1}{\sigma^2} E(\w).
+\)</span>$</p>
+<p>In the above, only the last term depends on the weights <span class="math notranslate nohighlight">\(\w\)</span>.
+Thus the maximizing the likelihood is equivalent to minimizing the sum of squared errors <span class="math notranslate nohighlight">\(E(\w)\)</span>.</p>
+<p>This link between minimal error and maximum likelihood is helpful when we consider regularization of parameters and Bayesian perspective in Chapter 6.</p>
+</section>
+<section id="example-arm-dynamics">
+<h3>Example: Arm dynamics<a class="headerlink" href="#example-arm-dynamics" title="Permalink to this headline">#</a></h3>
+<p>Let us simulate simple second-order dynamics of an arm hanging down and take the data.
+Then we will make a linear regression model to predict the angular accleration from the angle and angular velocity.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Illustration of an arm hanging down</span>
+<span class="n">l</span> <span class="o">=</span> <span class="mf">0.8</span>  <span class="c1"># arm length: m</span>
+<span class="n">th</span> <span class="o">=</span> <span class="mf">0.3</span> <span class="c1"># angle: rad</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="n">l</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">th</span><span class="p">)],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="n">l</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">th</span><span class="p">)],</span> <span class="n">lw</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="n">l</span><span class="p">],</span> <span class="s2">&quot;k-&quot;</span><span class="p">)</span>  <span class="c1"># downward line</span>
+<span class="n">tex</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.02</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="n">l</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;$\theta$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Supervised_12_0.png" src="_images/Supervised_12_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">odeint</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Dynamics of the arm</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mi">5</span>     <span class="c1"># arm mass: kg</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="mf">0.1</span>  <span class="c1"># damping: Nm/(rad/s)</span>
+<span class="n">g</span> <span class="o">=</span> <span class="mf">9.8</span>   <span class="c1"># gravity: N/s^2</span>
+<span class="n">I</span> <span class="o">=</span> <span class="p">(</span><span class="n">m</span><span class="o">*</span><span class="n">l</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="mi">12</span> <span class="c1"># inertia for a rod: kg m^2</span>
+<span class="k">def</span> <span class="nf">arm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;arm dynamics for odeint: x=[th,om]&quot;&quot;&quot;</span>
+    <span class="n">th</span><span class="p">,</span> <span class="n">om</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># for readability</span>
+    <span class="c1"># angular acceleration</span>
+    <span class="n">aa</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">m</span><span class="o">*</span><span class="n">g</span><span class="o">*</span><span class="n">l</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">th</span><span class="p">)</span> <span class="o">-</span> <span class="n">mu</span><span class="o">*</span><span class="n">om</span><span class="p">)</span><span class="o">/</span><span class="n">I</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">om</span><span class="p">,</span> <span class="n">aa</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Simulate for 10 sec.</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.1</span>  <span class="c1"># time step</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>  <span class="c1"># time points</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">arm</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">t</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s2">&quot;theta&quot;</span><span class="p">,</span><span class="s2">&quot;omega&quot;</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Supervised_15_0.png" src="_images/Supervised_15_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Acceleration by differentiation</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">X</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="n">dt</span>  <span class="c1"># temporal difference</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">,:]</span>    <span class="c1"># omit the last point</span>
+<span class="n">N</span><span class="p">,</span> <span class="n">D</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span>  <span class="c1"># data count and dimension</span>
+<span class="c1"># add observation noise</span>
+<span class="n">sig</span> <span class="o">=</span> <span class="mf">1.0</span>   <span class="c1"># noise size</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">Y</span> <span class="o">+</span> <span class="n">sig</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># You may want to stop inline graphics for rotating</span>
+<span class="c1">#%matplotlib</span>
+<span class="c1">#%matplotlib</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+<span class="c1"># Scatter plot in 3D</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">Y</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">Y</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;theta&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;omega&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Supervised_18_0.png" src="_images/Supervised_18_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Prepare data matrix</span>
+<span class="n">X1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">N</span><span class="p">),</span> <span class="n">X</span><span class="p">]</span> <span class="c1">#  add a column of 1&#39;s</span>
+<span class="c1"># Compute the weights: W = (X^T X)^(-1) X^T Y</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">X1</span><span class="o">.</span><span class="n">T</span><span class="nd">@X1</span><span class="p">)</span> <span class="o">@</span> <span class="n">X1</span><span class="o">.</span><span class="n">T</span><span class="nd">@Y</span>
+<span class="c1">#w = np.linalg.solve(X1.T@X1, X1.T@Y)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;w =&quot;</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">m</span><span class="o">*</span><span class="n">g</span><span class="o">*</span><span class="n">l</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="n">I</span><span class="p">,</span> <span class="o">-</span><span class="n">mu</span><span class="o">/</span><span class="n">I</span><span class="p">])</span>  <span class="c1"># analytic values</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>w = [  0.06722389 -67.13046232  -4.12669956]
+[0, -73.49999999999999, -0.37499999999999994]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Squared error</span>
+<span class="n">mse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">X1</span><span class="nd">@w</span> <span class="o">-</span> <span class="n">Y</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="n">N</span>  <span class="c1"># mean squared error</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;mse =&quot;</span><span class="p">,</span> <span class="n">mse</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 1.0268461007608785
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Show regression surface</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+<span class="c1">#  make a grid</span>
+<span class="n">X2</span><span class="p">,</span> <span class="n">Y2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="c1"># show wireframe</span>
+<span class="n">Z2</span> <span class="o">=</span> <span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">w</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">X2</span> <span class="o">+</span> <span class="n">w</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">Y2</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot_wireframe</span><span class="p">(</span><span class="n">X2</span><span class="p">,</span> <span class="n">Y2</span><span class="p">,</span> <span class="n">Z2</span><span class="p">);</span>
+<span class="c1"># show the data</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">Y</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">Y</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;theta&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;omega&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Supervised_21_0.png" src="_images/Supervised_21_0.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="online-learning">
+<h2>Online Learning<a class="headerlink" href="#online-learning" title="Permalink to this headline">#</a></h2>
+<p>In the above, we assumed that all the data are available at once. However, data come in sequence and we would rather learn from the data as they come in.</p>
+<p>The basic way of online learning is to minimize the output error for each input
+$<span class="math notranslate nohighlight">\(
+    E_n(\w) = \frac{1}{2}(y^*_n - \w^T \x_n)^2
+    \)</span><span class="math notranslate nohighlight">\(
+and move \)</span>\w<span class="math notranslate nohighlight">\( down to its gradient
+\)</span><span class="math notranslate nohighlight">\(
+    \Delta \w = - \alpha \p{E_n(\w)}{\w} = \alpha(y^*_n - \w^T \x_n)\x_n 
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>\alpha&gt;0$ is a learning rate paramter.</p>
+<p>This is called <em>stochastic gradient descent (SGD)</em>, by assuming that <span class="math notranslate nohighlight">\(x_n\)</span> are stochastic samples from the input data space.</p>
+<p>Online learning has several advantages over <em>batch</em> algorithms like linear regrassion that processes all the data at once.
+Online learning does not require matrix inversion, which is computationally expensive when dealing with high dimensional data (large <span class="math notranslate nohighlight">\(D\)</span>).
+For a very large dataset (large <span class="math notranslate nohighlight">\(N\)</span>), simply storing a huge <span class="math notranslate nohighlight">\(N\times D\)</span> data matrix <span class="math notranslate nohighlight">\(X\)</span> in the memory can be costly.</p>
+</section>
+<section id="basis-functions">
+<h2>Basis Functions<a class="headerlink" href="#basis-functions" title="Permalink to this headline">#</a></h2>
+<p>For approximating a nonlinear function of <span class="math notranslate nohighlight">\(\x\)</span>, a standard way is to prepare a set of nonlinear functions
+$<span class="math notranslate nohighlight">\(
+    \b{\phi}(\x) = (\phi_1(\x),...,\phi_M(\x))^T,
+\)</span><span class="math notranslate nohighlight">\(
+called basis functions, and represent the target function by
+\)</span><span class="math notranslate nohighlight">\(
+    f(\x;\w) = \sum_{j=1}^M w_j \phi_j(\x) = \w^T\b{\phi}(\x).
+\)</span>$</p>
+<p>Classically, polynomials <span class="math notranslate nohighlight">\((1, x, x^2, x^3,...)\)</span> or sinusoids <span class="math notranslate nohighlight">\((1, \cos x, \cos 2x,..., \sin x, \sin 2x,...)\)</span> were often used as basis functions, motivated by polynomial expansion or Fourier expansion.</p>
+<p>However, these functions can grow so lage or become so steep when we include higher order terms, which can make learned function chagning wildly.</p>
+<section id="radial-basis-functions">
+<h3>Radial Basis Functions<a class="headerlink" href="#radial-basis-functions" title="Permalink to this headline">#</a></h3>
+<p>In sensory nervous systems, neurons tend to respond to signals in a limited range, called <em>receptive field</em>. For example, each visual neuron responds to light stimuli on a small area in the retina. Each auditory neurons repond to a limited range of frequency.</p>
+<p>Partly inspired by such local receptive field properties, a popular class of basis functions is called <em>radial basis function (RBF)</em>.
+An RBF is give by a decreasing function of the distance from a center point:
+$<span class="math notranslate nohighlight">\(
+    \phi_j(\x) = g(||\x-\x_j||)
+\)</span>$</p>
+<p>A typical example is Gaussian basis functions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="c1"># Gaussian basis functions in 1D</span>
+<span class="k">def</span> <span class="nf">phi</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Gaussian centered at x=c with scale s&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">c</span><span class="p">)</span><span class="o">/</span><span class="n">s</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">M</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># x range</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">M</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">phi</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$\phi(x)$&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Supervised_26_0.png" src="_images/Supervised_26_0.png" />
+</div>
+</div>
+<p>Here you can generate random samples of functions using RBF.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>  <span class="c1"># random weights</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">*</span><span class="mi">0</span>  <span class="c1"># output to cover the same range as input</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">M</span><span class="p">):</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">w</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">*</span><span class="n">phi</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># try chaning the scale</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Supervised_28_0.png" src="_images/Supervised_28_0.png" />
+</div>
+</div>
+<p>Here are RBFs in 2D input space on a grid.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2D Gaussian basis functions</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+<span class="c1"># prepare a surface grid</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">31</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="c1"># centers on another grid</span>
+<span class="k">for</span> <span class="n">cx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">cy</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
+        <span class="n">Z</span> <span class="o">=</span> <span class="n">phi</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">cx</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">phi</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">cy</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot_surface</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x1&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;x2&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;$\phi(x)$&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Supervised_30_0.png" src="_images/Supervised_30_0.png" />
+</div>
+</div>
+<section id="example-non-linear-pendulum">
+<h4>Example: non-linear pendulum<a class="headerlink" href="#example-non-linear-pendulum" title="Permalink to this headline">#</a></h4>
+</section>
+</section>
+</section>
+<section id="pattern-recognition">
+<h2>3.2 Pattern Recognition<a class="headerlink" href="#pattern-recognition" title="Permalink to this headline">#</a></h2>
+<p>Here we consider a problem of classifying input vectors <span class="math notranslate nohighlight">\(\x\)</span> into <span class="math notranslate nohighlight">\(K\)</span> discrete classes <span class="math notranslate nohighlight">\(C_k\)</span>.</p>
+<p>There are three major approaches in pattern classification.</p>
+<ul class="simple">
+<li><p>Learn a discriminant function: <span class="math notranslate nohighlight">\(\x \rightarrow C_k\)</span></p></li>
+<li><p>Learn a conditional probability: <span class="math notranslate nohighlight">\(p(C_k|\x)\)</span></p></li>
+<li><p>Learn a generative model <span class="math notranslate nohighlight">\(p(\x|C_k)\)</span> and then use Bayes’ theorem:
+$<span class="math notranslate nohighlight">\( p(C_k|\x) = \frac{p(\x|C_k)p(C_k)}{p(\x)} \)</span>$</p></li>
+</ul>
+<p>Supervised pattern recognition has been highly successful in applications of image and speech recognition.
+However, it is a question whether suprevised learning is relevant for our vision and speech, becuase we do not usually receive labeles for objects or words when we learn to see or hear as infants.
+<em>Unsupervised learning</em>, covered in Chapter 5, might be a more plausible way of human sensory learning.</p>
+</section>
+<section id="the-perceptron">
+<h2>The Perceptron<a class="headerlink" href="#the-perceptron" title="Permalink to this headline">#</a></h2>
+<p>The first pattern classification learning machine was called <em>Perceptron</em> (Rosenblatt 1962).</p>
+<blockquote>
+<div><p><img alt="Perceptron" src="_images/Perceptron.jpg" />
+The structure of a three-layer perceptron (from Rosenblatt, 1962).</p>
+</div></blockquote>
+<p>The original Perceptron consisted of three layers of binary units: S(sensory)-units, A(associative)-units connected randomly with S-units, and R(response)-units.</p>
+<p>Here we formulate the Perceptron in a generalized form.
+The input vector <span class="math notranslate nohighlight">\(\x\)</span> is converted by a set of basis functions <span class="math notranslate nohighlight">\(\phi_i(\x)\)</span> into a feature vector
+$<span class="math notranslate nohighlight">\(
+    \b{\phi}(\x)=(\phi_1(\x),...,\phi_M(\x))^T.
+\)</span><span class="math notranslate nohighlight">\(
+In the simplest case, the feature vector is the same as the input vector \)</span>\b{\phi}(\x)=\x<span class="math notranslate nohighlight">\(, or just augumented by \)</span>1<span class="math notranslate nohighlight">\( to represent bias as \)</span>\b{\phi}(\x)=\pmatrix{1 \ \x}$.
+This is called <em>linear Perceptron</em>.</p>
+<p>The output is given by
+$<span class="math notranslate nohighlight">\(
+    y = f( \sum_{i=1}^M w_{i} \phi_i(\x)) = f( \w^T \b{\phi}(\x))
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>\w=(w_1,…,w_M)^T$ is the output connection weights.</p>
+<p>The output function takes +1 or -1:
+$<span class="math notranslate nohighlight">\(
+    f(u) = \begin{cases} 1 &amp; \mbox{if } u \ge 0 \\ -1 &amp; \mbox{if } u&lt;0. \end{cases}
+\)</span><span class="math notranslate nohighlight">\(
+For each input \)</span>\x_n<span class="math notranslate nohighlight">\(, the target output \)</span>y^*_n \in {+1,-1}$ is given.</p>
+<section id="perceptron-learning-rule">
+<h3>Perceptron Learning Rule<a class="headerlink" href="#perceptron-learning-rule" title="Permalink to this headline">#</a></h3>
+<p>Learning of Perceptron is based on the error function
+$<span class="math notranslate nohighlight">\(
+    E(\w) = \sum_{y_n \ne y^*_n} -y^*_n\w^T\b{\phi}(\x_n)
+\)</span><span class="math notranslate nohighlight">\(
+which takes a positive value for each missclassified output \)</span>y_n \ne y^*_n$.</p>
+<p>The perceptron learning rule is the stochastic gradient
+$<span class="math notranslate nohighlight">\(
+    \Delta \w = -\alpha\p{E(\w)}{\w}
+\)</span>$$<span class="math notranslate nohighlight">\(
+    = \alpha y^*_n\b{\phi}(\x_n) \ \mbox{ if } y_n\ne y^*_n
+\)</span>$$<span class="math notranslate nohighlight">\(
+    = \frac{\alpha}{2}(y^*_n-y_n)\b{\phi}(\x_n)
+\)</span>$
+which is a product of the output error and the input to each weight.</p>
+<p>When two classes are <em>linearly separable</em>, the <em>Preceptron converence theorem</em> assures that learning converges to find a proper hyperplane to separate two classes.</p>
+</section>
+<section id="example-perceptron-in-2d-feature-space">
+<h3>Example: Perceptron in 2D feature space<a class="headerlink" href="#example-perceptron-in-2d-feature-space" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Perceptron</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Linear perceptron: phi(x)=[1,x]&quot;&quot;&quot;</span>
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">D</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a new perceptron&quot;&quot;&quot;</span>
+        <span class="c1"># self.w = np.random.randn(D+1)  # output weight</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">D</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>  
+        <span class="bp">self</span><span class="o">.</span><span class="n">vis</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">def</span> <span class="nf">output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;predict an output from input x&quot;&quot;&quot;</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="nd">@np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="n">x</span><span class="p">]</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">u</span><span class="o">&gt;</span><span class="mi">0</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">vis</span><span class="p">:</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;yo&quot;</span> <span class="k">if</span> <span class="n">y</span><span class="o">&gt;</span><span class="mi">0</span> <span class="k">else</span> <span class="s2">&quot;bo&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">y</span>
+
+    <span class="k">def</span> <span class="nf">learn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">yt</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;learn from (x, yt) pair&quot;&quot;&quot;</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">error</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">yt</span>
+        <span class="k">if</span> <span class="n">error</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">+=</span> <span class="n">alpha</span><span class="o">*</span><span class="n">yt</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="n">x</span><span class="p">]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">vis</span><span class="p">:</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;y*&quot;</span> <span class="k">if</span> <span class="n">yt</span><span class="o">&gt;</span><span class="mi">0</span> <span class="k">else</span> <span class="s2">&quot;b*&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">plot_boundary</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">error</span>
+    
+    <span class="k">def</span> <span class="nf">plot_boundary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">u</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;plot decision boundary with shift u, length l&quot;&quot;&quot;</span>
+        <span class="c1"># weight vector</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">[</span><span class="mi">2</span><span class="p">]],</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="s2">&quot;r*&quot;</span><span class="p">)</span>  <span class="c1"># arrowhead</span>
+        <span class="c1"># decision boundary</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span>  <span class="c1"># weight size</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">u</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="n">s</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">l</span><span class="p">,</span><span class="o">-</span><span class="n">l</span><span class="p">])</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">u</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="n">s</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="n">l</span><span class="p">,</span><span class="n">l</span><span class="p">])</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x1&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;x2&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">);</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Test by 2D gaussian data</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># sample size</span>
+<span class="n">D</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">Xp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">D</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>  <span class="c1"># positive data</span>
+<span class="n">Xn</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">D</span><span class="p">)</span>   <span class="c1"># negative data</span>
+<span class="c1"># concatenate positive/negative data</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="n">Xp</span><span class="p">,</span><span class="n">Xn</span><span class="p">]</span>
+<span class="n">Yt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">N</span><span class="p">),</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>  <span class="c1"># target</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">N</span>
+<span class="c1"># plot the data</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">Yt</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x1&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;x2&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Supervised_39_0.png" src="_images/Supervised_39_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a Perceptron</span>
+<span class="n">perc</span> <span class="o">=</span> <span class="n">Perceptron</span><span class="p">(</span><span class="n">D</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># perceptron with 2D input</span>
+<span class="n">perc</span><span class="o">.</span><span class="n">vis</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># turn on visualization</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Learning: run this cell several times</span>
+<span class="n">err</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="c1"># shuffle data order</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">err</span> <span class="o">+=</span> <span class="n">perc</span><span class="o">.</span><span class="n">learn</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">Yt</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;mse =&quot;</span><span class="p">,</span> <span class="n">err</span><span class="o">/</span><span class="n">N</span><span class="p">,</span> <span class="s2">&quot;; w = &quot;</span><span class="p">,</span> <span class="n">perc</span><span class="o">.</span><span class="n">w</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 1.0 ; w =  [-0.3         0.13475652  0.23293656]
+</pre></div>
+</div>
+<img alt="_images/Supervised_41_1.png" src="_images/Supervised_41_1.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="support-vector-machine">
+<h2>Support Vector Machine<a class="headerlink" href="#support-vector-machine" title="Permalink to this headline">#</a></h2>
+<p>With Perceptron learning rule, the line separating two classess can end up in any configuration so that two classes are separated, which may not be good for <em>generalization</em>, i.e., classification of new data that were not used for training.</p>
+<p>The <em>support vector machine (SVM)</em> (Bishop 2006, section 7.1) tries to find a separation line that has the largest margin to the positive and negative data by minimizing the <em>hinge</em> objective function
+$<span class="math notranslate nohighlight">\(
+    E(\w) = \sum_n \max(0, 1-y^*_n\w^T\b{\phi}(\x_n)) + \lambda||\w||.
+\)</span><span class="math notranslate nohighlight">\(
+This tries to make the weighted input sum \)</span>\w^T\b{\phi}(\x_n)&gt;1<span class="math notranslate nohighlight">\( for \)</span>y^<em>_n=1<span class="math notranslate nohighlight">\( and \)</span>\w^T\b{\phi}(\x_n)&lt;1<span class="math notranslate nohighlight">\( for \)</span>y^</em>_n=-1<span class="math notranslate nohighlight">\(,
+while keeping \)</span>\w<span class="math notranslate nohighlight">\( small to create a large margin between the lines for \)</span>\w^T\b{\phi}(\x_n))=1<span class="math notranslate nohighlight">\( and \)</span>\w^T\b{\phi}(\x_n)) =-1$.</p>
+<p>A standard way for solving this optimization problem is to use a batch optimization method called <em>quadratic programming</em>.
+It is often the case that the basis functions are allocated around each data point <span class="math notranslate nohighlight">\(\x_n\)</span> using so-called <em>kernel</em> function
+$<span class="math notranslate nohighlight">\(
+    \phi_i(\x) = K(\x,\x_i).
+\)</span>$</p>
+<section id="online-svm">
+<h3>Online SVM<a class="headerlink" href="#online-svm" title="Permalink to this headline">#</a></h3>
+<p>Here we consider an online version of SVM called <em>Pagasos</em> (Shalev-Shwartz et al. 2010) that has a closer link with Perceptron learning.</p>
+<p>The weights are updated by
+$<span class="math notranslate nohighlight">\(
+    \Delta\w = \alpha\{1[1-y^*_n\w^T\b{\phi}(\x_n)] y^*_n\b{\phi}(\x_n) - \lambda\w\}
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>1[\ ]<span class="math notranslate nohighlight">\( represents an indicator function; \)</span>1[u]=1<span class="math notranslate nohighlight">\( if \)</span>u&gt;0<span class="math notranslate nohighlight">\( and \)</span>1[u]=0$ otherwise.</p>
+<p>The learning rate is gradually decreased as <span class="math notranslate nohighlight">\(\alpha=\frac{1}{\lambda n}\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Pegasos</span><span class="p">(</span><span class="n">Perceptron</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Pagasos, online SVM with linear kernel&quot;&quot;&quot;</span>
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">D</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># counter for rate scheduling</span>
+        
+    <span class="k">def</span> <span class="nf">learn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">yt</span><span class="p">,</span> <span class="n">lamb</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;learn from (x, y) pair&quot;&quot;&quot;</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span>  <span class="c1"># data count</span>
+        <span class="n">alpha</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">lamb</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">)</span>  <span class="c1"># adapt learning rate</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="nd">@np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="n">x</span><span class="p">]</span>  <span class="c1"># input sum</span>
+        <span class="c1"># hinge loss and regularization except bias</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">+=</span> <span class="n">alpha</span><span class="o">*</span><span class="p">(((</span><span class="n">yt</span><span class="o">*</span><span class="n">u</span><span class="p">)</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">yt</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="n">x</span><span class="p">]</span> <span class="o">-</span> <span class="n">lamb</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">[</span><span class="mi">1</span><span class="p">:]])</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">vis</span><span class="p">:</span>  <span class="c1"># for first 2D</span>
+            <span class="c1"># target output</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;y*&quot;</span> <span class="k">if</span> <span class="n">yt</span><span class="o">&gt;</span><span class="mi">0</span> <span class="k">else</span> <span class="s2">&quot;b*&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">plot_boundary</span><span class="p">(</span><span class="n">u</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s2">&quot;g&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">plot_boundary</span><span class="p">(</span><span class="n">u</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">plot_boundary</span><span class="p">(</span><span class="n">u</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s2">&quot;m&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">yt</span><span class="o">*</span><span class="n">u</span><span class="p">)</span>  <span class="c1"># hinge loss</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a Pagasos</span>
+<span class="n">pega</span> <span class="o">=</span> <span class="n">Pegasos</span><span class="p">(</span><span class="n">D</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># 2D input</span>
+<span class="n">pega</span><span class="o">.</span><span class="n">vis</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># turn on visualization</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Learning: run this cell several times</span>
+<span class="n">err</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="c1"># shuffle data order</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">err</span> <span class="o">+=</span> <span class="n">pega</span><span class="o">.</span><span class="n">learn</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">Yt</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">lamb</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;n =&quot;</span><span class="p">,</span> <span class="n">pega</span><span class="o">.</span><span class="n">n</span><span class="p">,</span> <span class="s2">&quot;; err =&quot;</span><span class="p">,</span> <span class="n">err</span><span class="o">/</span><span class="n">N</span><span class="p">,</span> <span class="s2">&quot;; w =&quot;</span><span class="p">,</span> <span class="n">pega</span><span class="o">.</span><span class="n">w</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>n = 20 ; err = 0.2947336083615985 ; w = [-1.24639625  0.75675226  0.34806233]
+</pre></div>
+</div>
+<img alt="_images/Supervised_46_1.png" src="_images/Supervised_46_1.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="logistic-regression">
+<h2>Logistic Regression<a class="headerlink" href="#logistic-regression" title="Permalink to this headline">#</a></h2>
+<p>In Perceptron and SVM, the output is binary. We sometimes want to express the certainty in the output by the probability of the data belonging to a class <span class="math notranslate nohighlight">\(p(C_k|\x)\)</span>.</p>
+<p><em>Logistic regression</em> is a probabilistic generalization of linear regression (Bishop 2006, Section 4.3). Its probabilistic output is given by
+$<span class="math notranslate nohighlight">\(
+    p(C_1|\x) = y = g(\w^T\x))
+\)</span><span class="math notranslate nohighlight">\(
+and \)</span>p(C_0|\x) = 1 - p(C_1|\x)$.</p>
+<p>The function <span class="math notranslate nohighlight">\(g(\ )\)</span> is called <em>logistic sigmoid function</em>
+$<span class="math notranslate nohighlight">\(
+    g(u) = \frac{1}{1+e^{-u}}.
+\)</span>$</p>
+<blockquote>
+<div><p>The derivative of the logistic sigmoid function is represented as
+$<span class="math notranslate nohighlight">\(
+    g'(u) = \frac{-1}{(1+e^{-u})^2}(-e^{-u})
+    = \frac{1}{1+e^{-u}}\frac{e^{-u}}{1-e^{-u}}
+    = g(u)(1-g(u))
+\)</span>$</p>
+</div></blockquote>
+<section id="maximum-likelihood-by-iterative-least-squares">
+<h3>Maximum likelihood by iterative least squares<a class="headerlink" href="#maximum-likelihood-by-iterative-least-squares" title="Permalink to this headline">#</a></h3>
+<p>We can find the weights of logistic regression by the principle of maximum likelihood, the probability of reproducing the data.</p>
+<p>The likelihood of weights <span class="math notranslate nohighlight">\(\w\)</span> for a set of observed data <span class="math notranslate nohighlight">\((X,\y^*)\)</span> is
+$<span class="math notranslate nohighlight">\(
+    L(\w) = p(\y^*|X,\w)
+    = \prod_{y^*_n=1} y_n \prod_{y^*_n=0}(1-y_n)
+    = \prod_{n=1}^N y_n^{y^*_n} (1-y_n)^{1-y^*_n}.
+\)</span><span class="math notranslate nohighlight">\(
+The negative log likelihood is often called *cross entropy error*
+\)</span><span class="math notranslate nohighlight">\(
+    E(\w) = -l(\w) = -\log p(\y^*|X,\w)
+    = -\sum_{n=1}^N\{y^*_n\log y_n + (1-y^*_n)\log(1-y_n)\}.
+\)</span><span class="math notranslate nohighlight">\(
+From
+\)</span><span class="math notranslate nohighlight">\(
+    \p{y}{\w} = g'(\w^T\x)\p{\w^T\x}{\w} = y(1-y)\x,
+\)</span><span class="math notranslate nohighlight">\(
+the gradient of the cross entropy error is given as
+\)</span><span class="math notranslate nohighlight">\(
+    \p{E(\w)}{\w} 
+    = -\sum_{n=1}^N\{y^*_n(1-y_n)\x_n - (1-y^*_n)y_n\x_n\}
+\)</span>$$<span class="math notranslate nohighlight">\(
+    = \sum_{n=1}^N (y_n - y^*_n)\x_n
+    = X^T(\y - \y^*) 
+\)</span>$
+which takes the same form as in linear regression.</p>
+<p>Unlike in linear regression, <span class="math notranslate nohighlight">\(\p{E(\w)}{\w}=0\)</span> does not have a closed form solution as in linear regression.
+Instead, we can apply Newton method using the <em>Hessian matrix</em>
+$<span class="math notranslate nohighlight">\(
+    H = \p{}{\w}\p{E(\w)}{\w} = X^T R X
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>R<span class="math notranslate nohighlight">\( is a diagonal matrix made of the derivative of the sigmoid functions
+\)</span><span class="math notranslate nohighlight">\(
+    R = \mbox{diag}(y_1(1-y_1),...,y_n(1-y_n)).
+\)</span>$</p>
+<p>The update is made by
+$<span class="math notranslate nohighlight">\(
+    \w := \w - (X^TRX)^{-1}X^T(\y - \y^*)
+    = (X^TRX)^{-1}X^T R \b{z}
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>\b{z}<span class="math notranslate nohighlight">\( is an effective target value
+\)</span><span class="math notranslate nohighlight">\(
+    \b{z} = X\w - R^{-1}(\y - \y^*).
+\)</span>$
+This algorithm is called <em>iterative reweighted least squares</em>.</p>
+</section>
+<section id="online-logistic-regression">
+<h3>Online logistic regression<a class="headerlink" href="#online-logistic-regression" title="Permalink to this headline">#</a></h3>
+<p>From the gradient of negative log likelihood for each data point
+$<span class="math notranslate nohighlight">\(
+    \p{E_n(\w)}{\w} = (y_n - y^*_n)\x_n,
+\)</span><span class="math notranslate nohighlight">\(
+we can also apply stochastic gradient descent
+\)</span><span class="math notranslate nohighlight">\(
+    \Delta \w = - \alpha \p{E_n(\w)}{\w} = \alpha (y^*_n - y_n)\x_n.
+\)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">LogisticRegression</span><span class="p">(</span><span class="n">Perceptron</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Logistic regression&quot;&quot;&quot;</span>
+    
+    <span class="k">def</span> <span class="nf">sigmoid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">u</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">u</span><span class="p">))</span>
+    
+    <span class="k">def</span> <span class="nf">output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;output for vector/matrix input x&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># x is a vector</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="n">x</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>   <span class="c1"># x is a matrix</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span><span class="n">x</span><span class="p">]</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="nd">@self</span><span class="o">.</span><span class="n">w</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>   <span class="c1"># sigmoid output</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">vis</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># x is a vector</span>
+                <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;yo&quot;</span> <span class="k">if</span> <span class="n">y</span><span class="o">&gt;</span><span class="mf">0.5</span> <span class="k">else</span> <span class="s2">&quot;bo&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>   <span class="c1"># x is a matrix</span>
+                <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">y</span>
+    
+    <span class="k">def</span> <span class="nf">rls</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">yt</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;reweighted least square with (x, y) pairs&quot;&quot;&quot;</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># also set self.X</span>
+        <span class="n">error</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">yt</span>
+        <span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">y</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">y</span><span class="p">))</span> <span class="c1"># weighting matrix</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">-=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="nd">@R@self</span><span class="o">.</span><span class="n">X</span><span class="p">)</span> <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="nd">@error</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">vis</span><span class="p">:</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">yt</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">plot_boundary</span><span class="p">(</span><span class="n">u</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s2">&quot;g&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">plot_boundary</span><span class="p">(</span><span class="n">u</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">plot_boundary</span><span class="p">(</span><span class="n">u</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s2">&quot;m&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">error</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">logreg</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">D</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">logreg</span><span class="o">.</span><span class="n">vis</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">Yb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">Yt</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># target in [0,1]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Repeat for Iterative Reweighted least squares</span>
+<span class="n">err</span> <span class="o">=</span> <span class="n">logreg</span><span class="o">.</span><span class="n">rls</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Yb</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; err =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">err</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span> <span class="s2">&quot;; w =&quot;</span><span class="p">,</span> <span class="n">logreg</span><span class="o">.</span><span class="n">w</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> err = 0.25 ; w = [-1.56557665  0.71426124  0.42785806]
+</pre></div>
+</div>
+<img alt="_images/Supervised_54_1.png" src="_images/Supervised_54_1.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="classical-conditioning">
+<h2>3.3 Classical Conditioning<a class="headerlink" href="#classical-conditioning" title="Permalink to this headline">#</a></h2>
+<p>Animals have innate behaviors to avoid dangers or to acquire rewards, such as blinking when a strong light or wind hits the eyes or drooling when a food is eqpected.
+Such response is called a <em>unconditioned response (UR)</em> and the sensory cue to elicit UR is called <em>unconditioned stimulus (US)</em>.</p>
+<p>When an US is repreatedly preceded by another stimulus, such as a sound, animals start to take the same response as UR even before US is presented.
+In this case the response is called a <em>conditionend response (CR)</em> and the sensory cue to elicit CR is called <em>conditioned stimulus (CS)</em>.
+This type of learning is called <em>classical conditioning</em> or <em>Pavlovian conditioning</em> and can be considered as an example of supervised learning.</p>
+<p>The learned mapping can be CS to CR, or CS to US which elicits UR=CR.</p>
+<section id="eye-blink-conditioning">
+<h3>Eye Blink Conditioning<a class="headerlink" href="#eye-blink-conditioning" title="Permalink to this headline">#</a></h3>
+<p>When an airpuff (US) is given around eyes, an animal would blink its eyes (UR). If the airpuff is preceded with a consistent interval by a cue, such as tone (CS), the animal learns to blink (CR) just before the airpuff is given.</p>
+<blockquote>
+<div><p><img alt="EyeBlink" src="_images/McCormick1984jns.jpg" />
+An example of eye blink conditioning. The curve on top is the response of the eyelid. The PSTH below shows the firing of an output neuron in the cerebellum (from McCormick &amp; Thompson, 1984).</p>
+</div></blockquote>
+<p>Richard Thompson and colleagues investigated the neural circuit behind this eye-blink conditioning and identified the cerebellum as the major locus of learning (Thompson, 1986).</p>
+<p>While blockade of the cerebellum does not affect eye-blink response itself (US-UR), it blocks learning (CS-CR). The activity of the output neurons of the cerebellum increase their activities as learning progress, as shown above.</p>
+<blockquote>
+<div><p><img alt="CerebellumConditioning" src="_images/Thompson1986s.jpg" />
+The neural circuit of eye-blink conditioning (from Thompson, 1986).</p>
+</div></blockquote>
+</section>
+</section>
+<section id="the-cerebellum">
+<h2>3.4 The Cerebellum<a class="headerlink" href="#the-cerebellum" title="Permalink to this headline">#</a></h2>
+<p>The neural circuit of the cerebellum has a distinctive orthogonal structure. There are a massive number of <em>granule cells</em>, each of which collects inputs from a major input to the cerebeluum, <em>the mossy fibers</em>.
+Granule cell axons run parallelly in the lateral direction in the cerebellar cortex, called <em>parallel fibers</em>.
+The output neurons of the cerebellum, <em>Purkinje cells</em>, spread fan-shaped dendrites in the longitudinal direction and receive a large nubmer of parallel fibers.
+Furthermore, each Purkinje cell is twined by a single axon called <em>climbing fiber</em> from a brain stem nucleus called the <em>inferior olive</em>.</p>
+<blockquote>
+<div><p><img alt="CerebellarCortex" src="_images/Eccles1967.jpg" />
+The circuit of the cerebellar cortex (from Eccles et al. 1967)</p>
+</div></blockquote>
+<section id="cerebellar-perceptron-hyopthesis">
+<h3>Cerebellar Perceptron Hyopthesis<a class="headerlink" href="#cerebellar-perceptron-hyopthesis" title="Permalink to this headline">#</a></h3>
+<p>This peculiar organization inspired theorists around 1970 to come up with an idea that the cerebellum may work similar to the Perceptron (Marr 1969; Albus 1971).
+The massive number of granule cells may create a high-dimensional feature representation of the mossy fiber input.
+The single climbing fiber input may sever as the supervising signal to induce plasticity in the parallel-fiber input synapses to the Purkinje cell.</p>
+<blockquote>
+<div><p><img alt="CerebellarPerceptron" src="_images/CerebellarPerceptron.jpg" />
+The cerebellar perceptron model (from Albus 1971).</p>
+</div></blockquote>
+<p>This hypothesis further motivated neurobiologists to test that experimentally.
+Indeed, cerebellar synaptic plasticity guided by the climbring fiber input was experimentally confirmed by Masao Ito (1984, 2000).</p>
+</section>
+<section id="cerebellar-internal-model-hyopthesis">
+<h3>Cerebellar Internal Model Hyopthesis<a class="headerlink" href="#cerebellar-internal-model-hyopthesis" title="Permalink to this headline">#</a></h3>
+<p>The cerebellum is known to be imortant for movement control.
+A possible way in which suprevised learning can be helpful is to provide an <em>internal model</em> of the motor apparatus (Wolpert et al. 1998).</p>
+<blockquote>
+<div><p><img alt="FeedbackErrorLearning" src="_images/FeedbackErrorLearning.jpg" />
+The feedback error learning model by Kawato. The innate feedback controller in the brainstem or spinal cord provides corrective motor signal, which is used as the error signal for supervised learning of <em>inverse model</em> in the cerebellum (from Wolpert et al. 1998)</p>
+</div></blockquote>
+<p>The molecular mechanism for the association of the parallel fiber input and the climbing fiber input (output error) at the Purkinje cell synapses has also been studied in detail (Ito 2000; Ogasawara et al. 2008).</p>
+</section>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Bishop CM (2006) Pattern Recognition and Machine Learning. Springer.</p>
+<ul>
+<li><p>Chapter 3: Linear models for regression</p></li>
+<li><p>Chapter 4: Linear models for classification</p></li>
+</ul>
+</li>
+<li><p>Rosenblatt F (1962) Principles of Neurodynamics: Perceptrons and the Theory of Brain Mechanisms. Spartan.</p></li>
+</ul>
+<section id="id1">
+<h3>Classical conditioning<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>McCormick DA, Thompson RF (1984) Neuronal responses of the rabbit cerebellum during acquisition and performance of a classically conditioned nictitating membrane-eyelid response. Journal of Neuroscience, 4 (11) 2811-2822. <a class="reference external" href="https://doi.org/10.1523/JNEUROSCI.04-11-02811.1984">https://doi.org/10.1523/JNEUROSCI.04-11-02811.1984</a></p></li>
+<li><p>Thompson RF (1986) The neurobiology of learning and memory. Sicence, 233, 941-947. <a class="reference external" href="http://doi.org/10.1126/science.3738519">http://doi.org/10.1126/science.3738519</a></p></li>
+</ul>
+</section>
+<section id="cerebellar-perceptron-hypothesis">
+<h3>Cerebellar perceptron hypothesis<a class="headerlink" href="#cerebellar-perceptron-hypothesis" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Marr D (1969) A theory of cerebellar cortex. Journal of Physiology, 202:437–470.</p></li>
+<li><p>Albus JS (1971) A theory of cerebellar function. Mathematical Bioscience, 10:25– 61, 1971.</p></li>
+<li><p>Ito M (1984) The Cerebellum and Neural Control, Raven Press.</p></li>
+</ul>
+</section>
+<section id="cerebellar-internal-model-hypothesis">
+<h3>Cerebellar internal model hypothesis<a class="headerlink" href="#cerebellar-internal-model-hypothesis" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Ito M (2000) Mechanisms of motor learning in the cerebellum. Brain Research 886, 237–245.</p></li>
+<li><p>Wolpert DM, Miall RC, Kawato M (1998) Internal models in the cerebellum. Trends in Cognitive Sciences, 2:338–347.</p></li>
+<li><p>Ogasawara H, Doi T, Kawato M (2008) Systems biology perspectives on cerebellar long-term depression. Neurosignals, 16, 300–317.
+<a class="reference external" href="http://doi.org/10.1159/000123040">http://doi.org/10.1159/000123040</a></p></li>
+</ul>
+</section>
+</section>
+<section id="exercise">
+<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">#</a></h2>
+<ol class="simple">
+<li><p>Implement an online version of linear regression.</p></li>
+</ol>
+<ol class="simple">
+<li><p>Implement linear regression using Gaussian basis fuctions.
+Test that with the nonlinear pendulum data in ‘data/pend2.txt’.</p></li>
+</ol>
+<ol class="simple">
+<li><p>Implement an online version of logistic regression.</p></li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="Neurons.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Chapter 2. Neural Modeling and Analysis</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Reinforcement.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 4. Reinforcement Learning</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Kenji Doya<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,605 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Chapter 1. Introduction &#8212; Brain Computation</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Chapter 2. Neural Modeling and Analysis" href="Neurons.html" />
+    <link rel="prev" title="Brain Computation: A Hands-on Guidebook" href="BrainComputation.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/BC_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Brain Computation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="BrainComputation.html">
+                    Brain Computation: A Hands-on Guidebook
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Chapter 1. Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Neurons.html">
+   Chapter 2. Neural Modeling and Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Supervised.html">
+   Chapter 3: Supervised Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Reinforcement.html">
+   Chapter 4. Reinforcement Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Unsupervised.html">
+   Chapter 5. Unsupervised Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Bayesian.html">
+   Chatper 6. Bayesian Approaches
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Deep.html">
+   Chapter 7: Deep Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Multiple.html">
+   Chapter 8. Multiple Agents
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Meta.html">
+   Chapter 9. Meta-Learning
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/Introduction.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/Introduction.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-can-we-learn-from-the-brain">
+   1.1 What can we learn from the brain
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#history-of-the-brain">
+   1.2 History of the brain
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#organization-of-the-mammalian-brain">
+     Organization of the mammalian brain
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#paradigms-of-adaptation">
+   1.3 Paradigms of adaptation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#adaptation-in-various-time-scales">
+     Adaptation in various time scales
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#learning-objectives">
+     Learning objectives
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#brain-and-learning-algorithms">
+     Brain and learning algorithms
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Chapter 1. Introduction</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-can-we-learn-from-the-brain">
+   1.1 What can we learn from the brain
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#history-of-the-brain">
+   1.2 History of the brain
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#organization-of-the-mammalian-brain">
+     Organization of the mammalian brain
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#paradigms-of-adaptation">
+   1.3 Paradigms of adaptation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#adaptation-in-various-time-scales">
+     Adaptation in various time scales
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#learning-objectives">
+     Learning objectives
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#brain-and-learning-algorithms">
+     Brain and learning algorithms
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-1-introduction">
+<h1>Chapter 1. Introduction<a class="headerlink" href="#chapter-1-introduction" title="Permalink to this headline">#</a></h1>
+<ul class="simple">
+<li><p>1.1 What can we learn from the brain</p>
+<ul>
+<li><p>energy efficiency</p></li>
+<li><p>data efficiency</p></li>
+<li><p>world models and mental simulation</p></li>
+<li><p>compositionality and learning to learn</p></li>
+</ul>
+</li>
+<li><p>1.2 History of the brain</p>
+<ul>
+<li><p>worms, flies, fish, birds, mice, humans</p></li>
+<li><p>spinal cord, brain stem, cerebellum, basal ganglia, thalamus, cortex</p></li>
+</ul>
+</li>
+<li><p>1.3 Paradigms of adaptation</p>
+<ul>
+<li><p>time scale: evolution, development, learning, imitation, planning, meta-learning</p></li>
+<li><p>objective: memory/supervised/reinforcement/unsupervised learning</p></li>
+</ul>
+</li>
+</ul>
+<section id="what-can-we-learn-from-the-brain">
+<h2>1.1 What can we learn from the brain<a class="headerlink" href="#what-can-we-learn-from-the-brain" title="Permalink to this headline">#</a></h2>
+<p>The progress of artificial intelligence (AI) in the last several years is phenomenal. Playing the master level in the game of Go was supposed to be decades away, but AlphaGo beat human champions.</p>
+<p>Today’s success of AI is based on the combination of <em>deep neural networks</em> and <em>reinforcement learning</em> together with high-performance computing and massive data from the internet.</p>
+<p>Can this <em>deep learning revolution</em> solve all the problems in AI? Certainly not. Deep learning realized human-level vision and hearing, which is enabling applications of AI to areas that were challenging, such as autonomous driving and speech-capable agents. However, there are more to human intelligence than vision and hearing.</p>
+<p>Then what should we futhre learn from the brain and human cognition to bring AI to the next level? Here are some domains in which today’s AI is still limited and learning from the computational architecture of the brain can be beneficial:</p>
+<ul class="simple">
+<li><p>Energy efficiency</p></li>
+<li><p>Data efficiency</p>
+<ul>
+<li><p>Modeling and simulating the world</p></li>
+<li><p>Modularity and compositionality</p></li>
+<li><p>Learning to learn</p></li>
+</ul>
+</li>
+<li><p>Autonomy and sociality</p></li>
+</ul>
+<p>To understand how our brain realizes such energy-efficient operation, understanding the biophysics of neurons and the dynamics of their network is imperative. We will start at this level first, although briefly.</p>
+<p>To understand the mechanisms of learning in the brain, we first have to know different frameworks of learning and then understand how they can be computationaly realized efficiently and how they can possibly implemented in the brain.</p>
+<p>How we can imagine the future based on our experience and make a predictive judgement is a big open question. We will consider their possible mechanisms toward the end of this book.</p>
+</section>
+<section id="history-of-the-brain">
+<h2>1.2 History of the brain<a class="headerlink" href="#history-of-the-brain" title="Permalink to this headline">#</a></h2>
+<p>Human intelligence, including the use of language and doing science, is made possible by the human brain. Our brain, however, is a product of millions of years of animal evolution. To understand how it really works, it is imperative to understand how it evolved, by also looking into brains of other animals.</p>
+<p>For example, the mammals from mice to humans share the same six-layer architecture of the neocortex.
+Vertebrates from fish and birds to humans share basically the same design of the forebrain, midbrain, hindbrain, and spinal cord.
+Even invertebrates from worms and insects share almost the same set of molecules with humans for building the brain. It goes without saying that analysis can be easier and more rigorous by using simpler animals.</p>
+<p>Major difference: degree of freedom in learning and planning.</p>
+<section id="organization-of-the-mammalian-brain">
+<h3>Organization of the mammalian brain<a class="headerlink" href="#organization-of-the-mammalian-brain" title="Permalink to this headline">#</a></h3>
+<p>The spinal cord is often thought as the connection line between the brain and the body, but it constitutes a quite complex neural network for movement control and perception.</p>
+<p>The brain stem consists of dedicated neural circuits for a variety of physiological regulation and motor control.</p>
+<p><img alt="MammalianBrain" src="_images/MammalianBrain.jpg" /></p>
+</section>
+</section>
+<section id="paradigms-of-adaptation">
+<h2>1.3 Paradigms of adaptation<a class="headerlink" href="#paradigms-of-adaptation" title="Permalink to this headline">#</a></h2>
+<p>Adaptation can happen in different time scales and for different objectives.</p>
+<section id="adaptation-in-various-time-scales">
+<h3>Adaptation in various time scales<a class="headerlink" href="#adaptation-in-various-time-scales" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p><strong>Learning</strong>: Learning can happen very quickly. An infant learns new objects and words everyday. There are some type of learning that takes longer, such as sophisticated motor skills.</p></li>
+<li><p><strong>Meta-learning</strong>: After we learn one skill, such as skiing, it helps learning a new skill, such as snowboarding, even though the required muscle outputs are quite different. This suggests that the brain has the capability for “learning to learn” or meta-learning.</p></li>
+<li><p><strong>Imitation and cultural evolution</strong>: Mimicking what others do seems like a simple job, but it actually involves sophisticated computation for mapping the vision of other’s movement to own body movements. Even more importantly, imitation is the basis for cultural evolution, by which skills and knowledge can continue to progress beyond inidvidual’s lifetime.</p></li>
+<li><p><strong>Development</strong>: The brain’s neral circuit follows a standard course of development, from embryo to newborn and child to adult. Although the number of neurons in the brain is almost constant after birth, there appears to be genetic and epigenetic mechanisms to regulated how learning goes on in different parts of the brain at different stages of maturation.</p></li>
+<li><p><strong>Evolution</strong>: All those mechanims for adaptation of the brain is defined in the genome, which is a product of millions of years of evolution. Simple animals tend to have small brains speciallized for particular behaviors in particular environments, but can adapt rapidly to new environments by producing many offsprings in relatively short life cycles. Vertabrates, especially mammals, can adapt to a wid range of environments within a lifetime using higher capability of learning.</p></li>
+</ul>
+</section>
+<section id="learning-objectives">
+<h3>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Memory</p></li>
+<li><p>Supervised learning</p></li>
+<li><p>Reinforcement learning</p></li>
+<li><p>Unsupervised learning</p></li>
+</ul>
+</section>
+<section id="brain-and-learning-algorithms">
+<h3>Brain and learning algorithms<a class="headerlink" href="#brain-and-learning-algorithms" title="Permalink to this headline">#</a></h3>
+<p><img alt="Cerebellum-BasalGanglia-CerebralCortex" src="_images/SRU.jpg" /></p>
+</section>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Hassabis D, Kumaran D, Summerfield C, Botvinick M (2017) Neuroscience-Inspired Artificial Intelligence. Neuron 95:245-258.</p></li>
+<li><p>Lake BM, Ullman TD, Tenenbaum JB, Gershman SJ (2017) Building machines that learn and think like people. Behav Brain Sci 40:e253.</p></li>
+<li><p>Minsky M (1986) Society of Mind. New York: Simon and Schuster.</p></li>
+<li><p>Doya K (1999) What are the computations of the cerebellum, the basal ganglia, and the cerebral cortex. Neural Networks 12:961-974.</p></li>
+<li><p>Doya K (2002) Metalearning and Neuromodulation. Neural Networks 15:495–506.</p></li>
+<li><p>Thrun S, Pratt L, eds (1998) Learning to Learn: Springer.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="BrainComputation.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Brain Computation: A Hands-on Guidebook</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Neurons.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 2. Neural Modeling and Analysis</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Kenji Doya<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

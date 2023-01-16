@@ -1,0 +1,1620 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Chapter 5. Unsupervised Learning &#8212; Brain Computation</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Chatper 6. Bayesian Approaches" href="Bayesian.html" />
+    <link rel="prev" title="Chapter 4. Reinforcement Learning" href="Reinforcement.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/BC_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Brain Computation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="BrainComputation.html">
+                    Brain Computation: A Hands-on Guidebook
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Introduction.html">
+   Chapter 1. Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Neurons.html">
+   Chapter 2. Neural Modeling and Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Supervised.html">
+   Chapter 3: Supervised Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Reinforcement.html">
+   Chapter 4. Reinforcement Learning
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Chapter 5. Unsupervised Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Bayesian.html">
+   Chatper 6. Bayesian Approaches
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Deep.html">
+   Chapter 7: Deep Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Multiple.html">
+   Chapter 8. Multiple Agents
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Meta.html">
+   Chapter 9. Meta-Learning
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/Unsupervised.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/Unsupervised.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#contents">
+   Contents
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#k-means-clustering">
+   K-means Clustering
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mixtures-of-gaussians">
+   Mixtures of Gaussians
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#expectation-maximization-em-algorithm">
+   Expectation-maximization (EM) Algorithm
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#e-expectation-step">
+     E (expectation) step
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#m-maximization-step">
+     M (maximization) step
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dirichlet-process-mixture">
+   Dirichlet Process Mixture
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scikit-learn">
+     scikit-learn
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#principal-component-analysis">
+   Principal Component Analysis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#singular-value-decomposition-svd">
+   Singular value decomposition (SVD)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#online-pca">
+   Online PCA
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#infomax-principle">
+   Infomax principle
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#independent-component-analysis-ica">
+   Independent component analysis (ICA)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ica-by-infomax">
+     ICA by Infomax
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#playing-sound">
+   Playing sound
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#receptive-fields-of-visual-cortex-neurons">
+   Receptive fields of visual cortex neurons
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#replicating-receptive-field-tuning">
+     Replicating receptive field tuning
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#self-organization">
+     Self Organization
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pca">
+     PCA
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#infomax-and-ica">
+     Infomax and ICA
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise">
+   Exercise
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Chapter 5. Unsupervised Learning</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#contents">
+   Contents
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#k-means-clustering">
+   K-means Clustering
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mixtures-of-gaussians">
+   Mixtures of Gaussians
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#expectation-maximization-em-algorithm">
+   Expectation-maximization (EM) Algorithm
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#e-expectation-step">
+     E (expectation) step
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#m-maximization-step">
+     M (maximization) step
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dirichlet-process-mixture">
+   Dirichlet Process Mixture
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scikit-learn">
+     scikit-learn
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#principal-component-analysis">
+   Principal Component Analysis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#singular-value-decomposition-svd">
+   Singular value decomposition (SVD)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#online-pca">
+   Online PCA
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#infomax-principle">
+   Infomax principle
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#independent-component-analysis-ica">
+   Independent component analysis (ICA)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ica-by-infomax">
+     ICA by Infomax
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#playing-sound">
+   Playing sound
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#receptive-fields-of-visual-cortex-neurons">
+   Receptive fields of visual cortex neurons
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#replicating-receptive-field-tuning">
+     Replicating receptive field tuning
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#self-organization">
+     Self Organization
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pca">
+     PCA
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#infomax-and-ica">
+     Infomax and ICA
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise">
+   Exercise
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-5-unsupervised-learning">
+<h1>Chapter 5. Unsupervised Learning<a class="headerlink" href="#chapter-5-unsupervised-learning" title="Permalink to this headline">#</a></h1>
+<div class="math notranslate nohighlight">
+\[ % Latex macros
+\newcommand{\mat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\newcommand{\p}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\b}[1]{\boldsymbol{#1}}
+\newcommand{\c}[1]{\mathcal{#1}}
+\]</div>
+<section id="contents">
+<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Clustering (Bishop, Chater 9):</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(k\)</span>-means clustering</p></li>
+<li><p>mixtures of Gaussians</p></li>
+<li><p>self-organizing maps (SOM)</p></li>
+</ul>
+</li>
+<li><p>Subspace mapping (Biship, Chapter 12):</p>
+<ul>
+<li><p>principal component analysis (PCA)</p></li>
+<li><p>singular value decomposition (SVD)</p></li>
+<li><p>independent component analysis (ICA)</p></li>
+</ul>
+</li>
+<li><p>Neural Mechanisms</p>
+<ul>
+<li><p>Receptive field formation</p></li>
+</ul>
+</li>
+</ul>
+<p>As we grow, we learn that there are different things and creatures in the world, such as plants and animals, and in more detail, dogs, cats and humans.
+What is remarkable is that most of such learning is done spontaneously without explicit teaching about what is a dog, or labels specifying which is a dog or which is cat.
+Learning categories without explicit labels is an example of <em>unspervised learning</em>. But how can we define categories without category labels?</p>
+<p>The key in unsupervised learning is to find a certain structure in the distribution <span class="math notranslate nohighlight">\(p(\b{x})\)</span> that produced the observed data <span class="math notranslate nohighlight">\(\{\b{x}_1,...,\b{x}_N\}\)</span>.</p>
+<p>Typical cases are:</p>
+<ul class="simple">
+<li><p>Dividing into clusters:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(k\)</span>-means clustering</p></li>
+<li><p>mixtures of Gaussians</p></li>
+<li><p>self-organizing maps (SOM)</p></li>
+</ul>
+</li>
+<li><p>Decomposing into components:</p>
+<ul>
+<li><p>principal component analysis (PCA)</p></li>
+<li><p>singular value decomposition (SVD)</p></li>
+<li><p>independent component analysis (ICA)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="k-means-clustering">
+<h2>K-means Clustering<a class="headerlink" href="#k-means-clustering" title="Permalink to this headline">#</a></h2>
+<p>The most basic method of clustering is <em><span class="math notranslate nohighlight">\(K\)</span>-means clustering</em>,
+which divides a data set <span class="math notranslate nohighlight">\(\{\b{x}_1,…,\b{x}_N\}\)</span> into <span class="math notranslate nohighlight">\(K\)</span> clusters.</p>
+<p>We define prototypes <span class="math notranslate nohighlight">\(\b{\mu}_k\)</span> for <span class="math notranslate nohighlight">\(k=1,...,K\)</span> clusters and specify belonging of data points by binary <em>indicator variables</em> <span class="math notranslate nohighlight">\(r_{nk}\in\{0,1\}\)</span>.</p>
+<p>A good clustering is achieved by minimizing the <em>distortion measure</em>
+$<span class="math notranslate nohighlight">\( J = \sum_{n=1}^N \sum_{k=1}^K r_{nk}||\b{x}_n-\b{\mu}_k||^2. \)</span>$</p>
+<p>We do that by repeating the following steps:</p>
+<ul class="simple">
+<li><p>For the current prototypes <span class="math notranslate nohighlight">\(\b{\mu}_k\)</span>, re-assign data points.</p>
+<ul>
+<li><p>for each <span class="math notranslate nohighlight">\(\b{x}_n\)</span>, find the nearest <span class="math notranslate nohighlight">\(\b{\mu}_k\)</span> and set <span class="math notranslate nohighlight">\(r_{nk} = 1\)</span> and  <span class="math notranslate nohighlight">\(r_{n j\ne k} = 0\)</span> .</p></li>
+</ul>
+</li>
+<li><p>For the current assignment by <span class="math notranslate nohighlight">\(r_{nk}\)</span>, update the prototypes by
+$<span class="math notranslate nohighlight">\( \b{\mu}_k = \frac{\sum_{n=1}^N r_{nk}\b{x}_n}{\sum_{n=1}^N r_{nk}}\)</span>$</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load data from a text file</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;data/faithful.txt&#39;</span><span class="p">)</span>
+<span class="n">N</span><span class="p">,</span> <span class="n">D</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;eruption time (min)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;waiting time (min)&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Unsupervised_6_0.png" src="_images/Unsupervised_6_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">K</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># number of clusters</span>
+<span class="c1"># Initial guess of prototypes</span>
+<span class="n">Mu</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">K</span><span class="p">),:]</span>   <span class="c1"># pick K points randomly</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Mu</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">Mu</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="n">K</span><span class="p">),</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;+&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>    <span class="c1"># cluster label</span>
+<span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N</span><span class="p">,</span><span class="n">K</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>   <span class="c1"># assignment matrix</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="c1"># Update assignment</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+        <span class="c1"># check the distances</span>
+        <span class="n">dist</span> <span class="o">=</span> <span class="p">[</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">-</span><span class="n">Mu</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">-</span><span class="n">Mu</span><span class="p">[</span><span class="n">k</span><span class="p">])</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">K</span><span class="p">)]</span>
+        <span class="c1"># find the nearest mean</span>
+        <span class="n">Y</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">dist</span><span class="p">)</span>
+        <span class="n">R</span><span class="p">[</span><span class="n">n</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">K</span><span class="p">)</span>
+        <span class="n">R</span><span class="p">[</span><span class="n">n</span><span class="p">,</span><span class="n">Y</span><span class="p">[</span><span class="n">n</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="c1"># show assignment</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">Y</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+    <span class="c1"># Update the means</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">K</span><span class="p">):</span>
+        <span class="n">Mu</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">R</span><span class="p">[:,</span><span class="n">k</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="c1"># plot the new means</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Mu</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">Mu</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="n">K</span><span class="p">),</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;+&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Unsupervised_7_0.png" src="_images/Unsupervised_7_0.png" />
+<img alt="_images/Unsupervised_7_1.png" src="_images/Unsupervised_7_1.png" />
+<img alt="_images/Unsupervised_7_2.png" src="_images/Unsupervised_7_2.png" />
+<img alt="_images/Unsupervised_7_3.png" src="_images/Unsupervised_7_3.png" />
+<img alt="_images/Unsupervised_7_4.png" src="_images/Unsupervised_7_4.png" />
+<img alt="_images/Unsupervised_7_5.png" src="_images/Unsupervised_7_5.png" />
+</div>
+</div>
+</section>
+<section id="mixtures-of-gaussians">
+<h2>Mixtures of Gaussians<a class="headerlink" href="#mixtures-of-gaussians" title="Permalink to this headline">#</a></h2>
+<p>It is often the case that clusters have some overlaps and assignment is probabilistic. <em>Mixtures of Gaussians</em> is a probabilistic extention of <span class="math notranslate nohighlight">\(K\)</span>-means clustering.</p>
+<p><em>Gaussian mixture distribution</em> has a form
+$<span class="math notranslate nohighlight">\( p(\b{x}) = \sum_{k=1}^K \pi_{k} \mathcal{N}(\b{x}|\b{\mu}_k, \Sigma_k) \)</span><span class="math notranslate nohighlight">\(
+where \)</span>\b{\mu}_k<span class="math notranslate nohighlight">\( and \)</span>\Sigma_k<span class="math notranslate nohighlight">\( are the mean and the variance of \)</span>k<span class="math notranslate nohighlight">\(-th Gaussian and \)</span>\pi_k$ is the mixture probability.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># sample from a Gaussian mixture distribution</span>
+<span class="k">def</span> <span class="nf">gaussmix</span><span class="p">(</span><span class="n">pi</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
+    <span class="n">K</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">pi</span><span class="p">)</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multinomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">pi</span><span class="p">)</span>  <span class="c1"># binary stochastic variable</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">z</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>    <span class="c1"># the index of z_k=1</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mu</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">sigma</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">k</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pi</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">]</span>    <span class="c1"># mixture probability</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">]]</span>     <span class="c1"># means</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="p">[[[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]],</span> <span class="p">[[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]]]</span>   <span class="c1"># variances</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="p">,:],</span> <span class="n">Y</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">gaussmix</span><span class="p">(</span><span class="n">pi</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">Y</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Unsupervised_11_0.png" src="_images/Unsupervised_11_0.png" />
+</div>
+</div>
+</section>
+<section id="expectation-maximization-em-algorithm">
+<h2>Expectation-maximization (EM) Algorithm<a class="headerlink" href="#expectation-maximization-em-algorithm" title="Permalink to this headline">#</a></h2>
+<p>We consider a binary stochastic variable
+$<span class="math notranslate nohighlight">\( \b{z}=(z_1,…,z_K) \mbox{ where } z_k\in\{0,1\} \mbox{ and } \sum_{k=1}^K z_k=1 \)</span>$
+indicating which Gaussian a data point belongs to.</p>
+<p>For fitting the parameters <span class="math notranslate nohighlight">\(\pi_k\)</span>, <span class="math notranslate nohighlight">\(\mu_k\)</span> and <span class="math notranslate nohighlight">\(\Sigma_k\)</span> <span class="math notranslate nohighlight">\((k=1,...,K)\)</span>, we repeat the following steps, called the <em>expectation-maximization (EM)</em> algorithm:</p>
+<section id="e-expectation-step">
+<h3>E (expectation) step<a class="headerlink" href="#e-expectation-step" title="Permalink to this headline">#</a></h3>
+<p>For the current parameters <span class="math notranslate nohighlight">\((\pi_k,\mu_k\)</span>,<span class="math notranslate nohighlight">\(\Sigma_k)\)</span>, evaluate the posterior distribution of <span class="math notranslate nohighlight">\(\b{z}\)</span> given <span class="math notranslate nohighlight">\(\b{x}\)</span>, called <em>responsibility</em>:
+$<span class="math notranslate nohighlight">\( r_{nk} = p(z_k=1|\b{x}_n) = \frac{\pi_k\c{N}(\b{x}_n|\b{\mu}_k,\Sigma_k)}{\sum_{j=1}^K \pi_j\c{N}(\b{x}_n|\b{\mu}_j,\Sigma_j)} \)</span>$</p>
+</section>
+<section id="m-maximization-step">
+<h3>M (maximization) step<a class="headerlink" href="#m-maximization-step" title="Permalink to this headline">#</a></h3>
+<p>For the current responsibility, estimate new parameters:
+$<span class="math notranslate nohighlight">\( N_k = \sum_{n=1}^N r_{nk} \)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\( \pi_k = \frac{N_k}{N} \)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\( \b{\mu}_k = \frac{1}{N_k}\sum_{n=1}^N r_{nk}\b{x}_n \)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\( \Sigma_k = \frac{1}{N_k}\sum_{n=1}^N r_{nk}(\b{x}_n-\b{\mu}_k)(\b{x}_n-\b{\mu}_k)^T \)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;data/faithful.txt&#39;</span><span class="p">)</span>
+<span class="n">N</span><span class="p">,</span> <span class="n">D</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initial means, covariance, responsibility</span>
+<span class="n">K</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># number of clusters</span>
+<span class="n">Pi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">K</span><span class="p">)</span><span class="o">/</span><span class="n">K</span>   <span class="c1"># cluster probability</span>
+<span class="n">Mu</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">K</span><span class="p">),:]</span>   <span class="c1"># pick K points randomly</span>
+<span class="n">Sig</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">D</span><span class="p">,</span><span class="n">D</span><span class="p">),</span> <span class="n">K</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>   <span class="c1"># covariance for entire data</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="c1">#plt.hold(True)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Mu</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">Mu</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="n">K</span><span class="p">),</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;+&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N</span><span class="p">,</span><span class="n">K</span><span class="p">))</span>   <span class="c1"># responsibility matrix</span>
+<span class="n">pr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">K</span><span class="p">)</span>   <span class="c1"># data probability for each cluster</span>
+<span class="n">Lambda</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">K</span><span class="p">,</span><span class="n">D</span><span class="p">,</span><span class="n">D</span><span class="p">))</span>  <span class="c1"># inverse covariance</span>
+<span class="n">detSig</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">K</span><span class="p">)</span>    <span class="c1"># sqrt(det(Sig))</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">15</span><span class="p">):</span>
+    <span class="c1"># Expectation step</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">K</span><span class="p">):</span>
+        <span class="n">Lambda</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">Sig</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>   <span class="c1"># inverse covariance</span>
+        <span class="n">detSig</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">Sig</span><span class="p">[</span><span class="n">k</span><span class="p">]))</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+        <span class="c1"># check the distances</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">K</span><span class="p">):</span>
+            <span class="c1">#dx = np.matrix(X[n,:] - Mu[k,:])   # deviation from mean</span>
+            <span class="n">dx</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="p">,:]</span> <span class="o">-</span> <span class="n">Mu</span><span class="p">[</span><span class="n">k</span><span class="p">,:]</span>   <span class="c1"># deviation from mean</span>
+            <span class="n">pr</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">Pi</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">dx</span><span class="nd">@Lambda</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="nd">@dx</span><span class="o">.</span><span class="n">T</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="n">detSig</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+        <span class="c1"># responsibility</span>
+        <span class="n">R</span><span class="p">[</span><span class="n">n</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">pr</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">pr</span><span class="p">)</span>    <span class="c1"># responsibility p(z)</span>
+    <span class="c1"># show assignment</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">K</span><span class="p">)),</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+    <span class="c1"># Maximization step</span>
+    <span class="n">num</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span>    <span class="c1"># effective numbers for each class</span>
+    <span class="n">Pi</span> <span class="o">=</span> <span class="n">num</span><span class="o">/</span><span class="n">N</span>    <span class="c1"># class prior</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">K</span><span class="p">):</span>
+        <span class="n">Mu</span><span class="p">[</span><span class="n">k</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">R</span><span class="p">[:,</span><span class="n">k</span><span class="p">]</span><span class="o">*</span><span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">num</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+        <span class="n">dX</span> <span class="o">=</span> <span class="n">X</span> <span class="o">-</span> <span class="n">Mu</span><span class="p">[</span><span class="n">k</span><span class="p">,:]</span>
+        <span class="n">Sig</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">R</span><span class="p">[:,</span><span class="n">k</span><span class="p">]</span><span class="o">/</span><span class="n">num</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">*</span><span class="n">dX</span><span class="o">.</span><span class="n">T</span><span class="nd">@dX</span>  <span class="c1"># cluster covariance    </span>
+    <span class="c1"># plot the new means</span>
+    <span class="c1">#plt.hold(True)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Mu</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">Mu</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="n">K</span><span class="p">),</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;+&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Unsupervised_14_0.png" src="_images/Unsupervised_14_0.png" />
+<img alt="_images/Unsupervised_14_1.png" src="_images/Unsupervised_14_1.png" />
+<img alt="_images/Unsupervised_14_2.png" src="_images/Unsupervised_14_2.png" />
+<img alt="_images/Unsupervised_14_3.png" src="_images/Unsupervised_14_3.png" />
+<img alt="_images/Unsupervised_14_4.png" src="_images/Unsupervised_14_4.png" />
+<img alt="_images/Unsupervised_14_5.png" src="_images/Unsupervised_14_5.png" />
+<img alt="_images/Unsupervised_14_6.png" src="_images/Unsupervised_14_6.png" />
+<img alt="_images/Unsupervised_14_7.png" src="_images/Unsupervised_14_7.png" />
+<img alt="_images/Unsupervised_14_8.png" src="_images/Unsupervised_14_8.png" />
+<img alt="_images/Unsupervised_14_9.png" src="_images/Unsupervised_14_9.png" />
+<img alt="_images/Unsupervised_14_10.png" src="_images/Unsupervised_14_10.png" />
+<img alt="_images/Unsupervised_14_11.png" src="_images/Unsupervised_14_11.png" />
+<img alt="_images/Unsupervised_14_12.png" src="_images/Unsupervised_14_12.png" />
+<img alt="_images/Unsupervised_14_13.png" src="_images/Unsupervised_14_13.png" />
+<img alt="_images/Unsupervised_14_14.png" src="_images/Unsupervised_14_14.png" />
+<img alt="_images/Unsupervised_14_15.png" src="_images/Unsupervised_14_15.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="dirichlet-process-mixture">
+<h2>Dirichlet Process Mixture<a class="headerlink" href="#dirichlet-process-mixture" title="Permalink to this headline">#</a></h2>
+<p>One problem in <span class="math notranslate nohighlight">\(K\)</span>-means and Mixture of Gaussians is that you have to assume the number of clusters <span class="math notranslate nohighlight">\(K\)</span> beforehand.</p>
+<p>There is an extension called <em>Dirichlet process mixture</em> that decides the number of clusters based on the data.</p>
+<p>See Kevin Murphy (2012) Ch. 25.2 for details.</p>
+<section id="scikit-learn">
+<h3>scikit-learn<a class="headerlink" href="#scikit-learn" title="Permalink to this headline">#</a></h3>
+<p><a class="reference external" href="http://scikit-learn.org/stable/">scikit-learn</a> is a popular Pyhon libraries of supervised and unsupervised learning algorithms with excellent documentation, examples and
+<a class="reference external" href="http://scikit-learn.org/stable/tutorial/machine_learning_map">tutorials</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">mixture</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>mixture.BayesianGaussianMixture<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a Dirichlet process mixture of Gaussians</span>
+<span class="n">dpm</span> <span class="o">=</span> <span class="n">mixture</span><span class="o">.</span><span class="n">BayesianGaussianMixture</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="c1"># Fit to data</span>
+<span class="n">dpm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">Mu</span> <span class="o">=</span> <span class="n">dpm</span><span class="o">.</span><span class="n">means_</span>
+<span class="n">Pi</span> <span class="o">=</span> <span class="n">dpm</span><span class="o">.</span><span class="n">weights_</span>
+<span class="c1">#K = dpm.n_components</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;pi =&quot;</span><span class="p">,</span> <span class="n">dpm</span><span class="o">.</span><span class="n">weights_</span><span class="p">)</span>
+<span class="c1"># class label</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">dpm</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">Y</span><span class="p">)</span>
+<span class="c1">#plt.scatter(Mu[:,0], Mu[:,1], c=range(K), marker=&#39;+&#39;,s=300);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pi = [4.04728561e-03 6.40742773e-01 3.98347436e-03 3.50629330e-01
+ 5.97136939e-04]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x151cb1a00&gt;
+</pre></div>
+</div>
+<img alt="_images/Unsupervised_20_2.png" src="_images/Unsupervised_20_2.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="principal-component-analysis">
+<h2>Principal Component Analysis<a class="headerlink" href="#principal-component-analysis" title="Permalink to this headline">#</a></h2>
+<p>Grasping the distribution of a high-dimensional data is not easy for human eyes. We often try to find a low-dimensional projection of the data that characteirizes the distribution.</p>
+<p><em>Principal componet analysis (PCA)</em> finds the directions of the data distribution with the largest variance.</p>
+<p>Consider a projection of <span class="math notranslate nohighlight">\(D\)</span>-dimensional vector <span class="math notranslate nohighlight">\(\b{x} = (x_1,...,x_D)^T\)</span> to
+<span class="math notranslate nohighlight">\(M\)</span>-dimensional vector <span class="math notranslate nohighlight">\(\b{y} = (y_1,...,y_M)^T\)</span> by
+$<span class="math notranslate nohighlight">\( \b{y} = V \b{x} \)</span><span class="math notranslate nohighlight">\(
+where \)</span>V = (\b{v}_1,…,\b{v}_M)^T<span class="math notranslate nohighlight">\(, \)</span>||\b{v}_m||=1$.</p>
+<p>For a data set <span class="math notranslate nohighlight">\(X=(x_1,...,x_N)^T\)</span> with zero mean (mean subtracted),
+we try to find the projection by <span class="math notranslate nohighlight">\(V\)</span> that make the variance of <span class="math notranslate nohighlight">\(\b{y}\)</span> the largest.</p>
+<p>Using the data covariance
+$<span class="math notranslate nohighlight">\( C = \frac{1}{N}X^T X = \frac{1}{N}\sum_{n=1}^N \b{x}_n\b{x}_n^T \)</span><span class="math notranslate nohighlight">\(
+the covariance of projection \)</span>\b{z}<span class="math notranslate nohighlight">\( is given as \)</span>V^T C V$.</p>
+<p>After solving the eigenvalue problem <span class="math notranslate nohighlight">\(C\b{v}=\lambda \b{v}\)</span>,
+the covariance of projected data is maximized by <span class="math notranslate nohighlight">\(V=(\b{v}_1,...,\b{v}_M)^T\)</span> made of the eigenvectors with the largest eigenvalues <span class="math notranslate nohighlight">\(\lambda_1,...,\lambda_M\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># sklearn.datasets offers a wide range of public datasets</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+<span class="c1"># the iris dataset</span>
+<span class="n">iris</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span>  <span class="c1"># flower features</span>
+<span class="n">T</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span>  <span class="c1"># flower types</span>
+<span class="n">N</span><span class="p">,</span> <span class="n">D</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>150 4
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot the data in 3D</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span> <span class="c1"># for 3D plotting</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">2</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">T</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Unsupervised_24_0.png" src="_images/Unsupervised_24_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Data covariance</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">X</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># subtract the mean</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="nd">@X</span><span class="o">/</span><span class="n">N</span>
+<span class="c1"># eigenvalue L[i] and normal eigenvector V[:,i]</span>
+<span class="n">L</span><span class="p">,</span> <span class="n">Vt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eigh</span><span class="p">(</span> <span class="n">C</span><span class="p">)</span>   <span class="c1"># for symmetric matrix</span>
+<span class="c1">#L, V = linalg.eig( C)</span>
+<span class="c1"># in matrix form: C*V=V*L, i.e. C=V*L*V&#39; from V&#39;*V=I</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>   <span class="c1"># eigenvalues</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Vt</span><span class="p">)</span>   <span class="c1"># columns are eigenvectors</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.02367619 0.0776881  0.24105294 4.20005343]
+[[ 0.31548719  0.58202985  0.65658877 -0.36138659]
+ [-0.3197231  -0.59791083  0.73016143  0.08452251]
+ [-0.47983899 -0.07623608 -0.17337266 -0.85667061]
+ [ 0.75365743 -0.54583143 -0.07548102 -0.3582892 ]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="o">-</span><span class="n">L</span><span class="p">)</span>  <span class="c1"># largest first</span>
+<span class="n">L</span> <span class="o">=</span> <span class="n">L</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>  <span class="c1"># reorder</span>
+<span class="n">V</span> <span class="o">=</span> <span class="n">Vt</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>  
+<span class="nb">print</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;index m&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$\lambda_m$&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-0.36138659  0.08452251 -0.85667061 -0.3582892 ]
+ [ 0.65658877  0.73016143 -0.17337266 -0.07548102]
+ [ 0.58202985 -0.59791083 -0.07623608 -0.54583143]
+ [ 0.31548719 -0.3197231  -0.47983899  0.75365743]]
+</pre></div>
+</div>
+<img alt="_images/Unsupervised_26_1.png" src="_images/Unsupervised_26_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Projection of data to the PC space</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">X</span><span class="nd">@V</span><span class="o">.</span><span class="n">T</span>
+<span class="c1"># First two PC</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Z</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">Z</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">T</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Unsupervised_27_0.png" src="_images/Unsupervised_27_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Last two PC</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Z</span><span class="p">[:,</span><span class="mi">2</span><span class="p">],</span> <span class="n">Z</span><span class="p">[:,</span><span class="mi">3</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">T</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Unsupervised_28_0.png" src="_images/Unsupervised_28_0.png" />
+</div>
+</div>
+</section>
+<section id="singular-value-decomposition-svd">
+<h2>Singular value decomposition (SVD)<a class="headerlink" href="#singular-value-decomposition-svd" title="Permalink to this headline">#</a></h2>
+<p>Singular value decomposition (SVD) represents a <span class="math notranslate nohighlight">\(N\times D\)</span> matrix (<span class="math notranslate nohighlight">\(N&gt;D\)</span>) by a weighted sum of products of column vectors <span class="math notranslate nohighlight">\(\b{u}_i \in \Re^N\)</span> and row vectors <span class="math notranslate nohighlight">\(\b{v}_i^T \in \Re^D\)</span>
+$<span class="math notranslate nohighlight">\( X = \sum_{i=1}^D s_i \b{u}_i \b{v}_i^T \)</span><span class="math notranslate nohighlight">\(
+where \)</span>\b{v}_i<span class="math notranslate nohighlight">\( are the eigenvectors of \)</span>X^T X<span class="math notranslate nohighlight">\( and \)</span>s_i= \sqrt{\lambda_i}<span class="math notranslate nohighlight">\( are given by their corresponding eigenvalues (\)</span>\lambda_1 \ge … \ge\lambda_D$).</p>
+<p>In a matrix form, SVD is represented as
+$<span class="math notranslate nohighlight">\( X = U S V^T \)</span><span class="math notranslate nohighlight">\(
+where 
+\)</span><span class="math notranslate nohighlight">\( U = (\b{u}_1,...,\b{u}_D) \in \Re^{N\times D} \mbox{(or \)</span>\Re^{N\times N}<span class="math notranslate nohighlight">\( with empty columns)} \)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\( S = \mbox{diag}(\sqrt{\lambda_1},...,\sqrt{\lambda_D}) \in \Re^{D\times D}  \mbox{(or \)</span>\Re^{N\times D}<span class="math notranslate nohighlight">\( with empty rows)} \)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\( V = (\b{v}_1,...,\b{v}_D) \in \Re^{D\times D}. \)</span>$</p>
+<p>Because <span class="math notranslate nohighlight">\(V\)</span> is the same as that for PCA, the SVD is often used for computing</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># X = U*S*V&#39; where S is a diagonal matrix</span>
+<span class="c1"># i.e. C = X&#39;*X/N = V*S^2/N*V&#39;</span>
+<span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">Vs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="c1"># See if they match those derived from covariance matrix</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="n">N</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Vs</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>  
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[4.20005343 0.24105294 0.0776881  0.02367619]
+[4.20005343 0.24105294 0.0776881  0.02367619]
+[[ 0.36138659 -0.08452251  0.85667061  0.3582892 ]
+ [-0.65658877 -0.73016143  0.17337266  0.07548102]
+ [ 0.58202985 -0.59791083 -0.07623608 -0.54583143]
+ [ 0.31548719 -0.3197231  -0.47983899  0.75365743]]
+[[-0.36138659  0.08452251 -0.85667061 -0.3582892 ]
+ [ 0.65658877  0.73016143 -0.17337266 -0.07548102]
+ [ 0.58202985 -0.59791083 -0.07623608 -0.54583143]
+ [ 0.31548719 -0.3197231  -0.47983899  0.75365743]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="online-pca">
+<h2>Online PCA<a class="headerlink" href="#online-pca" title="Permalink to this headline">#</a></h2>
+<p>It has been shown that a simple linear neural network can perform computation similar to PCA (Sanger 1989).</p>
+<p>Let us consider a two-layer network
+$<span class="math notranslate nohighlight">\( \b{y} = W \b{x} \)</span><span class="math notranslate nohighlight">\(
+with input \)</span>\b{x}=(x_1,…,x_D)^T<span class="math notranslate nohighlight">\(, output \)</span>\b{y}=(y_1,…,y_M)^T<span class="math notranslate nohighlight">\(, and \)</span>M\times D<span class="math notranslate nohighlight">\( connection weights \)</span>W<span class="math notranslate nohighlight">\( (\)</span>M&lt;D$).</p>
+<p>Consider a <em>generalized Hebbian algorithm</em>
+In a componet form, it is
+$<span class="math notranslate nohighlight">\( \Delta w_{ij} = \alpha(y_i x_j - y_i\sum_{k\le i} w_{kj}y_k) \)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\( = \alpha[y_i(x_j - \sum_{k&lt;i} w_{kj}y_k) - y_i^2 w_{ij}] \)</span>$</p>
+<p>In a matrix form, it is represented as
+$<span class="math notranslate nohighlight">\( \Delta W = \alpha(\b{y}\b{x}^T - LT[\b{y}\b{y}^T]W) \)</span><span class="math notranslate nohighlight">\(
+where \)</span>LT[\ ]$ takes the lower triangle (including the diagonal) of a matrix.</p>
+<p>It has been shown that the rows of matrix <span class="math notranslate nohighlight">\(W\)</span> converges to the <span class="math notranslate nohighlight">\(M\)</span> eigenvectors with the largest eigen values of the covariance matrix <span class="math notranslate nohighlight">\(E[\b{x}\b{x}^T ]\)</span></p>
+<blockquote>
+<div><p><img alt="Sanger89_gha" src="_images/Sanger89_gha.jpg" />
+Figure: The ordered feedback inhibition in generalized Hebbian algorithm (from Sanger 1989).</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gha</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.01</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Generalized Hebbian Alogrithm by Sanger (1989)&quot;&quot;&quot;</span>
+    <span class="n">N</span><span class="p">,</span> <span class="n">D</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">W</span><span class="nd">@X</span><span class="p">[</span><span class="n">n</span><span class="p">,:]</span>
+        <span class="n">W</span> <span class="o">+=</span> <span class="n">alpha</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="p">,:])</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">tril</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">y</span><span class="p">))</span><span class="nd">@W</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">W</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Iris example</span>
+<span class="n">M</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">W</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">M</span><span class="o">*</span><span class="n">D</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">M</span><span class="p">,</span><span class="n">D</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">W</span> <span class="o">=</span> <span class="n">gha</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">W</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0.39231157 -0.01325199  0.83312078  0.39184057]
+ [-0.24456166 -0.50821492  0.34779435 -0.64599399]]
+[[ 0.39271898 -0.01236727  0.83328711  0.39109667]
+ [-0.30601437 -0.59132603  0.33092683 -0.57482115]]
+[[ 0.39271995 -0.01236553  0.83328722  0.39109549]
+ [-0.36768686 -0.66069126  0.3098087  -0.48938244]]
+[[ 0.39271996 -0.01236553  0.83328722  0.39109549]
+ [-0.42362362 -0.71088368  0.28640522 -0.39837684]]
+[[ 0.39271996 -0.01236553  0.83328722  0.39109549]
+ [-0.47037736 -0.74188603  0.26335405 -0.31108356]]
+[[ 0.39271996 -0.01236553  0.83328722  0.39109549]
+ [-0.50739628 -0.75757611  0.24275549 -0.23391795]]
+[[ 0.39271996 -0.01236553  0.83328722  0.39109549]
+ [-0.53591828 -0.76294364  0.22563693 -0.16950242]]
+[[ 0.39271996 -0.01236553  0.83328722  0.39109549]
+ [-0.55773305 -0.76223715  0.2121166  -0.11768263]]
+[[ 0.39271996 -0.01236553  0.83328722  0.39109549]
+ [-0.5744897  -0.75841514  0.20180382 -0.0769202 ]]
+[[ 0.39271996 -0.01236553  0.83328722  0.39109549]
+ [-0.58748069 -0.75330258  0.19412405 -0.04526691]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">W</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.39238556, -0.012355  ,  0.83257769,  0.39076248],
+       [-0.60200418, -0.77192545,  0.19892311, -0.04638598]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Projection of data to the PC space</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">X</span><span class="nd">@W</span><span class="o">.</span><span class="n">T</span>
+<span class="c1"># First two PC</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Z</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">Z</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">T</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Unsupervised_37_0.png" src="_images/Unsupervised_37_0.png" />
+</div>
+</div>
+</section>
+<section id="infomax-principle">
+<h2>Infomax principle<a class="headerlink" href="#infomax-principle" title="Permalink to this headline">#</a></h2>
+<p>The <em>infomax</em> principle is to find a mapping from input <span class="math notranslate nohighlight">\(\b{x}\)</span> to the output <span class="math notranslate nohighlight">\(\b{y}\)</span> so that the mutual information
+$<span class="math notranslate nohighlight">\( I(\b{y};\b{x}) = H(\b{y}) – H(\b{y}|\b{x}) \)</span>$
+is maximized.</p>
+<p>PCA is an example of infomax by a linear transformation
+$<span class="math notranslate nohighlight">\(\b{y}=V\b{x} \)</span><span class="math notranslate nohighlight">\( 
+while keeping the norm of the row vectors of matrix \)</span>V$ to be one.</p>
+<p>For a deterministic mapping or a mapping with homogenetous additive noise $<span class="math notranslate nohighlight">\( \b{y}=f(\b{x})+\b{\epsilon}, \)</span><span class="math notranslate nohighlight">\(
+\)</span>H(\b{y}|\b{x})$ is constant, so that</p>
+<ul class="simple">
+<li><p>maximization of information transfer <span class="math notranslate nohighlight">\(I(\b{y};\b{x})\)</span></p></li>
+</ul>
+<p>is equivalent to</p>
+<ul class="simple">
+<li><p>maximization of output entropy <span class="math notranslate nohighlight">\(H(\b{y})\)</span>.</p></li>
+</ul>
+<p>Note that <span class="math notranslate nohighlight">\(H(\b{y})\le\sum_i H(y_i)\)</span>
+and the equality is achieved when the output components are independent: <span class="math notranslate nohighlight">\(p(\b{y}) = \prod_i p(y_i).\)</span></p>
+</section>
+<section id="independent-component-analysis-ica">
+<h2>Independent component analysis (ICA)<a class="headerlink" href="#independent-component-analysis-ica" title="Permalink to this headline">#</a></h2>
+<p>We can listen to a particular speaker’s voice or a sound of an instrument among mixed sound.
+This is called <em>cocktail party effect</em> or <em>blind separation</em>.</p>
+<p>For a <span class="math notranslate nohighlight">\(D\)</span> independent signal sources <span class="math notranslate nohighlight">\(\b{s}=(s_1,...,s_D)^T\)</span>, we consider mixture signal
+$<span class="math notranslate nohighlight">\( x_j = \sum_{i=1}^D a_{ji} s_i, \)</span><span class="math notranslate nohighlight">\(
+or in vector form
+\)</span><span class="math notranslate nohighlight">\( \b{x} = A \b{s}. \)</span>$</p>
+<p><em>Independent component analysis (ICA)</em> tries to recover the original signals by
+$<span class="math notranslate nohighlight">\( \b{y} = W\b{x} \)</span><span class="math notranslate nohighlight">\(
+where components of \)</span>\b{y}=(y_1,…,y_D)<span class="math notranslate nohighlight">\( are independent, i.e.,
+\)</span><span class="math notranslate nohighlight">\( p(\b{y}) = \prod_{i=1}^D p(y_i), \)</span>$</p>
+<p>When the amplitude of <span class="math notranslate nohighlight">\(y_i\)</span> is bounded,
+the output entropy <span class="math notranslate nohighlight">\(H(\b{y})\le\sum_i H(y_i)\)</span> is maximized when <span class="math notranslate nohighlight">\(y_i\)</span> are independent.</p>
+<section id="ica-by-infomax">
+<h3>ICA by Infomax<a class="headerlink" href="#ica-by-infomax" title="Permalink to this headline">#</a></h3>
+<p>If the signal distribution <span class="math notranslate nohighlight">\(p(s_i)\)</span> is <em>supragaussian</em>, having a sharp peak and long tails, ICA is achieved by a network with saturating output function, such as
+$<span class="math notranslate nohighlight">\( \b{u} = W \b{x} \)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\( y_i = \tanh(u_i). \)</span><span class="math notranslate nohighlight">\(
+where \)</span>\tanh(u)=\frac{e^u-e^{-u}}{e^u+e^{-u}}<span class="math notranslate nohighlight">\( is a sigmoid function within \)</span>(-1,1)$.</p>
+<p>In this case, the derivative of the output entropy is given by (Bell &amp; Sejnowski 1995)
+$<span class="math notranslate nohighlight">\( \p{H(\b{y})}{W} = {W^T}^{-1} + \b{y}\b{x}^T. \)</span><span class="math notranslate nohighlight">\(
+The entropy is maximized by the *natural gradient* method (Amari 1998),
+\)</span><span class="math notranslate nohighlight">\( \Delta W = \alpha \p{H(\b{y})}{W} W^TW \)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\( = \alpha({W^T}^{-1} - \b{y}\b{x}^T) W^TW \)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\( = \alpha(W-\b{y}\b{u}^TW). \)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ica</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">W</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">online</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;ICA by max entropy with tanh()&quot;&quot;&quot;</span>
+    <span class="n">N</span><span class="p">,</span> <span class="n">D</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span>
+    <span class="k">if</span> <span class="n">W</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">W</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>  <span class="c1"># initial guess</span>
+    <span class="k">if</span> <span class="n">online</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+            <span class="n">u</span> <span class="o">=</span> <span class="n">W</span><span class="nd">@X</span><span class="p">[</span><span class="n">n</span><span class="p">,:]</span>  
+            <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+            <span class="n">W</span> <span class="o">+=</span> <span class="n">alpha</span><span class="o">*</span><span class="p">(</span><span class="n">W</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">u</span><span class="nd">@W</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>  <span class="c1"># batch update</span>
+        <span class="n">U</span> <span class="o">=</span> <span class="n">X</span><span class="nd">@W</span><span class="o">.</span><span class="n">T</span>
+        <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">U</span><span class="p">)</span>
+        <span class="n">W</span> <span class="o">+=</span> <span class="n">alpha</span><span class="o">*</span><span class="p">(</span><span class="n">W</span> <span class="o">-</span> <span class="n">Y</span><span class="o">.</span><span class="n">T</span><span class="nd">@U@W</span><span class="o">/</span><span class="n">N</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">W</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make mixed signals of two decaying tones</span>
+<span class="n">D</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># channels</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">2000</span>  <span class="c1"># signal length</span>
+<span class="c1"># Source signal</span>
+<span class="n">S</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="n">D</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">D</span><span class="p">):</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="mi">200</span>  <span class="c1"># tone length</span>
+    <span class="n">M</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># number of tones</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="o">/</span><span class="mi">50</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">+</span><span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>  <span class="c1"># single tone</span>
+    <span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">N</span><span class="o">-</span><span class="n">T</span><span class="p">,</span> <span class="n">M</span><span class="p">)</span>  <span class="c1"># start timing</span>
+    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">M</span><span class="p">):</span>
+        <span class="n">S</span><span class="p">[</span><span class="n">ts</span><span class="p">[</span><span class="n">m</span><span class="p">]:</span><span class="n">ts</span><span class="p">[</span><span class="n">m</span><span class="p">]</span><span class="o">+</span><span class="n">T</span><span class="p">,</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">s</span>  <span class="c1"># add shifted tone</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;S&quot;</span><span class="p">);</span>
+<span class="c1"># Mixed signal</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="n">D</span><span class="p">,</span><span class="n">D</span><span class="p">))</span>   <span class="c1"># random matrix</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">S</span><span class="nd">@A</span><span class="o">.</span><span class="n">T</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;X&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.72354016 0.43629719]
+ [0.86180613 0.12532989]]
+</pre></div>
+</div>
+<img alt="_images/Unsupervised_43_1.png" src="_images/Unsupervised_43_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Applyy ICA to the mixture</span>
+<span class="n">W</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">W</span> <span class="o">=</span> <span class="n">ica</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">W</span><span class="nd">@A</span><span class="p">)</span>
+<span class="n">U</span> <span class="o">=</span> <span class="n">X</span><span class="nd">@W</span><span class="o">.</span><span class="n">T</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">U</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[2.69740644 2.31428407]
+ [3.61736314 0.02592029]]
+[[ 1.21257859  9.09937504]
+ [ 6.8998253  -2.27545791]]
+[[ 0.02959456 16.98500214]
+ [ 8.3690903  -0.56309701]]
+[[ 1.59964713e-03  1.88882972e+01]
+ [ 8.57225698e+00 -2.21956964e-01]]
+[[ 1.40023749e-03  1.91283107e+01]
+ [ 8.59484802e+00 -2.23113548e-01]]
+[[ 1.40226291e-03  1.91555337e+01]
+ [ 8.59725680e+00 -2.23596775e-01]]
+[[ 1.40267200e-03  1.91585831e+01]
+ [ 8.59751254e+00 -2.23653025e-01]]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 1.40272186e-03  1.91589242e+01]
+ [ 8.59753966e+00 -2.23659315e-01]]
+[[ 1.40272779e-03  1.91589623e+01]
+ [ 8.59754254e+00 -2.23660017e-01]]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 1.40272849e-03  1.91589666e+01]
+ [ 8.59754284e+00 -2.23660096e-01]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot the original and separated signals</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;S&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">U</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Unsupervised_45_0.png" src="_images/Unsupervised_45_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot t2D signal distributions</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">S</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">S</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;square&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;S&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;square&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;X&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">U</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">U</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;square&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Y</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">Y</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;square&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Y&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Unsupervised_46_0.png" src="_images/Unsupervised_46_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># see how the mixing and separation weights are aligned to mixed data</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;square&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;X&quot;</span><span class="p">)</span>
+<span class="c1"># estimated mixing vectors</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">W</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">a</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
+<span class="c1"># separating vectors</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">W</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">W</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="n">w</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">w</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]]);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Unsupervised_47_0.png" src="_images/Unsupervised_47_0.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="playing-sound">
+<h2>Playing sound<a class="headerlink" href="#playing-sound" title="Permalink to this headline">#</a></h2>
+<p>Do you want to hear the mixed and separated sounds?
+You can use Python interface to <a class="reference external" href="http://www.portaudio.com/"><code class="docutils literal notranslate"><span class="pre">portaudio</span></code></a> library,
+such as <a class="reference external" href="https://pypi.org/project/sounddevice/"><code class="docutils literal notranslate"><span class="pre">sounddevice</span></code></a> or <a class="reference external" href="https://pypi.org/project/PyAudio/"><code class="docutils literal notranslate"><span class="pre">pyaudio</span></code></a> and package to play sound.</p>
+<p>First, install <code class="docutils literal notranslate"><span class="pre">portaudio</span></code> library. On Mac, if you have <code class="docutils literal notranslate"><span class="pre">brew</span></code> tool, you can run:</p>
+<p>$ brew install portaudio</p>
+<p>Currently <code class="docutils literal notranslate"><span class="pre">sounddevice</span></code> is not in the anaconda packages, so install by <code class="docutils literal notranslate"><span class="pre">pip</span></code> command:</p>
+<p>$ pip install sounddevice</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sounddevice</span> <span class="k">as</span> <span class="nn">sd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Source sounds</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">D</span><span class="p">):</span>
+    <span class="n">sd</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">S</span><span class="p">[:,</span><span class="n">i</span><span class="p">],</span> <span class="n">samplerate</span><span class="o">=</span><span class="mi">4000</span><span class="p">,</span> <span class="n">blocking</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># 4kHz sampling, wait till finish</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">MemoryError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="nn">Input In [29],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Source sounds</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">D</span><span class="p">):</span>
+<span class="ne">----&gt; </span><span class="mi">3</span>     <span class="n">sd</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">S</span><span class="p">[:,</span><span class="n">i</span><span class="p">],</span> <span class="n">samplerate</span><span class="o">=</span><span class="mi">4000</span><span class="p">,</span> <span class="n">blocking</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nn">File ~/miniforge3/lib/python3.9/site-packages/sounddevice.py:175,</span> in <span class="ni">play</span><span class="nt">(data, samplerate, mapping, blocking, loop, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">172</span>     <span class="n">ctx</span><span class="o">.</span><span class="n">write_outdata</span><span class="p">(</span><span class="n">outdata</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">173</span>     <span class="n">ctx</span><span class="o">.</span><span class="n">callback_exit</span><span class="p">()</span>
+<span class="ne">--&gt; </span><span class="mi">175</span> <span class="n">ctx</span><span class="o">.</span><span class="n">start_stream</span><span class="p">(</span><span class="n">OutputStream</span><span class="p">,</span> <span class="n">samplerate</span><span class="p">,</span> <span class="n">ctx</span><span class="o">.</span><span class="n">output_channels</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">176</span>                  <span class="n">ctx</span><span class="o">.</span><span class="n">output_dtype</span><span class="p">,</span> <span class="n">callback</span><span class="p">,</span> <span class="n">blocking</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">177</span>                  <span class="n">prime_output_buffers_using_stream_callback</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">178</span>                  <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~/miniforge3/lib/python3.9/site-packages/sounddevice.py:2582,</span> in <span class="ni">_CallbackContext.start_stream</span><span class="nt">(self, StreamClass, samplerate, channels, dtype, callback, blocking, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2579</span> <span class="k">def</span> <span class="nf">start_stream</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">StreamClass</span><span class="p">,</span> <span class="n">samplerate</span><span class="p">,</span> <span class="n">channels</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">callback</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2580</span>                  <span class="n">blocking</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">2581</span>     <span class="n">stop</span><span class="p">()</span>  <span class="c1"># Stop previous playback/recording</span>
+<span class="ne">-&gt; </span><span class="mi">2582</span>     <span class="bp">self</span><span class="o">.</span><span class="n">stream</span> <span class="o">=</span> <span class="n">StreamClass</span><span class="p">(</span><span class="n">samplerate</span><span class="o">=</span><span class="n">samplerate</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2583</span>                               <span class="n">channels</span><span class="o">=</span><span class="n">channels</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2584</span>                               <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2585</span>                               <span class="n">callback</span><span class="o">=</span><span class="n">callback</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2586</span>                               <span class="n">finished_callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">finished_callback</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2587</span>                               <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2588</span>     <span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">2589</span>     <span class="k">global</span> <span class="n">_last_callback</span>
+
+<span class="nn">File ~/miniforge3/lib/python3.9/site-packages/sounddevice.py:1494,</span> in <span class="ni">OutputStream.__init__</span><span class="nt">(self, samplerate, blocksize, device, channels, dtype, latency, extra_settings, callback, finished_callback, clip_off, dither_off, never_drop_input, prime_output_buffers_using_stream_callback)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1464</span> <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">samplerate</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">blocksize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1465</span>              <span class="n">device</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">channels</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">latency</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1466</span>              <span class="n">extra_settings</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">finished_callback</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1467</span>              <span class="n">clip_off</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dither_off</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">never_drop_input</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1468</span>              <span class="n">prime_output_buffers_using_stream_callback</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1469</span>     <span class="sd">&quot;&quot;&quot;PortAudio output stream (using NumPy).</span>
+<span class="g g-Whitespace">   </span><span class="mi">1470</span><span class="sd"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1471</span><span class="sd">     This has the same methods and attributes as `Stream`, except</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1492</span><span class="sd"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1493</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1494</span>     <span class="n">_StreamBase</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;output&#39;</span><span class="p">,</span> <span class="n">wrap_callback</span><span class="o">=</span><span class="s1">&#39;array&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1495</span>                          <span class="o">**</span><span class="n">_remove_self</span><span class="p">(</span><span class="nb">locals</span><span class="p">()))</span>
+
+<span class="nn">File ~/miniforge3/lib/python3.9/site-packages/sounddevice.py:858,</span> in <span class="ni">_StreamBase.__init__</span><span class="nt">(self, kind, samplerate, blocksize, device, channels, dtype, latency, extra_settings, callback, finished_callback, clip_off, dither_off, never_drop_input, prime_output_buffers_using_stream_callback, userdata, wrap_callback)</span>
+<span class="g g-Whitespace">    </span><span class="mi">853</span>         <span class="k">return</span> <span class="n">_wrap_callback</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">frames</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">status</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">855</span> <span class="k">elif</span> <span class="n">kind</span> <span class="o">==</span> <span class="s1">&#39;output&#39;</span> <span class="ow">and</span> <span class="n">wrap_callback</span> <span class="o">==</span> <span class="s1">&#39;array&#39;</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">857</span>     <span class="nd">@ffi_callback</span>
+<span class="ne">--&gt; </span><span class="mi">858</span>     <span class="k">def</span> <span class="nf">callback_ptr</span><span class="p">(</span><span class="n">iptr</span><span class="p">,</span> <span class="n">optr</span><span class="p">,</span> <span class="n">frames</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">_</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">859</span>         <span class="n">data</span> <span class="o">=</span> <span class="n">_array</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">860</span>             <span class="n">_buffer</span><span class="p">(</span><span class="n">optr</span><span class="p">,</span> <span class="n">frames</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_channels</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_samplesize</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">861</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_channels</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dtype</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">862</span>         <span class="k">return</span> <span class="n">_wrap_callback</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">frames</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">status</span><span class="p">)</span>
+
+<span class="ne">MemoryError</span>: Cannot allocate write+execute memory for ffi.callback(). You might be running on a system that prevents this. For more information, see https://cffi.readthedocs.io/en/latest/using.html#callbacks
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mixed sounds</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">D</span><span class="p">):</span>
+    <span class="n">sd</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="n">i</span><span class="p">],</span> <span class="n">samplerate</span><span class="o">=</span><span class="mi">4000</span><span class="p">,</span> <span class="n">blocking</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># 4kHz sampling, wait till finish</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Separated sounds</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">D</span><span class="p">):</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">U</span><span class="o">/</span><span class="nb">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">U</span><span class="p">))</span>  <span class="c1"># scale in [-1,1]</span>
+    <span class="n">sd</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">u</span><span class="p">[:,</span><span class="n">i</span><span class="p">],</span> <span class="n">samplerate</span><span class="o">=</span><span class="mi">4000</span><span class="p">,</span> <span class="n">blocking</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># 4kHz sampling, wait till finish</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="receptive-fields-of-visual-cortex-neurons">
+<h2>Receptive fields of visual cortex neurons<a class="headerlink" href="#receptive-fields-of-visual-cortex-neurons" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Cat visual cortex (Hubel &amp; Wiesel)</p></li>
+<li><p>Self-organization (von der Malsburgh)</p></li>
+<li><p>by Informax (Linsker)</p></li>
+<li><p>by SOM (Obermayer et al.)</p></li>
+<li><p>by PCA (Sanger et al.)</p></li>
+<li><p>by ICA (Bell &amp; Sejnowski)</p></li>
+</ul>
+<section id="replicating-receptive-field-tuning">
+<h3>Replicating receptive field tuning<a class="headerlink" href="#replicating-receptive-field-tuning" title="Permalink to this headline">#</a></h3>
+<p>Sanger (1989) trained an <em>autoencoder</em> network with patches from natural images as inputs.
+The PCs learned by <em>generalized Hebbian learning</em> in the hiddenlayers had input weights similar to the receptive field propertis of visual cortical neurons.</p>
+<blockquote>
+<div><p><img alt="Sanger89_rf" src="_images/Sanger89_rf.jpg" />
+Figure from Sanger (1989)</p>
+</div></blockquote>
+</section>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Bishop CM (2006) Pattern Recognition and Machine Learning. Springer.</p>
+<ul>
+<li><p>Chapter 9: Mixture models and EM</p></li>
+<li><p>Chapter 12: Continuous latent variables</p></li>
+</ul>
+</li>
+<li><p>Murphy K (2012) Machine learning: A probabilistic perspective. MIT press.</p>
+<ul>
+<li><p>Chapter 25.2: Dirichlet process mixture models</p></li>
+</ul>
+</li>
+</ul>
+<section id="self-organization">
+<h3>Self Organization<a class="headerlink" href="#self-organization" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Hubel DH, Wiesel TN (1959). Receptive fields of single neurones in the cat’s striate cortex. Journal of Physiology, 148, 574-91. <a class="reference external" href="http://doi.org/10.1113/jphysiol.1959.sp006308">http://doi.org/10.1113/jphysiol.1959.sp006308</a></p></li>
+<li><p>Hubel DH, Wiesel TN (1962). Receptive fields, binocular interaction and functional architecture in the cat’s visual cortex. Journal of Physiology, 160, 106-154. <a class="reference external" href="http://doi.org/10.1113/jphysiol.1962.sp006837">http://doi.org/10.1113/jphysiol.1962.sp006837</a></p></li>
+<li><p>von der Malsburg C (1973). Self-organization of orientation sensitive cells in the striate cortex. Kybernetik, 14, 85-100.</p></li>
+<li><p>Kohonen T (1982). Self-Organized Formation of Topologically Correct Feature Maps. Biol Cybern, 43, 59-69.</p></li>
+</ul>
+</section>
+<section id="pca">
+<h3>PCA<a class="headerlink" href="#pca" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Sanger TD (1989). Optimal unsupervised learning in a single-layer linear feedforward neural network. Neural Networks, 2, 459-473. <a class="reference external" href="http://doi.org/10.1016/0893-6080(89)90044-0">http://doi.org/10.1016/0893-6080(89)90044-0</a></p></li>
+<li><p>Turk M, Pentland A (1991). Eigenfaces for recognition. Journal of Cognitive Neurosciece, 3, 71-86. <a class="reference external" href="http://doi.org/10.1162/jocn.1991.3.1.71">http://doi.org/10.1162/jocn.1991.3.1.71</a></p></li>
+</ul>
+</section>
+<section id="infomax-and-ica">
+<h3>Infomax and ICA<a class="headerlink" href="#infomax-and-ica" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Linsker R (1986). From basic network principles to neural architecture. Proceedings of the National Academy of Sciences, USA, 83, 7508-7512, 8390-8394, 8779-8783.  <a class="reference external" href="http://doi.org/10.1073/pnas.83.19.7508">http://doi.org/10.1073/pnas.83.19.7508</a></p></li>
+<li><p>Bell AJ, Sejnowski TJ (1995). An information-maxization approach to blind separation and blind deconvolution. Neural Comput, 7, 1129-1159. <a class="reference external" href="http://doi.org/10.1162/neco.1995.7.6.1129">http://doi.org/10.1162/neco.1995.7.6.1129</a></p></li>
+<li><p>Bell AJ, Sejnowski TJ (1997). The “independent components” of natural scenes are edge filters. Vision Research, 37, 3327-3338. <a class="reference external" href="http://doi.org/10.1016/s0042-6989(97)00121-1">http://doi.org/10.1016/s0042-6989(97)00121-1</a></p></li>
+<li><p>Amari S (1998). Natural gradient works efficiently in learning. Neural Comput, 10, 251-276. <a class="reference external" href="http://doi.org/10.1162/089976698300017746">http://doi.org/10.1162/089976698300017746</a></p></li>
+</ul>
+</section>
+</section>
+<section id="exercise">
+<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">#</a></h2>
+<ol class="simple">
+<li><p>Apply <span class="math notranslate nohighlight">\(K\)</span>-means and Mixtures of Gaussians to a dataset which may have some cluster structure.</p></li>
+</ol>
+<ol class="simple">
+<li><p>Apply PCA and SVD to a high-dimensional dataset of your interest and compare the results.</p></li>
+</ol>
+<ol class="simple">
+<li><p>Apply ICA to a mixted signal of your interest and whether it can separate the original signals.</p></li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="Reinforcement.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Chapter 4. Reinforcement Learning</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Bayesian.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chatper 6. Bayesian Approaches</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Kenji Doya<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
