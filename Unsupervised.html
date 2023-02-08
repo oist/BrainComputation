@@ -54,7 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Chatper 6. Bayesian Approaches" href="Bayesian.html" />
+    <link rel="next" title="Unsupervised Learning: Exercise" href="Unsupervised_Exercise.html" />
     <link rel="prev" title="Chapter 4. Reinforcement Learning" href="Reinforcement.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -126,20 +126,44 @@ const thebe_selector_output = ".output, .cell_output"
    Chapter 2. Neural Modeling and Analysis
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="Supervised.html">
    Chapter 3: Supervised Learning
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Supervised_Exercise.html">
+     Supervised Learning: Exercise
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Reinforcement.html">
    Chapter 4. Reinforcement Learning
   </a>
  </li>
- <li class="toctree-l1 current active">
+ <li class="toctree-l1 current active has-children">
   <a class="current reference internal" href="#">
    Chapter 5. Unsupervised Learning
   </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Unsupervised_Exercise.html">
+     Unsupervised Learning: Exercise
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Bayesian.html">
@@ -437,11 +461,6 @@ title="Print to PDF"
    </li>
   </ul>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercise">
-   Exercise
-  </a>
- </li>
 </ul>
 
     </nav>
@@ -576,11 +595,6 @@ title="Print to PDF"
    </li>
   </ul>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercise">
-   Exercise
-  </a>
- </li>
 </ul>
 
                         </nav>
@@ -650,8 +664,9 @@ Learning categories without explicit labels is an example of <em>unspervised lea
 <p>The most basic method of clustering is <em><span class="math notranslate nohighlight">\(K\)</span>-means clustering</em>,
 which divides a data set <span class="math notranslate nohighlight">\(\{\b{x}_1,…,\b{x}_N\}\)</span> into <span class="math notranslate nohighlight">\(K\)</span> clusters.</p>
 <p>We define prototypes <span class="math notranslate nohighlight">\(\b{\mu}_k\)</span> for <span class="math notranslate nohighlight">\(k=1,...,K\)</span> clusters and specify belonging of data points by binary <em>indicator variables</em> <span class="math notranslate nohighlight">\(r_{nk}\in\{0,1\}\)</span>.</p>
-<p>A good clustering is achieved by minimizing the <em>distortion measure</em>
-$<span class="math notranslate nohighlight">\( J = \sum_{n=1}^N \sum_{k=1}^K r_{nk}||\b{x}_n-\b{\mu}_k||^2. \)</span>$</p>
+<p>A good clustering is achieved by minimizing the <em>distortion measure</em></p>
+<div class="math notranslate nohighlight">
+\[ J = \sum_{n=1}^N \sum_{k=1}^K r_{nk}||\b{x}_n-\b{\mu}_k||^2. \]</div>
 <p>We do that by repeating the following steps:</p>
 <ul class="simple">
 <li><p>For the current prototypes <span class="math notranslate nohighlight">\(\b{\mu}_k\)</span>, re-assign data points.</p>
@@ -659,9 +674,10 @@ $<span class="math notranslate nohighlight">\( J = \sum_{n=1}^N \sum_{k=1}^K r_{
 <li><p>for each <span class="math notranslate nohighlight">\(\b{x}_n\)</span>, find the nearest <span class="math notranslate nohighlight">\(\b{\mu}_k\)</span> and set <span class="math notranslate nohighlight">\(r_{nk} = 1\)</span> and  <span class="math notranslate nohighlight">\(r_{n j\ne k} = 0\)</span> .</p></li>
 </ul>
 </li>
-<li><p>For the current assignment by <span class="math notranslate nohighlight">\(r_{nk}\)</span>, update the prototypes by
-$<span class="math notranslate nohighlight">\( \b{\mu}_k = \frac{\sum_{n=1}^N r_{nk}\b{x}_n}{\sum_{n=1}^N r_{nk}}\)</span>$</p></li>
+<li><p>For the current assignment by <span class="math notranslate nohighlight">\(r_{nk}\)</span>, update the prototypes by</p></li>
 </ul>
+<div class="math notranslate nohighlight">
+\[ \b{\mu}_k = \frac{\sum_{n=1}^N r_{nk}\b{x}_n}{\sum_{n=1}^N r_{nk}}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -730,9 +746,10 @@ $<span class="math notranslate nohighlight">\( \b{\mu}_k = \frac{\sum_{n=1}^N r_
 <section id="mixtures-of-gaussians">
 <h2>Mixtures of Gaussians<a class="headerlink" href="#mixtures-of-gaussians" title="Permalink to this headline">#</a></h2>
 <p>It is often the case that clusters have some overlaps and assignment is probabilistic. <em>Mixtures of Gaussians</em> is a probabilistic extention of <span class="math notranslate nohighlight">\(K\)</span>-means clustering.</p>
-<p><em>Gaussian mixture distribution</em> has a form
-$<span class="math notranslate nohighlight">\( p(\b{x}) = \sum_{k=1}^K \pi_{k} \mathcal{N}(\b{x}|\b{\mu}_k, \Sigma_k) \)</span><span class="math notranslate nohighlight">\(
-where \)</span>\b{\mu}_k<span class="math notranslate nohighlight">\( and \)</span>\Sigma_k<span class="math notranslate nohighlight">\( are the mean and the variance of \)</span>k<span class="math notranslate nohighlight">\(-th Gaussian and \)</span>\pi_k$ is the mixture probability.</p>
+<p><em>Gaussian mixture distribution</em> has a form</p>
+<div class="math notranslate nohighlight">
+\[ p(\b{x}) = \sum_{k=1}^K \pi_{k} \mathcal{N}(\b{x}|\b{\mu}_k, \Sigma_k) \]</div>
+<p>where <span class="math notranslate nohighlight">\(\b{\mu}_k\)</span> and <span class="math notranslate nohighlight">\(\Sigma_k\)</span> are the mean and the variance of <span class="math notranslate nohighlight">\(k\)</span>-th Gaussian and <span class="math notranslate nohighlight">\(\pi_k\)</span> is the mixture probability.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># sample from a Gaussian mixture distribution</span>
@@ -767,22 +784,28 @@ where \)</span>\b{\mu}_k<span class="math notranslate nohighlight">\( and \)</sp
 </section>
 <section id="expectation-maximization-em-algorithm">
 <h2>Expectation-maximization (EM) Algorithm<a class="headerlink" href="#expectation-maximization-em-algorithm" title="Permalink to this headline">#</a></h2>
-<p>We consider a binary stochastic variable
-$<span class="math notranslate nohighlight">\( \b{z}=(z_1,…,z_K) \mbox{ where } z_k\in\{0,1\} \mbox{ and } \sum_{k=1}^K z_k=1 \)</span>$
-indicating which Gaussian a data point belongs to.</p>
+<p>We consider a binary stochastic variable</p>
+<div class="math notranslate nohighlight">
+\[ \b{z}=(z_1,…,z_K) \mbox{ where } z_k\in\{0,1\} \mbox{ and } \sum_{k=1}^K z_k=1 \]</div>
+<p>indicating which Gaussian a data point belongs to.</p>
 <p>For fitting the parameters <span class="math notranslate nohighlight">\(\pi_k\)</span>, <span class="math notranslate nohighlight">\(\mu_k\)</span> and <span class="math notranslate nohighlight">\(\Sigma_k\)</span> <span class="math notranslate nohighlight">\((k=1,...,K)\)</span>, we repeat the following steps, called the <em>expectation-maximization (EM)</em> algorithm:</p>
 <section id="e-expectation-step">
 <h3>E (expectation) step<a class="headerlink" href="#e-expectation-step" title="Permalink to this headline">#</a></h3>
-<p>For the current parameters <span class="math notranslate nohighlight">\((\pi_k,\mu_k\)</span>,<span class="math notranslate nohighlight">\(\Sigma_k)\)</span>, evaluate the posterior distribution of <span class="math notranslate nohighlight">\(\b{z}\)</span> given <span class="math notranslate nohighlight">\(\b{x}\)</span>, called <em>responsibility</em>:
-$<span class="math notranslate nohighlight">\( r_{nk} = p(z_k=1|\b{x}_n) = \frac{\pi_k\c{N}(\b{x}_n|\b{\mu}_k,\Sigma_k)}{\sum_{j=1}^K \pi_j\c{N}(\b{x}_n|\b{\mu}_j,\Sigma_j)} \)</span>$</p>
+<p>For the current parameters <span class="math notranslate nohighlight">\((\pi_k,\mu_k\)</span>,<span class="math notranslate nohighlight">\(\Sigma_k)\)</span>, evaluate the posterior distribution of <span class="math notranslate nohighlight">\(\b{z}\)</span> given <span class="math notranslate nohighlight">\(\b{x}\)</span>, called <em>responsibility</em>:</p>
+<div class="math notranslate nohighlight">
+\[ r_{nk} = p(z_k=1|\b{x}_n) = \frac{\pi_k\c{N}(\b{x}_n|\b{\mu}_k,\Sigma_k)}{\sum_{j=1}^K \pi_j\c{N}(\b{x}_n|\b{\mu}_j,\Sigma_j)} \]</div>
 </section>
 <section id="m-maximization-step">
 <h3>M (maximization) step<a class="headerlink" href="#m-maximization-step" title="Permalink to this headline">#</a></h3>
-<p>For the current responsibility, estimate new parameters:
-$<span class="math notranslate nohighlight">\( N_k = \sum_{n=1}^N r_{nk} \)</span><span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\( \pi_k = \frac{N_k}{N} \)</span><span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\( \b{\mu}_k = \frac{1}{N_k}\sum_{n=1}^N r_{nk}\b{x}_n \)</span><span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\( \Sigma_k = \frac{1}{N_k}\sum_{n=1}^N r_{nk}(\b{x}_n-\b{\mu}_k)(\b{x}_n-\b{\mu}_k)^T \)</span>$</p>
+<p>For the current responsibility, estimate new parameters:</p>
+<div class="math notranslate nohighlight">
+\[ N_k = \sum_{n=1}^N r_{nk} \]</div>
+<div class="math notranslate nohighlight">
+\[ \pi_k = \frac{N_k}{N} \]</div>
+<div class="math notranslate nohighlight">
+\[ \b{\mu}_k = \frac{1}{N_k}\sum_{n=1}^N r_{nk}\b{x}_n \]</div>
+<div class="math notranslate nohighlight">
+\[ \Sigma_k = \frac{1}{N_k}\sum_{n=1}^N r_{nk}(\b{x}_n-\b{\mu}_k)(\b{x}_n-\b{\mu}_k)^T \]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;data/faithful.txt&#39;</span><span class="p">)</span>
@@ -897,14 +920,17 @@ $<span class="math notranslate nohighlight">\( N_k = \sum_{n=1}^N r_{nk} \)</spa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pi = [4.04728561e-03 6.40742773e-01 3.98347436e-03 3.50629330e-01
- 5.97136939e-04]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pi = [0.04185728 0.00393848 0.00392199 0.34674308 0.60353917]
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x151cb1a00&gt;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/doya/miniforge3/lib/python3.9/site-packages/sklearn/mixture/_base.py:286: ConvergenceWarning: Initialization 1 did not converge. Try different init parameters, or increase max_iter, tol or check for degenerate data.
+  warnings.warn(
 </pre></div>
 </div>
-<img alt="_images/Unsupervised_20_2.png" src="_images/Unsupervised_20_2.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x1353189a0&gt;
+</pre></div>
+</div>
+<img alt="_images/Unsupervised_20_3.png" src="_images/Unsupervised_20_3.png" />
 </div>
 </div>
 </section>
@@ -914,14 +940,16 @@ $<span class="math notranslate nohighlight">\( N_k = \sum_{n=1}^N r_{nk} \)</spa
 <p>Grasping the distribution of a high-dimensional data is not easy for human eyes. We often try to find a low-dimensional projection of the data that characteirizes the distribution.</p>
 <p><em>Principal componet analysis (PCA)</em> finds the directions of the data distribution with the largest variance.</p>
 <p>Consider a projection of <span class="math notranslate nohighlight">\(D\)</span>-dimensional vector <span class="math notranslate nohighlight">\(\b{x} = (x_1,...,x_D)^T\)</span> to
-<span class="math notranslate nohighlight">\(M\)</span>-dimensional vector <span class="math notranslate nohighlight">\(\b{y} = (y_1,...,y_M)^T\)</span> by
-$<span class="math notranslate nohighlight">\( \b{y} = V \b{x} \)</span><span class="math notranslate nohighlight">\(
-where \)</span>V = (\b{v}_1,…,\b{v}_M)^T<span class="math notranslate nohighlight">\(, \)</span>||\b{v}_m||=1$.</p>
+<span class="math notranslate nohighlight">\(M\)</span>-dimensional vector <span class="math notranslate nohighlight">\(\b{y} = (y_1,...,y_M)^T\)</span> by</p>
+<div class="math notranslate nohighlight">
+\[ \b{y} = V \b{x} \]</div>
+<p>where <span class="math notranslate nohighlight">\(V = (\b{v}_1,...,\b{v}_M)^T\)</span>, <span class="math notranslate nohighlight">\(||\b{v}_m||=1\)</span>.</p>
 <p>For a data set <span class="math notranslate nohighlight">\(X=(x_1,...,x_N)^T\)</span> with zero mean (mean subtracted),
 we try to find the projection by <span class="math notranslate nohighlight">\(V\)</span> that make the variance of <span class="math notranslate nohighlight">\(\b{y}\)</span> the largest.</p>
-<p>Using the data covariance
-$<span class="math notranslate nohighlight">\( C = \frac{1}{N}X^T X = \frac{1}{N}\sum_{n=1}^N \b{x}_n\b{x}_n^T \)</span><span class="math notranslate nohighlight">\(
-the covariance of projection \)</span>\b{z}<span class="math notranslate nohighlight">\( is given as \)</span>V^T C V$.</p>
+<p>Using the data covariance</p>
+<div class="math notranslate nohighlight">
+\[ C = \frac{1}{N}X^T X = \frac{1}{N}\sum_{n=1}^N \b{x}_n\b{x}_n^T \]</div>
+<p>the covariance of projection <span class="math notranslate nohighlight">\(\b{z}\)</span> is given as <span class="math notranslate nohighlight">\(V^T C V\)</span>.</p>
 <p>After solving the eigenvalue problem <span class="math notranslate nohighlight">\(C\b{v}=\lambda \b{v}\)</span>,
 the covariance of projected data is maximized by <span class="math notranslate nohighlight">\(V=(\b{v}_1,...,\b{v}_M)^T\)</span> made of the eigenvectors with the largest eigenvalues <span class="math notranslate nohighlight">\(\lambda_1,...,\lambda_M\)</span>.</p>
 <div class="cell docutils container">
@@ -1030,15 +1058,20 @@ the covariance of projected data is maximized by <span class="math notranslate n
 </section>
 <section id="singular-value-decomposition-svd">
 <h2>Singular value decomposition (SVD)<a class="headerlink" href="#singular-value-decomposition-svd" title="Permalink to this headline">#</a></h2>
-<p>Singular value decomposition (SVD) represents a <span class="math notranslate nohighlight">\(N\times D\)</span> matrix (<span class="math notranslate nohighlight">\(N&gt;D\)</span>) by a weighted sum of products of column vectors <span class="math notranslate nohighlight">\(\b{u}_i \in \Re^N\)</span> and row vectors <span class="math notranslate nohighlight">\(\b{v}_i^T \in \Re^D\)</span>
-$<span class="math notranslate nohighlight">\( X = \sum_{i=1}^D s_i \b{u}_i \b{v}_i^T \)</span><span class="math notranslate nohighlight">\(
-where \)</span>\b{v}_i<span class="math notranslate nohighlight">\( are the eigenvectors of \)</span>X^T X<span class="math notranslate nohighlight">\( and \)</span>s_i= \sqrt{\lambda_i}<span class="math notranslate nohighlight">\( are given by their corresponding eigenvalues (\)</span>\lambda_1 \ge … \ge\lambda_D$).</p>
-<p>In a matrix form, SVD is represented as
-$<span class="math notranslate nohighlight">\( X = U S V^T \)</span><span class="math notranslate nohighlight">\(
-where 
-\)</span><span class="math notranslate nohighlight">\( U = (\b{u}_1,...,\b{u}_D) \in \Re^{N\times D} \mbox{(or \)</span>\Re^{N\times N}<span class="math notranslate nohighlight">\( with empty columns)} \)</span><span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\( S = \mbox{diag}(\sqrt{\lambda_1},...,\sqrt{\lambda_D}) \in \Re^{D\times D}  \mbox{(or \)</span>\Re^{N\times D}<span class="math notranslate nohighlight">\( with empty rows)} \)</span><span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\( V = (\b{v}_1,...,\b{v}_D) \in \Re^{D\times D}. \)</span>$</p>
+<p>Singular value decomposition (SVD) represents a <span class="math notranslate nohighlight">\(N\times D\)</span> matrix (<span class="math notranslate nohighlight">\(N&gt;D\)</span>) by a weighted sum of products of column vectors <span class="math notranslate nohighlight">\(\b{u}_i \in \Re^N\)</span> and row vectors <span class="math notranslate nohighlight">\(\b{v}_i^T \in \Re^D\)</span></p>
+<div class="math notranslate nohighlight">
+\[ X = \sum_{i=1}^D s_i \b{u}_i \b{v}_i^T \]</div>
+<p>where <span class="math notranslate nohighlight">\(\b{v}_i\)</span> are the eigenvectors of <span class="math notranslate nohighlight">\(X^T X\)</span> and <span class="math notranslate nohighlight">\(s_i= \sqrt{\lambda_i}\)</span> are given by their corresponding eigenvalues (<span class="math notranslate nohighlight">\(\lambda_1 \ge ... \ge\lambda_D\)</span>).</p>
+<p>In a matrix form, SVD is represented as</p>
+<div class="math notranslate nohighlight">
+\[ X = U S V^T \]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[ U = (\b{u}_1,...,\b{u}_D) \in \Re^{N\times D} \mbox{(or $\Re^{N\times N}$ with empty columns)} \]</div>
+<div class="math notranslate nohighlight">
+\[ S = \mbox{diag}(\sqrt{\lambda_1},...,\sqrt{\lambda_D}) \in \Re^{D\times D}  \mbox{(or $\Re^{N\times D}$ with empty rows)} \]</div>
+<div class="math notranslate nohighlight">
+\[ V = (\b{v}_1,...,\b{v}_D) \in \Re^{D\times D}. \]</div>
 <p>Because <span class="math notranslate nohighlight">\(V\)</span> is the same as that for PCA, the SVD is often used for computing</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1072,16 +1105,20 @@ where
 <section id="online-pca">
 <h2>Online PCA<a class="headerlink" href="#online-pca" title="Permalink to this headline">#</a></h2>
 <p>It has been shown that a simple linear neural network can perform computation similar to PCA (Sanger 1989).</p>
-<p>Let us consider a two-layer network
-$<span class="math notranslate nohighlight">\( \b{y} = W \b{x} \)</span><span class="math notranslate nohighlight">\(
-with input \)</span>\b{x}=(x_1,…,x_D)^T<span class="math notranslate nohighlight">\(, output \)</span>\b{y}=(y_1,…,y_M)^T<span class="math notranslate nohighlight">\(, and \)</span>M\times D<span class="math notranslate nohighlight">\( connection weights \)</span>W<span class="math notranslate nohighlight">\( (\)</span>M&lt;D$).</p>
+<p>Let us consider a two-layer network</p>
+<div class="math notranslate nohighlight">
+\[ \b{y} = W \b{x} \]</div>
+<p>with input <span class="math notranslate nohighlight">\(\b{x}=(x_1,...,x_D)^T\)</span>, output <span class="math notranslate nohighlight">\(\b{y}=(y_1,...,y_M)^T\)</span>, and <span class="math notranslate nohighlight">\(M\times D\)</span> connection weights <span class="math notranslate nohighlight">\(W\)</span> (<span class="math notranslate nohighlight">\(M&lt;D\)</span>).</p>
 <p>Consider a <em>generalized Hebbian algorithm</em>
-In a componet form, it is
-$<span class="math notranslate nohighlight">\( \Delta w_{ij} = \alpha(y_i x_j - y_i\sum_{k\le i} w_{kj}y_k) \)</span><span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\( = \alpha[y_i(x_j - \sum_{k&lt;i} w_{kj}y_k) - y_i^2 w_{ij}] \)</span>$</p>
-<p>In a matrix form, it is represented as
-$<span class="math notranslate nohighlight">\( \Delta W = \alpha(\b{y}\b{x}^T - LT[\b{y}\b{y}^T]W) \)</span><span class="math notranslate nohighlight">\(
-where \)</span>LT[\ ]$ takes the lower triangle (including the diagonal) of a matrix.</p>
+In a componet form, it is</p>
+<div class="math notranslate nohighlight">
+\[ \Delta w_{ij} = \alpha(y_i x_j - y_i\sum_{k\le i} w_{kj}y_k) \]</div>
+<div class="math notranslate nohighlight">
+\[ = \alpha[y_i(x_j - \sum_{k&lt;i} w_{kj}y_k) - y_i^2 w_{ij}] \]</div>
+<p>In a matrix form, it is represented as</p>
+<div class="math notranslate nohighlight">
+\[ \Delta W = \alpha(\b{y}\b{x}^T - LT[\b{y}\b{y}^T]W) \]</div>
+<p>where <span class="math notranslate nohighlight">\(LT[\ ]\)</span> takes the lower triangle (including the diagonal) of a matrix.</p>
 <p>It has been shown that the rows of matrix <span class="math notranslate nohighlight">\(W\)</span> converges to the <span class="math notranslate nohighlight">\(M\)</span> eigenvectors with the largest eigen values of the covariance matrix <span class="math notranslate nohighlight">\(E[\b{x}\b{x}^T ]\)</span></p>
 <blockquote>
 <div><p><img alt="Sanger89_gha" src="_images/Sanger89_gha.jpg" />
@@ -1112,26 +1149,26 @@ Figure: The ordered feedback inhibition in generalized Hebbian algorithm (from S
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0.39231157 -0.01325199  0.83312078  0.39184057]
- [-0.24456166 -0.50821492  0.34779435 -0.64599399]]
-[[ 0.39271898 -0.01236727  0.83328711  0.39109667]
- [-0.30601437 -0.59132603  0.33092683 -0.57482115]]
-[[ 0.39271995 -0.01236553  0.83328722  0.39109549]
- [-0.36768686 -0.66069126  0.3098087  -0.48938244]]
-[[ 0.39271996 -0.01236553  0.83328722  0.39109549]
- [-0.42362362 -0.71088368  0.28640522 -0.39837684]]
-[[ 0.39271996 -0.01236553  0.83328722  0.39109549]
- [-0.47037736 -0.74188603  0.26335405 -0.31108356]]
-[[ 0.39271996 -0.01236553  0.83328722  0.39109549]
- [-0.50739628 -0.75757611  0.24275549 -0.23391795]]
-[[ 0.39271996 -0.01236553  0.83328722  0.39109549]
- [-0.53591828 -0.76294364  0.22563693 -0.16950242]]
-[[ 0.39271996 -0.01236553  0.83328722  0.39109549]
- [-0.55773305 -0.76223715  0.2121166  -0.11768263]]
-[[ 0.39271996 -0.01236553  0.83328722  0.39109549]
- [-0.5744897  -0.75841514  0.20180382 -0.0769202 ]]
-[[ 0.39271996 -0.01236553  0.83328722  0.39109549]
- [-0.58748069 -0.75330258  0.19412405 -0.04526691]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-0.39306558  0.00939095 -0.83167244 -0.39423411]
+ [ 0.34149167  1.31950778  0.06687299 -0.4385755 ]]
+[[-0.39272112  0.01235974 -0.83328447 -0.39110028]
+ [ 0.38963651  1.04936023 -0.00511176 -0.28155513]]
+[[-0.39271996  0.01236551 -0.83328721 -0.3910955 ]
+ [ 0.4392923   0.9364023  -0.04907806 -0.20403878]]
+[[-0.39271996  0.01236553 -0.83328722 -0.39109549]
+ [ 0.48229704  0.87345027 -0.08063959 -0.15634324]]
+[[-0.39271996  0.01236553 -0.83328722 -0.39109549]
+ [ 0.51744632  0.83290124 -0.10421197 -0.12471939]]
+[[-0.39271996  0.01236553 -0.83328722 -0.39109549]
+ [ 0.54527369  0.8045215  -0.12195689 -0.10319186]]
+[[-0.39271996  0.01236553 -0.83328722 -0.39109549]
+ [ 0.5668902   0.78369804 -0.13530145 -0.08844347]]
+[[-0.39271996  0.01236553 -0.83328722 -0.39109549]
+ [ 0.5835032   0.76802023 -0.14531015 -0.07836872]]
+[[-0.39271996  0.01236553 -0.83328722 -0.39109549]
+ [ 0.59620413  0.75605653 -0.15280083 -0.07154222]]
+[[-0.39271996  0.01236553 -0.83328722 -0.39109549]
+ [ 0.60589724  0.74686463 -0.15840026 -0.06697248]]
 </pre></div>
 </div>
 </div>
@@ -1143,8 +1180,8 @@ Figure: The ordered feedback inhibition in generalized Hebbian algorithm (from S
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.39238556, -0.012355  ,  0.83257769,  0.39076248],
-       [-0.60200418, -0.77192545,  0.19892311, -0.04638598]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.39238556,  0.012355  , -0.83257769, -0.39076248],
+       [ 0.62017225,  0.76446085, -0.16213219, -0.06855036]])
 </pre></div>
 </div>
 </div>
@@ -1165,14 +1202,18 @@ Figure: The ordered feedback inhibition in generalized Hebbian algorithm (from S
 </section>
 <section id="infomax-principle">
 <h2>Infomax principle<a class="headerlink" href="#infomax-principle" title="Permalink to this headline">#</a></h2>
-<p>The <em>infomax</em> principle is to find a mapping from input <span class="math notranslate nohighlight">\(\b{x}\)</span> to the output <span class="math notranslate nohighlight">\(\b{y}\)</span> so that the mutual information
-$<span class="math notranslate nohighlight">\( I(\b{y};\b{x}) = H(\b{y}) – H(\b{y}|\b{x}) \)</span>$
-is maximized.</p>
-<p>PCA is an example of infomax by a linear transformation
-$<span class="math notranslate nohighlight">\(\b{y}=V\b{x} \)</span><span class="math notranslate nohighlight">\( 
-while keeping the norm of the row vectors of matrix \)</span>V$ to be one.</p>
-<p>For a deterministic mapping or a mapping with homogenetous additive noise $<span class="math notranslate nohighlight">\( \b{y}=f(\b{x})+\b{\epsilon}, \)</span><span class="math notranslate nohighlight">\(
-\)</span>H(\b{y}|\b{x})$ is constant, so that</p>
+<p>The <em>infomax</em> principle is to find a mapping from input <span class="math notranslate nohighlight">\(\b{x}\)</span> to the output <span class="math notranslate nohighlight">\(\b{y}\)</span> so that the mutual information</p>
+<div class="math notranslate nohighlight">
+\[ I(\b{y};\b{x}) = H(\b{y}) – H(\b{y}|\b{x}) \]</div>
+<p>is maximized.</p>
+<p>PCA is an example of infomax by a linear transformation</p>
+<div class="math notranslate nohighlight">
+\[\b{y}=V\b{x} \]</div>
+<p>while keeping the norm of the row vectors of matrix <span class="math notranslate nohighlight">\(V\)</span> to be one.</p>
+<p>For a deterministic mapping or a mapping with homogenetous additive noise</p>
+<div class="math notranslate nohighlight">
+\[ \b{y}=f(\b{x})+\b{\epsilon}, \]</div>
+<p><span class="math notranslate nohighlight">\(H(\b{y}|\b{x})\)</span> is constant, so that</p>
 <ul class="simple">
 <li><p>maximization of information transfer <span class="math notranslate nohighlight">\(I(\b{y};\b{x})\)</span></p></li>
 </ul>
@@ -1187,28 +1228,38 @@ and the equality is achieved when the output components are independent: <span c
 <h2>Independent component analysis (ICA)<a class="headerlink" href="#independent-component-analysis-ica" title="Permalink to this headline">#</a></h2>
 <p>We can listen to a particular speaker’s voice or a sound of an instrument among mixed sound.
 This is called <em>cocktail party effect</em> or <em>blind separation</em>.</p>
-<p>For a <span class="math notranslate nohighlight">\(D\)</span> independent signal sources <span class="math notranslate nohighlight">\(\b{s}=(s_1,...,s_D)^T\)</span>, we consider mixture signal
-$<span class="math notranslate nohighlight">\( x_j = \sum_{i=1}^D a_{ji} s_i, \)</span><span class="math notranslate nohighlight">\(
-or in vector form
-\)</span><span class="math notranslate nohighlight">\( \b{x} = A \b{s}. \)</span>$</p>
-<p><em>Independent component analysis (ICA)</em> tries to recover the original signals by
-$<span class="math notranslate nohighlight">\( \b{y} = W\b{x} \)</span><span class="math notranslate nohighlight">\(
-where components of \)</span>\b{y}=(y_1,…,y_D)<span class="math notranslate nohighlight">\( are independent, i.e.,
-\)</span><span class="math notranslate nohighlight">\( p(\b{y}) = \prod_{i=1}^D p(y_i), \)</span>$</p>
+<p>For a <span class="math notranslate nohighlight">\(D\)</span> independent signal sources <span class="math notranslate nohighlight">\(\b{s}=(s_1,...,s_D)^T\)</span>, we consider mixture signal</p>
+<div class="math notranslate nohighlight">
+\[ x_j = \sum_{i=1}^D a_{ji} s_i, \]</div>
+<p>or in vector form</p>
+<div class="math notranslate nohighlight">
+\[ \b{x} = A \b{s}. \]</div>
+<p><em>Independent component analysis (ICA)</em> tries to recover the original signals by</p>
+<div class="math notranslate nohighlight">
+\[ \b{y} = W\b{x} \]</div>
+<p>where components of <span class="math notranslate nohighlight">\(\b{y}=(y_1,...,y_D)\)</span> are independent, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[ p(\b{y}) = \prod_{i=1}^D p(y_i), \]</div>
 <p>When the amplitude of <span class="math notranslate nohighlight">\(y_i\)</span> is bounded,
 the output entropy <span class="math notranslate nohighlight">\(H(\b{y})\le\sum_i H(y_i)\)</span> is maximized when <span class="math notranslate nohighlight">\(y_i\)</span> are independent.</p>
 <section id="ica-by-infomax">
 <h3>ICA by Infomax<a class="headerlink" href="#ica-by-infomax" title="Permalink to this headline">#</a></h3>
-<p>If the signal distribution <span class="math notranslate nohighlight">\(p(s_i)\)</span> is <em>supragaussian</em>, having a sharp peak and long tails, ICA is achieved by a network with saturating output function, such as
-$<span class="math notranslate nohighlight">\( \b{u} = W \b{x} \)</span><span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\( y_i = \tanh(u_i). \)</span><span class="math notranslate nohighlight">\(
-where \)</span>\tanh(u)=\frac{e^u-e^{-u}}{e^u+e^{-u}}<span class="math notranslate nohighlight">\( is a sigmoid function within \)</span>(-1,1)$.</p>
-<p>In this case, the derivative of the output entropy is given by (Bell &amp; Sejnowski 1995)
-$<span class="math notranslate nohighlight">\( \p{H(\b{y})}{W} = {W^T}^{-1} + \b{y}\b{x}^T. \)</span><span class="math notranslate nohighlight">\(
-The entropy is maximized by the *natural gradient* method (Amari 1998),
-\)</span><span class="math notranslate nohighlight">\( \Delta W = \alpha \p{H(\b{y})}{W} W^TW \)</span><span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\( = \alpha({W^T}^{-1} - \b{y}\b{x}^T) W^TW \)</span><span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\( = \alpha(W-\b{y}\b{u}^TW). \)</span>$</p>
+<p>If the signal distribution <span class="math notranslate nohighlight">\(p(s_i)\)</span> is <em>supragaussian</em>, having a sharp peak and long tails, ICA is achieved by a network with saturating output function, such as</p>
+<div class="math notranslate nohighlight">
+\[ \b{u} = W \b{x} \]</div>
+<div class="math notranslate nohighlight">
+\[ y_i = \tanh(u_i). \]</div>
+<p>where <span class="math notranslate nohighlight">\(\tanh(u)=\frac{e^u-e^{-u}}{e^u+e^{-u}}\)</span> is a sigmoid function within <span class="math notranslate nohighlight">\((-1,1)\)</span>.</p>
+<p>In this case, the derivative of the output entropy is given by (Bell &amp; Sejnowski 1995)</p>
+<div class="math notranslate nohighlight">
+\[ \p{H(\b{y})}{W} = {W^T}^{-1} + \b{y}\b{x}^T. \]</div>
+<p>The entropy is maximized by the <em>natural gradient</em> method (Amari 1998),</p>
+<div class="math notranslate nohighlight">
+\[ \Delta W = \alpha \p{H(\b{y})}{W} W^TW \]</div>
+<div class="math notranslate nohighlight">
+\[ = \alpha({W^T}^{-1} - \b{y}\b{x}^T) W^TW \]</div>
+<div class="math notranslate nohighlight">
+\[ = \alpha(W-\b{y}\b{u}^TW). \]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ica</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">W</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">online</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
@@ -1259,8 +1310,8 @@ The entropy is maximized by the *natural gradient* method (Amari 1998),
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.72354016 0.43629719]
- [0.86180613 0.12532989]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.93496508 0.55885714]
+ [0.2420176  0.99896238]]
 </pre></div>
 </div>
 <img alt="_images/Unsupervised_43_1.png" src="_images/Unsupervised_43_1.png" />
@@ -1279,30 +1330,28 @@ The entropy is maximized by the *natural gradient* method (Amari 1998),
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[2.69740644 2.31428407]
- [3.61736314 0.02592029]]
-[[ 1.21257859  9.09937504]
- [ 6.8998253  -2.27545791]]
-[[ 0.02959456 16.98500214]
- [ 8.3690903  -0.56309701]]
-[[ 1.59964713e-03  1.88882972e+01]
- [ 8.57225698e+00 -2.21956964e-01]]
-[[ 1.40023749e-03  1.91283107e+01]
- [ 8.59484802e+00 -2.23113548e-01]]
-[[ 1.40226291e-03  1.91555337e+01]
- [ 8.59725680e+00 -2.23596775e-01]]
-[[ 1.40267200e-03  1.91585831e+01]
- [ 8.59751254e+00 -2.23653025e-01]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[3.85770163 1.20008149]
+ [0.02843086 4.08624807]]
+[[ 6.54304731  0.28666646]
+ [-0.24251479  7.13164111]]
+[[ 7.10046311 -0.08796801]
+ [-0.0160314   7.85412217]]
+[[ 7.16463418 -0.13759481]
+ [ 0.01414908  7.94677191]]
+[[ 7.17139884 -0.14250531]
+ [ 0.01711111  7.95745739]]
+[[ 7.17210365 -0.14297523]
+ [ 0.01739426  7.95867586]]
+[[ 7.17217684 -0.14302014]
+ [ 0.01742132  7.95881478]]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 1.40272186e-03  1.91589242e+01]
- [ 8.59753966e+00 -2.23659315e-01]]
-[[ 1.40272779e-03  1.91589623e+01]
- [ 8.59754254e+00 -2.23660017e-01]]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 1.40272849e-03  1.91589666e+01]
- [ 8.59754284e+00 -2.23660096e-01]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 7.17218442 -0.14302444]
+ [ 0.01742391  7.95883063]]
+[[ 7.17218521 -0.14302486]
+ [ 0.01742416  7.95883244]]
+[[ 7.17218529 -0.1430249 ]
+ [ 0.01742419  7.95883265]]
 </pre></div>
 </div>
 </div>
@@ -1375,16 +1424,12 @@ The entropy is maximized by the *natural gradient* method (Amari 1998),
 </section>
 <section id="playing-sound">
 <h2>Playing sound<a class="headerlink" href="#playing-sound" title="Permalink to this headline">#</a></h2>
-<p>Do you want to hear the mixed and separated sounds?
-You can use Python interface to <a class="reference external" href="http://www.portaudio.com/"><code class="docutils literal notranslate"><span class="pre">portaudio</span></code></a> library,
-such as <a class="reference external" href="https://pypi.org/project/sounddevice/"><code class="docutils literal notranslate"><span class="pre">sounddevice</span></code></a> or <a class="reference external" href="https://pypi.org/project/PyAudio/"><code class="docutils literal notranslate"><span class="pre">pyaudio</span></code></a> and package to play sound.</p>
-<p>First, install <code class="docutils literal notranslate"><span class="pre">portaudio</span></code> library. On Mac, if you have <code class="docutils literal notranslate"><span class="pre">brew</span></code> tool, you can run:</p>
-<p>$ brew install portaudio</p>
-<p>Currently <code class="docutils literal notranslate"><span class="pre">sounddevice</span></code> is not in the anaconda packages, so install by <code class="docutils literal notranslate"><span class="pre">pip</span></code> command:</p>
-<p>$ pip install sounddevice</p>
+<p>Do you want to hear the mixed and separated sounds?</p>
+<p>You can use IPython.display library to play sound.<br />
+<a class="reference external" href="https://ipython.readthedocs.io/en/stable/api/generated/IPython.display.html">https://ipython.readthedocs.io/en/stable/api/generated/IPython.display.html</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sounddevice</span> <span class="k">as</span> <span class="nn">sd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">IPython.display</span> <span class="k">as</span> <span class="nn">ipd</span>
 </pre></div>
 </div>
 </div>
@@ -1393,87 +1438,64 @@ such as <a class="reference external" href="https://pypi.org/project/sounddevice
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Source sounds</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">D</span><span class="p">):</span>
-    <span class="n">sd</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">S</span><span class="p">[:,</span><span class="n">i</span><span class="p">],</span> <span class="n">samplerate</span><span class="o">=</span><span class="mi">4000</span><span class="p">,</span> <span class="n">blocking</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># 4kHz sampling, wait till finish</span>
+    <span class="n">ipd</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">ipd</span><span class="o">.</span><span class="n">Audio</span><span class="p">(</span><span class="n">S</span><span class="p">[:,</span><span class="n">i</span><span class="p">],</span> <span class="n">rate</span><span class="o">=</span><span class="mi">4000</span><span class="p">))</span>  <span class="c1"># 4kHz sampling</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">MemoryError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
-<span class="nn">Input In [29],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Source sounds</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">D</span><span class="p">):</span>
-<span class="ne">----&gt; </span><span class="mi">3</span>     <span class="n">sd</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">S</span><span class="p">[:,</span><span class="n">i</span><span class="p">],</span> <span class="n">samplerate</span><span class="o">=</span><span class="mi">4000</span><span class="p">,</span> <span class="n">blocking</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="nn">File ~/miniforge3/lib/python3.9/site-packages/sounddevice.py:175,</span> in <span class="ni">play</span><span class="nt">(data, samplerate, mapping, blocking, loop, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">172</span>     <span class="n">ctx</span><span class="o">.</span><span class="n">write_outdata</span><span class="p">(</span><span class="n">outdata</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">173</span>     <span class="n">ctx</span><span class="o">.</span><span class="n">callback_exit</span><span class="p">()</span>
-<span class="ne">--&gt; </span><span class="mi">175</span> <span class="n">ctx</span><span class="o">.</span><span class="n">start_stream</span><span class="p">(</span><span class="n">OutputStream</span><span class="p">,</span> <span class="n">samplerate</span><span class="p">,</span> <span class="n">ctx</span><span class="o">.</span><span class="n">output_channels</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">176</span>                  <span class="n">ctx</span><span class="o">.</span><span class="n">output_dtype</span><span class="p">,</span> <span class="n">callback</span><span class="p">,</span> <span class="n">blocking</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">177</span>                  <span class="n">prime_output_buffers_using_stream_callback</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">178</span>                  <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File ~/miniforge3/lib/python3.9/site-packages/sounddevice.py:2582,</span> in <span class="ni">_CallbackContext.start_stream</span><span class="nt">(self, StreamClass, samplerate, channels, dtype, callback, blocking, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2579</span> <span class="k">def</span> <span class="nf">start_stream</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">StreamClass</span><span class="p">,</span> <span class="n">samplerate</span><span class="p">,</span> <span class="n">channels</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">callback</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">2580</span>                  <span class="n">blocking</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">2581</span>     <span class="n">stop</span><span class="p">()</span>  <span class="c1"># Stop previous playback/recording</span>
-<span class="ne">-&gt; </span><span class="mi">2582</span>     <span class="bp">self</span><span class="o">.</span><span class="n">stream</span> <span class="o">=</span> <span class="n">StreamClass</span><span class="p">(</span><span class="n">samplerate</span><span class="o">=</span><span class="n">samplerate</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">2583</span>                               <span class="n">channels</span><span class="o">=</span><span class="n">channels</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">2584</span>                               <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">2585</span>                               <span class="n">callback</span><span class="o">=</span><span class="n">callback</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">2586</span>                               <span class="n">finished_callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">finished_callback</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">2587</span>                               <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2588</span>     <span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">2589</span>     <span class="k">global</span> <span class="n">_last_callback</span>
-
-<span class="nn">File ~/miniforge3/lib/python3.9/site-packages/sounddevice.py:1494,</span> in <span class="ni">OutputStream.__init__</span><span class="nt">(self, samplerate, blocksize, device, channels, dtype, latency, extra_settings, callback, finished_callback, clip_off, dither_off, never_drop_input, prime_output_buffers_using_stream_callback)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1464</span> <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">samplerate</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">blocksize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1465</span>              <span class="n">device</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">channels</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">latency</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1466</span>              <span class="n">extra_settings</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">finished_callback</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1467</span>              <span class="n">clip_off</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dither_off</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">never_drop_input</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1468</span>              <span class="n">prime_output_buffers_using_stream_callback</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1469</span>     <span class="sd">&quot;&quot;&quot;PortAudio output stream (using NumPy).</span>
-<span class="g g-Whitespace">   </span><span class="mi">1470</span><span class="sd"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">1471</span><span class="sd">     This has the same methods and attributes as `Stream`, except</span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1492</span><span class="sd"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">1493</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">1494</span>     <span class="n">_StreamBase</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;output&#39;</span><span class="p">,</span> <span class="n">wrap_callback</span><span class="o">=</span><span class="s1">&#39;array&#39;</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1495</span>                          <span class="o">**</span><span class="n">_remove_self</span><span class="p">(</span><span class="nb">locals</span><span class="p">()))</span>
-
-<span class="nn">File ~/miniforge3/lib/python3.9/site-packages/sounddevice.py:858,</span> in <span class="ni">_StreamBase.__init__</span><span class="nt">(self, kind, samplerate, blocksize, device, channels, dtype, latency, extra_settings, callback, finished_callback, clip_off, dither_off, never_drop_input, prime_output_buffers_using_stream_callback, userdata, wrap_callback)</span>
-<span class="g g-Whitespace">    </span><span class="mi">853</span>         <span class="k">return</span> <span class="n">_wrap_callback</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">frames</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">status</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">855</span> <span class="k">elif</span> <span class="n">kind</span> <span class="o">==</span> <span class="s1">&#39;output&#39;</span> <span class="ow">and</span> <span class="n">wrap_callback</span> <span class="o">==</span> <span class="s1">&#39;array&#39;</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">857</span>     <span class="nd">@ffi_callback</span>
-<span class="ne">--&gt; </span><span class="mi">858</span>     <span class="k">def</span> <span class="nf">callback_ptr</span><span class="p">(</span><span class="n">iptr</span><span class="p">,</span> <span class="n">optr</span><span class="p">,</span> <span class="n">frames</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">_</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">859</span>         <span class="n">data</span> <span class="o">=</span> <span class="n">_array</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">860</span>             <span class="n">_buffer</span><span class="p">(</span><span class="n">optr</span><span class="p">,</span> <span class="n">frames</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_channels</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_samplesize</span><span class="p">),</span>
-<span class="g g-Whitespace">    </span><span class="mi">861</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_channels</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dtype</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">862</span>         <span class="k">return</span> <span class="n">_wrap_callback</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">frames</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">status</span><span class="p">)</span>
-
-<span class="ne">MemoryError</span>: Cannot allocate write+execute memory for ffi.callback(). You might be running on a system that prevents this. For more information, see https://cffi.readthedocs.io/en/latest/using.html#callbacks
-</pre></div>
-</div>
-</div>
+<div class="output text_html">
+<audio  controls="controls" >
+    <source src="data:audio/wav;base64,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" type="audio/wav" />
+    Your browser does not support the audio element.
+</audio>
+</div><div class="output text_html">
+<audio  controls="controls" >
+    <source src="data:audio/wav;base64,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" type="audio/wav" />
+    Your browser does not support the audio element.
+</audio>
+</div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mixed sounds</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">D</span><span class="p">):</span>
-    <span class="n">sd</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="n">i</span><span class="p">],</span> <span class="n">samplerate</span><span class="o">=</span><span class="mi">4000</span><span class="p">,</span> <span class="n">blocking</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># 4kHz sampling, wait till finish</span>
+    <span class="n">ipd</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">ipd</span><span class="o">.</span><span class="n">Audio</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="n">i</span><span class="p">],</span> <span class="n">rate</span><span class="o">=</span><span class="mi">4000</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<audio  controls="controls" >
+    <source src="data:audio/wav;base64,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" type="audio/wav" />
+    Your browser does not support the audio element.
+</audio>
+</div><div class="output text_html">
+<audio  controls="controls" >
+    <source src="data:audio/wav;base64,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" type="audio/wav" />
+    Your browser does not support the audio element.
+</audio>
+</div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Separated sounds</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">D</span><span class="p">):</span>
-    <span class="n">u</span> <span class="o">=</span> <span class="n">U</span><span class="o">/</span><span class="nb">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">U</span><span class="p">))</span>  <span class="c1"># scale in [-1,1]</span>
-    <span class="n">sd</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">u</span><span class="p">[:,</span><span class="n">i</span><span class="p">],</span> <span class="n">samplerate</span><span class="o">=</span><span class="mi">4000</span><span class="p">,</span> <span class="n">blocking</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># 4kHz sampling, wait till finish</span>
+    <span class="n">ipd</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">ipd</span><span class="o">.</span><span class="n">Audio</span><span class="p">(</span><span class="n">U</span><span class="p">[:,</span><span class="n">i</span><span class="p">],</span> <span class="n">rate</span><span class="o">=</span><span class="mi">4000</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<audio  controls="controls" >
+    <source src="data:audio/wav;base64,UklGRsQPAABXQVZFZm10IBAAAAABAAEAoA8AAEAfAAACABAAZGF0YaAPAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAu/2w/yMCmQAI/if/xgEPAXH+xP5TAV8B6/6J/tYAhgFp/3T+WgCJAeD/gv7r/2wBRwCs/o3/NwGaAOv+Rv/wANQAN/8Y/6EA9QCH/wP/UQAOYZVlgA6pruSbP+OhQfdh6ih1zMqhbM5kJrFXizcZ58WwlMOSC6ZGSUD6/5/BGr659ms17UBtEaDUZ8Hc5loh9DusH4fnYcfo23oQ0zO4Jnn3INJq17YA4ifvKQYGuN3s1br0hRyzKKEPxumO2Vns9w8NJAcXifWV3tjmrwUMHiAa6v795Wzlmvz4FcUaQAe77afl3PWiDgwZYww79c3onvHuBksVCBBq/KfsCe/FAA8RLBHVAZnx+e6n+78LwxB/BqX2ze/09xkHJQ8lCTv7P/Lw9XYCWAzNCor/CPXc9Nf+dQkJC5sCQfhN9Qb8CwZOCiQFefs49g/6JwP+CHEGO/7/9zD5aQACBxcHwgDu+dn4Uv4YBfQGdQL8+2b50fzyAjoGywP//TP60fstAT4FYQSg/2/7g/uY/+MDjQQKAbz8ivtq/psCSQQIAgr++Pud/VgBuAOlAjv/pPwv/T4A9wLoAjoAdP0V/Vz/HwLeAv8ATv4+/bb+SAGZAoQBHf+a/VD+hAArAs0B0/8V/gAAEGDAZXoPo67ymiTjhUIwYhcoIMyJotjOuyUyVxs4p+dOsPvC7wtGRwZAV//Jwb2+p/bNNOlABRK61NnAsObdITA8Nx8958fHPtwkEHQz/ibd9+vRAtfaAEoo2ymfBb7dUNbD9CUcnSj5D+fpPtkv7D8QQCTJFk/1yN4X54cFyh0+Gi3/6eUp5aP8OhbGGgEHsu3i5e31aw70GJQMWfWi6HzxEwdxFeoPQfy+7DTvtQDkEDYRAAKW8c/upfvnC8sQWgaY9u/vBfj7BhAPPwlS+yny1vWIAnIMwApu/xH1+PTS/lkJCgu1AkT4NPUA/CIGWAoQBW37SvYd+hcD7wh9Bkv+9fcf+XAAFAcTB7EA8Pnq+FL+BwXxBoUCAfxY+cv8/wJCBr8D9v08+tv7JgEzBWcErP9r+3j7mv/uA4wECgG8/Ir7av6bAkkECAIK/vj7nf1YAbgDpQI7/6T8L/0+APcC6AI6AHT9Ff1c/x8C3gL/AF1e/mIwDuyvjJ2p5KJByl9nJqXMtaSl0I4lR1UbOKfnTrD7wu8LRkcGQFf/g79svsr4ZjXwPiwRgdbpwSHloCCEPZcgJ+ZPxhTdqxHcMnElOPh10+HWXf81KEgr5gVp3NzV+vXAHIcnPg/X6hPaZetWD+EkvxfW9MvdaOeFBp8dRBk0/+pGBEs5C6PEjLZ56jItVUfPIKXb9bgE2lEdfEGqJ97sV8fn1PEG6TEiMDECGtLPzej4eijDL6gLT+CG05ztuhZVK8oYMe981V7knAzaJuUbFPkU3yDjy//5GxofzgUC5wfgXveqFRcezQqc76fkzfG5Ct8ZcQ/X+CzpXe1kAsIVvRTM/7Lr4uuH/qoQmhKwBK3zke2j95gJ9hJACtX3+O2a9fgFdA/naj1jUwJIonaaSu8BUA5k3hwgv+Gf6td9MXdbyjFr3PipbMdCF7tOfjye9F+6F8G5/+Q5NUC7DFTNbb1y7DYskT+kF8bdccZi4lsWZjXDJKjyy8xH19gHBC9+KOH9kthc2EL6jSHAKG8Lj+Mz1k/wXxjOJ8sRhe1f3EjrLwtPIJsYp/qM4Rbl4AHPG5EaCf+H6Kfo5/oSEJcY5guZ8svkIvJBDZ8Zbgz09YHr5PKnAy4R3BD2AK/u0Oxg/u4QihHWAefyE/Ei+0YI5Q7mCN/5we+19QIGcg85CYX7yPP+9s8ArgnUCjMCffjh85n7WQflCvgDs/o+9/H6SwIGCCEHQf959yH4xAATCOYGtv/4+d35bP4iBHMECQN4/jD5Z/rQAocIPQTZ+3n5yP0mAn0DNAMlAcf8Pfog/ugEGgZRACT7BPwCAF8CuAILAov/K/wy/PUABwUzAw3+8vsu/g0BHwICAuoAaP6O/F7+fgLfA8gAT/1Q/a3/WgGuAVMB+P/n/Yn9HgDdAkgCOv+K/YAAlwCa/2H/SwCkAM7/XP8ZAKEA/v9l/+3/kgAnAHn/yP96AEcAlf+t/1sAXAC1/53/LwBmAOH/mf8QAGUADmBeZW4P/64Lm87iYkJ9YkQo3ctVohLP9SUDV903zOePsODCrQtWR0hAUP+Iwbq+5PbYNK9A8xHu1PLAgea+IVk8Wx8a56DHWtxNEF8z1Cbh9xXSBdezAEIoACqrBZzdP9bh9DocgyjiD/zpV9kd7CQQTSTlFkb1rd4b56IFyh0kGir/AuYv5Y38MBbaGgwHoO3U5fz1ew7oGIMMY/Wz6HXxAQd2FfsPQPyt7DPvxgDnECYR+wGk8dbumPveC9YQYwaP9uXvDfgGBwsPNAlW+zTy1PV8AnMMwApu/xH1+PTS/lkJCgu1AkT4NPUA/CIGWAoQBW37SvYd+hcD7wh9Bkv+9fcf+XAAFAcTB7EA8Pnq+FL+BwXxBoUCAfxY+cv8/wJCBr8D9v08+tv7JgEzBWcErP9r+3j7mv/uA4wECgG8/Ir7av6bAkkECAIK/vj7nf1YAbgDpQI7/6T8L/0+APcC6AI6AHT9Ff1c/x8C3gL/AE7+Pv22/kgBmQKEAR3/mv1Q/oQAKwLNAdP/Ff4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQYMBleg+jrvKaJOOFQjBiFyggzImi2M67JTJXGzin506w+8LvC0ZHBkBX/8nBvb6n9s006UAFErrU2cCw5t0hMDw3Hz3nx8c+3CQQdDP+Jt3369EC19oASijbKZ8Fvt1Q1sP0JRydKPkP5+k+2S/sPxBAJMkWT/XI3hfnhwXbff9/pw6MlBuAx9+/WPd8GC/SuWuIxMQnNCdwr0S62p6YmbacE79aF09e/ZavYawg9gVHflPwEtfEfrDb4ywtb0vtJV7flbfE0goX8kM/Lorxw8WozgQCzjKnNQ0HFNJAyf/zgCeIM74QA+JK0JToqRT4LWodjPGu0zng0gnUJ7wfRfyp3ovffvwCHDsi/ghx54bdQPSsFBAg8g0I8Qnjuu4dCSIbghTg+kLmUupyAuEWKBXZAFPtG+sM+wEPaxUzCF7ztOpK9k8KlxOgCgr5tu7X814DuQ/TDSb/XfGi8VP/2QzFDWcCz/XP8lb7wAcoDYoG2fkW86b4xwTCC6cHJP3c9bv3tADtCBMJ2QDg95L4af5fBecGLwL++6r52PyyAioGBgQW/v35s/tdAWEFOAR5/5H7rft9/7YDoARDAbD8Uvtt/tECTQTVAf/9J/yv/S0BoQPcYhZl/Quzq0ybPOZXRUhimyVZydmh09CfKFVYaDbD5P+uZMSSDq1IFj8L/SjAKr/A+K420EAKEKTU5sDH5tQhGTw9H1Tnxccn3CMQijMCJ8r35NEU19kAOSjaKa8Fwd1A1r70NBykKO0P3ulJ2TjsNRA1JNEWWvXD3gvniwXWHTwaIv/q5Snlo/w6FsYaAQey7eLl7fVrDvQYlAxZ9aLofPETB3EV6g9B/L7sNO+1AOQQNhEAApbxz+6l++cLyxBaBpj27+8F+PsGEA8/CVL7KfLW9YgCcgzACm7/EfX49NL+WQkKC7UCRPg09QD8IgZYChAFbftK9h36FwPvCH0GW160XZgIFK8GojfqNkMgXAAhcsqRp8nVQCgyU3IxceRNsz3Jrw87RUI6MfvvwvDDDvt4NFQ8fA1T1MjEPevoIuw4wRqn5WLKh+AtEn4x9SJ69UTTu9qAA4UnfybNAvzdR9mr92AcECYODULpXtsN7z4RjSLCEbTzNOJK6hMFDhyeGYz+3+QY5sX/bBfFF4kFie5p51X13gxPGR4OOPUj52bxgAi5FZUOzvv17c7voP8pECYS1ALM8ObtRvzcDFIQXQXq9u7w2vcBBhcPMApu+0XxnPVbA8cMAQoC/7r1d/VC/ssIgQtOA+b3lPRD/MUGLgptBH/76fYi+n8C1QgMB3j+cvfi+OUAXgesBlsARvpI+Qz+owQmB+0C3Pvv+N/8ZgM8BlsD7f2c+vH7zQASBbcE1v8k+0X71/8oBFkEzADk/Mv7Tf5YAlwETAIB/rb7nf2YAcEDagIq/9v8R/0NANkCEwNdAE/97vx5/0gCxwLUAF7+af2t/h4BnAKuASD/cv1I/qkAOAKrAcL/M/4UAOb/6f8VABkA7//m/w0AGwD4/+X/BAAbAAAA5v/9/xgABgDq//f/FAALAO7/8/8PAA8A9P/w/woAEQD5/+//BAARAP//7/8AABAAAgDx//z/DgAGAPT/+P8LAAkA9//2/wcACgD7//X/AwALAP7/9f8AAAAA" type="audio/wav" />
+    Your browser does not support the audio element.
+</audio>
+</div><div class="output text_html">
+<audio  controls="controls" >
+    <source src="data:audio/wav;base64,UklGRsQPAABXQVZFZm10IBAAAAABAAEAoA8AAEAfAAACABAAZGF0YaAPAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAy1XlCzmvX+l5ShIg5bzi1+k6ty7hzSvM+Ch8N1XgTcZsFow6k/LjxdcEgTgvAyfKevVHMhYREdI36fkokxt13JTgyx1SIiPot9vlEVgl/POd2oEG+yTn/jLc8fvLIbAI4+Bm8xEc3A8o52DtaxXzFEruTOnGDb4XK/bs5xsG4xdZ/avoZv9vFrgD5upo+VITEQnJ7vP0+A6cDFDzJ/JZCs0OGfid8GUFiA8I/brwvgC5DkMBA/Lk/BIN0wQU9Kf5iwqWB/r2f/d5BygJDfpj9m0E5Ake/Q72WQG8CRYAs/ak/rgIegLz94f8SgdeBJb54fpuBa8Fm/v0+WEDQAaY/ar5dQFRBnv/1vmf/90FMgGP+hz+8wR7ApP7A/3cA2sDwvw//JQC+AMY/vD7RAEQBFT/AfwbAN8DcABU/A7/ZANkAfT8QP6uAgoCs/26/egBdQKB/mv9EQGhAlr/Zf1DAIgCFQCU/Zf/SAK3AOf9BP/gATYBYf6e/l0BgwHl/mb+2QCqAWr/UP5SAKoB7v8AAP////8AAAEAAQAAAAAA/////wAAAQABAAAA/////wAAAQABAAAA/////wAAAAABAAAAAAD//wAAAAABAAAAAAD//wAAAAAAAAAAAAAAAAAAKAAqAAYA3v/W//T/HAApABAA6//Z/+z/DwAkABcA9v/f/+f/BQAeABsAAADm/+X//f8WABsABwDu/+b/9v8OABkADQD2/+n/8f8GABUAEAD9/+3/7/8AABEAEQACAPL/7//8/wsAEQAGAPf/8P/4/wYADwAJAPz/8v/2/wIADAALAAAA9f/1////CQALAAIA+f/1//z/BgAKAAUA/P/3//r/AgAJAAYA///4//n/AAAHAAcAAAD6//n///8FAAcAAgD9//r//f8CAAYAAwD///v//P8BAAUABAAAAPz//P8AAAMABAABAP3//P///wIABAACAP///P/+/wEAAwACAAAA/f/+/wAAAgACAAAA/v/+/wAAAgACAAEA///+////AQACAAEAAAD+////AAACAAEAAAD/////AAABAAEAAAD/////AAABAAEAAAAAAP////8AAAEAAQAAAP////8AAAEAAQAAAP////8AAAAAAQAAACcAKQAFAN//1//1/xsAKAAQAOv/2v/t/w8AJAAXAPb/3//n/wUAHgAbAAAAsFXKCzWvdemUShog07zH1946xS77zTjM7ShkN0bgVMaCFpw6kPLQxcYEgjhAAznKfPU4MgQRDNJD6Qspmhts3ITgwh1ZIjLowdvhEUol8fN32mMG/yQJ/3rcHfy0IW4IsuBz8xhy9BtelorWsF8ANVyrYcG8SFBG2MMDtDEvkU/G3eGuoxXfUFr2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" type="audio/wav" />
+    Your browser does not support the audio element.
+</audio>
+</div></div>
 </div>
 </section>
 <section id="receptive-fields-of-visual-cortex-neurons">
@@ -1499,13 +1521,13 @@ Figure from Sanger (1989)</p>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
-<li><p>Bishop CM (2006) Pattern Recognition and Machine Learning. Springer.</p>
+<li><p>Bishop CM (2006) Pattern Recognition and Machine Learning. Springer. <a class="reference external" href="https://www.microsoft.com/en-us/research/people/cmbishop/prml-book/">https://www.microsoft.com/en-us/research/people/cmbishop/prml-book/</a></p>
 <ul>
 <li><p>Chapter 9: Mixture models and EM</p></li>
 <li><p>Chapter 12: Continuous latent variables</p></li>
 </ul>
 </li>
-<li><p>Murphy K (2012) Machine learning: A probabilistic perspective. MIT press.</p>
+<li><p>Murphy K (2012) Machine learning: A probabilistic perspective. MIT press. <a class="reference external" href="https://probml.github.io/pml-book/">https://probml.github.io/pml-book/</a></p>
 <ul>
 <li><p>Chapter 25.2: Dirichlet process mixture models</p></li>
 </ul>
@@ -1516,8 +1538,8 @@ Figure from Sanger (1989)</p>
 <ul class="simple">
 <li><p>Hubel DH, Wiesel TN (1959). Receptive fields of single neurones in the cat’s striate cortex. Journal of Physiology, 148, 574-91. <a class="reference external" href="http://doi.org/10.1113/jphysiol.1959.sp006308">http://doi.org/10.1113/jphysiol.1959.sp006308</a></p></li>
 <li><p>Hubel DH, Wiesel TN (1962). Receptive fields, binocular interaction and functional architecture in the cat’s visual cortex. Journal of Physiology, 160, 106-154. <a class="reference external" href="http://doi.org/10.1113/jphysiol.1962.sp006837">http://doi.org/10.1113/jphysiol.1962.sp006837</a></p></li>
-<li><p>von der Malsburg C (1973). Self-organization of orientation sensitive cells in the striate cortex. Kybernetik, 14, 85-100.</p></li>
-<li><p>Kohonen T (1982). Self-Organized Formation of Topologically Correct Feature Maps. Biol Cybern, 43, 59-69.</p></li>
+<li><p>von der Malsburg C (1973). Self-organization of orientation sensitive cells in the striate cortex. Kybernetik, 14, 85-100. <a class="reference external" href="https://doi.org/10.1007/BF00288907">https://doi.org/10.1007/BF00288907</a></p></li>
+<li><p>Kohonen T (1982). Self-Organized Formation of Topologically Correct Feature Maps. Biol Cybern, 43, 59-69. <a class="reference external" href="https://doi.org/10.1007/BF00337288">https://doi.org/10.1007/BF00337288</a></p></li>
 </ul>
 </section>
 <section id="pca">
@@ -1537,18 +1559,8 @@ Figure from Sanger (1989)</p>
 </ul>
 </section>
 </section>
-<section id="exercise">
-<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">#</a></h2>
-<ol class="simple">
-<li><p>Apply <span class="math notranslate nohighlight">\(K\)</span>-means and Mixtures of Gaussians to a dataset which may have some cluster structure.</p></li>
-</ol>
-<ol class="simple">
-<li><p>Apply PCA and SVD to a high-dimensional dataset of your interest and compare the results.</p></li>
-</ol>
-<ol class="simple">
-<li><p>Apply ICA to a mixted signal of your interest and whether it can separate the original signals.</p></li>
-</ol>
-</section>
+<div class="toctree-wrapper compound">
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1585,10 +1597,10 @@ Figure from Sanger (1989)</p>
             <p class="prev-next-title">Chapter 4. Reinforcement Learning</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="Bayesian.html" title="next page">
+    <a class='right-next' id="next-link" href="Unsupervised_Exercise.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Chatper 6. Bayesian Approaches</p>
+        <p class="prev-next-title">Unsupervised Learning: Exercise</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

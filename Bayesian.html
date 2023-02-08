@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Chapter 7: Deep Learning" href="Deep.html" />
-    <link rel="prev" title="Chapter 5. Unsupervised Learning" href="Unsupervised.html" />
+    <link rel="prev" title="Chapter 5. Unsupervised Learning: Exercise" href="Unsupervised_Exercise.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -136,10 +136,22 @@ const thebe_selector_output = ".output, .cell_output"
    Chapter 4. Reinforcement Learning
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="Unsupervised.html">
    Chapter 5. Unsupervised Learning
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Unsupervised_Exercise.html">
+     Chapter 5. Unsupervised Learning: Exercise
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
@@ -759,7 +771,7 @@ and thus the posterior can be decomposed as
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 1, 1, 0, 1, 0])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 0, 0, 0, 1, 1])
 </pre></div>
 </div>
 </div>
@@ -943,9 +955,9 @@ The Bayesian regression gives a probabilistic interpretation on the role of the 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>m = [-0.46640762 -0.28203167]
-S = [[ 0.31770843 -0.41257437]
- [-0.41257437  0.75052072]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>m = [-0.88826191  0.73065891]
+S = [[0.43713465 0.46299698]
+ [0.46299698 0.61915189]]
 </pre></div>
 </div>
 <img alt="_images/Bayesian_18_1.png" src="_images/Bayesian_18_1.png" />
@@ -1049,8 +1061,8 @@ where the variance of the output is given by
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 0.03926999  0.17582933 -0.51768838 -1.50583105  0.09285804  0.50224783
-  0.52280232  0.51076276  0.44113232 -1.09639253]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 0.92314684 -0.46804772  0.01978409 -0.75779769 -0.25804245  0.23978196
+  0.91039861  0.21297028  0.1454421  -0.74335146]
 </pre></div>
 </div>
 <img alt="_images/Bayesian_26_1.png" src="_images/Bayesian_26_1.png" />
@@ -1130,14 +1142,14 @@ $<span class="math notranslate nohighlight">\( \alpha^{-1} = \frac{1}{D}||\b{m}|
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 1.0706650213894728 2.110011684370048 -26.804270993452775 0.43958617400913363
-3 0.40303196712191347 3.4373642524310313 -25.60461238883947 0.7314413301914398
-4 0.28601998624476027 15.678882284600832 -13.586869810857749 0.02524398904197285
-5 0.6706680986743957 16.987358696853807 -12.96539953114643 0.006849290033281135
-6 1.1185382812068845 17.75620609986284 -13.00887659217899 0.005694745176662665
-7 0.9908531912988692 42.80116562108143 -6.326818701829151 0.05292275332443031
-8 1.3926269074467288 41.32108628741145 -6.865119144632537 0.06103982225318761
-9 1.8911291817272702 48.083725248105075 -5.378239254485511 0.06834726744362773
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 41.61563799209052 3.240886049685922 -19.00896697559103 0.43354091948571755
+3 6.23416107511272 3.5002968284779565 -21.610151879662293 0.45728123576745555
+4 0.33488641690900434 27.33609113966107 -8.137154856591188 0.01816330464402111
+5 0.8749549223378704 27.676833733260807 -8.156119312183886 0.01357045102418386
+6 1.8223783864425875 29.14747137330458 -7.4485156304300055 0.010871294528736603
+7 2.6386888129928265 29.721985504424712 -7.511725397208938 0.01015663664018453
+8 2.8639116545825702 31.515012938086144 -7.6076312143619695 0.013843872364705977
+9 3.0383345509864115 35.087017248257446 -7.314028369894597 0.02071086240516036
 </pre></div>
 </div>
 <img alt="_images/Bayesian_33_1.png" src="_images/Bayesian_33_1.png" />
@@ -1277,7 +1289,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 1, 1, 1, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4])
 </pre></div>
 </div>
 </div>
@@ -1613,11 +1625,11 @@ where \)</span>f(x)=\frac{1}{1+e^{-x}}<span class="math notranslate nohighlight"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="Unsupervised.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="Unsupervised_Exercise.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Chapter 5. Unsupervised Learning</p>
+            <p class="prev-next-title">Chapter 5. Unsupervised Learning: Exercise</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="Deep.html" title="next page">
