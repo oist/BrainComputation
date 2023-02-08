@@ -6,8 +6,12 @@ chapters:
 - file: Introduction
 - file: Neurons
 - file: Supervised
+  sections:
+  - file: Supervised_Exercise
 - file: Reinforcement
 - file: Unsupervised
+  sections:
+  - file: Unsupervised_Exercise
 - file: Bayesian
 - file: Deep
 - file: Multiple
