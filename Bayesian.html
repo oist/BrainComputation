@@ -662,7 +662,7 @@ title="Print to PDF"
 <li><p>Product rule:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[  p(X,Y) = p(Y|X)P(X) \]</div>
+\[  p(X,Y) = p(Y|X) p(X) \]</div>
 <p>From the symmetry of joint probability <span class="math notranslate nohighlight">\(p(X,Y)=p(Y,X)\)</span>,<br />
 we have the relationship <span class="math notranslate nohighlight">\(p(X|Y)p(Y) = p(Y|X)p(X)\)</span>,<br />
 which brings us to Bayes’ theorem:</p>
@@ -783,7 +783,7 @@ From the above table, 0.5?</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 0, 1, 0, 1, 0])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 0, 0, 0, 1, 0])
 </pre></div>
 </div>
 </div>
@@ -971,9 +971,9 @@ where \)</span>p(\epsilon)=\mathcal{N}(0,\beta^{-1})$.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>m = [-0.9799991   0.31930229]
-S = [[0.17092122 0.27012959]
- [0.27012959 0.91198666]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>m = [-1.12539381  0.4201322 ]
+S = [[0.19313711 0.30121818]
+ [0.30121818 0.88754918]]
 </pre></div>
 </div>
 <img alt="_images/Bayesian_18_1.png" src="_images/Bayesian_18_1.png" />
@@ -1080,8 +1080,8 @@ S = [[0.17092122 0.27012959]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 0.25195103  0.35510675 -0.84111565 -0.35222447 -0.72550835  0.30870716
-  0.08025409  0.75880438  0.10399677 -0.59032778]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 0.26857384  0.15458781 -0.74872825 -0.81125251 -0.14502895  0.31809353
+  0.65466164 -0.23741412  0.57957987 -0.93855996]
 </pre></div>
 </div>
 <img alt="_images/Bayesian_26_1.png" src="_images/Bayesian_26_1.png" />
@@ -1169,14 +1169,14 @@ S = [[0.17092122 0.27012959]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 1.8099323102364981 2.554299695765841 -24.46596911302612 0.4508036194343127
-3 2.2395375030623392 2.9857970546317576 -24.59393343563727 0.47961350175267353
-4 0.3784611263873787 24.768818221981725 -8.868529711848018 0.03532860261498482
-5 1.0214477967242268 32.78302546588487 -6.114421097858969 0.05450034240865244
-6 1.5093358822381804 41.920165790824925 -4.475929349598729 0.08112367715164608
-7 2.279175316751181 42.58544569175833 -4.408353713710298 0.08199802058950144
-8 3.1267582218919623 42.32077670317697 -4.393337008286807 0.0876584335958906
-9 3.874800068934572 43.466501251519176 -4.114214958017492 0.10595620085345134
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 16.968469088764067 3.5762565789377936 -18.850884167920075 0.40953224834063745
+3 10.554196468113568 3.7592719325655843 -20.11434417064916 0.4035153035665581
+4 0.37348421550338806 26.158696270536108 -8.372687979258714 0.018252832668920332
+5 0.8326729322035568 31.700715397840945 -6.8556282040113565 0.016115977167192243
+6 1.8325381722528535 32.146409827917495 -6.477637776454738 0.018139831446427956
+7 2.6038351417380294 34.766384557521555 -6.109757962593367 0.02292137840435418
+8 3.346194442849763 36.42226012976045 -5.458506283759959 0.029247201729523917
+9 2.9173311295641025 42.9817949897762 -5.305725857357874 0.05555437723070535
 </pre></div>
 </div>
 <img alt="_images/Bayesian_33_1.png" src="_images/Bayesian_33_1.png" />
@@ -1319,7 +1319,7 @@ S = [[0.17092122 0.27012959]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 1, 1, 1, 2, 2, 2, 3, 3, 4, 5, 5, 5, 5, 5, 5])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 1, 2, 3, 3, 4, 4, 4, 4, 4, 4, 4, 5, 0, 0, 0])
 </pre></div>
 </div>
 </div>
