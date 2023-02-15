@@ -13,6 +13,8 @@ chapters:
   sections:
   - file: Unsupervised_Exercise
 - file: Bayesian
+  sections:
+  - file: Bayesian_Exercise
 - file: Deep
 - file: Multiple
 - file: Meta
