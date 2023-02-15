@@ -54,8 +54,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Chapter 7: Deep Learning" href="Deep.html" />
-    <link rel="prev" title="Chapter 5. Unsupervised Learning: Exercise" href="Unsupervised_Exercise.html" />
+    <link rel="next" title="Bayesian Approaches: Exercise" href="Bayesian_Exercise.html" />
+    <link rel="prev" title="Unsupervised Learning: Exercise" href="Unsupervised_Exercise.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -126,10 +126,22 @@ const thebe_selector_output = ".output, .cell_output"
    Chapter 2. Neural Modeling and Analysis
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="Supervised.html">
    Chapter 3: Supervised Learning
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Supervised_Exercise.html">
+     Supervised Learning: Exercise
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Reinforcement.html">
@@ -140,23 +152,35 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="Unsupervised.html">
    Chapter 5. Unsupervised Learning
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="Unsupervised_Exercise.html">
-     Chapter 5. Unsupervised Learning: Exercise
+     Unsupervised Learning: Exercise
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active">
+ <li class="toctree-l1 current active has-children">
   <a class="current reference internal" href="#">
    Chatper 6. Bayesian Approaches
   </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Bayesian_Exercise.html">
+     Bayesian Approaches: Exercise
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Deep.html">
@@ -453,11 +477,6 @@ title="Print to PDF"
    </li>
   </ul>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercise">
-   Exercise
-  </a>
- </li>
 </ul>
 
     </nav>
@@ -596,11 +615,6 @@ title="Print to PDF"
    </li>
   </ul>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercise">
-   Exercise
-  </a>
- </li>
 </ul>
 
                         </nav>
@@ -640,15 +654,20 @@ title="Print to PDF"
 <h2>Bayes’ Theorem<a class="headerlink" href="#bayes-theorem" title="Permalink to this headline">#</a></h2>
 <p>Let us recall the two fundamental rules of probability regarding random variables <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>:</p>
 <ul class="simple">
-<li><p>Sum rule:
-$<span class="math notranslate nohighlight">\( p(X) = \sum_Y p(X, Y) \)</span>$</p></li>
-<li><p>Product rule:
-$<span class="math notranslate nohighlight">\( p(X,Y) = p(Y|X)P(X) \)</span>$</p></li>
+<li><p>Sum rule:</p></li>
 </ul>
-<p>From the symmetry of joint probability <span class="math notranslate nohighlight">\(p(X,Y)=p(Y,X)\)</span>,</p>
-<p>we have the relationship <span class="math notranslate nohighlight">\(p(X|Y)p(Y) = p(Y|X)p(X)\)</span>,</p>
-<p>which brings us to Bayes’ theorem:
-$<span class="math notranslate nohighlight">\( p(X|Y) = \frac{p(Y|X)p(X)}{p(Y)}. \)</span>$</p>
+<div class="math notranslate nohighlight">
+\[  p(X) = \sum_Y p(X, Y) \]</div>
+<ul class="simple">
+<li><p>Product rule:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[  p(X,Y) = p(Y|X)P(X) \]</div>
+<p>From the symmetry of joint probability <span class="math notranslate nohighlight">\(p(X,Y)=p(Y,X)\)</span>,<br />
+we have the relationship <span class="math notranslate nohighlight">\(p(X|Y)p(Y) = p(Y|X)p(X)\)</span>,<br />
+which brings us to Bayes’ theorem:</p>
+<div class="math notranslate nohighlight">
+\[  p(X|Y) = \frac{p(Y|X)p(X)}{p(Y)}. \]</div>
 <p>Using Bayes’ theorem, we can convert one conditional probability to the other.
 This simple formula has turned out to be very insightful in the context of sensory processing and learning.</p>
 <p>Suppose <span class="math notranslate nohighlight">\(X\)</span> is the variable of your interest, such as the existence of your target, and <span class="math notranslate nohighlight">\(Y\)</span> is a noisey sensory input. What sensory input <span class="math notranslate nohighlight">\(Y\)</span> you would receive if your target exists or not is represented by a sensory model <span class="math notranslate nohighlight">\(p(Y|X)\)</span>.</p>
@@ -665,27 +684,27 @@ About half of the case a hiding mouse makes a sound, but about 10% of the time y
 How would you estimate the probability for a mouse hiding in the bush?</p>
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="text-align:center head"><p><span class="math notranslate nohighlight">\( \)</span></p></th>
-<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(X\)</span>: mouse</p></th>
-<th class="text-align:center head"><p>not in bush</p></th>
-<th class="text-align:center head"><p>in bush</p></th>
+<tr class="row-odd"><th class="head"><p>\</p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(X\)</span>:mouse</p></th>
+<th class="head"><p>not in bush</p></th>
+<th class="head"><p>in bush</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:center"><p><span class="math notranslate nohighlight">\(Y\)</span>: sound</p></td>
-<td class="text-align:center"><p>$p(Y</p></td>
-<td class="text-align:center"><p>X)$</p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(X=0\)</span></p></td>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(Y\)</span>:sound</p></td>
+<td><p><span class="math notranslate nohighlight">\(p(Y \vert X)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(X=0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(X=1\)</span></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p>not heard</p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(Y=0\)</span></p></td>
-<td class="text-align:center"><p>0.9</p></td>
-<td class="text-align:center"><p>0.5</p></td>
+<tr class="row-odd"><td><p>not heard</p></td>
+<td><p><span class="math notranslate nohighlight">\(Y=0\)</span></p></td>
+<td><p>0.9</p></td>
+<td><p>0.5</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p>heard</p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(Y=1\)</span></p></td>
-<td class="text-align:center"><p>0.1</p></td>
-<td class="text-align:center"><p>0.5</p></td>
+<tr class="row-even"><td><p>heard</p></td>
+<td><p><span class="math notranslate nohighlight">\(Y=1\)</span></p></td>
+<td><p>0.1</p></td>
+<td><p>0.5</p></td>
 </tr>
 </tbody>
 </table>
@@ -711,41 +730,34 @@ From the above table, 0.5?</p>
 </tr>
 </tbody>
 </table>
-<p>By having this prior probability, we can use Bayes’ theorem:
-$<span class="math notranslate nohighlight">\(
-    p(X=1|Y=1) = \frac{p(Y=1|X=1)p(X=1)}{p(Y=1|X=0)p(X=0)+p(Y=1|X=1)p(X=1)}
-\)</span>$$<span class="math notranslate nohighlight">\(
-    = \frac{0.5*0.3}{0.1*0.7+0.5*0.3}
+<p>By having this prior probability, we can use Bayes’ theorem:</p>
+<div class="math notranslate nohighlight">
+\[  p(X=1|Y=1) = \frac{p(Y=1|X=1)p(X=1)}{p(Y=1|X=0)p(X=0)+p(Y=1|X=1)p(X=1)}  \]</div>
+<div class="math notranslate nohighlight">
+\[  = \frac{0.5*0.3}{0.1*0.7+0.5*0.3}
     = \frac{0.15}{0.07+0.15} 
-    = \frac{0.15}{0.22} \simeq 0.68
-\)</span>$</p>
+    = \frac{0.15}{0.22} \simeq 0.68  \]</div>
 </section>
 </section>
 <section id="iterative-bayesian-inference">
 <h2>Iterative Bayesian Inference<a class="headerlink" href="#iterative-bayesian-inference" title="Permalink to this headline">#</a></h2>
 <p>A useful property of Bayesian inference is that you can apply it iteratively to incoming data stream.</p>
-<p>We denote the sequence of observations up to time <span class="math notranslate nohighlight">\(t\)</span> as
-$<span class="math notranslate nohighlight">\(
-    y_{1:t}=(y_1,...,y_t)
-\)</span><span class="math notranslate nohighlight">\(
-and want to estimate the cause \)</span>x<span class="math notranslate nohighlight">\( of these observations
-\)</span><span class="math notranslate nohighlight">\(
-    p(x|y_{1:t}) = \frac{p(y_{1:t}|x)\ p(x)}{p(y_{1:t})}
-\)</span>$</p>
-<p>If the observations are independent, their joint distribution is a product
-$<span class="math notranslate nohighlight">\(
-    p(y_{1:t}|x) = p(y_1|x)\cdots p(y_t|x)
-\)</span><span class="math notranslate nohighlight">\(
-and thus the posterior can be decomposed as
-\)</span><span class="math notranslate nohighlight">\(
-    p(x|y_{1:t}) = \frac{p(y_1|x)\cdots p(y_{t-1}|x)\ p(y_t|x)\ p(x)}{p(y_1)\cdots p(y_{t-1})\ p(y_t)}
-\)</span><span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\(
-    = \frac{p(y_1|x)\cdots p(y_{t-1}|x)\ p(x)}{p(y_1)\cdots p(y_{t-1}) }\ \frac{p(y_t|x)}{p(y_t)}
-\)</span><span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\(
-    = \frac{p(x|y_{1:t-1})\ p(y_t|x)}{p(y_t)}.
-\)</span>$</p>
+<p>We denote the sequence of observations up to time <span class="math notranslate nohighlight">\(t\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[  y_{1:t}=(y_1,...,y_t)  \]</div>
+<p>and want to estimate the cause <span class="math notranslate nohighlight">\(x\)</span> of these observations</p>
+<div class="math notranslate nohighlight">
+\[  p(x|y_{1:t}) = \frac{p(y_{1:t}|x)\ p(x)}{p(y_{1:t})}  \]</div>
+<p>If the observations are independent, their joint distribution is a product</p>
+<div class="math notranslate nohighlight">
+\[  p(y_{1:t}|x) = p(y_1|x)\cdots p(y_t|x)  \]</div>
+<p>and thus the posterior can be decomposed as</p>
+<div class="math notranslate nohighlight">
+\[  p(x|y_{1:t}) = \frac{p(y_1|x)\cdots p(y_{t-1}|x)\ p(y_t|x)\ p(x)}{p(y_1)\cdots p(y_{t-1})\ p(y_t)}  \]</div>
+<div class="math notranslate nohighlight">
+\[  = \frac{p(y_1|x)\cdots p(y_{t-1}|x)\ p(x)}{p(y_1)\cdots p(y_{t-1}) }\ \frac{p(y_t|x)}{p(y_t)}  \]</div>
+<div class="math notranslate nohighlight">
+\[  = \frac{p(x|y_{1:t-1})\ p(y_t|x)}{p(y_t)}.  \]</div>
 <p>This means that the posterior <span class="math notranslate nohighlight">\(p(x|y_{1:t-1})\)</span> that you computed by time <span class="math notranslate nohighlight">\(t-1\)</span> serves as the prior to be combined with the likelihood for the new coming data <span class="math notranslate nohighlight">\(p(y_t|x)\)</span> for computing the new posterior <span class="math notranslate nohighlight">\(p(x|y_{1:t})\)</span>.</p>
 <p>This iterative update of the posterior is practically helpful in online inference utilizing whatever data available so far.</p>
 <section id="coin-toss">
@@ -771,7 +783,7 @@ and thus the posterior can be decomposed as
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 0, 0, 0, 1, 1])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 0, 1, 0, 1, 0])
 </pre></div>
 </div>
 </div>
@@ -850,21 +862,25 @@ and thus the posterior can be decomposed as
 $<span class="math notranslate nohighlight">\( t_n = \b{w}^T\b{x}_n + \epsilon \)</span><span class="math notranslate nohighlight">\(
 where \)</span>p(\epsilon)=\mathcal{N}(0,\beta^{-1})$.</p>
 <p>In Bayesian linear regression, we assume that the weights are sampled from a prior distribution <span class="math notranslate nohighlight">\(p(\b{w})=\mathcal{N}(\b{0},\alpha^{-1}I)\)</span>.</p>
-<p>The likelihood of the parameter <span class="math notranslate nohighlight">\(\b{w}\)</span> for the target output <span class="math notranslate nohighlight">\(\b{t}\)</span> is
-$<span class="math notranslate nohighlight">\( p(\b{t}|X, \b{w}, \beta) = \prod_{n=1}^N \mathcal{N}(t_n|\b{w}^T\b{x},\beta^{-1}) \)</span>$</p>
-<p>When both the prior and likelihood are Gaussian, the posterior will also be Gaussian and have the form:
-$<span class="math notranslate nohighlight">\( p(\b{w}|\b{t}) = \mathcal{N}(\b{w}|\b{m},S) \)</span><span class="math notranslate nohighlight">\(
-where
-\)</span><span class="math notranslate nohighlight">\( \b{m} = \beta S X^T \bf{t} \)</span><span class="math notranslate nohighlight">\(
-and
-\)</span><span class="math notranslate nohighlight">\( S = (\alpha I + \beta X^T X)^{-1} \)</span>$</p>
-<p>If we let <span class="math notranslate nohighlight">\(\alpha=0\)</span>, i.e. infinitely large variance for the weight prior, this is equivalent to regular linear regression. Introducing a penalty term is commonly done in linear regression as
-$$ E(\b{w}) = \frac{\beta}{2}\sum_{n=1}^N {t_n - \b{w}^T \b{x}_n}^2</p>
-<ul class="simple">
-<li><p>\frac{\alpha}{2} \b{w}^T\b{w} $<span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\( = \frac{\beta}{2} ||\b{t} - X \b{w}||^2 + \frac{\alpha}{2} ||\b{w}||^2. \)</span><span class="math notranslate nohighlight">\(
-The Bayesian regression gives a probabilistic interpretation on the role of the regularization parameter \)</span>\alpha$.</p></li>
-</ul>
+<p>The likelihood of the parameter <span class="math notranslate nohighlight">\(\b{w}\)</span> for the target output <span class="math notranslate nohighlight">\(\b{t}\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[ p(\b{t}|X, \b{w}, \beta) = \prod_{n=1}^N \mathcal{N}(t_n|\b{w}^T\b{x},\beta^{-1}) \]</div>
+<p>When both the prior and likelihood are Gaussian, the posterior will also be Gaussian and have the form:</p>
+<div class="math notranslate nohighlight">
+\[ p(\b{w}|\b{t}) = \mathcal{N}(\b{w}|\b{m},S) \]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[ \b{m} = \beta S X^T \bf{t} \]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[ S = (\alpha I + \beta X^T X)^{-1} \]</div>
+<p>If we let <span class="math notranslate nohighlight">\(\alpha=0\)</span>, i.e. infinitely large variance for the weight prior, this is equivalent to regular linear regression. Introducing a penalty term is commonly done in linear regression as</p>
+<div class="math notranslate nohighlight">
+\[ E(\b{w}) = \frac{\beta}{2}\sum_{n=1}^N \{t_n - \b{w}^T \b{x}_n\}^2
++ \frac{\alpha}{2} \b{w}^T\b{w} \]</div>
+<div class="math notranslate nohighlight">
+\[ = \frac{\beta}{2} ||\b{t} - X \b{w}||^2 + \frac{\alpha}{2} ||\b{w}||^2. \]</div>
+<p>The Bayesian regression gives a probabilistic interpretation on the role of the regularization parameter <span class="math notranslate nohighlight">\(\alpha\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We will use this frequently</span>
@@ -955,9 +971,9 @@ The Bayesian regression gives a probabilistic interpretation on the role of the 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>m = [-0.88826191  0.73065891]
-S = [[0.43713465 0.46299698]
- [0.46299698 0.61915189]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>m = [-0.9799991   0.31930229]
+S = [[0.17092122 0.27012959]
+ [0.27012959 0.91198666]]
 </pre></div>
 </div>
 <img alt="_images/Bayesian_18_1.png" src="_images/Bayesian_18_1.png" />
@@ -966,12 +982,15 @@ S = [[0.43713465 0.46299698]
 <section id="predictive-distribution">
 <h3>Predictive distribution<a class="headerlink" href="#predictive-distribution" title="Permalink to this headline">#</a></h3>
 <p>In Bayesian regression, the result is not one weight vector, but a distribution in the weight space. Then it is reasonable to consider the distribution of the output considering such uncertainty in the weigts.</p>
-<p>The output <span class="math notranslate nohighlight">\(y\)</span> for a new input <span class="math notranslate nohighlight">\(\b{x}\)</span> should have the distribution
-$<span class="math notranslate nohighlight">\( p(y|\b{x},\b{t},\alpha,\beta) 
- = \int p(y|\b{x},\b{w},\beta)  p(\b{w}|\b{t},\alpha,\beta) d\b{w} \)</span><span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\( = \mathcal{N}(t|\b{m}^T \b{x}, \sigma^2(\b{x})) \)</span><span class="math notranslate nohighlight">\(
-where the variance of the output is given by
-\)</span><span class="math notranslate nohighlight">\( \sigma^2(\b{x}) = \beta^{-1} + \b{x}^T S \b{x} \)</span>$</p>
+<p>The output <span class="math notranslate nohighlight">\(y\)</span> for a new input <span class="math notranslate nohighlight">\(\b{x}\)</span> should have the distribution</p>
+<div class="math notranslate nohighlight">
+\[ p(y|\b{x},\b{t},\alpha,\beta) 
+ = \int p(y|\b{x},\b{w},\beta)  p(\b{w}|\b{t},\alpha,\beta) d\b{w} \]</div>
+<div class="math notranslate nohighlight">
+\[ = \mathcal{N}(t|\b{m}^T \b{x}, \sigma^2(\b{x})) \]</div>
+<p>where the variance of the output is given by</p>
+<div class="math notranslate nohighlight">
+\[ \sigma^2(\b{x}) = \beta^{-1} + \b{x}^T S \b{x} \]</div>
 <p>Let us see the example of approximating a sine function by Gaussian basis functions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1061,8 +1080,8 @@ where the variance of the output is given by
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 0.92314684 -0.46804772  0.01978409 -0.75779769 -0.25804245  0.23978196
-  0.91039861  0.21297028  0.1454421  -0.74335146]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 0.25195103  0.35510675 -0.84111565 -0.35222447 -0.72550835  0.30870716
+  0.08025409  0.75880438  0.10399677 -0.59032778]
 </pre></div>
 </div>
 <img alt="_images/Bayesian_26_1.png" src="_images/Bayesian_26_1.png" />
@@ -1073,28 +1092,36 @@ where the variance of the output is given by
 </section>
 <section id="bayesian-model-comparison">
 <h2>Bayesian model comparison<a class="headerlink" href="#bayesian-model-comparison" title="Permalink to this headline">#</a></h2>
-<p>We have so far considered Bayesian inference of the parameter <span class="math notranslate nohighlight">\(\b{w}\)</span> for a given model <span class="math notranslate nohighlight">\(\c{M}\)</span>, such as a regression model with some input variables, but we can also think of Bayesian inference of probability over models <span class="math notranslate nohighlight">\(\c{M}_i\)</span>, such as regression models with different choices of input variables, given data <span class="math notranslate nohighlight">\(\c{D}\)</span>
-$<span class="math notranslate nohighlight">\( p(\c{M}_i|\c{D}) \propto p(\c{M}_i) p(\c{D}|\c{M}_i). \)</span>$</p>
+<p>We have so far considered Bayesian inference of the parameter <span class="math notranslate nohighlight">\(\b{w}\)</span> for a given model <span class="math notranslate nohighlight">\(\c{M}\)</span>, such as a regression model with some input variables, but we can also think of Bayesian inference of probability over models <span class="math notranslate nohighlight">\(\c{M}_i\)</span>, such as regression models with different choices of input variables, given data <span class="math notranslate nohighlight">\(\c{D}\)</span></p>
+<div class="math notranslate nohighlight">
+\[ p(\c{M}_i|\c{D}) \propto p(\c{M}_i) p(\c{D}|\c{M}_i). \]</div>
 <p>Here <span class="math notranslate nohighlight">\(p(\c{D}|\c{M}_i)\)</span>, the likelihood of a model given data, is called the <em>evidence</em> of the model.</p>
-<p>If we include a model explicitly in our Bayesian parameter estimation, we have
-$<span class="math notranslate nohighlight">\( p(\b{w}|\c{D},\c{M}_i) = \frac{p(\c{D}|\b{w},\c{M}_i)p(\b{w}|\c{M}_i)}{p(\c{D}|\c{M}_i)}, \)</span><span class="math notranslate nohighlight">\(
-where we have the *evidence* as the normalizing denominator
-\)</span><span class="math notranslate nohighlight">\( p(\c{D}|\c{M}_i) = \int p(\c{D}|\b{w},\c{M}_i)p(\b{w}|\c{M}_i) d\b{w}. \)</span>$
-This is also called <em>marginal likelihood</em> becuase it is the likelihood of the model with its parameters marginalized.</p>
+<p>If we include a model explicitly in our Bayesian parameter estimation, we have</p>
+<div class="math notranslate nohighlight">
+\[ p(\b{w}|\c{D},\c{M}_i) = \frac{p(\c{D}|\b{w},\c{M}_i)p(\b{w}|\c{M}_i)}{p(\c{D}|\c{M}_i)}, \]</div>
+<p>where we have the <em>evidence</em> as the normalizing denominator</p>
+<div class="math notranslate nohighlight">
+\[ p(\c{D}|\c{M}_i) = \int p(\c{D}|\b{w},\c{M}_i)p(\b{w}|\c{M}_i) d\b{w}. \]</div>
+<p>This is also called <em>marginal likelihood</em> becuase it is the likelihood of the model with its parameters marginalized.</p>
 <section id="computing-model-evidence">
 <h3>Computing model evidence<a class="headerlink" href="#computing-model-evidence" title="Permalink to this headline">#</a></h3>
-<p>In Bayesian linear regression, the model evidence with the <em>hyperparamters</em> <span class="math notranslate nohighlight">\(\alpha\)</span> (weight prior) and <span class="math notranslate nohighlight">\(\beta\)</span> (observation noise) is given by integration over all the range of the weight parameters <span class="math notranslate nohighlight">\(\b{w}\)</span>:
-$<span class="math notranslate nohighlight">\( p(\b{t}|\alpha,\beta) = \int p(\b{t}|\b{w},\beta)p(\b{w}|\alpha) d\b{w}, \)</span>$</p>
+<p>In Bayesian linear regression, the model evidence with the <em>hyperparamters</em> <span class="math notranslate nohighlight">\(\alpha\)</span> (weight prior) and <span class="math notranslate nohighlight">\(\beta\)</span> (observation noise) is given by integration over all the range of the weight parameters <span class="math notranslate nohighlight">\(\b{w}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[ p(\b{t}|\alpha,\beta) = \int p(\b{t}|\b{w},\beta)p(\b{w}|\alpha) d\b{w}, \]</div>
 <p>By further integrating this over the prior distribution of <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> we have the evidence for the full model.</p>
 <p>A practical approximation is to find <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> that maximize <span class="math notranslate nohighlight">\(p(\b{t}|\alpha,\beta)\)</span>.</p>
-<p>The log evidence is given as (Bishop, Chapter 3.5)
-$<span class="math notranslate nohighlight">\( \log p(\b{t}|\alpha,\beta) 
-    = -\frac{\beta}{2} ||\b{t}-X\b{m}||^2 - \frac{\alpha}{2} ||\b{m}||^2 
-    + \frac{1}{2}\log|S| + \frac{D}{2}\log\alpha + \frac{N}{2}(\log\beta - \log(2\pi)) \)</span><span class="math notranslate nohighlight">\(
-where \)</span>\b{m}<span class="math notranslate nohighlight">\( and \)</span>S<span class="math notranslate nohighlight">\( also depend on \)</span>\alpha<span class="math notranslate nohighlight">\( and \)</span>\beta$.</p>
-<p>For <span class="math notranslate nohighlight">\(N&gt;&gt;D\)</span>, the evidence is maximized by
-$<span class="math notranslate nohighlight">\( \alpha^{-1} = \frac{1}{D}||\b{m}||^2 \)</span><span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\( \beta^{-1} = \frac{1}{N}||\b{t} - X \b{w}||^2. \)</span>$</p>
+<p>The log evidence is given as (Bishop, Chapter 3.5)</p>
+<div class="math notranslate nohighlight">
+\[ \log p(\b{t}|\alpha,\beta) 
+    = -\frac{\beta}{2} ||\b{t}-X\b{m}||^2 - \frac{\alpha}{2} ||\b{m}||^2 \]</div>
+<div class="math notranslate nohighlight">
+\[  + \frac{1}{2}\log|S| + \frac{D}{2}\log\alpha + \frac{N}{2}(\log\beta - \log(2\pi)) \]</div>
+<p>where <span class="math notranslate nohighlight">\(\b{m}\)</span> and <span class="math notranslate nohighlight">\(S\)</span> also depend on <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span>.</p>
+<p>For <span class="math notranslate nohighlight">\(N&gt;&gt;D\)</span>, the evidence is maximized by</p>
+<div class="math notranslate nohighlight">
+\[ \alpha^{-1} = \frac{1}{D}||\b{m}||^2 \]</div>
+<div class="math notranslate nohighlight">
+\[ \beta^{-1} = \frac{1}{N}||\b{t} - X \b{w}||^2. \]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">logev</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">S</span><span class="p">):</span>
@@ -1142,14 +1169,14 @@ $<span class="math notranslate nohighlight">\( \alpha^{-1} = \frac{1}{D}||\b{m}|
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 41.61563799209052 3.240886049685922 -19.00896697559103 0.43354091948571755
-3 6.23416107511272 3.5002968284779565 -21.610151879662293 0.45728123576745555
-4 0.33488641690900434 27.33609113966107 -8.137154856591188 0.01816330464402111
-5 0.8749549223378704 27.676833733260807 -8.156119312183886 0.01357045102418386
-6 1.8223783864425875 29.14747137330458 -7.4485156304300055 0.010871294528736603
-7 2.6386888129928265 29.721985504424712 -7.511725397208938 0.01015663664018453
-8 2.8639116545825702 31.515012938086144 -7.6076312143619695 0.013843872364705977
-9 3.0383345509864115 35.087017248257446 -7.314028369894597 0.02071086240516036
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 1.8099323102364981 2.554299695765841 -24.46596911302612 0.4508036194343127
+3 2.2395375030623392 2.9857970546317576 -24.59393343563727 0.47961350175267353
+4 0.3784611263873787 24.768818221981725 -8.868529711848018 0.03532860261498482
+5 1.0214477967242268 32.78302546588487 -6.114421097858969 0.05450034240865244
+6 1.5093358822381804 41.920165790824925 -4.475929349598729 0.08112367715164608
+7 2.279175316751181 42.58544569175833 -4.408353713710298 0.08199802058950144
+8 3.1267582218919623 42.32077670317697 -4.393337008286807 0.0876584335958906
+9 3.874800068934572 43.466501251519176 -4.114214958017492 0.10595620085345134
 </pre></div>
 </div>
 <img alt="_images/Bayesian_33_1.png" src="_images/Bayesian_33_1.png" />
@@ -1175,39 +1202,42 @@ $<span class="math notranslate nohighlight">\( \alpha^{-1} = \frac{1}{D}||\b{m}|
 <h2>Inference on a chain<a class="headerlink" href="#inference-on-a-chain" title="Permalink to this headline">#</a></h2>
 <p>Here we consider the simplest case of a chain of discrete random variables.</p>
 <p><img alt="Chain" src="_images/BN_chain.png" /></p>
-<p>For each node, the variable takes an integer value <span class="math notranslate nohighlight">\(x_n \in \{1,...,K_n\}\)</span> and we consider the joint distribution over the entire nodes:
-$<span class="math notranslate nohighlight">\(
-    p(x_1,...,x_N) = p(x_1)p(x_2|x_1) \cdots p(x_{N-1}|x_{N-2})p(x_N|x_{N-1}). 
-\)</span>$</p>
-<p>When an observation <span class="math notranslate nohighlight">\(x_N=k\)</span> is made at the end node, we would consider the posterior distribution
-$<span class="math notranslate nohighlight">\(
-    p(x_1,...,x_{N-1}|x_N=k) \propto 
-    p(x_1)p(x_2|x_1) \cdots p(x_{N-1}|x_{N-2})p(x_N=k|x_{N-1}).
-\)</span>$</p>
-<p>The posterior distribution of each node <span class="math notranslate nohighlight">\(x_n\)</span> is given by marginalization
-$<span class="math notranslate nohighlight">\(
-    p(x_n|x_N=k) \propto \sum_{x_1}\cdots\sum_{x_{n-1}}\ 
-    \sum_{x_{n+1}}\cdots\sum_{x_N}p(x_1,...,x_{N-1}|x_N=k). 
-\)</span>$$<span class="math notranslate nohighlight">\(
-    = \left\{\sum_{x_{n-1}}p(x_n|x_{n-1}) \cdots
-    \sum_{x_1}p(x_2|x_1)p(x_1)\right\}
-    \times \left\{\sum_{x_{n+1}}p(x_{n+1}|x_n) \cdots 
-    \sum_{x_{N-1}}p(x_{N-1}|x_{N-2}) \sum_{x_N}p(x_N=k|x_{N-1})\right\}
-\)</span>$</p>
+<p>For each node, the variable takes an integer value <span class="math notranslate nohighlight">\(x_n \in \{1,...,K_n\}\)</span> and we consider the joint distribution over the entire nodes:</p>
+<div class="math notranslate nohighlight">
+\[  p(x_1,...,x_N) = p(x_1)p(x_2|x_1) \cdots p(x_{N-1}|x_{N-2})p(x_N|x_{N-1}). \]</div>
+<p>When an observation <span class="math notranslate nohighlight">\(x_N=k\)</span> is made at the end node, we would consider the posterior distribution</p>
+<div class="math notranslate nohighlight">
+\[  p(x_1,...,x_{N-1}|x_N=k) \propto 
+    p(x_1)p(x_2|x_1) \cdots p(x_{N-1}|x_{N-2})p(x_N=k|x_{N-1}).  \]</div>
+<p>The posterior distribution of each node <span class="math notranslate nohighlight">\(x_n\)</span> is given by marginalization</p>
+<div class="math notranslate nohighlight">
+\[  p(x_n|x_N=k) \propto \sum_{x_1}\cdots\sum_{x_{n-1}}\ 
+    \sum_{x_{n+1}}\cdots\sum_{x_N}p(x_1,...,x_{N-1}|x_N=k) \]</div>
+<div class="math notranslate nohighlight">
+\[  = \left\{\sum_{x_{n-1}}p(x_n|x_{n-1}) \cdots
+    \sum_{x_1}p(x_2|x_1)p(x_1)\right\} \]</div>
+<div class="math notranslate nohighlight">
+\[  \times \left\{\sum_{x_{n+1}}p(x_{n+1}|x_n) \cdots 
+    \sum_{x_{N-1}}p(x_{N-1}|x_{N-2}) \sum_{x_N}p(x_N=k|x_{N-1})\right\}  \]</div>
 <p>This can be computed efficiently by passing two <em>messages</em>:</p>
 <ul class="simple">
-<li><p>Forward message <span class="math notranslate nohighlight">\(\alpha_n\)</span> of prior:
-$<span class="math notranslate nohighlight">\( \alpha_1 = p(x_1)\)</span><span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\( \alpha_n = \sum_{x_{n-1}} p(x_n|x_{n-1}) \alpha_{n-1} \)</span>$</p></li>
-<li><p>Backward message <span class="math notranslate nohighlight">\(\beta_n\)</span> of likelihood:
-$<span class="math notranslate nohighlight">\( \beta_N = (0,...,1,...0) \)</span><span class="math notranslate nohighlight">\(
-with \)</span>1<span class="math notranslate nohighlight">\( at \)</span>k<span class="math notranslate nohighlight">\(-th component and
-\)</span><span class="math notranslate nohighlight">\( \beta_n = \sum_{x_{n+1}} p(x_{n+1}|x_n) \beta_{n+1} \)</span>$</p></li>
+<li><p>Forward message <span class="math notranslate nohighlight">\(\alpha_n\)</span> of prior:</p></li>
 </ul>
-<p>The marginal distribution for each node is then given by their product
-$<span class="math notranslate nohighlight">\( 
-    p(x_n|x_N=k) \propto \alpha_n \beta_n.
-\)</span>$</p>
+<div class="math notranslate nohighlight">
+\[ \alpha_1 = p(x_1)\]</div>
+<div class="math notranslate nohighlight">
+\[ \alpha_n = \sum_{x_{n-1}} p(x_n|x_{n-1}) \alpha_{n-1} \]</div>
+<ul class="simple">
+<li><p>Backward message <span class="math notranslate nohighlight">\(\beta_n\)</span> of likelihood:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ \beta_N = (0,...,1,...0) \]</div>
+<p>with <span class="math notranslate nohighlight">\(1\)</span> at <span class="math notranslate nohighlight">\(k\)</span>-th component and</p>
+<div class="math notranslate nohighlight">
+\[ \beta_n = \sum_{x_{n+1}} p(x_{n+1}|x_n) \beta_{n+1} \]</div>
+<p>The marginal distribution for each node is then given by their product</p>
+<div class="math notranslate nohighlight">
+\[  p(x_n|x_N=k) \propto \alpha_n \beta_n. \]</div>
 <p>This is called <em>forward-backward</em> algorithm.</p>
 <p>This can be generalized to tree-like networks and the algorithm using forward and backward message passing is known as <em>belief propagation</em>.</p>
 <section id="markov-chain">
@@ -1289,7 +1319,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 1, 1, 1, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 1, 1, 1, 2, 2, 2, 3, 3, 4, 5, 5, 5, 5, 5, 5])
 </pre></div>
 </div>
 </div>
@@ -1359,29 +1389,25 @@ $<span class="math notranslate nohighlight">\(
 <section id="dynamic-bayesian-inference">
 <h2>Dynamic Bayesian Inference<a class="headerlink" href="#dynamic-bayesian-inference" title="Permalink to this headline">#</a></h2>
 <p>Iterative Bayesian inference can be generalized to the case when the hidden variable <span class="math notranslate nohighlight">\(x\)</span> changes dynamically.</p>
-<p>We denote the sequence of observation as
-$<span class="math notranslate nohighlight">\(
-    y_{1:t}=(y_1,..,y_t)
-\)</span><span class="math notranslate nohighlight">\(
-and the history of underlying state variable as
-\)</span><span class="math notranslate nohighlight">\(
-    x_{1:t}=(x_1,..,x_t).
-\)</span>$</p>
+<p>We denote the sequence of observation as</p>
+<div class="math notranslate nohighlight">
+\[  y_{1:t}=(y_1,..,y_t) \]</div>
+<p>and the history of underlying state variable as</p>
+<div class="math notranslate nohighlight">
+\[  x_{1:t}=(x_1,..,x_t). \]</div>
 <p>We assume two conditional probability distributions:</p>
 <ul class="simple">
 <li><p>Dynamics model: <span class="math notranslate nohighlight">\(p(x’|x)\)</span></p></li>
 <li><p>Observation model: <span class="math notranslate nohighlight">\(p(y|x)\)</span></p></li>
 </ul>
-<p>Using the posterior <span class="math notranslate nohighlight">\(p(x_t|y_{1:t})\)</span> computed from the data up to time <span class="math notranslate nohighlight">\(t\)</span>, we use the dymamics model to computer the <em>predictive prior</em>:
-$<span class="math notranslate nohighlight">\(
-    p(x_{t+1}|y_{1:t}) = \int p(x_{t+1}|x_t) p(x_t|y_{1:t}) dx_t
-\)</span><span class="math notranslate nohighlight">\(
-by integrating or summing over the possible range of \)</span>x$.</p>
-<p>We can combine this prior with the new coming data <span class="math notranslate nohighlight">\(y_{t+1}\)</span> to update the posterior as:
-$<span class="math notranslate nohighlight">\(
-    p(x_{t+1}|y_{1:t+1}) 
- = \frac{p(y_{t+1}|x_{t+1}) p(x_{t+1}|y_{1:t})}{ p(y_{1:t+1})}.
-\)</span>$</p>
+<p>Using the posterior <span class="math notranslate nohighlight">\(p(x_t|y_{1:t})\)</span> computed from the data up to time <span class="math notranslate nohighlight">\(t\)</span>, we use the dymamics model to computer the <em>predictive prior</em>:</p>
+<div class="math notranslate nohighlight">
+\[  p(x_{t+1}|y_{1:t}) = \int p(x_{t+1}|x_t) p(x_t|y_{1:t}) dx_t \]</div>
+<p>by integrating or summing over the possible range of <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<p>We can combine this prior with the new coming data <span class="math notranslate nohighlight">\(y_{t+1}\)</span> to update the posterior as:</p>
+<div class="math notranslate nohighlight">
+\[  p(x_{t+1}|y_{1:t+1}) 
+ = \frac{p(y_{t+1}|x_{t+1}) p(x_{t+1}|y_{1:t})}{ p(y_{1:t+1})}. \]</div>
 <p>This is called <em>dynamic Bayesian inference</em> and allows real-time tracking of hidden variables from noisy observations.</p>
 <p>When <span class="math notranslate nohighlight">\(x\)</span> is discrete, the process is called <em>hidden Markov model (HMM)</em>, which has been used extensively speech processing.</p>
 <p>Another example is <em>Kalman filter</em>, in which <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> are continuous and the dynamics and observation models are linear mapping with Gaussian noise.</p>
@@ -1577,25 +1603,8 @@ There have been serveral hypotheses about how such hierarchical recurrent networ
 </ul>
 </section>
 </section>
-<section id="exercise">
-<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">#</a></h2>
-<ol class="simple">
-<li><p>Apply Bayesian linear regression with gaussian basis functions to a data sampled from a nonlionear function of your interest and see how <span class="math notranslate nohighlight">\(\alpha\)</span>, <span class="math notranslate nohighlight">\(\beta\)</span>, <span class="math notranslate nohighlight">\(M\)</span> and <span class="math notranslate nohighlight">\(N\)</span> affect the performance.</p></li>
-</ol>
-<ol class="simple">
-<li><p>Compute the log evidence for the above models and see how that is related to the predictin errors.</p></li>
-</ol>
-<ol class="simple">
-<li><p>Try forward-backward algorithm with different chains and inputs.</p></li>
-</ol>
-<ol class="simple">
-<li><p>In the above chain example, we assumed that only one of the <span class="math notranslate nohighlight">\(K\)</span> bits is one. If we allow simultaneous activation, the number of states increases to <span class="math notranslate nohighlight">\(2^K\)</span>, such that the conditional probability has <span class="math notranslate nohighlight">\(2^{K_n}2^{K_{n+1}}\)</span> parameters.</p></li>
-</ol>
-<p>By using a stochastic neural network,
-$<span class="math notranslate nohighlight">\( p(x_{n+1,j}|x_n) = f( \sum_{k=1}^{K_n} w_{jk} x_{nk}) \)</span><span class="math notranslate nohighlight">\(
-where \)</span>f(x)=\frac{1}{1+e^{-x}}<span class="math notranslate nohighlight">\(, the conditional probabilty can be defined by \)</span>K_nK_{n+1}$ parameters.</p>
-<p>Try implementing data sampling and inference in such a chain.</p>
-</section>
+<div class="toctree-wrapper compound">
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1629,13 +1638,13 @@ where \)</span>f(x)=\frac{1}{1+e^{-x}}<span class="math notranslate nohighlight"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Chapter 5. Unsupervised Learning: Exercise</p>
+            <p class="prev-next-title">Unsupervised Learning: Exercise</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="Deep.html" title="next page">
+    <a class='right-next' id="next-link" href="Bayesian_Exercise.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Chapter 7: Deep Learning</p>
+        <p class="prev-next-title">Bayesian Approaches: Exercise</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
