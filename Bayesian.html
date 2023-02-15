@@ -684,27 +684,19 @@ About half of the case a hiding mouse makes a sound, but about 10% of the time y
 How would you estimate the probability for a mouse hiding in the bush?</p>
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="head"><p>\</p></th>
-<th class="head"><p><span class="math notranslate nohighlight">\(X\)</span>:mouse</p></th>
-<th class="head"><p>not in bush</p></th>
-<th class="head"><p>in bush</p></th>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(p(Y \vert X)\)</span></p></th>
+<th class="text-align:center head"><p>no mouse <span class="math notranslate nohighlight">\(X=0\)</span></p></th>
+<th class="text-align:center head"><p>mouse hiding <span class="math notranslate nohighlight">\(X=1\)</span></p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(Y\)</span>:sound</p></td>
-<td><p><span class="math notranslate nohighlight">\(p(Y \vert X)\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(X=0\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(X=1\)</span></p></td>
+<tr class="row-even"><td><p>no sound <span class="math notranslate nohighlight">\(Y=0\)</span></p></td>
+<td class="text-align:center"><p>0.9</p></td>
+<td class="text-align:center"><p>0.5</p></td>
 </tr>
-<tr class="row-odd"><td><p>not heard</p></td>
-<td><p><span class="math notranslate nohighlight">\(Y=0\)</span></p></td>
-<td><p>0.9</p></td>
-<td><p>0.5</p></td>
-</tr>
-<tr class="row-even"><td><p>heard</p></td>
-<td><p><span class="math notranslate nohighlight">\(Y=1\)</span></p></td>
-<td><p>0.1</p></td>
-<td><p>0.5</p></td>
+<tr class="row-odd"><td><p>sound <span class="math notranslate nohighlight">\(Y=1\)</span></p></td>
+<td class="text-align:center"><p>0.1</p></td>
+<td class="text-align:center"><p>0.5</p></td>
 </tr>
 </tbody>
 </table>
@@ -714,17 +706,13 @@ From the above table, 0.5?</p>
 <p>The mouse ran into other nearby bushes, so you assume that the prior probability of the mouse in this bush is 30%:</p>
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="text-align:center head"><p><span class="math notranslate nohighlight">\(X\)</span>: mouse</p></th>
-<th class="text-align:center head"><p>not in bush</p></th>
-<th class="text-align:center head"><p>in bush</p></th>
+<tr class="row-odd"><th class="text-align:center head"><p>prior probability</p></th>
+<th class="text-align:center head"><p>no mouse <span class="math notranslate nohighlight">\(X=0\)</span></p></th>
+<th class="text-align:center head"><p>mouse hiding <span class="math notranslate nohighlight">\(X=1\)</span></p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:center"><p>prior</p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(X=0\)</span></p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(X=1\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-align:center"><p><span class="math notranslate nohighlight">\(p(X)\)</span></p></td>
+<tr class="row-even"><td class="text-align:center"><p><span class="math notranslate nohighlight">\(p(X)\)</span></p></td>
 <td class="text-align:center"><p>0.7</p></td>
 <td class="text-align:center"><p>0.3</p></td>
 </tr>
@@ -783,7 +771,7 @@ From the above table, 0.5?</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 0, 0, 0, 1, 0])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 1, 0, 1, 0, 0])
 </pre></div>
 </div>
 </div>
@@ -971,9 +959,9 @@ where \)</span>p(\epsilon)=\mathcal{N}(0,\beta^{-1})$.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>m = [-1.12539381  0.4201322 ]
-S = [[0.19313711 0.30121818]
- [0.30121818 0.88754918]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>m = [-0.6324856  -0.33023205]
+S = [[ 0.2714594  -0.38038409]
+ [-0.38038409  0.80139466]]
 </pre></div>
 </div>
 <img alt="_images/Bayesian_18_1.png" src="_images/Bayesian_18_1.png" />
@@ -1080,8 +1068,8 @@ S = [[0.19313711 0.30121818]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 0.26857384  0.15458781 -0.74872825 -0.81125251 -0.14502895  0.31809353
-  0.65466164 -0.23741412  0.57957987 -0.93855996]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 0.29698368  0.36139514 -0.99301038 -0.27638886 -0.47643492  0.47583395
+  0.66707024  0.17983728  0.43021111 -1.13720968]
 </pre></div>
 </div>
 <img alt="_images/Bayesian_26_1.png" src="_images/Bayesian_26_1.png" />
@@ -1169,14 +1157,14 @@ S = [[0.19313711 0.30121818]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 16.968469088764067 3.5762565789377936 -18.850884167920075 0.40953224834063745
-3 10.554196468113568 3.7592719325655843 -20.11434417064916 0.4035153035665581
-4 0.37348421550338806 26.158696270536108 -8.372687979258714 0.018252832668920332
-5 0.8326729322035568 31.700715397840945 -6.8556282040113565 0.016115977167192243
-6 1.8325381722528535 32.146409827917495 -6.477637776454738 0.018139831446427956
-7 2.6038351417380294 34.766384557521555 -6.109757962593367 0.02292137840435418
-8 3.346194442849763 36.42226012976045 -5.458506283759959 0.029247201729523917
-9 2.9173311295641025 42.9817949897762 -5.305725857357874 0.05555437723070535
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 0.5764110697483414 3.668500952072289 -21.695357392874264 0.4935655037019176
+3 1.0182653620246693 4.594636047094672 -21.070684633634396 0.5333798334583003
+4 0.3664232859352594 23.951005078198552 -8.606432178003615 0.0250765524472483
+5 0.7759927932101978 26.772053627798265 -7.9986166478143055 0.005694958037603405
+6 1.6602722122435216 28.223808718912966 -7.137972010426411 0.007395101787991644
+7 2.306056931561818 27.897854516492927 -7.564326783137988 0.006559910792820328
+8 2.318943120463895 31.632968655273253 -7.569888746858801 0.007129346984973061
+9 2.2942103347957206 41.652341277101456 -6.038998632430022 0.013374973186341493
 </pre></div>
 </div>
 <img alt="_images/Bayesian_33_1.png" src="_images/Bayesian_33_1.png" />
@@ -1319,7 +1307,7 @@ S = [[0.19313711 0.30121818]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 1, 2, 3, 3, 4, 4, 4, 4, 4, 4, 4, 5, 0, 0, 0])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4])
 </pre></div>
 </div>
 </div>
