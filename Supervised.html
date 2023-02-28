@@ -165,10 +165,22 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="Bayesian.html">
    Chatper 6. Bayesian Approaches
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Bayesian_Exercise.html">
+     Bayesian Approaches: Exercise
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Deep.html">
@@ -1897,7 +1909,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='e8af34e4-807e-4fb1-8a4b-c31e4e2ecdc5'></div></div></div>
+</script><div class="output text_html"><div id='fbe4a8c9-8e47-47bb-9587-0414c3313c7b'></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1912,7 +1924,7 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>w = [-2.25460430e-03 -4.33246981e+01 -3.69064332e+00]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>w = [ 3.00563509e-02 -4.57982425e+01 -3.10644774e+00]
 [0, -49.0, -0.6666666666666667]
 </pre></div>
 </div>
@@ -1927,7 +1939,7 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 1.0396205941554015
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.8727082926797499
 </pre></div>
 </div>
 </div>
@@ -2902,7 +2914,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='f22b5bcc-9fc4-4ec3-be3d-d899d6963946'></div></div></div>
+</script><div class="output text_html"><div id='365bbc9a-7b95-4fd6-a425-d7fdf3c92025'></div></div></div>
 </div>
 </section>
 </section>
@@ -3150,7 +3162,7 @@ which is a product of the output error and the input to each weight.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 1.0 ; w =  [-0.3         0.18037298  0.22382888]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 1.0 ; w =  [-0.3         0.30582676  0.18644075]
 </pre></div>
 </div>
 <img alt="_images/Supervised_41_1.png" src="_images/Supervised_41_1.png" />
@@ -3230,7 +3242,7 @@ where \)</span>1[\ ]<span class="math notranslate nohighlight">\( represents an 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>n = 20 ; err = 0.721470596924611 ; w = [-0.05585017  0.38281653  0.26525223]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>n = 20 ; err = 0.7407416589729021 ; w = [-0.33962524  0.54015817  0.32520477]
 </pre></div>
 </div>
 <img alt="_images/Supervised_46_1.png" src="_images/Supervised_46_1.png" />
@@ -3372,7 +3384,7 @@ we can also apply stochastic gradient descent
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> err = 0.25 ; w = [-1.72235717  0.4306545   0.73689081]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> err = 0.25 ; w = [-1.60279483  0.96154312  0.22123892]
 </pre></div>
 </div>
 <img alt="_images/Supervised_54_1.png" src="_images/Supervised_54_1.png" />
@@ -3488,7 +3500,7 @@ The feedback error learning model by Kawato. The innate feedback controller in t
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true

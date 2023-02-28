@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Chapter 5. Unsupervised Learning" href="Unsupervised.html" />
-    <link rel="prev" title="Chapter 3: Supervised Learning" href="Supervised.html" />
+    <link rel="prev" title="Supervised Learning: Exercise" href="Supervised_Exercise.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -126,10 +126,22 @@ const thebe_selector_output = ".output, .cell_output"
    Chapter 2. Neural Modeling and Analysis
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="Supervised.html">
    Chapter 3: Supervised Learning
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Supervised_Exercise.html">
+     Supervised Learning: Exercise
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
@@ -140,23 +152,35 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="Unsupervised.html">
    Chapter 5. Unsupervised Learning
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="Unsupervised_Exercise.html">
-     Chapter 5. Unsupervised Learning: Exercise
+     Unsupervised Learning: Exercise
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="Bayesian.html">
    Chatper 6. Bayesian Approaches
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Bayesian_Exercise.html">
+     Bayesian Approaches: Exercise
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Deep.html">
@@ -770,16 +794,16 @@ $<span class="math notranslate nohighlight">\(\Delta Q(s_t,a_t) = \alpha \delta_
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2, 1]
-[0, 0.34207044560398514, 2, 0]
-[1, 0.6255973013468028, 2, 1]
-[2, 0.5790985346013208, 1, 1]
-[3, 0.7778460730450459, 1, 1]
-[4, 0.4955383509701692, 2, 1]
-[5, 0.2885008943005689, 0, 1]
-[6, 0.35923085932075616, 1, 0]
-[7, 0.8810721585023364, 1, 0]
-[8, 0.7416658992450028, 2, 1]
-[9, 0.5234532539268733, 2, 1]
+[0, 0.14588773638022723, 1, 1]
+[1, 0.8164678908088584, 0, 0]
+[2, 0.1625993672334064, 2, 1]
+[3, 0.6404943853155828, 2, 0]
+[4, 0.08407974978695787, 1, 0]
+[5, 0.27450874325964725, 2, 0]
+[6, 0.8401331605751574, 1, 1]
+[7, 0.17531674744401315, 1, 0]
+[8, 0.26543634016126094, 1, 1]
+[9, 0.7752803919795138, 0, 1]
 </pre></div>
 </div>
 </div>
@@ -1032,7 +1056,7 @@ $<span class="math notranslate nohighlight">\(\Delta \w = \alpha_w \delta_t \p{\
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -1047,11 +1071,11 @@ $<span class="math notranslate nohighlight">\(\Delta \w = \alpha_w \delta_t \p{\
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="Supervised.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="Supervised_Exercise.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Chapter 3: Supervised Learning</p>
+            <p class="prev-next-title">Supervised Learning: Exercise</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="Unsupervised.html" title="next page">

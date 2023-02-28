@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Supervised Learning: Exercise &#8212; Brain Computation</title>
+    <title>Chapter 7: Deep Learning: Exercise &#8212; Brain Computation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -50,10 +50,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Chapter 4. Reinforcement Learning" href="Reinforcement.html" />
-    <link rel="prev" title="Chapter 3: Supervised Learning" href="Supervised.html" />
+    <link rel="next" title="Chapter 8. Multiple Agents" href="Multiple.html" />
+    <link rel="prev" title="Chapter 7: Deep Learning" href="Deep.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -124,18 +126,18 @@ const thebe_selector_output = ".output, .cell_output"
    Chapter 2. Neural Modeling and Analysis
   </a>
  </li>
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="Supervised.html">
    Chapter 3: Supervised Learning
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Supervised_Exercise.html">
      Supervised Learning: Exercise
     </a>
    </li>
@@ -180,10 +182,22 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="Deep.html">
    Chapter 7: Deep Learning
   </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Chapter 7: Deep Learning: Exercise
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Multiple.html">
@@ -254,7 +268,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/Supervised_Exercise.ipynb"
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/Deep_Exercise.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -297,7 +311,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/Supervised_Exercise.ipynb"
+        <a href="_sources/Deep_Exercise.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -346,7 +360,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Supervised Learning: Exercise</h1>
+                <h1>Chapter 7: Deep Learning: Exercise</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -358,21 +372,21 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="supervised-learning-exercise">
-<h1>Supervised Learning: Exercise<a class="headerlink" href="#supervised-learning-exercise" title="Permalink to this headline">#</a></h1>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>1.</strong> Implement an online version of linear regression.</p>
-<p><strong>2.</strong> Implement linear regression using Gaussian basis fuctions.
-Test that with the nonlinear pendulum data in ‘data/pend2.txt’.</p>
-<p><strong>3.</strong> Implement a batch version of logistic regression by iterative least squares.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-7-deep-learning-exercise">
+<h1>Chapter 7: Deep Learning: Exercise<a class="headerlink" href="#chapter-7-deep-learning-exercise" title="Permalink to this headline">#</a></h1>
+<div class="math notranslate nohighlight">
+\[ % Latex macros
+\newcommand{\mat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\newcommand{\p}[2]{\frac{\partial #1}{\partial #2}}
+\renewcommand{\b}[1]{\boldsymbol{#1}}
+\newcommand{\w}{\boldsymbol{w}}
+\newcommand{\x}{\boldsymbol{x}}
+\newcommand{\y}{\boldsymbol{y}}
+\newcommand{\z}{\boldsymbol{z}}
+\]</div>
+<p><strong>1.</strong> Try back-propagation learning with different function approximation or classification tasks. See how the choices of numbers of layers <span class="math notranslate nohighlight">\(L\)</span> and units <span class="math notranslate nohighlight">\(M^l\)</span>, as well as data size <span class="math notranslate nohighlight">\(N\)</span> and the learning rate <span class="math notranslate nohighlight">\(\alpha\)</span> affect learning.</p>
+<p><strong>2.</strong> Implement deep neural networks with ReLU activation functions for the hidden units or softmax for the output units.</p>
+<p><strong>3.</strong> Run the restricted Boltzmann machine with diffent input patterns, the number of hidden units <span class="math notranslate nohighlight">\(M_h\)</span>, and the cycle of contrastive divergence <span class="math notranslate nohighlight">\(K\)</span>.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -402,17 +416,17 @@ Test that with the nonlinear pendulum data in ‘data/pend2.txt’.</p>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="Supervised.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="Deep.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Chapter 3: Supervised Learning</p>
+            <p class="prev-next-title">Chapter 7: Deep Learning</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="Reinforcement.html" title="next page">
+    <a class='right-next' id="next-link" href="Multiple.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Chapter 4. Reinforcement Learning</p>
+        <p class="prev-next-title">Chapter 8. Multiple Agents</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

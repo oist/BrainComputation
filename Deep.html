@@ -54,8 +54,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Chapter 8. Multiple Agents" href="Multiple.html" />
-    <link rel="prev" title="Chatper 6. Bayesian Approaches" href="Bayesian.html" />
+    <link rel="next" title="Chapter 7: Deep Learning: Exercise" href="Deep_Exercise.html" />
+    <link rel="prev" title="Bayesian Approaches: Exercise" href="Bayesian_Exercise.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -126,10 +126,22 @@ const thebe_selector_output = ".output, .cell_output"
    Chapter 2. Neural Modeling and Analysis
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="Supervised.html">
    Chapter 3: Supervised Learning
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Supervised_Exercise.html">
+     Supervised Learning: Exercise
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Reinforcement.html">
@@ -140,28 +152,52 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="Unsupervised.html">
    Chapter 5. Unsupervised Learning
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="Unsupervised_Exercise.html">
-     Chapter 5. Unsupervised Learning: Exercise
+     Unsupervised Learning: Exercise
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="Bayesian.html">
    Chatper 6. Bayesian Approaches
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Bayesian_Exercise.html">
+     Bayesian Approaches: Exercise
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toctree-l1 current active">
+ <li class="toctree-l1 current active has-children">
   <a class="current reference internal" href="#">
    Chapter 7: Deep Learning
   </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Deep_Exercise.html">
+     Chapter 7: Deep Learning: Exercise
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Multiple.html">
@@ -468,11 +504,6 @@ title="Print to PDF"
    References
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercise">
-   Exercise
-  </a>
- </li>
 </ul>
 
     </nav>
@@ -626,11 +657,6 @@ title="Print to PDF"
    References
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercise">
-   Exercise
-  </a>
- </li>
 </ul>
 
                         </nav>
@@ -687,28 +713,33 @@ title="Print to PDF"
 </section>
 <section id="multi-layer-neural-networks">
 <h2>7.1 Multi-Layer Neural Networks<a class="headerlink" href="#multi-layer-neural-networks" title="Permalink to this headline">#</a></h2>
-<p>In the classic perceptrons and standard linear regression models, the input features <span class="math notranslate nohighlight">\(\b{\phi}(\x)\)</span> were fixed and only the output connection weights <span class="math notranslate nohighlight">\(\w\)</span> were changed by learning to compute the output
-$<span class="math notranslate nohighlight">\(
+<p>In the classic perceptrons and standard linear regression models, the input features <span class="math notranslate nohighlight">\(\b{\phi}(\x)\)</span> were fixed and only the output connection weights <span class="math notranslate nohighlight">\(\w\)</span> were changed by learning to compute the output</p>
+<div class="math notranslate nohighlight">
+\[
     y = \w^T \b{\phi}(\x).
-\)</span>$</p>
+\]</div>
 <p>The capability of such networks is dependent on what features we prepare, either by many randomly connected units in perceptrons or hand-crafted features in conventional patter classification.</p>
 <p>An alternative approach is to learn features that suite the required input-output mapping.
-Let us consider a two-layer network
-$<span class="math notranslate nohighlight">\(
-    y = w^o_{0} + \sum_{i=1}^M w^o_{i} h_i
-\)</span><span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\(
+Let us consider a two-layer network</p>
+<div class="math notranslate nohighlight">
+\[
+y = w^o_{0} + \sum_{i=1}^M w^o_{i} h_i
+\]</div>
+<div class="math notranslate nohighlight">
+\[
     h_i = g(w^h_{i0} + \sum_{j=1}^D w^h_{ij} x_j),
-\)</span><span class="math notranslate nohighlight">\(
-where \)</span>(h_1,…,h_M)$ are the outputs of <em>hidden units</em>.</p>
-<p>The <em>activation function</em> <span class="math notranslate nohighlight">\(g(\ )\)</span> is usually the logistic sigmoid function
-$<span class="math notranslate nohighlight">\(
+\]</div>
+<p>where <span class="math notranslate nohighlight">\((h_1,...,h_M)\)</span> are the outputs of <em>hidden units</em>.</p>
+<p>The <em>activation function</em> <span class="math notranslate nohighlight">\(g(\ )\)</span> is usually the logistic sigmoid function</p>
+<div class="math notranslate nohighlight">
+\[
     g(u)=\frac{1}{1+e^{-u}}
-\)</span><span class="math notranslate nohighlight">\(
-or the rectified linear unit (ReLU)
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>or the rectified linear unit (ReLU)</p>
+<div class="math notranslate nohighlight">
+\[
     g(u)=\max(u, 0).
-\)</span>$</p>
+\]</div>
 <p>Learning of the hidden unit weights <span class="math notranslate nohighlight">\(w^h_{ij}\)</span> is possible by error gradient descenct when the nonlinear function <span class="math notranslate nohighlight">\(g(\ )\)</span> is differentiable.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -765,24 +796,42 @@ It is known as <em>back-propatation through time</em>.</p>
 </section>
 <section id="back-propagation-learning">
 <h2>7.2 Back-Propagation Learning<a class="headerlink" href="#back-propagation-learning" title="Permalink to this headline">#</a></h2>
-<p>Here we consider a general <span class="math notranslate nohighlight">\(L\)</span>-layer network
-$<span class="math notranslate nohighlight">\( y^l_i = g^l(w^l_{i0} + \sum_{j=1}^{M^l} w^l_{ij} y^{l-1}_j) \)</span><span class="math notranslate nohighlight">\(
-for \)</span>l=(1,…,L)<span class="math notranslate nohighlight">\(.  
-\)</span>\y^0=\x<span class="math notranslate nohighlight">\( is the input vector and \)</span>\y=\y^L$ is the output vector.</p>
+<p>Here we consider a general <span class="math notranslate nohighlight">\(L\)</span>-layer network</p>
+<div class="math notranslate nohighlight">
+\[
+    y^l_i = g^l(w^l_{i0} + \sum_{j=1}^{M^l} w^l_{ij} y^{l-1}_j)
+\]</div>
+<p>for <span class="math notranslate nohighlight">\(l=(1,...,L)\)</span>.<br />
+<span class="math notranslate nohighlight">\(\y^0=\x\)</span> is the input vector and <span class="math notranslate nohighlight">\(\y=\y^L\)</span> is the output vector.</p>
 <p>For function approximation, the output function of the last layer is usually linear, i.e. <span class="math notranslate nohighlight">\(g^L(u)=u\)</span>.</p>
 <p>Here we consider a <em>stochastic gradient</em> learning, in which we change the weight parameters toward the descending gradient of the error for each input data:</p>
-<p>The basic way of online learning is to minimize the output error for each input
-$<span class="math notranslate nohighlight">\( E = \frac{1}{2}||\y - \y^*||^2 = \frac{1}{2}\sum_{i=1}^{M^L}(y^L_i - y^*_i)^2. \)</span>$</p>
-<p>The error gradient for the output unit weights are computes as in the linear regression
-$<span class="math notranslate nohighlight">\( \p{E}{w^L_{ij}} = \p{E}{y^L_i}\p{y^L_i}{w^L_{ij}}
-  = (y^L_i - y^*_i)y^{L-1}_j. \)</span>$</p>
-<p>By further applying the chain rule of derivatives, the gradient for the hidden unit weights can be computed by following the network top to bottom:
-$<span class="math notranslate nohighlight">\( \p{E}{w^l_{ij}} = \p{E}{y^l_i}\p{y^l_i}{w^l_{ij}}
-  = \p{E}{y^l_i} g'^l_i y^{l-1}_j, \)</span><span class="math notranslate nohighlight">\(
-where \)</span>g’^l_i<span class="math notranslate nohighlight">\( is the derivative of the output function. For the logistic sigmoid, it is given as
-\)</span><span class="math notranslate nohighlight">\( g'^l_i = y^l_i(1-y^l_i). \)</span>$</p>
-<p>In the above, <span class="math notranslate nohighlight">\(\p{E}{y^l_i}\)</span> takes the role of an effective error for the <span class="math notranslate nohighlight">\(i\)</span>-th unit in layer <span class="math notranslate nohighlight">\(l\)</span>, and computed iteratively
-$<span class="math notranslate nohighlight">\( \p{E}{y^l_i} = \sum_{k=1}^{M^{l+1}}\p{E}{y^{l+1}_k}g'^{l+1}_k w^{l+1}_{ki}. \)</span>$</p>
+<p>The basic way of online learning is to minimize the output error for each input</p>
+<div class="math notranslate nohighlight">
+\[
+E = \frac{1}{2}||\y - \y^*||^2 = \frac{1}{2}\sum_{i=1}^{M^L}(y^L_i - y^*_i)^2.
+\]</div>
+<p>The error gradient for the output unit weights are computes as in the linear regression</p>
+<div class="math notranslate nohighlight">
+\[
+\p{E}{w^L_{ij}} = \p{E}{y^L_i}\p{y^L_i}{w^L_{ij}}
+  = (y^L_i - y^*_i)y^{L-1}_j. 
+\]</div>
+<p>By further applying the chain rule of derivatives, the gradient for the hidden unit weights can be computed by following the network top to bottom:</p>
+<div class="math notranslate nohighlight">
+\[
+\p{E}{w^l_{ij}} = \p{E}{y^l_i}\p{y^l_i}{w^l_{ij}}
+  = \p{E}{y^l_i} g'^l_i y^{l-1}_j, 
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(g'^l_i\)</span> is the derivative of the output function. For the logistic sigmoid, it is given as</p>
+<div class="math notranslate nohighlight">
+\[
+g'^l_i = y^l_i(1-y^l_i). 
+\]</div>
+<p>In the above, <span class="math notranslate nohighlight">\(\p{E}{y^l_i}\)</span> takes the role of an effective error for the <span class="math notranslate nohighlight">\(i\)</span>-th unit in layer <span class="math notranslate nohighlight">\(l\)</span>, and computed iteratively</p>
+<div class="math notranslate nohighlight">
+\[
+\p{E}{y^l_i} = \sum_{k=1}^{M^{l+1}}\p{E}{y^{l+1}_k}g'^{l+1}_k w^{l+1}_{ki}. 
+\]</div>
 <p>In the example below, the red lines show the propagation of errors from the two output units to a unit in layer 2.<br />
 The blue lines show the propagation of errors through layer 2 to one unit in layer 1.</p>
 <div class="cell docutils container">
@@ -800,9 +849,12 @@ The blue lines show the propagation of errors through layer 2 to one unit in lay
 <img alt="_images/Deep_13_0.png" src="_images/Deep_13_0.png" />
 </div>
 </div>
-<p>Using these error gradients, all the weights can be updated by
-$<span class="math notranslate nohighlight">\( \Delta w^l_{ij} = - \alpha \p{E}{w^l_{ij}} \)</span><span class="math notranslate nohighlight">\(
-where \)</span>\alpha&gt;0$ is a learning rate paramter.</p>
+<p>Using these error gradients, all the weights can be updated by</p>
+<div class="math notranslate nohighlight">
+\[
+    \Delta w^l_{ij} = - \alpha \p{E}{w^l_{ij}} 
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\alpha&gt;0\)</span> is a learning rate paramter.</p>
 <p>This is called <em>error back-propagation</em> learning algorithm.</p>
 <p>Below is a sample implementation of back-propagation with sigmoid hidden utins and liner output units.</p>
 <div class="cell docutils container">
@@ -938,7 +990,7 @@ where \)</span>\alpha&gt;0$ is a learning rate paramter.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.4001257972970345
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.05352667497904534
 </pre></div>
 </div>
 <img alt="_images/Deep_20_1.png" src="_images/Deep_20_1.png" />
@@ -978,17 +1030,32 @@ where \)</span>\alpha&gt;0$ is a learning rate paramter.</p>
 </section>
 <section id="deep-nn-for-classification">
 <h3>Deep NN for classification<a class="headerlink" href="#deep-nn-for-classification" title="Permalink to this headline">#</a></h3>
-<p>For binary classification, the target output is <span class="math notranslate nohighlight">\(y^*\in\{0,1\}\)</span> and we use a network with sigmoid output to predict the probablity
-$<span class="math notranslate nohighlight">\( p(y^*=1)=y=\sigma(u)=\frac{1}{1+e^{-u}}.\)</span>$</p>
-<p>The output error calculated as negative log likelihood
-$<span class="math notranslate nohighlight">\( E = -y^*\log y -(1-y^*)\log(1-y) \)</span>$
-is called <em>cross entropy error</em>.</p>
-<p>Its gradient with respect to the output <span class="math notranslate nohighlight">\(y\)</span> is
-$<span class="math notranslate nohighlight">\( \p{E}{y} = -\frac{y^*}{y} + \frac{1-y^*}{1-y}. \)</span>$</p>
-<p>The gradient with respect to the input sum <span class="math notranslate nohighlight">\(z\)</span> is
-$<span class="math notranslate nohighlight">\( \p{E}{z} = \p{E}{y}\p{y}{z}
-   = (-\frac{y^*}{y} + \frac{1-y^*}{1-y}) y(1-y) \)</span><span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\( = -y^*(1-y) + (1-y^*)y = y - y^*. \)</span>$</p>
+<p>For binary classification, the target output is <span class="math notranslate nohighlight">\(y^*\in\{0,1\}\)</span> and we use a network with sigmoid output to predict the probablity</p>
+<div class="math notranslate nohighlight">
+\[
+p(y^*=1)=y=\sigma(u)=\frac{1}{1+e^{-u}}.
+\]</div>
+<p>The output error calculated as negative log likelihood</p>
+<div class="math notranslate nohighlight">
+\[
+E = -y^*\log y -(1-y^*)\log(1-y) 
+\]</div>
+<p>is called <em>cross entropy error</em>.</p>
+<p>Its gradient with respect to the output <span class="math notranslate nohighlight">\(y\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[
+\p{E}{y} = -\frac{y^*}{y} + \frac{1-y^*}{1-y}. 
+\]</div>
+<p>The gradient with respect to the input sum <span class="math notranslate nohighlight">\(z\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[
+\p{E}{z} = \p{E}{y}\p{y}{z}
+   = (-\frac{y^*}{y} + \frac{1-y^*}{1-y}) y(1-y) 
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+= -y^*(1-y) + (1-y^*)y = y - y^*. 
+\]</div>
 <p>Below is a modifed class for binary classification.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1071,7 +1138,7 @@ $<span class="math notranslate nohighlight">\( \p{E}{z} = \p{E}{y}\p{y}{z}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.0006708570836385635
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.0013752261365141496
 </pre></div>
 </div>
 <img alt="_images/Deep_31_1.png" src="_images/Deep_31_1.png" />
@@ -1167,7 +1234,7 @@ $<span class="math notranslate nohighlight">\( \p{E}{z} = \p{E}{y}\p{y}{z}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.03903482783160706
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.04030145805137208
 </pre></div>
 </div>
 <img alt="_images/Deep_39_1.png" src="_images/Deep_39_1.png" />
@@ -1199,42 +1266,49 @@ $<span class="math notranslate nohighlight">\( \p{E}{z} = \p{E}{y}\p{y}{z}
 <section id="multi-class-classification">
 <h3>Multi-class classification<a class="headerlink" href="#multi-class-classification" title="Permalink to this headline">#</a></h3>
 <p>For multiple classes <span class="math notranslate nohighlight">\(K\)</span>, the target output is <span class="math notranslate nohighlight">\(\y^*=(y^*_1,...,y^*_K)\)</span> where only one of the component <span class="math notranslate nohighlight">\(y^*_k=1\)</span> and others are zero.</p>
-<p>In this case the standard activation function is the <em>softmax</em> function
-$<span class="math notranslate nohighlight">\( p(y^*_k=1) = y_k = \mbox{softmax}_k(\b{u}) = \frac{e^{u_k}}{\sum_{j=1}^K e^{u_j}} \)</span><span class="math notranslate nohighlight">\(
-and the cross entropy error is given as
-\)</span><span class="math notranslate nohighlight">\( E = - \sum_{k=1}^K y^*_k \log y_k \)</span>$</p>
-<p>Its gradient with respect to the output <span class="math notranslate nohighlight">\(y_k\)</span> is
-$<span class="math notranslate nohighlight">\( \p{E}{y_k} = -\frac{y^*_k}{y_k} \)</span>$</p>
-<p>The derivative of the softmax function is
-$$ \p{y_k}{u_i} = \delta_{ki}\frac{e^{u_k}}{\sum_{j=1}^K e^{u_j}}</p>
-<ul class="simple">
-<li><p>\frac{e^{u_k}e^{u_i}}{(\sum_{j=1}^K e^{u_j})^2}
-= \delta_{ki}y_k + y_k y_i $$</p></li>
-</ul>
-<p>Thus the error gradient with respect to the input sum <span class="math notranslate nohighlight">\(u_i\)</span> is
-$<span class="math notranslate nohighlight">\( \p{E}{u_i} = \sum_{k=1}^K \p{E}{y_k}\p{y_k}{u_i}
-   = \sum_{k=1}^K -\frac{y^*_k}{y_k}(\delta_{ki}y_k - y_k y_i) \)</span><span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\( = \sum_{k=1}^K -y^*_k(\delta_{ki} + y_i) 
-   = y_i - y^*_i, \)</span>$
-same as in the case of linear output and sigmoid output.</p>
+<p>In this case the standard activation function is the <em>softmax</em> function</p>
+<div class="math notranslate nohighlight">
+\[ y_k = p(y^*_k=1) = \mbox{softmax}_k(\b{u}) = \frac{e^{u_k}}{\sum_{j=1}^K e^{u_j}} \]</div>
+<p>and the cross entropy error is given as</p>
+<div class="math notranslate nohighlight">
+\[ E = - \sum_{k=1}^K y^*_k \log y_k \]</div>
+<p>Its gradient with respect to the output <span class="math notranslate nohighlight">\(y_k\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[ \p{E}{y_k} = -\frac{y^*_k}{y_k} \]</div>
+<p>The derivative of the softmax function is</p>
+<div class="math notranslate nohighlight">
+\[ \p{y_k}{u_i} = \delta_{ki}\frac{e^{u_k}}{\sum_{j=1}^K e^{u_j}}
+- \frac{e^{u_k}e^{u_i}}{(\sum_{j=1}^K e^{u_j})^2} 
+ = \delta_{ki}y_k + y_k y_i \]</div>
+<p>Thus the error gradient with respect to the input sum <span class="math notranslate nohighlight">\(u_i\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[ \p{E}{u_i} = \sum_{k=1}^K \p{E}{y_k}\p{y_k}{u_i}
+   = \sum_{k=1}^K -\frac{y^*_k}{y_k}(\delta_{ki}y_k - y_k y_i) \]</div>
+<div class="math notranslate nohighlight">
+\[ = \sum_{k=1}^K -y^*_k(\delta_{ki} + y_i) 
+   = y_i - y^*_i, \]</div>
+<p>same as in the case of linear output and sigmoid output.</p>
 </section>
 </section>
 <section id="deep-generative-models">
 <h2>7.3 Deep Generative Models<a class="headerlink" href="#deep-generative-models" title="Permalink to this headline">#</a></h2>
-<p>In back-propagation, we considered input-output mapping
-$<span class="math notranslate nohighlight">\(
+<p>In back-propagation, we considered input-output mapping</p>
+<div class="math notranslate nohighlight">
+\[
     \y = f(\x)
-\)</span><span class="math notranslate nohighlight">\(
-to approximate the target output \)</span>\y^*$.</p>
-<p>An opposite approach is <em>generative models</em>
-$<span class="math notranslate nohighlight">\(
+\]</div>
+<p>to approximate the target output <span class="math notranslate nohighlight">\(\y^*\)</span>.</p>
+<p>An opposite approach is <em>generative models</em></p>
+<div class="math notranslate nohighlight">
+\[
     \x \sim g(\x|\z)
-\)</span><span class="math notranslate nohighlight">\(
-which assumes that the data \)</span>\x<span class="math notranslate nohighlight">\( are produced by a hierarchical probabilistic model with the higher level *latent variable* \)</span>\z<span class="math notranslate nohighlight">\(, such as the class labels or low-dimensional parameter space.
-For a given input \)</span>\x<span class="math notranslate nohighlight">\(, we consider what is the latent variable behind the data, such as the MAP estimate
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>which assumes that the data <span class="math notranslate nohighlight">\(\x\)</span> are produced by a hierarchical probabilistic model with the higher level <em>latent variable</em> <span class="math notranslate nohighlight">\(\z\)</span>, such as the class labels or low-dimensional parameter space.
+For a given input <span class="math notranslate nohighlight">\(\x\)</span>, we consider what is the latent variable behind the data, such as the MAP estimate</p>
+<div class="math notranslate nohighlight">
+\[
     \y = \arg\max_\z g(\x|\z)
-\)</span>$</p>
+\]</div>
 <section id="boltzmann-machine">
 <h3>Boltzmann machine<a class="headerlink" href="#boltzmann-machine" title="Permalink to this headline">#</a></h3>
 <p>The Boltzmann machine is a stochastic binary recurrent network consisting of <em>visible</em> and <em>hidden</em> units. The joint distribution over the visible and hidden units is give by the <em>energy function</em>.</p>
@@ -1267,43 +1341,50 @@ They were used for pre-training of deep networks for pattern classification, alt
 </div>
 <p>Here we represent the state of visible units by <span class="math notranslate nohighlight">\(\b{v}\in\{0,1\}^{M_v}\)</span> and hidden units by <span class="math notranslate nohighlight">\(\b{h}\in\{0,1\}^{M_h}\)</span>.
 For the connection weights <span class="math notranslate nohighlight">\(W\in R^{M_v\times M_h}\)</span> and the bias inputs <span class="math notranslate nohighlight">\(\b{b}\)</span> and <span class="math notranslate nohighlight">\(\b{c}\)</span> for visible and hidden units, respectively,
-the <em>energy</em> function of the RBM is defined as
-$<span class="math notranslate nohighlight">\( E(\b{v},\b{h}) = −\b{b}^T\b{v} − \b{c}^T\b{h} − \b{v}^T W\b{h}. \)</span>$</p>
-<p>The joint distribution of the states of the visible and and hidden units are given by
-$<span class="math notranslate nohighlight">\( p(\b{v},\b{h}) = \frac{1}{Z} e^{−E(\b{v},\b{h})}, \)</span><span class="math notranslate nohighlight">\(
-where \)</span>Z<span class="math notranslate nohighlight">\( is the normalizing constant called *partition function*, given by
-\)</span><span class="math notranslate nohighlight">\( Z = \sum_\b{v}\sum_\b{h} e^{−E(\b{v},\b{h})}. \)</span>$</p>
-<p>The marginal distribution for the visibile units is given by summing over all states of hidden units
-$<span class="math notranslate nohighlight">\( p(\b{v}) = \frac{1}{Z}\sum_\b{h} e^{−E(\b{v},\b{h})}. \)</span>$</p>
+the <em>energy</em> function of the RBM is defined as</p>
+<div class="math notranslate nohighlight">
+\[ E(\b{v},\b{h}) = −\b{b}^T\b{v} − \b{c}^T\b{h} − \b{v}^T W\b{h}. \]</div>
+<p>The joint distribution of the states of the visible and and hidden units are given by</p>
+<div class="math notranslate nohighlight">
+\[ p(\b{v},\b{h}) = \frac{1}{Z} e^{−E(\b{v},\b{h})}, \]</div>
+<p>where <span class="math notranslate nohighlight">\(Z\)</span> is the normalizing constant called <em>partition function</em>, given by</p>
+<div class="math notranslate nohighlight">
+\[ Z = \sum_\b{v}\sum_\b{h} e^{−E(\b{v},\b{h})}. \]</div>
+<p>The marginal distribution for the visibile units is given by summing over all states of hidden units</p>
+<div class="math notranslate nohighlight">
+\[ p(\b{v}) = \frac{1}{Z}\sum_\b{h} e^{−E(\b{v},\b{h})}. \]</div>
 <p>As the analytic form of maximul likelihood estimate is not available, we apply the stochastic gradient with respect to the parameters <span class="math notranslate nohighlight">\(\theta=(W,\b{b},\b{c})\)</span> .
-The gradient of the log probability of the energy-based model is given by
-$$ \p{\log p(\b{v},\b{h}|\theta)}{\theta}
-= -\p{E(\b{v},\b{h};\theta)}{\theta}</p>
-<ul class="simple">
-<li><p>\sum_{\b{v}}\sum_{\b{h}}p(\b{v},\b{h})\p{E(\b{v},\b{h};\theta)}{\theta}. $$</p></li>
-</ul>
-<p>Thus the log likelihood for the visible unit state <span class="math notranslate nohighlight">\(\b{v}_n\)</span> <span class="math notranslate nohighlight">\((n=1,...,N)\)</span> is given as
-$$ \p{\log p(\b{v}<em>n|\theta)}{\theta}
-= -\sum</em>\b{h}p(\b{h}|\b{v}_n)\p{E(\b{v}_n,\b{h};\theta)}{\theta}</p>
-<ul class="simple">
-<li><p>\sum_{\b{v}}\sum_{\b{h}}p(\b{v},\b{h})\p{E(\b{v},\b{h};\theta)}{\theta} $$
-The first term is data-dependent statistics and the second term is data-independent statistics coming from the partition function.</p></li>
-</ul>
+The gradient of the log probability of the energy-based model is given by</p>
+<div class="math notranslate nohighlight">
+\[ \p{\log p(\b{v},\b{h}|\theta)}{\theta} 
+ = -\p{E(\b{v},\b{h};\theta)}{\theta} 
+ + \sum_{\b{v}}\sum_{\b{h}}p(\b{v},\b{h})\p{E(\b{v},\b{h};\theta)}{\theta}. \]</div>
+<p>Thus the log likelihood for the visible unit state <span class="math notranslate nohighlight">\(\b{v}_n\)</span> <span class="math notranslate nohighlight">\((n=1,...,N)\)</span> is given as</p>
+<div class="math notranslate nohighlight">
+\[ \p{\log p(\b{v}_n|\theta)}{\theta} 
+ = -\sum_\b{h}p(\b{h}|\b{v}_n)\p{E(\b{v}_n,\b{h};\theta)}{\theta} 
+ + \sum_{\b{v}}\sum_{\b{h}}p(\b{v},\b{h})\p{E(\b{v},\b{h};\theta)}{\theta} \]</div>
+<p>The first term is data-dependent statistics and the second term is data-independent statistics coming from the partition function.</p>
 <section id="learning-by-contrastive-divergence-cd">
 <h3>Learning by contrastive divergence (CD)<a class="headerlink" href="#learning-by-contrastive-divergence-cd" title="Permalink to this headline">#</a></h3>
-<p>Because RBM has no connections between hidden units, the probability of the hidden unit states is conditionally independent given the visible unit state
-$<span class="math notranslate nohighlight">\( p(\b{h}|\b{v}) = \prod_{j=1}^{M_h} p(h_j|\b{v}). \)</span><span class="math notranslate nohighlight">\(
-The probability for each hidden unit to be active is given by the sigmoid function of its input
-\)</span><span class="math notranslate nohighlight">\( p(h_j=1|\b{v}) = \sigma(c_j + \sum_{i=1}^{M_v}v_i w_{ij}).\)</span>$
-This allows evaluation of the first term of the log likelihood gradient by simple sampling.</p>
-<p>Similarly, the probability for the visible units is also conditionally independent given the hidden units and each visible unit satate is given by
-$<span class="math notranslate nohighlight">\( p(v_i=1|\b{h}) = \sigma(b_i + \sum_{j=1}^{N_h}w_{ij}h_j). \)</span>$</p>
+<p>Because RBM has no connections between hidden units, the probability of the hidden unit states is conditionally independent given the visible unit state</p>
+<div class="math notranslate nohighlight">
+\[ p(\b{h}|\b{v}) = \prod_{j=1}^{M_h} p(h_j|\b{v}). \]</div>
+<p>The probability for each hidden unit to be active is given by the sigmoid function of its input</p>
+<div class="math notranslate nohighlight">
+\[ p(h_j=1|\b{v}) = \sigma(c_j + \sum_{i=1}^{M_v}v_i w_{ij}).\]</div>
+<p>This allows evaluation of the first term of the log likelihood gradient by simple sampling.</p>
+<p>Similarly, the probability for the visible units is also conditionally independent given the hidden units and each visible unit satate is given by</p>
+<div class="math notranslate nohighlight">
+\[ p(v_i=1|\b{h}) = \sigma(b_i + \sum_{j=1}^{N_h}w_{ij}h_j). \]</div>
 <p>In order to evaluate the second term, we have to take samples from the unconstrained model dynamics. The <em>contrastive divergence</em> method takes a crude approximation of the model distribution but has been shown to perform surprizingly well.</p>
-<p>First we set the initial state of the visible units by a sample <span class="math notranslate nohighlight">\(\b{v}^0=\b{v}_n\)</span>. Then we repeatedly sample hidden units
-$<span class="math notranslate nohighlight">\( \b{h}^k \sim p(\b{h}|\b{v}^k) \)</span><span class="math notranslate nohighlight">\(
-and the visible units
-\)</span><span class="math notranslate nohighlight">\( \b{v}^{k+1} \sim p(\b{v}|\b{h}^k) \)</span><span class="math notranslate nohighlight">\(
-for \)</span>K$ times.</p>
+<p>First we set the initial state of the visible units by a sample <span class="math notranslate nohighlight">\(\b{v}^0=\b{v}_n\)</span>. Then we repeatedly sample hidden units</p>
+<div class="math notranslate nohighlight">
+\[ \b{h}^k \sim p(\b{h}|\b{v}^k) \]</div>
+<p>and the visible units</p>
+<div class="math notranslate nohighlight">
+\[ \b{v}^{k+1} \sim p(\b{v}|\b{h}^k) \]</div>
+<p>for <span class="math notranslate nohighlight">\(K\)</span> times.</p>
 <p>The unconstrained joint distribution is approximated by</p>
 <div class="math notranslate nohighlight">
 \[ p_{CD_K}(\b{v},\b{h})=\delta(\b{v}-\b{v}_n^K)p(\b{h}|\b{v}_n^K), \]</div>
@@ -1501,27 +1582,33 @@ Instead of this stochastic gradient for each data, <em>mini-batch</em> method to
 </section>
 <section id="variational-autoencoders-vae">
 <h2>7.5 Variational Autoencoders (VAE)<a class="headerlink" href="#variational-autoencoders-vae" title="Permalink to this headline">#</a></h2>
-<p>The objective of learning in a generative model is to minimize the discrepacy between the observed data distribution <span class="math notranslate nohighlight">\(p(\x)\)</span> and the generated data distribution
-$<span class="math notranslate nohighlight">\(
+<p>The objective of learning in a generative model is to minimize the discrepacy between the observed data distribution <span class="math notranslate nohighlight">\(p(\x)\)</span> and the generated data distribution</p>
+<div class="math notranslate nohighlight">
+\[
     \int_\z p_{\theta}(\x|\z) p(\z) d\z
-\)</span><span class="math notranslate nohighlight">\(
-while assuming a simple low-dimensional prior distribution \)</span>p(\z)$ of the latent varible, such as independent Gaussians.</p>
-<p>A standard way to do this is to maximize the log likelihood for data <span class="math notranslate nohighlight">\((\x_1,...,\x_N)\)</span>:
-$<span class="math notranslate nohighlight">\(
+\]</div>
+<p>while assuming a simple low-dimensional prior distribution <span class="math notranslate nohighlight">\(p(\z)\)</span> of the latent varible, such as independent Gaussians.</p>
+<p>A standard way to do this is to maximize the log likelihood for data <span class="math notranslate nohighlight">\((\x_1,...,\x_N)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
     \sum_{n=1}^N\log p_{\theta}(\x_n) = \sum_n\log\int_\z p_\theta(\x_n|\z) p(\z) d\z 
-\)</span><span class="math notranslate nohighlight">\(
-A problem with this approach is that computing \)</span>p_{\theta}(x)<span class="math notranslate nohighlight">\( is often intractable: it is hard to compute the integration over all possible ranges of \)</span>\z$ with a high dimension.</p>
+\]</div>
+<p>A problem with this approach is that computing <span class="math notranslate nohighlight">\(p_{\theta}(x)\)</span> is often intractable: it is hard to compute the integration over all possible ranges of <span class="math notranslate nohighlight">\(\z\)</span> with a high dimension.</p>
 <p>In the <em>autoencoder</em> framework, we consider two networks:</p>
 <ul class="simple">
-<li><p>The <em>encoder</em> network that maps the data <span class="math notranslate nohighlight">\(\x\)</span> to the latent variable<span class="math notranslate nohighlight">\(\z\)</span>:
-$<span class="math notranslate nohighlight">\(
-  q_\phi(\z|\x)
-\)</span>$</p></li>
-<li><p>The <em>decoder</em> network to regenerate the data <span class="math notranslate nohighlight">\(\z\)</span> from the latent variable <span class="math notranslate nohighlight">\(\z\)</span>:
-$<span class="math notranslate nohighlight">\(
-  p_\theta(\x|\z).
-\)</span>$</p></li>
+<li><p>The <em>encoder</em> network that maps the data <span class="math notranslate nohighlight">\(\x\)</span> to the latent variable<span class="math notranslate nohighlight">\(\z\)</span>:</p></li>
 </ul>
+<div class="math notranslate nohighlight">
+\[
+    q_\phi(\z|\x)
+\]</div>
+<ul class="simple">
+<li><p>The <em>decoder</em> network to regenerate the data <span class="math notranslate nohighlight">\(\z\)</span> from the latent variable <span class="math notranslate nohighlight">\(\z\)</span>:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+    p_\theta(\x|\z).
+\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">draw_net</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span><span class="sa">r</span><span class="s2">&quot;$q_\phi(z|x)$&quot;</span><span class="p">,</span><span class="s2">&quot;z&quot;</span><span class="p">,</span><span class="sa">r</span><span class="s2">&quot;$p_\theta(x|z)$&quot;</span><span class="p">,</span><span class="s2">&quot;x&quot;</span><span class="p">]);</span>
@@ -1532,18 +1619,20 @@ $<span class="math notranslate nohighlight">\(
 <img alt="_images/Deep_65_0.png" src="_images/Deep_65_0.png" />
 </div>
 </div>
-<p>The goal of learning of autoencoder is to reduce the reconstrunction error, or to maximize the likelihood of regenerated data
-$<span class="math notranslate nohighlight">\(
+<p>The goal of learning of autoencoder is to reduce the reconstrunction error, or to maximize the likelihood of regenerated data</p>
+<div class="math notranslate nohighlight">
+\[
     \sum_{n=1}^N\log p_\theta(\x_n) = 
     \sum_{n=1}^N\log\int_\z p_\theta(\x_n|\z) q_\phi(\z|\x_n) d\z 
-\)</span><span class="math notranslate nohighlight">\(
-while keeping the data-constrained latent variable distribution \)</span>q_\phi(\z|\x_n)<span class="math notranslate nohighlight">\( close to a desired prior distribution \)</span>p(\z)$, such as normal gaussian.</p>
-<p>This can be achieved by maximizing the *expected variational lower bound (ELBO):
-$<span class="math notranslate nohighlight">\(
+\]</div>
+<p>while keeping the data-constrained latent variable distribution <span class="math notranslate nohighlight">\(q_\phi(\z|\x_n)\)</span> close to a desired prior distribution <span class="math notranslate nohighlight">\(p(\z)\)</span>, such as normal gaussian.</p>
+<p>This can be achieved by maximizing the *expected variational lower bound (ELBO):</p>
+<div class="math notranslate nohighlight">
+\[
     \mathcal{L} := 
     \sum_{n=1}^N\log\int_\z p_\theta(\x_n|\z) q_\phi(\z|\x_n) d\z
     - \mbox{KL}[q_\phi(\z|\x_n) || p(\z)]
-\)</span>$</p>
+\]</div>
 <section id="reparametrization-trick">
 <h3>Reparametrization trick<a class="headerlink" href="#reparametrization-trick" title="Permalink to this headline">#</a></h3>
 <p>For optimizing the parameters <span class="math notranslate nohighlight">\(\phi\)</span> and <span class="math notranslate nohighlight">\(\theta\)</span> during training the generative model, we want to apply the gradient descent algorithm. We consider a model consisting of two neural networks; one encoder and one decoder network. Since our latent representation <span class="math notranslate nohighlight">\(z\)</span> is a stochastic variable, it is mathematically not possible to backpropagate the error through the stochastic network nodes. Therefore, we need to apply a “reparametrization trick” (Kingma and Welling 2014).</p>
@@ -1636,18 +1725,8 @@ Figure 7.3: Prediction of visual cortical neural activityes by trained deep neur
 </li>
 </ul>
 </section>
-<section id="exercise">
-<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">#</a></h2>
-<ol class="simple">
-<li><p>Try back-propagation learning with different function approximation or classification tasks. See how the choices of numbers of layers <span class="math notranslate nohighlight">\(L\)</span> and units <span class="math notranslate nohighlight">\(M^l\)</span>, as well as data size <span class="math notranslate nohighlight">\(N\)</span> and the learning rate <span class="math notranslate nohighlight">\(\alpha\)</span> affect learning.</p></li>
-</ol>
-<ol class="simple">
-<li><p>Implement deep neural networks with ReLU activation functions for the hidden units or softmax for the output units.</p></li>
-</ol>
-<ol class="simple">
-<li><p>Run the restricted Boltzmann machine with diffent input patterns, the number of hidden units <span class="math notranslate nohighlight">\(M_h\)</span>, and the cycle of contrastive divergence <span class="math notranslate nohighlight">\(K\)</span>.</p></li>
-</ol>
-</section>
+<div class="toctree-wrapper compound">
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1662,7 +1741,7 @@ Figure 7.3: Prediction of visual cortical neural activityes by trained deep neur
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -1677,17 +1756,17 @@ Figure 7.3: Prediction of visual cortical neural activityes by trained deep neur
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="Bayesian.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="Bayesian_Exercise.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Chatper 6. Bayesian Approaches</p>
+            <p class="prev-next-title">Bayesian Approaches: Exercise</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="Multiple.html" title="next page">
+    <a class='right-next' id="next-link" href="Deep_Exercise.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Chapter 8. Multiple Agents</p>
+        <p class="prev-next-title">Chapter 7: Deep Learning: Exercise</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

@@ -771,7 +771,7 @@ From the above table, 0.5?</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 1, 0, 1, 0, 0])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 1, 1, 0, 0, 1])
 </pre></div>
 </div>
 </div>
@@ -959,9 +959,9 @@ where \)</span>p(\epsilon)=\mathcal{N}(0,\beta^{-1})$.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>m = [-0.6324856  -0.33023205]
-S = [[ 0.2714594  -0.38038409]
- [-0.38038409  0.80139466]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>m = [-0.96728782  0.10717184]
+S = [[0.10094241 0.09961218]
+ [0.09961218 0.98896335]]
 </pre></div>
 </div>
 <img alt="_images/Bayesian_18_1.png" src="_images/Bayesian_18_1.png" />
@@ -1068,8 +1068,9 @@ S = [[ 0.2714594  -0.38038409]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 0.29698368  0.36139514 -0.99301038 -0.27638886 -0.47643492  0.47583395
-  0.66707024  0.17983728  0.43021111 -1.13720968]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 9.56230650e-01 -2.22562010e-01 -3.23139514e-01 -7.65320622e-01
+ -2.09530058e-01  2.59616157e-01  6.15431205e-01  4.13347398e-01
+  7.55704990e-04 -1.01738747e+00]
 </pre></div>
 </div>
 <img alt="_images/Bayesian_26_1.png" src="_images/Bayesian_26_1.png" />
@@ -1157,14 +1158,14 @@ S = [[ 0.2714594  -0.38038409]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 0.5764110697483414 3.668500952072289 -21.695357392874264 0.4935655037019176
-3 1.0182653620246693 4.594636047094672 -21.070684633634396 0.5333798334583003
-4 0.3664232859352594 23.951005078198552 -8.606432178003615 0.0250765524472483
-5 0.7759927932101978 26.772053627798265 -7.9986166478143055 0.005694958037603405
-6 1.6602722122435216 28.223808718912966 -7.137972010426411 0.007395101787991644
-7 2.306056931561818 27.897854516492927 -7.564326783137988 0.006559910792820328
-8 2.318943120463895 31.632968655273253 -7.569888746858801 0.007129346984973061
-9 2.2942103347957206 41.652341277101456 -6.038998632430022 0.013374973186341493
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 13.27596617709736 2.109566169172726 -24.253795158563562 0.40738033370285465
+3 10.610976625026185 2.1819877863885466 -25.326972773597475 0.38921005434144434
+4 0.24914928652428528 83.71723319784525 2.5171145030732482 0.023282841762795305
+5 0.6600567570855428 109.66120572458118 4.892787764393599 0.02197907516785819
+6 1.2792736631695543 111.04332784047932 4.878388800122764 0.022876124256940446
+7 1.8840984412854804 115.93246562514788 4.913326375906834 0.022163727415714863
+8 2.363115060355784 121.54048930386416 4.830860983365898 0.02144690046696329
+9 2.7260401813844095 137.7016785000933 5.522200161611618 0.02081638861530344
 </pre></div>
 </div>
 <img alt="_images/Bayesian_33_1.png" src="_images/Bayesian_33_1.png" />
@@ -1178,7 +1179,7 @@ S = [[ 0.2714594  -0.38038409]
 <p>In doing so, representation of the relationships by graphs with random variables as nodes (or vertices) and joint or conditional probabilities as links (or edges or arcs)) havea turned out to be very useful. They are called <em>graphical models</em>.</p>
 <p>Directed graphs representing conditional probabilities by arrows (directed edges) are called <em>Bayesian networks</em>.</p>
 <p>For example, Bayesion linear regression can be represented as a Bayesian network as below.
-<img src="figures/BN_blr.png" width="150"></p>
+<img alt="BLR" src="_images/BN_blr.png" /></p>
 <p>Inference in Bayesian network goes like this: as values of some variables are observed,</p>
 <ul class="simple">
 <li><p><em>clamp</em> the values of the nodes where observation was made.</p></li>
@@ -1307,7 +1308,7 @@ S = [[ 0.2714594  -0.38038409]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 3, 3, 4])
 </pre></div>
 </div>
 </div>
@@ -1607,7 +1608,7 @@ There have been serveral hypotheses about how such hierarchical recurrent networ
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
