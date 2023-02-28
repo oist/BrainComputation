@@ -16,5 +16,7 @@ chapters:
   sections:
   - file: Bayesian_Exercise
 - file: Deep
+  sections:
+  - file: Deep_Exercise
 - file: Multiple
 - file: Meta
