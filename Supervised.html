@@ -182,10 +182,22 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="Deep.html">
    Chapter 7: Deep Learning
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Deep_Exercise.html">
+     Chapter 7: Deep Learning: Exercise
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Multiple.html">
@@ -1909,7 +1921,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='fbe4a8c9-8e47-47bb-9587-0414c3313c7b'></div></div></div>
+</script><div class="output text_html"><div id='d8fd2cd0-4113-430c-9122-928012dadc5d'></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1924,7 +1936,7 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>w = [ 3.00563509e-02 -4.57982425e+01 -3.10644774e+00]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>w = [ -0.06859305 -41.70494713  -3.10767812]
 [0, -49.0, -0.6666666666666667]
 </pre></div>
 </div>
@@ -1939,7 +1951,7 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.8727082926797499
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 1.1334256484708065
 </pre></div>
 </div>
 </div>
@@ -2914,7 +2926,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='365bbc9a-7b95-4fd6-a425-d7fdf3c92025'></div></div></div>
+</script><div class="output text_html"><div id='c75cff4d-175f-4ef4-93d9-e7255b751cd6'></div></div></div>
 </div>
 </section>
 </section>
@@ -3162,10 +3174,36 @@ which is a product of the output error and the input to each weight.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 1.0 ; w =  [-0.3         0.30582676  0.18644075]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.8 ; w =  [-0.2         0.05100733  0.25177848]
 </pre></div>
 </div>
-<img alt="_images/Supervised_41_1.png" src="_images/Supervised_41_1.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_6786/2966047756.py:36: RuntimeWarning: invalid value encountered in double_scalars
+  x = self.w[1]*(u-self.w[0])/s+self.w[2]*np.array([l,-l])/np.sqrt(s)
+/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_6786/2966047756.py:36: RuntimeWarning: invalid value encountered in true_divide
+  x = self.w[1]*(u-self.w[0])/s+self.w[2]*np.array([l,-l])/np.sqrt(s)
+/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_6786/2966047756.py:37: RuntimeWarning: invalid value encountered in double_scalars
+  y = self.w[2]*(u-self.w[0])/s+self.w[1]*np.array([-l,l])/np.sqrt(s)
+/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_6786/2966047756.py:37: RuntimeWarning: invalid value encountered in true_divide
+  y = self.w[2]*(u-self.w[0])/s+self.w[1]*np.array([-l,l])/np.sqrt(s)
+/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_6786/2966047756.py:36: RuntimeWarning: invalid value encountered in double_scalars
+  x = self.w[1]*(u-self.w[0])/s+self.w[2]*np.array([l,-l])/np.sqrt(s)
+/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_6786/2966047756.py:36: RuntimeWarning: invalid value encountered in true_divide
+  x = self.w[1]*(u-self.w[0])/s+self.w[2]*np.array([l,-l])/np.sqrt(s)
+/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_6786/2966047756.py:37: RuntimeWarning: invalid value encountered in double_scalars
+  y = self.w[2]*(u-self.w[0])/s+self.w[1]*np.array([-l,l])/np.sqrt(s)
+/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_6786/2966047756.py:37: RuntimeWarning: invalid value encountered in true_divide
+  y = self.w[2]*(u-self.w[0])/s+self.w[1]*np.array([-l,l])/np.sqrt(s)
+/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_6786/2966047756.py:36: RuntimeWarning: invalid value encountered in double_scalars
+  x = self.w[1]*(u-self.w[0])/s+self.w[2]*np.array([l,-l])/np.sqrt(s)
+/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_6786/2966047756.py:36: RuntimeWarning: invalid value encountered in true_divide
+  x = self.w[1]*(u-self.w[0])/s+self.w[2]*np.array([l,-l])/np.sqrt(s)
+/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_6786/2966047756.py:37: RuntimeWarning: invalid value encountered in double_scalars
+  y = self.w[2]*(u-self.w[0])/s+self.w[1]*np.array([-l,l])/np.sqrt(s)
+/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_6786/2966047756.py:37: RuntimeWarning: invalid value encountered in true_divide
+  y = self.w[2]*(u-self.w[0])/s+self.w[1]*np.array([-l,l])/np.sqrt(s)
+</pre></div>
+</div>
+<img alt="_images/Supervised_41_2.png" src="_images/Supervised_41_2.png" />
 </div>
 </div>
 </section>
@@ -3242,7 +3280,7 @@ where \)</span>1[\ ]<span class="math notranslate nohighlight">\( represents an 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>n = 20 ; err = 0.7407416589729021 ; w = [-0.33962524  0.54015817  0.32520477]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>n = 20 ; err = 0.3399962614414636 ; w = [-1.03840691  0.38611512  0.32514689]
 </pre></div>
 </div>
 <img alt="_images/Supervised_46_1.png" src="_images/Supervised_46_1.png" />
@@ -3384,7 +3422,7 @@ we can also apply stochastic gradient descent
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> err = 0.25 ; w = [-1.60279483  0.96154312  0.22123892]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> err = 0.25 ; w = [-1.38314965  0.57372453  0.78164919]
 </pre></div>
 </div>
 <img alt="_images/Supervised_54_1.png" src="_images/Supervised_54_1.png" />

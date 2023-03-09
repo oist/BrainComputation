@@ -182,10 +182,22 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="Deep.html">
    Chapter 7: Deep Learning
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Deep_Exercise.html">
+     Chapter 7: Deep Learning: Exercise
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Multiple.html">
@@ -771,7 +783,7 @@ From the above table, 0.5?</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 1, 1, 0, 0, 1])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 0, 1, 0, 1, 0])
 </pre></div>
 </div>
 </div>
@@ -959,9 +971,9 @@ where \)</span>p(\epsilon)=\mathcal{N}(0,\beta^{-1})$.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>m = [-0.96728782  0.10717184]
-S = [[0.10094241 0.09961218]
- [0.09961218 0.98896335]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>m = [-1.20131799  0.33660257]
+S = [[0.15147013 0.23775332]
+ [0.23775332 0.93338285]]
 </pre></div>
 </div>
 <img alt="_images/Bayesian_18_1.png" src="_images/Bayesian_18_1.png" />
@@ -1068,9 +1080,8 @@ S = [[0.10094241 0.09961218]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 9.56230650e-01 -2.22562010e-01 -3.23139514e-01 -7.65320622e-01
- -2.09530058e-01  2.59616157e-01  6.15431205e-01  4.13347398e-01
-  7.55704990e-04 -1.01738747e+00]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-0.18165937  0.2210184  -0.56498365 -0.54060124 -0.28199286  0.45284032
+  0.69589995  0.83110701  0.00545476 -0.78062044]
 </pre></div>
 </div>
 <img alt="_images/Bayesian_26_1.png" src="_images/Bayesian_26_1.png" />
@@ -1158,14 +1169,14 @@ S = [[0.10094241 0.09961218]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 13.27596617709736 2.109566169172726 -24.253795158563562 0.40738033370285465
-3 10.610976625026185 2.1819877863885466 -25.326972773597475 0.38921005434144434
-4 0.24914928652428528 83.71723319784525 2.5171145030732482 0.023282841762795305
-5 0.6600567570855428 109.66120572458118 4.892787764393599 0.02197907516785819
-6 1.2792736631695543 111.04332784047932 4.878388800122764 0.022876124256940446
-7 1.8840984412854804 115.93246562514788 4.913326375906834 0.022163727415714863
-8 2.363115060355784 121.54048930386416 4.830860983365898 0.02144690046696329
-9 2.7260401813844095 137.7016785000933 5.522200161611618 0.02081638861530344
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 0.7457946438572098 2.6813948758975195 -24.63854851078643 0.460895803506848
+3 2.288388714665357 2.9059386118432693 -24.510289717681886 0.4510248504247054
+4 0.28032324114809726 43.51930840812707 -3.414001763211278 0.01858687708276392
+5 0.6934935966933867 57.91212867129807 -0.7112165843474081 0.01830724459683632
+6 1.391875937366661 59.42505802721863 -0.3550733754505053 0.022911946962359007
+7 2.0452486543216337 63.09708789840564 0.17574605451239478 0.031771575157031454
+8 2.7070153225253026 64.7220867643371 0.4088792777299055 0.03632595615750339
+9 3.2420744834112836 66.77498400367675 0.8551353602255105 0.04188581871167968
 </pre></div>
 </div>
 <img alt="_images/Bayesian_33_1.png" src="_images/Bayesian_33_1.png" />
@@ -1308,7 +1319,7 @@ S = [[0.10094241 0.09961218]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 3, 3, 4])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 1, 2, 3, 3, 4, 5, 0, 1, 1, 2, 3, 3, 3, 4, 4])
 </pre></div>
 </div>
 </div>

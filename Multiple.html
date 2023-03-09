@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Chapter 9. Meta-Learning" href="Meta.html" />
-    <link rel="prev" title="Chapter 7: Deep Learning" href="Deep.html" />
+    <link rel="prev" title="Chapter 7: Deep Learning: Exercise" href="Deep_Exercise.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -182,10 +182,22 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="Deep.html">
    Chapter 7: Deep Learning
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Deep_Exercise.html">
+     Chapter 7: Deep Learning: Exercise
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
@@ -937,9 +949,12 @@ Learning can also affect the course of evolution, by providing a wider variety o
 <section id="genotype-phenotype-coding">
 <h3>Genotype/phenotype coding<a class="headerlink" href="#genotype-phenotype-coding" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
-<li><p>Binary coding: <span class="math notranslate nohighlight">\(b_N,...,b_1\)</span>
-$<span class="math notranslate nohighlight">\( x = \sum_{i=1}^N b_n 2^{n–1} \)</span>$
-Some flip of a bit can cuase a big jump.</p></li>
+<li><p>Binary coding: <span class="math notranslate nohighlight">\(b_N,...,b_1\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ x = \sum_{i=1}^N b_n 2^{n–1} \]</div>
+<p>Some flip of a bit can cuase a big jump.</p>
+<ul class="simple">
 <li><p>Real numbers: <span class="math notranslate nohighlight">\((x_1,...,x_N)\)</span></p></li>
 <li><p>Genotype to phenotype mapping</p>
 <ul>
@@ -953,12 +968,18 @@ Some flip of a bit can cuase a big jump.</p></li>
 <h3>Selection<a class="headerlink" href="#selection" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Roulett wheel selection (RWS):
-The selection probability <span class="math notranslate nohighlight">\(p_i\)</span> for an individual of fitness <span class="math notranslate nohighlight">\(f_i\)</span> is given by
-$<span class="math notranslate nohighlight">\( p_i = \frac{f_i}{\sum_{i=1}^P f_i} \)</span><span class="math notranslate nohighlight">\(
-where \)</span>P<span class="math notranslate nohighlight">\( is the population size.
-All \)</span>f_i$ have to be non-negative.</p></li>
-<li><p>Selection by ranking:
-$<span class="math notranslate nohighlight">\( p_i \propto P - rank_i \)</span>$</p></li>
+The selection probability <span class="math notranslate nohighlight">\(p_i\)</span> for an individual of fitness <span class="math notranslate nohighlight">\(f_i\)</span> is given by</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ p_i = \frac{f_i}{\sum_{i=1}^P f_i} \]</div>
+<p>where <span class="math notranslate nohighlight">\(P\)</span> is the population size.
+All <span class="math notranslate nohighlight">\(f_i\)</span> have to be non-negative.</p>
+<ul class="simple">
+<li><p>Selection by ranking:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ p_i \propto P - rank_i \]</div>
+<ul class="simple">
 <li><p>Tournament selection:
 Keep winners of subsets made of <span class="math notranslate nohighlight">\(k\)</span> individuals</p></li>
 </ul>
@@ -978,8 +999,11 @@ e.g. Gaussian: <span class="math notranslate nohighlight">\(x’ = x + \c{N}(0,\
 <ul class="simple">
 <li><p>Binary coding:
 spliciing of bit sequences</p></li>
-<li><p>Blend crossover:
-$<span class="math notranslate nohighlight">\( x’ \in [x_1–\alpha(x_2–x_1), x_2+\alpha(x_2–x_1)] \)</span>$</p></li>
+<li><p>Blend crossover:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ x’ \in [x_1–\alpha(x_2–x_1), x_2+\alpha(x_2–x_1)] \]</div>
+<ul class="simple">
 <li><p>Sampling from parents’ distribution</p></li>
 </ul>
 <div class="cell docutils container">
@@ -1104,7 +1128,7 @@ $<span class="math notranslate nohighlight">\( x’ \in [x_1–\alpha(x_2–x_1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_5088/1531073698.py:29: DeprecationWarning: `np.int` is a deprecated alias for the builtin `int`. To silence this warning, use `int` by itself. Doing this will not modify any behavior and is safe. When replacing `np.int`, you may wish to use e.g. `np.int64` or `np.int32` to specify the precision. If you wish to review your current use, check the release note link for additional information.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_6905/1531073698.py:29: DeprecationWarning: `np.int` is a deprecated alias for the builtin `int`. To silence this warning, use `int` by itself. Doing this will not modify any behavior and is safe. When replacing `np.int`, you may wish to use e.g. `np.int64` or `np.int32` to specify the precision. If you wish to review your current use, check the release note link for additional information.
 Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
   selected = np.zeros(self.P, dtype=np.int)  # indices of selected
 </pre></div>
@@ -1139,7 +1163,7 @@ Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdo
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_5088/1531073698.py:29: DeprecationWarning: `np.int` is a deprecated alias for the builtin `int`. To silence this warning, use `int` by itself. Doing this will not modify any behavior and is safe. When replacing `np.int`, you may wish to use e.g. `np.int64` or `np.int32` to specify the precision. If you wish to review your current use, check the release note link for additional information.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_6905/1531073698.py:29: DeprecationWarning: `np.int` is a deprecated alias for the builtin `int`. To silence this warning, use `int` by itself. Doing this will not modify any behavior and is safe. When replacing `np.int`, you may wish to use e.g. `np.int64` or `np.int32` to specify the precision. If you wish to review your current use, check the release note link for additional information.
 Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
   selected = np.zeros(self.P, dtype=np.int)  # indices of selected
 </pre></div>
@@ -1173,13 +1197,20 @@ Niv et al. (2002) showed in a reinforcement learning task that reward-dependent 
 <ul class="simple">
 <li><p>player <span class="math notranslate nohighlight">\(i \in I = \{1,...,n\}\)</span></p></li>
 <li><p><em>pure strategy</em> <span class="math notranslate nohighlight">\(s \in S = \{1,...,m\}\)</span></p></li>
-<li><p><em>pure strategy profile</em> for all players (<span class="math notranslate nohighlight">\(m^n\)</span> cases):
-$<span class="math notranslate nohighlight">\( \b{s} = (s_1,...,s_n) \)</span>$</p></li>
-<li><p><em>payoff</em> for player <span class="math notranslate nohighlight">\(i\)</span>:
-$<span class="math notranslate nohighlight">\( \pi_i(\b{s}) = \pi_i(s_1,...,s_n) \)</span>$</p></li>
-<li><p>payoff function for all players:
-$<span class="math notranslate nohighlight">\( \pi(\b{s}) = (\pi_1(\b{s}),...,\pi_n(\b{s})) \)</span>$</p></li>
+<li><p><em>pure strategy profile</em> for all players (<span class="math notranslate nohighlight">\(m^n\)</span> cases):</p></li>
 </ul>
+<div class="math notranslate nohighlight">
+\[ \b{s} = (s_1,...,s_n) \]</div>
+<ul class="simple">
+<li><p><em>payoff</em> for player <span class="math notranslate nohighlight">\(i\)</span>:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ \pi_i(\b{s}) = \pi_i(s_1,...,s_n) \]</div>
+<ul class="simple">
+<li><p>payoff function for all players:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ \pi(\b{s}) = (\pi_1(\b{s}),...,\pi_n(\b{s})) \]</div>
 <section id="example-prisoners-dilemma">
 <h3>Example: Prisoner’s dilemma<a class="headerlink" href="#example-prisoners-dilemma" title="Permalink to this headline">#</a></h3>
 <p>Two prisoners are under interrogation.
@@ -1211,36 +1242,56 @@ Is cooperation a viable strategy?</p>
 <h3>Mixted strategy<a class="headerlink" href="#mixted-strategy" title="Permalink to this headline">#</a></h3>
 <p>A player’s strategy can be stochastic. That is called <em>mixed strategy</em> in game theory.</p>
 <ul class="simple">
-<li><p><em>mixed strategy</em> : probability of pure strategies $<span class="math notranslate nohighlight">\(\b{x} = (x_{1},...,x_{m}) \)</span>$</p></li>
-<li><p><em>mixed strategy profile</em> for all players:
-$<span class="math notranslate nohighlight">\(X = \mat{\b{x}_1 \\ \vdots \\ \b{x}_n} 
- = \mat{x_{11} &amp; \cdots &amp; x_{1m}\\
-  \vdots &amp; &amp; \vdots\\
-  x_{n1} &amp; \cdots &amp; x_{nm}}\)</span>$</p></li>
-<li><p>probability of a pure strategy profile <span class="math notranslate nohighlight">\(\b{s}\)</span>:
-$<span class="math notranslate nohighlight">\( x(\b{s}) = p(s_1,...,s_n|X) = x_{1,s_1}\cdots x_{n,s_n} \)</span>$</p></li>
-<li><p>payoff for player <span class="math notranslate nohighlight">\(i\)</span> under mixed strategy prifile <span class="math notranslate nohighlight">\(X\)</span>:
-$<span class="math notranslate nohighlight">\( u_i(X) = \sum_\b{s} x(\b{s}) \pi_i(\b{s})
- = \sum_\b{s} x_{1,s_1}\cdots x_{n,s_n} \pi_i(s_1,...,s_n) \)</span>$</p></li>
-<li><p>combined payoff function
-$<span class="math notranslate nohighlight">\( \b{u}(X) = (u_1(X),...,u_n(X)) \)</span>$</p></li>
+<li><p><em>mixed strategy</em> : probability of pure strategies</p></li>
 </ul>
+<div class="math notranslate nohighlight">
+\[\b{x} = (x_{1},...,x_{m}) \]</div>
+<ul class="simple">
+<li><p><em>mixed strategy profile</em> for all players:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}X = \mat{\b{x}_1 \\ \vdots \\ \b{x}_n} 
+   = \mat{x_{11} &amp; \cdots &amp; x_{1m}\\
+    \vdots &amp; &amp; \vdots\\
+    x_{n1} &amp; \cdots &amp; x_{nm}}\end{split}\]</div>
+<ul class="simple">
+<li><p>probability of a pure strategy profile <span class="math notranslate nohighlight">\(\b{s}\)</span>:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ x(\b{s}) = p(s_1,...,s_n|X) = x_{1,s_1}\cdots x_{n,s_n} \]</div>
+<ul class="simple">
+<li><p>payoff for player <span class="math notranslate nohighlight">\(i\)</span> under mixed strategy prifile <span class="math notranslate nohighlight">\(X\)</span>:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ u_i(X) = \sum_\b{s} x(\b{s}) \pi_i(\b{s})
+   = \sum_\b{s} x_{1,s_1}\cdots x_{n,s_n} \pi_i(s_1,...,s_n) \]</div>
+<ul class="simple">
+<li><p>combined payoff function</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ \b{u}(X) = (u_1(X),...,u_n(X)) \]</div>
 </section>
 </section>
 <section id="two-player-game">
 <h2>Two-Player Game<a class="headerlink" href="#two-player-game" title="Permalink to this headline">#</a></h2>
-<p>Pay-off matrix for <em>row player</em>
-$<span class="math notranslate nohighlight">\( A: a_{s_1,s_2}=\pi_1(s_1,s_2) \)</span><span class="math notranslate nohighlight">\(
-Pay-off matrix for *column player*
-\)</span><span class="math notranslate nohighlight">\( B: b_{s_1,s_2}=\pi_2(s_1,s_2) \)</span>$</p>
+<p>Pay-off matrix for <em>row player</em></p>
+<div class="math notranslate nohighlight">
+\[ A: a_{s_1,s_2}=\pi_1(s_1,s_2) \]</div>
+<p>Pay-off matrix for <em>column player</em></p>
+<div class="math notranslate nohighlight">
+\[ B: b_{s_1,s_2}=\pi_2(s_1,s_2) \]</div>
 <section id="examples">
 <h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
-<li><p>Prisoner’s dilemma: <span class="math notranslate nohighlight">\(S=\{cooperate, defect\}\)</span>
-$<span class="math notranslate nohighlight">\( A = \mat{0 &amp; -4 \\ 1 &amp; -1}, \  B = \mat{0 &amp; 1 \\ -4 &amp; -1} \)</span>$</p></li>
-<li><p>Matching pennies:  <span class="math notranslate nohighlight">\(S=\{head, tail\}\)</span>
-$<span class="math notranslate nohighlight">\( A = \mat{1 &amp; -1 \\ -1 &amp; 1}, \  B = \mat{-1 &amp; 1 \\ 1 &amp; -1} \)</span>$</p></li>
+<li><p>Prisoner’s dilemma: <span class="math notranslate nohighlight">\(S=\{cooperate, defect\}\)</span></p></li>
 </ul>
+<div class="math notranslate nohighlight">
+\[\begin{split} A = \mat{0 &amp; -4 \\ 1 &amp; -1}, \  B = \mat{0 &amp; 1 \\ -4 &amp; -1} \end{split}\]</div>
+<ul class="simple">
+<li><p>Matching pennies:  <span class="math notranslate nohighlight">\(S=\{head, tail\}\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split} A = \mat{1 &amp; -1 \\ -1 &amp; 1}, \  B = \mat{-1 &amp; 1 \\ 1 &amp; -1} \end{split}\]</div>
 </section>
 </section>
 <section id="nash-equilibrium">
@@ -1252,39 +1303,41 @@ $<span class="math notranslate nohighlight">\( A = \mat{1 &amp; -1 \\ -1 &amp; 1
 <section id="id1">
 <h3>Examples<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
-<li><p>Prisoner’s dilemma: <span class="math notranslate nohighlight">\(S=\{cooperate, defect\}\)</span>
-$<span class="math notranslate nohighlight">\( A = \mat{0 &amp; -4 \\ 1 &amp; -1}, \  B = \mat{0 &amp; 1 \\ -4 &amp; -1} \)</span>$</p>
-<ul>
-<li><p>both defect <span class="math notranslate nohighlight">\( \b{x}_1 = \b{x}_2 = (0,1) \)</span></p></li>
+<li><p>Prisoner’s dilemma: <span class="math notranslate nohighlight">\(S=\{cooperate, defect\}\)</span></p></li>
 </ul>
-</li>
-<li><p>Matching pennies: <span class="math notranslate nohighlight">\(S=\{head, tail\}\)</span>
-$<span class="math notranslate nohighlight">\( A = \mat{1 &amp; -1 \\ -1 &amp; 1}, \  B = \mat{-1 &amp; 1 \\ 1 &amp; -1} \)</span>$</p>
-<ul>
-<li><p>stochastic <span class="math notranslate nohighlight">\( \b{x}_1 = \b{x}_2 = (\frac{1}{2},\frac{1}{2}) \)</span></p></li>
+<div class="math notranslate nohighlight">
+\[\begin{split} A = \mat{0 &amp; -4 \\ 1 &amp; -1}, \  B = \mat{0 &amp; 1 \\ -4 &amp; -1} \end{split}\]</div>
+<p>both defect <span class="math notranslate nohighlight">\( \b{x}_1 = \b{x}_2 = (0,1) \)</span></p>
+<ul class="simple">
+<li><p>Matching pennies: <span class="math notranslate nohighlight">\(S=\{head, tail\}\)</span></p></li>
 </ul>
-</li>
-<li><p>Coordination game: <span class="math notranslate nohighlight">\(S=\{left, right\}\)</span>
-$<span class="math notranslate nohighlight">\( A = \mat{2 &amp; 0 \\ 0 &amp; 1}, \  B = A \)</span>$</p>
-<ul>
-<li><p>both go left: <span class="math notranslate nohighlight">\( \b{x}_1 = \b{x}_2 = (1,0) \)</span></p></li>
-<li><p>both go right: <span class="math notranslate nohighlight">\( \b{x}_1 = \b{x}_2 = (0,1) \)</span></p></li>
-<li><p>stochastic: <span class="math notranslate nohighlight">\( \b{x}_1 = \b{x}_2 = (\frac{2}{3},\frac{1}{3}) \)</span></p></li>
+<div class="math notranslate nohighlight">
+\[\begin{split} A = \mat{1 &amp; -1 \\ -1 &amp; 1}, \  B = \mat{-1 &amp; 1 \\ 1 &amp; -1} \end{split}\]</div>
+<p>stochastic <span class="math notranslate nohighlight">\( \b{x}_1 = \b{x}_2 = (\frac{1}{2},\frac{1}{2}) \)</span></p>
+<ul class="simple">
+<li><p>Coordination game: <span class="math notranslate nohighlight">\(S=\{left, right\}\)</span></p></li>
 </ul>
-</li>
+<div class="math notranslate nohighlight">
+\[\begin{split} A = \mat{2 &amp; 0 \\ 0 &amp; 1}, \  B = A \end{split}\]</div>
+<p>both go left: <span class="math notranslate nohighlight">\( \b{x}_1 = \b{x}_2 = (1,0) \)</span></p>
+<p>both go right: <span class="math notranslate nohighlight">\( \b{x}_1 = \b{x}_2 = (0,1) \)</span></p>
+<p>stochastic: <span class="math notranslate nohighlight">\( \b{x}_1 = \b{x}_2 = (\frac{2}{3},\frac{1}{3}) \)</span></p>
+<ul class="simple">
 <li><p>Hawk-Dove game:  <span class="math notranslate nohighlight">\(S=\{fight, yield\}\)</span></p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(v\)</span>: value of winning</p></li>
-<li><p><span class="math notranslate nohighlight">\(c\)</span>: cost of fighting
-$<span class="math notranslate nohighlight">\( A = \mat{\frac{v-c}{2} &amp; v \\ 0 &amp; \frac{v}{2}}, \  B = A^T \)</span><span class="math notranslate nohighlight">\(
-For examples, \)</span>v=2<span class="math notranslate nohighlight">\( and \)</span>c=6<span class="math notranslate nohighlight">\(:
-\)</span><span class="math notranslate nohighlight">\( A = \mat{-2 &amp; 2 \\ 0 &amp; 1}, \ B = \mat{-2 &amp; 0 \\ 2 &amp; 1} \)</span>$</p></li>
-<li><p>player 1 is hawk, player 2 is dove: <span class="math notranslate nohighlight">\( \b{x}_1 = (1,0), \b{x}_2 = (0,1) \)</span></p></li>
-<li><p>player 1 is dove, player 2 is hawk: <span class="math notranslate nohighlight">\( \b{x}_1 = (0,1), \b{x}_2 = (1,0) \)</span></p></li>
-<li><p>sometimes hawk, sometimes dove: <span class="math notranslate nohighlight">\( \b{x}_1 = \b{x}_2 = (\frac{1}{3},\frac{2}{3}) \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(c\)</span>: cost of fighting</p></li>
 </ul>
 </li>
 </ul>
+<div class="math notranslate nohighlight">
+\[\begin{split} A = \mat{\frac{v-c}{2} &amp; v \\ 0 &amp; \frac{v}{2}}, \  B = A^T \end{split}\]</div>
+<p>For examples, <span class="math notranslate nohighlight">\(v=2\)</span> and <span class="math notranslate nohighlight">\(c=6\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} A = \mat{-2 &amp; 2 \\ 0 &amp; 1}, \ B = \mat{-2 &amp; 0 \\ 2 &amp; 1} \end{split}\]</div>
+<p>player 1 is hawk, player 2 is dove: <span class="math notranslate nohighlight">\( \b{x}_1 = (1,0), \b{x}_2 = (0,1) \)</span></p>
+<p>player 1 is dove, player 2 is hawk: <span class="math notranslate nohighlight">\( \b{x}_1 = (0,1), \b{x}_2 = (1,0) \)</span></p>
+<p>sometimes hawk, sometimes dove: <span class="math notranslate nohighlight">\( \b{x}_1 = \b{x}_2 = (\frac{1}{3},\frac{2}{3}) \)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Game</span><span class="p">:</span>
@@ -1390,30 +1443,37 @@ For examples, \)</span>v=2<span class="math notranslate nohighlight">\( and \)</
 </section>
 <section id="symmetric-two-player-games">
 <h2>Symmetric two-player games<a class="headerlink" href="#symmetric-two-player-games" title="Permalink to this headline">#</a></h2>
-<p>If the same rule applies to both players:
-$<span class="math notranslate nohighlight">\( \pi_2(s_1,s_2) = \pi_1(s_2,s_1) \)</span><span class="math notranslate nohighlight">\(
-or
-\)</span><span class="math notranslate nohighlight">\( B = A^T \)</span>$
-it is called a <em>symmetric game</em>.<br />
+<p>If the same rule applies to both players:</p>
+<div class="math notranslate nohighlight">
+\[ \pi_2(s_1,s_2) = \pi_1(s_2,s_1) \]</div>
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[ B = A^T \]</div>
+<p>it is called a <em>symmetric game</em>.<br />
 In the above examples, the three except matching pennies are symmetric games.</p>
-<p>If two players share the same payoff in a symmetric game:
-$<span class="math notranslate nohighlight">\( A = B = A^T \)</span>$
-it is called a <em>partnership game</em> or <em>doubly symmetric game</em>.<br />
+<p>If two players share the same payoff in a symmetric game:</p>
+<div class="math notranslate nohighlight">
+\[ A = B = A^T \]</div>
+<p>it is called a <em>partnership game</em> or <em>doubly symmetric game</em>.<br />
 In the above examples, coordination game is such an example.</p>
 <section id="normal-form-of-symmetric-two-player-games">
 <h3>Normal form of symmetric two-player games<a class="headerlink" href="#normal-form-of-symmetric-two-player-games" title="Permalink to this headline">#</a></h3>
 <p>The best reply does not change if the same amount is added/subtracted from each column of the payoff matrix of a row player.</p>
-<p>Thus any symmetric two-player game
-$<span class="math notranslate nohighlight">\( A = \mat{a_{11} &amp; a_{12} \\ a_{21} &amp; a_{22}}, \  B = A^T \)</span><span class="math notranslate nohighlight">\(
-can be converted into a normal form
-\)</span><span class="math notranslate nohighlight">\( A' = \mat{a_1 &amp; 0 \\ 0 &amp; a_2} \)</span><span class="math notranslate nohighlight">\(
-by shifting the payoffs as
-\)</span><span class="math notranslate nohighlight">\( a_1 = a_{11}-a_{21}, \  a_2 = a_{22}-a_{12}. \)</span>$</p>
+<p>Thus any symmetric two-player game</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} A = \mat{a_{11} &amp; a_{12} \\ a_{21} &amp; a_{22}}, \  B = A^T \end{split}\]</div>
+<p>can be converted into a normal form</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} A' = \mat{a_1 &amp; 0 \\ 0 &amp; a_2} \end{split}\]</div>
+<p>by shifting the payoffs as</p>
+<div class="math notranslate nohighlight">
+\[ a_1 = a_{11}-a_{21}, \  a_2 = a_{22}-a_{12}. \]</div>
 <p>Then we can classify all symmetric two-player games into three categories.</p>
 <section id="category-i-a-1-0-a-2-0-or-a-1-0-a-2-0">
 <h4>Category I: <span class="math notranslate nohighlight">\(a_1&lt;0\)</span>, <span class="math notranslate nohighlight">\(a_2&gt;0\)</span> or <span class="math notranslate nohighlight">\(a_1&gt;0\)</span>, <span class="math notranslate nohighlight">\(a_2&lt;0\)</span><a class="headerlink" href="#category-i-a-1-0-a-2-0-or-a-1-0-a-2-0" title="Permalink to this headline">#</a></h4>
-<p>e.g. Prisoner’s dilemma:
-$<span class="math notranslate nohighlight">\( A = \mat{0 &amp; -4 \\ 1 &amp; -1} \rightarrow A' = \mat{-1 &amp; 0 \\ 0 &amp; 3} \)</span>$</p>
+<p>e.g. Prisoner’s dilemma:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} A = \mat{0 &amp; -4 \\ 1 &amp; -1} \rightarrow A' = \mat{-1 &amp; 0 \\ 0 &amp; 3} \end{split}\]</div>
 <ul class="simple">
 <li><p>One symmetric Nash equilibrium:</p>
 <ul>
@@ -1425,8 +1485,9 @@ $<span class="math notranslate nohighlight">\( A = \mat{0 &amp; -4 \\ 1 &amp; -1
 </section>
 <section id="category-ii-a-1-0-a-2-0">
 <h4>Category II: <span class="math notranslate nohighlight">\(a_1&gt;0\)</span>, <span class="math notranslate nohighlight">\(a_2&gt;0\)</span><a class="headerlink" href="#category-ii-a-1-0-a-2-0" title="Permalink to this headline">#</a></h4>
-<p>e.g. Coordination game:
-$<span class="math notranslate nohighlight">\( A = \mat{2 &amp; 0 \\ 0 &amp; 1} \)</span>$</p>
+<p>e.g. Coordination game:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} A = \mat{2 &amp; 0 \\ 0 &amp; 1} \end{split}\]</div>
 <ul class="simple">
 <li><p>Three symmetric Nash equilibria</p>
 <ul>
@@ -1439,9 +1500,10 @@ $<span class="math notranslate nohighlight">\( A = \mat{2 &amp; 0 \\ 0 &amp; 1} 
 </section>
 <section id="category-iii-a-1-0-a-2-0">
 <h4>Category III: <span class="math notranslate nohighlight">\(a_1&lt;0\)</span>, <span class="math notranslate nohighlight">\(a_2&lt;0\)</span><a class="headerlink" href="#category-iii-a-1-0-a-2-0" title="Permalink to this headline">#</a></h4>
-<p>e.g. Hawk-Dove game:
-$<span class="math notranslate nohighlight">\(A = \mat{-2 &amp; 2 \\ 0 &amp; 1}
-  \rightarrow A' =  \mat{-2 &amp; 0 \\ 0 &amp; -1} \)</span>$</p>
+<p>e.g. Hawk-Dove game:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}A = \mat{-2 &amp; 2 \\ 0 &amp; 1}
+  \rightarrow A' =  \mat{-2 &amp; 0 \\ 0 &amp; -1} \end{split}\]</div>
 <ul class="simple">
 <li><p>Two asymmetric and one symmetric Nash equilibria</p>
 <ul>
@@ -1463,28 +1525,35 @@ However, some Nash equilibriua like the mixed strategy in the Coordination game 
 <section id="evolutionarily-stable-strategy-ess">
 <h2>Evolutionarily stable strategy (ESS)<a class="headerlink" href="#evolutionarily-stable-strategy-ess" title="Permalink to this headline">#</a></h2>
 <p>Here we consider a large population of players.
-Pairs are randomly drawn and play a symmetric two-player game
-$<span class="math notranslate nohighlight">\( B = A^T \)</span>$</p>
+Pairs are randomly drawn and play a symmetric two-player game</p>
+<div class="math notranslate nohighlight">
+\[ B = A^T \]</div>
 <p>When most players take a mixed strategy <span class="math notranslate nohighlight">\(\b{x}\)</span>,
 can a small mutant population taking another strategy <span class="math notranslate nohighlight">\(\b{y}\)</span> outperform others?</p>
 <p>When a strategy <span class="math notranslate nohighlight">\(\b{x}\)</span> outperforms any mutant starategy <span class="math notranslate nohighlight">\(\b{x}\)</span>,
 it is called an <em>Evolutionarily stable strategy (ESS)</em>.</p>
-<p>We denote the payoff for a strategy <span class="math notranslate nohighlight">\(\b{x}\)</span> against <span class="math notranslate nohighlight">\(\b{y}\)</span> as
-$<span class="math notranslate nohighlight">\( u(\b{x},\b{y}) = \b{x} A \b{y}^T \)</span>$</p>
-<p>With a proportion of mutants <span class="math notranslate nohighlight">\(0&lt;\epsilon&lt;&lt;1\)</span>, the average population strategy is
-$<span class="math notranslate nohighlight">\( \b{w} = \epsilon\b{y} + (1-\epsilon)\b{x} \)</span>$</p>
-<p>ESS is a stragety <span class="math notranslate nohighlight">\(\b{x}\)</span> that satisfy
-$<span class="math notranslate nohighlight">\( u(\b{x},\b{w})&gt;u(\b{y},\b{w}) \)</span><span class="math notranslate nohighlight">\(
-for any other strategy \)</span>\b{y}$.</p>
-<p>ESS can be the first order:
-$<span class="math notranslate nohighlight">\( u(\b{x},\b{x})&gt;u(\b{y},\b{x}) \)</span><span class="math notranslate nohighlight">\(
-performing better with incumbents, 
-or the second order:
-\)</span><span class="math notranslate nohighlight">\( u(\b{x},\b{x})=u(\b{y},\b{x}) \mbox{ and } u(\b{x},\b{y})&gt;u(\b{y},\b{y}) \)</span>$
-performing equally with incumbents but better with mutants than themselves.</p>
-<p>ESS does not require
-$<span class="math notranslate nohighlight">\( u(\b{x},\b{x}) &gt; u(\b{y},\b{y}), \)</span><span class="math notranslate nohighlight">\(
-meaning that in another population where \)</span>\b{y}<span class="math notranslate nohighlight">\( is a majority, \)</span>\b{y}<span class="math notranslate nohighlight">\( can outperform \)</span>\b{x}$ and be another ESS.</p>
+<p>We denote the payoff for a strategy <span class="math notranslate nohighlight">\(\b{x}\)</span> against <span class="math notranslate nohighlight">\(\b{y}\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[ u(\b{x},\b{y}) = \b{x} A \b{y}^T \]</div>
+<p>With a proportion of mutants <span class="math notranslate nohighlight">\(0&lt;\epsilon&lt;&lt;1\)</span>, the average population strategy is</p>
+<div class="math notranslate nohighlight">
+\[ \b{w} = \epsilon\b{y} + (1-\epsilon)\b{x} \]</div>
+<p>ESS is a stragety <span class="math notranslate nohighlight">\(\b{x}\)</span> that satisfy</p>
+<div class="math notranslate nohighlight">
+\[ u(\b{x},\b{w})&gt;u(\b{y},\b{w}) \]</div>
+<p>for any other strategy <span class="math notranslate nohighlight">\(\b{y}\)</span>.</p>
+<p>ESS can be the first order:</p>
+<div class="math notranslate nohighlight">
+\[ u(\b{x},\b{x})&gt;u(\b{y},\b{x}) \]</div>
+<p>performing better with incumbents,
+or the second order:</p>
+<div class="math notranslate nohighlight">
+\[ u(\b{x},\b{x})=u(\b{y},\b{x}) \mbox{ and } u(\b{x},\b{y})&gt;u(\b{y},\b{y}) \]</div>
+<p>performing equally with incumbents but better with mutants than themselves.</p>
+<p>ESS does not require</p>
+<div class="math notranslate nohighlight">
+\[ u(\b{x},\b{x}) &gt; u(\b{y},\b{y}), \]</div>
+<p>meaning that in another population where <span class="math notranslate nohighlight">\(\b{y}\)</span> is a majority, <span class="math notranslate nohighlight">\(\b{y}\)</span> can outperform <span class="math notranslate nohighlight">\(\b{x}\)</span> and be another ESS.</p>
 <p>ESS is the best reply to itself, so that <span class="math notranslate nohighlight">\((\b{x},\b{x})\)</span> is a Nash equilibrium, but not all Nash equilibria are ESS, as we see below.</p>
 </section>
 <section id="ees-in-symmetric-two-player-games">
@@ -1492,8 +1561,9 @@ meaning that in another population where \)</span>\b{y}<span class="math notrans
 <p>Based on the categorization by the normal forms, let us see which Nash equilibrim is ESS.</p>
 <section id="id2">
 <h3>Category I: <span class="math notranslate nohighlight">\(a_1&lt;0\)</span>, <span class="math notranslate nohighlight">\(a_2&gt;0\)</span> or <span class="math notranslate nohighlight">\(a_1&gt;0\)</span>, <span class="math notranslate nohighlight">\(a_2&lt;0\)</span><a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
-<p>e.g. Prisoner’s dilemma:
-$<span class="math notranslate nohighlight">\( A = \mat{0 &amp; -4 \\ 1 &amp; -1} \rightarrow A' = \mat{-1 &amp; 0 \\ 0 &amp; 3} \)</span>$</p>
+<p>e.g. Prisoner’s dilemma:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} A = \mat{0 &amp; -4 \\ 1 &amp; -1} \rightarrow A' = \mat{-1 &amp; 0 \\ 0 &amp; 3} \end{split}\]</div>
 <ul class="simple">
 <li><p>One symmetric Nash equilibrium, which is ESS.</p>
 <ul>
@@ -1505,8 +1575,9 @@ $<span class="math notranslate nohighlight">\( A = \mat{0 &amp; -4 \\ 1 &amp; -1
 </section>
 <section id="id3">
 <h3>Category II: <span class="math notranslate nohighlight">\(a_1&gt;0\)</span>, <span class="math notranslate nohighlight">\(a_2&gt;0\)</span><a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
-<p>e.g. Coordination game:
-$<span class="math notranslate nohighlight">\( A = \mat{2 &amp; 0 \\ 0 &amp; 1} \)</span>$</p>
+<p>e.g. Coordination game:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} A = \mat{2 &amp; 0 \\ 0 &amp; 1} \end{split}\]</div>
 <ul class="simple">
 <li><p>Three symmetric Nash equilibria:</p>
 <ul>
@@ -1519,9 +1590,10 @@ $<span class="math notranslate nohighlight">\( A = \mat{2 &amp; 0 \\ 0 &amp; 1} 
 </section>
 <section id="id4">
 <h3>Category III: <span class="math notranslate nohighlight">\(a_1&lt;0\)</span>, <span class="math notranslate nohighlight">\(a_2&lt;0\)</span><a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
-<p>e.g. Hawk-Dove game:
-$<span class="math notranslate nohighlight">\(A = \mat{-2 &amp; 2 \\ 0 &amp; 1}
-  \rightarrow A' =  \mat{-2 &amp; 0 \\ 0 &amp; -1} \)</span>$</p>
+<p>e.g. Hawk-Dove game:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}A = \mat{-2 &amp; 2 \\ 0 &amp; 1}
+  \rightarrow A' =  \mat{-2 &amp; 0 \\ 0 &amp; -1} \end{split}\]</div>
 <ul class="simple">
 <li><p>Two asymmetric and one symmetric Nash equilibria:</p>
 <ul>
@@ -1541,27 +1613,35 @@ $<span class="math notranslate nohighlight">\(A = \mat{-2 &amp; 2 \\ 0 &amp; 1}
 <li><p><span class="math notranslate nohighlight">\(p_i(t)\)</span>: number of players with strategy <span class="math notranslate nohighlight">\(i\in K\)</span></p></li>
 <li><p>total population: <span class="math notranslate nohighlight">\(p(t)=\sum_{i=1}^K p_i(t)\)</span></p></li>
 <li><p>population share: <span class="math notranslate nohighlight">\(x_i(t)=\frac{p_i(t)}{p(t)}\)</span></p></li>
-<li><p>population state:
-$<span class="math notranslate nohighlight">\( x(t) = (x_1(t),...,x_K(t)) \)</span>$</p></li>
+<li><p>population state:</p></li>
 </ul>
-<p>If the reproduction rate is given by the payoff and fitness, the death rate is given by <span class="math notranslate nohighlight">\(d\)</span>, the growth of sub-population is given by
-$<span class="math notranslate nohighlight">\(
+<div class="math notranslate nohighlight">
+\[ x(t) = (x_1(t),...,x_K(t)) \]</div>
+<p>If the reproduction rate is given by the payoff and fitness, the death rate is given by <span class="math notranslate nohighlight">\(d\)</span>, the growth of sub-population is given by</p>
+<div class="math notranslate nohighlight">
+\[
     \frac{dp_i(t)}{dt} = (\b{e}_i A\b{x}(t)^T–d)p_i(t)
-\)</span><span class="math notranslate nohighlight">\(
-where \)</span>\b{e}_i=(0,…,1,…,0)<span class="math notranslate nohighlight">\( with \)</span>1<span class="math notranslate nohighlight">\( in \)</span>i$-th component.</p>
-<p>Then the dynamics of the population share is given by
-$<span class="math notranslate nohighlight">\(
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\b{e}_i=(0,...,1,...,0)\)</span> with <span class="math notranslate nohighlight">\(1\)</span> in <span class="math notranslate nohighlight">\(i\)</span>-th component.</p>
+<p>Then the dynamics of the population share is given by</p>
+<div class="math notranslate nohighlight">
+\[
     \frac{dx_i(t)}{dt} = \frac{d}{dt} \frac{p_i(t)}{p(t)}
     = \frac{1}{p(t)}\frac{dp_i(t)}{dt} - \frac{p_i(t)}{p(t)^2}\frac{dp(t)}{dt}
-\)</span>$$<span class="math notranslate nohighlight">\(
+\]</div>
+<div class="math notranslate nohighlight">
+\[
     = (\b{e}_i A\b{x}(t)^T–d)x_i(t) - x_i(t)\sum_{j=1}^K(\b{e}_j A\b{x}(t)^T–d)x_j(t)
-\)</span>$$<span class="math notranslate nohighlight">\(
+\]</div>
+<div class="math notranslate nohighlight">
+\[
     = \b{e}_i A\b{x}(t)^T x_i(t) –\b{x}(t)A\b{x}(t)^T x_i(t) 
-\)</span><span class="math notranslate nohighlight">\(
-which leads us to the *replicator equation*.
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>which leads us to the <em>replicator equation</em>.</p>
+<div class="math notranslate nohighlight">
+\[
     \frac{dx_i(t)}{dt} = (\b{e}_i–\b{x}(t))A\b{x}(t)^T x_i(t)
-\)</span>$</p>
+\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">odeint</span>
@@ -1636,8 +1716,9 @@ which leads us to the *replicator equation*.
 </section>
 <section id="rock-scissors-paper-game">
 <h2>Rock-scissors-paper game<a class="headerlink" href="#rock-scissors-paper-game" title="Permalink to this headline">#</a></h2>
-<p>Now consider a symmetric two-player game with three pure strategies
-$<span class="math notranslate nohighlight">\( A = \mat{0 &amp; 1+a &amp; -1 \\ -1 &amp; 0 &amp; 1+a \\ 1+a &amp; -1 &amp; 0} \)</span>$</p>
+<p>Now consider a symmetric two-player game with three pure strategies</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} A = \mat{0 &amp; 1+a &amp; -1 \\ -1 &amp; 0 &amp; 1+a \\ 1+a &amp; -1 &amp; 0} \end{split}\]</div>
 <p>The parameter <span class="math notranslate nohighlight">\(a\)</span> controls the importance of winning versus not losing.</p>
 <p>There is a Nash equilibrium at <span class="math notranslate nohighlight">\(\b{x}=(\frac{1}{3},\frac{1}{3},\frac{1}{3})\)</span>. The replicator dynamics is known to show oscillatory behaviors around the equilibrium depending on the parameter <span class="math notranslate nohighlight">\(a\)</span>.</p>
 <div class="cell docutils container">
@@ -1784,11 +1865,11 @@ There are also brain imaging exeperiments to assess what brain circuits are invo
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="Deep.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="Deep_Exercise.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Chapter 7: Deep Learning</p>
+            <p class="prev-next-title">Chapter 7: Deep Learning: Exercise</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="Meta.html" title="next page">
