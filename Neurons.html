@@ -852,8 +852,9 @@ We are, however, often interested in how a spike is triggered, rather than and e
 <p>By defining the membrane resistance <span class="math notranslate nohighlight">\(R=\frac{1}{g_L}\)</span> and the time constant <span class="math notranslate nohighlight">\(\tau=RC\)</span>, we have the equation of <em>leaky integration</em></p>
 <div class="math notranslate nohighlight">
 \[\tau\frac{dV(t)}{dt} = -V(t) + E_L + R I(t)\]</div>
-<p>When the membrane potential <span class="math notranslate nohighlight">\(V\)</span> reaches to a threhold <span class="math notranslate nohighlight">\(V_\theta\)</span>, a spike is generated and the membrane potential is reset to <span class="math notranslate nohighlight">\(V_r\)</span>.
-$<span class="math notranslate nohighlight">\(V(t) = V_r  \quad\mbox{ if } V(t) \ge V_\theta\)</span>$</p>
+<p>When the membrane potential <span class="math notranslate nohighlight">\(V\)</span> reaches to a threhold <span class="math notranslate nohighlight">\(V_\theta\)</span>, a spike is generated and the membrane potential is reset to <span class="math notranslate nohighlight">\(V_r\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[V(t) = V_r  \quad\mbox{ if } V(t) \ge V_\theta\]</div>
 <p>Below is an example of an IaF model. Here we use <code class="docutils literal notranslate"><span class="pre">ode()</span></code> function to detect reaching to the threshold by the <code class="docutils literal notranslate"><span class="pre">solout</span></code> option.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -905,7 +906,7 @@ $<span class="math notranslate nohighlight">\(V(t) = V_r  \quad\mbox{ if } V(t) 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/doya/opt/anaconda3/lib/python3.9/site-packages/numpy/core/shape_base.py:65: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/doya/miniforge3/lib/python3.9/site-packages/numpy/core/shape_base.py:65: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
   ary = asanyarray(ary)
 </pre></div>
 </div>
@@ -1003,8 +1004,9 @@ $<span class="math notranslate nohighlight">\(V(t) = V_r  \quad\mbox{ if } V(t) 
 <section id="alpha-function-model-of-synaptic-current">
 <h3>Alpha function model of synaptic current<a class="headerlink" href="#alpha-function-model-of-synaptic-current" title="Permalink to this headline">#</a></h3>
 <p>When a spike travels through an axon and reaches to a synpase, it causes release of neurotransmitter molecules in the synaptic junction, which binds to the receptors on the postsynapic membrane, and cause either opening of ionic channels of the receptor or trigger molecular reactions in the postsynaptic cell.</p>
-<p>A simple model to approximate the dynamics of this complex cascades is the <em>alpha function</em>, defined as
-$<span class="math notranslate nohighlight">\(u(t) = \frac{t}{\tau_s} e^{-\frac{t}{\tau_s}}\)</span>$</p>
+<p>A simple model to approximate the dynamics of this complex cascades is the <em>alpha function</em>, defined as</p>
+<div class="math notranslate nohighlight">
+\[u(t) = \frac{t}{\tau_s} e^{-\frac{t}{\tau_s}}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">alpha</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">taus</span><span class="p">):</span>
@@ -1251,12 +1253,15 @@ Depending on the connection strengths, we can observe point attractor or oscilla
 </div>
 <section id="activation-functions-sigmoid-relu-and-binary">
 <h4>Activation functions: Sigmoid, ReLU, and binary<a class="headerlink" href="#activation-functions-sigmoid-relu-and-binary" title="Permalink to this headline">#</a></h4>
-<p>As the activation (or gain) function <span class="math notranslate nohighlight">\(f\)</span>, the most popular one is the (logistic) sigmoid function.
-$<span class="math notranslate nohighlight">\(f(x) = \frac{1}{1 + e^{-x}}\)</span>$</p>
-<p>The use of <em>rectified linear unit</em> (ReLU) is also becoming popular for deep layered networks.
-$<span class="math notranslate nohighlight">\(f(x) = \max(x, 0)\)</span>$</p>
-<p>The classic McCulloch-Pitts model took a binary activation function.
-$<span class="math notranslate nohighlight">\(f(x) = \begin{cases} 1 &amp; \mbox{if } x \ge 0 \\ 0 &amp; \mbox{if } x&lt;0 \end{cases}\)</span>$</p>
+<p>As the activation (or gain) function <span class="math notranslate nohighlight">\(f\)</span>, the most popular one is the (logistic) sigmoid function.</p>
+<div class="math notranslate nohighlight">
+\[f(x) = \frac{1}{1 + e^{-x}}\]</div>
+<p>The use of <em>rectified linear unit</em> (ReLU) is also becoming popular for deep layered networks.</p>
+<div class="math notranslate nohighlight">
+\[f(x) = \max(x, 0)\]</div>
+<p>The classic McCulloch-Pitts model took a binary activation function.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}f(x) = \begin{cases} 1 &amp; \mbox{if } x \ge 0 \\ 0 &amp; \mbox{if } x&lt;0 \end{cases}\end{split}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Activation functions</span>
@@ -1284,8 +1289,9 @@ $<span class="math notranslate nohighlight">\(f(x) = \begin{cases} 1 &amp; \mbox
 </section>
 <section id="softmax-function">
 <h3>Softmax function<a class="headerlink" href="#softmax-function" title="Permalink to this headline">#</a></h3>
-<p>For a layer where proabailistic intertretation is desired, <em>softmax</em> function whose sum over all units is one.
-$<span class="math notranslate nohighlight">\(f_i(x) = \frac{e^{x_i}}{\sum_j e^{x_j}}\)</span>$</p>
+<p>For a layer where proabailistic intertretation is desired, <em>softmax</em> function whose sum over all units is one.</p>
+<div class="math notranslate nohighlight">
+\[f_i(x) = \frac{e^{x_i}}{\sum_j e^{x_j}}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Softmax function</span>
@@ -1322,9 +1328,10 @@ $<span class="math notranslate nohighlight">\(f_i(x) = \frac{e^{x_i}}{\sum_j e^{
 <h2>Models of plasticity<a class="headerlink" href="#models-of-plasticity" title="Permalink to this headline">#</a></h2>
 <section id="hebb-rule">
 <h3>Hebb rule<a class="headerlink" href="#hebb-rule" title="Permalink to this headline">#</a></h3>
-<p>“Cells fire together wire together” is the basic concept proposed by Donald Hebb [Hebb1952]. More specifically, the Hebbian synaptic plasticity rule takes the form
-$<span class="math notranslate nohighlight">\(\Delta w_{ij}(t) = \alpha y_i(t) y_j(t)\)</span><span class="math notranslate nohighlight">\(
-where \)</span>\alpha$ is the learning rate parameter.</p>
+<p>“Cells fire together wire together” is the basic concept proposed by Donald Hebb [Hebb1952]. More specifically, the Hebbian synaptic plasticity rule takes the form</p>
+<div class="math notranslate nohighlight">
+\[\Delta w_{ij}(t) = \alpha y_i(t) y_j(t)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\alpha\)</span> is the learning rate parameter.</p>
 </section>
 <section id="spike-timining-dependent-placticity-stdp">
 <h3>Spike timining dependent placticity (STDP)<a class="headerlink" href="#spike-timining-dependent-placticity-stdp" title="Permalink to this headline">#</a></h3>
@@ -1447,7 +1454,7 @@ stereoscopic depth. Neuroreport, 8:3–12.</p></li>
             mode: "python"
         },
         kernelOptions: {
-            name: "python3",
+            kernelName: "python3",
             path: "./."
         },
         predefinedOutput: true
