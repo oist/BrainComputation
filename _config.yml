@@ -1,11 +1,17 @@
 # Book settings
 title: Brain Computation
 author: Kenji Doya
+#copyright: "2023"
 logo: BC_logo.png
 
 # Force re-execution of notebooks on each build.
 #execute:
 #  execute_notebooks: force
+#  allow_errors
+
+# Parse and render settings
+parse:
+  myst_dmath_double_inline: true  # Allow display math ($$) within an inline context
 
 # Define the name of the latex output file for PDF builds
 latex:
