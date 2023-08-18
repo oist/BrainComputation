@@ -5,10 +5,14 @@ root: BrainComputation
 chapters:
 - file: Introduction
 - file: Neurons
+  sections:
+  - file: Neurons_Exercise
 - file: Supervised
   sections:
   - file: Supervised_Exercise
 - file: Reinforcement
+  sections:
+  - file: Reinforcement_Exercise
 - file: Unsupervised
   sections:
   - file: Unsupervised_Exercise
