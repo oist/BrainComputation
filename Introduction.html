@@ -119,17 +119,29 @@ const thebe_selector_output = ".output, .cell_output"
    Chapter 1. Introduction
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="Neurons.html">
    Chapter 2. Neural Modeling and Analysis
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Neurons_Exercise.html">
+     Chapter 2. Neural Modeling and Analysis: Exercise
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="Supervised.html">
    Chapter 3: Supervised Learning
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -141,17 +153,29 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="Reinforcement.html">
    Chapter 4. Reinforcement Learning
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Reinforcement_Exercise.html">
+     Chapter 4. Reinforcement Learning: Exercise
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="Unsupervised.html">
    Chapter 5. Unsupervised Learning
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -167,8 +191,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="Bayesian.html">
    Chatper 6. Bayesian Approaches
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -184,8 +208,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="Deep.html">
    Chapter 7: Deep Learning
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -541,7 +565,12 @@ Even invertebrates from worms and insects share almost the same set of molecules
 <h3>Organization of the mammalian brain<a class="headerlink" href="#organization-of-the-mammalian-brain" title="Permalink to this headline">#</a></h3>
 <p>The spinal cord is often thought as the connection line between the brain and the body, but it constitutes a quite complex neural network for movement control and perception.</p>
 <p>The brain stem consists of dedicated neural circuits for a variety of physiological regulation and motor control.</p>
-<p><img alt="MammalianBrain" src="_images/MammalianBrain.jpg" /></p>
+<figure class="align-default" id="fig-mbrain">
+<a class="reference internal image-reference" href="_images/MammalianBrain.jpg"><img alt="Mammalian Brain" src="_images/MammalianBrain.jpg" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">The whole architecture of the mammalian brain.</span><a class="headerlink" href="#fig-mbrain" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 <section id="paradigms-of-adaptation">
@@ -568,7 +597,12 @@ Even invertebrates from worms and insects share almost the same set of molecules
 </section>
 <section id="brain-and-learning-algorithms">
 <h3>Brain and learning algorithms<a class="headerlink" href="#brain-and-learning-algorithms" title="Permalink to this headline">#</a></h3>
-<p><img alt="Cerebellum-BasalGanglia-CerebralCortex" src="_images/SRU.jpg" /></p>
+<figure class="align-default" id="fig-sru">
+<a class="reference internal image-reference" href="_images/SRU.jpg"><img alt="Cerebelum-BG-Cortex" src="_images/SRU.jpg" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">The hypthesis that the cerebellum, the basal ganglia, and the cerebral cortex are specialized in supervised, reinforcement, and unsupervised learning, respectively (Doya, 1999).</span><a class="headerlink" href="#fig-sru" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 <section id="references">

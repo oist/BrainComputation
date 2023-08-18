@@ -120,17 +120,29 @@ const thebe_selector_output = ".output, .cell_output"
    Chapter 1. Introduction
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="Neurons.html">
    Chapter 2. Neural Modeling and Analysis
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Neurons_Exercise.html">
+     Chapter 2. Neural Modeling and Analysis: Exercise
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="Supervised.html">
    Chapter 3: Supervised Learning
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -142,17 +154,29 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="Reinforcement.html">
    Chapter 4. Reinforcement Learning
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Reinforcement_Exercise.html">
+     Chapter 4. Reinforcement Learning: Exercise
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="Unsupervised.html">
    Chapter 5. Unsupervised Learning
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -168,8 +192,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="Bayesian.html">
    Chatper 6. Bayesian Approaches
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -185,8 +209,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="Deep.html">
    Chapter 7: Deep Learning
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -735,15 +759,17 @@ Then the temporal difference error</p>
 The most representative neuromodulators are <em>dopamine (DA)</em>, <em>serotonin (5HT)</em>, <em>noradrenaline (NA)</em> (also called <em>norepinephrine (NE)</em>), and <em>acetylcholine (ACh)</em>.</p>
 <p>The neurons that synthesize those neuromodulators are located in specific areas in the brain stem and their axons project broadly to the cerebral cortex and other brain areas.</p>
 <p>From these features, neuromodulators are proposed to broadcast some signals and to regulate some global parameters of brain function.</p>
-<blockquote>
-<div><p><img alt="Neuromodulators" src="_images/Modulators.png" />
-Major neuromodulators and their projections.
+<figure class="align-default" id="fig-modulators">
+<img alt="Neuromodulators" src="_images/Modulators.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Major neuromodulators and their projections.
 Red: <em>dopamine (DA)</em> from  <em>ventral tegmental area (VTA)</em> and the <em>substantia nigra pars compacta (SNc)</em>.
 Green: <em>serotonin (5HT)</em> from the <em>dorsal raphe (DR)</em> and <em>median raphe (MR)</em> nuclei.
 Blue: <em>noradrenaline (NA)</em>, or <em>norepinephrine (NE)</em>, from the <em>locus ceorelues (LC)</em>.
 Magenta: <em>acetylcholine (ACh)</em> from the <em>septum (S)</em>, <em>mynert (M)</em> nucleus, and the <em>pedunculo pontine nucleus (PPTN)</em>.
-(from Doya, 2002).</p>
-</div></blockquote>
+(from Doya, 2002).</span><a class="headerlink" href="#fig-modulators" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Dopamine neurons in the <em>ventral tegmental area (VTA)</em> and the <em>substantia nigra pars compacta (SNc)</em> have been shown to represent the reward prediction error signal, the most important global learing signal <span class="math notranslate nohighlight">\(\delta\)</span> in reinforcement learning (Schultz 1998).</p>
 <p>Building up on this notion, Doya (2002) proposed other major neuromodulators also encode and regulate global signals in reinforcement learing, namely, sorotonin for the temporal discount factor <span class="math notranslate nohighlight">\(\gamma\)</span>, noradrenaline for the inverse temperature <span class="math notranslate nohighlight">\(\beta\)</span>, and acetylcholine for the learning rate <span class="math notranslate nohighlight">\(\alpha\)</span>.</p>
 </section>
@@ -796,16 +822,13 @@ However, it is unknown how those required modules are activated and connected ap
 This poses us interesting problems both at computational and biophysical implementation levels.</p>
 <p>Wang and Yang (2018) termed this as the <em>pathway gating</em> problem.
 They considered possible biophysical mechanisms, focusing on the roles of different inhibitory neurons in the cortical circuit.</p>
-<blockquote>
-<div><p><img alt="PathwayGating" src="_images/WangYang2018conb.jpg" />
-Possible mechanisms of information gating in the brain. (Wang &amp; Yang, 2018).</p>
-</div></blockquote>
 <p>Fernando et al. (2017) proposed <em>Pathnet</em> to use evolutionary optimization to find out which pathway in a deep neural network is to be used for each particular task.</p>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Thrun S, Pratt L, eds. (1998) Learning to Learn: Springer.</p></li>
+<li><p>Lake BM, Ullman TD, Tenenbaum JB, Gershman SJ (2017). Building machines that learn and think like people. Behav Brain Sci, 40, e253. <a class="reference external" href="http://doi.org/10.1017/S0140525X16001837">http://doi.org/10.1017/S0140525X16001837</a></p></li>
 <li><p>Taylor ME, Stone P (2009) Transfer learning for reinforcement learning domains: A survey. Journal of Machine Learning Research, 10:1633-1685. <a class="reference external" href="https://www.jmlr.org/papers/v10/taylor09a.html">https://www.jmlr.org/papers/v10/taylor09a.html</a></p></li>
 <li><p>Doya K (2002) Metalearning and Neuromodulation. Neural Networks, 15:495–506. <a class="reference external" href="https://doi.org/10.1016/S0893-6080(02)00044-8">https://doi.org/10.1016/S0893-6080(02)00044-8</a></p></li>
 <li><p>Doya K (2008) Modulators of decision making. Nature Neuroscience, 11:410-416. <a class="reference external" href="https://doi.org/10.1038/nn2077">https://doi.org/10.1038/nn2077</a></p></li>
@@ -860,7 +883,6 @@ Possible mechanisms of information gating in the brain. (Wang &amp; Yang, 2018).
 <li><p>Ghahramani Z, Wolpert DM (1997). Modular decomposition in visuomotor learning. Nature, 386, 392-395. <a class="reference external" href="http://doi.org/10.1038/386392a0">http://doi.org/10.1038/386392a0</a></p></li>
 <li><p>Wolpert DM, Doya K, Kawato M (2003). A unifying computational framework for motor control and social interaction. Philos Trans R Soc Lond B Biol Sci, 358, 593-602. <a class="reference external" href="http://doi.org/10.1098/rstb.2002.1238">http://doi.org/10.1098/rstb.2002.1238</a></p></li>
 <li><p>Todorov E (2009). Efficient computation of optimal actions. Proc Natl Acad Sci U S A, 106, 11478-83. <a class="reference external" href="https://doi.org/10.1073/pnas.0710743106">https://doi.org/10.1073/pnas.0710743106</a></p></li>
-<li><p>Lake BM, Ullman TD, Tenenbaum JB, Gershman SJ (2017). Building machines that learn and think like people. Behav Brain Sci, 40, e253. <a class="reference external" href="http://doi.org/10.1017/S0140525X16001837">http://doi.org/10.1017/S0140525X16001837</a></p></li>
 </ul>
 </section>
 <section id="id2">

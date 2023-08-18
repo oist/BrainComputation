@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Supervised Learning: Exercise" href="Supervised_Exercise.html" />
-    <link rel="prev" title="Chapter 2. Neural Modeling and Analysis" href="Neurons.html" />
+    <link rel="prev" title="Chapter 2. Neural Modeling and Analysis: Exercise" href="Neurons_Exercise.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -121,17 +121,29 @@ const thebe_selector_output = ".output, .cell_output"
    Chapter 1. Introduction
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="Neurons.html">
    Chapter 2. Neural Modeling and Analysis
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Neurons_Exercise.html">
+     Chapter 2. Neural Modeling and Analysis: Exercise
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1 current active has-children">
   <a class="current reference internal" href="#">
    Chapter 3: Supervised Learning
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -143,17 +155,29 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="Reinforcement.html">
    Chapter 4. Reinforcement Learning
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Reinforcement_Exercise.html">
+     Chapter 4. Reinforcement Learning: Exercise
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="Unsupervised.html">
    Chapter 5. Unsupervised Learning
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -169,8 +193,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="Bayesian.html">
    Chatper 6. Bayesian Approaches
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -186,8 +210,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="Deep.html">
    Chapter 7: Deep Learning
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -911,7 +935,7 @@ Then we will make a linear regression model to predict the angular accleration f
 <span class="n">g</span> <span class="o">=</span> <span class="mf">9.8</span>   <span class="c1"># gravity: N/s^2</span>
 <span class="n">I</span> <span class="o">=</span> <span class="p">(</span><span class="n">m</span><span class="o">*</span><span class="n">l</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="mi">3</span> <span class="c1"># inertia for a rod around an end: kg m^2</span>
 <span class="k">def</span> <span class="nf">arm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;arm dynamics for odeint: x=[th,om]&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;arm dynamics for odeint: x=[th,om]&quot;&quot;&quot;</span>
     <span class="n">th</span><span class="p">,</span> <span class="n">om</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># for readability</span>
     <span class="c1"># angular acceleration</span>
     <span class="n">aa</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">m</span><span class="o">*</span><span class="n">g</span><span class="o">*</span><span class="n">l</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">th</span><span class="p">)</span> <span class="o">-</span> <span class="n">mu</span><span class="o">*</span><span class="n">om</span><span class="p">)</span><span class="o">/</span><span class="n">I</span>
@@ -1921,7 +1945,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='6d19a5c1-3d57-472b-922f-d7560481c32e'></div></div></div>
+</script><div class="output text_html"><div id='d69ef64f-78cc-4f5e-a9ab-18ee66354f79'></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1936,7 +1960,7 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>w = [ 2.32798920e-02 -4.53640748e+01 -2.62605273e+00]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>w = [ -0.144926   -47.86855796  -2.21002007]
 [0, -49.0, -0.6666666666666667]
 </pre></div>
 </div>
@@ -1951,7 +1975,7 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.9060338992208623
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 1.2100748834562802
 </pre></div>
 </div>
 </div>
@@ -2926,7 +2950,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='35854290-39f7-4894-b062-e164c997d480'></div></div></div>
+</script><div class="output text_html"><div id='8346b7a3-5efb-4bdc-aa4c-7d3bfc418d86'></div></div></div>
 </div>
 </section>
 </section>
@@ -2973,7 +2997,7 @@ $<span class="math notranslate nohighlight">\(
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="c1"># Gaussian basis functions in 1D</span>
 <span class="k">def</span> <span class="nf">phi</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Gaussian centered at x=c with scale s&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Gaussian centered at x=c with scale s&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">c</span><span class="p">)</span><span class="o">/</span><span class="n">s</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">M</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># x range</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
@@ -3045,10 +3069,6 @@ However, it is a question whether suprevised learning is relevant for our vision
 <section id="the-perceptron">
 <h2>The Perceptron<a class="headerlink" href="#the-perceptron" title="Permalink to this headline">#</a></h2>
 <p>The first pattern classification learning machine was called <em>Perceptron</em> (Rosenblatt 1962).</p>
-<blockquote>
-<div><p><img alt="Perceptron" src="_images/Perceptron.jpg" />
-The structure of a three-layer perceptron (from Rosenblatt, 1962).</p>
-</div></blockquote>
 <p>The original Perceptron consisted of three layers of binary units: S(sensory)-units, A(associative)-units connected randomly with S-units, and R(response)-units.</p>
 <p>Here we formulate the Perceptron in a generalized form.
 The input vector <span class="math notranslate nohighlight">\(\x\)</span> is converted by a set of basis functions <span class="math notranslate nohighlight">\(\phi_i(\x)\)</span> into a feature vector
@@ -3090,16 +3110,16 @@ which is a product of the output error and the input to each weight.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Perceptron</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Linear perceptron: phi(x)=[1,x]&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Linear perceptron: phi(x)=[1,x]&quot;&quot;&quot;</span>
     
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">D</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a new perceptron&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a new perceptron&quot;&quot;&quot;</span>
         <span class="c1"># self.w = np.random.randn(D+1)  # output weight</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">D</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>  
         <span class="bp">self</span><span class="o">.</span><span class="n">vis</span> <span class="o">=</span> <span class="kc">False</span>
 
     <span class="k">def</span> <span class="nf">output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;predict an output from input x&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;predict an output from input x&quot;&quot;&quot;</span>
         <span class="n">u</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="nd">@np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="n">x</span><span class="p">]</span>
         <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">u</span><span class="o">&gt;</span><span class="mi">0</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">vis</span><span class="p">:</span>
@@ -3107,7 +3127,7 @@ which is a product of the output error and the input to each weight.</p>
         <span class="k">return</span> <span class="n">y</span>
 
     <span class="k">def</span> <span class="nf">learn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">yt</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;learn from (x, yt) pair&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;learn from (x, yt) pair&quot;&quot;&quot;</span>
         <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
         <span class="n">error</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">yt</span>
         <span class="k">if</span> <span class="n">error</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
@@ -3118,7 +3138,7 @@ which is a product of the output error and the input to each weight.</p>
         <span class="k">return</span> <span class="n">error</span>
     
     <span class="k">def</span> <span class="nf">plot_boundary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">u</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;plot decision boundary with shift u, length l&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;plot decision boundary with shift u, length l&quot;&quot;&quot;</span>
         <span class="c1"># weight vector</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">[</span><span class="mi">2</span><span class="p">]],</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="s2">&quot;r*&quot;</span><span class="p">)</span>  <span class="c1"># arrowhead</span>
@@ -3174,10 +3194,52 @@ which is a product of the output error and the input to each weight.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 1.2 ; w =  [-0.2         0.30759325  0.06315799]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.6 ; w =  [-0.1         0.24580473  0.21483996]
 </pre></div>
 </div>
-<img alt="_images/Supervised_41_1.png" src="_images/Supervised_41_1.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_97305/2966047756.py:36: RuntimeWarning: invalid value encountered in double_scalars
+  x = self.w[1]*(u-self.w[0])/s+self.w[2]*np.array([l,-l])/np.sqrt(s)
+/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_97305/2966047756.py:36: RuntimeWarning: invalid value encountered in true_divide
+  x = self.w[1]*(u-self.w[0])/s+self.w[2]*np.array([l,-l])/np.sqrt(s)
+/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_97305/2966047756.py:37: RuntimeWarning: invalid value encountered in double_scalars
+  y = self.w[2]*(u-self.w[0])/s+self.w[1]*np.array([-l,l])/np.sqrt(s)
+/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_97305/2966047756.py:37: RuntimeWarning: invalid value encountered in true_divide
+  y = self.w[2]*(u-self.w[0])/s+self.w[1]*np.array([-l,l])/np.sqrt(s)
+/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_97305/2966047756.py:36: RuntimeWarning: invalid value encountered in double_scalars
+  x = self.w[1]*(u-self.w[0])/s+self.w[2]*np.array([l,-l])/np.sqrt(s)
+/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_97305/2966047756.py:36: RuntimeWarning: invalid value encountered in true_divide
+  x = self.w[1]*(u-self.w[0])/s+self.w[2]*np.array([l,-l])/np.sqrt(s)
+/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_97305/2966047756.py:37: RuntimeWarning: invalid value encountered in double_scalars
+  y = self.w[2]*(u-self.w[0])/s+self.w[1]*np.array([-l,l])/np.sqrt(s)
+/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_97305/2966047756.py:37: RuntimeWarning: invalid value encountered in true_divide
+  y = self.w[2]*(u-self.w[0])/s+self.w[1]*np.array([-l,l])/np.sqrt(s)
+/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_97305/2966047756.py:36: RuntimeWarning: invalid value encountered in double_scalars
+  x = self.w[1]*(u-self.w[0])/s+self.w[2]*np.array([l,-l])/np.sqrt(s)
+/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_97305/2966047756.py:36: RuntimeWarning: invalid value encountered in true_divide
+  x = self.w[1]*(u-self.w[0])/s+self.w[2]*np.array([l,-l])/np.sqrt(s)
+/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_97305/2966047756.py:37: RuntimeWarning: invalid value encountered in double_scalars
+  y = self.w[2]*(u-self.w[0])/s+self.w[1]*np.array([-l,l])/np.sqrt(s)
+/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_97305/2966047756.py:37: RuntimeWarning: invalid value encountered in true_divide
+  y = self.w[2]*(u-self.w[0])/s+self.w[1]*np.array([-l,l])/np.sqrt(s)
+/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_97305/2966047756.py:36: RuntimeWarning: invalid value encountered in double_scalars
+  x = self.w[1]*(u-self.w[0])/s+self.w[2]*np.array([l,-l])/np.sqrt(s)
+/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_97305/2966047756.py:36: RuntimeWarning: invalid value encountered in true_divide
+  x = self.w[1]*(u-self.w[0])/s+self.w[2]*np.array([l,-l])/np.sqrt(s)
+/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_97305/2966047756.py:37: RuntimeWarning: invalid value encountered in double_scalars
+  y = self.w[2]*(u-self.w[0])/s+self.w[1]*np.array([-l,l])/np.sqrt(s)
+/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_97305/2966047756.py:37: RuntimeWarning: invalid value encountered in true_divide
+  y = self.w[2]*(u-self.w[0])/s+self.w[1]*np.array([-l,l])/np.sqrt(s)
+/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_97305/2966047756.py:36: RuntimeWarning: invalid value encountered in double_scalars
+  x = self.w[1]*(u-self.w[0])/s+self.w[2]*np.array([l,-l])/np.sqrt(s)
+/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_97305/2966047756.py:36: RuntimeWarning: invalid value encountered in true_divide
+  x = self.w[1]*(u-self.w[0])/s+self.w[2]*np.array([l,-l])/np.sqrt(s)
+/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_97305/2966047756.py:37: RuntimeWarning: invalid value encountered in double_scalars
+  y = self.w[2]*(u-self.w[0])/s+self.w[1]*np.array([-l,l])/np.sqrt(s)
+/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_97305/2966047756.py:37: RuntimeWarning: invalid value encountered in true_divide
+  y = self.w[2]*(u-self.w[0])/s+self.w[1]*np.array([-l,l])/np.sqrt(s)
+</pre></div>
+</div>
+<img alt="_images/Supervised_41_2.png" src="_images/Supervised_41_2.png" />
 </div>
 </div>
 </section>
@@ -3208,14 +3270,14 @@ where \)</span>1[\ ]<span class="math notranslate nohighlight">\( represents an 
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Pegasos</span><span class="p">(</span><span class="n">Perceptron</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Pagasos, online SVM with linear kernel&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Pagasos, online SVM with linear kernel&quot;&quot;&quot;</span>
     
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">D</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># counter for rate scheduling</span>
         
     <span class="k">def</span> <span class="nf">learn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">yt</span><span class="p">,</span> <span class="n">lamb</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;learn from (x, y) pair&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;learn from (x, y) pair&quot;&quot;&quot;</span>
         <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span>  <span class="c1"># data count</span>
         <span class="n">alpha</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">lamb</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">)</span>  <span class="c1"># adapt learning rate</span>
@@ -3254,7 +3316,7 @@ where \)</span>1[\ ]<span class="math notranslate nohighlight">\( represents an 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>n = 20 ; err = 0.4060239769885583 ; w = [-1.32083842  0.51183193  0.45944475]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>n = 20 ; err = 0.5156675683587336 ; w = [-0.47175643  0.18092982  0.37409698]
 </pre></div>
 </div>
 <img alt="_images/Supervised_46_1.png" src="_images/Supervised_46_1.png" />
@@ -3342,13 +3404,13 @@ we can also apply stochastic gradient descent
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">LogisticRegression</span><span class="p">(</span><span class="n">Perceptron</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Logistic regression&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Logistic regression&quot;&quot;&quot;</span>
     
     <span class="k">def</span> <span class="nf">sigmoid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">u</span><span class="p">):</span>
         <span class="k">return</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">u</span><span class="p">))</span>
     
     <span class="k">def</span> <span class="nf">output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;output for vector/matrix input x&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;output for vector/matrix input x&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># x is a vector</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="n">x</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>   <span class="c1"># x is a matrix</span>
@@ -3363,7 +3425,7 @@ we can also apply stochastic gradient descent
         <span class="k">return</span> <span class="n">y</span>
     
     <span class="k">def</span> <span class="nf">rls</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">yt</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;reweighted least square with (x, y) pairs&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;reweighted least square with (x, y) pairs&quot;&quot;&quot;</span>
         <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># also set self.X</span>
         <span class="n">error</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">yt</span>
         <span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">y</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">y</span><span class="p">))</span> <span class="c1"># weighting matrix</span>
@@ -3396,7 +3458,7 @@ we can also apply stochastic gradient descent
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> err = 0.25 ; w = [-1.67895029  0.90216279  0.42996739]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> err = 0.25 ; w = [-1.50194349  0.43748218  0.68370934]
 </pre></div>
 </div>
 <img alt="_images/Supervised_54_1.png" src="_images/Supervised_54_1.png" />
@@ -3415,16 +3477,8 @@ This type of learning is called <em>classical conditioning</em> or <em>Pavlovian
 <section id="eye-blink-conditioning">
 <h3>Eye Blink Conditioning<a class="headerlink" href="#eye-blink-conditioning" title="Permalink to this headline">#</a></h3>
 <p>When an airpuff (US) is given around eyes, an animal would blink its eyes (UR). If the airpuff is preceded with a consistent interval by a cue, such as tone (CS), the animal learns to blink (CR) just before the airpuff is given.</p>
-<blockquote>
-<div><p><img alt="EyeBlink" src="_images/McCormick1984jns.jpg" />
-An example of eye blink conditioning. The curve on top is the response of the eyelid. The PSTH below shows the firing of an output neuron in the cerebellum (from McCormick &amp; Thompson, 1984).</p>
-</div></blockquote>
 <p>Richard Thompson and colleagues investigated the neural circuit behind this eye-blink conditioning and identified the cerebellum as the major locus of learning (Thompson, 1986).</p>
 <p>While blockade of the cerebellum does not affect eye-blink response itself (US-UR), it blocks learning (CS-CR). The activity of the output neurons of the cerebellum increase their activities as learning progress, as shown above.</p>
-<blockquote>
-<div><p><img alt="CerebellumConditioning" src="_images/Thompson1986s.jpg" />
-The neural circuit of eye-blink conditioning (from Thompson, 1986).</p>
-</div></blockquote>
 </section>
 </section>
 <section id="the-cerebellum">
@@ -3433,19 +3487,11 @@ The neural circuit of eye-blink conditioning (from Thompson, 1986).</p>
 Granule cell axons run parallelly in the lateral direction in the cerebellar cortex, called <em>parallel fibers</em>.
 The output neurons of the cerebellum, <em>Purkinje cells</em>, spread fan-shaped dendrites in the longitudinal direction and receive a large nubmer of parallel fibers.
 Furthermore, each Purkinje cell is twined by a single axon called <em>climbing fiber</em> from a brain stem nucleus called the <em>inferior olive</em>.</p>
-<blockquote>
-<div><p><img alt="CerebellarCortex" src="_images/Eccles1967.jpg" />
-The circuit of the cerebellar cortex (from Eccles et al. 1967)</p>
-</div></blockquote>
 <section id="cerebellar-perceptron-hyopthesis">
 <h3>Cerebellar Perceptron Hyopthesis<a class="headerlink" href="#cerebellar-perceptron-hyopthesis" title="Permalink to this headline">#</a></h3>
 <p>This peculiar organization inspired theorists around 1970 to come up with an idea that the cerebellum may work similar to the Perceptron (Marr 1969; Albus 1971).
 The massive number of granule cells may create a high-dimensional feature representation of the mossy fiber input.
 The single climbing fiber input may sever as the supervising signal to induce plasticity in the parallel-fiber input synapses to the Purkinje cell.</p>
-<blockquote>
-<div><p><img alt="CerebellarPerceptron" src="_images/CerebellarPerceptron.jpg" />
-The cerebellar perceptron model (from Albus 1971).</p>
-</div></blockquote>
 <p>This hypothesis further motivated neurobiologists to test that experimentally.
 Indeed, cerebellar synaptic plasticity guided by the climbring fiber input was experimentally confirmed by Masao Ito (1984, 2000).</p>
 </section>
@@ -3453,10 +3499,12 @@ Indeed, cerebellar synaptic plasticity guided by the climbring fiber input was e
 <h3>Cerebellar Internal Model Hyopthesis<a class="headerlink" href="#cerebellar-internal-model-hyopthesis" title="Permalink to this headline">#</a></h3>
 <p>The cerebellum is known to be imortant for movement control.
 A possible way in which suprevised learning can be helpful is to provide an <em>internal model</em> of the motor apparatus (Wolpert et al. 1998).</p>
-<blockquote>
-<div><p><img alt="FeedbackErrorLearning" src="_images/FeedbackErrorLearning.jpg" />
-The feedback error learning model by Kawato. The innate feedback controller in the brainstem or spinal cord provides corrective motor signal, which is used as the error signal for supervised learning of <em>inverse model</em> in the cerebellum (from Wolpert et al. 1998)</p>
-</div></blockquote>
+<figure class="align-default" id="fig-fel">
+<a class="reference internal image-reference" href="https://pub.mdpi-res.com/biomimetics/biomimetics-05-00019/article_deploy/html/images/biomimetics-05-00019-g005.png?1590743622"><img alt="Feedback Error Learning" src="https://pub.mdpi-res.com/biomimetics/biomimetics-05-00019/article_deploy/html/images/biomimetics-05-00019-g005.png?1590743622" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">The feedback error learning model (Kawato et al. 1987). The innate feedback controller in the brainstem or spinal cord provides corrective motor signal, which is used as the error signal for supervised learning of <em>inverse model</em> in the cerebellum (from Ellery 2020)</span><a class="headerlink" href="#fig-fel" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>The molecular mechanism for the association of the parallel fiber input and the climbing fiber input (output error) at the Purkinje cell synapses has also been studied in detail (Ito 2000; Ogasawara et al. 2008).</p>
 </section>
 </section>
@@ -3489,8 +3537,9 @@ The feedback error learning model by Kawato. The innate feedback controller in t
 <section id="cerebellar-internal-model-hypothesis">
 <h3>Cerebellar internal model hypothesis<a class="headerlink" href="#cerebellar-internal-model-hypothesis" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
-<li><p>Ito M (2000) Mechanisms of motor learning in the cerebellum. Brain Research 886, 237–245. <a class="reference external" href="https://doi.org/10.1016/S0006-8993(00)03142-5">https://doi.org/10.1016/S0006-8993(00)03142-5</a></p></li>
+<li><p>Kawato M, Furukawa K, Suzuki R (1987). A hierarchical neural-network model for control and learning of voluntary movement. Biol Cybern, 57, 169-85. <a class="reference external" href="https://doi.org/10.1007/BF00364149">https://doi.org/10.1007/BF00364149</a></p></li>
 <li><p>Wolpert DM, Miall RC, Kawato M (1998) Internal models in the cerebellum. Trends in Cognitive Sciences, 2:338–347. <a class="reference external" href="https://doi.org/10.1016/S1364-6613(98)01221-2">https://doi.org/10.1016/S1364-6613(98)01221-2</a></p></li>
+<li><p>Ito M (2000) Mechanisms of motor learning in the cerebellum. Brain Research 886, 237–245. <a class="reference external" href="https://doi.org/10.1016/S0006-8993(00)03142-5">https://doi.org/10.1016/S0006-8993(00)03142-5</a></p></li>
 <li><p>Ogasawara H, Doi T, Kawato M (2008) Systems biology perspectives on cerebellar long-term depression. Neurosignals, 16, 300–317.
 <a class="reference external" href="https://doi.org/10.1159/000123040">https://doi.org/10.1159/000123040</a></p></li>
 </ul>
@@ -3527,11 +3576,11 @@ The feedback error learning model by Kawato. The innate feedback controller in t
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="Neurons.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="Neurons_Exercise.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Chapter 2. Neural Modeling and Analysis</p>
+            <p class="prev-next-title">Chapter 2. Neural Modeling and Analysis: Exercise</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="Supervised_Exercise.html" title="next page">

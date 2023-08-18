@@ -121,17 +121,29 @@ const thebe_selector_output = ".output, .cell_output"
    Chapter 1. Introduction
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="Neurons.html">
    Chapter 2. Neural Modeling and Analysis
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Neurons_Exercise.html">
+     Chapter 2. Neural Modeling and Analysis: Exercise
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="Supervised.html">
    Chapter 3: Supervised Learning
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -143,17 +155,29 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="Reinforcement.html">
    Chapter 4. Reinforcement Learning
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Reinforcement_Exercise.html">
+     Chapter 4. Reinforcement Learning: Exercise
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="Unsupervised.html">
    Chapter 5. Unsupervised Learning
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -169,8 +193,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="Bayesian.html">
    Chatper 6. Bayesian Approaches
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -186,8 +210,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="Deep.html">
    Chapter 7: Deep Learning
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -1023,10 +1047,10 @@ spliciing of bit sequences</p></li>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">EvoAlg</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;A basic class of evolutionary algorithms&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A basic class of evolutionary algorithms&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fitfun</span><span class="p">,</span> <span class="n">genes</span><span class="p">,</span> <span class="n">amut</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">pcross</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a new population</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a new population</span>
 <span class="sd">        genes: (P,C) array of int or float</span>
 <span class="sd">        sigma: mutation size&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">fitfun</span> <span class="o">=</span> <span class="n">fitfun</span>   <span class="c1"># fitness function</span>
@@ -1040,14 +1064,14 @@ spliciing of bit sequences</p></li>
         <span class="bp">self</span><span class="o">.</span><span class="n">record</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># record of best fitness</span>
 
     <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Evaluate individuals&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Evaluate individuals&quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">g</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">genes</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">fits</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fitfun</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">best</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">genes</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fits</span><span class="p">)]</span>  <span class="c1"># best solution</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">record</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fits</span><span class="p">))</span>  <span class="c1"># record best fitness</span>
 
     <span class="k">def</span> <span class="nf">select</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Roulette selection&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Roulette selection&quot;&quot;&quot;</span>
         <span class="n">prob</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fits</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fits</span><span class="p">)</span>  <span class="c1"># make sure non-negative</span>
         <span class="n">prob</span> <span class="o">=</span> <span class="n">prob</span><span class="o">/</span><span class="nb">sum</span><span class="p">(</span><span class="n">prob</span><span class="p">)</span>  <span class="c1"># normalize</span>
         <span class="n">selected</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">P</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">)</span>  <span class="c1"># indices of selected</span>
@@ -1056,7 +1080,7 @@ spliciing of bit sequences</p></li>
         <span class="bp">self</span><span class="o">.</span><span class="n">genes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">genes</span><span class="p">[</span><span class="n">selected</span><span class="p">]</span>  <span class="c1"># update the genome</span>
             
     <span class="k">def</span> <span class="nf">crossover</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pcross</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Point crossover&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Point crossover&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">pcross</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">pcross</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pcross</span>  <span class="c1"># use the default</span>
         <span class="c1"># make random pairs (assume even population)</span>
@@ -1073,13 +1097,13 @@ spliciing of bit sequences</p></li>
             <span class="bp">self</span><span class="o">.</span><span class="n">genes</span><span class="p">[</span><span class="n">q</span><span class="p">]</span> <span class="o">=</span> <span class="n">gene1</span>
 
     <span class="k">def</span> <span class="nf">mutate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amut</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Mutation by gaussian noise&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Mutation by gaussian noise&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">amut</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">amut</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">amut</span>  <span class="c1"># use the default</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">genes</span> <span class="o">+=</span> <span class="n">amut</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">P</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">C</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">generation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amut</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pcross</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;One generation&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;One generation&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">evaluate</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">select</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">crossover</span><span class="p">(</span><span class="n">pcross</span><span class="p">)</span>
@@ -1087,7 +1111,7 @@ spliciing of bit sequences</p></li>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fits</span>  <span class="c1"># fitness distribution</span>
 
     <span class="k">def</span> <span class="nf">evolve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gen</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">amut</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pcross</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Evolve multiple generations&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Evolve multiple generations&quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">gen</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">generation</span><span class="p">(</span><span class="n">amut</span><span class="p">,</span> <span class="n">pcross</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">record</span>  <span class="c1"># record of best fitness</span>
@@ -1099,7 +1123,7 @@ spliciing of bit sequences</p></li>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example of Ex-Or neural network</span>
 <span class="k">def</span> <span class="nf">exor_net</span><span class="p">(</span><span class="n">w</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Fitness of 2-2-1 network to ExOr; w[9]&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Fitness of 2-2-1 network to ExOr; w[9]&quot;&quot;&quot;</span>
     <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>  <span class="c1"># input</span>
     <span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>  <span class="c1"># target</span>
     <span class="n">w</span> <span class="o">=</span> <span class="n">w</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>  <span class="c1"># 3 units with bias and two weights</span>
@@ -1132,7 +1156,7 @@ spliciing of bit sequences</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_53271/1531073698.py:29: DeprecationWarning: `np.int` is a deprecated alias for the builtin `int`. To silence this warning, use `int` by itself. Doing this will not modify any behavior and is safe. When replacing `np.int`, you may wish to use e.g. `np.int64` or `np.int32` to specify the precision. If you wish to review your current use, check the release note link for additional information.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_97273/1531073698.py:29: DeprecationWarning: `np.int` is a deprecated alias for the builtin `int`. To silence this warning, use `int` by itself. Doing this will not modify any behavior and is safe. When replacing `np.int`, you may wish to use e.g. `np.int64` or `np.int32` to specify the precision. If you wish to review your current use, check the release note link for additional information.
 Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
   selected = np.zeros(self.P, dtype=np.int)  # indices of selected
 </pre></div>
@@ -1167,7 +1191,7 @@ Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdo
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_53271/1531073698.py:29: DeprecationWarning: `np.int` is a deprecated alias for the builtin `int`. To silence this warning, use `int` by itself. Doing this will not modify any behavior and is safe. When replacing `np.int`, you may wish to use e.g. `np.int64` or `np.int32` to specify the precision. If you wish to review your current use, check the release note link for additional information.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_97273/1531073698.py:29: DeprecationWarning: `np.int` is a deprecated alias for the builtin `int`. To silence this warning, use `int` by itself. Doing this will not modify any behavior and is safe. When replacing `np.int`, you may wish to use e.g. `np.int64` or `np.int32` to specify the precision. If you wish to review your current use, check the release note link for additional information.
 Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
   selected = np.zeros(self.P, dtype=np.int)  # indices of selected
 </pre></div>
@@ -1183,14 +1207,18 @@ Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdo
 In reinforcement learning, design of the reward function is a critical issue.
 One way to design them is to apply an evolutionary algorithm.</p>
 <p>Elfwing et al. (2011) developed a distributed evolutionary framework for a group of robots and demonstrated that reward functions as well as reinforcement learning paramters can be optimized for the task of survival and reproduction.</p>
-<blockquote>
-<div><p><img alt="Elfwing11rewards" src="_images/Elfwing11rewards.png" />
-Evolution of reward functions for finding a battery pack in the survival task (left) and for the face of another robot in the mating task (right).</p>
-</div></blockquote>
-<blockquote>
-<div><p><img alt="Elfwing11parameters" src="_images/Elfwing11parameters.png" />
-Evolution of parameters for reinforcement learning: <span class="math notranslate nohighlight">\(\alpha\)</span>: learning rate; <span class="math notranslate nohighlight">\(\tau\)</span>: temperature for exploration; <span class="math notranslate nohighlight">\(\gamma\)</span>: temporal discounting; <span class="math notranslate nohighlight">\(\lambda\)</span>: eligibility trace decay.</p>
-</div></blockquote>
+<figure class="align-default" id="fig-elfwingrewards">
+<img alt="Elfwing11rewards" src="_images/Elfwing11rewards.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Evolution of reward functions for finding a battery pack in the survival task (left) and for the face of another robot in the mating task (right).</span><a class="headerlink" href="#fig-elfwingrewards" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="fig-elfwingparameters">
+<img alt="Elfwing11parameters" src="_images/Elfwing11parameters.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Evolution of parameters for reinforcement learning: <span class="math notranslate nohighlight">\(\alpha\)</span>: learning rate; <span class="math notranslate nohighlight">\(\tau\)</span>: temperature for exploration; <span class="math notranslate nohighlight">\(\gamma\)</span>: temporal discounting; <span class="math notranslate nohighlight">\(\lambda\)</span>: eligibility trace decay.</span><a class="headerlink" href="#fig-elfwingparameters" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>The mechanisms for learning, such as network architecutres and synaptic plasticity rules, are also products of evolution.
 Niv et al. (2002) showed in a reinforcement learning task that reward-dependent plastcity rule can be evoloved.</p>
 </section>
@@ -1345,28 +1373,28 @@ Is cooperation a viable strategy?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Game</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Visualization and simulation for game theory&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Visualization and simulation for game theory&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">paymat</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Setup a game with payoff matrices&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Setup a game with payoff matrices&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">paymat</span> <span class="o">=</span> <span class="n">paymat</span>  <span class="c1"># list of payoff matrices</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">paymat</span><span class="p">)</span>  <span class="c1"># number of players</span>
     
     <span class="k">def</span> <span class="nf">payoff</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Payoffs for a mixed strategy profile X&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Payoffs for a mixed strategy profile X&quot;&quot;&quot;</span>
         <span class="n">pay0</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="nd">@self</span><span class="o">.</span><span class="n">paymat</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="nd">@X</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
         <span class="n">pay1</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="nd">@self</span><span class="o">.</span><span class="n">paymat</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="nd">@X</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
         <span class="k">return</span> <span class="p">[</span><span class="n">pay0</span><span class="p">,</span> <span class="n">pay1</span><span class="p">]</span>
         
     <span class="k">def</span> <span class="nf">best_reply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Best pure strategies for a mixed strategy profile X&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Best pure strategies for a mixed strategy profile X&quot;&quot;&quot;</span>
         <span class="n">pay0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">paymat</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="nd">@X</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># payoffs for pure strategies</span>
         <span class="n">pay1</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="nd">@self</span><span class="o">.</span><span class="n">paymat</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
         <span class="k">return</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">pay0</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">pay1</span><span class="p">)]</span>
         <span class="c1"># this misses mixed strategies of two best pure strategies</span>
       
     <span class="k">def</span> <span class="nf">plot_payoff</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;visualize payoff for mixed strategiec for a two-player game&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;visualize payoff for mixed strategiec for a two-player game&quot;&quot;&quot;</span>
         <span class="c1"># xg, yg = np.mgrid[0:1.01:0.05, 0:1.01:0.05]</span>
         <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span> <span class="c1"># prob of taking a strategy</span>
         <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="o">-</span><span class="n">p</span><span class="p">,</span> <span class="n">p</span><span class="p">])</span>   <span class="c1"># mixed strategies from [1,0] to [0,1]</span>
@@ -1651,15 +1679,15 @@ or the second order:</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">odeint</span>
 
 <span class="k">class</span> <span class="nc">RepGame</span><span class="p">(</span><span class="n">Game</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Replicator dynamics&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Replicator dynamics&quot;&quot;&quot;</span>
     
     <span class="k">def</span> <span class="nf">repeq</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;replicator equaiton for odeint&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;replicator equaiton for odeint&quot;&quot;&quot;</span>
         <span class="n">dx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">paymat</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="nd">@x</span> <span class="o">-</span> <span class="n">x</span><span class="nd">@self</span><span class="o">.</span><span class="n">paymat</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="nd">@x</span><span class="p">)</span><span class="o">*</span><span class="n">x</span>
         <span class="k">return</span> <span class="n">dx</span>
     
     <span class="k">def</span> <span class="nf">replicator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">tt</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Replicator dynamimcs</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Replicator dynamimcs</span>
 <span class="sd">        x0: initial population, tt: array of time points&quot;&quot;&quot;</span>
         <span class="n">xt</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">repeq</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">tt</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">xt</span>

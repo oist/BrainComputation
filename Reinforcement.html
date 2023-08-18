@@ -54,7 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Chapter 5. Unsupervised Learning" href="Unsupervised.html" />
+    <link rel="next" title="Chapter 4. Reinforcement Learning: Exercise" href="Reinforcement_Exercise.html" />
     <link rel="prev" title="Supervised Learning: Exercise" href="Supervised_Exercise.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -121,17 +121,29 @@ const thebe_selector_output = ".output, .cell_output"
    Chapter 1. Introduction
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="Neurons.html">
    Chapter 2. Neural Modeling and Analysis
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Neurons_Exercise.html">
+     Chapter 2. Neural Modeling and Analysis: Exercise
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="Supervised.html">
    Chapter 3: Supervised Learning
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -143,17 +155,29 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active">
+ <li class="toctree-l1 current active has-children">
   <a class="current reference internal" href="#">
    Chapter 4. Reinforcement Learning
   </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Reinforcement_Exercise.html">
+     Chapter 4. Reinforcement Learning: Exercise
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="Unsupervised.html">
    Chapter 5. Unsupervised Learning
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -169,8 +193,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="Bayesian.html">
    Chatper 6. Bayesian Approaches
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -186,8 +210,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="Deep.html">
    Chapter 7: Deep Learning
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -440,11 +464,6 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercise">
-   Exercise
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#references">
    References
   </a>
@@ -550,11 +569,6 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercise">
-   Exercise
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#references">
    References
   </a>
@@ -609,10 +623,12 @@ title="Print to PDF"
 </li>
 </ul>
 <p>In reinforcement learning, an <em>agent</em> interacts with the <em>environment</em> by observing its state, sending an action, and receiving some reward.</p>
-<blockquote>
-<div><p><img alt="ReinforcementLearning" src="_images/RL.jpg" />
-Reinforcement learning in an agent-environment loop</p>
-</div></blockquote>
+<figure class="align-default" id="fig-rl">
+<img alt="ReinforcementLearning" src="_images/RL.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Reinforcement learning in an agent-environment loop.</span><a class="headerlink" href="#fig-rl" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>The aim of reinforcemnet learning is to find a <em>policy</em>, a mapping <span class="math notranslate nohighlight">\(\pi\)</span> from any state <span class="math notranslate nohighlight">\(s\)</span> to an action <span class="math notranslate nohighlight">\(a\)</span>, that maximize the reward acquired.</p>
 <ul class="simple">
 <li><p>a deterministic policy <span class="math notranslate nohighlight">\(a=\pi(s)\)</span></p></li>
@@ -736,21 +752,21 @@ $<span class="math notranslate nohighlight">\(\Delta Q(s_t,a_t) = \alpha \delta_
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Environment</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Class for a reinforcement learning environment&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Class for a reinforcement learning environment&quot;&quot;&quot;</span>
     
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nstate</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">naction</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a new environment&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a new environment&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">Ns</span> <span class="o">=</span> <span class="n">nstate</span>   <span class="c1"># number of states</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">Na</span> <span class="o">=</span> <span class="n">naction</span>  <span class="c1"># number of actions</span>
         
     <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;start an episode&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;start an episode&quot;&quot;&quot;</span>
         <span class="c1"># randomly pick a state</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Ns</span><span class="p">)</span>
         <span class="k">return</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">)</span>
     
     <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;step by an action&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;step by an action&quot;&quot;&quot;</span>
         <span class="c1"># random reward</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">reward</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>  <span class="c1"># between 0 and 1</span>
         <span class="c1"># random next state</span>
@@ -763,21 +779,21 @@ $<span class="math notranslate nohighlight">\(\Delta Q(s_t,a_t) = \alpha \delta_
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Agent</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Class for a reinforcement learning agent&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Class for a reinforcement learning agent&quot;&quot;&quot;</span>
     
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nstate</span><span class="p">,</span> <span class="n">naction</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a new agent&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a new agent&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">Ns</span> <span class="o">=</span> <span class="n">nstate</span>   <span class="c1"># number of states</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">Na</span> <span class="o">=</span> <span class="n">naction</span>  <span class="c1"># number of actions</span>
         
     <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;first action, without reward feedback&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;first action, without reward feedback&quot;&quot;&quot;</span>
         <span class="c1"># randomly pick an action</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Na</span><span class="p">)</span>
         <span class="k">return</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="p">)</span>
     
     <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;learn by reward and take an action&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;learn by reward and take an action&quot;&quot;&quot;</span>
         <span class="c1"># do nothing for reward</span>
         <span class="c1"># randomly pick an action</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Na</span><span class="p">)</span>
@@ -805,17 +821,17 @@ $<span class="math notranslate nohighlight">\(\Delta Q(s_t,a_t) = \alpha \delta_
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 0]
-[0, 0.6319855134763269, 2, 1]
-[1, 0.13727575474395393, 0, 1]
-[2, 0.8557384764593725, 2, 0]
-[3, 0.4410057071969412, 1, 1]
-[4, 0.693168262191731, 1, 0]
-[5, 0.9128061452228582, 1, 1]
-[6, 0.03881321297462437, 1, 1]
-[7, 0.042457905005135466, 1, 0]
-[8, 0.6083110646915827, 0, 0]
-[9, 0.9753159367137808, 2, 1]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 0]
+[0, 0.23833676278809368, 2, 1]
+[1, 0.5206220529916363, 2, 1]
+[2, 0.6391890311690546, 1, 1]
+[3, 0.7933905923844056, 1, 1]
+[4, 0.16572234479718695, 2, 0]
+[5, 0.5832576666918572, 0, 1]
+[6, 0.47526522178891994, 1, 1]
+[7, 0.9481967777260505, 0, 0]
+[8, 0.1963798302673918, 1, 1]
+[9, 0.1635721490596007, 0, 0]
 </pre></div>
 </div>
 </div>
@@ -823,15 +839,15 @@ $<span class="math notranslate nohighlight">\(\Delta Q(s_t,a_t) = \alpha \delta_
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">RL</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Reinforcement learning by interacton of Environment and Agent&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Reinforcement learning by interacton of Environment and Agent&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">environment</span><span class="p">,</span> <span class="n">agent</span><span class="p">,</span> <span class="n">nstate</span><span class="p">,</span> <span class="n">naction</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create the environment and the agent&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create the environment and the agent&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">env</span> <span class="o">=</span> <span class="n">environment</span><span class="p">(</span><span class="n">nstate</span><span class="p">,</span> <span class="n">naction</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">agent</span> <span class="o">=</span> <span class="n">agent</span><span class="p">(</span><span class="n">nstate</span><span class="p">,</span> <span class="n">naction</span><span class="p">)</span>
     
     <span class="k">def</span> <span class="nf">episode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;One episode&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;One episode&quot;&quot;&quot;</span>
         <span class="c1"># First contact</span>
         <span class="n">state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
         <span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">agent</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
@@ -846,7 +862,7 @@ $<span class="math notranslate nohighlight">\(\Delta Q(s_t,a_t) = \alpha \delta_
         <span class="k">return</span><span class="p">(</span><span class="n">Trsa</span><span class="p">)</span>
     
     <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nrun</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Multiple runs of episodes&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Multiple runs of episodes&quot;&quot;&quot;</span>
         <span class="n">Return</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nrun</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrun</span><span class="p">):</span>
             <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">episode</span><span class="p">(</span><span class="n">tmax</span><span class="p">)[:,</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># reward sequence</span>
@@ -859,20 +875,21 @@ $<span class="math notranslate nohighlight">\(\Delta Q(s_t,a_t) = \alpha \delta_
 </section>
 <section id="example-pain-gain-environment">
 <h3>Example: Pain-Gain environment<a class="headerlink" href="#example-pain-gain-environment" title="Permalink to this headline">#</a></h3>
-<blockquote>
-<div><p><img alt="PainGain" src="_images/PainGain.jpg" /></p>
-</div></blockquote>
-<blockquote>
-<div><p>This is a Markov Decision Process that was designed for a functional MRI experiment (Tanaka et al. 2004).
+<figure class="align-default" id="fig-paingain">
+<img alt="PainGain" src="_images/PainGain.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">The Pain-Gain environment.</span><a class="headerlink" href="#fig-paingain" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>This is a Markov Decision Process that was designed for a functional MRI experiment (Tanaka et al. 2004).
 The environment has four states and two possible actions.
 By taking action 1, the state shift to the left and a positive reward is given, except at the leftmost state where it a big negative reward is given.
 By action 2, the state shift to the right and a negative reward is given, but at the rightmost state, a big positive reward is obtained.
 What is the right policy?</p>
-</div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">PainGain</span><span class="p">(</span><span class="n">Environment</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Pain-Gain environment &quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Pain-Gain environment &quot;&quot;&quot;</span>
     
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nstate</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">naction</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">gain</span><span class="o">=</span><span class="mi">6</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">nstate</span><span class="p">,</span> <span class="n">naction</span><span class="p">)</span>
@@ -883,7 +900,7 @@ What is the right policy?</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">R</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">gain</span>  <span class="c1"># large gain</span>
     
     <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;step by an action&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;step by an action&quot;&quot;&quot;</span>
         <span class="c1"># reward by the reward matrix</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">reward</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">R</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">]</span>
         <span class="c1"># move left or right and circle</span>
@@ -896,7 +913,7 @@ What is the right policy?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">QL</span><span class="p">(</span><span class="n">Agent</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Class for a Q-learning agent&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Class for a Q-learning agent&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nstate</span><span class="p">,</span> <span class="n">naction</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">nstate</span><span class="p">,</span> <span class="n">naction</span><span class="p">)</span>
@@ -908,7 +925,7 @@ What is the right policy?</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">gamma</span> <span class="o">=</span> <span class="mf">0.9</span>  <span class="c1"># discount factor</span>
     
     <span class="k">def</span> <span class="nf">boltzmann</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">q</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Boltzmann selection&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Boltzmann selection&quot;&quot;&quot;</span>
         <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta</span><span class="o">*</span><span class="n">q</span><span class="p">)</span>   <span class="c1"># unnormalized probability</span>
         <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">/</span><span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>    <span class="c1"># probability</span>
         <span class="c1"># sample by multinoulli (categorical) distribution</span>
@@ -917,7 +934,7 @@ What is the right policy?</p>
         <span class="c1">#return(np.searchsorted( np.cumsum(p), np.random.random()))</span>
 
     <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;first action, without reward feedback&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;first action, without reward feedback&quot;&quot;&quot;</span>
         <span class="c1"># Boltzmann action selection</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">boltzmann</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">Q</span><span class="p">[</span><span class="n">state</span><span class="p">,:])</span>
         <span class="c1"># remember the state</span>
@@ -925,7 +942,7 @@ What is the right policy?</p>
         <span class="k">return</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="p">)</span>
     
     <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;learn by reward and take an action&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;learn by reward and take an action&quot;&quot;&quot;</span>
         <span class="c1"># TD error: self.state/action retains the previous ones</span>
         <span class="n">delta</span> <span class="o">=</span> <span class="n">reward</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">gamma</span><span class="o">*</span><span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Q</span><span class="p">[</span><span class="n">state</span><span class="p">,:])</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">Q</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="p">]</span>
         <span class="c1"># Update the value for previous state and action</span>
@@ -1005,24 +1022,16 @@ $<span class="math notranslate nohighlight">\(\Delta \w = \alpha_w \delta_t \p{\
 </section>
 <section id="dopamine-neurons">
 <h2>Dopamine neurons<a class="headerlink" href="#dopamine-neurons" title="Permalink to this headline">#</a></h2>
-<p>Dopamine neurons in the midbrain appear to code TD error.
-<img alt="Dopamine" src="_images/Schultz97.jpg" /></p>
+<p>Dopamine neurons in the midbrain appear to code TD error.</p>
 </section>
 <section id="basal-ganglia">
 <h2>Basal ganglia<a class="headerlink" href="#basal-ganglia" title="Permalink to this headline">#</a></h2>
-<p><img alt="BGforRL" src="_images/BGRL.jpg" /></p>
-</section>
-<section id="exercise">
-<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">#</a></h2>
-<ol class="simple">
-<li><p>Implement SARSA</p></li>
-</ol>
-<ol class="simple">
-<li><p>Implement Actor-Critic</p></li>
-</ol>
-<ol class="simple">
-<li><p>Implement an environment of your interested and test RL algorithms.</p></li>
-</ol>
+<figure class="align-default" id="fig-bg">
+<img alt="BGforRL" src="_images/BGRL.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">A reinforcement learning model of the basal ganglia.</span><a class="headerlink" href="#fig-bg" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
@@ -1049,11 +1058,11 @@ $<span class="math notranslate nohighlight">\(\Delta \w = \alpha_w \delta_t \p{\
 <li><p>Samejima K, Ueda Y, Doya K, Kimura M (2005). Representation of action-specific reward values in the striatum. Science, 310, 1337-40.
 <a class="reference external" href="http://doi.org/10.1126/science.1115270">http://doi.org/10.1126/science.1115270</a></p></li>
 <li><p>Ito M, Doya K (2015). Distinct neural representation in the dorsolateral, dorsomedial, and ventral parts of the striatum during fixed- and free-choice tasks. Journal of Neuroscience, 35, 3499-3514. <a class="reference external" href="http://doi.org/10.1523/JNEUROSCI.1962-14.2015">http://doi.org/10.1523/JNEUROSCI.1962-14.2015</a></p></li>
-<li><p>Elber-Dorozko L, Loewenstein Y (2018). Striatal action-value neurons reconsidered. Elife, 7.
-<a class="reference external" href="http://doi.org/10.7554/eLife.34248">http://doi.org/10.7554/eLife.34248</a></p></li>
 </ul>
 </section>
 </section>
+<div class="toctree-wrapper compound">
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1090,10 +1099,10 @@ $<span class="math notranslate nohighlight">\(\Delta \w = \alpha_w \delta_t \p{\
             <p class="prev-next-title">Supervised Learning: Exercise</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="Unsupervised.html" title="next page">
+    <a class='right-next' id="next-link" href="Reinforcement_Exercise.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Chapter 5. Unsupervised Learning</p>
+        <p class="prev-next-title">Chapter 4. Reinforcement Learning: Exercise</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

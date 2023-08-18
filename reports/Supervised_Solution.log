@@ -24,7 +24,7 @@ N, D = X.shape
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mFileNotFoundError[0m                         Traceback (most recent call last)
-Input [0;32mIn [2][0m, in [0;36m<cell line: 2>[0;34m()[0m
+Cell [0;32mIn[2], line 2[0m
 [1;32m      1[0m [38;5;66;03m# Read in the data from data/pend.txt[39;00m
 [0;32m----> 2[0m X [38;5;241m=[39m [43mnp[49m[38;5;241;43m.[39;49m[43mloadtxt[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43mdata/pend.txt[39;49m[38;5;124;43m"[39;49m[43m)[49m
 [1;32m      3[0m N, D [38;5;241m=[39m X[38;5;241m.[39mshape
@@ -37,7 +37,7 @@ File [0;32m~/miniforge3/lib/python3.9/site-packages/numpy/lib/npyio.py:1042[0m
 [1;32m   1044[0m     line_iter [38;5;241m=[39m [38;5;28miter[39m(fh)
 
 File [0;32m~/miniforge3/lib/python3.9/site-packages/numpy/lib/_datasource.py:193[0m, in [0;36mopen[0;34m(path, mode, destpath, encoding, newline)[0m
-[1;32m    156[0m [38;5;124;03m"""[39;00m
+[1;32m    156[0m [38;5;250m[39m[38;5;124;03m"""[39;00m
 [1;32m    157[0m [38;5;124;03mOpen `path` with `mode` and return the file object.[39;00m
 [1;32m    158[0m 
 [0;32m   (...)[0m

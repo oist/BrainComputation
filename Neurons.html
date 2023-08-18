@@ -54,7 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Chapter 3: Supervised Learning" href="Supervised.html" />
+    <link rel="next" title="Chapter 2. Neural Modeling and Analysis: Exercise" href="Neurons_Exercise.html" />
     <link rel="prev" title="Chapter 1. Introduction" href="Introduction.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -121,17 +121,29 @@ const thebe_selector_output = ".output, .cell_output"
    Chapter 1. Introduction
   </a>
  </li>
- <li class="toctree-l1 current active">
+ <li class="toctree-l1 current active has-children">
   <a class="current reference internal" href="#">
    Chapter 2. Neural Modeling and Analysis
   </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Neurons_Exercise.html">
+     Chapter 2. Neural Modeling and Analysis: Exercise
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="Supervised.html">
    Chapter 3: Supervised Learning
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -143,17 +155,29 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="Reinforcement.html">
    Chapter 4. Reinforcement Learning
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Reinforcement_Exercise.html">
+     Chapter 4. Reinforcement Learning: Exercise
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="Unsupervised.html">
    Chapter 5. Unsupervised Learning
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -169,8 +193,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="Bayesian.html">
    Chatper 6. Bayesian Approaches
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -186,8 +210,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="Deep.html">
    Chapter 7: Deep Learning
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -526,11 +550,6 @@ title="Print to PDF"
    </li>
   </ul>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercise">
-   Exercise
-  </a>
- </li>
 </ul>
 
     </nav>
@@ -706,11 +725,6 @@ title="Print to PDF"
    </li>
   </ul>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercise">
-   Exercise
-  </a>
- </li>
 </ul>
 
                         </nav>
@@ -752,8 +766,13 @@ There are non-neural cells that show electric activities and chemical signaling,
 <p>Here we introduce basic mathematical models that capture biophysical properties of neurons, namely, electirc excitation, synaptic transmission, and dendritic integtion.</p>
 <section id="hodgkin-huxley-neuron-models">
 <h3>Hodgkin-Huxley neuron models<a class="headerlink" href="#hodgkin-huxley-neuron-models" title="Permalink to this headline">#</a></h3>
-<p>The Hodgkin-Huxley (HH) model considers a neuron as an electric circuit as depicted below.
-<img alt="HH model" src="_images/hhmodel.jpg" /></p>
+<p>The Hodgkin-Huxley (HH) model considers a neuron as an electric circuit as depicted below.</p>
+<figure class="align-default" id="fig-hh">
+<a class="reference internal image-reference" href="_images/hhmodel.jpg"><img alt="HH model" src="_images/hhmodel.jpg" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">The electric circuit diagram for the Hodgkin-Huxley model.</span><a class="headerlink" href="#fig-hh" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>On the cellular membrane, there are <em>ionic channels</em> that pass specific type of ions. Sodium ions (Na<span class="math notranslate nohighlight">\(^+\)</span>) are scarce inside the cell, so that when sodium channel opens, positive charges flood into the cell to cause excitation. Potassium ions (K<span class="math notranslate nohighlight">\(^+\)</span>) are rich inside the cell, so that when potassium channel opens, positive charges flood out of the cell to cause inhibition. The HH model assumes a ‘leak’ current that put together all other ionic currents.</p>
 <p>The ingeniety of Hodgkin and Huxley is that they inferred from careful data analysis that a single sodium channel consists of three <em>activation</em> gates and one <em>inactivation</em> gate, and a single potassium channel consists of four activation gates. Such structures were later confirmed by genomics and imaging.</p>
 <p>The electric potential inside the neuron <span class="math notranslate nohighlight">\(V\)</span> follows the following equation:</p>
@@ -785,7 +804,7 @@ They follow the following differential equations with their rates of opening and
     <span class="c1"># state variables: potential and activation/inactivation</span>
     <span class="n">v</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">y</span>
     <span class="c1"># membrane potential</span>
-    <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="n">stim</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">stim</span><span class="p">):</span>
         <span class="n">I</span> <span class="o">=</span> <span class="n">stim</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>  <span class="c1"># time-dependent</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">I</span> <span class="o">=</span> <span class="n">stim</span>  <span class="c1"># constant</span>
@@ -865,7 +884,7 @@ We are, however, often interested in how a spike is triggered, rather than and e
 <span class="n">Vs</span> <span class="o">=</span> <span class="mi">40</span>  <span class="c1"># spike height</span>
 <span class="n">Vr</span> <span class="o">=</span> <span class="o">-</span><span class="mi">80</span>  <span class="c1"># reset</span>
 <span class="k">def</span> <span class="nf">integ</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">stim</span><span class="o">=</span><span class="mf">0.</span><span class="p">):</span>  <span class="c1"># integrate</span>
-    <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="n">stim</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">stim</span><span class="p">):</span>
         <span class="n">I</span> <span class="o">=</span> <span class="n">stim</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>  <span class="c1"># time-dependent</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">I</span> <span class="o">=</span> <span class="n">stim</span>  <span class="c1"># constant</span>
@@ -1296,7 +1315,7 @@ Depending on the connection strengths, we can observe point attractor or oscilla
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Softmax function</span>
 <span class="k">def</span> <span class="nf">softmax</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;softmax function: x is a vector, or column vectors&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;softmax function: x is a vector, or column vectors&quot;&quot;&quot;</span>
     <span class="n">ex</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">beta</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
     <span class="c1"># return ex/np.sum(ex)   # for one vector</span>
     <span class="k">return</span> <span class="n">ex</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">ex</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># for column vectors</span>
@@ -1378,9 +1397,6 @@ But there is a possiblity that not just the frequency, but the timing of each sp
 <p>For example, it is known that spikes of some auditory neurons are produced a certain phase of sound wave, which can be helpful for identification of sound source direction by detecting the time difference of the sound arriving in left and right ears.</p>
 <p>A more sophisticated idea is that even at the same firing frequencies, neurons represent related information by the synchrony of spikes.
 Experimental evidence suggests that visual cortex neurons that respond to line segments in a similar orientation spike synchronously for a single connected line, but asynchronously for separate line segments.</p>
-<p><img alt="Gray89" src="_images/gray89.jpg" />
-Top: responses of two visual cortex neurons to separate and continuous lines.<br />
-Bottom: the spike correlograms of the two neurons. From Gray et al. (1989).</p>
 </section>
 </section>
 <section id="methods-for-spike-analysis-decoding">
@@ -1391,15 +1407,11 @@ Bottom: the spike correlograms of the two neurons. From Gray et al. (1989).</p>
 While primary sensory neurons respond reliably to sensory stimuli, sensory responses of cortical neurons are known to be highly variable across trials.</p>
 <p>To characterize the average response properties of a neuron, the most typical method is to align the spike trains from different trials at the stimulus onset and count the number of spikes in time bins of tens to hundreds of milliseconds.
 The original spike trains in multiple trials are often called <em>raster plot</em> and the average spike frequency around the time of stimulus onset is called <em>peristimulus time histogram (PSTH)</em>.</p>
-<p><img alt="Schultz97" src="_images/Schultz97.jpg" />
-The PSTH and raster plots of a midbrain dopamine neuron’s response to a visual stimulus followed by a juice reward after 1 second. From Schultz et al. (1997).</p>
 </section>
 <section id="spike-triggered-average-sta">
 <h3>Spike-triggered average (STA)<a class="headerlink" href="#spike-triggered-average-sta" title="Permalink to this headline">#</a></h3>
 <p>Charactering the response property of a neuron the other way round it to see what happened before a spike is generated.
 That is <em>spike-triggered average (STA)</em> of sensory stimuli.</p>
-<p><img alt="Ohzawa97" src="_images/Ohzawa97.jpg" />
-Spike-triggered average of random-dot visual stimuli of a motion-sensitive visual cortex neuron shows its spatio-temporal response property. From Ohzawa et al. (1997).</p>
 </section>
 </section>
 <section id="references">
@@ -1419,27 +1431,11 @@ Spike-triggered average of random-dot visual stimuli of a motion-sensitive visua
 <li><p>Dayan P, Abott LF (2001) Theoretical Neuroscience: Compuational and
 Mathematical Modeling of Neural Systems. MIT Press.</p></li>
 <li><p>Gray CM, Konig P, Engel AK, Singer W (1989) Oscillatory responses in cat visual cortex exhibit inter-columnar synchronization which reflects global stimulus properties. Nature, 338:334–337.</p></li>
-<li><p>Schultz W, Dayan P, Montague PR (1997) A neural substrate of prediction and reward. Science, 275:1593–1599.</p></li>
-<li><p>Ohzawa I, DeAngelis GC, Freeman RD (1997) The neural coding of
-stereoscopic depth. Neuroreport, 8:3–12.</p></li>
 </ul>
 </section>
 </section>
-<section id="exercise">
-<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">#</a></h2>
-<ol class="simple">
-<li><p>Draw the F-I curve for the H-H model.</p></li>
-</ol>
-<ol class="simple">
-<li><p>Run a network of IF neurons with simple pulse-connection instead of <span class="math notranslate nohighlight">\(\alpha\)</span> function.</p></li>
-</ol>
-<ol class="simple">
-<li><p>Simulate an artificial recurrent neural network and see the behaviors with different connection weights.</p></li>
-</ol>
-<ol class="simple">
-<li><p>Implement Hebbian or STDP rule in the above network model and see how the network behavior and weights evolve with plasticity.</p></li>
-</ol>
-</section>
+<div class="toctree-wrapper compound">
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1476,10 +1472,10 @@ stereoscopic depth. Neuroreport, 8:3–12.</p></li>
             <p class="prev-next-title">Chapter 1. Introduction</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="Supervised.html" title="next page">
+    <a class='right-next' id="next-link" href="Neurons_Exercise.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Chapter 3: Supervised Learning</p>
+        <p class="prev-next-title">Chapter 2. Neural Modeling and Analysis: Exercise</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

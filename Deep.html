@@ -121,17 +121,29 @@ const thebe_selector_output = ".output, .cell_output"
    Chapter 1. Introduction
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="Neurons.html">
    Chapter 2. Neural Modeling and Analysis
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Neurons_Exercise.html">
+     Chapter 2. Neural Modeling and Analysis: Exercise
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="Supervised.html">
    Chapter 3: Supervised Learning
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -143,17 +155,29 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="Reinforcement.html">
    Chapter 4. Reinforcement Learning
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Reinforcement_Exercise.html">
+     Chapter 4. Reinforcement Learning: Exercise
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="Unsupervised.html">
    Chapter 5. Unsupervised Learning
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -169,8 +193,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="Bayesian.html">
    Chatper 6. Bayesian Approaches
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -186,8 +210,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="current reference internal" href="#">
    Chapter 7: Deep Learning
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -753,7 +777,7 @@ y = w^o_{0} + \sum_{i=1}^M w^o_{i} h_i
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">draw_net</span><span class="p">(</span><span class="n">M</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">offs</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Draw a multi-layer network with M units&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Draw a multi-layer network with M units&quot;&quot;&quot;</span>
     <span class="n">L</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>    <span class="c1"># number of layers</span>
     <span class="n">Y</span> <span class="o">=</span> <span class="p">[</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">M</span><span class="p">[</span><span class="n">l</span><span class="p">]</span><span class="o">+</span><span class="mi">2</span><span class="p">)[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">L</span><span class="p">)]</span>  <span class="c1"># cell positions</span>
     <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">L</span><span class="p">):</span>  <span class="c1"># from bottom to top layers</span>
@@ -860,10 +884,10 @@ The blue lines show the propagation of errors through layer 2 to one unit in lay
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DNN</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Simple class for a deep neural network&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Simple class for a deep neural network&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">winit</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a new netowrk: units:list of numbers of units&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a new netowrk: units:list of numbers of units&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">L</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">units</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>   <span class="c1"># number of layers (excluding input)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">M</span> <span class="o">=</span> <span class="n">units</span>  <span class="c1"># numbers of units in layers</span>
         <span class="c1"># output and error vectors: layer 0 to L</span>
@@ -873,21 +897,21 @@ The blue lines show the propagation of errors through layer 2 to one unit in lay
         <span class="bp">self</span><span class="o">.</span><span class="n">W</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="n">winit</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">M</span><span class="p">[</span><span class="n">l</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span><span class="bp">self</span><span class="o">.</span><span class="n">M</span><span class="p">[</span><span class="n">l</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">L</span><span class="p">)]</span>
     
     <span class="k">def</span> <span class="nf">act</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">u</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;activation function y=g(u)&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;activation function y=g(u)&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">u</span><span class="p">))</span>  <span class="c1"># logistic sigmoid</span>
     <span class="k">def</span> <span class="nf">dact</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;derivative of activation function dy/du|y&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;derivative of activation function dy/du|y&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">y</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">y</span><span class="p">)</span>     <span class="c1"># dy/du</span>
 
     <span class="k">def</span> <span class="nf">output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">u</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;activation function for the output unit&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;activation function for the output unit&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">u</span>  <span class="c1"># identity</span>
     <span class="k">def</span> <span class="nf">outerror</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">yt</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;output error based on negative log likelihood&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;output error based on negative log likelihood&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">y</span><span class="o">-</span><span class="n">yt</span>  <span class="c1"># difference</span>
     
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Compute the output&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the output&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">Y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="c1"># input vector</span>
         <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">L</span><span class="p">):</span>
             <span class="n">z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">W</span><span class="p">[</span><span class="n">l</span><span class="p">][:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">W</span><span class="p">[</span><span class="n">l</span><span class="p">][:,</span><span class="mi">1</span><span class="p">:]</span><span class="nd">@self</span><span class="o">.</span><span class="n">Y</span><span class="p">[</span><span class="n">l</span><span class="p">]</span>  <span class="c1"># include bias</span>
@@ -895,7 +919,7 @@ The blue lines show the propagation of errors through layer 2 to one unit in lay
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">Y</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>  <span class="c1"># last layer, as scalar if 1D</span>
     
     <span class="k">def</span> <span class="nf">backprop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.01</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Error backpropagation learning&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Error backpropagation learning&quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">L</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>  <span class="c1"># from top to bottom</span>
             <span class="k">if</span> <span class="n">l</span><span class="o">==</span><span class="bp">self</span><span class="o">.</span><span class="n">L</span><span class="p">:</span>  <span class="c1"># output layer</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">err</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">outerror</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Y</span><span class="p">[</span><span class="n">l</span><span class="p">],</span> <span class="n">target</span><span class="p">)</span>  <span class="c1"># output error</span>
@@ -910,7 +934,7 @@ The blue lines show the propagation of errors through layer 2 to one unit in lay
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">err</span><span class="p">[</span><span class="o">-</span><span class="n">l</span><span class="p">],</span><span class="bp">self</span><span class="o">.</span><span class="n">err</span><span class="p">[</span><span class="o">-</span><span class="n">l</span><span class="p">])</span>  <span class="c1"># sum of squared error</span>
     
     <span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">targets</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;train by a dataset&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;train by a dataset&quot;&quot;&quot;</span>
         <span class="n">N</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># data size</span>
         <span class="k">if</span> <span class="n">repeat</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span>
             <span class="n">mse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">repeat</span><span class="p">)</span>  <span class="c1"># record of mean square errors</span>
@@ -990,7 +1014,7 @@ The blue lines show the propagation of errors through layer 2 to one unit in lay
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.42019898223411906
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.4501789581766773
 </pre></div>
 </div>
 <img alt="_images/Deep_20_1.png" src="_images/Deep_20_1.png" />
@@ -1060,10 +1084,10 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DNNb</span><span class="p">(</span><span class="n">DNN</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;A deep neural network for classification&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A deep neural network for classification&quot;&quot;&quot;</span>
     <span class="c1"># override the output function and error</span>
     <span class="k">def</span> <span class="nf">output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">u</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;activation function for the output unit&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;activation function for the output unit&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">act</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>  <span class="c1"># sigmoid</span>
     <span class="c1"># the output error dE/dz stays the same</span>
 </pre></div>
@@ -1138,7 +1162,7 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.0013191342352363356
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.0009554345805902762
 </pre></div>
 </div>
 <img alt="_images/Deep_31_1.png" src="_images/Deep_31_1.png" />
@@ -1234,7 +1258,7 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.0661334919615155
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.031352018747193657
 </pre></div>
 </div>
 <img alt="_images/Deep_39_1.png" src="_images/Deep_39_1.png" />
@@ -1402,10 +1426,10 @@ Instead of this stochastic gradient for each data, <em>mini-batch</em> method to
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># RBM</span>
 <span class="k">class</span> <span class="nc">RBM</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Restricted Boltzmann machine [Mv,Mh]&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Restricted Boltzmann machine [Mv,Mh]&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">winit</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a new RBM: units:list of numbers of units&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a new RBM: units:list of numbers of units&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">Mv</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Mh</span> <span class="o">=</span> <span class="n">units</span>  <span class="c1"># number of visible/hidden units</span>
         <span class="c1"># visible and hidden units</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Mv</span><span class="p">)</span>
@@ -1419,15 +1443,15 @@ Instead of this stochastic gradient for each data, <em>mini-batch</em> method to
         <span class="k">return</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">))</span>
 
     <span class="k">def</span> <span class="nf">phv</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;p(h|v)&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;p(h|v)&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">c</span> <span class="o">+</span> <span class="n">v</span><span class="nd">@self</span><span class="o">.</span><span class="n">W</span><span class="p">)</span>
         
     <span class="k">def</span> <span class="nf">pvh</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;p(v|h)&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;p(v|h)&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">+</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">W</span><span class="nd">@h</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vin</span><span class="p">,</span> <span class="n">K</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;sample hidden and visible units K time&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;sample hidden and visible units K time&quot;&quot;&quot;</span>
         <span class="n">pv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">K</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">Mv</span><span class="p">))</span>  <span class="c1"># probabilities</span>
         <span class="n">ph</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">K</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">Mh</span><span class="p">))</span>
         <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">K</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">Mv</span><span class="p">))</span>  <span class="c1"># binary samples</span>
@@ -1442,7 +1466,7 @@ Instead of this stochastic gradient for each data, <em>mini-batch</em> method to
         <span class="k">return</span> <span class="n">ph</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">pv</span><span class="p">,</span> <span class="n">v</span>
     
     <span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">K</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;train with data V=[v1,...,vN]&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;train with data V=[v1,...,vN]&quot;&quot;&quot;</span>
         <span class="n">N</span> <span class="o">=</span> <span class="n">V</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># data size</span>
         <span class="n">mse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>  <span class="c1"># record of mean square errors</span>
         <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">T</span><span class="p">):</span> <span class="c1"># repeat</span>
@@ -1479,7 +1503,7 @@ Instead of this stochastic gradient for each data, <em>mini-batch</em> method to
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">imgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">Nh</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;x: N*Pv*Ph image array&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;x: N*Pv*Ph image array&quot;&quot;&quot;</span>
     <span class="n">N</span><span class="p">,</span> <span class="n">Pv</span><span class="p">,</span> <span class="n">Ph</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span>
     <span class="k">if</span> <span class="n">Nh</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">Nh</span> <span class="o">=</span> <span class="p">(</span><span class="nb">int</span><span class="p">)(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">N</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span><span class="o">*</span><span class="mi">10</span><span class="p">)</span> <span class="k">if</span> <span class="n">N</span><span class="o">&gt;</span><span class="mi">10</span> <span class="k">else</span> <span class="n">N</span>
@@ -1664,28 +1688,22 @@ By downloading such pre-trained weights, anybody can reproduce state-of-the-art 
 <h3>Simple and complex receptive fields<a class="headerlink" href="#simple-and-complex-receptive-fields" title="Permalink to this headline">#</a></h3>
 <p>Soon after the discovery of orentation selective tuning of cat visual cortex neurons, Hubel &amp; Wiesel further found that there are neurons that show <em>complex</em> receptive fields. Those neurons respond to presentation of bars in particular orientations in different positions in their large receptive fields.</p>
 <p>They suggested a networks architecutre that simple cells sum together inputs from on- or off-center cells in the thalamus, while complex cells sum together inputs from simple cells with similar orientation selectivity.</p>
-<blockquote>
-<div><p><img alt="HW62" src="_images/HW62.png" />
-Figure 7.1: simple and complex receptive fields (Hubel, Wiese 1962).</p>
-</div></blockquote>
 </section>
 <section id="neocognitron">
 <h3>Neocognitron<a class="headerlink" href="#neocognitron" title="Permalink to this headline">#</a></h3>
 <p>Inspired by the simple and complex receptive fields found by Hubel &amp; Wiesel, Fukushima proposed a pattern classification neural network model called <em>Cognitron</em> and then its extended version <em>Neocognitron</em> (Fukushima 1980).</p>
-<blockquote>
-<div><p><img alt="Fukushima80" src="_images/Fukushima80.png" />
-Figure 7.2: The neocognitron architecture (Fukushima 1980)</p>
-</div></blockquote>
 </section>
 <section id="analyzing-neural-coding-by-trained-deep-networks">
 <h3>Analyzing neural coding by trained deep networks<a class="headerlink" href="#analyzing-neural-coding-by-trained-deep-networks" title="Permalink to this headline">#</a></h3>
 <p>Inspired by the success of deep neural networks in visual object recognition, Yamins and colleagues exlored how such trained deep neural networks can be used to characterize the response properties of higher visual cortex neurons, which are not easy to express by mathematical formulas.</p>
 <p>They first trained a deep neural network to perform visual object recognition task and then used the responses of the higher layers of the deep neural network to predict the activity of visual cortex neurons when the same stimulus was presented.
 They found that the response proporeties of the higest visual cortical area, inferior temporal (IT) cortex, was well predicted using the activities of the highest layer of the trained deep network, while those in the middle level of the visula cortex, area V4, were better predicted by the responses of the intermediate layers of the deep network (Yamins et al. 2014, 2016)</p>
-<blockquote>
-<div><p><img alt="Yamins14" src="_images/Yamins14.png" />
-Figure 7.3: Prediction of visual cortical neural activityes by trained deep neural networks (Yamins et al. 2014)</p>
-</div></blockquote>
+<figure class="align-default" id="fig-yamins">
+<a class="reference internal image-reference" href="https://www.pnas.org/cms/10.1073/pnas.1403112111/asset/7a11a5c7-9ea1-44fc-8e46-b050d1abda83/assets/graphic/pnas.1403112111fig02.jpeg"><img alt="https://www.pnas.org/cms/10.1073/pnas.1403112111/asset/7a11a5c7-9ea1-44fc-8e46-b050d1abda83/assets/graphic/pnas.1403112111fig02.jpeg" src="https://www.pnas.org/cms/10.1073/pnas.1403112111/asset/7a11a5c7-9ea1-44fc-8e46-b050d1abda83/assets/graphic/pnas.1403112111fig02.jpeg" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Figure 7.3: Prediction of visual cortical neural activityes by trained deep neural networks (Yamins et al. 2014)</span><a class="headerlink" href="#fig-yamins" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 <section id="references">
