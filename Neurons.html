@@ -1,112 +1,177 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Chapter 2. Neural Modeling and Analysis &#8212; Brain Computation</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Neurons';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Chapter 2. Neural Modeling and Analysis: Exercise" href="Neurons_Exercise.html" />
     <link rel="prev" title="Chapter 1. Introduction" href="Introduction.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
-    
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="BrainComputation.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="_static/BC_logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Brain Computation</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="_static/BC_logo.png" class="logo__image only-light" alt="Brain Computation - Home"/>
+    <script>document.write(`<img src="_static/BC_logo.png" class="logo__image only-dark" alt="Brain Computation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -116,627 +181,237 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="Introduction.html">
-   Chapter 1. Introduction
-  </a>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
-   Chapter 2. Neural Modeling and Analysis
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Neurons_Exercise.html">
-     Chapter 2. Neural Modeling and Analysis: Exercise
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="Supervised.html">
-   Chapter 3: Supervised Learning
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Supervised_Exercise.html">
-     Supervised Learning: Exercise
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="Reinforcement.html">
-   Chapter 4. Reinforcement Learning
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Reinforcement_Exercise.html">
-     Chapter 4. Reinforcement Learning: Exercise
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="Unsupervised.html">
-   Chapter 5. Unsupervised Learning
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Unsupervised_Exercise.html">
-     Unsupervised Learning: Exercise
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="Bayesian.html">
-   Chatper 6. Bayesian Approaches
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Bayesian_Exercise.html">
-     Bayesian Approaches: Exercise
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="Deep.html">
-   Chapter 7: Deep Learning
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Deep_Exercise.html">
-     Chapter 7: Deep Learning: Exercise
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Multiple.html">
-   Chapter 8. Multiple Agents
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Meta.html">
-   Chapter 9. Meta-Learning
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html">Chapter 1. Introduction</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Chapter 2. Neural Modeling and Analysis</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Neurons_Exercise.html">Chapter 2. Neural Modeling and Analysis: Exercise</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Supervised.html">Chapter 3: Supervised Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Supervised_Exercise.html">Supervised Learning: Exercise</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Reinforcement.html">Chapter 4. Reinforcement Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Reinforcement_Exercise.html">Chapter 4. Reinforcement Learning: Exercise</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Unsupervised.html">Chapter 5. Unsupervised Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Unsupervised_Exercise.html">Unsupervised Learning: Exercise</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Bayesian.html">Chatper 6. Bayesian Approaches</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Bayesian_Exercise.html">Bayesian Approaches: Exercise</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Deep.html">Chapter 7: Deep Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Deep_Exercise.html">Chapter 7: Deep Learning: Exercise</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="Multiple.html">Chapter 8. Multiple Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Meta.html">Chapter 9. Meta-Learning</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/Neurons.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Neurons.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
 </div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/Neurons.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
 
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#biophysical-neuron-models">
-   2.1 Biophysical neuron models
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#hodgkin-huxley-neuron-models">
-     Hodgkin-Huxley neuron models
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#integrate-and-fire-neuron-models">
-     Integrate-and-fire neuron models
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#f-i-curve">
-     F-I curve
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#noisy-integrate-and-fire-model">
-     Noisy integrate-and-fire model
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#linear-nonlinear-poisson-models">
-     Linear-nonlinear-Poisson models
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#alpha-function-model-of-synaptic-current">
-     Alpha function model of synaptic current
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#cable-equation-and-compartment-models">
-     Cable equation and compartment models
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#abstract-neuron-models">
-   Abstract neuron models
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#mean-field-models">
-     Mean-field models
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#wilson-cowan-model">
-       Wilson-Cowan model
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#artificial-neural-network-models">
-     Artificial neural network models
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#feed-forward-neural-networks">
-     Feed-forward neural networks
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#activation-functions-sigmoid-relu-and-binary">
-       Activation functions: Sigmoid, ReLU, and binary
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#softmax-function">
-     Softmax function
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#models-of-plasticity">
-   Models of plasticity
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#hebb-rule">
-     Hebb rule
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#spike-timining-dependent-placticity-stdp">
-     Spike timining dependent placticity (STDP)
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#theories-of-neural-coding">
-   Theories of neural coding
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#rate-coding">
-     Rate coding
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#population-coding">
-     Population coding
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#temporal-coding">
-     Temporal coding
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#methods-for-spike-analysis-decoding">
-   Methods for spike analysis/decoding
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#peristimulus-time-histogram-psth">
-     Peristimulus time histogram (PSTH)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#spike-triggered-average-sta">
-     Spike-triggered average (STA)
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   References
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#neurons-models">
-     Neurons models
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#neural-coding-and-analysis">
-     Neural coding and analysis
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Chapter 2. Neural Modeling and Analysis</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#biophysical-neuron-models">
-   2.1 Biophysical neuron models
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#hodgkin-huxley-neuron-models">
-     Hodgkin-Huxley neuron models
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#integrate-and-fire-neuron-models">
-     Integrate-and-fire neuron models
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#f-i-curve">
-     F-I curve
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#noisy-integrate-and-fire-model">
-     Noisy integrate-and-fire model
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#linear-nonlinear-poisson-models">
-     Linear-nonlinear-Poisson models
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#alpha-function-model-of-synaptic-current">
-     Alpha function model of synaptic current
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#cable-equation-and-compartment-models">
-     Cable equation and compartment models
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#abstract-neuron-models">
-   Abstract neuron models
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#mean-field-models">
-     Mean-field models
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#wilson-cowan-model">
-       Wilson-Cowan model
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#artificial-neural-network-models">
-     Artificial neural network models
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#feed-forward-neural-networks">
-     Feed-forward neural networks
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#activation-functions-sigmoid-relu-and-binary">
-       Activation functions: Sigmoid, ReLU, and binary
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#softmax-function">
-     Softmax function
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#models-of-plasticity">
-   Models of plasticity
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#hebb-rule">
-     Hebb rule
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#spike-timining-dependent-placticity-stdp">
-     Spike timining dependent placticity (STDP)
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#theories-of-neural-coding">
-   Theories of neural coding
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#rate-coding">
-     Rate coding
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#population-coding">
-     Population coding
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#temporal-coding">
-     Temporal coding
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#methods-for-spike-analysis-decoding">
-   Methods for spike analysis/decoding
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#peristimulus-time-histogram-psth">
-     Peristimulus time histogram (PSTH)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#spike-triggered-average-sta">
-     Spike-triggered average (STA)
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   References
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#neurons-models">
-     Neurons models
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#neural-coding-and-analysis">
-     Neural coding and analysis
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 2. Neural Modeling and Analysis</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#biophysical-neuron-models">2.1 Biophysical neuron models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hodgkin-huxley-neuron-models">Hodgkin-Huxley neuron models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integrate-and-fire-neuron-models">Integrate-and-fire neuron models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-i-curve">F-I curve</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#noisy-integrate-and-fire-model">Noisy integrate-and-fire model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-nonlinear-poisson-models">Linear-nonlinear-Poisson models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha-function-model-of-synaptic-current">Alpha function model of synaptic current</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract-neuron-models">Abstract neuron models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-field-models">Mean-field models</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wilson-cowan-model">Wilson-Cowan model</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#artificial-neural-network-models">Artificial neural network models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#feed-forward-neural-networks">Feed-forward neural networks</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#activation-functions-sigmoid-relu-and-binary">Activation functions: Sigmoid, ReLU, and binary</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#softmax-function">Softmax function</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#models-of-plasticity">Models of plasticity</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hebb-rule">Hebb rule</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spike-timining-dependent-placticity-stdp">Spike timining dependent placticity (STDP)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#theories-of-neural-coding">Theories of neural coding</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rate-coding">Rate coding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#population-coding">Population coding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temporal-coding">Temporal coding</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methods-for-spike-analysis-decoding">Methods for spike analysis/decoding</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#peristimulus-time-histogram-psth">Peristimulus time histogram (PSTH)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spike-triggered-average-sta">Spike-triggered average (STA)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neurons-models">Neurons models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-coding-and-analysis">Neural coding and analysis</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="chapter-2-neural-modeling-and-analysis">
-<h1>Chapter 2. Neural Modeling and Analysis<a class="headerlink" href="#chapter-2-neural-modeling-and-analysis" title="Permalink to this headline">#</a></h1>
+<h1>Chapter 2. Neural Modeling and Analysis<a class="headerlink" href="#chapter-2-neural-modeling-and-analysis" title="Permalink to this heading">#</a></h1>
 <ul class="simple">
 <li><p>2.1 Biophysical neuron models:</p>
 <ul>
@@ -759,13 +434,13 @@ title="Print to PDF"
 </div>
 </div>
 <section id="biophysical-neuron-models">
-<h2>2.1 Biophysical neuron models<a class="headerlink" href="#biophysical-neuron-models" title="Permalink to this headline">#</a></h2>
+<h2>2.1 Biophysical neuron models<a class="headerlink" href="#biophysical-neuron-models" title="Permalink to this heading">#</a></h2>
 <p>Among variety of cells that compose animal body, what is striking about neurons is their complex shapes: branches of dendrites and long-projecting axons.
 For example, check <a class="reference external" href="http://neuromorpho.org">NeuroMorpho.org</a> for 3D morphological data of thousansa of neurons.
 There are non-neural cells that show electric activities and chemical signaling, but neurons are specialized for collecting signals from thousands of different neurons and sending the output to target neurons far apart.</p>
 <p>Here we introduce basic mathematical models that capture biophysical properties of neurons, namely, electirc excitation, synaptic transmission, and dendritic integtion.</p>
 <section id="hodgkin-huxley-neuron-models">
-<h3>Hodgkin-Huxley neuron models<a class="headerlink" href="#hodgkin-huxley-neuron-models" title="Permalink to this headline">#</a></h3>
+<h3>Hodgkin-Huxley neuron models<a class="headerlink" href="#hodgkin-huxley-neuron-models" title="Permalink to this heading">#</a></h3>
 <p>The Hodgkin-Huxley (HH) model considers a neuron as an electric circuit as depicted below.</p>
 <figure class="align-default" id="fig-hh">
 <a class="reference internal image-reference" href="_images/hhmodel.jpg"><img alt="HH model" src="_images/hhmodel.jpg" style="width: 500px;" /></a>
@@ -857,12 +532,12 @@ They follow the following differential equations with their rates of opening and
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Neurons_9_0.png" src="_images/Neurons_9_0.png" />
+<img alt="_images/afefc78326133a6bd363b6c3e0b63cb542ad0b082c30b86d594ce0b571f0322f.png" src="_images/afefc78326133a6bd363b6c3e0b63cb542ad0b082c30b86d594ce0b571f0322f.png" />
 </div>
 </div>
 </section>
 <section id="integrate-and-fire-neuron-models">
-<h3>Integrate-and-fire neuron models<a class="headerlink" href="#integrate-and-fire-neuron-models" title="Permalink to this headline">#</a></h3>
+<h3>Integrate-and-fire neuron models<a class="headerlink" href="#integrate-and-fire-neuron-models" title="Permalink to this heading">#</a></h3>
 <p>The HH model explaines why a spike is generataed and followed by a refractory period based on the activation and inactionvation of sodium and potassium channels.
 We are, however, often interested in how a spike is triggered, rather than and electric mechanisms to create a spike.</p>
 <p><em>Integrate-and-fire</em> (IaF) neurons models considers the dynamics of sub-threshold accumulation of input currents up to a spiking threshold, but take a spike as just an event and then reset the potential. From the HH equation, by removing the sodium and potassium current, we have</p>
@@ -902,19 +577,20 @@ We are, however, often interested in how a spike is triggered, rather than and e
 <span class="n">iaf</span><span class="o">.</span><span class="n">set_solout</span><span class="p">(</span><span class="n">fire</span><span class="p">)</span>  <span class="c1"># stop when threshold is reached</span>
 <span class="n">iaf</span><span class="o">.</span><span class="n">set_initial_value</span><span class="p">(</span><span class="n">Vr</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 <span class="n">iaf</span><span class="o">.</span><span class="n">set_f_params</span><span class="p">(</span><span class="n">ramp</span><span class="p">)</span>  <span class="c1"># stimulus</span>
-<span class="n">V</span> <span class="o">=</span> <span class="p">[</span><span class="n">Vr</span><span class="p">]</span>
+<span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">Vr</span><span class="p">])</span>
 <span class="n">T</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">tend</span> <span class="o">=</span> <span class="mi">300</span>
 <span class="n">dt</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="k">while</span> <span class="n">iaf</span><span class="o">.</span><span class="n">successful</span><span class="p">()</span> <span class="ow">and</span> <span class="n">iaf</span><span class="o">.</span><span class="n">t</span> <span class="o">&lt;=</span> <span class="n">tend</span><span class="p">:</span>
     <span class="n">v</span> <span class="o">=</span> <span class="n">iaf</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">iaf</span><span class="o">.</span><span class="n">t</span><span class="o">+</span><span class="n">dt</span><span class="p">)</span>  <span class="c1"># step</span>
-    <span class="n">V</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>       <span class="c1"># record V</span>
+    <span class="c1">#V.append(v)       # record V</span>
+    <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>       <span class="c1"># record V</span>
     <span class="n">T</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">iaf</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>   <span class="c1"># record t</span>
     <span class="k">if</span> <span class="n">v</span> <span class="o">&gt;=</span> <span class="n">Vth</span><span class="p">:</span>  <span class="c1"># threshold reached</span>
         <span class="n">iaf</span><span class="o">.</span><span class="n">set_initial_value</span><span class="p">(</span><span class="n">Vr</span><span class="p">,</span> <span class="n">iaf</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>  <span class="c1"># reset V</span>
-        <span class="n">V</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Vs</span><span class="p">)</span>  <span class="c1"># spike</span>
+        <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">Vs</span><span class="p">)</span>  <span class="c1"># spike</span>
         <span class="n">T</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">iaf</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
-        <span class="n">V</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Vr</span><span class="p">)</span>  <span class="c1"># reset</span>
+        <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">Vr</span><span class="p">)</span>  <span class="c1"># reset</span>
         <span class="n">T</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">iaf</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">ramp</span><span class="p">(</span><span class="n">T</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">V</span><span class="p">);</span>
@@ -925,16 +601,12 @@ We are, however, often interested in how a spike is triggered, rather than and e
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/doya/miniforge3/lib/python3.9/site-packages/numpy/core/shape_base.py:65: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  ary = asanyarray(ary)
-</pre></div>
-</div>
-<img alt="_images/Neurons_12_1.png" src="_images/Neurons_12_1.png" />
+<img alt="_images/c7e63d07d04109023f2034f8ef168e422182035b29b303ddec45875d102017ba.png" src="_images/c7e63d07d04109023f2034f8ef168e422182035b29b303ddec45875d102017ba.png" />
 </div>
 </div>
 </section>
 <section id="f-i-curve">
-<h3>F-I curve<a class="headerlink" href="#f-i-curve" title="Permalink to this headline">#</a></h3>
+<h3>F-I curve<a class="headerlink" href="#f-i-curve" title="Permalink to this heading">#</a></h3>
 <p>In the HH or IaF models, as we increase the input current <span class="math notranslate nohighlight">\(I\)</span>, the spike firing frequency <span class="math notranslate nohighlight">\(F\)</span> increases. It is possible to characterize the property of a neuron by this <span class="math notranslate nohighlight">\(F-I\)</span> relationship.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -972,7 +644,7 @@ We are, however, often interested in how a spike is triggered, rather than and e
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Neurons_15_0.png" src="_images/Neurons_15_0.png" />
+<img alt="_images/6baaafe86863c608a0086f86d4ef6e6876f55c531e3bda61758160441ed4d7a9.png" src="_images/6baaafe86863c608a0086f86d4ef6e6876f55c531e3bda61758160441ed4d7a9.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -984,12 +656,12 @@ We are, however, often interested in how a spike is triggered, rather than and e
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Neurons_16_0.png" src="_images/Neurons_16_0.png" />
+<img alt="_images/328096b9e93ec3669351ab3dfefc9491a80a067c7bc1823c75119526e206f3c0.png" src="_images/328096b9e93ec3669351ab3dfefc9491a80a067c7bc1823c75119526e206f3c0.png" />
 </div>
 </div>
 </section>
 <section id="noisy-integrate-and-fire-model">
-<h3>Noisy integrate-and-fire model<a class="headerlink" href="#noisy-integrate-and-fire-model" title="Permalink to this headline">#</a></h3>
+<h3>Noisy integrate-and-fire model<a class="headerlink" href="#noisy-integrate-and-fire-model" title="Permalink to this heading">#</a></h3>
 <p>Try adding some noise to the neuron.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1010,18 +682,18 @@ We are, however, often interested in how a spike is triggered, rather than and e
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Neurons_18_0.png" src="_images/Neurons_18_0.png" />
+<img alt="_images/a876a55f62b9ebfac42f72b318086f4c1f9239a1322b00a96644e31adc28abcb.png" src="_images/a876a55f62b9ebfac42f72b318086f4c1f9239a1322b00a96644e31adc28abcb.png" />
 </div>
 </div>
 <p>The firing threshold becomes smoother with noise.</p>
 </section>
 <section id="linear-nonlinear-poisson-models">
-<h3>Linear-nonlinear-Poisson models<a class="headerlink" href="#linear-nonlinear-poisson-models" title="Permalink to this headline">#</a></h3>
+<h3>Linear-nonlinear-Poisson models<a class="headerlink" href="#linear-nonlinear-poisson-models" title="Permalink to this heading">#</a></h3>
 <p>In some mathematical analysis, it is convenient to assume that a neuron collects synaptic inputs by linear weighted sum, sets its firing rate through a nonlinear function taking non-negative values, such as exponential and sigmoid function, and produces spikes stochastically according to its instantaneous firing rate.</p>
 <p>This is a <em>Poisson</em> process, for which the number of spiked generated in a time bin follows the Poisson distribution.</p>
 </section>
 <section id="alpha-function-model-of-synaptic-current">
-<h3>Alpha function model of synaptic current<a class="headerlink" href="#alpha-function-model-of-synaptic-current" title="Permalink to this headline">#</a></h3>
+<h3>Alpha function model of synaptic current<a class="headerlink" href="#alpha-function-model-of-synaptic-current" title="Permalink to this heading">#</a></h3>
 <p>When a spike travels through an axon and reaches to a synpase, it causes release of neurotransmitter molecules in the synaptic junction, which binds to the receptors on the postsynapic membrane, and cause either opening of ionic channels of the receptor or trigger molecular reactions in the postsynaptic cell.</p>
 <p>A simple model to approximate the dynamics of this complex cascades is the <em>alpha function</em>, defined as</p>
 <div class="math notranslate nohighlight">
@@ -1042,7 +714,7 @@ We are, however, often interested in how a spike is triggered, rather than and e
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;u(t)&#39;)
 </pre></div>
 </div>
-<img alt="_images/Neurons_22_1.png" src="_images/Neurons_22_1.png" />
+<img alt="_images/420e66a08ca618fe7417b967d71fb1aeea9fa1dd4960d87d5cbb37278ac11eba.png" src="_images/420e66a08ca618fe7417b967d71fb1aeea9fa1dd4960d87d5cbb37278ac11eba.png" />
 </div>
 </div>
 <p>The alpha function is a solution of a second-order dyamics to an impulse input at t=0</p>
@@ -1065,7 +737,7 @@ We are, however, often interested in how a spike is triggered, rather than and e
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Neurons_24_0.png" src="_images/Neurons_24_0.png" />
+<img alt="_images/cc9c541c11c18b6e47dbf58c2780d948d500af7a5225aa0feae88c44151918e6.png" src="_images/cc9c541c11c18b6e47dbf58c2780d948d500af7a5225aa0feae88c44151918e6.png" />
 </div>
 </div>
 <p>Let us make a network of IaF neurons with alpha function synapses.</p>
@@ -1146,19 +818,15 @@ We are, however, often interested in how a spike is triggered, rather than and e
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Neurons_29_0.png" src="_images/Neurons_29_0.png" />
+<img alt="_images/a53d9a82b1a2bbadae1726bf13f272df89beb88f48c8a3ba90d1ce09301353e7.png" src="_images/a53d9a82b1a2bbadae1726bf13f272df89beb88f48c8a3ba90d1ce09301353e7.png" />
 </div>
 </div>
-</section>
-<section id="cable-equation-and-compartment-models">
-<h3>Cable equation and compartment models<a class="headerlink" href="#cable-equation-and-compartment-models" title="Permalink to this headline">#</a></h3>
-<p>(To be written)</p>
 </section>
 </section>
 <section id="abstract-neuron-models">
-<h2>Abstract neuron models<a class="headerlink" href="#abstract-neuron-models" title="Permalink to this headline">#</a></h2>
+<h2>Abstract neuron models<a class="headerlink" href="#abstract-neuron-models" title="Permalink to this heading">#</a></h2>
 <section id="mean-field-models">
-<h3>Mean-field models<a class="headerlink" href="#mean-field-models" title="Permalink to this headline">#</a></h3>
+<h3>Mean-field models<a class="headerlink" href="#mean-field-models" title="Permalink to this heading">#</a></h3>
 <p>In the invertebrate neuvous system with small number of neurons, each single neuron has a distinct identity and signals specifit information.
 In the mammarian brain with millons to billions of neurons, on the other hand, neural responses tend to be redundant and distributed.
 For example, in the visual cortex, neurons in the same <em>column</em> have similar sensory tuning, such as presentation of edges in the same orientation.
@@ -1178,7 +846,7 @@ This suggest that information is reliably represented by a population of neurons
 <div class="math notranslate nohighlight">
 \[F(h) = \frac{1}{1 + e^{-a(h-\theta)}}\]</div>
 <section id="wilson-cowan-model">
-<h4>Wilson-Cowan model<a class="headerlink" href="#wilson-cowan-model" title="Permalink to this headline">#</a></h4>
+<h4>Wilson-Cowan model<a class="headerlink" href="#wilson-cowan-model" title="Permalink to this heading">#</a></h4>
 <p>A classic example of a mean-field model is the Wilson-Cowan model, which consists of excitatory and inhibitory populations connected to each other.
 Depending on the connection strengths, we can observe point attractor or oscillating behaviors.</p>
 <div class="cell docutils container">
@@ -1210,14 +878,14 @@ Depending on the connection strengths, we can observe point attractor or oscilla
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Neurons_35_0.png" src="_images/Neurons_35_0.png" />
+<img alt="_images/294cb151223d337b9ec5c527349aba5917b18912937919303cfa729e01ae3b31.png" src="_images/294cb151223d337b9ec5c527349aba5917b18912937919303cfa729e01ae3b31.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="artificial-neural-network-models">
-<h3>Artificial neural network models<a class="headerlink" href="#artificial-neural-network-models" title="Permalink to this headline">#</a></h3>
-<p>Abstraction of linear weighted input and nonlinear gain function from those neuraon models brings us to <em>artificial neural networks</em> or <em>connectionist models</em>.</p>
+<h3>Artificial neural network models<a class="headerlink" href="#artificial-neural-network-models" title="Permalink to this heading">#</a></h3>
+<p>Abstraction of linear weighted input and nonlinear gain function from those neuron models brings us to <em>artificial neural networks</em> or <em>connectionist models</em>.</p>
 <div class="math notranslate nohighlight">
 \[x_i(t+1) = \sum_{j=1}^n w_{ij} f(x_j(t))\]</div>
 <p>This is a recurrent neural network.</p>
@@ -1240,12 +908,12 @@ Depending on the connection strengths, we can observe point attractor or oscilla
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Neurons_37_0.png" src="_images/Neurons_37_0.png" />
+<img alt="_images/c0fd56e2f3b80dc7925355a26129db68849b27641206c52be484e89a7977e687.png" src="_images/c0fd56e2f3b80dc7925355a26129db68849b27641206c52be484e89a7977e687.png" />
 </div>
 </div>
 </section>
 <section id="feed-forward-neural-networks">
-<h3>Feed-forward neural networks<a class="headerlink" href="#feed-forward-neural-networks" title="Permalink to this headline">#</a></h3>
+<h3>Feed-forward neural networks<a class="headerlink" href="#feed-forward-neural-networks" title="Permalink to this heading">#</a></h3>
 <p>A popular sub-class of artificial neural networks is <em>feed-forward</em> networks, which are organized by multiple layers and connections are uni-directional from lower to upper layers.</p>
 <div class="math notranslate nohighlight">
 \[x_i^{l+1} = \sum_{j=1}^n w_{ij}^l f(x_j^l)\]</div>
@@ -1267,11 +935,11 @@ Depending on the connection strengths, we can observe point attractor or oscilla
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Neurons_39_0.png" src="_images/Neurons_39_0.png" />
+<img alt="_images/de80dd7779d2eea86169dd19b19873a7301ec6ba87df80e6bbcc0e418c92dca9.png" src="_images/de80dd7779d2eea86169dd19b19873a7301ec6ba87df80e6bbcc0e418c92dca9.png" />
 </div>
 </div>
 <section id="activation-functions-sigmoid-relu-and-binary">
-<h4>Activation functions: Sigmoid, ReLU, and binary<a class="headerlink" href="#activation-functions-sigmoid-relu-and-binary" title="Permalink to this headline">#</a></h4>
+<h4>Activation functions: Sigmoid, ReLU, and binary<a class="headerlink" href="#activation-functions-sigmoid-relu-and-binary" title="Permalink to this heading">#</a></h4>
 <p>As the activation (or gain) function <span class="math notranslate nohighlight">\(f\)</span>, the most popular one is the (logistic) sigmoid function.</p>
 <div class="math notranslate nohighlight">
 \[f(x) = \frac{1}{1 + e^{-x}}\]</div>
@@ -1301,14 +969,14 @@ Depending on the connection strengths, we can observe point attractor or oscilla
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Neurons_41_0.png" src="_images/Neurons_41_0.png" />
+<img alt="_images/b9b3579d2915daf6d45569b836e92daf7f36ce7c3321df88983d258826de4a07.png" src="_images/b9b3579d2915daf6d45569b836e92daf7f36ce7c3321df88983d258826de4a07.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="softmax-function">
-<h3>Softmax function<a class="headerlink" href="#softmax-function" title="Permalink to this headline">#</a></h3>
-<p>For a layer where proabailistic intertretation is desired, <em>softmax</em> function whose sum over all units is one.</p>
+<h3>Softmax function<a class="headerlink" href="#softmax-function" title="Permalink to this heading">#</a></h3>
+<p>When the output of a layer represents a proabaility distribution, it is common to use the <em>softmax</em> function whose outputs sum up to one.</p>
 <div class="math notranslate nohighlight">
 \[f_i(x) = \frac{e^{x_i}}{\sum_j e^{x_j}}\]</div>
 <div class="cell docutils container">
@@ -1338,22 +1006,22 @@ Depending on the connection strengths, we can observe point attractor or oscilla
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Neurons_44_0.png" src="_images/Neurons_44_0.png" />
+<img alt="_images/f42ad0c7a8df7b9be22510a8728e4b05cd1d246f3fd4401d4bdcf1cbbc628ba6.png" src="_images/f42ad0c7a8df7b9be22510a8728e4b05cd1d246f3fd4401d4bdcf1cbbc628ba6.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="models-of-plasticity">
-<h2>Models of plasticity<a class="headerlink" href="#models-of-plasticity" title="Permalink to this headline">#</a></h2>
+<h2>Models of plasticity<a class="headerlink" href="#models-of-plasticity" title="Permalink to this heading">#</a></h2>
 <section id="hebb-rule">
-<h3>Hebb rule<a class="headerlink" href="#hebb-rule" title="Permalink to this headline">#</a></h3>
+<h3>Hebb rule<a class="headerlink" href="#hebb-rule" title="Permalink to this heading">#</a></h3>
 <p>“Cells fire together wire together” is the basic concept proposed by Donald Hebb [Hebb1952]. More specifically, the Hebbian synaptic plasticity rule takes the form</p>
 <div class="math notranslate nohighlight">
 \[\Delta w_{ij}(t) = \alpha y_i(t) y_j(t)\]</div>
 <p>where <span class="math notranslate nohighlight">\(\alpha\)</span> is the learning rate parameter.</p>
 </section>
 <section id="spike-timining-dependent-placticity-stdp">
-<h3>Spike timining dependent placticity (STDP)<a class="headerlink" href="#spike-timining-dependent-placticity-stdp" title="Permalink to this headline">#</a></h3>
+<h3>Spike timining dependent placticity (STDP)<a class="headerlink" href="#spike-timining-dependent-placticity-stdp" title="Permalink to this heading">#</a></h3>
 <p>It has been observed in hippocampus, cortex and other networks that synaptic plasiticity is dependent on the timing of pre- and post-synapic spikes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1368,30 +1036,30 @@ Depending on the connection strengths, we can observe point attractor or oscilla
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Neurons_48_0.png" src="_images/Neurons_48_0.png" />
+<img alt="_images/6f9215d9179e30694f4e6b7ed9e68c2d0b58b1bf4f8fb9a3d88d592a3c380dd1.png" src="_images/6f9215d9179e30694f4e6b7ed9e68c2d0b58b1bf4f8fb9a3d88d592a3c380dd1.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="theories-of-neural-coding">
-<h2>Theories of neural coding<a class="headerlink" href="#theories-of-neural-coding" title="Permalink to this headline">#</a></h2>
+<h2>Theories of neural coding<a class="headerlink" href="#theories-of-neural-coding" title="Permalink to this heading">#</a></h2>
 <p>It is certain that neurons carry sensory, motor, or any cognitive information and perform computation by combining and transforming such information.
 But how exectly do they code a variety of information?
 This is not a trivial problem and there are many theories and debates.</p>
 <section id="rate-coding">
-<h3>Rate coding<a class="headerlink" href="#rate-coding" title="Permalink to this headline">#</a></h3>
+<h3>Rate coding<a class="headerlink" href="#rate-coding" title="Permalink to this heading">#</a></h3>
 <p>Each neuron encodes a certain variable by its firing rate. This is most evident in sensory receptor neurons and motor neurons.
 For example, the firing rate of a retinal photoreceptor is monotinically related to the strength of the light hitting the cell.</p>
 </section>
 <section id="population-coding">
-<h3>Population coding<a class="headerlink" href="#population-coding" title="Permalink to this headline">#</a></h3>
+<h3>Population coding<a class="headerlink" href="#population-coding" title="Permalink to this heading">#</a></h3>
 <p>For motor control and cognitive processing, the brain has to combine multiple modalities of information, such as vision, hearing, touch and proprioception.
 To represent particular combinations of such information, some kind of multi-dimensional non-linear basis functions are required.</p>
 <p><em>Population coding</em> is an idea in which a group of neurons with different response tuning functions represent information by their activity patterns.
 The recepient neurons can extract specific information by weighted sum of their activities.</p>
 </section>
 <section id="temporal-coding">
-<h3>Temporal coding<a class="headerlink" href="#temporal-coding" title="Permalink to this headline">#</a></h3>
+<h3>Temporal coding<a class="headerlink" href="#temporal-coding" title="Permalink to this heading">#</a></h3>
 <p>In the rate coding framework, what matters is the frequency of spikes of neurons coding the same or related information.
 But there is a possiblity that not just the frequency, but the timing of each spike carry a certain information.</p>
 <p>For example, it is known that spikes of some auditory neurons are produced a certain phase of sound wave, which can be helpful for identification of sound source direction by detecting the time difference of the sound arriving in left and right ears.</p>
@@ -1400,37 +1068,37 @@ Experimental evidence suggests that visual cortex neurons that respond to line s
 </section>
 </section>
 <section id="methods-for-spike-analysis-decoding">
-<h2>Methods for spike analysis/decoding<a class="headerlink" href="#methods-for-spike-analysis-decoding" title="Permalink to this headline">#</a></h2>
+<h2>Methods for spike analysis/decoding<a class="headerlink" href="#methods-for-spike-analysis-decoding" title="Permalink to this heading">#</a></h2>
 <section id="peristimulus-time-histogram-psth">
-<h3>Peristimulus time histogram (PSTH)<a class="headerlink" href="#peristimulus-time-histogram-psth" title="Permalink to this headline">#</a></h3>
+<h3>Peristimulus time histogram (PSTH)<a class="headerlink" href="#peristimulus-time-histogram-psth" title="Permalink to this heading">#</a></h3>
 <p>A neuron’s repsonse to the same sensory stimulus can vary trial-by-trial.
 While primary sensory neurons respond reliably to sensory stimuli, sensory responses of cortical neurons are known to be highly variable across trials.</p>
 <p>To characterize the average response properties of a neuron, the most typical method is to align the spike trains from different trials at the stimulus onset and count the number of spikes in time bins of tens to hundreds of milliseconds.
 The original spike trains in multiple trials are often called <em>raster plot</em> and the average spike frequency around the time of stimulus onset is called <em>peristimulus time histogram (PSTH)</em>.</p>
 </section>
 <section id="spike-triggered-average-sta">
-<h3>Spike-triggered average (STA)<a class="headerlink" href="#spike-triggered-average-sta" title="Permalink to this headline">#</a></h3>
-<p>Charactering the response property of a neuron the other way round it to see what happened before a spike is generated.
+<h3>Spike-triggered average (STA)<a class="headerlink" href="#spike-triggered-average-sta" title="Permalink to this heading">#</a></h3>
+<p>Characterizing the response property of a neuron the other way round is to see what happened before a spike is generated.
 That is <em>spike-triggered average (STA)</em> of sensory stimuli.</p>
 </section>
 </section>
 <section id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
 <section id="neurons-models">
-<h3>Neurons models<a class="headerlink" href="#neurons-models" title="Permalink to this headline">#</a></h3>
+<h3>Neurons models<a class="headerlink" href="#neurons-models" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Hodgkin AL, Huxley AF (1952) A quantitative description of membrane current and its application to conduction and excitation in nerve. J. Physiol, 117(4):500–544.</p></li>
+<li><p>Hodgkin AL, Huxley AF (1952) A quantitative description of membrane current and its application to conduction and excitation in nerve. J. Physiol, 117(4):500–544. <a class="reference external" href="https://doi.org/10.1113/jphysiol.1952.sp004764">https://doi.org/10.1113/jphysiol.1952.sp004764</a></p></li>
 <li><p>Gerstner W, Kistler WM, Naud R, Paninski L (2014) Neuronal Dynamics: From Single Neurons to Networks and Models of Cognition. <a class="reference external" href="https://www.cambridge.org/core/books/neuronal-dynamics/75375090046733765596191E23B2959D">Cambridge University Press</a>.
 (<a class="reference external" href="http://neuronaldynamics.epfl.ch/">online version and Python exercise</a>)</p></li>
-<li><p>Wilson HR, Cowan JD (1972) Excitatory and inhibitory interactions in localized populations of model neurons. Biophys. J., 12:1–24.</p></li>
+<li><p>Wilson HR, Cowan JD (1972) Excitatory and inhibitory interactions in localized populations of model neurons. Biophys. J., 12:1–24. <a class="reference external" href="https://doi.org/10.1016/S0006-3495(72)86068-5">https://doi.org/10.1016/S0006-3495(72)86068-5</a></p></li>
 </ul>
 </section>
 <section id="neural-coding-and-analysis">
-<h3>Neural coding and analysis<a class="headerlink" href="#neural-coding-and-analysis" title="Permalink to this headline">#</a></h3>
+<h3>Neural coding and analysis<a class="headerlink" href="#neural-coding-and-analysis" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Dayan P, Abott LF (2001) Theoretical Neuroscience: Compuational and
-Mathematical Modeling of Neural Systems. MIT Press.</p></li>
-<li><p>Gray CM, Konig P, Engel AK, Singer W (1989) Oscillatory responses in cat visual cortex exhibit inter-columnar synchronization which reflects global stimulus properties. Nature, 338:334–337.</p></li>
+Mathematical Modeling of Neural Systems. MIT Press. <a class="reference external" href="https://mitpress.mit.edu/9780262041997/theoretical-neuroscience/">https://mitpress.mit.edu/9780262041997/theoretical-neuroscience/</a></p></li>
+<li><p>Gray CM, Konig P, Engel AK, Singer W (1989) Oscillatory responses in cat visual cortex exhibit inter-columnar synchronization which reflects global stimulus properties. Nature, 338:334–337. <a class="reference external" href="https://doi.org/10.1038/338334a0">https://doi.org/10.1038/338334a0</a></p></li>
 </ul>
 </section>
 </section>
@@ -1450,7 +1118,7 @@ Mathematical Modeling of Neural Systems. MIT Press.</p></li>
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -1458,50 +1126,145 @@ Mathematical Modeling of Neural Systems. MIT Press.</p></li>
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="Introduction.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Chapter 1. Introduction</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Introduction.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chapter 1. Introduction</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="Neurons_Exercise.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="Neurons_Exercise.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Chapter 2. Neural Modeling and Analysis: Exercise</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#biophysical-neuron-models">2.1 Biophysical neuron models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hodgkin-huxley-neuron-models">Hodgkin-Huxley neuron models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integrate-and-fire-neuron-models">Integrate-and-fire neuron models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-i-curve">F-I curve</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#noisy-integrate-and-fire-model">Noisy integrate-and-fire model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-nonlinear-poisson-models">Linear-nonlinear-Poisson models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha-function-model-of-synaptic-current">Alpha function model of synaptic current</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract-neuron-models">Abstract neuron models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-field-models">Mean-field models</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wilson-cowan-model">Wilson-Cowan model</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#artificial-neural-network-models">Artificial neural network models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#feed-forward-neural-networks">Feed-forward neural networks</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#activation-functions-sigmoid-relu-and-binary">Activation functions: Sigmoid, ReLU, and binary</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#softmax-function">Softmax function</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#models-of-plasticity">Models of plasticity</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hebb-rule">Hebb rule</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spike-timining-dependent-placticity-stdp">Spike timining dependent placticity (STDP)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#theories-of-neural-coding">Theories of neural coding</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rate-coding">Rate coding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#population-coding">Population coding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temporal-coding">Temporal coding</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methods-for-spike-analysis-decoding">Methods for spike analysis/decoding</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#peristimulus-time-histogram-psth">Peristimulus time histogram (PSTH)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spike-triggered-average-sta">Spike-triggered average (STA)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neurons-models">Neurons models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-coding-and-analysis">Neural coding and analysis</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Kenji Doya<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Kenji Doya
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

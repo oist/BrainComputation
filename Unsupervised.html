@@ -1,112 +1,177 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Chapter 5. Unsupervised Learning &#8212; Brain Computation</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Unsupervised';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Unsupervised Learning: Exercise" href="Unsupervised_Exercise.html" />
     <link rel="prev" title="Chapter 4. Reinforcement Learning: Exercise" href="Reinforcement_Exercise.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
-    
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="BrainComputation.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="_static/BC_logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Brain Computation</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="_static/BC_logo.png" class="logo__image only-light" alt="Brain Computation - Home"/>
+    <script>document.write(`<img src="_static/BC_logo.png" class="logo__image only-dark" alt="Brain Computation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -116,545 +181,225 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="Introduction.html">
-   Chapter 1. Introduction
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="Neurons.html">
-   Chapter 2. Neural Modeling and Analysis
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Neurons_Exercise.html">
-     Chapter 2. Neural Modeling and Analysis: Exercise
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="Supervised.html">
-   Chapter 3: Supervised Learning
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Supervised_Exercise.html">
-     Supervised Learning: Exercise
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="Reinforcement.html">
-   Chapter 4. Reinforcement Learning
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Reinforcement_Exercise.html">
-     Chapter 4. Reinforcement Learning: Exercise
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
-   Chapter 5. Unsupervised Learning
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Unsupervised_Exercise.html">
-     Unsupervised Learning: Exercise
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="Bayesian.html">
-   Chatper 6. Bayesian Approaches
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Bayesian_Exercise.html">
-     Bayesian Approaches: Exercise
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="Deep.html">
-   Chapter 7: Deep Learning
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Deep_Exercise.html">
-     Chapter 7: Deep Learning: Exercise
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Multiple.html">
-   Chapter 8. Multiple Agents
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Meta.html">
-   Chapter 9. Meta-Learning
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html">Chapter 1. Introduction</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Neurons.html">Chapter 2. Neural Modeling and Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Neurons_Exercise.html">Chapter 2. Neural Modeling and Analysis: Exercise</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Supervised.html">Chapter 3: Supervised Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Supervised_Exercise.html">Supervised Learning: Exercise</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Reinforcement.html">Chapter 4. Reinforcement Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Reinforcement_Exercise.html">Chapter 4. Reinforcement Learning: Exercise</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Chapter 5. Unsupervised Learning</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Unsupervised_Exercise.html">Unsupervised Learning: Exercise</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Bayesian.html">Chatper 6. Bayesian Approaches</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Bayesian_Exercise.html">Bayesian Approaches: Exercise</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Deep.html">Chapter 7: Deep Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Deep_Exercise.html">Chapter 7: Deep Learning: Exercise</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="Multiple.html">Chapter 8. Multiple Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Meta.html">Chapter 9. Meta-Learning</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/Unsupervised.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Unsupervised.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
 </div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/Unsupervised.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
 
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#contents">
-   Contents
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#k-means-clustering">
-   K-means Clustering
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mixtures-of-gaussians">
-   Mixtures of Gaussians
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#expectation-maximization-em-algorithm">
-   Expectation-maximization (EM) Algorithm
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#e-expectation-step">
-     E (expectation) step
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#m-maximization-step">
-     M (maximization) step
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dirichlet-process-mixture">
-   Dirichlet Process Mixture
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#scikit-learn">
-     scikit-learn
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#principal-component-analysis">
-   Principal Component Analysis
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#singular-value-decomposition-svd">
-   Singular value decomposition (SVD)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#online-pca">
-   Online PCA
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#infomax-principle">
-   Infomax principle
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#independent-component-analysis-ica">
-   Independent component analysis (ICA)
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#ica-by-infomax">
-     ICA by Infomax
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#playing-sound">
-   Playing sound
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#receptive-fields-of-visual-cortex-neurons">
-   Receptive fields of visual cortex neurons
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#replicating-receptive-field-tuning">
-     Replicating receptive field tuning
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   References
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#self-organization">
-     Self Organization
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pca">
-     PCA
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#infomax-and-ica">
-     Infomax and ICA
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Chapter 5. Unsupervised Learning</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#contents">
-   Contents
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#k-means-clustering">
-   K-means Clustering
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mixtures-of-gaussians">
-   Mixtures of Gaussians
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#expectation-maximization-em-algorithm">
-   Expectation-maximization (EM) Algorithm
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#e-expectation-step">
-     E (expectation) step
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#m-maximization-step">
-     M (maximization) step
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dirichlet-process-mixture">
-   Dirichlet Process Mixture
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#scikit-learn">
-     scikit-learn
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#principal-component-analysis">
-   Principal Component Analysis
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#singular-value-decomposition-svd">
-   Singular value decomposition (SVD)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#online-pca">
-   Online PCA
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#infomax-principle">
-   Infomax principle
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#independent-component-analysis-ica">
-   Independent component analysis (ICA)
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#ica-by-infomax">
-     ICA by Infomax
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#playing-sound">
-   Playing sound
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#receptive-fields-of-visual-cortex-neurons">
-   Receptive fields of visual cortex neurons
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#replicating-receptive-field-tuning">
-     Replicating receptive field tuning
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   References
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#self-organization">
-     Self Organization
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pca">
-     PCA
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#infomax-and-ica">
-     Infomax and ICA
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 5. Unsupervised Learning</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contents">Contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means-clustering">K-means Clustering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mixtures-of-gaussians">Mixtures of Gaussians</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expectation-maximization-em-algorithm">Expectation-maximization (EM) Algorithm</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e-expectation-step">E (expectation) step</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#m-maximization-step">M (maximization) step</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dirichlet-process-mixture">Dirichlet Process Mixture</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikit-learn">scikit-learn</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principal-component-analysis">Principal Component Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#singular-value-decomposition-svd">Singular value decomposition (SVD)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#online-pca">Online PCA</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#infomax-principle">Infomax principle</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#independent-component-analysis-ica">Independent component analysis (ICA)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ica-by-infomax">ICA by Infomax</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#playing-sound">Playing sound</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#receptive-fields-of-visual-cortex-neurons">Receptive fields of visual cortex neurons</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#replicating-receptive-field-tuning">Replicating receptive field tuning</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#self-organization">Self Organization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pca">PCA</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#infomax-and-ica">Infomax and ICA</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="chapter-5-unsupervised-learning">
-<h1>Chapter 5. Unsupervised Learning<a class="headerlink" href="#chapter-5-unsupervised-learning" title="Permalink to this headline">#</a></h1>
+<h1>Chapter 5. Unsupervised Learning<a class="headerlink" href="#chapter-5-unsupervised-learning" title="Permalink to this heading">#</a></h1>
 <div class="math notranslate nohighlight">
 \[ % Latex macros
 \newcommand{\mat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
@@ -663,7 +408,7 @@ title="Print to PDF"
 \newcommand{\c}[1]{\mathcal{#1}}
 \]</div>
 <section id="contents">
-<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">#</a></h2>
+<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Clustering (Bishop, Chater 9):</p>
 <ul>
@@ -708,7 +453,7 @@ Learning categories without explicit labels is an example of <em>unspervised lea
 </ul>
 </section>
 <section id="k-means-clustering">
-<h2>K-means Clustering<a class="headerlink" href="#k-means-clustering" title="Permalink to this headline">#</a></h2>
+<h2>K-means Clustering<a class="headerlink" href="#k-means-clustering" title="Permalink to this heading">#</a></h2>
 <p>The most basic method of clustering is <em><span class="math notranslate nohighlight">\(K\)</span>-means clustering</em>,
 which divides a data set <span class="math notranslate nohighlight">\(\{\b{x}_1,…,\b{x}_N\}\)</span> into <span class="math notranslate nohighlight">\(K\)</span> clusters.</p>
 <p>We define prototypes <span class="math notranslate nohighlight">\(\b{\mu}_k\)</span> for <span class="math notranslate nohighlight">\(k=1,...,K\)</span> clusters and specify belonging of data points by binary <em>indicator variables</em> <span class="math notranslate nohighlight">\(r_{nk}\in\{0,1\}\)</span>.</p>
@@ -747,7 +492,7 @@ which divides a data set <span class="math notranslate nohighlight">\(\{\b{x}_1,
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Unsupervised_6_0.png" src="_images/Unsupervised_6_0.png" />
+<img alt="_images/6c3094cc088fb029ad19ebe486c4061b82e7df213ab5d6fdbc7310ec22bc3919.png" src="_images/6c3094cc088fb029ad19ebe486c4061b82e7df213ab5d6fdbc7310ec22bc3919.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -782,17 +527,17 @@ which divides a data set <span class="math notranslate nohighlight">\(\{\b{x}_1,
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Unsupervised_7_0.png" src="_images/Unsupervised_7_0.png" />
-<img alt="_images/Unsupervised_7_1.png" src="_images/Unsupervised_7_1.png" />
-<img alt="_images/Unsupervised_7_2.png" src="_images/Unsupervised_7_2.png" />
-<img alt="_images/Unsupervised_7_3.png" src="_images/Unsupervised_7_3.png" />
-<img alt="_images/Unsupervised_7_4.png" src="_images/Unsupervised_7_4.png" />
-<img alt="_images/Unsupervised_7_5.png" src="_images/Unsupervised_7_5.png" />
+<img alt="_images/f7d0b30633189950b92a17ca81469042139aadd260361d8ddf2f70fb53b36179.png" src="_images/f7d0b30633189950b92a17ca81469042139aadd260361d8ddf2f70fb53b36179.png" />
+<img alt="_images/ddba23829306a182d88a573124006dc93f79913c5c1b149d4f67bddd2bd604fd.png" src="_images/ddba23829306a182d88a573124006dc93f79913c5c1b149d4f67bddd2bd604fd.png" />
+<img alt="_images/6c64076072bb8aae24a02a74835701a42c9d73f5742f0018bbe0955b4ac9abbf.png" src="_images/6c64076072bb8aae24a02a74835701a42c9d73f5742f0018bbe0955b4ac9abbf.png" />
+<img alt="_images/62161cc8390357e450972e1d6c9e989652158029cd51d19984c376ea5b0a3fb9.png" src="_images/62161cc8390357e450972e1d6c9e989652158029cd51d19984c376ea5b0a3fb9.png" />
+<img alt="_images/b5d87b495e5162b3b2b2ce2c4f69895cb24e1f9b9fb74fcacfef2cbe79791b1b.png" src="_images/b5d87b495e5162b3b2b2ce2c4f69895cb24e1f9b9fb74fcacfef2cbe79791b1b.png" />
+<img alt="_images/1649e1e1a59b2f835af6532ade0345ba06b94f97a9bc9a7b59a937a5c199a361.png" src="_images/1649e1e1a59b2f835af6532ade0345ba06b94f97a9bc9a7b59a937a5c199a361.png" />
 </div>
 </div>
 </section>
 <section id="mixtures-of-gaussians">
-<h2>Mixtures of Gaussians<a class="headerlink" href="#mixtures-of-gaussians" title="Permalink to this headline">#</a></h2>
+<h2>Mixtures of Gaussians<a class="headerlink" href="#mixtures-of-gaussians" title="Permalink to this heading">#</a></h2>
 <p>It is often the case that clusters have some overlaps and assignment is probabilistic. <em>Mixtures of Gaussians</em> is a probabilistic extention of <span class="math notranslate nohighlight">\(K\)</span>-means clustering.</p>
 <p><em>Gaussian mixture distribution</em> has a form</p>
 <div class="math notranslate nohighlight">
@@ -826,25 +571,25 @@ which divides a data set <span class="math notranslate nohighlight">\(\{\b{x}_1,
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Unsupervised_11_0.png" src="_images/Unsupervised_11_0.png" />
+<img alt="_images/dcaa170213d7acc7e29a49f142eb89fdc38665f5d1cdd23c9118211b0c2d02d7.png" src="_images/dcaa170213d7acc7e29a49f142eb89fdc38665f5d1cdd23c9118211b0c2d02d7.png" />
 </div>
 </div>
 </section>
 <section id="expectation-maximization-em-algorithm">
-<h2>Expectation-maximization (EM) Algorithm<a class="headerlink" href="#expectation-maximization-em-algorithm" title="Permalink to this headline">#</a></h2>
+<h2>Expectation-maximization (EM) Algorithm<a class="headerlink" href="#expectation-maximization-em-algorithm" title="Permalink to this heading">#</a></h2>
 <p>We consider a binary stochastic variable</p>
 <div class="math notranslate nohighlight">
 \[ \b{z}=(z_1,…,z_K) \mbox{ where } z_k\in\{0,1\} \mbox{ and } \sum_{k=1}^K z_k=1 \]</div>
 <p>indicating which Gaussian a data point belongs to.</p>
 <p>For fitting the parameters <span class="math notranslate nohighlight">\(\pi_k\)</span>, <span class="math notranslate nohighlight">\(\mu_k\)</span> and <span class="math notranslate nohighlight">\(\Sigma_k\)</span> <span class="math notranslate nohighlight">\((k=1,...,K)\)</span>, we repeat the following steps, called the <em>expectation-maximization (EM)</em> algorithm:</p>
 <section id="e-expectation-step">
-<h3>E (expectation) step<a class="headerlink" href="#e-expectation-step" title="Permalink to this headline">#</a></h3>
+<h3>E (expectation) step<a class="headerlink" href="#e-expectation-step" title="Permalink to this heading">#</a></h3>
 <p>For the current parameters <span class="math notranslate nohighlight">\((\pi_k,\mu_k\)</span>,<span class="math notranslate nohighlight">\(\Sigma_k)\)</span>, evaluate the posterior distribution of <span class="math notranslate nohighlight">\(\b{z}\)</span> given <span class="math notranslate nohighlight">\(\b{x}\)</span>, called <em>responsibility</em>:</p>
 <div class="math notranslate nohighlight">
 \[ r_{nk} = p(z_k=1|\b{x}_n) = \frac{\pi_k\c{N}(\b{x}_n|\b{\mu}_k,\Sigma_k)}{\sum_{j=1}^K \pi_j\c{N}(\b{x}_n|\b{\mu}_j,\Sigma_j)} \]</div>
 </section>
 <section id="m-maximization-step">
-<h3>M (maximization) step<a class="headerlink" href="#m-maximization-step" title="Permalink to this headline">#</a></h3>
+<h3>M (maximization) step<a class="headerlink" href="#m-maximization-step" title="Permalink to this heading">#</a></h3>
 <p>For the current responsibility, estimate new parameters:</p>
 <div class="math notranslate nohighlight">
 \[ N_k = \sum_{n=1}^N r_{nk} \]</div>
@@ -907,33 +652,33 @@ which divides a data set <span class="math notranslate nohighlight">\(\{\b{x}_1,
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Unsupervised_14_0.png" src="_images/Unsupervised_14_0.png" />
-<img alt="_images/Unsupervised_14_1.png" src="_images/Unsupervised_14_1.png" />
-<img alt="_images/Unsupervised_14_2.png" src="_images/Unsupervised_14_2.png" />
-<img alt="_images/Unsupervised_14_3.png" src="_images/Unsupervised_14_3.png" />
-<img alt="_images/Unsupervised_14_4.png" src="_images/Unsupervised_14_4.png" />
-<img alt="_images/Unsupervised_14_5.png" src="_images/Unsupervised_14_5.png" />
-<img alt="_images/Unsupervised_14_6.png" src="_images/Unsupervised_14_6.png" />
-<img alt="_images/Unsupervised_14_7.png" src="_images/Unsupervised_14_7.png" />
-<img alt="_images/Unsupervised_14_8.png" src="_images/Unsupervised_14_8.png" />
-<img alt="_images/Unsupervised_14_9.png" src="_images/Unsupervised_14_9.png" />
-<img alt="_images/Unsupervised_14_10.png" src="_images/Unsupervised_14_10.png" />
-<img alt="_images/Unsupervised_14_11.png" src="_images/Unsupervised_14_11.png" />
-<img alt="_images/Unsupervised_14_12.png" src="_images/Unsupervised_14_12.png" />
-<img alt="_images/Unsupervised_14_13.png" src="_images/Unsupervised_14_13.png" />
-<img alt="_images/Unsupervised_14_14.png" src="_images/Unsupervised_14_14.png" />
-<img alt="_images/Unsupervised_14_15.png" src="_images/Unsupervised_14_15.png" />
+<img alt="_images/79ce22ac49e1765ed90b96d824ca22eea7df04b1503b6d9cc1d58bbf61a9dcbb.png" src="_images/79ce22ac49e1765ed90b96d824ca22eea7df04b1503b6d9cc1d58bbf61a9dcbb.png" />
+<img alt="_images/c089d2690c6d142f35cdc3f19809d0241bc2f7621764ae7f4014a0c28ba6b105.png" src="_images/c089d2690c6d142f35cdc3f19809d0241bc2f7621764ae7f4014a0c28ba6b105.png" />
+<img alt="_images/417dc242fc1ef8e9f6080da29a10b788a44d7da9fcc8033fed893a4f2c64d5e2.png" src="_images/417dc242fc1ef8e9f6080da29a10b788a44d7da9fcc8033fed893a4f2c64d5e2.png" />
+<img alt="_images/0eacbf77cdb2f39bf3d5160c9bd378876f5b0a32331a5245357cb40c66a5f484.png" src="_images/0eacbf77cdb2f39bf3d5160c9bd378876f5b0a32331a5245357cb40c66a5f484.png" />
+<img alt="_images/38ecb54d3f6a3bf028b6565b4ecafa293aa35cb53883aad655b519485df52d7c.png" src="_images/38ecb54d3f6a3bf028b6565b4ecafa293aa35cb53883aad655b519485df52d7c.png" />
+<img alt="_images/1c32d80adf6846b163b96dd08ea8bfbb0928f08dd601fd812382d9c22d60f670.png" src="_images/1c32d80adf6846b163b96dd08ea8bfbb0928f08dd601fd812382d9c22d60f670.png" />
+<img alt="_images/a8806bdb0235bf0593638f8a3bf2380e823d83bf4c046106d7c2553486eae2c0.png" src="_images/a8806bdb0235bf0593638f8a3bf2380e823d83bf4c046106d7c2553486eae2c0.png" />
+<img alt="_images/f72a3ab4e5df82d75b6c7386cf30b729e471b125c569f99d6df6043d495710a4.png" src="_images/f72a3ab4e5df82d75b6c7386cf30b729e471b125c569f99d6df6043d495710a4.png" />
+<img alt="_images/08d182b7c472172adf84c0b79164f7e9caf4d1009a75072f58ebb68381c8d3a2.png" src="_images/08d182b7c472172adf84c0b79164f7e9caf4d1009a75072f58ebb68381c8d3a2.png" />
+<img alt="_images/9f77981d980e5f88e68f8945c80f54e9f50eb513e993d29d21fa3da1a1f20fd8.png" src="_images/9f77981d980e5f88e68f8945c80f54e9f50eb513e993d29d21fa3da1a1f20fd8.png" />
+<img alt="_images/08c542254974f838f1dc973fe05900ba27639220e8466df9c88f7157e0208805.png" src="_images/08c542254974f838f1dc973fe05900ba27639220e8466df9c88f7157e0208805.png" />
+<img alt="_images/5595c7326db343e3b2958ea4c99a675de2daa417e415660ddf488282df75bf5f.png" src="_images/5595c7326db343e3b2958ea4c99a675de2daa417e415660ddf488282df75bf5f.png" />
+<img alt="_images/de07e25bb1dcfc93afe14dcc570c4317182dea22a72ce33bd068b3a2d62af689.png" src="_images/de07e25bb1dcfc93afe14dcc570c4317182dea22a72ce33bd068b3a2d62af689.png" />
+<img alt="_images/90d50749432f51c2699ea105691a75c3d8e615be66f18738c985f8dc13f3c0f8.png" src="_images/90d50749432f51c2699ea105691a75c3d8e615be66f18738c985f8dc13f3c0f8.png" />
+<img alt="_images/90d50749432f51c2699ea105691a75c3d8e615be66f18738c985f8dc13f3c0f8.png" src="_images/90d50749432f51c2699ea105691a75c3d8e615be66f18738c985f8dc13f3c0f8.png" />
+<img alt="_images/90d50749432f51c2699ea105691a75c3d8e615be66f18738c985f8dc13f3c0f8.png" src="_images/90d50749432f51c2699ea105691a75c3d8e615be66f18738c985f8dc13f3c0f8.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="dirichlet-process-mixture">
-<h2>Dirichlet Process Mixture<a class="headerlink" href="#dirichlet-process-mixture" title="Permalink to this headline">#</a></h2>
+<h2>Dirichlet Process Mixture<a class="headerlink" href="#dirichlet-process-mixture" title="Permalink to this heading">#</a></h2>
 <p>One problem in <span class="math notranslate nohighlight">\(K\)</span>-means and Mixture of Gaussians is that you have to assume the number of clusters <span class="math notranslate nohighlight">\(K\)</span> beforehand.</p>
 <p>There is an extension called <em>Dirichlet process mixture</em> that decides the number of clusters based on the data.</p>
 <p>See Kevin Murphy (2012) Ch. 25.2 for details.</p>
 <section id="scikit-learn">
-<h3>scikit-learn<a class="headerlink" href="#scikit-learn" title="Permalink to this headline">#</a></h3>
+<h3>scikit-learn<a class="headerlink" href="#scikit-learn" title="Permalink to this heading">#</a></h3>
 <p><a class="reference external" href="http://scikit-learn.org/stable/">scikit-learn</a> is a popular Pyhon libraries of supervised and unsupervised learning algorithms with excellent documentation, examples and
 <a class="reference external" href="http://scikit-learn.org/stable/tutorial/machine_learning_map">tutorials</a></p>
 <div class="cell docutils container">
@@ -968,23 +713,20 @@ which divides a data set <span class="math notranslate nohighlight">\(\{\b{x}_1,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pi = [0.00393086 0.19356622 0.45234301 0.00385239 0.34630752]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pi = [6.43591916e-01 3.55685007e-01 6.05414258e-04 1.00853971e-04
+ 1.68089411e-05]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/doya/miniforge3/lib/python3.9/site-packages/sklearn/mixture/_base.py:286: ConvergenceWarning: Initialization 1 did not converge. Try different init parameters, or increase max_iter, tol or check for degenerate data.
-  warnings.warn(
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x146b4d090&gt;
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x1605d9fd0&gt;
-</pre></div>
-</div>
-<img alt="_images/Unsupervised_20_3.png" src="_images/Unsupervised_20_3.png" />
+<img alt="_images/d30bf8965f91af25009939b1a4168af0daac6babf5a8b236af531a24d95f152a.png" src="_images/d30bf8965f91af25009939b1a4168af0daac6babf5a8b236af531a24d95f152a.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="principal-component-analysis">
-<h2>Principal Component Analysis<a class="headerlink" href="#principal-component-analysis" title="Permalink to this headline">#</a></h2>
+<h2>Principal Component Analysis<a class="headerlink" href="#principal-component-analysis" title="Permalink to this heading">#</a></h2>
 <p>Grasping the distribution of a high-dimensional data is not easy for human eyes. We often try to find a low-dimensional projection of the data that characteirizes the distribution.</p>
 <p><em>Principal componet analysis (PCA)</em> finds the directions of the data distribution with the largest variance.</p>
 <p>Consider a projection of <span class="math notranslate nohighlight">\(D\)</span>-dimensional vector <span class="math notranslate nohighlight">\(\b{x} = (x_1,...,x_D)^T\)</span> to
@@ -1030,7 +772,7 @@ the covariance of projected data is maximized by <span class="math notranslate n
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Unsupervised_24_0.png" src="_images/Unsupervised_24_0.png" />
+<img alt="_images/966b860d51a0773f04ff43b27a554c6c4723290c432942c8c7f5e3f075937fe2.png" src="_images/966b860d51a0773f04ff43b27a554c6c4723290c432942c8c7f5e3f075937fe2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1076,7 +818,7 @@ the covariance of projected data is maximized by <span class="math notranslate n
  [ 0.31548719 -0.3197231  -0.47983899  0.75365743]]
 </pre></div>
 </div>
-<img alt="_images/Unsupervised_26_1.png" src="_images/Unsupervised_26_1.png" />
+<img alt="_images/455f4411124581751798783f884fc807860545204e1ca1704cc2e6c2c241f84a.png" src="_images/455f4411124581751798783f884fc807860545204e1ca1704cc2e6c2c241f84a.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1089,7 +831,7 @@ the covariance of projected data is maximized by <span class="math notranslate n
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Unsupervised_27_0.png" src="_images/Unsupervised_27_0.png" />
+<img alt="_images/216d94d0fc14f5c26b6d688009b3ec4118427ebad5b9bbbc3ab8f184f0dbefa5.png" src="_images/216d94d0fc14f5c26b6d688009b3ec4118427ebad5b9bbbc3ab8f184f0dbefa5.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1100,12 +842,12 @@ the covariance of projected data is maximized by <span class="math notranslate n
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Unsupervised_28_0.png" src="_images/Unsupervised_28_0.png" />
+<img alt="_images/fcf6cdec17e2a89f7399f72fd15b0f26d98b64eb7424def37e7332babeca2a92.png" src="_images/fcf6cdec17e2a89f7399f72fd15b0f26d98b64eb7424def37e7332babeca2a92.png" />
 </div>
 </div>
 </section>
 <section id="singular-value-decomposition-svd">
-<h2>Singular value decomposition (SVD)<a class="headerlink" href="#singular-value-decomposition-svd" title="Permalink to this headline">#</a></h2>
+<h2>Singular value decomposition (SVD)<a class="headerlink" href="#singular-value-decomposition-svd" title="Permalink to this heading">#</a></h2>
 <p>Singular value decomposition (SVD) represents a <span class="math notranslate nohighlight">\(N\times D\)</span> matrix (<span class="math notranslate nohighlight">\(N&gt;D\)</span>) by a weighted sum of products of column vectors <span class="math notranslate nohighlight">\(\b{u}_i \in \Re^N\)</span> and row vectors <span class="math notranslate nohighlight">\(\b{v}_i^T \in \Re^D\)</span></p>
 <div class="math notranslate nohighlight">
 \[ X = \sum_{i=1}^D s_i \b{u}_i \b{v}_i^T \]</div>
@@ -1120,7 +862,7 @@ the covariance of projected data is maximized by <span class="math notranslate n
 \[ S = \mbox{diag}(\sqrt{\lambda_1},...,\sqrt{\lambda_D}) \in \Re^{D\times D}  \mbox{(or $\Re^{N\times D}$ with empty rows)} \]</div>
 <div class="math notranslate nohighlight">
 \[ V = (\b{v}_1,...,\b{v}_D) \in \Re^{D\times D}. \]</div>
-<p>Because <span class="math notranslate nohighlight">\(V\)</span> is the same as that for PCA, the SVD is often used for computing</p>
+<p>Because <span class="math notranslate nohighlight">\(V\)</span> is the same as that for PCA, the SVD algorithm is often used for PCA.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># X = U*S*V&#39; where S is a diagonal matrix</span>
@@ -1151,7 +893,7 @@ the covariance of projected data is maximized by <span class="math notranslate n
 </div>
 </section>
 <section id="online-pca">
-<h2>Online PCA<a class="headerlink" href="#online-pca" title="Permalink to this headline">#</a></h2>
+<h2>Online PCA<a class="headerlink" href="#online-pca" title="Permalink to this heading">#</a></h2>
 <p>It has been shown that a simple linear neural network can perform computation similar to PCA (Sanger 1989).</p>
 <p>Let us consider a two-layer network</p>
 <div class="math notranslate nohighlight">
@@ -1193,26 +935,26 @@ In a componet form, it is</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0.44161768 -0.01130762  0.84460725  0.29824506]
- [ 0.03280356  0.00426311  0.35155816  0.50055462]]
-[[ 0.39281974 -0.01235268  0.83330754  0.39095191]
- [-0.02339392 -0.00899672  0.17399372  0.28283989]]
-[[ 0.39272015 -0.01236548  0.83328724  0.39109526]
- [-0.04472858 -0.02015548  0.13623954  0.22579767]]
-[[ 0.39271996 -0.01236553  0.83328722  0.39109549]
- [-0.06742274 -0.03450108  0.11987526  0.20048122]]
-[[ 0.39271996 -0.01236553  0.83328722  0.39109549]
- [-0.09424066 -0.05387522  0.1124876   0.18734864]]
-[[ 0.39271996 -0.01236553  0.83328722  0.39109549]
- [-0.12724608 -0.08020397  0.11063078  0.18055627]]
-[[ 0.39271996 -0.01236553  0.83328722  0.39109549]
- [-0.16845508 -0.11570514  0.11310519  0.17755818]]
-[[ 0.39271996 -0.01236553  0.83328722  0.39109549]
- [-0.21969776 -0.16269838  0.11944228  0.17680002]]
-[[ 0.39271996 -0.01236553  0.83328722  0.39109549]
- [-0.28191654 -0.22291476  0.12925624  0.17688154]]
-[[ 0.39271996 -0.01236553  0.83328722  0.39109549]
- [-0.3538228  -0.29608698  0.14174247  0.17617803]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-0.38848379  0.00970855 -0.83019165 -0.40193311]
+ [ 0.08353474 -0.23527275  0.44748783 -0.34044671]]
+[[-0.39271236  0.0123613  -0.83328286 -0.39111251]
+ [ 0.03638984 -0.20720148  0.30599209 -0.24609585]]
+[[-0.39271994  0.01236552 -0.83328721 -0.39109551]
+ [ 0.00411758 -0.21972236  0.25479727 -0.21210954]]
+[[-0.39271996  0.01236553 -0.83328722 -0.39109549]
+ [-0.02918051 -0.24941104  0.2294958  -0.19444268]]
+[[-0.39271996  0.01236553 -0.83328722 -0.39109549]
+ [-0.06882233 -0.29275652  0.21648205 -0.18269086]]
+[[-0.39271996  0.01236553 -0.83328722 -0.39109549]
+ [-0.11795395 -0.34912661  0.21077777 -0.17243126]]
+[[-0.39271996  0.01236553 -0.83328722 -0.39109549]
+ [-0.17818382 -0.4172721   0.20966337 -0.16082398]]
+[[-0.39271996  0.01236553 -0.83328722 -0.39109549]
+ [-0.24857096 -0.49322453  0.2108784  -0.14573139]]
+[[-0.39271996  0.01236553 -0.83328722 -0.39109549]
+ [-0.32445976 -0.5692925   0.21216003 -0.12599566]]
+[[-0.39271996  0.01236553 -0.83328722 -0.39109549]
+ [-0.39804162 -0.63578672  0.21165441 -0.10209715]]
 </pre></div>
 </div>
 </div>
@@ -1224,8 +966,8 @@ In a componet form, it is</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.39238556, -0.012355  ,  0.83257769,  0.39076248],
-       [-0.68864273, -0.57627193,  0.27587234,  0.34289401]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.39238556,  0.012355  , -0.83257769, -0.39076248],
+       [-0.5063785 , -0.80883181,  0.2692614 , -0.12988542]])
 </pre></div>
 </div>
 </div>
@@ -1240,12 +982,12 @@ In a componet form, it is</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Unsupervised_37_0.png" src="_images/Unsupervised_37_0.png" />
+<img alt="_images/e31864e9b9ccb16d1a6c5fe55effc0134d992111c48fe9e6e48a5c5bb92d2f43.png" src="_images/e31864e9b9ccb16d1a6c5fe55effc0134d992111c48fe9e6e48a5c5bb92d2f43.png" />
 </div>
 </div>
 </section>
 <section id="infomax-principle">
-<h2>Infomax principle<a class="headerlink" href="#infomax-principle" title="Permalink to this headline">#</a></h2>
+<h2>Infomax principle<a class="headerlink" href="#infomax-principle" title="Permalink to this heading">#</a></h2>
 <p>The <em>infomax</em> principle is to find a mapping from input <span class="math notranslate nohighlight">\(\b{x}\)</span> to the output <span class="math notranslate nohighlight">\(\b{y}\)</span> so that the mutual information</p>
 <div class="math notranslate nohighlight">
 \[ I(\b{y};\b{x}) = H(\b{y}) – H(\b{y}|\b{x}) \]</div>
@@ -1269,7 +1011,7 @@ In a componet form, it is</p>
 and the equality is achieved when the output components are independent: <span class="math notranslate nohighlight">\(p(\b{y}) = \prod_i p(y_i).\)</span></p>
 </section>
 <section id="independent-component-analysis-ica">
-<h2>Independent component analysis (ICA)<a class="headerlink" href="#independent-component-analysis-ica" title="Permalink to this headline">#</a></h2>
+<h2>Independent component analysis (ICA)<a class="headerlink" href="#independent-component-analysis-ica" title="Permalink to this heading">#</a></h2>
 <p>We can listen to a particular speaker’s voice or a sound of an instrument among mixed sound.
 This is called <em>cocktail party effect</em> or <em>blind separation</em>.</p>
 <p>For a <span class="math notranslate nohighlight">\(D\)</span> independent signal sources <span class="math notranslate nohighlight">\(\b{s}=(s_1,...,s_D)^T\)</span>, we consider mixture signal</p>
@@ -1287,7 +1029,7 @@ This is called <em>cocktail party effect</em> or <em>blind separation</em>.</p>
 <p>When the amplitude of <span class="math notranslate nohighlight">\(y_i\)</span> is bounded,
 the output entropy <span class="math notranslate nohighlight">\(H(\b{y})\le\sum_i H(y_i)\)</span> is maximized when <span class="math notranslate nohighlight">\(y_i\)</span> are independent.</p>
 <section id="ica-by-infomax">
-<h3>ICA by Infomax<a class="headerlink" href="#ica-by-infomax" title="Permalink to this headline">#</a></h3>
+<h3>ICA by Infomax<a class="headerlink" href="#ica-by-infomax" title="Permalink to this heading">#</a></h3>
 <p>If the signal distribution <span class="math notranslate nohighlight">\(p(s_i)\)</span> is <em>supragaussian</em>, having a sharp peak and long tails, ICA is achieved by a network with saturating output function, such as</p>
 <div class="math notranslate nohighlight">
 \[ \b{u} = W \b{x} \]</div>
@@ -1354,11 +1096,11 @@ the output entropy <span class="math notranslate nohighlight">\(H(\b{y})\le\sum_
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.49996804 0.98841403]
- [0.00604055 0.9805025 ]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.50980549 0.6720657 ]
+ [0.74076765 0.46018647]]
 </pre></div>
 </div>
-<img alt="_images/Unsupervised_43_1.png" src="_images/Unsupervised_43_1.png" />
+<img alt="_images/e54f4cadacb232adb9e74713b0103bec0a43b3a1884bfa5d6af84a4d7fd7d729.png" src="_images/e54f4cadacb232adb9e74713b0103bec0a43b3a1884bfa5d6af84a4d7fd7d729.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1374,26 +1116,28 @@ the output entropy <span class="math notranslate nohighlight">\(H(\b{y})\le\sum_
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 2.50866842  3.29349794]
- [-0.80306842  3.61027728]]
-[[ 7.58177224  2.67624842]
- [-3.12783704  6.18687897]]
-[[11.79844518  0.24804869]
- [-0.30076063  8.07689451]]
-[[1.27807463e+01 1.24897873e-02]
- [2.27787081e-03 8.49340660e+00]]
-[[1.28980599e+01 9.14886232e-03]
- [5.88729472e-03 8.54081343e+00]]
-[[1.29110537e+01 9.09650001e-03]
- [5.95564891e-03 8.54594380e+00]]
-[[1.29124814e+01 9.09399859e-03]
- [5.95989062e-03 8.54649568e+00]]
-[[1.29126381e+01 9.09376050e-03]
- [5.96032341e-03 8.54655500e+00]]
-[[1.29126553e+01 9.09373521e-03]
- [5.96037052e-03 8.54656137e+00]]
-[[1.29126572e+01 9.09373250e-03]
- [5.96037568e-03 8.54656206e+00]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1.76062598 3.07289913]
+ [3.47160982 1.60177902]]
+[[0.38078323 6.52430023]
+ [8.24317053 0.35650878]]
+[[-2.34919555e-02  8.17581463e+00]
+ [ 1.08139466e+01 -1.06704149e-02]]
+[[-0.01613496  8.4029878 ]
+ [11.20279123 -0.01787653]]
+[[-0.01546648  8.42772372]
+ [11.24736635 -0.01823539]]
+[[-0.01543742  8.43034408]
+ [11.25230341 -0.0182525 ]]
+[[-0.01543742  8.43062076]
+ [11.25284826 -0.01825283]]
+[[-0.01543764  8.43064995]
+ [11.25290838 -0.01825276]]
+[[-0.01543768  8.43065303]
+ [11.25291502 -0.01825274]]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-0.01543768  8.43065335]
+ [11.25291575 -0.01825274]]
 </pre></div>
 </div>
 </div>
@@ -1411,7 +1155,7 @@ the output entropy <span class="math notranslate nohighlight">\(H(\b{y})\le\sum_
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Unsupervised_45_0.png" src="_images/Unsupervised_45_0.png" />
+<img alt="_images/b4d827b2621aba7bd111729871e4e278d8cb38ca9a6691a5b81f4a3aa3f442d3.png" src="_images/b4d827b2621aba7bd111729871e4e278d8cb38ca9a6691a5b81f4a3aa3f442d3.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1437,7 +1181,7 @@ the output entropy <span class="math notranslate nohighlight">\(H(\b{y})\le\sum_
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Unsupervised_46_0.png" src="_images/Unsupervised_46_0.png" />
+<img alt="_images/e15aadafaad7a990fc59f045540e7e13b40a74938f79b77878519499e549b197.png" src="_images/e15aadafaad7a990fc59f045540e7e13b40a74938f79b77878519499e549b197.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1459,13 +1203,13 @@ the output entropy <span class="math notranslate nohighlight">\(H(\b{y})\le\sum_
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Unsupervised_47_0.png" src="_images/Unsupervised_47_0.png" />
+<img alt="_images/12d3349f324d1bc59cf7dffac44e0019722927ebf114f2e51a86e2711a843ff2.png" src="_images/12d3349f324d1bc59cf7dffac44e0019722927ebf114f2e51a86e2711a843ff2.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="playing-sound">
-<h2>Playing sound<a class="headerlink" href="#playing-sound" title="Permalink to this headline">#</a></h2>
+<h2>Playing sound<a class="headerlink" href="#playing-sound" title="Permalink to this heading">#</a></h2>
 <p>Do you want to hear the mixed and separated sounds?</p>
 <p>You can use IPython.display library to play sound.<br />
 <a class="reference external" href="https://ipython.readthedocs.io/en/stable/api/generated/IPython.display.html">https://ipython.readthedocs.io/en/stable/api/generated/IPython.display.html</a></p>
@@ -1486,16 +1230,16 @@ the output entropy <span class="math notranslate nohighlight">\(H(\b{y})\le\sum_
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<audio  controls="controls" >
-    <source src="data:audio/wav;base64,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" type="audio/wav" />
-    Your browser does not support the audio element.
-</audio>
-</div><div class="output text_html">
-<audio  controls="controls" >
-    <source src="data:audio/wav;base64,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" type="audio/wav" />
-    Your browser does not support the audio element.
-</audio>
-</div></div>
+                <audio  controls="controls" >
+                    <source src="data:audio/wav;base64,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" type="audio/wav" />
+                    Your browser does not support the audio element.
+                </audio>
+              </div><div class="output text_html">
+                <audio  controls="controls" >
+                    <source src="data:audio/wav;base64,UklGRsQPAABXQVZFZm10IBAAAAABAAEAoA8AAEAfAAACABAAZGF0YaAPAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVk3g3UoZ7l0lZkJcWxOtGuRHY2kcWSw8Mvr0AZP5rK+LveKStHpOFqtxoTZEiw90u5MP6uQyELhMCB7Eo60Rq3y/zeqC0NJmnZF9ZEH5osJujW0YQQpS6a9uLRowKtLKkDltWa9nMngA4c3Bft3B+WFoXkfebdFq4b3+3k4mEN0x1I9yPiPARIHf7/3uMc/H4aaQeT5371AhYmDa3ssPBxEP4Qj/LP7WQK6xKk+M7saQQOE2j+ee33/qkRcgOD72j6EQ93B5Dy9/apC00KOvbA9NQH5Qsh+sLz8gNQDOv94vNSALALTwH09Db9OgoZBL/2x/orCCcGAfkf+cQFaQd9+0H4QwPlB/b9IvjeAK4HOgCn+MP+4wYlAq/5EP2qBZsDD/vZ+ywEkQSh/CX7kQIGBTv+7vr/AAMFvf8m+5X/mgQKAbn7af7jAxECjfyJ/fkCyAKI/fz89AErA5D+wvzuAD8Djv/S/P3/DgNvACH9L/+mAicBnv2Q/hcCqwE5/ib+cwH7AeL+8f3KABYCZwEa/mT+mgHFAbX+H/77APEBVP8L/mAA7wHp/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFZN4N1KGe5dJWZCXFsTrRrkR2NpHFksPDL69AFdu8vCQaQURZ8EC8pAXgQbYDOcG785066xNyynDlxS8mIJDWXtu8IgMoLuSz1d0Uiiv+8TrUZAcVK+D+dNZT+0Un8Qmm22nx5yCVEvfiH+rdGHgYguum5QkQixtq9O7jPQf5G+38suQs/x4aawSF51z4dhZ0Ct/rKvOQEcUOLfHB7/0LRRHg9iTuSgYIEnX8L+7vAD8RfgGj70z8NQ+rBS3yo/hDDMYIcPUb9scIuQoO+bz0HAWJC7H8dfSUAU8LDAAk9XP+NwroApb25/t6CB0FkfgO+lEGlgbY+vX4+gNSBzL9lPiqAV0HbP/Z+JH/0AZcAaX50P3OBegC1PqBYFoS06Xd4XZSZChgtvvO8T/3N1TKysIUK8lAmN9DveEVKENL9Nq9FALYP9sGncMK8fI3IhZRzbXjxSxkIZ3ZmNqxH1UoJefN1QcSDCum9BHV9ATwKQ0B29ds+akliwtr3R3wBR+RE+nkcunnFtkYce2O5QkQixtq9O7jPQf5G+38suQs/x4aawSF51z4dhZ0Ct/rKvOQEcUOLfHB7/0LRRHg9iTuSgYIEnX8L+7vAD8RfgGj70z8NQ+rBS3yo/hDDMtsTQPul2XujGFxHoCmV9Y3UCYzBronxRI7vEA50C67XCQqR+/mJrgeDv5GSPxHuwz6NEHDDmfDaukXN1cdI88J3RkqbycG3UPVrhvmLKLrCdIyDf4ts/nw0s//RCswBkrXafSCJVYQOt6f658dsBfT5sDljBQSHCfw1eIvC5MdXPmq4lACghy6Adrkk/pVGboI3+hp9J0U/w0j7hPw9Q5gEQr0pu3yCN8SBvoK7R0DphKY/wbu5v37EF8ES/Cf+TUOGQh683v2twqiCg75vPQcBYkLsfx19JQBTwsMACT1c/43CugClvbn+3oIHQWR+A76UQaWBtj69fj6A1IHMv2U+KoBXQds/9n4kf/QBlwBpfnQ/c4F6ALU+n38ewT/Az/8pPsAA5sEwv1E+4ABwgQ4/1L7GgCDBIcAvfvn/vEDmgFw/Pj9JANjAlD9Vf02At4CRv4B/T4BDQM7//b8UgD3AhoAK/2D/6cC1wCR/dv+LgJnARr+ZP6aAcUBtf4f/vsA8QFU/wv+YADvAen/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVk3g3UoZ7l0lZkJcWxOtGuRHY2kcWSw8Mvr0AV27y8JBpBRFnwQLykBeBBtgM5wbvznTrrE3LKcOXFLyYgkNZe27wiAygu5LPV3RSKK/7xOtRkBxUr4P501lP7RSfxCabbafHnIJUS9+If6t0YeBiC66blCRCLG2r07uM9B/kb7fyy5Cz/HhprBIXnXPh2FnQK3+sq85ARxQ4t8cHv/QtFEeD2JO5KBggSdfwv7u8APxF+AaPvTPw1D6sFLfKj+EMMxghw9Rv2xwi5Cg75vPQcBYkLsfx19JQBTwsMACT1c/43CugClvbn+3oIHQWR+A76UQaWBtj69fj6A1IHMv2U+KoBXQds/9n4kf/QBlwBpfnQ/c4F6ALU+n38ewT/Az/8pPsAA5sEwv1E+4ABwgQ4/1L7GgCDBIcAvfvn/vEDmgFw/Pj9JANjAlD9Vf02At4CRv4B/T4BDQM7//b8UgD3AhoAK/2D/6cC1wCR/dv+LgJnARr+ZP6aAcUBtf4f/vsA8QFU/wv+YADvAen/AAAAAAAAAAAAAAAAAAAAAAAABWTeDdShnuXSVmQlxbE60a5EdjaRxZLDwy+vQBXbvLwkGkFEWfBAvKQF4EG2AznBu/OdOusTcspw5cUvJiCQ1l7bvCIDKC7ks9XdFIor/vE61GQHFSvg/nTWU/tFJ/EJpttp8ecglRL34h/q3Rh4GILrpuUJEIsbavTu4z0H/3/KCoWGyeTxcM8pSZmWySRb60Bvsbu2U0F0T0LMfKwiJodVOedkqu8L6VMrAGivqvTdS2oVFbq74fs+0SW8yAHU/y7KMJ3ZzculHUM2C+v1yIAMnjaQ++nK5/yUMv0JytDb7x8rfhWN2QXmVyGWHRLktN9bFiIiQu/i3DgLSyMe+kbd1gB7IdYDXeDt90cd0QuD5fnwXheuEQDsPux5EEUVH/PI6UsJoxY2+nPpbwICFrYA9epm/LgTMgbq7Yr3NBBgCt/xEvTsCx0NXvYQ8lMHaA72+nbx0wJcDkf/GvLJYg4b16Re2TtShjC5t1zHlj32Po/Ng7waJ0RGLeSiuNYQ6Eao+f+6iPzRQXYMfsJf7Ww4uRlbzUPgQiyhJI/anddfHgQryeh00yEQCi3A9nLTtQIvK2ID+9YQ9ywm4g1A3djt3x66FVvlbucyFq8aYe7r4wkNyhx39yjjMwRLHOT/zeRW/KAZEwdc6O31URWjDEbtQ/HzD18Q8vJ27hwKQRLS+HftVARoEmX+F+7vAD8RfgGj70z8NQ+rBS3yo/hDDMYIcPUb9scIuQoO+bz0HAWJC7H8dfSUAU8LDAAk9XP+NwroApb25/t6CB0FkfgO+lEGlgbY+vX4+gNSBzL9lPiqAV0HbP/Z+JH/0AZcAaX50P3OBegC1Pp9/HsE/wM//KT7AAObBML9RPuAAcIEOP9S+xoAgwSHAL375/7xA5oBcPz4/SQDYwJQ/VX9NgLeAkb+Af0+AQ0DO//2/FIA9wIaACv9g/+nAtcAkf3b/i4CZwEa/mT+mgHFAbX+H/77APEBVP8L/mAA7wHp/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABWTeDdShnuXSVmQlxbE60a5EdjaRxZLDwy+vQBXbvLwkGkFEWfBAvKQF4EG2AznBu/OdOusTcspw5cUvJiCQ1l7bvCIDKC7ks9XdFIor/vE61GQHFSvg/nTWU/tFJ/EJpttp8ecglRL34h/q3Rh4GILrpuUJEIsbavTu4z0H+Rvt/LLkLP8eGmsEhedc+HYWdArf6yrzkBHFDi3xwe/9C0UR4PYk7koGCBJ1/C/u7wA/EX4Bo+9M/DUPqwUt8qP4QwzGCHD1G/bHCLkKDvm89BwFiQux/HX0lAFPCwwAJPVz/jcK6AKW9uf7eggdBZH4DvpRBpYG2Pr1+PoDUgcy/ZT4qgFdB2z/2fiR/9AGXAGl+dD9zgXoAtT6ffx7BP8DP/yk+wADmwTC/UT7gAHCBDj/UvsaAIMEhwC9++f+8QOaAXD8+P0kA2MCUP1V/TYC3gJG/gH9PgENAzv/9vxSAPcCGgAr/YP/pwLXAJH92/4uAmcBGv5k/poBxQG1/h/++wDxAVT/C/5gAO8B6f8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" type="audio/wav" />
+                    Your browser does not support the audio element.
+                </audio>
+              </div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1507,16 +1251,16 @@ the output entropy <span class="math notranslate nohighlight">\(H(\b{y})\le\sum_
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<audio  controls="controls" >
-    <source src="data:audio/wav;base64,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" type="audio/wav" />
-    Your browser does not support the audio element.
-</audio>
-</div><div class="output text_html">
-<audio  controls="controls" >
-    <source src="data:audio/wav;base64,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" type="audio/wav" />
-    Your browser does not support the audio element.
-</audio>
-</div></div>
+                <audio  controls="controls" >
+                    <source src="data:audio/wav;base64,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" type="audio/wav" />
+                    Your browser does not support the audio element.
+                </audio>
+              </div><div class="output text_html">
+                <audio  controls="controls" >
+                    <source src="data:audio/wav;base64,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" type="audio/wav" />
+                    Your browser does not support the audio element.
+                </audio>
+              </div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1528,20 +1272,20 @@ the output entropy <span class="math notranslate nohighlight">\(H(\b{y})\le\sum_
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<audio  controls="controls" >
-    <source src="data:audio/wav;base64,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" type="audio/wav" />
-    Your browser does not support the audio element.
-</audio>
-</div><div class="output text_html">
-<audio  controls="controls" >
-    <source src="data:audio/wav;base64,UklGRsQPAABXQVZFZm10IBAAAAABAAEAoA8AAEAfAAACABAAZGF0YaAPAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQABEAAgDz/+///P8LABAABgD4//H/+P8GAA4ACQD8//P/9v8CAAwACgAAAPb/9f///wkACwADAPn/9v/8/wUACgAFAPz/9//6/wIACAAGAP//+f/5/wAABgAHAAAA+//5////BAAGAAIA/f/6//3/AgAGAAMA///7//z/AAAFAAQAAAD8//z/JW0mD0CZNuO8Xskon6r4zPZKcTs6wAq+HDSXRrrXm7aGHHlK6e4itj0G6Uf/A2u7lPIBQM8VmcX74g80CSPN0hbY8yWoK5XhydHFFo8vxPA90AUI9i7C/rLS8vrgKtIKSdgN8O0jUxRY4BzoFxusGqXpR+OIEQ4eU/NW4eUHjh6t/DfiE/94HM8ETeWy94cYZQsB6vrxLBMkENjvRe4PDdQSC/aI7OIGrhMe/IrsAwHWEqYBJ+7y+5MQU3MOADeRmvBRaEEd0Z+L1qtW3TPws5/DskD5QiHLVbjfKIdKDuNetFERE0vJ+QO32fuKRaANFb/q6VE7cR06OIDrI8fRC0g4dPxtydb72zMyC73Pje7yK9oW8tii5Lwh+h7i41XeWBZzI3Tvp9vbCmwknvpC3DgAcCKfBJ3fE/fUHagMFeUn8LkXihK/61PrkRAwFjbz8egSCV4XfvrM6B4CoBYYAWDq6fs1FMQGkO309m4Q7wq38YnzCAypDVL2gPFFB/QOH/v78JkCxA6H/8Dxgv6ND38DhvGc+igNBgdb9KX3AwpkCaz31fWdBrMKH/sG9SYD/QqE/kH18P9NCnkBTvZB/fMI4gPu9yL7EweqBQL6vPniBK8GOvwP+a0CDQdo/v74jQDPBmwAh/mz/gcGFAJ++kD96wRVA7v7M/ySAycEKP2f+x8CfgSU/n37wAByBOb/tfuA/w4EDQFC/Hr+YQPtAQX9vf2PAogC5P1F/aUB2gLT/hn9ugDiArP/MP3p/7ECdgB5/TT/UQIjAx7+uvxaAVQDKf+w/FoAPAMbAOj8d//mAusAWP3A/mAChwHu/T/+vwHuAZb+8/0SAR8CRP/c/WgAHALn/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAEQACAPP/7//8/wsAEAAGAPj/8f/4/wYADgAJAPz/8//2/wIADAAKACVtGA8wmTTjyF7YKKSq7sznSmo7QsAYviQ0kkat15K2ihyFSvLuELYgBtxHDQSFu6Py+D+3FYjFAeMmNBwjytIC2OElpyu34e7RyxZzL5/wMtAdCBkv0f6g0uH63yrhClnYEfDgI0IUU+An6Ccbsxqc6TjjfxEUHmHzX+HiB4Eeo/w44h//gxzPBEPlp/eFGG4LDOr98SUTGhDT70ruGQ3ZEgf2f+zcBrATJvyQ7AIBzhKfASfu+fuaEC4G5vD192INlgl79DP1kQmyC2z4t/OWBZcMYfyKYNsQlaVF4+ZSGifFtSHQrUD3Nn7Jo8MALBhAnN7KvegWzEJB8w2+GAPLP+AFiMP58SY4QhUAzYHkMS2wIBzZMttCINYnieYz1qsSvyr980PVngXYKWcA2tcL+sAl9gpC3afwQB8UE57k4Ok+F3wYEO3Z5ZEOJhvG9YDkAwZBGwD+iuVC/i8ZKwWF6Mb3axXgCu7s6PKBEN0ONPLO7wMLFhHK93HudAWgETX9ru5HAK4QCgJC8Nz7mBAvBunw9/diDZQJefQz9ZQJtAts+LXzlAWWDGP8aPO5AVcMDQAn9E7+JgssA7v1h/tACZQF4/eD+eUGMAdg+lD4VwT9B/H85/fRAQgIXv8y+Ij/cAd8ARD5nf1VBiwDW/or/OQEXATo+z77RgMGBY391fqjATEFJv/l+hwA7ASTAFr7zv5NBL8BHPzI/W4DmwIR/Rf9agIiAx7+u/xbAVQDKf+v/FkAPAMcAOj8d//mAuoAWP3A/mECiAHt/T7+vwHuAZf+8/0SAR4CRP/d/WkAHALn/wAAAAAAAAAAAAAAAAAAAAAQABEAAgDz/+///P8LABAABgD4//H/+P8GAA4ACQD8//P/9v8CAAwACgAAAAUABgABAPz/+v///wMABQACAP3/+//9/wIABQADAP///P/9/wAABAADAAAA/f/8/wAAAwADAAEA/v/9////AgADAAEA///9//7/AAADAAIAAAD+//7/AAACAAIAAAD+//7/AAABAAIAAQD///7///8AAAIAAQAAAP7///8AAAEAAQAAAP////8AAAEAAQAAAP////8AAAAAAQAAAAAA//8AAAAAAQAAAAAA/////wAAAQABAAAAAAD//wAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlbSIPPJk1479ezSihqvbM8kpvOzzADr4fNJZGtteYtoccfErs7hG2KAbjRw0Efruc8vc/vBWPxQPjITQVI8jSBtjnJaorpOHW0cUWgy+28DvQEAgDL8b+qdLl+tsq2QpV2BTw6CNHFFHgH+giG7Qao+k+44ARDx5b817h5geHHqX8NOIZ/4Ac0gRJ5ar3gxhpCwjq/vEqEx4Q0+9G7hYN2RIL9oPs3QatEyL8j+wEAdISoQEl7vX7mBAvBurw9/dyDaUJe/Qm9YMJrwt3+MXzmwWNDFP8X/PAAWYMFwAj9EH+HAsuA8f1kvs/CYoF2PeC+e4GOwdj+kn4TAT4B/b88ffXAQQIVf8r+Ir/eAeDAQ/5lf1OBiwDYvoy/OUEVgTh+zz7SwMNBZD90fqcAS4FKf/r+iAA6gSNAFb7z/5SBMMBHPzE/WkDmgIV/Rz9awIeAxn+ufxeAVkDK/+t/FUAOgMdAOz8ev/lAucAVf3B/mQCigHu/Tz+vAHtAZn+9v0TAR0CQf/b/WoAHwLo/wAA/v///wAAAgABAAAA/////wAAJ20kDzyZNOO9Xs0ooqr3zPNKbjs7wA2+HzSYRrjXmLaGHHtK7O4TtioG40cMBH27nPL3P74VkMUC4yA0FCPI0gfY6CWqK6Ph1tHFFoQvt/A70A8IAy/G/qrS5vrbKtgKVNgT8OgjSBRR4B/oIRu0GqPpP+OAEQ4eW/Ne4eYHhx6l/DTiGP+AHNIESeWq94MYaAsI6v7xKhMeENPvRu4VDf9/LQW+hRPqbHLvJC+X+83FXRA9YK4DurhExkygyI+u6SkQVGTjRau9D5hTefwyrzD4jUwfEva4veR5QCIj7sZU1g4x1y5e113NBSAYNZnovsn1DjQ2Jfn5yj3/2DLJBzvQ5fHxK6UTgtim55EiMRyz4trg1Rc7Ibbtid3xeQYyx5GnwB5hVUoArROtP0QkWcvK+qI5Jq1eaOjEoZoJ31uDAziodPAvUlYasbRB3GZDsStOxeLNcjEDNx/YnsU4Hkk8VOs2w24L/TtW/f7Fhfr5NuQM+cyK7FQuHxn51iziSCONIcHittsRFxEmHu8h2wML9CSM+r3bNgDeIqEEJN//9lIe2wyn5NvvChjYEoXrDuvGEHQW//Kg6EAJvhdo+mroGwL0FigBHOra+3UU0wZK7dr2tRAcC33xUfMvDOENOPZQ8VwHIg8H+8XwqgIBD4X/hfF1/rMNYgNP8/36gAtpBtf1b/i2CHsIzvjb9qUFkQno+z32lQK8Cd/+ffbF/xsJfAF192P92Ae/cBgI2JaL6exhKCPMptrRT09WN3q7VcElOSNEi9I7uLkhoUnQ6S62FQt3SGf/TLrp9rZB2BFXw3HmvTYlIN7PcdoJKccpXt4y0xoaqy5l7ZXQTQsgL677H9LL/cYrMQgV13XycCU0Eo7e3+kQHUoZledR5J8TUh038cfhAwptHqX8NOIZ/4Ac0gRJ5ar3gxhpCwjq/vEqEx4Q0+9G7hYN2RIL9oPs3QatEyL8j+wEAdISoQEl7vX7mBAvBurw9/dhDZMJefQ09ZQJtAts+LTzlAWWDGP8aPO5AVcMDQAn9E/+JgssA7r1h/tACZUF4/eD+eUGMAdg+lD4VwT9B/D85/fRAQkIXv8y+If/bwd8ARD5nf1VBiwDW/or/OQEXATo+z77RgMGBY391fqjATEFJv/l+hwA7ASTAFr7zv5NBL8BHPzI/W4DmwIR/Rf9agIiAy7+zPxeAUcDF/+q/GUATQMjAN/8Z//dAvEAZ/3K/l0CegHj/UD+ywH5AZf+6P0HAR0CTf/o/WwAFQLc//z/BQAKAAUA/P/3//r/AgAIAAYA///5//n/AAAGAAcAAAD7//n///8EAAYAAgD9//r//f8CAAYAAwD///v//P8AAAUABAAAAPz//P8AAAMABAABAP3//P///wIABAACAP///f/+/wEAAwACAAAA/f/+/wAAAgACAAAA/v/+/wAAAgACAAEA///+////AQACAAEAAAD+////AAACAAEAAAD/////AAABAAEAAAD/////AAABAAEAAAAAAP////8AAAEAAQAAAP////8AAAEAAQAAAP////8AAAAAAQAAAAAA//8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" type="audio/wav" />
-    Your browser does not support the audio element.
-</audio>
-</div></div>
+                <audio  controls="controls" >
+                    <source src="data:audio/wav;base64,UklGRsQPAABXQVZFZm10IBAAAAABAAEAoA8AAEAfAAACABAAZGF0YaAPAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAdk3w3RoZ3l1FZlJcOxOdGvRHg2kMWRw8QvsUAbP5nK97vfKS1HpOFotxoTZkiw90q5MP6wQyELg8CB7Ew60Rq2y/zeqS0OJmjZFtZEH5wsJejV0YQQpi6Z9uHRowKuLKkDldWa9nQngA4b3Bft3R+XFoXkfebeFq8b3+3j4mIN1B1I9yLiPARJHf7/3eMc/H4aaQeT5371AxYmDa3ssPBxEP4Qj/LP7WQK6xKk+M3saQQPE2j+eO33/qkRcgOD72f6EQ93B4/y9vapC00KOvbA9NQH5gsh+sHz8gNQDOv94vNSALALTwH09Db9OgoaBL72x/orCCcGAfkf+cQFaQd9+0H4QwPlB/b9IvjeAK4HOgCn+MP+4wYlAq75EP2qBZwDD/vZ+ywEkQSg/CX7kQIGBTv+7vr/AAMFvf8m+5X/mgQKAbn7af7jAxECjfyJ/fkCyAKI/fz89AErA5D+wvzuAD8Djv/S/P3/DgNvACH9L/+mAicBnv2Q/hcCrAE5/ib+cwH7AeL+8f3KABYCZwEa/mT+mgHFAbX+H/77APEBVP8K/mAA7wHp/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA2f/X//r/IQApAAsA5f/Y//D/FQD//+v/6//+/xIAFQAFAPH/6//5/wwAFAAKAPf/7f/1/wYAEQAMAP3/8f/z/wAADgAOAAEA9P/y//3/CQANAAUA+f/z//r/BQAMAAcA/P/1//j/AgAKAAgAAAD3//f/AAAHAAkAAgD6//j//f8FAAgABAD9//n//P8CAAcABQD///r/+/8AAAUABQAAAPv/+////wQABQABAP3/+//+/wIABQADAP///P/9/wEABAADAAAA/f/9/wAAAwADAAAA/v/9////AgADAAEA///9////AQADAAIAAAD+//7/AAACAAIAAAD+//7/AAABAAIAAAD///7///8IZOEN06Gc5dJWYyXDsTvRsUR3No7Fj8PEL4pA7Nq0vEUaa0Rk8CS8fgXSQcsDXcHO85A6yRNbynnl5i8+IIrWQdujIgUoRuTL1eEUdivk8TLUdQcvK+r+ZdY7+zon+wm723bx4SCBEufiIerwGIkYgeuV5fkPiht39P7jQgfvG9z8q+Q0/y4acwR/5074bRZ4CsPrCvOIEdoOS/HN7+0LKBHR9jDuZgYaEm38Fu7cAEQRlQG370v8Ig+WBSrytPhYDMwIYvUH9r8IxQoh+cX0FAV3C6X8evSlAVsLCQAW9Wb+OAr1AqP26PtvCBAFjvgX+l4GmwbR+uj49ANXBz39m/inAVIHZP/a+Jv/2AZcAZz5x/3NBe8C3PqGYFUSyaXZ4X1SbShitvfO6z/zN1XKz8IaK8lAkd88veIVL0NQ9Nm9DwLUP9oGn8MP8fU3HxZLzbLjySxqIZ/ZltquH1MoJefQ1QsSDCui9A3V9ATzKREBs9c/+aAlrAuW3Szw7B5nE9TkhekPF/AYY+1p5fAPlBuL9AnkOwfdG9D8sORF/zsacQRv50D4bBaFCvrrN/ODEasOHfHK7xYMVxHb9g7uOAYKEoj8Qu7wAC8RawGe71r8SA+xBSLykfg7DNZsXgP1l1/uf2FnHoGmZNZEUCcz+LkZxRM7yEBE0C+7VCQgR+vmLLgqDgVHQvw6uwb6OUHNDmzDZ+kPN1AdI88Q3SEqbyf+3DvVrhvtLKnrCtItDfgtsfnz0tX/SSstBkLXZfSFJVwQPt6d63MdghfN5uXluxQfHAfwp+IdC60dh/m/4j4CWhyhAeXkuPpxGbQIvehL9J8UHA5A7hfw3A5CEQL0uu0PCesS9vnu7A8DsxKy/xbu3v3jEE4ET/C0+UcOGQhn82j2tQqyCiH5wPQPBXYLqvyA9KYBWAsEABP1af49CvgCofbk+2wIEQWS+Br6XQaYBs766Pj3A1oHPv2Y+KQBUQdm/974nP/XBlkBm/nJ/dAF8QLb+n38dAT3Az/8q/sHA50Evf09+30BxgQ//1X7FwB8BIMAv/vt/vUDmAFq/PT9JQNoAlX9Vv0yAtoCRf4E/UMBDwM4//L8UAD5Ah4ALf2B/6QC1ACS/d7+MQJnARf+Yf6aAccBuP4g/vkA7gFT/wz+YwDxAef//v///wAAAgABAAAA/v///wAAAQABAAAA/////wAAAQABAAAA/////wAAAAABAAAAAAD/////AAABAAEAAAD/////AAABAAEAAAAAAP//AAAAAAEAAAAAAP//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANn/1//6/yEAKQALAOX/2P/w/xUAJgAUAPhjuw26oafl9VZ+Jb6xHNGVRHg2qsWrw8gvm0D52rO8NxpdRGPwMbyMBdVBwANPwcnzmDrWE2HKcuXZLzcgjtZN26siAig75MPV4hR/K+3xM9RtByYr6P5s1kT7PSf1CbPbcvHmIIkS7OIe6ugYhBiD65zl/g+JG3H0+ONCB/Qb4vys5DH/KBpxBIHnU/hwFnYK5usx85ARvg4m8cDvBAxNEeL2H+5DBgYSefw17vIAPRF4AZ/vTvw7D68FK/Ke+D8Mxwh09R/2yAi2Cgn5uvQgBY4Lsvxz9JABTQsOACj1df42CuUClPbA+1MIGgWy+DX6WgZ7BrL65/gQBHYHQ/2D+IgBSAd3//j4qP/KBkABZfmo/eEFIwP/+nP8RwTRA0H80vsvA6EEm/0V+3MB4gRm/2T7AABXBHEA0PsQ/woEjQFK/Nz9KwOFAm39VP0ZAsACQv4a/VwBFQMm/9n8RwAHAzYAOf12/40CxwCZ/fP+QAJiAQT+UP6bAdkByf4h/uoA3QFP/xj+cwD3Ad7/7v/3/wgAEQAKAPv/8P/1/wMAFmTrDdGhkOXHVmMlzrFG0bJEbzaDxYzDyy+9QBrbtbwaGjxEXfBJvKwF4EGtAy/Bu/OnOvQTcspo5b4vJCCV1mXbvyIAKCXkhtW3FIwrI/Jg1GkH9iq5/mjWbftsJwAKkNtE8dUgpRIY4zPq0xhaGGrrquUlEKQbafTV4yQH/3/fCpyGz+TicLcpPZmjyT5b+EBjsaS2R0F9T1TMiawgJndVKediqv8L+1MsAFivmfTbS3UVI7rA4fM+wyWzyAbUDi/UMJfZv8ucHUc2Fuv+yIAMlTaG++XK8PyhMgEKwtDQ7xwrhBWW2QrmVCGNHQvktd9kFikiQO/a3DELTCMk+kzd2AB3Ic8DWuDx904d1Qt/5fPwWxewEQbsQux5EEAVGvPH6U8JqBY3+m7pagIBFrkA+epo/LYTLgbn7Yz3ORBjCt3xDvTpCx4NYfYT8lMHZQ7z+nXx1gJgDkj/GPLJYg0b1qRg2T5ShjC1t1nHmD36PpDNgbwZJ0RGLOSiuNkQ6kam+fu6h/zUQXgMfcJd7Ww4uRlbzUTgRCyiJI3am9dgHgYryehz0yAQCi3A9nLTtgIwK2ED+dYP9y4m4w1A3dft3h66FVrlb+czFq8aX+7q4woNyxx39yfjMwRMHOT/zORW/KEZEwdc6O31URWjDEXtQ/HzD18Q8vJ27hwKQRLS+HftVARpEmX+F+7vAEARfgGj70z8NQ+rBSzyo/hDDMYIb/Ub9scIugoO+bv0HAWJC7H8dfSUAU8LDAAk9XP+OAroApb25/t6CB0FkfgO+lEGlgbY+vX4+gNSBzL9lPiqAV0HbP/Z+JH/0AZcAaX50P3OBegC1Pp9/HwE/wM//KT7AAObBML9RPuAAcIEOP9S+xoAgwSHAL375/7xA5oBcPz4/SQDYwJQ/VX9NgLfAkb+Af0+AQ0DO//2/FIA9wIaACv9g/+oAtcAkf3b/i4CZwEa/mT+mgHFAbX+H/77APEBVP8K/mAA7wHp/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB2TfDdGhneXUVmUlw7E50a9EeDaQxZHDxC+xQBTburwlGkNEWfA/vKUF4kG2AzfBuvOfOusTccpv5cYvJiCP1l3bvCIEKC3kstXeFIsr/fE51GQHFivg/nPWUvtGJ/EJpdto8egglRL24h7q3Rh5GIHrpeUJEIwbavTt4z0H+hvs/LLkLP8fGmsEhOdc+HcWdQre6yrzkBHFDi3xwe/+C0YR4PYk7koGCBJ1/C/u7wBAEX4Bo+9M/DUPqwUs8qP4QwzGCG/1G/bHCLoKDvm79BwFiQux/HX0lAFPCwwAJPVz/jgK6AKW9uf7eggdBZH4DvpRBpYG2Pr1+PoDUgcy/ZT4qgFdB2z/2fiR/9AGXAGl+dD9zgXoAtT6ffx8BP8DP/yk+wADmwTC/UT7gAHCBDj/UvsaAIMEhwC9++f+8QOaAXD8+P0kA2MCUP1V/TYC3wJG/gH9PgENAzv/9vxSAPcCGgAr/YP/qALXAJH92/4uAmcBGv5k/poBxQG1/h/++wDxAVT/Cv5gAO8B6f8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" type="audio/wav" />
+                    Your browser does not support the audio element.
+                </audio>
+              </div><div class="output text_html">
+                <audio  controls="controls" >
+                    <source src="data:audio/wav;base64,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" type="audio/wav" />
+                    Your browser does not support the audio element.
+                </audio>
+              </div></div>
 </div>
 </section>
 <section id="receptive-fields-of-visual-cortex-neurons">
-<h2>Receptive fields of visual cortex neurons<a class="headerlink" href="#receptive-fields-of-visual-cortex-neurons" title="Permalink to this headline">#</a></h2>
+<h2>Receptive fields of visual cortex neurons<a class="headerlink" href="#receptive-fields-of-visual-cortex-neurons" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Cat visual cortex (Hubel &amp; Wiesel)</p></li>
 <li><p>Self-organization (von der Malsburgh)</p></li>
@@ -1551,13 +1295,13 @@ the output entropy <span class="math notranslate nohighlight">\(H(\b{y})\le\sum_
 <li><p>by ICA (Bell &amp; Sejnowski)</p></li>
 </ul>
 <section id="replicating-receptive-field-tuning">
-<h3>Replicating receptive field tuning<a class="headerlink" href="#replicating-receptive-field-tuning" title="Permalink to this headline">#</a></h3>
+<h3>Replicating receptive field tuning<a class="headerlink" href="#replicating-receptive-field-tuning" title="Permalink to this heading">#</a></h3>
 <p>Sanger (1989) trained an <em>autoencoder</em> network with patches from natural images as inputs.
 The PCs learned by <em>generalized Hebbian learning</em> in the hiddenlayers had input weights similar to the receptive field propertis of visual cortical neurons.</p>
 </section>
 </section>
 <section id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Bishop CM (2006) Pattern Recognition and Machine Learning. Springer. <a class="reference external" href="https://www.microsoft.com/en-us/research/people/cmbishop/prml-book/">https://www.microsoft.com/en-us/research/people/cmbishop/prml-book/</a></p>
 <ul>
@@ -1572,7 +1316,7 @@ The PCs learned by <em>generalized Hebbian learning</em> in the hiddenlayers had
 </li>
 </ul>
 <section id="self-organization">
-<h3>Self Organization<a class="headerlink" href="#self-organization" title="Permalink to this headline">#</a></h3>
+<h3>Self Organization<a class="headerlink" href="#self-organization" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Hubel DH, Wiesel TN (1959). Receptive fields of single neurones in the cat’s striate cortex. Journal of Physiology, 148, 574-91. <a class="reference external" href="http://doi.org/10.1113/jphysiol.1959.sp006308">http://doi.org/10.1113/jphysiol.1959.sp006308</a></p></li>
 <li><p>Hubel DH, Wiesel TN (1962). Receptive fields, binocular interaction and functional architecture in the cat’s visual cortex. Journal of Physiology, 160, 106-154. <a class="reference external" href="http://doi.org/10.1113/jphysiol.1962.sp006837">http://doi.org/10.1113/jphysiol.1962.sp006837</a></p></li>
@@ -1583,14 +1327,14 @@ The PCs learned by <em>generalized Hebbian learning</em> in the hiddenlayers had
 </ul>
 </section>
 <section id="pca">
-<h3>PCA<a class="headerlink" href="#pca" title="Permalink to this headline">#</a></h3>
+<h3>PCA<a class="headerlink" href="#pca" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Sanger TD (1989). Optimal unsupervised learning in a single-layer linear feedforward neural network. Neural Networks, 2, 459-473. <a class="reference external" href="http://doi.org/10.1016/0893-6080(89)90044-0">http://doi.org/10.1016/0893-6080(89)90044-0</a></p></li>
 <li><p>Turk M, Pentland A (1991). Eigenfaces for recognition. Journal of Cognitive Neurosciece, 3, 71-86. <a class="reference external" href="http://doi.org/10.1162/jocn.1991.3.1.71">http://doi.org/10.1162/jocn.1991.3.1.71</a></p></li>
 </ul>
 </section>
 <section id="infomax-and-ica">
-<h3>Infomax and ICA<a class="headerlink" href="#infomax-and-ica" title="Permalink to this headline">#</a></h3>
+<h3>Infomax and ICA<a class="headerlink" href="#infomax-and-ica" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Linsker R (1986). From basic network principles to neural architecture. Proceedings of the National Academy of Sciences, USA, 83, 7508-7512, 8390-8394, 8779-8783.  <a class="reference external" href="http://doi.org/10.1073/pnas.83.19.7508">http://doi.org/10.1073/pnas.83.19.7508</a></p></li>
 <li><p>Bell AJ, Sejnowski TJ (1995). An information-maxization approach to blind separation and blind deconvolution. Neural Comput, 7, 1129-1159. <a class="reference external" href="http://doi.org/10.1162/neco.1995.7.6.1129">http://doi.org/10.1162/neco.1995.7.6.1129</a></p></li>
@@ -1615,7 +1359,7 @@ The PCs learned by <em>generalized Hebbian learning</em> in the hiddenlayers had
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -1623,50 +1367,133 @@ The PCs learned by <em>generalized Hebbian learning</em> in the hiddenlayers had
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="Reinforcement_Exercise.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Chapter 4. Reinforcement Learning: Exercise</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Reinforcement_Exercise.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chapter 4. Reinforcement Learning: Exercise</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="Unsupervised_Exercise.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="Unsupervised_Exercise.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Unsupervised Learning: Exercise</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contents">Contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means-clustering">K-means Clustering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mixtures-of-gaussians">Mixtures of Gaussians</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expectation-maximization-em-algorithm">Expectation-maximization (EM) Algorithm</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e-expectation-step">E (expectation) step</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#m-maximization-step">M (maximization) step</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dirichlet-process-mixture">Dirichlet Process Mixture</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikit-learn">scikit-learn</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principal-component-analysis">Principal Component Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#singular-value-decomposition-svd">Singular value decomposition (SVD)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#online-pca">Online PCA</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#infomax-principle">Infomax principle</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#independent-component-analysis-ica">Independent component analysis (ICA)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ica-by-infomax">ICA by Infomax</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#playing-sound">Playing sound</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#receptive-fields-of-visual-cortex-neurons">Receptive fields of visual cortex neurons</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#replicating-receptive-field-tuning">Replicating receptive field tuning</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#self-organization">Self Organization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pca">PCA</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#infomax-and-ica">Infomax and ICA</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Kenji Doya<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Kenji Doya
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

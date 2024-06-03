@@ -1,112 +1,177 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Chapter 7: Deep Learning &#8212; Brain Computation</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Deep';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Chapter 7: Deep Learning: Exercise" href="Deep_Exercise.html" />
     <link rel="prev" title="Bayesian Approaches: Exercise" href="Bayesian_Exercise.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
-    
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="BrainComputation.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="_static/BC_logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Brain Computation</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="_static/BC_logo.png" class="logo__image only-light" alt="Brain Computation - Home"/>
+    <script>document.write(`<img src="_static/BC_logo.png" class="logo__image only-dark" alt="Brain Computation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -116,583 +181,232 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="Introduction.html">
-   Chapter 1. Introduction
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="Neurons.html">
-   Chapter 2. Neural Modeling and Analysis
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Neurons_Exercise.html">
-     Chapter 2. Neural Modeling and Analysis: Exercise
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="Supervised.html">
-   Chapter 3: Supervised Learning
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Supervised_Exercise.html">
-     Supervised Learning: Exercise
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="Reinforcement.html">
-   Chapter 4. Reinforcement Learning
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Reinforcement_Exercise.html">
-     Chapter 4. Reinforcement Learning: Exercise
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="Unsupervised.html">
-   Chapter 5. Unsupervised Learning
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Unsupervised_Exercise.html">
-     Unsupervised Learning: Exercise
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="Bayesian.html">
-   Chatper 6. Bayesian Approaches
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Bayesian_Exercise.html">
-     Bayesian Approaches: Exercise
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
-   Chapter 7: Deep Learning
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Deep_Exercise.html">
-     Chapter 7: Deep Learning: Exercise
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Multiple.html">
-   Chapter 8. Multiple Agents
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Meta.html">
-   Chapter 9. Meta-Learning
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html">Chapter 1. Introduction</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Neurons.html">Chapter 2. Neural Modeling and Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Neurons_Exercise.html">Chapter 2. Neural Modeling and Analysis: Exercise</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Supervised.html">Chapter 3: Supervised Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Supervised_Exercise.html">Supervised Learning: Exercise</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Reinforcement.html">Chapter 4. Reinforcement Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Reinforcement_Exercise.html">Chapter 4. Reinforcement Learning: Exercise</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Unsupervised.html">Chapter 5. Unsupervised Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Unsupervised_Exercise.html">Unsupervised Learning: Exercise</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Bayesian.html">Chatper 6. Bayesian Approaches</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Bayesian_Exercise.html">Bayesian Approaches: Exercise</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Chapter 7: Deep Learning</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Deep_Exercise.html">Chapter 7: Deep Learning: Exercise</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="Multiple.html">Chapter 8. Multiple Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Meta.html">Chapter 9. Meta-Learning</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/Deep.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Deep.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
 </div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/Deep.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
 
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#contents">
-   Contents
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#multi-layer-neural-networks">
-   7.1 Multi-Layer Neural Networks
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#universality-of-multi-layer-neural-networks">
-     Universality of multi-layer neural networks
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#recurrent-neural-networks">
-     Recurrent neural networks
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#back-propagation-learning">
-   7.2 Back-Propagation Learning
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-sine-wave">
-     Example: Sine wave
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#deep-nn-for-classification">
-     Deep NN for classification
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#example-exclusive-or">
-       Example: Exclusive OR
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#example-donut">
-       Example: Donut
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#multi-class-classification">
-     Multi-class classification
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#deep-generative-models">
-   7.3 Deep Generative Models
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#boltzmann-machine">
-     Boltzmann machine
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#deep-generative-networks">
-     Deep generative networks
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#restricted-boltzmann-machines">
-   7.4 Restricted Boltzmann Machines
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#learning-by-contrastive-divergence-cd">
-     Learning by contrastive divergence (CD)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-digits">
-     Example: Digits
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#variational-autoencoders-vae">
-   7.5 Variational Autoencoders (VAE)
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#reparametrization-trick">
-     Reparametrization trick
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#deep-learning-tools-and-pre-trained-weights">
-   7.6 Deep learning tools and pre-trained weights
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visual-cortex-and-covolutional-networks">
-   7.7 Visual cortex and covolutional networks
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#simple-and-complex-receptive-fields">
-     Simple and complex receptive fields
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#neocognitron">
-     Neocognitron
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#analyzing-neural-coding-by-trained-deep-networks">
-     Analyzing neural coding by trained deep networks
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   References
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Chapter 7: Deep Learning</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#contents">
-   Contents
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#multi-layer-neural-networks">
-   7.1 Multi-Layer Neural Networks
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#universality-of-multi-layer-neural-networks">
-     Universality of multi-layer neural networks
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#recurrent-neural-networks">
-     Recurrent neural networks
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#back-propagation-learning">
-   7.2 Back-Propagation Learning
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-sine-wave">
-     Example: Sine wave
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#deep-nn-for-classification">
-     Deep NN for classification
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#example-exclusive-or">
-       Example: Exclusive OR
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#example-donut">
-       Example: Donut
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#multi-class-classification">
-     Multi-class classification
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#deep-generative-models">
-   7.3 Deep Generative Models
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#boltzmann-machine">
-     Boltzmann machine
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#deep-generative-networks">
-     Deep generative networks
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#restricted-boltzmann-machines">
-   7.4 Restricted Boltzmann Machines
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#learning-by-contrastive-divergence-cd">
-     Learning by contrastive divergence (CD)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-digits">
-     Example: Digits
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#variational-autoencoders-vae">
-   7.5 Variational Autoencoders (VAE)
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#reparametrization-trick">
-     Reparametrization trick
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#deep-learning-tools-and-pre-trained-weights">
-   7.6 Deep learning tools and pre-trained weights
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visual-cortex-and-covolutional-networks">
-   7.7 Visual cortex and covolutional networks
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#simple-and-complex-receptive-fields">
-     Simple and complex receptive fields
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#neocognitron">
-     Neocognitron
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#analyzing-neural-coding-by-trained-deep-networks">
-     Analyzing neural coding by trained deep networks
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   References
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 7: Deep Learning</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contents">Contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-layer-neural-networks">7.1 Multi-Layer Neural Networks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#universality-of-multi-layer-neural-networks">Universality of multi-layer neural networks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recurrent-neural-networks">Recurrent neural networks</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#back-propagation-learning">7.2 Back-Propagation Learning</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-sine-wave">Example: Sine wave</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-nn-for-classification">Deep NN for classification</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-exclusive-or">Example: Exclusive OR</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-donut">Example: Donut</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-class-classification">Multi-class classification</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-generative-models">7.3 Deep Generative Models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#boltzmann-machine">Boltzmann machine</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-generative-networks">Deep generative networks</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#restricted-boltzmann-machines">7.4 Restricted Boltzmann Machines</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-by-contrastive-divergence-cd">Learning by contrastive divergence (CD)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-digits">Example: Digits</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variational-autoencoders-vae">7.5 Variational Autoencoders (VAE)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reparametrization-trick">Reparametrization trick</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-learning-tools-and-pre-trained-weights">7.6 Deep learning tools and pre-trained weights</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-cortex-and-covolutional-networks">7.7 Visual cortex and covolutional networks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-and-complex-receptive-fields">Simple and complex receptive fields</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neocognitron">Neocognitron</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analyzing-neural-coding-by-trained-deep-networks">Analyzing neural coding by trained deep networks</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="chapter-7-deep-learning">
-<h1>Chapter 7: Deep Learning<a class="headerlink" href="#chapter-7-deep-learning" title="Permalink to this headline">#</a></h1>
+<h1>Chapter 7: Deep Learning<a class="headerlink" href="#chapter-7-deep-learning" title="Permalink to this heading">#</a></h1>
 <div class="math notranslate nohighlight">
 \[ % Latex macros
 \newcommand{\mat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
@@ -704,7 +418,7 @@ title="Print to PDF"
 \newcommand{\z}{\boldsymbol{z}}
 \]</div>
 <section id="contents">
-<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">#</a></h2>
+<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>7.1 Multi-Layer Neural Networks (Bishop, Chater 5)</p>
 <ul>
@@ -712,7 +426,7 @@ title="Print to PDF"
 <li><p>Recurrent neural networks</p></li>
 </ul>
 </li>
-<li><p>7.2 Back-Bropagation Learning</p>
+<li><p>7.2 Back-Propagation Learning</p>
 <ul>
 <li><p>Function approximation</p></li>
 <li><p>Classification</p></li>
@@ -736,7 +450,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="multi-layer-neural-networks">
-<h2>7.1 Multi-Layer Neural Networks<a class="headerlink" href="#multi-layer-neural-networks" title="Permalink to this headline">#</a></h2>
+<h2>7.1 Multi-Layer Neural Networks<a class="headerlink" href="#multi-layer-neural-networks" title="Permalink to this heading">#</a></h2>
 <p>In the classic perceptrons and standard linear regression models, the input features <span class="math notranslate nohighlight">\(\b{\phi}(\x)\)</span> were fixed and only the output connection weights <span class="math notranslate nohighlight">\(\w\)</span> were changed by learning to compute the output</p>
 <div class="math notranslate nohighlight">
 \[
@@ -764,7 +478,7 @@ y = w^o_{0} + \sum_{i=1}^M w^o_{i} h_i
 \[
     g(u)=\max(u, 0).
 \]</div>
-<p>Learning of the hidden unit weights <span class="math notranslate nohighlight">\(w^h_{ij}\)</span> is possible by error gradient descenct when the nonlinear function <span class="math notranslate nohighlight">\(g(\ )\)</span> is differentiable.</p>
+<p>Learning of the hidden unit weights <span class="math notranslate nohighlight">\(w^h_{ij}\)</span> is possible by error gradient descent when the nonlinear function <span class="math notranslate nohighlight">\(g(\ )\)</span> is differentiable.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -802,24 +516,24 @@ y = w^o_{0} + \sum_{i=1}^M w^o_{i} h_i
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Deep_6_0.png" src="_images/Deep_6_0.png" />
+<img alt="_images/ba4cb0a7cdbf45eb24460f76fa3913e01d5af4be92ef5f3302c1d17dd3cb2e53.png" src="_images/ba4cb0a7cdbf45eb24460f76fa3913e01d5af4be92ef5f3302c1d17dd3cb2e53.png" />
 </div>
 </div>
 <section id="universality-of-multi-layer-neural-networks">
-<h3>Universality of multi-layer neural networks<a class="headerlink" href="#universality-of-multi-layer-neural-networks" title="Permalink to this headline">#</a></h3>
+<h3>Universality of multi-layer neural networks<a class="headerlink" href="#universality-of-multi-layer-neural-networks" title="Permalink to this heading">#</a></h3>
 <p>It has been shown that the two-layer network can approximate any nonlinear function to any desired accuracy using sufficiently large number of hidden units, called <em>universality</em> of multi-layer neural networks.</p>
-<p>While just two layers are theoretically enough, it has been shown in applications of multi-layer neural networks that three or more deeper neural networks are more capable in learning complex functiona approximation or classification tasks.</p>
+<p>While just two layers are theoretically enough, it has been shown in applications of multi-layer neural networks that three or more deeper neural networks are more capable in learning complex function approximation or classification tasks.</p>
 </section>
 <section id="recurrent-neural-networks">
-<h3>Recurrent neural networks<a class="headerlink" href="#recurrent-neural-networks" title="Permalink to this headline">#</a></h3>
+<h3>Recurrent neural networks<a class="headerlink" href="#recurrent-neural-networks" title="Permalink to this heading">#</a></h3>
 <p>A discrete-time recurrent neural networks can be considered, by spatial unrolling, as a deep neural network with the same weights shared across all layers.</p>
 <p>Thus back-propagation algorithm below can be used for supervised learning of recurrent neural networks.
 It is known as <em>back-propatation through time</em>.</p>
-<p>As a collorary to the universality of two-layer neural networks, recurrent neural networks can approximate arbitrary dynamical systems.</p>
+<p>As a corollary to the universality of two-layer neural networks, recurrent neural networks can approximate arbitrary dynamical systems.</p>
 </section>
 </section>
 <section id="back-propagation-learning">
-<h2>7.2 Back-Propagation Learning<a class="headerlink" href="#back-propagation-learning" title="Permalink to this headline">#</a></h2>
+<h2>7.2 Back-Propagation Learning<a class="headerlink" href="#back-propagation-learning" title="Permalink to this heading">#</a></h2>
 <p>Here we consider a general <span class="math notranslate nohighlight">\(L\)</span>-layer network</p>
 <div class="math notranslate nohighlight">
 \[
@@ -870,7 +584,7 @@ The blue lines show the propagation of errors through layer 2 to one unit in lay
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Deep_13_0.png" src="_images/Deep_13_0.png" />
+<img alt="_images/0503a8ad6c08e4c0a7f46a7004574bc7afc3e60296145b9815ff37ba9dd3653d.png" src="_images/0503a8ad6c08e4c0a7f46a7004574bc7afc3e60296145b9815ff37ba9dd3653d.png" />
 </div>
 </div>
 <p>Using these error gradients, all the weights can be updated by</p>
@@ -880,7 +594,7 @@ The blue lines show the propagation of errors through layer 2 to one unit in lay
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\alpha&gt;0\)</span> is a learning rate paramter.</p>
 <p>This is called <em>error back-propagation</em> learning algorithm.</p>
-<p>Below is a sample implementation of back-propagation with sigmoid hidden utins and liner output units.</p>
+<p>Below is a sample implementation of back-propagation with sigmoid hidden units and linear output units.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DNN</span><span class="p">:</span>
@@ -953,7 +667,7 @@ The blue lines show the propagation of errors through layer 2 to one unit in lay
 </div>
 </div>
 <section id="example-sine-wave">
-<h3>Example: Sine wave<a class="headerlink" href="#example-sine-wave" title="Permalink to this headline">#</a></h3>
+<h3>Example: Sine wave<a class="headerlink" href="#example-sine-wave" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># sine wave dataset</span>
@@ -972,7 +686,7 @@ The blue lines show the propagation of errors through layer 2 to one unit in lay
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Deep_17_0.png" src="_images/Deep_17_0.png" />
+<img alt="_images/e08c10e93f23277bc56ca614b0d9a1492109a1ea199ca747048d805e4884817d.png" src="_images/e08c10e93f23277bc56ca614b0d9a1492109a1ea199ca747048d805e4884817d.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -999,7 +713,7 @@ The blue lines show the propagation of errors through layer 2 to one unit in lay
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Deep_19_0.png" src="_images/Deep_19_0.png" />
+<img alt="_images/dd230bdc382088363cf1f21988858b7352179b2dd7fb187c7766ae2fd1d96994.png" src="_images/dd230bdc382088363cf1f21988858b7352179b2dd7fb187c7766ae2fd1d96994.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1014,10 +728,10 @@ The blue lines show the propagation of errors through layer 2 to one unit in lay
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.4501789581766773
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.5144462693093358
 </pre></div>
 </div>
-<img alt="_images/Deep_20_1.png" src="_images/Deep_20_1.png" />
+<img alt="_images/c6e029c0654d4f3a041136aacfc50f2e67903db33c7630e82f1eb712409f8244.png" src="_images/c6e029c0654d4f3a041136aacfc50f2e67903db33c7630e82f1eb712409f8244.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1032,7 +746,7 @@ The blue lines show the propagation of errors through layer 2 to one unit in lay
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Deep_21_0.png" src="_images/Deep_21_0.png" />
+<img alt="_images/c37b8bf0d75fd134b71e50d7efdecba9e7e444d6f0b17b8e264d78b495c015b8.png" src="_images/c37b8bf0d75fd134b71e50d7efdecba9e7e444d6f0b17b8e264d78b495c015b8.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1048,12 +762,12 @@ The blue lines show the propagation of errors through layer 2 to one unit in lay
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Deep_22_0.png" src="_images/Deep_22_0.png" />
+<img alt="_images/47e8805b0582e2beea0a00d7097abb4bd745ba516c20610e15fd692ea2f3c18c.png" src="_images/47e8805b0582e2beea0a00d7097abb4bd745ba516c20610e15fd692ea2f3c18c.png" />
 </div>
 </div>
 </section>
 <section id="deep-nn-for-classification">
-<h3>Deep NN for classification<a class="headerlink" href="#deep-nn-for-classification" title="Permalink to this headline">#</a></h3>
+<h3>Deep NN for classification<a class="headerlink" href="#deep-nn-for-classification" title="Permalink to this heading">#</a></h3>
 <p>For binary classification, the target output is <span class="math notranslate nohighlight">\(y^*\in\{0,1\}\)</span> and we use a network with sigmoid output to predict the probablity</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1080,7 +794,7 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 \[
 = -y^*(1-y) + (1-y^*)y = y - y^*. 
 \]</div>
-<p>Below is a modifed class for binary classification.</p>
+<p>Below is a modified class for binary classification.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DNNb</span><span class="p">(</span><span class="n">DNN</span><span class="p">):</span>
@@ -1095,7 +809,7 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 </div>
 </div>
 <section id="example-exclusive-or">
-<h4>Example: Exclusive OR<a class="headerlink" href="#example-exclusive-or" title="Permalink to this headline">#</a></h4>
+<h4>Example: Exclusive OR<a class="headerlink" href="#example-exclusive-or" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ExOr data</span>
@@ -1109,7 +823,7 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Deep_27_0.png" src="_images/Deep_27_0.png" />
+<img alt="_images/60b265fe7a2455d35170ce08b0c518fd293ab1d1e19129140648c3879c331255.png" src="_images/60b265fe7a2455d35170ce08b0c518fd293ab1d1e19129140648c3879c331255.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1147,7 +861,7 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Deep_30_0.png" src="_images/Deep_30_0.png" />
+<img alt="_images/0abf0fa4c670816adda0e7dbdd91292e813b8673c396dd875056a7cbe78fbd30.png" src="_images/0abf0fa4c670816adda0e7dbdd91292e813b8673c396dd875056a7cbe78fbd30.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1162,10 +876,10 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.0009554345805902762
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.0004063218911852009
 </pre></div>
 </div>
-<img alt="_images/Deep_31_1.png" src="_images/Deep_31_1.png" />
+<img alt="_images/a9133f2a9c1b9291365974e5a12335a62dac6a7edebce882576e245ff0574295.png" src="_images/a9133f2a9c1b9291365974e5a12335a62dac6a7edebce882576e245ff0574295.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1185,12 +899,12 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Deep_32_0.png" src="_images/Deep_32_0.png" />
+<img alt="_images/a7bf74af17662b17e3b7acdecac4879fe7d364d0e602434aefec878ecae37428.png" src="_images/a7bf74af17662b17e3b7acdecac4879fe7d364d0e602434aefec878ecae37428.png" />
 </div>
 </div>
 </section>
 <section id="example-donut">
-<h4>Example: Donut<a class="headerlink" href="#example-donut" title="Permalink to this headline">#</a></h4>
+<h4>Example: Donut<a class="headerlink" href="#example-donut" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">200</span>
@@ -1204,7 +918,7 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Deep_35_0.png" src="_images/Deep_35_0.png" />
+<img alt="_images/671c342e19daadbb644e97605be12c1feb1f2ae086f0ad56972acc9f07690cb2.png" src="_images/671c342e19daadbb644e97605be12c1feb1f2ae086f0ad56972acc9f07690cb2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1243,7 +957,7 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Deep_38_0.png" src="_images/Deep_38_0.png" />
+<img alt="_images/36e70abf81c4235df7a5a6db1ecb514bef9875d88ffd35a7e1405c0d56d7ea22.png" src="_images/36e70abf81c4235df7a5a6db1ecb514bef9875d88ffd35a7e1405c0d56d7ea22.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1258,10 +972,10 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.031352018747193657
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.05157825713112135
 </pre></div>
 </div>
-<img alt="_images/Deep_39_1.png" src="_images/Deep_39_1.png" />
+<img alt="_images/4341ae57ec010bf51bae44d08863bd72150909f190a8db137ecb3a3d9d702018.png" src="_images/4341ae57ec010bf51bae44d08863bd72150909f190a8db137ecb3a3d9d702018.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1282,13 +996,13 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Deep_40_0.png" src="_images/Deep_40_0.png" />
+<img alt="_images/67b8a216dbce63b49aa413af6b6b9a933f593e2b0e42adbcf74c683797d9a4ea.png" src="_images/67b8a216dbce63b49aa413af6b6b9a933f593e2b0e42adbcf74c683797d9a4ea.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="multi-class-classification">
-<h3>Multi-class classification<a class="headerlink" href="#multi-class-classification" title="Permalink to this headline">#</a></h3>
+<h3>Multi-class classification<a class="headerlink" href="#multi-class-classification" title="Permalink to this heading">#</a></h3>
 <p>For multiple classes <span class="math notranslate nohighlight">\(K\)</span>, the target output is <span class="math notranslate nohighlight">\(\y^*=(y^*_1,...,y^*_K)\)</span> where only one of the component <span class="math notranslate nohighlight">\(y^*_k=1\)</span> and others are zero.</p>
 <p>In this case the standard activation function is the <em>softmax</em> function</p>
 <div class="math notranslate nohighlight">
@@ -1315,7 +1029,7 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 </section>
 </section>
 <section id="deep-generative-models">
-<h2>7.3 Deep Generative Models<a class="headerlink" href="#deep-generative-models" title="Permalink to this headline">#</a></h2>
+<h2>7.3 Deep Generative Models<a class="headerlink" href="#deep-generative-models" title="Permalink to this heading">#</a></h2>
 <p>In back-propagation, we considered input-output mapping</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1334,14 +1048,14 @@ For a given input <span class="math notranslate nohighlight">\(\x\)</span>, we c
     \y = \arg\max_\z g(\x|\z)
 \]</div>
 <section id="boltzmann-machine">
-<h3>Boltzmann machine<a class="headerlink" href="#boltzmann-machine" title="Permalink to this headline">#</a></h3>
-<p>The Boltzmann machine is a stochastic binary recurrent network consisting of <em>visible</em> and <em>hidden</em> units. The joint distribution over the visible and hidden units is give by the <em>energy function</em>.</p>
+<h3>Boltzmann machine<a class="headerlink" href="#boltzmann-machine" title="Permalink to this heading">#</a></h3>
+<p>The Boltzmann machine is a stochastic binary recurrent network consisting of <em>visible</em> and <em>hidden</em> units. The joint distribution over the visible and hidden units is given by the <em>energy function</em>.</p>
 <p>With sufficient number of hidden units and setting of the connection weights, Boltzmann machines can represent arbitrary distributions over visible units. However, learning of Boltzmann machine is <em>intractable</em>, requiring computation of posterior probabilities for exponentially large number of states.</p>
 <p>The <em>restricted Bolzmann machine (RBM)</em> is a Boltzmann machine having a layered structure, with connections only between subsequent layers and no connections within each layer.
 As described below, RBM can be trained efficiently by an algorithm called <em>contrastive divergence</em>.</p>
 </section>
 <section id="deep-generative-networks">
-<h3>Deep generative networks<a class="headerlink" href="#deep-generative-networks" title="Permalink to this headline">#</a></h3>
+<h3>Deep generative networks<a class="headerlink" href="#deep-generative-networks" title="Permalink to this heading">#</a></h3>
 <p>Early deep generative models were produced by stacking RBMs and train them from the bottom to top. Examples are <em>deep belief networks (DBN)</em> and <em>deep Boltzmann machine (DBM)</em>.
 They were used for pre-training of deep networks for pattern classification, although recently simple back-propagation without pre-training has become popular (Salakhutdinov &amp; Hinton 2012).</p>
 <p>Currently <em>variational auto encoders (VAE)</em> and <em>generative adversarial networks (GAN)</em> are the most popular and successful architectures in image generation.</p>
@@ -1350,7 +1064,7 @@ They were used for pre-training of deep networks for pattern classification, alt
 </section>
 </section>
 <section id="restricted-boltzmann-machines">
-<h2>7.4 Restricted Boltzmann Machines<a class="headerlink" href="#restricted-boltzmann-machines" title="Permalink to this headline">#</a></h2>
+<h2>7.4 Restricted Boltzmann Machines<a class="headerlink" href="#restricted-boltzmann-machines" title="Permalink to this heading">#</a></h2>
 <p>A restricted Boltzmann machine (RBM) is a two-layer network with undirected connections between visible and hidden layers, with no connections among visible or hidden layers. This produces conditional independence of distributions of hidden units given visible units, and visible units given hidden units, which allows efficient learning (Hinton 2010).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1360,7 +1074,7 @@ They were used for pre-training of deep networks for pattern classification, alt
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Deep_48_0.png" src="_images/Deep_48_0.png" />
+<img alt="_images/8540f09b99e6827caaa0401db81c92d3bfb25c8d1a2b0493110a22f8e0e4cfed.png" src="_images/8540f09b99e6827caaa0401db81c92d3bfb25c8d1a2b0493110a22f8e0e4cfed.png" />
 </div>
 </div>
 <p>Here we represent the state of visible units by <span class="math notranslate nohighlight">\(\b{v}\in\{0,1\}^{M_v}\)</span> and hidden units by <span class="math notranslate nohighlight">\(\b{h}\in\{0,1\}^{M_h}\)</span>.
@@ -1390,7 +1104,7 @@ The gradient of the log probability of the energy-based model is given by</p>
  + \sum_{\b{v}}\sum_{\b{h}}p(\b{v},\b{h})\p{E(\b{v},\b{h};\theta)}{\theta} \]</div>
 <p>The first term is data-dependent statistics and the second term is data-independent statistics coming from the partition function.</p>
 <section id="learning-by-contrastive-divergence-cd">
-<h3>Learning by contrastive divergence (CD)<a class="headerlink" href="#learning-by-contrastive-divergence-cd" title="Permalink to this headline">#</a></h3>
+<h3>Learning by contrastive divergence (CD)<a class="headerlink" href="#learning-by-contrastive-divergence-cd" title="Permalink to this heading">#</a></h3>
 <p>Because RBM has no connections between hidden units, the probability of the hidden unit states is conditionally independent given the visible unit state</p>
 <div class="math notranslate nohighlight">
 \[ p(\b{h}|\b{v}) = \prod_{j=1}^{M_h} p(h_j|\b{v}). \]</div>
@@ -1415,11 +1129,11 @@ The gradient of the log probability of the energy-based model is given by</p>
 <p>where <span class="math notranslate nohighlight">\(\delta(\x)\)</span> is a single point distribution at <span class="math notranslate nohighlight">\(\x=0\)</span>.</p>
 <p>The parameters are updated with a learning rate parameter <span class="math notranslate nohighlight">\(\alpha\)</span> as follows.</p>
 <div class="math notranslate nohighlight">
-\[ \Delta W = \alpha [\b{v}_n p(\b{h}|\b{v}_n) - \b{v}_n^K p(\b{h}|\b{v}_n)]  \]</div>
+\[ \Delta W = \alpha [\b{v}_n p(\b{h}|\b{v}_n) - \b{v}_n^K p(\b{h}|\b{v}_n^K)]  \]</div>
 <div class="math notranslate nohighlight">
 \[ \Delta\b{b} = \alpha [\b{v}_n - \b{v}_n^K]  \]</div>
 <div class="math notranslate nohighlight">
-\[ \Delta\b{c} = \alpha [p(\b{h}|\b{v}_n) - p(\b{h}|\b{v}_n)]. \]</div>
+\[ \Delta\b{c} = \alpha [p(\b{h}|\b{v}_n) - p(\b{h}|\b{v}_n^K)]. \]</div>
 <p>This contrastive divergence method has been shown to work well even for small <span class="math notranslate nohighlight">\(K=1\)</span>.
 Instead of this stochastic gradient for each data, <em>mini-batch</em> method to average gradients for tens of data points are often used.</p>
 <div class="cell docutils container">
@@ -1474,7 +1188,7 @@ Instead of this stochastic gradient for each data, <em>mini-batch</em> method to
                 <span class="n">ph</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">pv</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">V</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">K</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">W</span> <span class="o">+=</span> <span class="n">alpha</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">ph</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">ph</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">+=</span> <span class="n">alpha</span><span class="o">*</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">v</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">c</span> <span class="o">+=</span> <span class="n">alpha</span><span class="o">*</span><span class="p">(</span><span class="n">h</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">ph</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">c</span> <span class="o">+=</span> <span class="n">alpha</span><span class="o">*</span><span class="p">(</span><span class="n">ph</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">ph</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
                 <span class="n">mse</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">v</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">v</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
             <span class="n">mse</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">/=</span> <span class="n">N</span>
         <span class="k">return</span> <span class="n">mse</span>
@@ -1484,7 +1198,7 @@ Instead of this stochastic gradient for each data, <em>mini-batch</em> method to
 </div>
 </section>
 <section id="example-digits">
-<h3>Example: Digits<a class="headerlink" href="#example-digits" title="Permalink to this headline">#</a></h3>
+<h3>Example: Digits<a class="headerlink" href="#example-digits" title="Permalink to this heading">#</a></h3>
 <p>Let’s try RBM with the <code class="docutils literal notranslate"><span class="pre">digits</span></code> dataset in <code class="docutils literal notranslate"><span class="pre">sklearn</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1541,7 +1255,7 @@ Instead of this stochastic gradient for each data, <em>mini-batch</em> method to
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Deep_58_0.png" src="_images/Deep_58_0.png" />
+<img alt="_images/8a3506e4116b60708677c65c464fecf211373f5e1a8baa6ed4333ba2542a0fba.png" src="_images/8a3506e4116b60708677c65c464fecf211373f5e1a8baa6ed4333ba2542a0fba.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1555,7 +1269,7 @@ Instead of this stochastic gradient for each data, <em>mini-batch</em> method to
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Deep_59_0.png" src="_images/Deep_59_0.png" />
+<img alt="_images/f2b5df20d68947ea5faa5a4020fc51208f4c9398f4d888f1ca1dfdf459386cfe.png" src="_images/f2b5df20d68947ea5faa5a4020fc51208f4c9398f4d888f1ca1dfdf459386cfe.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1568,7 +1282,7 @@ Instead of this stochastic gradient for each data, <em>mini-batch</em> method to
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Deep_60_0.png" src="_images/Deep_60_0.png" />
+<img alt="_images/83caa8d1a78e3b7748e33b65d0419725f8dde70e7cb805f9fb9830681a179339.png" src="_images/83caa8d1a78e3b7748e33b65d0419725f8dde70e7cb805f9fb9830681a179339.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1579,7 +1293,7 @@ Instead of this stochastic gradient for each data, <em>mini-batch</em> method to
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Deep_61_0.png" src="_images/Deep_61_0.png" />
+<img alt="_images/cc20548319fb598bd886956328b623f3057944b5b83bcbd18f020a58ff56ea7c.png" src="_images/cc20548319fb598bd886956328b623f3057944b5b83bcbd18f020a58ff56ea7c.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1599,14 +1313,14 @@ Instead of this stochastic gradient for each data, <em>mini-batch</em> method to
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Deep_62_0.png" src="_images/Deep_62_0.png" />
+<img alt="_images/418eab08694e188e09b17f1eaeee5772248232f39395f1370cdc7eed8dc0adce.png" src="_images/418eab08694e188e09b17f1eaeee5772248232f39395f1370cdc7eed8dc0adce.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="variational-autoencoders-vae">
-<h2>7.5 Variational Autoencoders (VAE)<a class="headerlink" href="#variational-autoencoders-vae" title="Permalink to this headline">#</a></h2>
-<p>The objective of learning in a generative model is to minimize the discrepacy between the observed data distribution <span class="math notranslate nohighlight">\(p(\x)\)</span> and the generated data distribution</p>
+<h2>7.5 Variational Autoencoders (VAE)<a class="headerlink" href="#variational-autoencoders-vae" title="Permalink to this heading">#</a></h2>
+<p>The objective of learning in a generative model is to minimize the discrepancy between the observed data distribution <span class="math notranslate nohighlight">\(p(\x)\)</span> and the generated data distribution</p>
 <div class="math notranslate nohighlight">
 \[
     \int_\z p_{\theta}(\x|\z) p(\z) d\z
@@ -1640,10 +1354,10 @@ Instead of this stochastic gradient for each data, <em>mini-batch</em> method to
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Deep_65_0.png" src="_images/Deep_65_0.png" />
+<img alt="_images/fea3cdaf999e4c26386987db2dd9c201040419863b15dcbf59abdf2761210aa5.png" src="_images/fea3cdaf999e4c26386987db2dd9c201040419863b15dcbf59abdf2761210aa5.png" />
 </div>
 </div>
-<p>The goal of learning of autoencoder is to reduce the reconstrunction error, or to maximize the likelihood of regenerated data</p>
+<p>The goal of learning of autoencoder is to reduce the reconstruction error, or to maximize the likelihood of regenerated data</p>
 <div class="math notranslate nohighlight">
 \[
     \sum_{n=1}^N\log p_\theta(\x_n) = 
@@ -1658,7 +1372,7 @@ Instead of this stochastic gradient for each data, <em>mini-batch</em> method to
     - \mbox{KL}[q_\phi(\z|\x_n) || p(\z)]
 \]</div>
 <section id="reparametrization-trick">
-<h3>Reparametrization trick<a class="headerlink" href="#reparametrization-trick" title="Permalink to this headline">#</a></h3>
+<h3>Reparametrization trick<a class="headerlink" href="#reparametrization-trick" title="Permalink to this heading">#</a></h3>
 <p>For optimizing the parameters <span class="math notranslate nohighlight">\(\phi\)</span> and <span class="math notranslate nohighlight">\(\theta\)</span> during training the generative model, we want to apply the gradient descent algorithm. We consider a model consisting of two neural networks; one encoder and one decoder network. Since our latent representation <span class="math notranslate nohighlight">\(z\)</span> is a stochastic variable, it is mathematically not possible to backpropagate the error through the stochastic network nodes. Therefore, we need to apply a “reparametrization trick” (Kingma and Welling 2014).</p>
 <p>Instead of encoding the stochastic variable z, it will generate its’ mean and standard deviation plus adding some Gaussian noise (see Figure 4). In that case, <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span> are deterministic, so that we can use backpropagation to update our network parameters during training.</p>
 <div class="cell docutils container">
@@ -1671,43 +1385,42 @@ Instead of this stochastic gradient for each data, <em>mini-batch</em> method to
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Deep_69_0.png" src="_images/Deep_69_0.png" />
+<img alt="_images/0dca0bc3d5255036e1a80e1cd778de356be3bc27983d5223685897c8d49c945d.png" src="_images/0dca0bc3d5255036e1a80e1cd778de356be3bc27983d5223685897c8d49c945d.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="deep-learning-tools-and-pre-trained-weights">
-<h2>7.6 Deep learning tools and pre-trained weights<a class="headerlink" href="#deep-learning-tools-and-pre-trained-weights" title="Permalink to this headline">#</a></h2>
-<p>An important factor in today’s boom in deep learning is the availablity of open-source software tools that are optimized for general-purpose graphics processing units (GPUs). <em>Tensorflow</em> and <em>Pytorch</em> are examples of most popular tools today.</p>
+<h2>7.6 Deep learning tools and pre-trained weights<a class="headerlink" href="#deep-learning-tools-and-pre-trained-weights" title="Permalink to this heading">#</a></h2>
+<p>An important factor in today’s boom in deep learning is the availability of open-source software tools that are optimized for general-purpose graphics processing units (GPUs). <em>Tensorflow</em> and <em>Pytorch</em> are examples of most popular tools today.</p>
 <p>In addition, some of the network weights that were trained by large data sets and achieved high performance in competitions are publicly available. Training of deep neural networks require heavy computing, but running a deep neural network for classification or prediction is much less demanding.
 By downloading such pre-trained weights, anybody can reproduce state-of-the-art performance in deep neural networks. You can further customize or improve the model by adding your own higher layers on top of those pre-trained networks.</p>
 </section>
 <section id="visual-cortex-and-covolutional-networks">
-<h2>7.7 Visual cortex and covolutional networks<a class="headerlink" href="#visual-cortex-and-covolutional-networks" title="Permalink to this headline">#</a></h2>
+<h2>7.7 Visual cortex and covolutional networks<a class="headerlink" href="#visual-cortex-and-covolutional-networks" title="Permalink to this heading">#</a></h2>
 <section id="simple-and-complex-receptive-fields">
-<h3>Simple and complex receptive fields<a class="headerlink" href="#simple-and-complex-receptive-fields" title="Permalink to this headline">#</a></h3>
-<p>Soon after the discovery of orentation selective tuning of cat visual cortex neurons, Hubel &amp; Wiesel further found that there are neurons that show <em>complex</em> receptive fields. Those neurons respond to presentation of bars in particular orientations in different positions in their large receptive fields.</p>
+<h3>Simple and complex receptive fields<a class="headerlink" href="#simple-and-complex-receptive-fields" title="Permalink to this heading">#</a></h3>
+<p>Soon after the discovery of orientation selective tuning of cat visual cortex neurons, Hubel &amp; Wiesel further found that there are neurons that show <em>complex</em> receptive fields. Those neurons respond to presentation of bars in particular orientations in different positions in their large receptive fields.</p>
 <p>They suggested a networks architecutre that simple cells sum together inputs from on- or off-center cells in the thalamus, while complex cells sum together inputs from simple cells with similar orientation selectivity.</p>
 </section>
 <section id="neocognitron">
-<h3>Neocognitron<a class="headerlink" href="#neocognitron" title="Permalink to this headline">#</a></h3>
+<h3>Neocognitron<a class="headerlink" href="#neocognitron" title="Permalink to this heading">#</a></h3>
 <p>Inspired by the simple and complex receptive fields found by Hubel &amp; Wiesel, Fukushima proposed a pattern classification neural network model called <em>Cognitron</em> and then its extended version <em>Neocognitron</em> (Fukushima 1980).</p>
 </section>
 <section id="analyzing-neural-coding-by-trained-deep-networks">
-<h3>Analyzing neural coding by trained deep networks<a class="headerlink" href="#analyzing-neural-coding-by-trained-deep-networks" title="Permalink to this headline">#</a></h3>
-<p>Inspired by the success of deep neural networks in visual object recognition, Yamins and colleagues exlored how such trained deep neural networks can be used to characterize the response properties of higher visual cortex neurons, which are not easy to express by mathematical formulas.</p>
-<p>They first trained a deep neural network to perform visual object recognition task and then used the responses of the higher layers of the deep neural network to predict the activity of visual cortex neurons when the same stimulus was presented.
-They found that the response proporeties of the higest visual cortical area, inferior temporal (IT) cortex, was well predicted using the activities of the highest layer of the trained deep network, while those in the middle level of the visula cortex, area V4, were better predicted by the responses of the intermediate layers of the deep network (Yamins et al. 2014, 2016)</p>
-<figure class="align-default" id="fig-yamins">
-<a class="reference internal image-reference" href="https://www.pnas.org/cms/10.1073/pnas.1403112111/asset/7a11a5c7-9ea1-44fc-8e46-b050d1abda83/assets/graphic/pnas.1403112111fig02.jpeg"><img alt="https://www.pnas.org/cms/10.1073/pnas.1403112111/asset/7a11a5c7-9ea1-44fc-8e46-b050d1abda83/assets/graphic/pnas.1403112111fig02.jpeg" src="https://www.pnas.org/cms/10.1073/pnas.1403112111/asset/7a11a5c7-9ea1-44fc-8e46-b050d1abda83/assets/graphic/pnas.1403112111fig02.jpeg" style="width: 500px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Figure 7.3: Prediction of visual cortical neural activityes by trained deep neural networks (Yamins et al. 2014)</span><a class="headerlink" href="#fig-yamins" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<h3>Analyzing neural coding by trained deep networks<a class="headerlink" href="#analyzing-neural-coding-by-trained-deep-networks" title="Permalink to this heading">#</a></h3>
+<p>Inspired by the success of deep neural networks in visual object recognition, Yamins and colleagues explored how such trained deep neural networks can be used to characterize the response properties of higher visual cortex neurons, which are not easy to express by mathematical formulas.</p>
+<p>They first trained a deep neural network to perform visual object recognition task and then used the responses of the higher layers of the deep neural network to predict the activity of visual cortex neurons when the same stimulus was presented.</p>
+<p>They found that the response propereties of the highest visual cortical area, inferior temporal (IT) cortex, was well predicted using the activities of the highest layer of the trained deep network, while those in the middle level of the visual cortex, area V4, were better predicted by the responses of the intermediate layers of the deep network (Yamins et al. 2014, 2016)</p>
+<blockquote>
+<div><p>{figure-md} Fig_Yamins
+<img src="https://www.pnas.org/cms/10.1073/pnas.1403112111/asset/7a11a5c7-9ea1-44fc-8e46-b050d1abda83/assets/graphic/pnas.1403112111fig02.jpeg" width="500px">
+Figure 7.3: Prediction of visual cortical neural activities by trained deep neural networks (Yamins et al. 2014).</p>
+</div></blockquote>
 </section>
 </section>
 <section id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Bishop CM (2006) Pattern Recognition and Machine Learning. Springer.</p>
 <ul>
@@ -1759,7 +1472,7 @@ They found that the response proporeties of the higest visual cortical area, inf
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -1767,50 +1480,140 @@ They found that the response proporeties of the higest visual cortical area, inf
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="Bayesian_Exercise.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Bayesian Approaches: Exercise</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Bayesian_Exercise.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Bayesian Approaches: Exercise</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="Deep_Exercise.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="Deep_Exercise.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Chapter 7: Deep Learning: Exercise</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contents">Contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-layer-neural-networks">7.1 Multi-Layer Neural Networks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#universality-of-multi-layer-neural-networks">Universality of multi-layer neural networks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recurrent-neural-networks">Recurrent neural networks</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#back-propagation-learning">7.2 Back-Propagation Learning</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-sine-wave">Example: Sine wave</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-nn-for-classification">Deep NN for classification</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-exclusive-or">Example: Exclusive OR</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-donut">Example: Donut</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-class-classification">Multi-class classification</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-generative-models">7.3 Deep Generative Models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#boltzmann-machine">Boltzmann machine</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-generative-networks">Deep generative networks</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#restricted-boltzmann-machines">7.4 Restricted Boltzmann Machines</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-by-contrastive-divergence-cd">Learning by contrastive divergence (CD)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-digits">Example: Digits</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variational-autoencoders-vae">7.5 Variational Autoencoders (VAE)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reparametrization-trick">Reparametrization trick</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-learning-tools-and-pre-trained-weights">7.6 Deep learning tools and pre-trained weights</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-cortex-and-covolutional-networks">7.7 Visual cortex and covolutional networks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-and-complex-receptive-fields">Simple and complex receptive fields</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neocognitron">Neocognitron</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analyzing-neural-coding-by-trained-deep-networks">Analyzing neural coding by trained deep networks</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Kenji Doya<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Kenji Doya
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

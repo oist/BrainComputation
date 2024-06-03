@@ -1,112 +1,177 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Chatper 6. Bayesian Approaches &#8212; Brain Computation</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Bayesian';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Bayesian Approaches: Exercise" href="Bayesian_Exercise.html" />
     <link rel="prev" title="Unsupervised Learning: Exercise" href="Unsupervised_Exercise.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
-    
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="BrainComputation.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="_static/BC_logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Brain Computation</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="_static/BC_logo.png" class="logo__image only-light" alt="Brain Computation - Home"/>
+    <script>document.write(`<img src="_static/BC_logo.png" class="logo__image only-dark" alt="Brain Computation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -116,553 +181,229 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="Introduction.html">
-   Chapter 1. Introduction
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="Neurons.html">
-   Chapter 2. Neural Modeling and Analysis
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Neurons_Exercise.html">
-     Chapter 2. Neural Modeling and Analysis: Exercise
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="Supervised.html">
-   Chapter 3: Supervised Learning
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Supervised_Exercise.html">
-     Supervised Learning: Exercise
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="Reinforcement.html">
-   Chapter 4. Reinforcement Learning
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Reinforcement_Exercise.html">
-     Chapter 4. Reinforcement Learning: Exercise
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="Unsupervised.html">
-   Chapter 5. Unsupervised Learning
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Unsupervised_Exercise.html">
-     Unsupervised Learning: Exercise
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
-   Chatper 6. Bayesian Approaches
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Bayesian_Exercise.html">
-     Bayesian Approaches: Exercise
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="Deep.html">
-   Chapter 7: Deep Learning
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Deep_Exercise.html">
-     Chapter 7: Deep Learning: Exercise
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Multiple.html">
-   Chapter 8. Multiple Agents
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Meta.html">
-   Chapter 9. Meta-Learning
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html">Chapter 1. Introduction</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Neurons.html">Chapter 2. Neural Modeling and Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Neurons_Exercise.html">Chapter 2. Neural Modeling and Analysis: Exercise</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Supervised.html">Chapter 3: Supervised Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Supervised_Exercise.html">Supervised Learning: Exercise</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Reinforcement.html">Chapter 4. Reinforcement Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Reinforcement_Exercise.html">Chapter 4. Reinforcement Learning: Exercise</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Unsupervised.html">Chapter 5. Unsupervised Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Unsupervised_Exercise.html">Unsupervised Learning: Exercise</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Chatper 6. Bayesian Approaches</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Bayesian_Exercise.html">Bayesian Approaches: Exercise</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Deep.html">Chapter 7: Deep Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Deep_Exercise.html">Chapter 7: Deep Learning: Exercise</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="Multiple.html">Chapter 8. Multiple Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Meta.html">Chapter 9. Meta-Learning</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/Bayesian.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Bayesian.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
 </div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/Bayesian.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
 
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#contents">
-   Contents
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bayes-theorem">
-   Bayes’ Theorem
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-mouse-in-a-bush">
-     Example: mouse in a bush
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#iterative-bayesian-inference">
-   Iterative Bayesian Inference
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#coin-toss">
-     Coin toss
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bayesian-approaches-in-machine-learning">
-   Bayesian approaches in machine learning
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bayesian-linear-regression">
-   Bayesian Linear Regression
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#predictive-distribution">
-     Predictive distribution
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bayesian-model-comparison">
-   Bayesian model comparison
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#computing-model-evidence">
-     Computing model evidence
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bayesian-networks">
-   Bayesian networks
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#inference-on-a-chain">
-   Inference on a chain
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#markov-chain">
-     Markov chain
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dynamic-bayesian-inference">
-   Dynamic Bayesian Inference
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#hidden-markov-model">
-     Hidden Markov model
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bayesian-sensorimotor-processing">
-   Bayesian sensorimotor processing
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bayesian-computation-in-the-brain">
-   Bayesian computation in the brain
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   References
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bayesian-sensorimotor-integration">
-     Bayesian sensorimotor integration
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#probabilistic-population-codes">
-     Probabilistic population codes
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#baysian-inference-in-the-cortical-circuit">
-     Baysian inference in the cortical circuit
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Chatper 6. Bayesian Approaches</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#contents">
-   Contents
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bayes-theorem">
-   Bayes’ Theorem
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-mouse-in-a-bush">
-     Example: mouse in a bush
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#iterative-bayesian-inference">
-   Iterative Bayesian Inference
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#coin-toss">
-     Coin toss
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bayesian-approaches-in-machine-learning">
-   Bayesian approaches in machine learning
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bayesian-linear-regression">
-   Bayesian Linear Regression
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#predictive-distribution">
-     Predictive distribution
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bayesian-model-comparison">
-   Bayesian model comparison
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#computing-model-evidence">
-     Computing model evidence
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bayesian-networks">
-   Bayesian networks
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#inference-on-a-chain">
-   Inference on a chain
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#markov-chain">
-     Markov chain
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dynamic-bayesian-inference">
-   Dynamic Bayesian Inference
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#hidden-markov-model">
-     Hidden Markov model
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bayesian-sensorimotor-processing">
-   Bayesian sensorimotor processing
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bayesian-computation-in-the-brain">
-   Bayesian computation in the brain
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   References
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bayesian-sensorimotor-integration">
-     Bayesian sensorimotor integration
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#probabilistic-population-codes">
-     Probabilistic population codes
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#baysian-inference-in-the-cortical-circuit">
-     Baysian inference in the cortical circuit
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chatper 6. Bayesian Approaches</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contents">Contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayes-theorem">Bayes’ Theorem</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-mouse-in-a-bush">Example: mouse in a bush</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iterative-bayesian-inference">Iterative Bayesian Inference</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coin-toss">Coin toss</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayesian-approaches-in-machine-learning">Bayesian approaches in machine learning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayesian-linear-regression">Bayesian Linear Regression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#predictive-distribution">Predictive distribution</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayesian-model-comparison">Bayesian model comparison</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-model-evidence">Computing model evidence</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayesian-networks">Bayesian networks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inference-on-a-chain">Inference on a chain</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#markov-chain">Markov chain</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-bayesian-inference">Dynamic Bayesian Inference</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidden-markov-model">Hidden Markov model</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayesian-sensorimotor-processing">Bayesian sensorimotor processing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayesian-computation-in-the-brain">Bayesian computation in the brain</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bayesian-sensorimotor-integration">Bayesian sensorimotor integration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probabilistic-population-codes">Probabilistic population codes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#baysian-inference-in-the-cortical-circuit">Baysian inference in the cortical circuit</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="chatper-6-bayesian-approaches">
-<h1>Chatper 6. Bayesian Approaches<a class="headerlink" href="#chatper-6-bayesian-approaches" title="Permalink to this headline">#</a></h1>
+<h1>Chatper 6. Bayesian Approaches<a class="headerlink" href="#chatper-6-bayesian-approaches" title="Permalink to this heading">#</a></h1>
 <div class="math notranslate nohighlight">
 \[ % Latex macros
 \newcommand{\mat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
@@ -671,7 +412,7 @@ title="Print to PDF"
 \newcommand{\c}[1]{\mathcal{#1}}
 \]</div>
 <section id="contents">
-<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">#</a></h2>
+<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Bayes’ theorem</p></li>
 <li><p>Bayesian linear regression (Bishop, Chater 3)</p></li>
@@ -687,7 +428,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="bayes-theorem">
-<h2>Bayes’ Theorem<a class="headerlink" href="#bayes-theorem" title="Permalink to this headline">#</a></h2>
+<h2>Bayes’ Theorem<a class="headerlink" href="#bayes-theorem" title="Permalink to this heading">#</a></h2>
 <p>Let us recall the two fundamental rules of probability regarding random variables <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>:</p>
 <ul class="simple">
 <li><p>Sum rule:</p></li>
@@ -714,46 +455,48 @@ This simple formula has turned out to be very insightful in the context of senso
 </ul>
 <p>Bayes’ theorem gives a theoretical basis for the intuition that the posterior probability is proportional to the product of the prior prbability and the likelihood.</p>
 <section id="example-mouse-in-a-bush">
-<h3>Example: mouse in a bush<a class="headerlink" href="#example-mouse-in-a-bush" title="Permalink to this headline">#</a></h3>
+<h3>Example: mouse in a bush<a class="headerlink" href="#example-mouse-in-a-bush" title="Permalink to this heading">#</a></h3>
 <p>You are a cat chasing a mouse and heard a rustuling sound from a bush.
 About half of the case a hiding mouse makes a sound, but about 10% of the time you hear rustling just by the wind.
 How would you estimate the probability for a mouse hiding in the bush?</p>
-<table class="colwidths-auto table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(p(Y \vert X)\)</span></p></th>
-<th class="text-align:center head"><p>no mouse <span class="math notranslate nohighlight">\(X=0\)</span></p></th>
-<th class="text-align:center head"><p>mouse hiding <span class="math notranslate nohighlight">\(X=1\)</span></p></th>
+<th class="head text-center"><p>no mouse <span class="math notranslate nohighlight">\(X=0\)</span></p></th>
+<th class="head text-center"><p>mouse hiding <span class="math notranslate nohighlight">\(X=1\)</span></p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>no sound <span class="math notranslate nohighlight">\(Y=0\)</span></p></td>
-<td class="text-align:center"><p>0.9</p></td>
-<td class="text-align:center"><p>0.5</p></td>
+<td class="text-center"><p>0.9</p></td>
+<td class="text-center"><p>0.5</p></td>
 </tr>
 <tr class="row-odd"><td><p>sound <span class="math notranslate nohighlight">\(Y=1\)</span></p></td>
-<td class="text-align:center"><p>0.1</p></td>
-<td class="text-align:center"><p>0.5</p></td>
+<td class="text-center"><p>0.1</p></td>
+<td class="text-center"><p>0.5</p></td>
 </tr>
 </tbody>
 </table>
+</div>
 <p>For example, if you heard a sound, <span class="math notranslate nohighlight">\(Y=1\)</span>, what is the probability of a mouse hiding behind the bush, <span class="math notranslate nohighlight">\(p(X=1|Y=1)\)</span>?
 From the above table, 0.5?</p>
 <p>No, actually. In the ‘heard’ row, 0.1 and 0.5 do not sum up to one. They are likelihoods <span class="math notranslate nohighlight">\(p(Y=1|X)\)</span>, but not probability distribution <span class="math notranslate nohighlight">\(p(X|Y=1)\)</span> for the mouse to be in the bush or not.</p>
 <p>The mouse ran into other nearby bushes, so you assume that the prior probability of the mouse in this bush is 30%:</p>
-<table class="colwidths-auto table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="text-align:center head"><p>prior probability</p></th>
-<th class="text-align:center head"><p>no mouse <span class="math notranslate nohighlight">\(X=0\)</span></p></th>
-<th class="text-align:center head"><p>mouse hiding <span class="math notranslate nohighlight">\(X=1\)</span></p></th>
+<tr class="row-odd"><th class="head text-center"><p>prior probability</p></th>
+<th class="head text-center"><p>no mouse <span class="math notranslate nohighlight">\(X=0\)</span></p></th>
+<th class="head text-center"><p>mouse hiding <span class="math notranslate nohighlight">\(X=1\)</span></p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:center"><p><span class="math notranslate nohighlight">\(p(X)\)</span></p></td>
-<td class="text-align:center"><p>0.7</p></td>
-<td class="text-align:center"><p>0.3</p></td>
+<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(p(X)\)</span></p></td>
+<td class="text-center"><p>0.7</p></td>
+<td class="text-center"><p>0.3</p></td>
 </tr>
 </tbody>
 </table>
+</div>
 <p>By having this prior probability, we can use Bayes’ theorem:</p>
 <div class="math notranslate nohighlight">
 \[  p(X=1|Y=1) = \frac{p(Y=1|X=1)p(X=1)}{p(Y=1|X=0)p(X=0)+p(Y=1|X=1)p(X=1)}  \]</div>
@@ -764,7 +507,7 @@ From the above table, 0.5?</p>
 </section>
 </section>
 <section id="iterative-bayesian-inference">
-<h2>Iterative Bayesian Inference<a class="headerlink" href="#iterative-bayesian-inference" title="Permalink to this headline">#</a></h2>
+<h2>Iterative Bayesian Inference<a class="headerlink" href="#iterative-bayesian-inference" title="Permalink to this heading">#</a></h2>
 <p>A useful property of Bayesian inference is that you can apply it iteratively to incoming data stream.</p>
 <p>We denote the sequence of observations up to time <span class="math notranslate nohighlight">\(t\)</span> as</p>
 <div class="math notranslate nohighlight">
@@ -785,7 +528,7 @@ From the above table, 0.5?</p>
 <p>This means that the posterior <span class="math notranslate nohighlight">\(p(x|y_{1:t-1})\)</span> that you computed by time <span class="math notranslate nohighlight">\(t-1\)</span> serves as the prior to be combined with the likelihood for the new coming data <span class="math notranslate nohighlight">\(p(y_t|x)\)</span> for computing the new posterior <span class="math notranslate nohighlight">\(p(x|y_{1:t})\)</span>.</p>
 <p>This iterative update of the posterior is practically helpful in online inference utilizing whatever data available so far.</p>
 <section id="coin-toss">
-<h3>Coin toss<a class="headerlink" href="#coin-toss" title="Permalink to this headline">#</a></h3>
+<h3>Coin toss<a class="headerlink" href="#coin-toss" title="Permalink to this heading">#</a></h3>
 <p>Here is a simple example of estimating the parameter <span class="math notranslate nohighlight">\(\mu\)</span>, probability for a coin to land head up, during multiple tosses.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -807,7 +550,7 @@ From the above table, 0.5?</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 1, 1, 0, 0, 0])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 0, 0, 0, 0, 0])
 </pre></div>
 </div>
 </div>
@@ -842,26 +585,36 @@ From the above table, 0.5?</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Bayesian_10_0.png" src="_images/Bayesian_10_0.png" />
-<img alt="_images/Bayesian_10_1.png" src="_images/Bayesian_10_1.png" />
-<img alt="_images/Bayesian_10_2.png" src="_images/Bayesian_10_2.png" />
-<img alt="_images/Bayesian_10_3.png" src="_images/Bayesian_10_3.png" />
-<img alt="_images/Bayesian_10_4.png" src="_images/Bayesian_10_4.png" />
-<img alt="_images/Bayesian_10_5.png" src="_images/Bayesian_10_5.png" />
+<img alt="_images/7147489b4a47b0e529c2179d26f32b52b05b66f2fa383d87a09b3aab27f623fd.png" src="_images/7147489b4a47b0e529c2179d26f32b52b05b66f2fa383d87a09b3aab27f623fd.png" />
+<img alt="_images/948d22236c83f8b50acf50dad249eea0bd35768f4e606297ceb71cf5f2d2f604.png" src="_images/948d22236c83f8b50acf50dad249eea0bd35768f4e606297ceb71cf5f2d2f604.png" />
+<img alt="_images/0214533fc2b2dd4b464c953f644975037d036cd59c516b0cf8a845fa720cf10d.png" src="_images/0214533fc2b2dd4b464c953f644975037d036cd59c516b0cf8a845fa720cf10d.png" />
+<img alt="_images/72bdc76b1df15e8626697b1bd50f733ec03d722dcdce3be263ef200bccd78daf.png" src="_images/72bdc76b1df15e8626697b1bd50f733ec03d722dcdce3be263ef200bccd78daf.png" />
+<img alt="_images/7c5e418ba82c78e74d33e29dfce37196de9dbdc0ef41fe6dab69d7686b181047.png" src="_images/7c5e418ba82c78e74d33e29dfce37196de9dbdc0ef41fe6dab69d7686b181047.png" />
+<img alt="_images/cc453443ffe16e355090ea89d7d6deeae8b086c2a43dbc20cab4283758c70035.png" src="_images/cc453443ffe16e355090ea89d7d6deeae8b086c2a43dbc20cab4283758c70035.png" />
 </div>
 </div>
 <p>As more data are collected, the posterior distribution of <span class="math notranslate nohighlight">\(\mu\)</span> becomes sharper and colser to the true value.</p>
 </section>
 </section>
 <section id="bayesian-approaches-in-machine-learning">
-<h2>Bayesian approaches in machine learning<a class="headerlink" href="#bayesian-approaches-in-machine-learning" title="Permalink to this headline">#</a></h2>
+<h2>Bayesian approaches in machine learning<a class="headerlink" href="#bayesian-approaches-in-machine-learning" title="Permalink to this heading">#</a></h2>
 <p>“Bayesian” is quite popular in machine learning, but it is used for different meanings:</p>
 <ul class="simple">
 <li><p>To combine prior knowledge and the likelihood from observation</p></li>
 <li><p>To assume a graphical model of data generation for estimation of the causes</p></li>
 <li><p>To estimate the distribution of a variable, not a single point</p></li>
 </ul>
-<p>In unsupervised learing:</p>
+<p>In supervised learning:</p>
+<ul class="simple">
+<li><p>avoid over fitting by introducing a prior distribution on the parameters</p></li>
+<li><p>compare models by their probability of producing observed data</p></li>
+</ul>
+<p>In reinforcement learning:</p>
+<ul class="simple">
+<li><p>infer the environmental state from incomplete observation</p></li>
+<li><p>estimate the distribution of reward, not just the expectation</p></li>
+</ul>
+<p>In unsupervised learning:</p>
 <ul class="simple">
 <li><p>infer hidden variables behind data</p>
 <ul>
@@ -869,19 +622,9 @@ From the above table, 0.5?</p>
 </ul>
 </li>
 </ul>
-<p>In supervised learning:</p>
-<ul class="simple">
-<li><p>avoid over fitting by introducing a prior distribution on the parameters</p></li>
-<li><p>compare models by their probability of producing oberved data</p></li>
-</ul>
-<p>In reinforcement learning:</p>
-<ul class="simple">
-<li><p>infer the environmental state from imcomplete observation</p></li>
-<li><p>estimate the distribution of reward, not just the expectation</p></li>
-</ul>
 </section>
 <section id="bayesian-linear-regression">
-<h2>Bayesian Linear Regression<a class="headerlink" href="#bayesian-linear-regression" title="Permalink to this headline">#</a></h2>
+<h2>Bayesian Linear Regression<a class="headerlink" href="#bayesian-linear-regression" title="Permalink to this heading">#</a></h2>
 <p>The standard linear regression (Chapter 3) assumes a linear regression function with additive noise
 $<span class="math notranslate nohighlight">\( t_n = \b{w}^T\b{x}_n + \epsilon \)</span><span class="math notranslate nohighlight">\(
 where \)</span>p(\epsilon)=\mathcal{N}(0,\beta^{-1})$.</p>
@@ -944,7 +687,7 @@ where \)</span>p(\epsilon)=\mathcal{N}(0,\beta^{-1})$.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Bayesian_17_0.png" src="_images/Bayesian_17_0.png" />
+<img alt="_images/d34be7e48093c1d40fa9bfc95466e21fdb7cbe6e7cf20d4be7f48ed1dd859a96.png" src="_images/d34be7e48093c1d40fa9bfc95466e21fdb7cbe6e7cf20d4be7f48ed1dd859a96.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -995,16 +738,16 @@ where \)</span>p(\epsilon)=\mathcal{N}(0,\beta^{-1})$.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>m = [-1.59382234  0.63107945]
-S = [[0.20431524 0.31505412]
- [0.31505412 0.87525324]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>m = [-0.7029938   0.46136882]
+S = [[0.346712   0.42874733]
+ [0.42874733 0.7186168 ]]
 </pre></div>
 </div>
-<img alt="_images/Bayesian_18_1.png" src="_images/Bayesian_18_1.png" />
+<img alt="_images/c064554cf548e48158957df7d935a3d27aa63da135aeb2e58f8100c2501572d6.png" src="_images/c064554cf548e48158957df7d935a3d27aa63da135aeb2e58f8100c2501572d6.png" />
 </div>
 </div>
 <section id="predictive-distribution">
-<h3>Predictive distribution<a class="headerlink" href="#predictive-distribution" title="Permalink to this headline">#</a></h3>
+<h3>Predictive distribution<a class="headerlink" href="#predictive-distribution" title="Permalink to this heading">#</a></h3>
 <p>In Bayesian regression, the result is not one weight vector, but a distribution in the weight space. Then it is reasonable to consider the distribution of the output considering such uncertainty in the weigts.</p>
 <p>The output <span class="math notranslate nohighlight">\(y\)</span> for a new input <span class="math notranslate nohighlight">\(\b{x}\)</span> should have the distribution</p>
 <div class="math notranslate nohighlight">
@@ -1033,7 +776,7 @@ S = [[0.20431524 0.31505412]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Bayesian_22_0.png" src="_images/Bayesian_22_0.png" />
+<img alt="_images/78d99084a39e5e3e75b58038f67269b8679eeafb89d4bd49ad47d9fa825eeb6b.png" src="_images/78d99084a39e5e3e75b58038f67269b8679eeafb89d4bd49ad47d9fa825eeb6b.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1080,7 +823,7 @@ S = [[0.20431524 0.31505412]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Bayesian_25_0.png" src="_images/Bayesian_25_0.png" />
+<img alt="_images/9d5a8f3bcf05a805c04905b33cedbf4a7a89ce1ee282f8f2c2c7c25e79079d91.png" src="_images/9d5a8f3bcf05a805c04905b33cedbf4a7a89ce1ee282f8f2c2c7c25e79079d91.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1104,18 +847,18 @@ S = [[0.20431524 0.31505412]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 0.84231428 -0.32797018 -0.16566442 -1.25296887  0.0569138   0.1608078
-  0.94953769  0.4600574   0.27926719 -0.80787605]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 0.24028929  0.04094929 -0.40791538 -0.83469594  0.26829224 -0.22014195
+  1.23303535  0.7519305  -0.27314084 -0.68931429]
 </pre></div>
 </div>
-<img alt="_images/Bayesian_26_1.png" src="_images/Bayesian_26_1.png" />
+<img alt="_images/2cb189b5285003e7306b95a0b368fcdfe412e211595af8026bbdd8a5cbb16e5b.png" src="_images/2cb189b5285003e7306b95a0b368fcdfe412e211595af8026bbdd8a5cbb16e5b.png" />
 </div>
 </div>
 <p>See how <span class="math notranslate nohighlight">\(N\)</span>, <span class="math notranslate nohighlight">\(M\)</span>, <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> affect the performance.</p>
 </section>
 </section>
 <section id="bayesian-model-comparison">
-<h2>Bayesian model comparison<a class="headerlink" href="#bayesian-model-comparison" title="Permalink to this headline">#</a></h2>
+<h2>Bayesian model comparison<a class="headerlink" href="#bayesian-model-comparison" title="Permalink to this heading">#</a></h2>
 <p>We have so far considered Bayesian inference of the parameter <span class="math notranslate nohighlight">\(\b{w}\)</span> for a given model <span class="math notranslate nohighlight">\(\c{M}\)</span>, such as a regression model with some input variables, but we can also think of Bayesian inference of probability over models <span class="math notranslate nohighlight">\(\c{M}_i\)</span>, such as regression models with different choices of input variables, given data <span class="math notranslate nohighlight">\(\c{D}\)</span></p>
 <div class="math notranslate nohighlight">
 \[ p(\c{M}_i|\c{D}) \propto p(\c{M}_i) p(\c{D}|\c{M}_i). \]</div>
@@ -1126,9 +869,9 @@ S = [[0.20431524 0.31505412]
 <p>where we have the <em>evidence</em> as the normalizing denominator</p>
 <div class="math notranslate nohighlight">
 \[ p(\c{D}|\c{M}_i) = \int p(\c{D}|\b{w},\c{M}_i)p(\b{w}|\c{M}_i) d\b{w}. \]</div>
-<p>This is also called <em>marginal likelihood</em> becuase it is the likelihood of the model with its parameters marginalized.</p>
+<p>This is also called <em>marginal likelihood</em> because it is the likelihood of the model with its parameters marginalized.</p>
 <section id="computing-model-evidence">
-<h3>Computing model evidence<a class="headerlink" href="#computing-model-evidence" title="Permalink to this headline">#</a></h3>
+<h3>Computing model evidence<a class="headerlink" href="#computing-model-evidence" title="Permalink to this heading">#</a></h3>
 <p>In Bayesian linear regression, the model evidence with the <em>hyperparamters</em> <span class="math notranslate nohighlight">\(\alpha\)</span> (weight prior) and <span class="math notranslate nohighlight">\(\beta\)</span> (observation noise) is given by integration over all the range of the weight parameters <span class="math notranslate nohighlight">\(\b{w}\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[ p(\b{t}|\alpha,\beta) = \int p(\b{t}|\b{w},\beta)p(\b{w}|\alpha) d\b{w}, \]</div>
@@ -1193,27 +936,27 @@ S = [[0.20431524 0.31505412]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 16.536235066924927 1.869865408452928 -25.445897492228305 0.4078510376162709
-3 5.923888775780441 1.9661349702746027 -27.463198091102115 0.4113147136030905
-4 0.21912927018854056 29.89480261422304 -8.200507989459382 0.0053880801885553406
-5 0.6017339826714455 29.274633313455222 -8.697454235174563 0.009103820720180084
-6 1.1775060115914433 34.7701049000534 -7.247007767337433 0.02050847843822818
-7 1.8027296241569803 34.79607435644172 -7.486772776851122 0.018624372096512166
-8 2.200652362294135 35.23411582779712 -7.774519178209825 0.022983651865940383
-9 2.4623114260654555 37.64663036340454 -7.983200060393113 0.023480357753951044
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 40.68632804463143 3.104045624156934 -19.38981009545169 0.47399755806984795
+3 1.5218361874541901 4.002513567944652 -22.359751680135425 0.49075194516136117
+4 0.356724142748352 22.020833888132746 -10.072104298265344 0.027633787378076553
+5 0.8556745379600221 25.30358582387256 -9.066438262460057 0.014389030314455199
+6 1.6379929505367643 25.649954585677527 -9.068688797268582 0.013687441580166451
+7 2.4495614404083375 26.408589438313296 -8.901588874082968 0.014326266188703357
+8 2.347207878730932 30.814038121751803 -8.44889877766372 0.03344981989210373
+9 3.2233248808503667 30.12832819022222 -8.531031819626982 0.03009233096253615
 </pre></div>
 </div>
-<img alt="_images/Bayesian_33_1.png" src="_images/Bayesian_33_1.png" />
+<img alt="_images/7ddde9753742d37d58a54727dc9bae9e87c4fb6c061a5e0b294b712179f15789.png" src="_images/7ddde9753742d37d58a54727dc9bae9e87c4fb6c061a5e0b294b712179f15789.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="bayesian-networks">
-<h2>Bayesian networks<a class="headerlink" href="#bayesian-networks" title="Permalink to this headline">#</a></h2>
+<h2>Bayesian networks<a class="headerlink" href="#bayesian-networks" title="Permalink to this heading">#</a></h2>
 <p>As we have seen in the example of Bayesian linear regression, statistical machine learning assumes a <em>generative model</em> of the observed data and infer the posterior probability of variables of your interest, after marginalizing other unobserved variables.</p>
-<p>In doing so, representation of the relationships by graphs with random variables as nodes (or vertices) and joint or conditional probabilities as links (or edges or arcs)) havea turned out to be very useful. They are called <em>graphical models</em>.</p>
+<p>In doing so, representation of the relationships by graphs with random variables as nodes (or vertices) and joint or conditional probabilities as links (or edges or arcs) have turned out to be very useful. They are called <em>graphical models</em>.</p>
 <p>Directed graphs representing conditional probabilities by arrows (directed edges) are called <em>Bayesian networks</em>.</p>
-<p>For example, Bayesion linear regression can be represented as a Bayesian network as below.</p>
+<p>For example, Bayesian linear regression can be represented as a Bayesian network as below.</p>
 <figure class="align-default" id="fig-blr">
 <a class="reference internal image-reference" href="_images/BN_blr.png"><img alt="_images/BN_blr.png" src="_images/BN_blr.png" style="width: 200px;" /></a>
 <figcaption>
@@ -1228,7 +971,7 @@ S = [[0.20431524 0.31505412]
 <p>In doing this, the <em>conditional independence</em> of the nodes allows efficient computation.</p>
 </section>
 <section id="inference-on-a-chain">
-<h2>Inference on a chain<a class="headerlink" href="#inference-on-a-chain" title="Permalink to this headline">#</a></h2>
+<h2>Inference on a chain<a class="headerlink" href="#inference-on-a-chain" title="Permalink to this heading">#</a></h2>
 <p>Here we consider the simplest case of a chain of discrete random variables.</p>
 <figure class="align-default" id="fig-chain">
 <img alt="Chain" src="_images/BN_chain.png" />
@@ -1269,13 +1012,13 @@ S = [[0.20431524 0.31505412]
 <p>with <span class="math notranslate nohighlight">\(1\)</span> at <span class="math notranslate nohighlight">\(k\)</span>-th component and</p>
 <div class="math notranslate nohighlight">
 \[ \beta_n = \sum_{x_{n+1}} p(x_{n+1}|x_n) \beta_{n+1} \]</div>
-<p>The marginal distribution for each node is then given by their product</p>
+<p>The posterior distribution for each node is then given by their product</p>
 <div class="math notranslate nohighlight">
 \[  p(x_n|x_N=k) \propto \alpha_n \beta_n. \]</div>
 <p>This is called <em>forward-backward</em> algorithm.</p>
 <p>This can be generalized to tree-like networks and the algorithm using forward and backward message passing is known as <em>belief propagation</em>.</p>
 <section id="markov-chain">
-<h3>Markov chain<a class="headerlink" href="#markov-chain" title="Permalink to this headline">#</a></h3>
+<h3>Markov chain<a class="headerlink" href="#markov-chain" title="Permalink to this heading">#</a></h3>
 <p>Here is an example of inference in a Markov chain.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1341,7 +1084,7 @@ S = [[0.20431524 0.31505412]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Bayesian_41_0.png" src="_images/Bayesian_41_0.png" />
+<img alt="_images/df69f5f16b604523dc9e26ae84956ad1661bf591d7f2902cde3960c201fcf468.png" src="_images/df69f5f16b604523dc9e26ae84956ad1661bf591d7f2902cde3960c201fcf468.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1353,7 +1096,7 @@ S = [[0.20431524 0.31505412]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2])
 </pre></div>
 </div>
 </div>
@@ -1367,7 +1110,7 @@ S = [[0.20431524 0.31505412]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Bayesian_43_0.png" src="_images/Bayesian_43_0.png" />
+<img alt="_images/c501c2802d94d0a9ffb4dd3e3f09e76672a8d4d28bae701226729016d5d74150.png" src="_images/c501c2802d94d0a9ffb4dd3e3f09e76672a8d4d28bae701226729016d5d74150.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1379,7 +1122,7 @@ S = [[0.20431524 0.31505412]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Bayesian_44_0.png" src="_images/Bayesian_44_0.png" />
+<img alt="_images/6ae55c61cad4f69910a686a2d53f863e5b69cc69587e65ca948356cb7f8413f6.png" src="_images/6ae55c61cad4f69910a686a2d53f863e5b69cc69587e65ca948356cb7f8413f6.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1391,7 +1134,7 @@ S = [[0.20431524 0.31505412]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Bayesian_45_0.png" src="_images/Bayesian_45_0.png" />
+<img alt="_images/4eb041b6ec7cd605ef09785cd36732a9e7b39403a3389f0a23dabc2d2dc87626.png" src="_images/4eb041b6ec7cd605ef09785cd36732a9e7b39403a3389f0a23dabc2d2dc87626.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1403,7 +1146,7 @@ S = [[0.20431524 0.31505412]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Bayesian_46_0.png" src="_images/Bayesian_46_0.png" />
+<img alt="_images/ba283022275aed48324202081bb1c5f5120681cd1550355ca2b79079a4ced173.png" src="_images/ba283022275aed48324202081bb1c5f5120681cd1550355ca2b79079a4ced173.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1415,13 +1158,13 @@ S = [[0.20431524 0.31505412]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Bayesian_47_0.png" src="_images/Bayesian_47_0.png" />
+<img alt="_images/991122171e9f061a038c6c24ae7fc4b7ca12e6d9c8c3d9c9eb5a2b4c167e1106.png" src="_images/991122171e9f061a038c6c24ae7fc4b7ca12e6d9c8c3d9c9eb5a2b4c167e1106.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="dynamic-bayesian-inference">
-<h2>Dynamic Bayesian Inference<a class="headerlink" href="#dynamic-bayesian-inference" title="Permalink to this headline">#</a></h2>
+<h2>Dynamic Bayesian Inference<a class="headerlink" href="#dynamic-bayesian-inference" title="Permalink to this heading">#</a></h2>
 <p>Iterative Bayesian inference can be generalized to the case when the hidden variable <span class="math notranslate nohighlight">\(x\)</span> changes dynamically.</p>
 <p>We denote the sequence of observation as</p>
 <div class="math notranslate nohighlight">
@@ -1434,7 +1177,7 @@ S = [[0.20431524 0.31505412]
 <li><p>Dynamics model: <span class="math notranslate nohighlight">\(p(x’|x)\)</span></p></li>
 <li><p>Observation model: <span class="math notranslate nohighlight">\(p(y|x)\)</span></p></li>
 </ul>
-<p>Using the posterior <span class="math notranslate nohighlight">\(p(x_t|y_{1:t})\)</span> computed from the data up to time <span class="math notranslate nohighlight">\(t\)</span>, we use the dymamics model to computer the <em>predictive prior</em>:</p>
+<p>Using the posterior <span class="math notranslate nohighlight">\(p(x_t|y_{1:t})\)</span> computed from the data up to time <span class="math notranslate nohighlight">\(t\)</span>, we use the dymamics model to compute the <em>predictive prior</em>:</p>
 <div class="math notranslate nohighlight">
 \[  p(x_{t+1}|y_{1:t}) = \int p(x_{t+1}|x_t) p(x_t|y_{1:t}) dx_t \]</div>
 <p>by integrating or summing over the possible range of <span class="math notranslate nohighlight">\(x\)</span>.</p>
@@ -1446,8 +1189,8 @@ S = [[0.20431524 0.31505412]
 <p>When <span class="math notranslate nohighlight">\(x\)</span> is discrete, the process is called <em>hidden Markov model (HMM)</em>, which has been used extensively speech processing.</p>
 <p>Another example is <em>Kalman filter</em>, in which <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> are continuous and the dynamics and observation models are linear mapping with Gaussian noise.</p>
 <section id="hidden-markov-model">
-<h3>Hidden Markov model<a class="headerlink" href="#hidden-markov-model" title="Permalink to this headline">#</a></h3>
-<p>Here is a simple implementaion of HMM based on the Markov chain above.</p>
+<h3>Hidden Markov model<a class="headerlink" href="#hidden-markov-model" title="Permalink to this heading">#</a></h3>
+<p>Here is a simple implementation of HMM based on the Markov chain above.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">HMM</span><span class="p">(</span><span class="n">Markov</span><span class="p">):</span>
@@ -1513,7 +1256,7 @@ S = [[0.20431524 0.31505412]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Bayesian_53_0.png" src="_images/Bayesian_53_0.png" />
+<img alt="_images/c6856abd4e3c3f5268d467c51a246d2bb7a509dee19ae803a165ee331dcfaf3a.png" src="_images/c6856abd4e3c3f5268d467c51a246d2bb7a509dee19ae803a165ee331dcfaf3a.png" />
 </div>
 </div>
 <p>Suppose we have three coarse position sensors, which send signal only intermittently, and we want to estimate where the mouse is.</p>
@@ -1532,7 +1275,7 @@ S = [[0.20431524 0.31505412]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Bayesian_55_0.png" src="_images/Bayesian_55_0.png" />
+<img alt="_images/c72e2f4428e73f48f54de90002c0af182fb9218969e09f869f6aead0c6dc5765.png" src="_images/c72e2f4428e73f48f54de90002c0af182fb9218969e09f869f6aead0c6dc5765.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1554,7 +1297,7 @@ S = [[0.20431524 0.31505412]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Bayesian_57_0.png" src="_images/Bayesian_57_0.png" />
+<img alt="_images/33d2d57fa9c08cf6497a00cb0521408b3656502f09c917419c2d8f44cbaffba9.png" src="_images/33d2d57fa9c08cf6497a00cb0521408b3656502f09c917419c2d8f44cbaffba9.png" />
 </div>
 </div>
 <p>From such noisy intermittent observations, how can we estimate the state?</p>
@@ -1571,7 +1314,7 @@ S = [[0.20431524 0.31505412]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Bayesian_59_0.png" src="_images/Bayesian_59_0.png" />
+<img alt="_images/909c5fa0c905ab9456466936e29ca8fedfaa859ce183def515b8a6fc977b64db.png" src="_images/909c5fa0c905ab9456466936e29ca8fedfaa859ce183def515b8a6fc977b64db.png" />
 </div>
 </div>
 <p>Even when there is no useful sensory input, you can predict the state distribution by the dynamic model.
@@ -1580,27 +1323,26 @@ When a sensory input becomes available, prediction is corrected and sharpened.</
 </section>
 </section>
 <section id="bayesian-sensorimotor-processing">
-<h2>Bayesian sensorimotor processing<a class="headerlink" href="#bayesian-sensorimotor-processing" title="Permalink to this headline">#</a></h2>
+<h2>Bayesian sensorimotor processing<a class="headerlink" href="#bayesian-sensorimotor-processing" title="Permalink to this heading">#</a></h2>
 <p>Our life is full of uncertainty. In sensory perception, we need to cope with noise, delay and occulusion and also overcome fundamental ill-posedness, such as to identify the 3D location of your target from 2D retinal images or sounds to two ears.</p>
 <p>To find a practical solution to such ill-posed problems, we need to make use of some prior assumptions, such as the light usually comes from the top or objects don’t jump abruptly.</p>
 <p>Bayesian inference provides a principled way for combining any prior knowledge with sensory evidence. Indeed there are several lines of psychological evidence suggesting that humans and animals integrate knowledge from prior experience or multi-modal sensory information as predicted by Bayesian inference (Knill &amp; Pouget 2004, Kording &amp; Wolpert 2004, Doya et al. 2007).</p>
 </section>
 <section id="bayesian-computation-in-the-brain">
-<h2>Bayesian computation in the brain<a class="headerlink" href="#bayesian-computation-in-the-brain" title="Permalink to this headline">#</a></h2>
+<h2>Bayesian computation in the brain<a class="headerlink" href="#bayesian-computation-in-the-brain" title="Permalink to this heading">#</a></h2>
 <p>How such Bayesian computation realized in the brain? How does the brain represent and manipulate probability distributions?</p>
 <p>One possibility is that the <em>receptive field</em> of a neuron represents a basis function in the sensory space and the activities of a population of neurons represent a probability distribution. This idea is called <em>probabilistic population code</em> (Zemel et al. 2004, Ma et al. 2006).</p>
 <p>The cerebral cortex has a hierarchical organization and bi-directional connections between lower and higher areas originating from specific layers.
-There have been serveral hypotheses about how such hierarchical recurrent network can realize Bayesian inference, such a belif propagation (Lochmann &amp; Deneve 2011) and variational <em>free energy</em> approximation (Friston 2005, 2010; Bogacz 2017).</p>
-<figure class="align-default" id="fig-bogacz">
+There have been serveral hypotheses about how such hierarchical recurrent network can realize Bayesian inference, such as belif propagation (Lochmann &amp; Deneve 2011) and variational <em>free energy</em> approximation (Friston 2005, 2010; Bogacz 2017).</p>
+<blockquote>
+<div><p>{figure-md} Fig_Bogacz
 <img alt="Bogacz17" src="_images/Bogacz17.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 10 </span><span class="caption-text">This tutorial illustrates how variational free-energy approximation of posterior probability works and how such mechanims might be mapped onto the cortical circuit (from Bobacz 2017).</span><a class="headerlink" href="#fig-bogacz" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+This tutorial illustrates how variational free-energy approximation of posterior probability works and how such mechanisms might be mapped onto the cortical circuit (from Bobacz 2017).</p>
+</div></blockquote>
 <p>There has been only scarse attempts at directly testing those hypotheses, but a recent two-photon imaging experiment showed the evidence for dynamic Bayesian inference by populations of neurons in the parietal cortex (Funamizu et al. 2016).</p>
 </section>
 <section id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Bishop CM (2006) Pattern Recognition and Machine Learning. Springer.</p>
 <ul>
@@ -1610,7 +1352,7 @@ There have been serveral hypotheses about how such hierarchical recurrent networ
 </li>
 </ul>
 <section id="bayesian-sensorimotor-integration">
-<h3>Bayesian sensorimotor integration<a class="headerlink" href="#bayesian-sensorimotor-integration" title="Permalink to this headline">#</a></h3>
+<h3>Bayesian sensorimotor integration<a class="headerlink" href="#bayesian-sensorimotor-integration" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Knill DC, Pouget A (2004) The Bayesian brain: the role of uncertainty in neural coding and computation. Trends in neurosciences 27:712-719.</p></li>
 <li><p>Körding KP, Wolpert DM (2004) Bayesian integration in sensorimotor learning. Nature 427:244-247.</p></li>
@@ -1618,14 +1360,14 @@ There have been serveral hypotheses about how such hierarchical recurrent networ
 </ul>
 </section>
 <section id="probabilistic-population-codes">
-<h3>Probabilistic population codes<a class="headerlink" href="#probabilistic-population-codes" title="Permalink to this headline">#</a></h3>
+<h3>Probabilistic population codes<a class="headerlink" href="#probabilistic-population-codes" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Zemel RS, Dayan P, Pouget A (1998) Probabilistic interpretation of population codes. Neural computation 10:403-430.</p></li>
 <li><p>Ma WJ, Beck JM, Latham PE, Pouget A (2006) Bayesian inference with probabilistic population codes. Nature neuroscience 9:1432-1438.</p></li>
 </ul>
 </section>
 <section id="baysian-inference-in-the-cortical-circuit">
-<h3>Baysian inference in the cortical circuit<a class="headerlink" href="#baysian-inference-in-the-cortical-circuit" title="Permalink to this headline">#</a></h3>
+<h3>Baysian inference in the cortical circuit<a class="headerlink" href="#baysian-inference-in-the-cortical-circuit" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Bogacz R (2017) A tutorial on the free-energy framework for modelling perception and learning. Journal of Mathematical Psychology. 76, 198–211. <a class="reference external" href="https://doi.org/10.1016/j.jmp.2015.11.003">https://doi.org/10.1016/j.jmp.2015.11.003</a></p></li>
 <li><p>Friston K (2005). A theory of cortical responses. Philos Trans R Soc Lond B Biol Sci, 360, 815-36. <a class="reference external" href="http://doi.org/10.1098/rstb.2005.1622">http://doi.org/10.1098/rstb.2005.1622</a></p></li>
@@ -1651,7 +1393,7 @@ There have been serveral hypotheses about how such hierarchical recurrent networ
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -1659,50 +1401,137 @@ There have been serveral hypotheses about how such hierarchical recurrent networ
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="Unsupervised_Exercise.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Unsupervised Learning: Exercise</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Unsupervised_Exercise.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Unsupervised Learning: Exercise</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="Bayesian_Exercise.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="Bayesian_Exercise.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Bayesian Approaches: Exercise</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contents">Contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayes-theorem">Bayes’ Theorem</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-mouse-in-a-bush">Example: mouse in a bush</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iterative-bayesian-inference">Iterative Bayesian Inference</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coin-toss">Coin toss</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayesian-approaches-in-machine-learning">Bayesian approaches in machine learning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayesian-linear-regression">Bayesian Linear Regression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#predictive-distribution">Predictive distribution</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayesian-model-comparison">Bayesian model comparison</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-model-evidence">Computing model evidence</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayesian-networks">Bayesian networks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inference-on-a-chain">Inference on a chain</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#markov-chain">Markov chain</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-bayesian-inference">Dynamic Bayesian Inference</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidden-markov-model">Hidden Markov model</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayesian-sensorimotor-processing">Bayesian sensorimotor processing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayesian-computation-in-the-brain">Bayesian computation in the brain</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bayesian-sensorimotor-integration">Bayesian sensorimotor integration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probabilistic-population-codes">Probabilistic population codes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#baysian-inference-in-the-cortical-circuit">Baysian inference in the cortical circuit</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Kenji Doya<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Kenji Doya
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
