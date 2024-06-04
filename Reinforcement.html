@@ -15,32 +15,32 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -49,14 +49,18 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -74,23 +78,28 @@
 
   
   
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
+
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -112,20 +121,12 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
-
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
-    </header>
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
   
-
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-      
-      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -159,18 +160,7 @@
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -182,30 +172,30 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Introduction.html">Chapter 1. Introduction</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Neurons.html">Chapter 2. Neural Modeling and Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Neurons.html">Chapter 2. Neural Modeling and Analysis</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="Neurons_Exercise.html">Chapter 2. Neural Modeling and Analysis: Exercise</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Supervised.html">Chapter 3: Supervised Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Supervised.html">Chapter 3: Supervised Learning</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="Supervised_Exercise.html">Supervised Learning: Exercise</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Chapter 4. Reinforcement Learning</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Chapter 4. Reinforcement Learning</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="Reinforcement_Exercise.html">Chapter 4. Reinforcement Learning: Exercise</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Unsupervised.html">Chapter 5. Unsupervised Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Unsupervised.html">Chapter 5. Unsupervised Learning</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="Unsupervised_Exercise.html">Unsupervised Learning: Exercise</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Bayesian.html">Chatper 6. Bayesian Approaches</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Bayesian.html">Chatper 6. Bayesian Approaches</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="Bayesian_Exercise.html">Bayesian Approaches: Exercise</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Deep.html">Chapter 7: Deep Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Deep.html">Chapter 7: Deep Learning</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="Deep_Exercise.html">Chapter 7: Deep Learning: Exercise</a></li>
 </ul>
-</details></li>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="Multiple.html">Chapter 8. Multiple Agents</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Meta.html">Chapter 9. Meta-Learning</a></li>
 </ul>
@@ -223,7 +213,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main" role="main">
+      <main id="main-content" class="bd-main">
         
         
 
@@ -232,7 +222,7 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article d-print-none">
+              <div class="bd-header-article">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -387,7 +377,7 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article">
+                <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="chapter-4-reinforcement-learning">
 <h1>Chapter 4. Reinforcement Learning<a class="headerlink" href="#chapter-4-reinforcement-learning" title="Permalink to this heading">#</a></h1>
@@ -420,7 +410,7 @@ document.write(`
 <figure class="align-default" id="fig-rl">
 <img alt="ReinforcementLearning" src="_images/RL.jpg" />
 <figcaption>
-<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Reinforcement learning in an agent-environment loop.</span><a class="headerlink" href="#fig-rl" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Reinforcement learning in an agent-environment loop.</span><a class="headerlink" href="#fig-rl" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The aim of reinforcemnet learning is to find a <em>policy</em>, a mapping <span class="math notranslate nohighlight">\(\pi\)</span> from any state <span class="math notranslate nohighlight">\(s\)</span> to an action <span class="math notranslate nohighlight">\(a\)</span>, that maximize the reward acquired.</p>
@@ -616,16 +606,16 @@ $<span class="math notranslate nohighlight">\(\Delta Q(s_t,a_t) = \alpha \delta_
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2, 0]
-[0, 0.702857960037179, 2, 0]
-[1, 0.862797947291457, 2, 0]
-[2, 0.0735456873669672, 0, 0]
-[3, 0.35626545529804177, 2, 1]
-[4, 0.680995799891692, 1, 0]
-[5, 0.6196995222857234, 1, 1]
-[6, 0.10238967129848986, 2, 1]
-[7, 0.9205306011572479, 1, 0]
-[8, 0.2706112566948311, 0, 0]
-[9, 0.07010919313597708, 0, 1]
+[0, 0.47488110067037514, 1, 0]
+[1, 0.5846824966094878, 2, 0]
+[2, 0.7588977762775597, 1, 1]
+[3, 0.6719271958882493, 2, 1]
+[4, 0.292185744775903, 2, 1]
+[5, 0.3252200498806752, 0, 0]
+[6, 0.3090924312198595, 1, 1]
+[7, 0.802406324642582, 1, 1]
+[8, 0.42655033508909757, 1, 0]
+[9, 0.20419124063585337, 2, 1]
 </pre></div>
 </div>
 </div>
@@ -672,7 +662,7 @@ $<span class="math notranslate nohighlight">\(\Delta Q(s_t,a_t) = \alpha \delta_
 <figure class="align-default" id="fig-paingain">
 <img alt="PainGain" src="_images/PainGain.jpg" />
 <figcaption>
-<p><span class="caption-number">Fig. 6 </span><span class="caption-text">The Pain-Gain environment.</span><a class="headerlink" href="#fig-paingain" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">The Pain-Gain environment.</span><a class="headerlink" href="#fig-paingain" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>This is a Markov Decision Process that was designed for a functional MRI experiment (Tanaka et al. 2004).
@@ -777,7 +767,7 @@ What is the right policy?</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1ebd9d21c4c5cbf16f8558e763277d94db7f2349c97e4a8cec546a3c60765448.png" src="_images/1ebd9d21c4c5cbf16f8558e763277d94db7f2349c97e4a8cec546a3c60765448.png" />
+<img alt="_images/ed6e8d89af0d8c8c72cb570fa946e0bc317180469db0ce268627861e81517a0e.png" src="_images/ed6e8d89af0d8c8c72cb570fa946e0bc317180469db0ce268627861e81517a0e.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -789,7 +779,7 @@ What is the right policy?</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4334938e17cbc3f3b6118b0695623139080d23a47b50b65a69df8708a1abbccc.png" src="_images/4334938e17cbc3f3b6118b0695623139080d23a47b50b65a69df8708a1abbccc.png" />
+<img alt="_images/0843dc2805ce9866b8c1346770eb0beca1a6a9b3d6b94b1760c910b039f224ce.png" src="_images/0843dc2805ce9866b8c1346770eb0beca1a6a9b3d6b94b1760c910b039f224ce.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -802,7 +792,7 @@ What is the right policy?</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5edc87315b9321af1d1945d7eaf60c958ca97600006871df25caa7fb6b24a1ba.png" src="_images/5edc87315b9321af1d1945d7eaf60c958ca97600006871df25caa7fb6b24a1ba.png" />
+<img alt="_images/151083fb6646d3b606845f63f06ff54d4b33bc88bf5bc53fb6d1d4b1482f48c3.png" src="_images/151083fb6646d3b606845f63f06ff54d4b33bc88bf5bc53fb6d1d4b1482f48c3.png" />
 </div>
 </div>
 </section>
@@ -830,7 +820,7 @@ $<span class="math notranslate nohighlight">\(\Delta \w = \alpha_w \delta_t \p{\
 <figure class="align-default" id="fig-bg">
 <img alt="BGforRL" src="_images/BGRL.jpg" />
 <figcaption>
-<p><span class="caption-number">Fig. 7 </span><span class="caption-text">A reinforcement learning model of the basal ganglia.</span><a class="headerlink" href="#fig-bg" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">A reinforcement learning model of the basal ganglia.</span><a class="headerlink" href="#fig-bg" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -893,7 +883,7 @@ $<span class="math notranslate nohighlight">\(\Delta \w = \alpha_w \delta_t \p{\
               
               
               
-                <footer class="prev-next-footer d-print-none">
+                <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -922,7 +912,6 @@ $<span class="math notranslate nohighlight">\(\Delta \w = \alpha_w \delta_t \p{\
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -976,7 +965,7 @@ By Kenji Doya
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>
@@ -1000,8 +989,8 @@ By Kenji Doya
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -15,32 +15,32 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -49,14 +49,18 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -74,23 +78,28 @@
 
   
   
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
+
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -112,20 +121,12 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
-
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
-    </header>
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
   
-
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-      
-      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -159,18 +160,7 @@
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -182,30 +172,30 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Introduction.html">Chapter 1. Introduction</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Neurons.html">Chapter 2. Neural Modeling and Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Neurons.html">Chapter 2. Neural Modeling and Analysis</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="Neurons_Exercise.html">Chapter 2. Neural Modeling and Analysis: Exercise</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Supervised.html">Chapter 3: Supervised Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Supervised.html">Chapter 3: Supervised Learning</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="Supervised_Exercise.html">Supervised Learning: Exercise</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Reinforcement.html">Chapter 4. Reinforcement Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Reinforcement.html">Chapter 4. Reinforcement Learning</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="Reinforcement_Exercise.html">Chapter 4. Reinforcement Learning: Exercise</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Unsupervised.html">Chapter 5. Unsupervised Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Unsupervised.html">Chapter 5. Unsupervised Learning</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="Unsupervised_Exercise.html">Unsupervised Learning: Exercise</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Chatper 6. Bayesian Approaches</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Chatper 6. Bayesian Approaches</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="Bayesian_Exercise.html">Bayesian Approaches: Exercise</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Deep.html">Chapter 7: Deep Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Deep.html">Chapter 7: Deep Learning</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="Deep_Exercise.html">Chapter 7: Deep Learning: Exercise</a></li>
 </ul>
-</details></li>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="Multiple.html">Chapter 8. Multiple Agents</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Meta.html">Chapter 9. Meta-Learning</a></li>
 </ul>
@@ -223,7 +213,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main" role="main">
+      <main id="main-content" class="bd-main">
         
         
 
@@ -232,7 +222,7 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article d-print-none">
+              <div class="bd-header-article">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -400,7 +390,7 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article">
+                <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="chatper-6-bayesian-approaches">
 <h1>Chatper 6. Bayesian Approaches<a class="headerlink" href="#chatper-6-bayesian-approaches" title="Permalink to this heading">#</a></h1>
@@ -459,7 +449,7 @@ This simple formula has turned out to be very insightful in the context of senso
 <p>You are a cat chasing a mouse and heard a rustuling sound from a bush.
 About half of the case a hiding mouse makes a sound, but about 10% of the time you hear rustling just by the wind.
 How would you estimate the probability for a mouse hiding in the bush?</p>
-<div class="pst-scrollable-table-container"><table class="table">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(p(Y \vert X)\)</span></p></th>
 <th class="head text-center"><p>no mouse <span class="math notranslate nohighlight">\(X=0\)</span></p></th>
@@ -477,12 +467,11 @@ How would you estimate the probability for a mouse hiding in the bush?</p>
 </tr>
 </tbody>
 </table>
-</div>
 <p>For example, if you heard a sound, <span class="math notranslate nohighlight">\(Y=1\)</span>, what is the probability of a mouse hiding behind the bush, <span class="math notranslate nohighlight">\(p(X=1|Y=1)\)</span>?
 From the above table, 0.5?</p>
 <p>No, actually. In the ‘heard’ row, 0.1 and 0.5 do not sum up to one. They are likelihoods <span class="math notranslate nohighlight">\(p(Y=1|X)\)</span>, but not probability distribution <span class="math notranslate nohighlight">\(p(X|Y=1)\)</span> for the mouse to be in the bush or not.</p>
 <p>The mouse ran into other nearby bushes, so you assume that the prior probability of the mouse in this bush is 30%:</p>
-<div class="pst-scrollable-table-container"><table class="table">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-center"><p>prior probability</p></th>
 <th class="head text-center"><p>no mouse <span class="math notranslate nohighlight">\(X=0\)</span></p></th>
@@ -496,7 +485,6 @@ From the above table, 0.5?</p>
 </tr>
 </tbody>
 </table>
-</div>
 <p>By having this prior probability, we can use Bayes’ theorem:</p>
 <div class="math notranslate nohighlight">
 \[  p(X=1|Y=1) = \frac{p(Y=1|X=1)p(X=1)}{p(Y=1|X=0)p(X=0)+p(Y=1|X=1)p(X=1)}  \]</div>
@@ -550,7 +538,7 @@ From the above table, 0.5?</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 0, 0, 0, 0, 0])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 0, 0, 1, 0, 1])
 </pre></div>
 </div>
 </div>
@@ -585,12 +573,12 @@ From the above table, 0.5?</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7147489b4a47b0e529c2179d26f32b52b05b66f2fa383d87a09b3aab27f623fd.png" src="_images/7147489b4a47b0e529c2179d26f32b52b05b66f2fa383d87a09b3aab27f623fd.png" />
-<img alt="_images/948d22236c83f8b50acf50dad249eea0bd35768f4e606297ceb71cf5f2d2f604.png" src="_images/948d22236c83f8b50acf50dad249eea0bd35768f4e606297ceb71cf5f2d2f604.png" />
-<img alt="_images/0214533fc2b2dd4b464c953f644975037d036cd59c516b0cf8a845fa720cf10d.png" src="_images/0214533fc2b2dd4b464c953f644975037d036cd59c516b0cf8a845fa720cf10d.png" />
-<img alt="_images/72bdc76b1df15e8626697b1bd50f733ec03d722dcdce3be263ef200bccd78daf.png" src="_images/72bdc76b1df15e8626697b1bd50f733ec03d722dcdce3be263ef200bccd78daf.png" />
-<img alt="_images/7c5e418ba82c78e74d33e29dfce37196de9dbdc0ef41fe6dab69d7686b181047.png" src="_images/7c5e418ba82c78e74d33e29dfce37196de9dbdc0ef41fe6dab69d7686b181047.png" />
-<img alt="_images/cc453443ffe16e355090ea89d7d6deeae8b086c2a43dbc20cab4283758c70035.png" src="_images/cc453443ffe16e355090ea89d7d6deeae8b086c2a43dbc20cab4283758c70035.png" />
+<img alt="_images/5f8e8bc1e3652536a6c2f5f5f7bc9736160a2c847864e376d48e02f8404723ee.png" src="_images/5f8e8bc1e3652536a6c2f5f5f7bc9736160a2c847864e376d48e02f8404723ee.png" />
+<img alt="_images/57ff7122a53e81047b3e29dc7eeaac5ebaabd2640976556486755a0ef49c1f71.png" src="_images/57ff7122a53e81047b3e29dc7eeaac5ebaabd2640976556486755a0ef49c1f71.png" />
+<img alt="_images/e0c5df82af3b6fb35256db5f1d2e6ee96f8cacd3a3442266bfb143b9d7759380.png" src="_images/e0c5df82af3b6fb35256db5f1d2e6ee96f8cacd3a3442266bfb143b9d7759380.png" />
+<img alt="_images/017468adc36d8092d6aeee30ba9b7acbd21baa7f1686b4aa20ee5c1bf7c0a1a2.png" src="_images/017468adc36d8092d6aeee30ba9b7acbd21baa7f1686b4aa20ee5c1bf7c0a1a2.png" />
+<img alt="_images/9458933ea0c88ae5d7cf511f5cb445b0ce80275cf28b9c25e24858936efae511.png" src="_images/9458933ea0c88ae5d7cf511f5cb445b0ce80275cf28b9c25e24858936efae511.png" />
+<img alt="_images/795f27480d7bcbbdbbe6c87355e7aa6153704543f0adc6e4bf22be31e80db733.png" src="_images/795f27480d7bcbbdbbe6c87355e7aa6153704543f0adc6e4bf22be31e80db733.png" />
 </div>
 </div>
 <p>As more data are collected, the posterior distribution of <span class="math notranslate nohighlight">\(\mu\)</span> becomes sharper and colser to the true value.</p>
@@ -687,7 +675,7 @@ where \)</span>p(\epsilon)=\mathcal{N}(0,\beta^{-1})$.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d34be7e48093c1d40fa9bfc95466e21fdb7cbe6e7cf20d4be7f48ed1dd859a96.png" src="_images/d34be7e48093c1d40fa9bfc95466e21fdb7cbe6e7cf20d4be7f48ed1dd859a96.png" />
+<img alt="_images/3784df4bb9d72b6dc29063a5e5bab080f1b5dd1406d7be89cdf0ea861418c5e8.png" src="_images/3784df4bb9d72b6dc29063a5e5bab080f1b5dd1406d7be89cdf0ea861418c5e8.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -738,12 +726,12 @@ where \)</span>p(\epsilon)=\mathcal{N}(0,\beta^{-1})$.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>m = [-0.7029938   0.46136882]
-S = [[0.346712   0.42874733]
- [0.42874733 0.7186168 ]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>m = [-0.74795774  0.66269709]
+S = [[0.46949926 0.4700283 ]
+ [0.4700283  0.58355082]]
 </pre></div>
 </div>
-<img alt="_images/c064554cf548e48158957df7d935a3d27aa63da135aeb2e58f8100c2501572d6.png" src="_images/c064554cf548e48158957df7d935a3d27aa63da135aeb2e58f8100c2501572d6.png" />
+<img alt="_images/e6826c7172d013c9d066520a8458c785f26ee164787b7d95aab796ada5d39c8b.png" src="_images/e6826c7172d013c9d066520a8458c785f26ee164787b7d95aab796ada5d39c8b.png" />
 </div>
 </div>
 <section id="predictive-distribution">
@@ -776,7 +764,7 @@ S = [[0.346712   0.42874733]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/78d99084a39e5e3e75b58038f67269b8679eeafb89d4bd49ad47d9fa825eeb6b.png" src="_images/78d99084a39e5e3e75b58038f67269b8679eeafb89d4bd49ad47d9fa825eeb6b.png" />
+<img alt="_images/45e13758121d9d390ced0e498a73117f9e22bfba7deaa02c4f30c9a6505aa1a6.png" src="_images/45e13758121d9d390ced0e498a73117f9e22bfba7deaa02c4f30c9a6505aa1a6.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -823,7 +811,7 @@ S = [[0.346712   0.42874733]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9d5a8f3bcf05a805c04905b33cedbf4a7a89ce1ee282f8f2c2c7c25e79079d91.png" src="_images/9d5a8f3bcf05a805c04905b33cedbf4a7a89ce1ee282f8f2c2c7c25e79079d91.png" />
+<img alt="_images/e7b9fa7aec669eba5a2f0e336b0e5233829b1e13ea8498d7436fd19854220e03.png" src="_images/e7b9fa7aec669eba5a2f0e336b0e5233829b1e13ea8498d7436fd19854220e03.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -847,11 +835,11 @@ S = [[0.346712   0.42874733]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 0.24028929  0.04094929 -0.40791538 -0.83469594  0.26829224 -0.22014195
-  1.23303535  0.7519305  -0.27314084 -0.68931429]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 0.81977129 -0.21116475 -0.35016977 -0.61301655 -0.35445159  0.47176574
+  0.75389272  0.50070748  0.26958855 -0.78954599]
 </pre></div>
 </div>
-<img alt="_images/2cb189b5285003e7306b95a0b368fcdfe412e211595af8026bbdd8a5cbb16e5b.png" src="_images/2cb189b5285003e7306b95a0b368fcdfe412e211595af8026bbdd8a5cbb16e5b.png" />
+<img alt="_images/551a9c9c5a0913262c3004eaab6f15faee7ab5d819c0e1519649bc77e63d19cf.png" src="_images/551a9c9c5a0913262c3004eaab6f15faee7ab5d819c0e1519649bc77e63d19cf.png" />
 </div>
 </div>
 <p>See how <span class="math notranslate nohighlight">\(N\)</span>, <span class="math notranslate nohighlight">\(M\)</span>, <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> affect the performance.</p>
@@ -936,17 +924,17 @@ S = [[0.346712   0.42874733]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 40.68632804463143 3.104045624156934 -19.38981009545169 0.47399755806984795
-3 1.5218361874541901 4.002513567944652 -22.359751680135425 0.49075194516136117
-4 0.356724142748352 22.020833888132746 -10.072104298265344 0.027633787378076553
-5 0.8556745379600221 25.30358582387256 -9.066438262460057 0.014389030314455199
-6 1.6379929505367643 25.649954585677527 -9.068688797268582 0.013687441580166451
-7 2.4495614404083375 26.408589438313296 -8.901588874082968 0.014326266188703357
-8 2.347207878730932 30.814038121751803 -8.44889877766372 0.03344981989210373
-9 3.2233248808503667 30.12832819022222 -8.531031819626982 0.03009233096253615
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 10.86863581843556 2.4172171664623776 -23.186202000426057 0.4329010889144466
+3 1.8470179065140728 3.0056311889594944 -24.929666005373758 0.4693138345391524
+4 0.2936339047025388 53.507568638643775 -1.6975181845887732 0.019187841756577288
+5 0.7935349187324553 54.472113292754344 -1.8010958450863832 0.019159410733241213
+6 1.582186833728173 61.6018162432809 -0.4764957852968301 0.014529996572586312
+7 2.3876944374895017 59.05449771023588 -0.8407566583899779 0.016079175772422044
+8 2.5930839146925133 68.74150563855842 -0.19663087598864237 0.012722461861915852
+9 2.9068717783431075 73.42041497605483 -0.27206761917508615 0.012637879965764154
 </pre></div>
 </div>
-<img alt="_images/7ddde9753742d37d58a54727dc9bae9e87c4fb6c061a5e0b294b712179f15789.png" src="_images/7ddde9753742d37d58a54727dc9bae9e87c4fb6c061a5e0b294b712179f15789.png" />
+<img alt="_images/99a79aebf783d01bb111438ec3514209a512265a0802736649b241d39cd16124.png" src="_images/99a79aebf783d01bb111438ec3514209a512265a0802736649b241d39cd16124.png" />
 </div>
 </div>
 </section>
@@ -960,7 +948,7 @@ S = [[0.346712   0.42874733]
 <figure class="align-default" id="fig-blr">
 <a class="reference internal image-reference" href="_images/BN_blr.png"><img alt="_images/BN_blr.png" src="_images/BN_blr.png" style="width: 200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Graphical model for the Bayesian linear regression.</span><a class="headerlink" href="#fig-blr" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Graphical model for the Bayesian linear regression.</span><a class="headerlink" href="#fig-blr" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Inference in Bayesian network goes like this: as values of some variables are observed,</p>
@@ -976,7 +964,7 @@ S = [[0.346712   0.42874733]
 <figure class="align-default" id="fig-chain">
 <img alt="Chain" src="_images/BN_chain.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Graphical model of a chain of states.</span><a class="headerlink" href="#fig-chain" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Graphical model of a chain of states.</span><a class="headerlink" href="#fig-chain" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>For each node, the variable takes an integer value <span class="math notranslate nohighlight">\(x_n \in \{1,...,K_n\}\)</span> and we consider the joint distribution over the entire nodes:</p>
@@ -1084,7 +1072,7 @@ S = [[0.346712   0.42874733]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/df69f5f16b604523dc9e26ae84956ad1661bf591d7f2902cde3960c201fcf468.png" src="_images/df69f5f16b604523dc9e26ae84956ad1661bf591d7f2902cde3960c201fcf468.png" />
+<img alt="_images/ca161ed243f21db5c1faec143a64dafc9c20aac0a65004eb7af41094eb5e6794.png" src="_images/ca161ed243f21db5c1faec143a64dafc9c20aac0a65004eb7af41094eb5e6794.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1096,7 +1084,7 @@ S = [[0.346712   0.42874733]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 5, 5])
 </pre></div>
 </div>
 </div>
@@ -1110,7 +1098,7 @@ S = [[0.346712   0.42874733]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c501c2802d94d0a9ffb4dd3e3f09e76672a8d4d28bae701226729016d5d74150.png" src="_images/c501c2802d94d0a9ffb4dd3e3f09e76672a8d4d28bae701226729016d5d74150.png" />
+<img alt="_images/148c98deb509b012af0b4c6793fe781df9da613a69ecfb8471d8c68342c2c498.png" src="_images/148c98deb509b012af0b4c6793fe781df9da613a69ecfb8471d8c68342c2c498.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1122,7 +1110,7 @@ S = [[0.346712   0.42874733]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6ae55c61cad4f69910a686a2d53f863e5b69cc69587e65ca948356cb7f8413f6.png" src="_images/6ae55c61cad4f69910a686a2d53f863e5b69cc69587e65ca948356cb7f8413f6.png" />
+<img alt="_images/b34be0fda79ed738cc38caa4abcd2cb56f42f55f71272b7ed6aa1b2d98d27c04.png" src="_images/b34be0fda79ed738cc38caa4abcd2cb56f42f55f71272b7ed6aa1b2d98d27c04.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1134,7 +1122,7 @@ S = [[0.346712   0.42874733]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4eb041b6ec7cd605ef09785cd36732a9e7b39403a3389f0a23dabc2d2dc87626.png" src="_images/4eb041b6ec7cd605ef09785cd36732a9e7b39403a3389f0a23dabc2d2dc87626.png" />
+<img alt="_images/d1d41a70874c3d8d85aa0a735ad62bfa6f1eb2057c44e592a2dbfe32ffb7eaea.png" src="_images/d1d41a70874c3d8d85aa0a735ad62bfa6f1eb2057c44e592a2dbfe32ffb7eaea.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1146,7 +1134,7 @@ S = [[0.346712   0.42874733]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ba283022275aed48324202081bb1c5f5120681cd1550355ca2b79079a4ced173.png" src="_images/ba283022275aed48324202081bb1c5f5120681cd1550355ca2b79079a4ced173.png" />
+<img alt="_images/e201546ba6f04885f7f3952d56b6437e7054ca66f748ff6a28dc9ce4601989f6.png" src="_images/e201546ba6f04885f7f3952d56b6437e7054ca66f748ff6a28dc9ce4601989f6.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1158,7 +1146,7 @@ S = [[0.346712   0.42874733]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/991122171e9f061a038c6c24ae7fc4b7ca12e6d9c8c3d9c9eb5a2b4c167e1106.png" src="_images/991122171e9f061a038c6c24ae7fc4b7ca12e6d9c8c3d9c9eb5a2b4c167e1106.png" />
+<img alt="_images/800032d59bc1cc2ccf9b552981207ab87edd14acb52a11d94114357e5eb30d18.png" src="_images/800032d59bc1cc2ccf9b552981207ab87edd14acb52a11d94114357e5eb30d18.png" />
 </div>
 </div>
 </section>
@@ -1256,7 +1244,7 @@ S = [[0.346712   0.42874733]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c6856abd4e3c3f5268d467c51a246d2bb7a509dee19ae803a165ee331dcfaf3a.png" src="_images/c6856abd4e3c3f5268d467c51a246d2bb7a509dee19ae803a165ee331dcfaf3a.png" />
+<img alt="_images/88e58b656e643caaff604af5b15da028d12b0a4f9e424afd5a8bb45403d3e048.png" src="_images/88e58b656e643caaff604af5b15da028d12b0a4f9e424afd5a8bb45403d3e048.png" />
 </div>
 </div>
 <p>Suppose we have three coarse position sensors, which send signal only intermittently, and we want to estimate where the mouse is.</p>
@@ -1275,7 +1263,7 @@ S = [[0.346712   0.42874733]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c72e2f4428e73f48f54de90002c0af182fb9218969e09f869f6aead0c6dc5765.png" src="_images/c72e2f4428e73f48f54de90002c0af182fb9218969e09f869f6aead0c6dc5765.png" />
+<img alt="_images/7159fc041887a0fd2ebd2baefc2bbef5fb194e6f680e5a154064d81d762bc93c.png" src="_images/7159fc041887a0fd2ebd2baefc2bbef5fb194e6f680e5a154064d81d762bc93c.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1297,7 +1285,7 @@ S = [[0.346712   0.42874733]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/33d2d57fa9c08cf6497a00cb0521408b3656502f09c917419c2d8f44cbaffba9.png" src="_images/33d2d57fa9c08cf6497a00cb0521408b3656502f09c917419c2d8f44cbaffba9.png" />
+<img alt="_images/253957b29f4560581fb70b3620690425555d45763646e8c2cb6ab973a2acdfd6.png" src="_images/253957b29f4560581fb70b3620690425555d45763646e8c2cb6ab973a2acdfd6.png" />
 </div>
 </div>
 <p>From such noisy intermittent observations, how can we estimate the state?</p>
@@ -1314,7 +1302,7 @@ S = [[0.346712   0.42874733]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/909c5fa0c905ab9456466936e29ca8fedfaa859ce183def515b8a6fc977b64db.png" src="_images/909c5fa0c905ab9456466936e29ca8fedfaa859ce183def515b8a6fc977b64db.png" />
+<img alt="_images/37b60d8285ab7cc21862066fcb982669ae42fda1a621a139d56cfbe656e8de9f.png" src="_images/37b60d8285ab7cc21862066fcb982669ae42fda1a621a139d56cfbe656e8de9f.png" />
 </div>
 </div>
 <p>Even when there is no useful sensory input, you can predict the state distribution by the dynamic model.
@@ -1408,7 +1396,7 @@ This tutorial illustrates how variational free-energy approximation of posterior
               
               
               
-                <footer class="prev-next-footer d-print-none">
+                <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1437,7 +1425,6 @@ This tutorial illustrates how variational free-energy approximation of posterior
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1504,7 +1491,7 @@ By Kenji Doya
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>
@@ -1528,8 +1515,8 @@ By Kenji Doya
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>

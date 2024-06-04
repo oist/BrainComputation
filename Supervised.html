@@ -15,32 +15,32 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -49,14 +49,18 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -74,23 +78,28 @@
 
   
   
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
+
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -112,20 +121,12 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
-
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
-    </header>
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
   
-
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-      
-      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -159,18 +160,7 @@
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -182,30 +172,30 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Introduction.html">Chapter 1. Introduction</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Neurons.html">Chapter 2. Neural Modeling and Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Neurons.html">Chapter 2. Neural Modeling and Analysis</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="Neurons_Exercise.html">Chapter 2. Neural Modeling and Analysis: Exercise</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Chapter 3: Supervised Learning</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Chapter 3: Supervised Learning</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="Supervised_Exercise.html">Supervised Learning: Exercise</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Reinforcement.html">Chapter 4. Reinforcement Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Reinforcement.html">Chapter 4. Reinforcement Learning</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="Reinforcement_Exercise.html">Chapter 4. Reinforcement Learning: Exercise</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Unsupervised.html">Chapter 5. Unsupervised Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Unsupervised.html">Chapter 5. Unsupervised Learning</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="Unsupervised_Exercise.html">Unsupervised Learning: Exercise</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Bayesian.html">Chatper 6. Bayesian Approaches</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Bayesian.html">Chatper 6. Bayesian Approaches</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="Bayesian_Exercise.html">Bayesian Approaches: Exercise</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Deep.html">Chapter 7: Deep Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Deep.html">Chapter 7: Deep Learning</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="Deep_Exercise.html">Chapter 7: Deep Learning: Exercise</a></li>
 </ul>
-</details></li>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="Multiple.html">Chapter 8. Multiple Agents</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Meta.html">Chapter 9. Meta-Learning</a></li>
 </ul>
@@ -223,7 +213,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main" role="main">
+      <main id="main-content" class="bd-main">
         
         
 
@@ -232,7 +222,7 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article d-print-none">
+              <div class="bd-header-article">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -411,7 +401,7 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article">
+                <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="chapter-3-supervised-learning">
 <h1>Chapter 3: Supervised Learning<a class="headerlink" href="#chapter-3-supervised-learning" title="Permalink to this heading">#</a></h1>
@@ -454,15 +444,17 @@ document.write(`
 </div>
 </div>
 </div>
-<p>The aim of <em>supervised learning</em> is to construct an input-output mapping
-$<span class="math notranslate nohighlight">\( \y = f(\x) \)</span><span class="math notranslate nohighlight">\(
-from pairs of samples \)</span>(\x_1,\y_1),…,(\x_N,\y_N)$.</p>
+<p>The aim of <em>supervised learning</em> is to construct an input-output mapping</p>
+<div class="math notranslate nohighlight">
+\[ \y = f(\x) \]</div>
+<p>from pairs of samples <span class="math notranslate nohighlight">\((\x_1,\y_1),...,(\x_N,\y_N)\)</span>.</p>
 <p>When <span class="math notranslate nohighlight">\(\y\)</span> is continuous, it is called <em>function approximation</em> or <em>regression</em>.</p>
 <p>When <span class="math notranslate nohighlight">\(\y\)</span> is discrete, it is called <em>pattern recognition</em> or <em>classification</em>.</p>
-<p>Here we focus on the case where the output is one dimension and computed from weighted sum of the inputs <span class="math notranslate nohighlight">\(x_1,...,x_D\)</span>
-$<span class="math notranslate nohighlight">\(
+<p>Here we focus on the case where the output is one dimension and computed from weighted sum of the inputs <span class="math notranslate nohighlight">\(x_1,...,x_D\)</span></p>
+<div class="math notranslate nohighlight">
+\[
     y = f(\x;\w) = g( w_0 + w_1 x_1 + ... + w_D x_D).
-\)</span>$</p>
+\]</div>
 <p>This is considered as an artificial neuron unit with input synaptic weights <span class="math notranslate nohighlight">\(w_1,...,w_D\)</span>, bias <span class="math notranslate nohighlight">\(w_0\)</span> (or threshold <span class="math notranslate nohighlight">\(-w_0\)</span>), and the output function <span class="math notranslate nohighlight">\(g(\ )\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -482,7 +474,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b45a14af26afac1b773582be01ea8d864d91c83e1f352531bcf63b67da0bb7ed.png" src="_images/b45a14af26afac1b773582be01ea8d864d91c83e1f352531bcf63b67da0bb7ed.png" />
+<img alt="_images/ccef40f3301ad5a2739bda4602ebe0213c9c499baaebd0fda3b12c1e3c4c2268.png" src="_images/ccef40f3301ad5a2739bda4602ebe0213c9c499baaebd0fda3b12c1e3c4c2268.png" />
 </div>
 </div>
 </section>
@@ -493,83 +485,102 @@ $<span class="math notranslate nohighlight">\(
 <section id="linear-regression">
 <h2>Linear Regression<a class="headerlink" href="#linear-regression" title="Permalink to this heading">#</a></h2>
 <p>In the simplest case, the output function is identity <span class="math notranslate nohighlight">\(g(u)=u\)</span>. This is the case of <em>linear regression</em>.</p>
-<p>For <span class="math notranslate nohighlight">\(D\)</span>-dimensional input
-$<span class="math notranslate nohighlight">\(\x = (x_1,...,x_D)^T,\)</span><span class="math notranslate nohighlight">\(
-we take a weight vector
-\)</span><span class="math notranslate nohighlight">\(\w = (w_0,w_1,...,w_D)^T\)</span><span class="math notranslate nohighlight">\(
-and give a scalar output
-\)</span><span class="math notranslate nohighlight">\(
+<p>For <span class="math notranslate nohighlight">\(D\)</span>-dimensional input</p>
+<div class="math notranslate nohighlight">
+\[\x = (x_1,...,x_D)^T,\]</div>
+<p>we take a weight vector</p>
+<div class="math notranslate nohighlight">
+\[\w = (w_0,w_1,...,w_D)^T\]</div>
+<p>and give a scalar output</p>
+<div class="math notranslate nohighlight">
+\[
 y = f(\x;\w) = w_0 + w_1 x_1 + ... + w_D x_D.
-\)</span><span class="math notranslate nohighlight">\(
-By considering a constant input \)</span>x_0=1<span class="math notranslate nohighlight">\( and redefining \)</span>\x<span class="math notranslate nohighlight">\( as 
-\)</span><span class="math notranslate nohighlight">\(\x = (1,x_1,...,x_D)^T,\)</span><span class="math notranslate nohighlight">\(
-we have a simple vector notation
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>By considering a constant input <span class="math notranslate nohighlight">\(x_0=1\)</span> and redefining <span class="math notranslate nohighlight">\(\x\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[\x = (1,x_1,...,x_D)^T,\]</div>
+<p>we have a simple vector notation</p>
+<div class="math notranslate nohighlight">
+\[
 y = f(\x;\w) = \w^T \x = \x^T \w.
-\)</span>$</p>
-<p>We represent a set of input data as a matrix
-$<span class="math notranslate nohighlight">\(X = \pmatrix{\x_1^T \\ \vdots \\ \x_N^T}
+\]</div>
+<p>We represent a set of input data as a matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}X = \pmatrix{\x_1^T \\ \vdots \\ \x_N^T}
     = \pmatrix{1 &amp; x_{11} &amp; \cdots &amp; x_{1D}\\
     \vdots &amp;\vdots &amp; &amp; \vdots\\
     1 &amp; x_{N1} &amp; \cdots &amp; x_{ND}} 
-\)</span><span class="math notranslate nohighlight">\(
-and the set of outputs is given in a vector form as
-\)</span><span class="math notranslate nohighlight">\(
+\end{split}\]</div>
+<p>and the set of outputs is given in a vector form as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \y = \pmatrix{y_1\\ \vdots \\y_N} = X \w.
-\)</span>$</p>
-<p>When a set of target outputs
-$<span class="math notranslate nohighlight">\( \y^* = \pmatrix{y^*_1\\ \vdots \\y^*_N}\)</span><span class="math notranslate nohighlight">\(
-is given, how can we find the appropriate weight vector \)</span>\w<span class="math notranslate nohighlight">\( so that \)</span>\y<span class="math notranslate nohighlight">\( becomes close to \)</span>\y^*$?</p>
+\end{split}\]</div>
+<p>When a set of target outputs</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \y^* = \pmatrix{y^*_1\\ \vdots \\y^*_N}\end{split}\]</div>
+<p>is given, how can we find the appropriate weight vector <span class="math notranslate nohighlight">\(\w\)</span> so that <span class="math notranslate nohighlight">\(\y\)</span> becomes close to <span class="math notranslate nohighlight">\(\y^*\)</span>?</p>
 <section id="least-square-solution">
 <h3>Least square solution<a class="headerlink" href="#least-square-solution" title="Permalink to this heading">#</a></h3>
-<p>A basic solution is to minimize the squared error between the target output and the model output
-$<span class="math notranslate nohighlight">\( E(\w) = \frac{1}{2}\sum_{n=1}^N (\w^T \x_n - y^*_n)^2 
- = \frac{1}{2} ||X\w - \y^*||^2. \)</span>$</p>
-<p>To minimize this, we differentiate this error function with each weight parameter and set it equal to zero:
-$<span class="math notranslate nohighlight">\(
+<p>A basic solution is to minimize the squared error between the target output and the model output</p>
+<div class="math notranslate nohighlight">
+\[ E(\w) = \frac{1}{2}\sum_{n=1}^N (\w^T \x_n - y^*_n)^2 
+ = \frac{1}{2} ||X\w - \y^*||^2. \]</div>
+<p>To minimize this, we differentiate this error function with each weight parameter and set it equal to zero:</p>
+<div class="math notranslate nohighlight">
+\[
     \p{E(\w)}{w_i} = \sum_{n=1}^N (\w^T \x_n - y^*_n)x_{ni} = 0.
-\)</span><span class="math notranslate nohighlight">\(
-These are represented in a vector form as
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>These are represented in a vector form as</p>
+<div class="math notranslate nohighlight">
+\[
     \p{E(\w)}{\w} = X^T(X\w - \y^*) = (X^T X)\w - X^T\y^* = \b{0}.
-\)</span><span class="math notranslate nohighlight">\(
-Thus the solution to this minimization problem is given by
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>Thus the solution to this minimization problem is given by</p>
+<div class="math notranslate nohighlight">
+\[
     \b{\hat{w}} = (X^T X)^{-1} X^T \y^*.
-\)</span>$</p>
+\]</div>
 </section>
 <section id="maximum-likelihood-estimate">
 <h3>Maximum likelihood estimate<a class="headerlink" href="#maximum-likelihood-estimate" title="Permalink to this heading">#</a></h3>
-<p>A statstician would assume that the target output is generated by a linear model with additional noise
-$<span class="math notranslate nohighlight">\(
+<p>A statstician would assume that the target output is generated by a linear model with additional noise</p>
+<div class="math notranslate nohighlight">
+\[
     y^*_n = \w^T\x_n + \epsilon_n
-\)</span><span class="math notranslate nohighlight">\(
-where \)</span>\epsilon_n<span class="math notranslate nohighlight">\( is assumed to follow a Gaussian distribution \)</span>\mathcal{N}(0,\sigma^2)<span class="math notranslate nohighlight">\(.
-This is also re-written as
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\epsilon_n\)</span> is assumed to follow a Gaussian distribution <span class="math notranslate nohighlight">\(\mathcal{N}(0,\sigma^2)\)</span>.
+This is also re-written as</p>
+<div class="math notranslate nohighlight">
+\[
     y^*_n \sim \mathcal{N}(\w^T\x_n,\sigma^2)
-\)</span>$</p>
+\]</div>
 <blockquote>
-<div><p>The Gaussian distribution is defined as:
-$<span class="math notranslate nohighlight">\(
+<div><p>The Gaussian distribution is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
     p(x;\mu,\sigma^2) = \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}
-\)</span>$</p>
+\]</div>
 </div></blockquote>
 <p>In this setup, the standard way of selecting the parameter is to find the one with the <em>maximum likelihood</em>, i.e. the probability of producing the data.</p>
-<p>The likelihood of weights <span class="math notranslate nohighlight">\(\w\)</span> for the set of observed data is the product of the likelihood for each data:
-$<span class="math notranslate nohighlight">\(
+<p>The likelihood of weights <span class="math notranslate nohighlight">\(\w\)</span> for the set of observed data is the product of the likelihood for each data:</p>
+<div class="math notranslate nohighlight">
+\[
     L(\w) = p(\y^*|X,\w,\sigma^2)
     = \prod_{n=1}^N (2\pi\sigma^2)^{-\frac{1}{2}}
     e^{-\frac{(y^*_n-\w^T\x_n)^2}{2\sigma^2}}.
-\)</span><span class="math notranslate nohighlight">\(
-In maximizing the likelihood, it is mathematically and computationally more convenient to take its logarithm
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>In maximizing the likelihood, it is mathematically and computationally more convenient to take its logarithm</p>
+<div class="math notranslate nohighlight">
+\[
     l(\w) = \log p(\y^*|X,\w,\sigma^2)
     = \sum_{n=1}^N -\frac{1}{2}\log(2\pi\sigma^2)
     - \frac{(y^*_n-\w^T\x_n)^2}{2\sigma^2}
-\)</span>$$<span class="math notranslate nohighlight">\(
+\]</div>
+<div class="math notranslate nohighlight">
+\[
     = - \frac{N}{2}\log(2\pi) - N\log\sigma  - \frac{1}{\sigma^2} E(\w).
-\)</span>$</p>
+\]</div>
 <p>In the above, only the last term depends on the weights <span class="math notranslate nohighlight">\(\w\)</span>.
 Thus the maximizing the likelihood is equivalent to minimizing the sum of squared errors <span class="math notranslate nohighlight">\(E(\w)\)</span>.</p>
 <p>This link between minimal error and maximum likelihood is helpful when we consider regularization of parameters and Bayesian perspective in Chapter 6.</p>
@@ -598,7 +609,7 @@ Then we will make a linear regression model to predict the angular accleration f
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4961fc05e8203501fea83fbece09fe267effd1596a06f6ff359b604dbf8d76fa.png" src="_images/4961fc05e8203501fea83fbece09fe267effd1596a06f6ff359b604dbf8d76fa.png" />
+<img alt="_images/6a5f5c3c8a0837ecec6590e4efc6635353de01448bc3e5b70b9d3317be525d97.png" src="_images/6a5f5c3c8a0837ecec6590e4efc6635353de01448bc3e5b70b9d3317be525d97.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -631,7 +642,7 @@ Then we will make a linear regression model to predict the angular accleration f
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/53b7dff0f484d2e18d88797744dce793fe7f3aa36a3ff73072e9db75399ea585.png" src="_images/53b7dff0f484d2e18d88797744dce793fe7f3aa36a3ff73072e9db75399ea585.png" />
+<img alt="_images/367d74a028b702ce8b0e69a0864ab140af2dd59c511a3f301da123caacf4b8c7.png" src="_images/367d74a028b702ce8b0e69a0864ab140af2dd59c511a3f301da123caacf4b8c7.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -665,7 +676,7 @@ Then we will make a linear regression model to predict the angular accleration f
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8428d9fc08871e320e26f05459df4c0e396176e9e03df9b616ec5a3a060026b8.png" src="_images/8428d9fc08871e320e26f05459df4c0e396176e9e03df9b616ec5a3a060026b8.png" />
+<img alt="_images/76d842d4671e33764191340ca9426f2e58996c2a8726f0dc56477ca9cc6a2f27.png" src="_images/76d842d4671e33764191340ca9426f2e58996c2a8726f0dc56477ca9cc6a2f27.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -681,7 +692,7 @@ Then we will make a linear regression model to predict the angular accleration f
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>w = [ -0.09447585 -47.53688373  -3.14769831]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>w = [  0.04755674 -39.98541557  -3.32975196]
 [0, -49.0, -0.6666666666666667]
 </pre></div>
 </div>
@@ -696,7 +707,7 @@ Then we will make a linear regression model to predict the angular accleration f
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 1.2959208742136759
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.926463180639745
 </pre></div>
 </div>
 </div>
@@ -717,7 +728,7 @@ Then we will make a linear regression model to predict the angular accleration f
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/06f8706880fb32bcac6b0c03ac9efac8b93e7de63d9f11135385bff8de249728.png" src="_images/06f8706880fb32bcac6b0c03ac9efac8b93e7de63d9f11135385bff8de249728.png" />
+<img alt="_images/80b0cd91438864fc0a61d5e956468548db484beedff5b419f0a53d382a8b7777.png" src="_images/80b0cd91438864fc0a61d5e956468548db484beedff5b419f0a53d382a8b7777.png" />
 </div>
 </div>
 </section>
@@ -725,15 +736,17 @@ Then we will make a linear regression model to predict the angular accleration f
 <section id="online-learning">
 <h2>Online Learning<a class="headerlink" href="#online-learning" title="Permalink to this heading">#</a></h2>
 <p>In the above, we assumed that all the data are available at once. However, data come in sequence and we would rather learn from the data as they come in.</p>
-<p>The basic way of online learning is to minimize the output error for each input
-$<span class="math notranslate nohighlight">\(
+<p>The basic way of online learning is to minimize the output error for each input</p>
+<div class="math notranslate nohighlight">
+\[
     E_n(\w) = \frac{1}{2}(y^*_n - \w^T \x_n)^2
-    \)</span><span class="math notranslate nohighlight">\(
-and move \)</span>\w<span class="math notranslate nohighlight">\( down to its gradient
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>and move <span class="math notranslate nohighlight">\(\w\)</span> down to its gradient</p>
+<div class="math notranslate nohighlight">
+\[
     \Delta \w = - \alpha \p{E_n(\w)}{\w} = \alpha(y^*_n - \w^T \x_n)\x_n 
-\)</span><span class="math notranslate nohighlight">\(
-where \)</span>\alpha&gt;0$ is a learning rate paramter.</p>
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\alpha&gt;0\)</span> is a learning rate paramter.</p>
 <p>This is called <em>stochastic gradient descent (SGD)</em>, by assuming that <span class="math notranslate nohighlight">\(x_n\)</span> are stochastic samples from the input data space.</p>
 <p>Online learning has several advantages over <em>batch</em> algorithms like linear regrassion that processes all the data at once.
 Online learning does not require matrix inversion, which is computationally expensive when dealing with high dimensional data (large <span class="math notranslate nohighlight">\(D\)</span>).
@@ -755,10 +768,11 @@ called basis functions, and represent the target function by
 <h3>Radial Basis Functions<a class="headerlink" href="#radial-basis-functions" title="Permalink to this heading">#</a></h3>
 <p>In sensory nervous systems, neurons tend to respond to signals in a limited range, called <em>receptive field</em>. For example, each visual neuron responds to light stimuli on a small area in the retina. Each auditory neurons repond to a limited range of frequency.</p>
 <p>Partly inspired by such local receptive field properties, a popular class of basis functions is called <em>radial basis function (RBF)</em>.
-An RBF is give by a decreasing function of the distance from a center point:
-$<span class="math notranslate nohighlight">\(
+An RBF is give by a decreasing function of the distance from a center point:</p>
+<div class="math notranslate nohighlight">
+\[
     \phi_j(\x) = g(||\x-\x_j||)
-\)</span>$</p>
+\]</div>
 <p>A typical example is Gaussian basis functions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -776,7 +790,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a8fb7f4234410b9dc990c972e23c0dd585e30e83e6d88e19e1ae2393f0bc9d2e.png" src="_images/a8fb7f4234410b9dc990c972e23c0dd585e30e83e6d88e19e1ae2393f0bc9d2e.png" />
+<img alt="_images/db9a417dc9eebfcda78a1db79378c1e4fa053cd6025c7c4a57559ce5760fdf2d.png" src="_images/db9a417dc9eebfcda78a1db79378c1e4fa053cd6025c7c4a57559ce5760fdf2d.png" />
 </div>
 </div>
 <p>Here you can generate random samples of functions using RBF.</p>
@@ -791,7 +805,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d19890debbd85da98730ad9afa097798ec05c9f6b6e8f97c3570af4ae0573092.png" src="_images/d19890debbd85da98730ad9afa097798ec05c9f6b6e8f97c3570af4ae0573092.png" />
+<img alt="_images/ec2ae7843501f73369be78230d5cfa640788f87207b7bc9f71355ac586519934.png" src="_images/ec2ae7843501f73369be78230d5cfa640788f87207b7bc9f71355ac586519934.png" />
 </div>
 </div>
 <p>Here are RBFs in 2D input space on a grid.</p>
@@ -812,7 +826,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c3676c38f60ccc3c75baf4fcaf82bd133ef1962dd7095c7ebf5bb8ae331aa411.png" src="_images/c3676c38f60ccc3c75baf4fcaf82bd133ef1962dd7095c7ebf5bb8ae331aa411.png" />
+<img alt="_images/100b555d2587e7361700565f6a9a8d0d1e4a9a264a76a215c75f31274f4ef0b7.png" src="_images/100b555d2587e7361700565f6a9a8d0d1e4a9a264a76a215c75f31274f4ef0b7.png" />
 </div>
 </div>
 <section id="example-non-linear-pendulum">
@@ -827,9 +841,10 @@ $<span class="math notranslate nohighlight">\(
 <ul class="simple">
 <li><p>Learn a discriminant function: <span class="math notranslate nohighlight">\(\x \rightarrow C_k\)</span></p></li>
 <li><p>Learn a conditional probability: <span class="math notranslate nohighlight">\(p(C_k|\x)\)</span></p></li>
-<li><p>Learn a generative model <span class="math notranslate nohighlight">\(p(\x|C_k)\)</span> and then use Bayes’ theorem:
-$<span class="math notranslate nohighlight">\( p(C_k|\x) = \frac{p(\x|C_k)p(C_k)}{p(\x)} \)</span>$</p></li>
+<li><p>Learn a generative model <span class="math notranslate nohighlight">\(p(\x|C_k)\)</span> and then use Bayes’ theorem:</p></li>
 </ul>
+<div class="math notranslate nohighlight">
+\[ p(C_k|\x) = \frac{p(\x|C_k)p(C_k)}{p(\x)} \]</div>
 <p>Supervised pattern recognition has been highly successful in applications of image and speech recognition.
 However, it is a question whether suprevised learning is relevant for our vision and speech, becuase we do not usually receive labeles for objects or words when we learn to see or hear as infants.
 <em>Unsupervised learning</em>, covered in Chapter 5, might be a more plausible way of human sensory learning.</p>
@@ -839,38 +854,47 @@ However, it is a question whether suprevised learning is relevant for our vision
 <p>The first pattern classification learning machine was called <em>Perceptron</em> (Rosenblatt 1962).</p>
 <p>The original Perceptron consisted of three layers of binary units: S(sensory)-units, A(associative)-units connected randomly with S-units, and R(response)-units.</p>
 <p>Here we formulate the Perceptron in a generalized form.
-The input vector <span class="math notranslate nohighlight">\(\x\)</span> is converted by a set of basis functions <span class="math notranslate nohighlight">\(\phi_i(\x)\)</span> into a feature vector
-$<span class="math notranslate nohighlight">\(
+The input vector <span class="math notranslate nohighlight">\(\x\)</span> is converted by a set of basis functions <span class="math notranslate nohighlight">\(\phi_i(\x)\)</span> into a feature vector</p>
+<div class="math notranslate nohighlight">
+\[
     \b{\phi}(\x)=(\phi_1(\x),...,\phi_M(\x))^T.
-\)</span><span class="math notranslate nohighlight">\(
-In the simplest case, the feature vector is the same as the input vector \)</span>\b{\phi}(\x)=\x<span class="math notranslate nohighlight">\(, or just augumented by \)</span>1<span class="math notranslate nohighlight">\( to represent bias as \)</span>\b{\phi}(\x)=\pmatrix{1 \ \x}$.
+\]</div>
+<p>In the simplest case, the feature vector is the same as the input vector <span class="math notranslate nohighlight">\(\b{\phi}(\x)=\x\)</span>, or just augumented by <span class="math notranslate nohighlight">\(1\)</span> to represent bias as <span class="math notranslate nohighlight">\(\b{\phi}(\x)=\pmatrix{1 \\ \x}\)</span>.
 This is called <em>linear Perceptron</em>.</p>
-<p>The output is given by
-$<span class="math notranslate nohighlight">\(
+<p>The output is given by</p>
+<div class="math notranslate nohighlight">
+\[
     y = f( \sum_{i=1}^M w_{i} \phi_i(\x)) = f( \w^T \b{\phi}(\x))
-\)</span><span class="math notranslate nohighlight">\(
-where \)</span>\w=(w_1,…,w_M)^T$ is the output connection weights.</p>
-<p>The output function takes +1 or -1:
-$<span class="math notranslate nohighlight">\(
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\w=(w_1,...,w_M)^T\)</span> is the output connection weights.</p>
+<p>The output function takes +1 or -1:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
     f(u) = \begin{cases} 1 &amp; \mbox{if } u \ge 0 \\ -1 &amp; \mbox{if } u&lt;0. \end{cases}
-\)</span><span class="math notranslate nohighlight">\(
-For each input \)</span>\x_n<span class="math notranslate nohighlight">\(, the target output \)</span>y^*_n \in {+1,-1}$ is given.</p>
+\end{split}\]</div>
+<p>For each input <span class="math notranslate nohighlight">\(\x_n\)</span>, the target output <span class="math notranslate nohighlight">\(y^*_n \in \{+1,-1\}\)</span> is given.</p>
 <section id="perceptron-learning-rule">
 <h3>Perceptron Learning Rule<a class="headerlink" href="#perceptron-learning-rule" title="Permalink to this heading">#</a></h3>
-<p>Learning of Perceptron is based on the error function
-$<span class="math notranslate nohighlight">\(
+<p>Learning of Perceptron is based on the error function</p>
+<div class="math notranslate nohighlight">
+\[
     E(\w) = \sum_{y_n \ne y^*_n} -y^*_n\w^T\b{\phi}(\x_n)
-\)</span><span class="math notranslate nohighlight">\(
-which takes a positive value for each missclassified output \)</span>y_n \ne y^*_n$.</p>
-<p>The perceptron learning rule is the stochastic gradient
-$<span class="math notranslate nohighlight">\(
+\]</div>
+<p>which takes a positive value for each missclassified output <span class="math notranslate nohighlight">\(y_n \ne y^*_n\)</span>.</p>
+<p>The perceptron learning rule is the stochastic gradient</p>
+<div class="math notranslate nohighlight">
+\[
     \Delta \w = -\alpha\p{E(\w)}{\w}
-\)</span>$$<span class="math notranslate nohighlight">\(
+\]</div>
+<div class="math notranslate nohighlight">
+\[
     = \alpha y^*_n\b{\phi}(\x_n) \ \mbox{ if } y_n\ne y^*_n
-\)</span>$$<span class="math notranslate nohighlight">\(
+\]</div>
+<div class="math notranslate nohighlight">
+\[
     = \frac{\alpha}{2}(y^*_n-y_n)\b{\phi}(\x_n)
-\)</span>$
-which is a product of the output error and the input to each weight.</p>
+\]</div>
+<p>which is a product of the output error and the input to each weight.</p>
 <p>When two classes are <em>linearly separable</em>, the <em>Preceptron converence theorem</em> assures that learning converges to find a proper hyperplane to separate two classes.</p>
 </section>
 <section id="example-perceptron-in-2d-feature-space">
@@ -938,7 +962,7 @@ which is a product of the output error and the input to each weight.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/096167717852b5d5236f7d188410191b5bab6e8bd1f452f16b324c2a897c87d0.png" src="_images/096167717852b5d5236f7d188410191b5bab6e8bd1f452f16b324c2a897c87d0.png" />
+<img alt="_images/8283e4d59904e7bac29d1d8346681f02e6cd9bbc958675891b1e8afb7ad7f37d.png" src="_images/8283e4d59904e7bac29d1d8346681f02e6cd9bbc958675891b1e8afb7ad7f37d.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -962,10 +986,20 @@ which is a product of the output error and the input to each weight.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 1.0 ; w =  [-0.1         0.42304512  0.16665076]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.6 ; w =  [-0.1         0.37734155  0.28399488]
 </pre></div>
 </div>
-<img alt="_images/43a8ffcf8cf747a720b70d68fe269e1620480817311a840caae0ad18f983574e.png" src="_images/43a8ffcf8cf747a720b70d68fe269e1620480817311a840caae0ad18f983574e.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/1_/8z4rymn15_s8t_my7w1skyx00000gq/T/ipykernel_84873/2966047756.py:36: RuntimeWarning: invalid value encountered in scalar divide
+  x = self.w[1]*(u-self.w[0])/s+self.w[2]*np.array([l,-l])/np.sqrt(s)
+/var/folders/1_/8z4rymn15_s8t_my7w1skyx00000gq/T/ipykernel_84873/2966047756.py:36: RuntimeWarning: invalid value encountered in divide
+  x = self.w[1]*(u-self.w[0])/s+self.w[2]*np.array([l,-l])/np.sqrt(s)
+/var/folders/1_/8z4rymn15_s8t_my7w1skyx00000gq/T/ipykernel_84873/2966047756.py:37: RuntimeWarning: invalid value encountered in scalar divide
+  y = self.w[2]*(u-self.w[0])/s+self.w[1]*np.array([-l,l])/np.sqrt(s)
+/var/folders/1_/8z4rymn15_s8t_my7w1skyx00000gq/T/ipykernel_84873/2966047756.py:37: RuntimeWarning: invalid value encountered in divide
+  y = self.w[2]*(u-self.w[0])/s+self.w[1]*np.array([-l,l])/np.sqrt(s)
+</pre></div>
+</div>
+<img alt="_images/ab6563466d65c2bc8bbb9d85c9d1e69692b9ddcda4e00542dc13fcbeb82aa7ae.png" src="_images/ab6563466d65c2bc8bbb9d85c9d1e69692b9ddcda4e00542dc13fcbeb82aa7ae.png" />
 </div>
 </div>
 </section>
@@ -973,25 +1007,28 @@ which is a product of the output error and the input to each weight.</p>
 <section id="support-vector-machine">
 <h2>Support Vector Machine<a class="headerlink" href="#support-vector-machine" title="Permalink to this heading">#</a></h2>
 <p>With Perceptron learning rule, the line separating two classess can end up in any configuration so that two classes are separated, which may not be good for <em>generalization</em>, i.e., classification of new data that were not used for training.</p>
-<p>The <em>support vector machine (SVM)</em> (Bishop 2006, section 7.1) tries to find a separation line that has the largest margin to the positive and negative data by minimizing the <em>hinge</em> objective function
-$<span class="math notranslate nohighlight">\(
+<p>The <em>support vector machine (SVM)</em> (Bishop 2006, section 7.1) tries to find a separation line that has the largest margin to the positive and negative data by minimizing the <em>hinge</em> objective function</p>
+<div class="math notranslate nohighlight">
+\[
     E(\w) = \sum_n \max(0, 1-y^*_n\w^T\b{\phi}(\x_n)) + \lambda||\w||.
-\)</span><span class="math notranslate nohighlight">\(
-This tries to make the weighted input sum \)</span>\w^T\b{\phi}(\x_n)&gt;1<span class="math notranslate nohighlight">\( for \)</span>y^<em>_n=1<span class="math notranslate nohighlight">\( and \)</span>\w^T\b{\phi}(\x_n)&lt;1<span class="math notranslate nohighlight">\( for \)</span>y^</em>_n=-1<span class="math notranslate nohighlight">\(,
-while keeping \)</span>\w<span class="math notranslate nohighlight">\( small to create a large margin between the lines for \)</span>\w^T\b{\phi}(\x_n))=1<span class="math notranslate nohighlight">\( and \)</span>\w^T\b{\phi}(\x_n)) =-1$.</p>
+\]</div>
+<p>This tries to make the weighted input sum <span class="math notranslate nohighlight">\(\w^T\b{\phi}(\x_n)&gt;1\)</span> for <span class="math notranslate nohighlight">\(y^*_n=1\)</span> and <span class="math notranslate nohighlight">\(\w^T\b{\phi}(\x_n)&lt;1\)</span> for <span class="math notranslate nohighlight">\(y^*_n=-1\)</span>,
+while keeping <span class="math notranslate nohighlight">\(\w\)</span> small to create a large margin between the lines for <span class="math notranslate nohighlight">\(\w^T\b{\phi}(\x_n))=1\)</span> and <span class="math notranslate nohighlight">\(\w^T\b{\phi}(\x_n)) =-1\)</span>.</p>
 <p>A standard way for solving this optimization problem is to use a batch optimization method called <em>quadratic programming</em>.
-It is often the case that the basis functions are allocated around each data point <span class="math notranslate nohighlight">\(\x_n\)</span> using so-called <em>kernel</em> function
-$<span class="math notranslate nohighlight">\(
+It is often the case that the basis functions are allocated around each data point <span class="math notranslate nohighlight">\(\x_n\)</span> using so-called <em>kernel</em> function</p>
+<div class="math notranslate nohighlight">
+\[
     \phi_i(\x) = K(\x,\x_i).
-\)</span>$</p>
+\]</div>
 <section id="online-svm">
 <h3>Online SVM<a class="headerlink" href="#online-svm" title="Permalink to this heading">#</a></h3>
 <p>Here we consider an online version of SVM called <em>Pagasos</em> (Shalev-Shwartz et al. 2010) that has a closer link with Perceptron learning.</p>
-<p>The weights are updated by
-$<span class="math notranslate nohighlight">\(
+<p>The weights are updated by</p>
+<div class="math notranslate nohighlight">
+\[
     \Delta\w = \alpha\{1[1-y^*_n\w^T\b{\phi}(\x_n)] y^*_n\b{\phi}(\x_n) - \lambda\w\}
-\)</span><span class="math notranslate nohighlight">\(
-where \)</span>1[\ ]<span class="math notranslate nohighlight">\( represents an indicator function; \)</span>1[u]=1<span class="math notranslate nohighlight">\( if \)</span>u&gt;0<span class="math notranslate nohighlight">\( and \)</span>1[u]=0$ otherwise.</p>
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(1[\ ]\)</span> represents an indicator function; <span class="math notranslate nohighlight">\(1[u]=1\)</span> if <span class="math notranslate nohighlight">\(u&gt;0\)</span> and <span class="math notranslate nohighlight">\(1[u]=0\)</span> otherwise.</p>
 <p>The learning rate is gradually decreased as <span class="math notranslate nohighlight">\(\alpha=\frac{1}{\lambda n}\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1042,10 +1079,10 @@ where \)</span>1[\ ]<span class="math notranslate nohighlight">\( represents an 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>n = 20 ; err = 0.7634353847324551 ; w = [ 0.15471761  0.426225   -0.21183474]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>n = 20 ; err = 0.3777371237448089 ; w = [-1.07117794  0.52734969  0.38963267]
 </pre></div>
 </div>
-<img alt="_images/8f6af9d1000c518e4e2ae5f99c86734b7ab8eb1b25dda35dec6d2b90bfa31877.png" src="_images/8f6af9d1000c518e4e2ae5f99c86734b7ab8eb1b25dda35dec6d2b90bfa31877.png" />
+<img alt="_images/b4016ef42866a49475e4ac02eb68c8c6942bd799ac53b0c51c3d1391fdcc2695.png" src="_images/b4016ef42866a49475e4ac02eb68c8c6942bd799ac53b0c51c3d1391fdcc2695.png" />
 </div>
 </div>
 </section>
@@ -1053,80 +1090,95 @@ where \)</span>1[\ ]<span class="math notranslate nohighlight">\( represents an 
 <section id="logistic-regression">
 <h2>Logistic Regression<a class="headerlink" href="#logistic-regression" title="Permalink to this heading">#</a></h2>
 <p>In Perceptron and SVM, the output is binary. We sometimes want to express the certainty in the output by the probability of the data belonging to a class <span class="math notranslate nohighlight">\(p(C_k|\x)\)</span>.</p>
-<p><em>Logistic regression</em> is a probabilistic generalization of linear regression (Bishop 2006, Section 4.3). Its probabilistic output is given by
-$<span class="math notranslate nohighlight">\(
+<p><em>Logistic regression</em> is a probabilistic generalization of linear regression (Bishop 2006, Section 4.3). Its probabilistic output is given by</p>
+<div class="math notranslate nohighlight">
+\[
     p(C_1|\x) = y = g(\w^T\x))
-\)</span><span class="math notranslate nohighlight">\(
-and \)</span>p(C_0|\x) = 1 - p(C_1|\x)$.</p>
-<p>The function <span class="math notranslate nohighlight">\(g(\ )\)</span> is called <em>logistic sigmoid function</em>
-$<span class="math notranslate nohighlight">\(
+\]</div>
+<p>and <span class="math notranslate nohighlight">\(p(C_0|\x) = 1 - p(C_1|\x)\)</span>.</p>
+<p>The function <span class="math notranslate nohighlight">\(g(\ )\)</span> is called <em>logistic sigmoid function</em></p>
+<div class="math notranslate nohighlight">
+\[
     g(u) = \frac{1}{1+e^{-u}}.
-\)</span>$</p>
+\]</div>
 <blockquote>
-<div><p>The derivative of the logistic sigmoid function is represented as
-$<span class="math notranslate nohighlight">\(
+<div><p>The derivative of the logistic sigmoid function is represented as</p>
+<div class="math notranslate nohighlight">
+\[
     g'(u) = \frac{-1}{(1+e^{-u})^2}(-e^{-u})
     = \frac{1}{1+e^{-u}}\frac{e^{-u}}{1+e^{-u}}
     = g(u)(1-g(u))
-\)</span>$</p>
+\]</div>
 </div></blockquote>
 <section id="maximum-likelihood-by-iterative-least-squares">
 <h3>Maximum likelihood by iterative least squares<a class="headerlink" href="#maximum-likelihood-by-iterative-least-squares" title="Permalink to this heading">#</a></h3>
 <p>We can find the weights of logistic regression by the principle of maximum likelihood, the probability of reproducing the data.</p>
-<p>The likelihood of weights <span class="math notranslate nohighlight">\(\w\)</span> for a set of observed data <span class="math notranslate nohighlight">\((X,\y^*)\)</span> is
-$<span class="math notranslate nohighlight">\(
+<p>The likelihood of weights <span class="math notranslate nohighlight">\(\w\)</span> for a set of observed data <span class="math notranslate nohighlight">\((X,\y^*)\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[
     L(\w) = p(\y^*|X,\w)
     = \prod_{y^*_n=1} y_n \prod_{y^*_n=0}(1-y_n)
     = \prod_{n=1}^N y_n^{y^*_n} (1-y_n)^{1-y^*_n}.
-\)</span><span class="math notranslate nohighlight">\(
-The negative log likelihood is often called *cross entropy error*
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>The negative log likelihood is often called <em>cross entropy error</em></p>
+<div class="math notranslate nohighlight">
+\[
     E(\w) = -l(\w) = -\log p(\y^*|X,\w)
     = -\sum_{n=1}^N\{y^*_n\log y_n + (1-y^*_n)\log(1-y_n)\}.
-\)</span><span class="math notranslate nohighlight">\(
-From
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>From</p>
+<div class="math notranslate nohighlight">
+\[
     \p{y}{\w} = g'(\w^T\x)\p{\w^T\x}{\w} = y(1-y)\x,
-\)</span><span class="math notranslate nohighlight">\(
-the gradient of the cross entropy error is given as
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>the gradient of the cross entropy error is given as</p>
+<div class="math notranslate nohighlight">
+\[
     \p{E(\w)}{\w} 
     = -\sum_{n=1}^N\{y^*_n(1-y_n)\x_n - (1-y^*_n)y_n\x_n\}
-\)</span>$$<span class="math notranslate nohighlight">\(
+\]</div>
+<div class="math notranslate nohighlight">
+\[
     = \sum_{n=1}^N (y_n - y^*_n)\x_n
     = X^T(\y - \y^*) 
-\)</span>$
-which takes the same form as in linear regression.</p>
+\]</div>
+<p>which takes the same form as in linear regression.</p>
 <p>Unlike in linear regression, <span class="math notranslate nohighlight">\(\p{E(\w)}{\w}=0\)</span> does not have a closed form solution as in linear regression.
-Instead, we can apply Newton method using the <em>Hessian matrix</em>
-$<span class="math notranslate nohighlight">\(
+Instead, we can apply Newton method using the <em>Hessian matrix</em></p>
+<div class="math notranslate nohighlight">
+\[
     H = \p{}{\w}\p{E(\w)}{\w} = X^T R X
-\)</span><span class="math notranslate nohighlight">\(
-where \)</span>R<span class="math notranslate nohighlight">\( is a diagonal matrix made of the derivative of the sigmoid functions
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(R\)</span> is a diagonal matrix made of the derivative of the sigmoid functions</p>
+<div class="math notranslate nohighlight">
+\[
     R = \mbox{diag}(y_1(1-y_1),...,y_n(1-y_n)).
-\)</span>$</p>
-<p>The update is made by
-$<span class="math notranslate nohighlight">\(
+\]</div>
+<p>The update is made by</p>
+<div class="math notranslate nohighlight">
+\[
     \w := \w - (X^TRX)^{-1}X^T(\y - \y^*)
     = (X^TRX)^{-1}X^T R \b{z}
-\)</span><span class="math notranslate nohighlight">\(
-where \)</span>\b{z}<span class="math notranslate nohighlight">\( is an effective target value
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\b{z}\)</span> is an effective target value</p>
+<div class="math notranslate nohighlight">
+\[
     \b{z} = X\w - R^{-1}(\y - \y^*).
-\)</span>$
-This algorithm is called <em>iterative reweighted least squares</em>.</p>
+\]</div>
+<p>This algorithm is called <em>iterative reweighted least squares</em>.</p>
 </section>
 <section id="online-logistic-regression">
 <h3>Online logistic regression<a class="headerlink" href="#online-logistic-regression" title="Permalink to this heading">#</a></h3>
-<p>From the gradient of negative log likelihood for each data point
-$<span class="math notranslate nohighlight">\(
+<p>From the gradient of negative log likelihood for each data point</p>
+<div class="math notranslate nohighlight">
+\[
     \p{E_n(\w)}{\w} = (y_n - y^*_n)\x_n,
-\)</span><span class="math notranslate nohighlight">\(
-we can also apply stochastic gradient descent
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>we can also apply stochastic gradient descent</p>
+<div class="math notranslate nohighlight">
+\[
     \Delta \w = - \alpha \p{E_n(\w)}{\w} = \alpha (y^*_n - y_n)\x_n.
-\)</span>$</p>
+\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">LogisticRegression</span><span class="p">(</span><span class="n">Perceptron</span><span class="p">):</span>
@@ -1184,10 +1236,10 @@ we can also apply stochastic gradient descent
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> err = 0.25 ; w = [-1.88135745  0.87240212  0.51838496]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> err = 0.25 ; w = [-1.38121123  0.82973433  0.46721136]
 </pre></div>
 </div>
-<img alt="_images/c4c659e69527e044fb2c9e9f7188930c1b445ca638e2e0db7927e528a8a913a6.png" src="_images/c4c659e69527e044fb2c9e9f7188930c1b445ca638e2e0db7927e528a8a913a6.png" />
+<img alt="_images/fb399d062057a25be609c5719a75c348f228d07b37569d76069846a80a40ed00.png" src="_images/fb399d062057a25be609c5719a75c348f228d07b37569d76069846a80a40ed00.png" />
 </div>
 </div>
 </section>
@@ -1225,12 +1277,11 @@ Indeed, cerebellar synaptic plasticity guided by the climbing fiber input was ex
 <h3>Cerebellar Internal Model Hyopthesis<a class="headerlink" href="#cerebellar-internal-model-hyopthesis" title="Permalink to this heading">#</a></h3>
 <p>The cerebellum is known to be important for movement control.
 A possible way in which suprevised learning can be helpful is to provide an <em>internal model</em> of the motor apparatus (Wolpert et al. 1998).</p>
-<figure class="align-default" id="fig-fel">
-<a class="reference internal image-reference" href="https://pub.mdpi-res.com/biomimetics/biomimetics-05-00019/article_deploy/html/images/biomimetics-05-00019-g005.png?1590743622"><img alt="Feedback Error Learning" src="https://pub.mdpi-res.com/biomimetics/biomimetics-05-00019/article_deploy/html/images/biomimetics-05-00019-g005.png?1590743622" style="width: 500px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 4 </span><span class="caption-text">The feedback error learning model (Kawato et al. 1987). The innate feedback controller in the brainstem or spinal cord provides corrective motor signal, which is used as the error signal for supervised learning of <em>inverse model</em> in the cerebellum (from Ellery 2020)</span><a class="headerlink" href="#fig-fel" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<blockquote>
+<div><p>{figure-md} Fig_FEL
+<img src="https://pub.mdpi-res.com/biomimetics/biomimetics-05-00019/article_deploy/html/images/biomimetics-05-00019-g005.png?1590743622" alt="Feedback Error Learning" width="500px"></p>
+<p>The feedback error learning model (Kawato et al. 1987). The innate feedback controller in the brainstem or spinal cord provides corrective motor signal, which is used as the error signal for supervised learning of <em>inverse model</em> in the cerebellum (from Ellery 2020)</p>
+</div></blockquote>
 <p>The molecular mechanism for the association of the parallel fiber input and the climbing fiber input (output error) at the Purkinje cell synapses has also been studied in detail (Ito 2000; Ogasawara et al. 2008).</p>
 </section>
 </section>
@@ -1302,7 +1353,7 @@ A possible way in which suprevised learning can be helpful is to provide an <em>
               
               
               
-                <footer class="prev-next-footer d-print-none">
+                <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1331,7 +1382,6 @@ A possible way in which suprevised learning can be helpful is to provide an <em>
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1409,7 +1459,7 @@ By Kenji Doya
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>
@@ -1433,8 +1483,8 @@ By Kenji Doya
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>
