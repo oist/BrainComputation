@@ -23,4 +23,8 @@ chapters:
   sections:
   - file: Deep_Exercise
 - file: Multiple
+  sections:
+  - file: Multiple_Exercise
 - file: Meta
+  sections:
+  - file: Meta_Exercise
