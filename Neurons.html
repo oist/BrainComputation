@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
@@ -35,16 +35,18 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
     <script src="_static/scripts/sphinx-book-theme.js"></script>
@@ -140,8 +142,6 @@
         <div class="sidebar-primary-item">
 
   
-    
-  
 
 <a class="navbar-brand logo" href="BrainComputation.html">
   
@@ -163,7 +163,7 @@
 
  <script>
  document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
     <span class="search-button__default-text">Search</span>
     <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
@@ -243,9 +243,9 @@
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -323,10 +323,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -334,14 +334,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -538,7 +538,7 @@ They follow the following differential equations with their rates of opening and
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a5a9877f00c5e0efdd39b1675dcd87e42c0bf6397a6ca949b6edfcb2698ae1d1.png" src="_images/a5a9877f00c5e0efdd39b1675dcd87e42c0bf6397a6ca949b6edfcb2698ae1d1.png" />
+<img alt="_images/afefc78326133a6bd363b6c3e0b63cb542ad0b082c30b86d594ce0b571f0322f.png" src="_images/afefc78326133a6bd363b6c3e0b63cb542ad0b082c30b86d594ce0b571f0322f.png" />
 </div>
 </div>
 </section>
@@ -607,7 +607,7 @@ We are, however, often interested in how a spike is triggered, rather than and e
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/68a40654eed809d1999e7fad7d7dbe5f56129b735e01482cb0a69a8eac2b50b9.png" src="_images/68a40654eed809d1999e7fad7d7dbe5f56129b735e01482cb0a69a8eac2b50b9.png" />
+<img alt="_images/c7e63d07d04109023f2034f8ef168e422182035b29b303ddec45875d102017ba.png" src="_images/c7e63d07d04109023f2034f8ef168e422182035b29b303ddec45875d102017ba.png" />
 </div>
 </div>
 </section>
@@ -662,7 +662,7 @@ We are, however, often interested in how a spike is triggered, rather than and e
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3d3c4343c106193c2b7010b67188969e683e281f32126aa6a710c7afd0769975.png" src="_images/3d3c4343c106193c2b7010b67188969e683e281f32126aa6a710c7afd0769975.png" />
+<img alt="_images/328096b9e93ec3669351ab3dfefc9491a80a067c7bc1823c75119526e206f3c0.png" src="_images/328096b9e93ec3669351ab3dfefc9491a80a067c7bc1823c75119526e206f3c0.png" />
 </div>
 </div>
 </section>
@@ -688,7 +688,7 @@ We are, however, often interested in how a spike is triggered, rather than and e
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/bd0e830b4d351e8af0da174c5f51da0c536c99b9bf676733c8c9009e8dd96524.png" src="_images/bd0e830b4d351e8af0da174c5f51da0c536c99b9bf676733c8c9009e8dd96524.png" />
+<img alt="_images/b0f77709c352d448a96e49d931bdc8c3b97ad3931012eb26b3190aa1cb149a51.png" src="_images/b0f77709c352d448a96e49d931bdc8c3b97ad3931012eb26b3190aa1cb149a51.png" />
 </div>
 </div>
 <p>The firing threshold becomes smoother with noise.</p>
@@ -824,7 +824,7 @@ We are, however, often interested in how a spike is triggered, rather than and e
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ba60a1d61653f3fa9cac1a5f87c71df2930474892149d9d2076daea39d02b466.png" src="_images/ba60a1d61653f3fa9cac1a5f87c71df2930474892149d9d2076daea39d02b466.png" />
+<img alt="_images/30ea6bed1d28af336181677c47f86416521f40537bd512226e967927b719ea47.png" src="_images/30ea6bed1d28af336181677c47f86416521f40537bd512226e967927b719ea47.png" />
 </div>
 </div>
 </section>
@@ -884,7 +884,7 @@ Depending on the connection strengths, we can observe point attractor or oscilla
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5472d123273561085b6e6fa92bffbfe018b352b0154f7a37c393749d829dd16a.png" src="_images/5472d123273561085b6e6fa92bffbfe018b352b0154f7a37c393749d829dd16a.png" />
+<img alt="_images/033c994a5846b4396d2b42f2676d13c2cd10cc0c31437b071736b94df51ad3ec.png" src="_images/033c994a5846b4396d2b42f2676d13c2cd10cc0c31437b071736b94df51ad3ec.png" />
 </div>
 </div>
 </section>
@@ -914,7 +914,7 @@ Depending on the connection strengths, we can observe point attractor or oscilla
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/da8f3c2551b128b23392b3e8fb6a198e2527b7cb2e0855fbfe58e6d05cfcc61d.png" src="_images/da8f3c2551b128b23392b3e8fb6a198e2527b7cb2e0855fbfe58e6d05cfcc61d.png" />
+<img alt="_images/9f219179d5c9db7bfa24102a2b3fb5cdb858380a0e1a0f4a156a028781d62193.png" src="_images/9f219179d5c9db7bfa24102a2b3fb5cdb858380a0e1a0f4a156a028781d62193.png" />
 </div>
 </div>
 </section>
@@ -941,7 +941,7 @@ Depending on the connection strengths, we can observe point attractor or oscilla
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/fea51f3fa70deeb4f4c5fbfbcef076ee7fcf1ab9cc066d7b20e419103a615620.png" src="_images/fea51f3fa70deeb4f4c5fbfbcef076ee7fcf1ab9cc066d7b20e419103a615620.png" />
+<img alt="_images/a579a22c6c7e00f787fc972a5d9b386e5243d7a5fdb3fef8f25abedc8c4835d8.png" src="_images/a579a22c6c7e00f787fc972a5d9b386e5243d7a5fdb3fef8f25abedc8c4835d8.png" />
 </div>
 </div>
 <section id="activation-functions-sigmoid-relu-and-binary">
@@ -975,7 +975,7 @@ Depending on the connection strengths, we can observe point attractor or oscilla
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c5c639a0b61e111b92630633c4b0fc6a8712c4c904932fb47e21520096dcea48.png" src="_images/c5c639a0b61e111b92630633c4b0fc6a8712c4c904932fb47e21520096dcea48.png" />
+<img alt="_images/b9b3579d2915daf6d45569b836e92daf7f36ce7c3321df88983d258826de4a07.png" src="_images/b9b3579d2915daf6d45569b836e92daf7f36ce7c3321df88983d258826de4a07.png" />
 </div>
 </div>
 </section>
@@ -1012,7 +1012,7 @@ Depending on the connection strengths, we can observe point attractor or oscilla
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/65a7ebd4b354b629281ce4ac8ddd2ccd4af1950b416d8156dcda31e4f23ee96a.png" src="_images/65a7ebd4b354b629281ce4ac8ddd2ccd4af1950b416d8156dcda31e4f23ee96a.png" />
+<img alt="_images/f42ad0c7a8df7b9be22510a8728e4b05cd1d246f3fd4401d4bdcf1cbbc628ba6.png" src="_images/f42ad0c7a8df7b9be22510a8728e4b05cd1d246f3fd4401d4bdcf1cbbc628ba6.png" />
 </div>
 </div>
 </section>
@@ -1267,8 +1267,8 @@ By Kenji Doya
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
   <footer class="bd-footer">
   </footer>

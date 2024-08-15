@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
@@ -35,16 +35,18 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
     <script src="_static/scripts/sphinx-book-theme.js"></script>
@@ -140,8 +142,6 @@
         <div class="sidebar-primary-item">
 
   
-    
-  
 
 <a class="navbar-brand logo" href="BrainComputation.html">
   
@@ -163,7 +163,7 @@
 
  <script>
  document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
     <span class="search-button__default-text">Search</span>
     <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
@@ -243,9 +243,9 @@
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -323,10 +323,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -334,14 +334,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -692,7 +692,7 @@ Then we will make a linear regression model to predict the angular accleration f
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5fe12a472aa02f14e6649ea95eb673016d18bd10dd1542ae906c6dbf93011d56.png" src="_images/5fe12a472aa02f14e6649ea95eb673016d18bd10dd1542ae906c6dbf93011d56.png" />
+<img alt="_images/f5abe1f28a97964be8232ed12599269f15bf29dc5904150810b2840d15696c06.png" src="_images/f5abe1f28a97964be8232ed12599269f15bf29dc5904150810b2840d15696c06.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -708,7 +708,7 @@ Then we will make a linear regression model to predict the angular accleration f
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>w = [ 1.45494358e-02 -4.70871822e+01 -3.43071462e+00]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>w = [ -0.31373733 -50.56510703  -3.30940768]
 [0, -49.0, -0.6666666666666667]
 </pre></div>
 </div>
@@ -723,7 +723,7 @@ Then we will make a linear regression model to predict the angular accleration f
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 1.1027652117146318
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.8592536231728113
 </pre></div>
 </div>
 </div>
@@ -744,7 +744,7 @@ Then we will make a linear regression model to predict the angular accleration f
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/87b29703170158ca5bcb8a0778bb3a93e7d0ad6236c04f8d0effd0dfda702827.png" src="_images/87b29703170158ca5bcb8a0778bb3a93e7d0ad6236c04f8d0effd0dfda702827.png" />
+<img alt="_images/27e9f84777e7cfc79068134afc6912283592b6f0530a1426cb5e6ea667d79eaf.png" src="_images/27e9f84777e7cfc79068134afc6912283592b6f0530a1426cb5e6ea667d79eaf.png" />
 </div>
 </div>
 </section>
@@ -806,12 +806,6 @@ An RBF is give by a decreasing function of the distance from a center point:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:10: SyntaxWarning: invalid escape sequence &#39;\p&#39;
-&lt;&gt;:10: SyntaxWarning: invalid escape sequence &#39;\p&#39;
-/var/folders/0z/3cttnw852b959kp4wjh_z_wc0000gn/T/ipykernel_58507/1772074961.py:10: SyntaxWarning: invalid escape sequence &#39;\p&#39;
-  plt.xlabel(&quot;x&quot;); plt.ylabel(&quot;$\phi(x)$&quot;);
-</pre></div>
-</div>
 <img alt="_images/a8fb7f4234410b9dc990c972e23c0dd585e30e83e6d88e19e1ae2393f0bc9d2e.png" src="_images/a8fb7f4234410b9dc990c972e23c0dd585e30e83e6d88e19e1ae2393f0bc9d2e.png" />
 </div>
 </div>
@@ -827,7 +821,7 @@ An RBF is give by a decreasing function of the distance from a center point:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2a0422b666e4c2cf9700f8c19c394a4a7443192414a95e87c6165a2cc46a32c1.png" src="_images/2a0422b666e4c2cf9700f8c19c394a4a7443192414a95e87c6165a2cc46a32c1.png" />
+<img alt="_images/a6f1cdd88e5ec8184bbc6bf97f52ebb7e6ac5c4e87015f28c2059d2f8fa7ffad.png" src="_images/a6f1cdd88e5ec8184bbc6bf97f52ebb7e6ac5c4e87015f28c2059d2f8fa7ffad.png" />
 </div>
 </div>
 <p>Here are RBFs in 2D input space on a grid.</p>
@@ -848,12 +842,6 @@ An RBF is give by a decreasing function of the distance from a center point:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:11: SyntaxWarning: invalid escape sequence &#39;\p&#39;
-&lt;&gt;:11: SyntaxWarning: invalid escape sequence &#39;\p&#39;
-/var/folders/0z/3cttnw852b959kp4wjh_z_wc0000gn/T/ipykernel_58507/4022370209.py:11: SyntaxWarning: invalid escape sequence &#39;\p&#39;
-  plt.xlabel(&quot;x1&quot;); plt.ylabel(&quot;x2&quot;); plt.title(&quot;$\phi(x)$&quot;);
-</pre></div>
-</div>
 <img alt="_images/c3676c38f60ccc3c75baf4fcaf82bd133ef1962dd7095c7ebf5bb8ae331aa411.png" src="_images/c3676c38f60ccc3c75baf4fcaf82bd133ef1962dd7095c7ebf5bb8ae331aa411.png" />
 </div>
 </div>
@@ -990,7 +978,7 @@ This is called <em>linear Perceptron</em>.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/af3911bfda10c5df68a673f9a4cf14b460984cedd3e0897cbd80e29a04fae1ea.png" src="_images/af3911bfda10c5df68a673f9a4cf14b460984cedd3e0897cbd80e29a04fae1ea.png" />
+<img alt="_images/027ca499fcf3f5b4ae9c8651cb45d8537f7cbb652d97b8074f86823d0392f9e5.png" src="_images/027ca499fcf3f5b4ae9c8651cb45d8537f7cbb652d97b8074f86823d0392f9e5.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1014,20 +1002,10 @@ This is called <em>linear Perceptron</em>.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/0z/3cttnw852b959kp4wjh_z_wc0000gn/T/ipykernel_58507/2966047756.py:36: RuntimeWarning: invalid value encountered in scalar divide
-  x = self.w[1]*(u-self.w[0])/s+self.w[2]*np.array([l,-l])/np.sqrt(s)
-/var/folders/0z/3cttnw852b959kp4wjh_z_wc0000gn/T/ipykernel_58507/2966047756.py:36: RuntimeWarning: invalid value encountered in divide
-  x = self.w[1]*(u-self.w[0])/s+self.w[2]*np.array([l,-l])/np.sqrt(s)
-/var/folders/0z/3cttnw852b959kp4wjh_z_wc0000gn/T/ipykernel_58507/2966047756.py:37: RuntimeWarning: invalid value encountered in scalar divide
-  y = self.w[2]*(u-self.w[0])/s+self.w[1]*np.array([-l,l])/np.sqrt(s)
-/var/folders/0z/3cttnw852b959kp4wjh_z_wc0000gn/T/ipykernel_58507/2966047756.py:37: RuntimeWarning: invalid value encountered in divide
-  y = self.w[2]*(u-self.w[0])/s+self.w[1]*np.array([-l,l])/np.sqrt(s)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.8 ; w =  [-0.2         0.32243894  0.17237236]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.6 ; w =  [-0.1         0.22832304  0.12773136]
-</pre></div>
-</div>
-<img alt="_images/257ea6caf2791458d0db44b635151476418c2e6689b1dc0b581ed81c61459aed.png" src="_images/257ea6caf2791458d0db44b635151476418c2e6689b1dc0b581ed81c61459aed.png" />
+<img alt="_images/01eeb3bb2fff773b5e470e72b6d8f2435f5ad1c6ac643b8aa21002e872fdcadd.png" src="_images/01eeb3bb2fff773b5e470e72b6d8f2435f5ad1c6ac643b8aa21002e872fdcadd.png" />
 </div>
 </div>
 </section>
@@ -1107,10 +1085,10 @@ It is often the case that the basis functions are allocated around each data poi
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>n = 20 ; err = 0.5604873208196794 ; w = [-0.45446637  0.42886827  0.21182625]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>n = 20 ; err = 0.6118963372257447 ; w = [-0.13066507  0.44717435  0.16336082]
 </pre></div>
 </div>
-<img alt="_images/b550d707d1b53b7c7b6123f06deaabb50d0377becf7bffb14d32e0985d706764.png" src="_images/b550d707d1b53b7c7b6123f06deaabb50d0377becf7bffb14d32e0985d706764.png" />
+<img alt="_images/699107b1cad1232538bfa43e1e4e6e95a447b2de388f3d2aa1d68d5242b9d1de.png" src="_images/699107b1cad1232538bfa43e1e4e6e95a447b2de388f3d2aa1d68d5242b9d1de.png" />
 </div>
 </div>
 </section>
@@ -1264,10 +1242,10 @@ Instead, we can apply Newton method using the <em>Hessian matrix</em></p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> err = 0.25 ; w = [-1.40467844  0.94737397  0.24290696]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> err = 0.25 ; w = [-1.29770171  0.73765105  0.32602163]
 </pre></div>
 </div>
-<img alt="_images/aa6470aa9accf61f23c5dbc487e9e9487207d563906d1f727fdbb980bfe80e7c.png" src="_images/aa6470aa9accf61f23c5dbc487e9e9487207d563906d1f727fdbb980bfe80e7c.png" />
+<img alt="_images/008418dfe7b018d0d76d6a087442f1f106297a15473667d0a50f5808e18cd57c.png" src="_images/008418dfe7b018d0d76d6a087442f1f106297a15473667d0a50f5808e18cd57c.png" />
 </div>
 </div>
 </section>
@@ -1512,8 +1490,8 @@ By Kenji Doya
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
   <footer class="bd-footer">
   </footer>

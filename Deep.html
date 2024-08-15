@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
@@ -35,16 +35,18 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
     <script src="_static/scripts/sphinx-book-theme.js"></script>
@@ -140,8 +142,6 @@
         <div class="sidebar-primary-item">
 
   
-    
-  
 
 <a class="navbar-brand logo" href="BrainComputation.html">
   
@@ -163,7 +163,7 @@
 
  <script>
  document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
     <span class="search-button__default-text">Search</span>
     <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
@@ -243,9 +243,9 @@
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -323,10 +323,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -334,14 +334,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -692,7 +692,7 @@ The blue lines show the propagation of errors through layer 2 to one unit in lay
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9a3148c0866c5b0beb27235d39b7ff20671977554f79b9f6f5001a4a1ae1af4e.png" src="_images/9a3148c0866c5b0beb27235d39b7ff20671977554f79b9f6f5001a4a1ae1af4e.png" />
+<img alt="_images/df979391e5aea8d0ac5d4afa3c9c65f2f04dad5f7bd280bf5588de5852beb283.png" src="_images/df979391e5aea8d0ac5d4afa3c9c65f2f04dad5f7bd280bf5588de5852beb283.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -719,7 +719,7 @@ The blue lines show the propagation of errors through layer 2 to one unit in lay
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8bab720ea634e459f09f82dd379c6bb00eaaafd3b4d482c620f2917823d08878.png" src="_images/8bab720ea634e459f09f82dd379c6bb00eaaafd3b4d482c620f2917823d08878.png" />
+<img alt="_images/c78ad373dbd8297617454d76c0cffdf4e5ab0e1f7d68d2ae37ee8e00768fe2ce.png" src="_images/c78ad373dbd8297617454d76c0cffdf4e5ab0e1f7d68d2ae37ee8e00768fe2ce.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -734,10 +734,10 @@ The blue lines show the propagation of errors through layer 2 to one unit in lay
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.47060443932993556
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.3856215717053344
 </pre></div>
 </div>
-<img alt="_images/0640763623f88acfe28c9f4559fb717406e4d004398dc35a541b67754703c73d.png" src="_images/0640763623f88acfe28c9f4559fb717406e4d004398dc35a541b67754703c73d.png" />
+<img alt="_images/4b458f5c7b51c258b9ccc42cfff00a6d32b7e828c57e63f942bcf1bb35712ec0.png" src="_images/4b458f5c7b51c258b9ccc42cfff00a6d32b7e828c57e63f942bcf1bb35712ec0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -752,7 +752,7 @@ The blue lines show the propagation of errors through layer 2 to one unit in lay
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1d2a8e5b85ead01b69ff23aa00e8bad032aa1ac6fe1e30a7b2943dc2541e31c2.png" src="_images/1d2a8e5b85ead01b69ff23aa00e8bad032aa1ac6fe1e30a7b2943dc2541e31c2.png" />
+<img alt="_images/9c9ad7b0c3f775445cb3160058eee356a427156b69a471c603c7f5085c6d494a.png" src="_images/9c9ad7b0c3f775445cb3160058eee356a427156b69a471c603c7f5085c6d494a.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -768,7 +768,7 @@ The blue lines show the propagation of errors through layer 2 to one unit in lay
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d7325cbf460dc0eae54da0b2656d17c20e46dff84fdff2bb06043eb536cb8830.png" src="_images/d7325cbf460dc0eae54da0b2656d17c20e46dff84fdff2bb06043eb536cb8830.png" />
+<img alt="_images/5c8dfb6ff5361ed9d3e043e5d8bc85a85b934691c50072ffe156eaa97c13ecac.png" src="_images/5c8dfb6ff5361ed9d3e043e5d8bc85a85b934691c50072ffe156eaa97c13ecac.png" />
 </div>
 </div>
 </section>
@@ -867,7 +867,7 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/23690aac5a2ad7363d053eb2bf243c21001e9691a67fb9ac0069c955a5c21708.png" src="_images/23690aac5a2ad7363d053eb2bf243c21001e9691a67fb9ac0069c955a5c21708.png" />
+<img alt="_images/41789758f4888fde26346cbab028002ca1ad5fbec53bb60e2e7518b0eba7dd7a.png" src="_images/41789758f4888fde26346cbab028002ca1ad5fbec53bb60e2e7518b0eba7dd7a.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -882,10 +882,10 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.0005456333047924571
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.0008265949024898799
 </pre></div>
 </div>
-<img alt="_images/57b874b872760e4acbcf2dc4560f0edef184826bf2107f120fbd534696308d2a.png" src="_images/57b874b872760e4acbcf2dc4560f0edef184826bf2107f120fbd534696308d2a.png" />
+<img alt="_images/b8d261fde72df28ef6aa20ba39d7a8d9e25171e94eac359e3f3f52b991cfc50e.png" src="_images/b8d261fde72df28ef6aa20ba39d7a8d9e25171e94eac359e3f3f52b991cfc50e.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -905,7 +905,7 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/dfbaac3c42422a3cd16661030eb933b24ef843310b6fd8cdccd5df73f8182132.png" src="_images/dfbaac3c42422a3cd16661030eb933b24ef843310b6fd8cdccd5df73f8182132.png" />
+<img alt="_images/ca5ce4de8072630f715dbae808baaa66d7d64f933e0d1e919c1805f3f8b3006a.png" src="_images/ca5ce4de8072630f715dbae808baaa66d7d64f933e0d1e919c1805f3f8b3006a.png" />
 </div>
 </div>
 </section>
@@ -924,7 +924,7 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0fcd1c4933b3fbc4a256fdd45a6f5a74461a07d5506ff7dc7411320c3e648876.png" src="_images/0fcd1c4933b3fbc4a256fdd45a6f5a74461a07d5506ff7dc7411320c3e648876.png" />
+<img alt="_images/3d49a639eba03ffbcebda8634da243e46d732f38c20ff8fea93662e34b006e4c.png" src="_images/3d49a639eba03ffbcebda8634da243e46d732f38c20ff8fea93662e34b006e4c.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -963,7 +963,7 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b49902ceb0705a008758b9bf22d903c1a8f1957b71e34dc0f320589a04001b6c.png" src="_images/b49902ceb0705a008758b9bf22d903c1a8f1957b71e34dc0f320589a04001b6c.png" />
+<img alt="_images/1a7f49739da149cab7e859e3d3c71d86905c17e3c7477ba5cb2ad7836c870983.png" src="_images/1a7f49739da149cab7e859e3d3c71d86905c17e3c7477ba5cb2ad7836c870983.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -978,36 +978,10 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">23</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Train with the data</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">mse</span> <span class="o">=</span> <span class="n">dn</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">yt</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">3000</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1">#print(dn.W)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;mse =&quot;</span><span class="p">,</span> <span class="n">mse</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>  <span class="c1"># final mse</span>
-
-<span class="nn">Cell In[5], line 57,</span> in <span class="ni">DNN.train</span><span class="nt">(self, inputs, targets, alpha, repeat)</span>
-<span class="g g-Whitespace">     </span><span class="mi">55</span> <span class="n">mse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">repeat</span><span class="p">)</span>  <span class="c1"># record of mean square errors</span>
-<span class="g g-Whitespace">     </span><span class="mi">56</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">repeat</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">57</span>     <span class="n">sse</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">targets</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">58</span>     <span class="n">mse</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">sse</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">59</span> <span class="k">return</span> <span class="n">mse</span>
-
-<span class="nn">Cell In[5], line 64,</span> in <span class="ni">DNN.train</span><span class="nt">(self, inputs, targets, alpha, repeat)</span>
-<span class="g g-Whitespace">     </span><span class="mi">62</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">63</span>     <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">inputs</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
-<span class="ne">---&gt; </span><span class="mi">64</span>     <span class="n">sse</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">backprop</span><span class="p">(</span><span class="n">targets</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">alpha</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">65</span> <span class="k">return</span> <span class="n">sse</span>
-
-<span class="nn">Cell In[5], line 48,</span> in <span class="ni">DNN.backprop</span><span class="nt">(self, target, alpha)</span>
-<span class="g g-Whitespace">     </span><span class="mi">46</span>     <span class="n">dW</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">err</span><span class="p">[</span><span class="n">l</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(([</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">Y</span><span class="p">[</span><span class="n">l</span><span class="o">-</span><span class="mi">1</span><span class="p">])))</span>
-<span class="g g-Whitespace">     </span><span class="mi">47</span>     <span class="c1"># update weights by the error gradient</span>
-<span class="ne">---&gt; </span><span class="mi">48</span>     <span class="bp">self</span><span class="o">.</span><span class="n">W</span><span class="p">[</span><span class="n">l</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-=</span> <span class="n">alpha</span><span class="o">*</span><span class="n">dW</span>
-<span class="g g-Whitespace">     </span><span class="mi">49</span> <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">err</span><span class="p">[</span><span class="o">-</span><span class="n">l</span><span class="p">],</span><span class="bp">self</span><span class="o">.</span><span class="n">err</span><span class="p">[</span><span class="o">-</span><span class="n">l</span><span class="p">])</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.04707310495898387
 </pre></div>
 </div>
+<img alt="_images/54859a9814bba27d1be0b3e7726238f72e7af043e33a6a07b5469c033142fa34.png" src="_images/54859a9814bba27d1be0b3e7726238f72e7af043e33a6a07b5469c033142fa34.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1026,6 +1000,9 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">yt</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/2a7864fe1194bf17226ec9531842601928df3013594346416ff04869fac0bc56.png" src="_images/2a7864fe1194bf17226ec9531842601928df3013594346416ff04869fac0bc56.png" />
 </div>
 </div>
 </section>
@@ -1101,6 +1078,9 @@ They were used for pre-training of deep networks for pattern classification, alt
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Restricted Boltzmann machine (RBM)&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/8540f09b99e6827caaa0401db81c92d3bfb25c8d1a2b0493110a22f8e0e4cfed.png" src="_images/8540f09b99e6827caaa0401db81c92d3bfb25c8d1a2b0493110a22f8e0e4cfed.png" />
 </div>
 </div>
 <p>Here we represent the state of visible units by <span class="math notranslate nohighlight">\(\b{v}\in\{0,1\}^{M_v}\)</span> and hidden units by <span class="math notranslate nohighlight">\(\b{h}\in\{0,1\}^{M_h}\)</span>.
@@ -1268,12 +1248,20 @@ Instead of this stochastic gradient for each data, <em>mini-batch</em> method to
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(720, 64)
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">imgrid</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">)))</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/8a3506e4116b60708677c65c464fecf211373f5e1a8baa6ed4333ba2542a0fba.png" src="_images/8a3506e4116b60708677c65c464fecf211373f5e1a8baa6ed4333ba2542a0fba.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1286,6 +1274,9 @@ Instead of this stochastic gradient for each data, <em>mini-batch</em> method to
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/25f16200d4a5f2256004ad1f3589970a5aeea30d7e7456883364423852489295.png" src="_images/25f16200d4a5f2256004ad1f3589970a5aeea30d7e7456883364423852489295.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1296,6 +1287,9 @@ Instead of this stochastic gradient for each data, <em>mini-batch</em> method to
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/279c907404f04c8d6d8f85efbab39cb1995a49cdd11ab732e01aafb52ddaa208.png" src="_images/279c907404f04c8d6d8f85efbab39cb1995a49cdd11ab732e01aafb52ddaa208.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1303,6 +1297,9 @@ Instead of this stochastic gradient for each data, <em>mini-batch</em> method to
 <span class="n">imgrid</span><span class="p">(</span><span class="n">rb</span><span class="o">.</span><span class="n">W</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">)))</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/81494f856975c156ee55350eac394aecb64da5cbeaed43ddb21ed133e30f846e.png" src="_images/81494f856975c156ee55350eac394aecb64da5cbeaed43ddb21ed133e30f846e.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1320,6 +1317,9 @@ Instead of this stochastic gradient for each data, <em>mini-batch</em> method to
 <span class="n">imgrid</span><span class="p">(</span><span class="n">vr</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">)));</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/6299df94b1f1d611ff4d351dff00d9b68ae7689f78c429cefffdc34355924264.png" src="_images/6299df94b1f1d611ff4d351dff00d9b68ae7689f78c429cefffdc34355924264.png" />
 </div>
 </div>
 </section>
@@ -1359,6 +1359,9 @@ Instead of this stochastic gradient for each data, <em>mini-batch</em> method to
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/fea3cdaf999e4c26386987db2dd9c201040419863b15dcbf59abdf2761210aa5.png" src="_images/fea3cdaf999e4c26386987db2dd9c201040419863b15dcbf59abdf2761210aa5.png" />
+</div>
 </div>
 <p>The goal of learning of autoencoder is to reduce the reconstruction error, or to maximize the likelihood of regenerated data</p>
 <div class="math notranslate nohighlight">
@@ -1386,6 +1389,9 @@ Instead of this stochastic gradient for each data, <em>mini-batch</em> method to
 <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;$\epsilon\sim N(0,1)$&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/0dca0bc3d5255036e1a80e1cd778de356be3bc27983d5223685897c8d49c945d.png" src="_images/0dca0bc3d5255036e1a80e1cd778de356be3bc27983d5223685897c8d49c945d.png" />
 </div>
 </div>
 </section>
@@ -1612,8 +1618,8 @@ By Kenji Doya
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
   <footer class="bd-footer">
   </footer>
