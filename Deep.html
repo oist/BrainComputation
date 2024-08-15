@@ -15,52 +15,46 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -78,28 +72,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -121,12 +110,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -142,6 +139,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="BrainComputation.html">
@@ -160,7 +159,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -172,32 +182,38 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Introduction.html">Chapter 1. Introduction</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Neurons.html">Chapter 2. Neural Modeling and Analysis</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Neurons.html">Chapter 2. Neural Modeling and Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Neurons_Exercise.html">Chapter 2. Neural Modeling and Analysis: Exercise</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Supervised.html">Chapter 3: Supervised Learning</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Supervised.html">Chapter 3: Supervised Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Supervised_Exercise.html">Supervised Learning: Exercise</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Reinforcement.html">Chapter 4. Reinforcement Learning</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Reinforcement.html">Chapter 4. Reinforcement Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Reinforcement_Exercise.html">Chapter 4. Reinforcement Learning: Exercise</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Unsupervised.html">Chapter 5. Unsupervised Learning</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Unsupervised.html">Chapter 5. Unsupervised Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Unsupervised_Exercise.html">Unsupervised Learning: Exercise</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Bayesian.html">Chatper 6. Bayesian Approaches</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Bayesian.html">Chatper 6. Bayesian Approaches</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Bayesian_Exercise.html">Bayesian Approaches: Exercise</a></li>
 </ul>
-</li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Chapter 7: Deep Learning</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Chapter 7: Deep Learning</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Deep_Exercise.html">Chapter 7: Deep Learning: Exercise</a></li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Multiple.html">Chapter 8. Multiple Agents</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Meta.html">Chapter 9. Meta-Learning</a></li>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Multiple.html">Chapter 8. Multiple Agents</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Multiple_Exercise.html">Chapter 8. Multiple Agents: Exercise</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Meta.html">Chapter 9. Meta-Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Meta_Exercise.html">Chapter 9. Meta-Learning: Exercise</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -213,7 +229,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -222,14 +238,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -307,10 +323,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -318,14 +334,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -393,7 +409,7 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="chapter-7-deep-learning">
 <h1>Chapter 7: Deep Learning<a class="headerlink" href="#chapter-7-deep-learning" title="Permalink to this heading">#</a></h1>
@@ -506,7 +522,7 @@ y = w^o_{0} + \sum_{i=1}^M w^o_{i} h_i
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/41386ed90eca5847d2cede32f99c2862d39f97508521952ddd38e0eb1db09243.png" src="_images/41386ed90eca5847d2cede32f99c2862d39f97508521952ddd38e0eb1db09243.png" />
+<img alt="_images/ba4cb0a7cdbf45eb24460f76fa3913e01d5af4be92ef5f3302c1d17dd3cb2e53.png" src="_images/ba4cb0a7cdbf45eb24460f76fa3913e01d5af4be92ef5f3302c1d17dd3cb2e53.png" />
 </div>
 </div>
 <section id="universality-of-multi-layer-neural-networks">
@@ -574,7 +590,7 @@ The blue lines show the propagation of errors through layer 2 to one unit in lay
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4d299718ec909a2d96db12cde80917a99210b8811bccfe9c54c026e30024c88b.png" src="_images/4d299718ec909a2d96db12cde80917a99210b8811bccfe9c54c026e30024c88b.png" />
+<img alt="_images/0503a8ad6c08e4c0a7f46a7004574bc7afc3e60296145b9815ff37ba9dd3653d.png" src="_images/0503a8ad6c08e4c0a7f46a7004574bc7afc3e60296145b9815ff37ba9dd3653d.png" />
 </div>
 </div>
 <p>Using these error gradients, all the weights can be updated by</p>
@@ -676,7 +692,7 @@ The blue lines show the propagation of errors through layer 2 to one unit in lay
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/83b6d6a97b3107ea1a3f4ceebd1942f919885b5adf14a95baa91d80e51b21279.png" src="_images/83b6d6a97b3107ea1a3f4ceebd1942f919885b5adf14a95baa91d80e51b21279.png" />
+<img alt="_images/9a3148c0866c5b0beb27235d39b7ff20671977554f79b9f6f5001a4a1ae1af4e.png" src="_images/9a3148c0866c5b0beb27235d39b7ff20671977554f79b9f6f5001a4a1ae1af4e.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -703,7 +719,7 @@ The blue lines show the propagation of errors through layer 2 to one unit in lay
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a3af086308dc2c94762493394723c6535081e011ee2a9a6ea673669d98e30133.png" src="_images/a3af086308dc2c94762493394723c6535081e011ee2a9a6ea673669d98e30133.png" />
+<img alt="_images/8bab720ea634e459f09f82dd379c6bb00eaaafd3b4d482c620f2917823d08878.png" src="_images/8bab720ea634e459f09f82dd379c6bb00eaaafd3b4d482c620f2917823d08878.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -718,10 +734,10 @@ The blue lines show the propagation of errors through layer 2 to one unit in lay
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.47930954588365926
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.47060443932993556
 </pre></div>
 </div>
-<img alt="_images/69488b598637b5ced530d25afdb6dedb123fe539fc083e58faf3ab8d9fc70339.png" src="_images/69488b598637b5ced530d25afdb6dedb123fe539fc083e58faf3ab8d9fc70339.png" />
+<img alt="_images/0640763623f88acfe28c9f4559fb717406e4d004398dc35a541b67754703c73d.png" src="_images/0640763623f88acfe28c9f4559fb717406e4d004398dc35a541b67754703c73d.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -736,7 +752,7 @@ The blue lines show the propagation of errors through layer 2 to one unit in lay
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/603dccb3a94cec02436fbe9a83b4180efcfeabd708327c96f7910535fd32199e.png" src="_images/603dccb3a94cec02436fbe9a83b4180efcfeabd708327c96f7910535fd32199e.png" />
+<img alt="_images/1d2a8e5b85ead01b69ff23aa00e8bad032aa1ac6fe1e30a7b2943dc2541e31c2.png" src="_images/1d2a8e5b85ead01b69ff23aa00e8bad032aa1ac6fe1e30a7b2943dc2541e31c2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -752,7 +768,7 @@ The blue lines show the propagation of errors through layer 2 to one unit in lay
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/23b527b9350da6e9b6dde99da036f743403c057b96f1c234aa7ba22ec51ae716.png" src="_images/23b527b9350da6e9b6dde99da036f743403c057b96f1c234aa7ba22ec51ae716.png" />
+<img alt="_images/d7325cbf460dc0eae54da0b2656d17c20e46dff84fdff2bb06043eb536cb8830.png" src="_images/d7325cbf460dc0eae54da0b2656d17c20e46dff84fdff2bb06043eb536cb8830.png" />
 </div>
 </div>
 </section>
@@ -813,7 +829,7 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8d9fff71cdf1fb6621cd769f8bbb59ea4ca181f56b5475a6445b2a5a737706c0.png" src="_images/8d9fff71cdf1fb6621cd769f8bbb59ea4ca181f56b5475a6445b2a5a737706c0.png" />
+<img alt="_images/60b265fe7a2455d35170ce08b0c518fd293ab1d1e19129140648c3879c331255.png" src="_images/60b265fe7a2455d35170ce08b0c518fd293ab1d1e19129140648c3879c331255.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -851,7 +867,7 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/223e054dbe449b8612c6a56a9001126e2a15a1b9c2b1f2409d8bfc35e8afea8c.png" src="_images/223e054dbe449b8612c6a56a9001126e2a15a1b9c2b1f2409d8bfc35e8afea8c.png" />
+<img alt="_images/23690aac5a2ad7363d053eb2bf243c21001e9691a67fb9ac0069c955a5c21708.png" src="_images/23690aac5a2ad7363d053eb2bf243c21001e9691a67fb9ac0069c955a5c21708.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -866,10 +882,10 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.0007421497057077599
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.0005456333047924571
 </pre></div>
 </div>
-<img alt="_images/4e126f25b1f1b147e3548b5785140e0b7eabe5ea0496357727cec2205337aeee.png" src="_images/4e126f25b1f1b147e3548b5785140e0b7eabe5ea0496357727cec2205337aeee.png" />
+<img alt="_images/57b874b872760e4acbcf2dc4560f0edef184826bf2107f120fbd534696308d2a.png" src="_images/57b874b872760e4acbcf2dc4560f0edef184826bf2107f120fbd534696308d2a.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -889,7 +905,7 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/fab01134278607c5ec1f6dcb28804a22cc5adf402f44179de7dbdee2626fd584.png" src="_images/fab01134278607c5ec1f6dcb28804a22cc5adf402f44179de7dbdee2626fd584.png" />
+<img alt="_images/dfbaac3c42422a3cd16661030eb933b24ef843310b6fd8cdccd5df73f8182132.png" src="_images/dfbaac3c42422a3cd16661030eb933b24ef843310b6fd8cdccd5df73f8182132.png" />
 </div>
 </div>
 </section>
@@ -908,7 +924,7 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c17e903a46b96d2607dc63d1c629f2c040fc07f103509dc171e563ce2647e2c9.png" src="_images/c17e903a46b96d2607dc63d1c629f2c040fc07f103509dc171e563ce2647e2c9.png" />
+<img alt="_images/0fcd1c4933b3fbc4a256fdd45a6f5a74461a07d5506ff7dc7411320c3e648876.png" src="_images/0fcd1c4933b3fbc4a256fdd45a6f5a74461a07d5506ff7dc7411320c3e648876.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -947,7 +963,7 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b45ba37f785d5aeee1907f35afa0303c5c4ebf3cc5f99bbb1063226eae06d520.png" src="_images/b45ba37f785d5aeee1907f35afa0303c5c4ebf3cc5f99bbb1063226eae06d520.png" />
+<img alt="_images/b49902ceb0705a008758b9bf22d903c1a8f1957b71e34dc0f320589a04001b6c.png" src="_images/b49902ceb0705a008758b9bf22d903c1a8f1957b71e34dc0f320589a04001b6c.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -962,10 +978,36 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.07643169906123792
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">23</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Train with the data</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">mse</span> <span class="o">=</span> <span class="n">dn</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">yt</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">3000</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1">#print(dn.W)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;mse =&quot;</span><span class="p">,</span> <span class="n">mse</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>  <span class="c1"># final mse</span>
+
+<span class="nn">Cell In[5], line 57,</span> in <span class="ni">DNN.train</span><span class="nt">(self, inputs, targets, alpha, repeat)</span>
+<span class="g g-Whitespace">     </span><span class="mi">55</span> <span class="n">mse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">repeat</span><span class="p">)</span>  <span class="c1"># record of mean square errors</span>
+<span class="g g-Whitespace">     </span><span class="mi">56</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">repeat</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">57</span>     <span class="n">sse</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">targets</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">58</span>     <span class="n">mse</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">sse</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">59</span> <span class="k">return</span> <span class="n">mse</span>
+
+<span class="nn">Cell In[5], line 64,</span> in <span class="ni">DNN.train</span><span class="nt">(self, inputs, targets, alpha, repeat)</span>
+<span class="g g-Whitespace">     </span><span class="mi">62</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">63</span>     <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">inputs</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
+<span class="ne">---&gt; </span><span class="mi">64</span>     <span class="n">sse</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">backprop</span><span class="p">(</span><span class="n">targets</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">alpha</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">65</span> <span class="k">return</span> <span class="n">sse</span>
+
+<span class="nn">Cell In[5], line 48,</span> in <span class="ni">DNN.backprop</span><span class="nt">(self, target, alpha)</span>
+<span class="g g-Whitespace">     </span><span class="mi">46</span>     <span class="n">dW</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">err</span><span class="p">[</span><span class="n">l</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(([</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">Y</span><span class="p">[</span><span class="n">l</span><span class="o">-</span><span class="mi">1</span><span class="p">])))</span>
+<span class="g g-Whitespace">     </span><span class="mi">47</span>     <span class="c1"># update weights by the error gradient</span>
+<span class="ne">---&gt; </span><span class="mi">48</span>     <span class="bp">self</span><span class="o">.</span><span class="n">W</span><span class="p">[</span><span class="n">l</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-=</span> <span class="n">alpha</span><span class="o">*</span><span class="n">dW</span>
+<span class="g g-Whitespace">     </span><span class="mi">49</span> <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">err</span><span class="p">[</span><span class="o">-</span><span class="n">l</span><span class="p">],</span><span class="bp">self</span><span class="o">.</span><span class="n">err</span><span class="p">[</span><span class="o">-</span><span class="n">l</span><span class="p">])</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
-<img alt="_images/4624ab84f9f42bb84b49bf25c33cd3313c6135c6eb794c20c514528fd6ee457c.png" src="_images/4624ab84f9f42bb84b49bf25c33cd3313c6135c6eb794c20c514528fd6ee457c.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -984,9 +1026,6 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">yt</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/4ca9fd1184e42ee4de547658a528364920d8d5888825df473933e977234ed53c.png" src="_images/4ca9fd1184e42ee4de547658a528364920d8d5888825df473933e977234ed53c.png" />
 </div>
 </div>
 </section>
@@ -1062,9 +1101,6 @@ They were used for pre-training of deep networks for pattern classification, alt
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Restricted Boltzmann machine (RBM)&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/ea90808dfbefeaef90ae47b0ffb5eae99851a709fc54311563823b25e709c2c0.png" src="_images/ea90808dfbefeaef90ae47b0ffb5eae99851a709fc54311563823b25e709c2c0.png" />
 </div>
 </div>
 <p>Here we represent the state of visible units by <span class="math notranslate nohighlight">\(\b{v}\in\{0,1\}^{M_v}\)</span> and hidden units by <span class="math notranslate nohighlight">\(\b{h}\in\{0,1\}^{M_h}\)</span>.
@@ -1232,20 +1268,12 @@ Instead of this stochastic gradient for each data, <em>mini-batch</em> method to
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(720, 64)
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">imgrid</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">)))</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/926bfcfec8f86f349c80fa1b2d325851dfdd1ddbcb5c559ede5d9b9538113862.png" src="_images/926bfcfec8f86f349c80fa1b2d325851dfdd1ddbcb5c559ede5d9b9538113862.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1258,9 +1286,6 @@ Instead of this stochastic gradient for each data, <em>mini-batch</em> method to
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/117d7673070bd2cc5970ccfc4c56a6d48b73efb7b1bb7cfd2bea53091594facb.png" src="_images/117d7673070bd2cc5970ccfc4c56a6d48b73efb7b1bb7cfd2bea53091594facb.png" />
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1271,9 +1296,6 @@ Instead of this stochastic gradient for each data, <em>mini-batch</em> method to
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/1d7ab94a134f6d98920d3de52eebacff9e2a3d833932cd8a3550c27a8e9353f1.png" src="_images/1d7ab94a134f6d98920d3de52eebacff9e2a3d833932cd8a3550c27a8e9353f1.png" />
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1281,9 +1303,6 @@ Instead of this stochastic gradient for each data, <em>mini-batch</em> method to
 <span class="n">imgrid</span><span class="p">(</span><span class="n">rb</span><span class="o">.</span><span class="n">W</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">)))</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/486c3aaa847586e7e008ed9fe354e92971f1cca2c29ccaba0dbc72613dc61abe.png" src="_images/486c3aaa847586e7e008ed9fe354e92971f1cca2c29ccaba0dbc72613dc61abe.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1301,9 +1320,6 @@ Instead of this stochastic gradient for each data, <em>mini-batch</em> method to
 <span class="n">imgrid</span><span class="p">(</span><span class="n">vr</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">)));</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/27288767dfab4a6da3cbefe9884acda3879563deb916155ade333250013c2562.png" src="_images/27288767dfab4a6da3cbefe9884acda3879563deb916155ade333250013c2562.png" />
 </div>
 </div>
 </section>
@@ -1343,9 +1359,6 @@ Instead of this stochastic gradient for each data, <em>mini-batch</em> method to
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/4076bd39e06d9571c9dd14722289b5d3e9c088f9b82f0a1d039deaac9c829feb.png" src="_images/4076bd39e06d9571c9dd14722289b5d3e9c088f9b82f0a1d039deaac9c829feb.png" />
-</div>
 </div>
 <p>The goal of learning of autoencoder is to reduce the reconstruction error, or to maximize the likelihood of regenerated data</p>
 <div class="math notranslate nohighlight">
@@ -1374,9 +1387,6 @@ Instead of this stochastic gradient for each data, <em>mini-batch</em> method to
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/d727762a368a5c40183aac8ffe8726d40b3a6963cfe7b782fdb8815574ebb24f.png" src="_images/d727762a368a5c40183aac8ffe8726d40b3a6963cfe7b782fdb8815574ebb24f.png" />
-</div>
 </div>
 </section>
 </section>
@@ -1402,17 +1412,14 @@ By downloading such pre-trained weights, anybody can reproduce state-of-the-art 
 <p>Inspired by the success of deep neural networks in visual object recognition, Yamins and colleagues explored how such trained deep neural networks can be used to characterize the response properties of higher visual cortex neurons, which are not easy to express by mathematical formulas.</p>
 <p>They first trained a deep neural network to perform visual object recognition task and then used the responses of the higher layers of the deep neural network to predict the activity of visual cortex neurons when the same stimulus was presented.</p>
 <p>They found that the response propereties of the highest visual cortical area, inferior temporal (IT) cortex, was well predicted using the activities of the highest layer of the trained deep network, while those in the middle level of the visual cortex, area V4, were better predicted by the responses of the intermediate layers of the deep network (Yamins et al. 2014, 2016)</p>
-<blockquote>
-<div><p>{figure-md} Fig_Yamins
 <img src="https://www.pnas.org/cms/10.1073/pnas.1403112111/asset/7a11a5c7-9ea1-44fc-8e46-b050d1abda83/assets/graphic/pnas.1403112111fig02.jpeg" width="500px">
-Figure 7.3: Prediction of visual cortical neural activities by trained deep neural networks (Yamins et al. 2014).</p>
-</div></blockquote>
-</section>
+Figure 7.3: Prediction of visual cortical neural activities by trained deep neural networks (Yamins et al. 2014).</section>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Bishop CM (2006) Pattern Recognition and Machine Learning. Springer.</p>
+<li><p>Bishop CM (2006) Pattern Recognition and Machine Learning. Springer.
+<a class="reference external" href="https://www.microsoft.com/en-us/research/people/cmbishop/prml-book/">https://www.microsoft.com/en-us/research/people/cmbishop/prml-book/</a></p>
 <ul>
 <li><p>Chapter 5: Neural networks</p></li>
 </ul>
@@ -1424,24 +1431,29 @@ Figure 7.3: Prediction of visual cortical neural activities by trained deep neur
 <li><p>Chapter 20 Deep Generative Models</p></li>
 </ul>
 </li>
+<li><p>Backpropagation</p>
+<ul>
+<li><p>Rumelhart DE, Hinton GE, Williams RJ (1986). Learning Representations by Back-Propagating Errors. Nature, 323, 533-536. <a class="reference external" href="https://doi.org/10.1038/323533a0">https://doi.org/10.1038/323533a0</a></p></li>
+</ul>
+</li>
 <li><p>Boltzmann machines</p>
 <ul>
-<li><p>Hinton G (2010) A practical guide to training restricted Boltzmann machines. Technical Report 2010–003: Department of Computer Science, University of Toronto.</p></li>
-<li><p>Salakhutdinov R, Hinton G (2012) An efficient learning procedure for deep Boltzmann machines. Neural computation 24:1967-2006.</p></li>
+<li><p>Ackley DH, Hinton GE, Sejnowski TJ (2010). A Learning Algorithm for Boltzmann Machines*. Cogn Sci, 9, 147-169. <a class="reference external" href="https://doi.org/10.1207/s15516709cog0901_7">https://doi.org/10.1207/s15516709cog0901_7</a></p></li>
+<li><p>Salakhutdinov R, Hinton G (2012) An efficient learning procedure for deep Boltzmann machines. Neural Computation 24:1967-2006. <a class="reference external" href="https://doi.org/10.1162/NECO_a_00311">https://doi.org/10.1162/NECO_a_00311</a></p></li>
 </ul>
 </li>
 <li><p>Variational autoencoders</p>
 <ul>
-<li><p>Kingma, D. P. &amp; Welling, M. (2013). Auto-Encoding Variational Bayes. arXiv:1312.6114</p></li>
-<li><p>Doersch, C. (2016). Tutorial on Variational Autoencoders. arXiv:1606.05908</p></li>
+<li><p>Kingma DP, Welling M (2014). Auto-encoding variational Bayes. International Conference on Learning Representations (ICLR). <a class="reference external" href="https://doi.org/10.48550/arXiv.1312.6114">https://doi.org/10.48550/arXiv.1312.6114</a></p></li>
+<li><p>Doersch, C. (2016). Tutorial on variational autoencoders. arXiv:1606.05908. <a class="reference external" href="https://doi.org/10.48550/arXiv.1606.05908">https://doi.org/10.48550/arXiv.1606.05908</a></p></li>
 </ul>
 </li>
 <li><p>Visual cortex and convolutional neural networks</p>
 <ul>
-<li><p>Hubel DH, Wiesel TN (1962) Receptive fields, binocular interaction and functional architecture in the cat’s visual cortex. Journal of Physiology 160:106-154.</p></li>
-<li><p>Fukushima K (1980) Neocognitron: A self-organizing neural network model for a mechanism of pattern recognition unaffected by shift in position. Biological cybernetics 36:193-202.</p></li>
-<li><p>Yamins DL, Hong H, Cadieu CF, Solomon EA, Seibert D, DiCarlo JJ (2014) Performance-optimized hierarchical models predict neural responses in higher visual cortex. Proceedings of the National Academy of Sciences USA, 111:8619-8624.</p></li>
-<li><p>Horikawa T, Kamitani Y (2017). Generic decoding of seen and imagined objects using hierarchical visual features. Nat Commun, 8. <a class="reference external" href="https://doi.org/10.1038/ncomms15037">https://doi.org/10.1038/ncomms15037</a></p></li>
+<li><p>Hubel DH, Wiesel TN (1962). Receptive fields, binocular interaction and functional architecture in the cat’s visual cortex. Journal of Physiology, 160, 106-154. <a class="reference external" href="https://doi.org/10.1113/jphysiol.1962.sp006837">https://doi.org/10.1113/jphysiol.1962.sp006837</a></p></li>
+<li><p>Fukushima K (1980). Neocognitron: a self organizing neural network model for a mechanism of pattern recognition unaffected by shift in position. Biol Cybern, 36, 193-202. <a class="reference external" href="https://doi.org/10.1007/BF00344251">https://doi.org/10.1007/BF00344251</a></p></li>
+<li><p>Yamins DL, Hong H, Cadieu CF, Solomon EA, Seibert D, DiCarlo JJ (2014). Performance-optimized hierarchical models predict neural responses in higher visual cortex. Proceedings of the National Academy of Sciences USA, 111, 8619-24. <a class="reference external" href="https://doi.org/10.1073/pnas.1403112111">https://doi.org/10.1073/pnas.1403112111</a></p></li>
+<li><p>Horikawa T, Kamitani Y (2017). Generic decoding of seen and imagined objects using hierarchical visual features. Nature Communications, 8. <a class="reference external" href="https://doi.org/10.1038/ncomms15037">https://doi.org/10.1038/ncomms15037</a></p></li>
 </ul>
 </li>
 </ul>
@@ -1477,7 +1489,7 @@ Figure 7.3: Prediction of visual cortical neural activities by trained deep neur
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1506,6 +1518,7 @@ Figure 7.3: Prediction of visual cortical neural activities by trained deep neur
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1575,7 +1588,7 @@ By Kenji Doya
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -1599,8 +1612,8 @@ By Kenji Doya
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

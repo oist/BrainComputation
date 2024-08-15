@@ -15,52 +15,46 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -78,28 +72,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -121,12 +110,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -142,6 +139,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="BrainComputation.html">
@@ -160,7 +159,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -172,32 +182,38 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Introduction.html">Chapter 1. Introduction</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Neurons.html">Chapter 2. Neural Modeling and Analysis</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Neurons.html">Chapter 2. Neural Modeling and Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Neurons_Exercise.html">Chapter 2. Neural Modeling and Analysis: Exercise</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Supervised.html">Chapter 3: Supervised Learning</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Supervised.html">Chapter 3: Supervised Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Supervised_Exercise.html">Supervised Learning: Exercise</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Reinforcement.html">Chapter 4. Reinforcement Learning</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Reinforcement.html">Chapter 4. Reinforcement Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Reinforcement_Exercise.html">Chapter 4. Reinforcement Learning: Exercise</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Unsupervised.html">Chapter 5. Unsupervised Learning</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Unsupervised.html">Chapter 5. Unsupervised Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Unsupervised_Exercise.html">Unsupervised Learning: Exercise</a></li>
 </ul>
-</li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Chatper 6. Bayesian Approaches</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Chatper 6. Bayesian Approaches</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Bayesian_Exercise.html">Bayesian Approaches: Exercise</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Deep.html">Chapter 7: Deep Learning</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Deep.html">Chapter 7: Deep Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Deep_Exercise.html">Chapter 7: Deep Learning: Exercise</a></li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Multiple.html">Chapter 8. Multiple Agents</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Meta.html">Chapter 9. Meta-Learning</a></li>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Multiple.html">Chapter 8. Multiple Agents</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Multiple_Exercise.html">Chapter 8. Multiple Agents: Exercise</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Meta.html">Chapter 9. Meta-Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Meta_Exercise.html">Chapter 9. Meta-Learning: Exercise</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -213,7 +229,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -222,14 +238,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -307,10 +323,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -318,14 +334,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -390,7 +406,7 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="chatper-6-bayesian-approaches">
 <h1>Chatper 6. Bayesian Approaches<a class="headerlink" href="#chatper-6-bayesian-approaches" title="Permalink to this heading">#</a></h1>
@@ -449,7 +465,7 @@ This simple formula has turned out to be very insightful in the context of senso
 <p>You are a cat chasing a mouse and heard a rustuling sound from a bush.
 About half of the case a hiding mouse makes a sound, but about 10% of the time you hear rustling just by the wind.
 How would you estimate the probability for a mouse hiding in the bush?</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(p(Y \vert X)\)</span></p></th>
 <th class="head text-center"><p>no mouse <span class="math notranslate nohighlight">\(X=0\)</span></p></th>
@@ -467,11 +483,12 @@ How would you estimate the probability for a mouse hiding in the bush?</p>
 </tr>
 </tbody>
 </table>
+</div>
 <p>For example, if you heard a sound, <span class="math notranslate nohighlight">\(Y=1\)</span>, what is the probability of a mouse hiding behind the bush, <span class="math notranslate nohighlight">\(p(X=1|Y=1)\)</span>?
 From the above table, 0.5?</p>
 <p>No, actually. In the ‘heard’ row, 0.1 and 0.5 do not sum up to one. They are likelihoods <span class="math notranslate nohighlight">\(p(Y=1|X)\)</span>, but not probability distribution <span class="math notranslate nohighlight">\(p(X|Y=1)\)</span> for the mouse to be in the bush or not.</p>
 <p>The mouse ran into other nearby bushes, so you assume that the prior probability of the mouse in this bush is 30%:</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-center"><p>prior probability</p></th>
 <th class="head text-center"><p>no mouse <span class="math notranslate nohighlight">\(X=0\)</span></p></th>
@@ -485,6 +502,7 @@ From the above table, 0.5?</p>
 </tr>
 </tbody>
 </table>
+</div>
 <p>By having this prior probability, we can use Bayes’ theorem:</p>
 <div class="math notranslate nohighlight">
 \[  p(X=1|Y=1) = \frac{p(Y=1|X=1)p(X=1)}{p(Y=1|X=0)p(X=0)+p(Y=1|X=1)p(X=1)}  \]</div>
@@ -538,7 +556,7 @@ From the above table, 0.5?</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 0, 0, 1, 0, 1])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 0, 0, 0, 1, 1])
 </pre></div>
 </div>
 </div>
@@ -573,12 +591,18 @@ From the above table, 0.5?</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5f8e8bc1e3652536a6c2f5f5f7bc9736160a2c847864e376d48e02f8404723ee.png" src="_images/5f8e8bc1e3652536a6c2f5f5f7bc9736160a2c847864e376d48e02f8404723ee.png" />
-<img alt="_images/57ff7122a53e81047b3e29dc7eeaac5ebaabd2640976556486755a0ef49c1f71.png" src="_images/57ff7122a53e81047b3e29dc7eeaac5ebaabd2640976556486755a0ef49c1f71.png" />
-<img alt="_images/e0c5df82af3b6fb35256db5f1d2e6ee96f8cacd3a3442266bfb143b9d7759380.png" src="_images/e0c5df82af3b6fb35256db5f1d2e6ee96f8cacd3a3442266bfb143b9d7759380.png" />
-<img alt="_images/017468adc36d8092d6aeee30ba9b7acbd21baa7f1686b4aa20ee5c1bf7c0a1a2.png" src="_images/017468adc36d8092d6aeee30ba9b7acbd21baa7f1686b4aa20ee5c1bf7c0a1a2.png" />
-<img alt="_images/9458933ea0c88ae5d7cf511f5cb445b0ce80275cf28b9c25e24858936efae511.png" src="_images/9458933ea0c88ae5d7cf511f5cb445b0ce80275cf28b9c25e24858936efae511.png" />
-<img alt="_images/795f27480d7bcbbdbbe6c87355e7aa6153704543f0adc6e4bf22be31e80db733.png" src="_images/795f27480d7bcbbdbbe6c87355e7aa6153704543f0adc6e4bf22be31e80db733.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:20: SyntaxWarning: invalid escape sequence &#39;\m&#39;
+&lt;&gt;:20: SyntaxWarning: invalid escape sequence &#39;\m&#39;
+/var/folders/0z/3cttnw852b959kp4wjh_z_wc0000gn/T/ipykernel_58308/3935772410.py:20: SyntaxWarning: invalid escape sequence &#39;\m&#39;
+  plt.xlabel(&#39;$\mu$&#39;)
+</pre></div>
+</div>
+<img alt="_images/e59f09c4f7bb65301361873a1c64d3d312fdd868488546ebc85da86c2286139c.png" src="_images/e59f09c4f7bb65301361873a1c64d3d312fdd868488546ebc85da86c2286139c.png" />
+<img alt="_images/ad2f728c788b92a150ae37986e4aab62d0df942118f75cb6de53271696d32cb8.png" src="_images/ad2f728c788b92a150ae37986e4aab62d0df942118f75cb6de53271696d32cb8.png" />
+<img alt="_images/993477ea007324b84386f9acb44f891c83b4da8b2846e18422884d31b0a8bb2e.png" src="_images/993477ea007324b84386f9acb44f891c83b4da8b2846e18422884d31b0a8bb2e.png" />
+<img alt="_images/d78fba971b05e05f7a10567a577caa80e457369632a6566ad8c08dfbe823f691.png" src="_images/d78fba971b05e05f7a10567a577caa80e457369632a6566ad8c08dfbe823f691.png" />
+<img alt="_images/bedbe8742482bcafe3cf159c0622b4460618db73166b8a51bd5064c0fc7b1de0.png" src="_images/bedbe8742482bcafe3cf159c0622b4460618db73166b8a51bd5064c0fc7b1de0.png" />
+<img alt="_images/aef421111e0804effffe5364931ba137de0f80c5ec78b07a4a58ecf65d190a16.png" src="_images/aef421111e0804effffe5364931ba137de0f80c5ec78b07a4a58ecf65d190a16.png" />
 </div>
 </div>
 <p>As more data are collected, the posterior distribution of <span class="math notranslate nohighlight">\(\mu\)</span> becomes sharper and colser to the true value.</p>
@@ -675,7 +699,7 @@ where \)</span>p(\epsilon)=\mathcal{N}(0,\beta^{-1})$.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3784df4bb9d72b6dc29063a5e5bab080f1b5dd1406d7be89cdf0ea861418c5e8.png" src="_images/3784df4bb9d72b6dc29063a5e5bab080f1b5dd1406d7be89cdf0ea861418c5e8.png" />
+<img alt="_images/18bb758af119d1d22daf8d9fa586153f8f128c984ddd2d6563ed4d1799b1d72f.png" src="_images/18bb758af119d1d22daf8d9fa586153f8f128c984ddd2d6563ed4d1799b1d72f.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -726,12 +750,12 @@ where \)</span>p(\epsilon)=\mathcal{N}(0,\beta^{-1})$.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>m = [-0.74795774  0.66269709]
-S = [[0.46949926 0.4700283 ]
- [0.4700283  0.58355082]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>m = [-0.98878435 -0.10419555]
+S = [[ 0.09999457 -0.09484026]
+ [-0.09484026  0.99000598]]
 </pre></div>
 </div>
-<img alt="_images/e6826c7172d013c9d066520a8458c785f26ee164787b7d95aab796ada5d39c8b.png" src="_images/e6826c7172d013c9d066520a8458c785f26ee164787b7d95aab796ada5d39c8b.png" />
+<img alt="_images/c3cda5e632444d4acaa2ccf039329748119daabe2a2b95bb45a23b98aa62e366.png" src="_images/c3cda5e632444d4acaa2ccf039329748119daabe2a2b95bb45a23b98aa62e366.png" />
 </div>
 </div>
 <section id="predictive-distribution">
@@ -764,7 +788,7 @@ S = [[0.46949926 0.4700283 ]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/45e13758121d9d390ced0e498a73117f9e22bfba7deaa02c4f30c9a6505aa1a6.png" src="_images/45e13758121d9d390ced0e498a73117f9e22bfba7deaa02c4f30c9a6505aa1a6.png" />
+<img alt="_images/78d99084a39e5e3e75b58038f67269b8679eeafb89d4bd49ad47d9fa825eeb6b.png" src="_images/78d99084a39e5e3e75b58038f67269b8679eeafb89d4bd49ad47d9fa825eeb6b.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -811,7 +835,7 @@ S = [[0.46949926 0.4700283 ]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e7b9fa7aec669eba5a2f0e336b0e5233829b1e13ea8498d7436fd19854220e03.png" src="_images/e7b9fa7aec669eba5a2f0e336b0e5233829b1e13ea8498d7436fd19854220e03.png" />
+<img alt="_images/aa5ba3bf6c582b61a585b0bdb4aed09eb3e2198c65ee42797d49f91e79a5ba2d.png" src="_images/aa5ba3bf6c582b61a585b0bdb4aed09eb3e2198c65ee42797d49f91e79a5ba2d.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -835,11 +859,11 @@ S = [[0.46949926 0.4700283 ]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 0.81977129 -0.21116475 -0.35016977 -0.61301655 -0.35445159  0.47176574
-  0.75389272  0.50070748  0.26958855 -0.78954599]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 0.29676076  0.00769487 -0.62339539 -0.77166596 -0.18640427 -0.03528177
+  0.74454317  0.96175609 -0.38185505 -0.67662268]
 </pre></div>
 </div>
-<img alt="_images/551a9c9c5a0913262c3004eaab6f15faee7ab5d819c0e1519649bc77e63d19cf.png" src="_images/551a9c9c5a0913262c3004eaab6f15faee7ab5d819c0e1519649bc77e63d19cf.png" />
+<img alt="_images/d3581146c1895eb8dff7bf7f0d0ce22ce7aa462964b627d051a40c87928d94bb.png" src="_images/d3581146c1895eb8dff7bf7f0d0ce22ce7aa462964b627d051a40c87928d94bb.png" />
 </div>
 </div>
 <p>See how <span class="math notranslate nohighlight">\(N\)</span>, <span class="math notranslate nohighlight">\(M\)</span>, <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> affect the performance.</p>
@@ -924,17 +948,17 @@ S = [[0.46949926 0.4700283 ]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 10.86863581843556 2.4172171664623776 -23.186202000426057 0.4329010889144466
-3 1.8470179065140728 3.0056311889594944 -24.929666005373758 0.4693138345391524
-4 0.2936339047025388 53.507568638643775 -1.6975181845887732 0.019187841756577288
-5 0.7935349187324553 54.472113292754344 -1.8010958450863832 0.019159410733241213
-6 1.582186833728173 61.6018162432809 -0.4764957852968301 0.014529996572586312
-7 2.3876944374895017 59.05449771023588 -0.8407566583899779 0.016079175772422044
-8 2.5930839146925133 68.74150563855842 -0.19663087598864237 0.012722461861915852
-9 2.9068717783431075 73.42041497605483 -0.27206761917508615 0.012637879965764154
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 0.9536121432125525 1.8110230841880344 -28.307643829146194 0.44868408689739453
+3 1.0590197582085208 2.1040373723218604 -28.972209065954107 0.5651456676816952
+4 0.24116620566833435 21.56530193730183 -10.858065914054645 0.013952769061175955
+5 0.6399950160016767 32.6405729791194 -7.151355272775302 0.021912825614996138
+6 1.0813466348002705 33.852564766516096 -7.318807141157102 0.025251509354195335
+7 1.586918274563051 35.209825687456586 -7.282253337393271 0.025659573970988007
+8 2.226857786399016 40.077493333982545 -5.932414833329073 0.0286369007355418
+9 2.554476132002914 41.89968701446499 -5.932056151063833 0.03937037559224765
 </pre></div>
 </div>
-<img alt="_images/99a79aebf783d01bb111438ec3514209a512265a0802736649b241d39cd16124.png" src="_images/99a79aebf783d01bb111438ec3514209a512265a0802736649b241d39cd16124.png" />
+<img alt="_images/5f0531618670d878ba4a258430e8d55b754b47b728e5465c9c541df5e7fe5161.png" src="_images/5f0531618670d878ba4a258430e8d55b754b47b728e5465c9c541df5e7fe5161.png" />
 </div>
 </div>
 </section>
@@ -945,12 +969,10 @@ S = [[0.46949926 0.4700283 ]
 <p>In doing so, representation of the relationships by graphs with random variables as nodes (or vertices) and joint or conditional probabilities as links (or edges or arcs) have turned out to be very useful. They are called <em>graphical models</em>.</p>
 <p>Directed graphs representing conditional probabilities by arrows (directed edges) are called <em>Bayesian networks</em>.</p>
 <p>For example, Bayesian linear regression can be represented as a Bayesian network as below.</p>
-<figure class="align-default" id="fig-blr">
-<a class="reference internal image-reference" href="_images/BN_blr.png"><img alt="_images/BN_blr.png" src="_images/BN_blr.png" style="width: 200px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Graphical model for the Bayesian linear regression.</span><a class="headerlink" href="#fig-blr" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<blockquote>
+<div><img src="figures/BN_blr.png" width="200px">
+Graphical model for the Bayesian linear regression.
+</div></blockquote>
 <p>Inference in Bayesian network goes like this: as values of some variables are observed,</p>
 <ul class="simple">
 <li><p><em>clamp</em> the values of the nodes where observation was made.</p></li>
@@ -961,12 +983,10 @@ S = [[0.46949926 0.4700283 ]
 <section id="inference-on-a-chain">
 <h2>Inference on a chain<a class="headerlink" href="#inference-on-a-chain" title="Permalink to this heading">#</a></h2>
 <p>Here we consider the simplest case of a chain of discrete random variables.</p>
-<figure class="align-default" id="fig-chain">
-<img alt="Chain" src="_images/BN_chain.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Graphical model of a chain of states.</span><a class="headerlink" href="#fig-chain" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<blockquote>
+<div><p><img alt="Chain" src="_images/BN_chain.png" />
+Graphical model of a chain of states.</p>
+</div></blockquote>
 <p>For each node, the variable takes an integer value <span class="math notranslate nohighlight">\(x_n \in \{1,...,K_n\}\)</span> and we consider the joint distribution over the entire nodes:</p>
 <div class="math notranslate nohighlight">
 \[  p(x_1,...,x_N) = p(x_1)p(x_2|x_1) \cdots p(x_{N-1}|x_{N-2})p(x_N|x_{N-1}). \]</div>
@@ -1072,7 +1092,7 @@ S = [[0.46949926 0.4700283 ]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ca161ed243f21db5c1faec143a64dafc9c20aac0a65004eb7af41094eb5e6794.png" src="_images/ca161ed243f21db5c1faec143a64dafc9c20aac0a65004eb7af41094eb5e6794.png" />
+<img alt="_images/df69f5f16b604523dc9e26ae84956ad1661bf591d7f2902cde3960c201fcf468.png" src="_images/df69f5f16b604523dc9e26ae84956ad1661bf591d7f2902cde3960c201fcf468.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1084,7 +1104,7 @@ S = [[0.46949926 0.4700283 ]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 5, 5])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2])
 </pre></div>
 </div>
 </div>
@@ -1098,7 +1118,7 @@ S = [[0.46949926 0.4700283 ]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/148c98deb509b012af0b4c6793fe781df9da613a69ecfb8471d8c68342c2c498.png" src="_images/148c98deb509b012af0b4c6793fe781df9da613a69ecfb8471d8c68342c2c498.png" />
+<img alt="_images/c501c2802d94d0a9ffb4dd3e3f09e76672a8d4d28bae701226729016d5d74150.png" src="_images/c501c2802d94d0a9ffb4dd3e3f09e76672a8d4d28bae701226729016d5d74150.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1110,7 +1130,7 @@ S = [[0.46949926 0.4700283 ]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b34be0fda79ed738cc38caa4abcd2cb56f42f55f71272b7ed6aa1b2d98d27c04.png" src="_images/b34be0fda79ed738cc38caa4abcd2cb56f42f55f71272b7ed6aa1b2d98d27c04.png" />
+<img alt="_images/6ae55c61cad4f69910a686a2d53f863e5b69cc69587e65ca948356cb7f8413f6.png" src="_images/6ae55c61cad4f69910a686a2d53f863e5b69cc69587e65ca948356cb7f8413f6.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1122,7 +1142,7 @@ S = [[0.46949926 0.4700283 ]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d1d41a70874c3d8d85aa0a735ad62bfa6f1eb2057c44e592a2dbfe32ffb7eaea.png" src="_images/d1d41a70874c3d8d85aa0a735ad62bfa6f1eb2057c44e592a2dbfe32ffb7eaea.png" />
+<img alt="_images/4eb041b6ec7cd605ef09785cd36732a9e7b39403a3389f0a23dabc2d2dc87626.png" src="_images/4eb041b6ec7cd605ef09785cd36732a9e7b39403a3389f0a23dabc2d2dc87626.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1134,7 +1154,7 @@ S = [[0.46949926 0.4700283 ]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e201546ba6f04885f7f3952d56b6437e7054ca66f748ff6a28dc9ce4601989f6.png" src="_images/e201546ba6f04885f7f3952d56b6437e7054ca66f748ff6a28dc9ce4601989f6.png" />
+<img alt="_images/ba283022275aed48324202081bb1c5f5120681cd1550355ca2b79079a4ced173.png" src="_images/ba283022275aed48324202081bb1c5f5120681cd1550355ca2b79079a4ced173.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1146,7 +1166,7 @@ S = [[0.46949926 0.4700283 ]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/800032d59bc1cc2ccf9b552981207ab87edd14acb52a11d94114357e5eb30d18.png" src="_images/800032d59bc1cc2ccf9b552981207ab87edd14acb52a11d94114357e5eb30d18.png" />
+<img alt="_images/991122171e9f061a038c6c24ae7fc4b7ca12e6d9c8c3d9c9eb5a2b4c167e1106.png" src="_images/991122171e9f061a038c6c24ae7fc4b7ca12e6d9c8c3d9c9eb5a2b4c167e1106.png" />
 </div>
 </div>
 </section>
@@ -1244,7 +1264,7 @@ S = [[0.46949926 0.4700283 ]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/88e58b656e643caaff604af5b15da028d12b0a4f9e424afd5a8bb45403d3e048.png" src="_images/88e58b656e643caaff604af5b15da028d12b0a4f9e424afd5a8bb45403d3e048.png" />
+<img alt="_images/c6856abd4e3c3f5268d467c51a246d2bb7a509dee19ae803a165ee331dcfaf3a.png" src="_images/c6856abd4e3c3f5268d467c51a246d2bb7a509dee19ae803a165ee331dcfaf3a.png" />
 </div>
 </div>
 <p>Suppose we have three coarse position sensors, which send signal only intermittently, and we want to estimate where the mouse is.</p>
@@ -1263,7 +1283,7 @@ S = [[0.46949926 0.4700283 ]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7159fc041887a0fd2ebd2baefc2bbef5fb194e6f680e5a154064d81d762bc93c.png" src="_images/7159fc041887a0fd2ebd2baefc2bbef5fb194e6f680e5a154064d81d762bc93c.png" />
+<img alt="_images/c72e2f4428e73f48f54de90002c0af182fb9218969e09f869f6aead0c6dc5765.png" src="_images/c72e2f4428e73f48f54de90002c0af182fb9218969e09f869f6aead0c6dc5765.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1285,7 +1305,7 @@ S = [[0.46949926 0.4700283 ]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/253957b29f4560581fb70b3620690425555d45763646e8c2cb6ab973a2acdfd6.png" src="_images/253957b29f4560581fb70b3620690425555d45763646e8c2cb6ab973a2acdfd6.png" />
+<img alt="_images/186d1e1bf5dd092122547bf443885e80e94d15f3aa89eb9a5512358f4dc77821.png" src="_images/186d1e1bf5dd092122547bf443885e80e94d15f3aa89eb9a5512358f4dc77821.png" />
 </div>
 </div>
 <p>From such noisy intermittent observations, how can we estimate the state?</p>
@@ -1302,7 +1322,7 @@ S = [[0.46949926 0.4700283 ]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/37b60d8285ab7cc21862066fcb982669ae42fda1a621a139d56cfbe656e8de9f.png" src="_images/37b60d8285ab7cc21862066fcb982669ae42fda1a621a139d56cfbe656e8de9f.png" />
+<img alt="_images/b7dc092e2339b31a34d0ec9d4ed8c0a8054285201e9877d38cbb65be256d2341.png" src="_images/b7dc092e2339b31a34d0ec9d4ed8c0a8054285201e9877d38cbb65be256d2341.png" />
 </div>
 </div>
 <p>Even when there is no useful sensory input, you can predict the state distribution by the dynamic model.
@@ -1323,8 +1343,7 @@ When a sensory input becomes available, prediction is corrected and sharpened.</
 <p>The cerebral cortex has a hierarchical organization and bi-directional connections between lower and higher areas originating from specific layers.
 There have been serveral hypotheses about how such hierarchical recurrent network can realize Bayesian inference, such as belif propagation (Lochmann &amp; Deneve 2011) and variational <em>free energy</em> approximation (Friston 2005, 2010; Bogacz 2017).</p>
 <blockquote>
-<div><p>{figure-md} Fig_Bogacz
-<img alt="Bogacz17" src="_images/Bogacz17.png" />
+<div><p><img alt="Bogacz17" src="_images/Bogacz17.png" />
 This tutorial illustrates how variational free-energy approximation of posterior probability works and how such mechanisms might be mapped onto the cortical circuit (from Bobacz 2017).</p>
 </div></blockquote>
 <p>There has been only scarse attempts at directly testing those hypotheses, but a recent two-photon imaging experiment showed the evidence for dynamic Bayesian inference by populations of neurons in the parietal cortex (Funamizu et al. 2016).</p>
@@ -1332,7 +1351,7 @@ This tutorial illustrates how variational free-energy approximation of posterior
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Bishop CM (2006) Pattern Recognition and Machine Learning. Springer.</p>
+<li><p>Bishop CM (2006) Pattern Recognition and Machine Learning. Springer. <a class="reference external" href="https://www.microsoft.com/en-us/research/people/cmbishop/prml-book/">https://www.microsoft.com/en-us/research/people/cmbishop/prml-book/</a></p>
 <ul>
 <li><p>Chapter 3: Bayesian linear regression</p></li>
 <li><p>Chapter 8: Graphical models</p></li>
@@ -1342,16 +1361,16 @@ This tutorial illustrates how variational free-energy approximation of posterior
 <section id="bayesian-sensorimotor-integration">
 <h3>Bayesian sensorimotor integration<a class="headerlink" href="#bayesian-sensorimotor-integration" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Knill DC, Pouget A (2004) The Bayesian brain: the role of uncertainty in neural coding and computation. Trends in neurosciences 27:712-719.</p></li>
-<li><p>Körding KP, Wolpert DM (2004) Bayesian integration in sensorimotor learning. Nature 427:244-247.</p></li>
+<li><p>Knill DC, Pouget A (2004) The Bayesian brain: the role of uncertainty in neural coding and computation. Trends in neurosciences 27:712-719. <a class="reference external" href="https://doi.org/10.1016/j.tins.2004.10.007">https://doi.org/10.1016/j.tins.2004.10.007</a></p></li>
+<li><p>Körding KP, Wolpert DM (2004) Bayesian integration in sensorimotor learning. Nature 427:244-247. <a class="reference external" href="https://doi.org/10.1038/nature02169">https://doi.org/10.1038/nature02169</a></p></li>
 <li><p>Doya K, Ishii S, Pouget A, Rao R (2007) Bayesian Brain: Probabilistic Approach to Neural Coding and Learning. MIT Press.</p></li>
 </ul>
 </section>
 <section id="probabilistic-population-codes">
 <h3>Probabilistic population codes<a class="headerlink" href="#probabilistic-population-codes" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Zemel RS, Dayan P, Pouget A (1998) Probabilistic interpretation of population codes. Neural computation 10:403-430.</p></li>
-<li><p>Ma WJ, Beck JM, Latham PE, Pouget A (2006) Bayesian inference with probabilistic population codes. Nature neuroscience 9:1432-1438.</p></li>
+<li><p>Zemel RS, Dayan P, Pouget A (1998) Probabilistic interpretation of population codes. Neural computation 10:403-430. <a class="reference external" href="https://doi.org/10.1162/089976698300017818">https://doi.org/10.1162/089976698300017818</a></p></li>
+<li><p>Ma WJ, Beck JM, Latham PE, Pouget A (2006) Bayesian inference with probabilistic population codes. Nature neuroscience 9:1432-1438. <a class="reference external" href="https://doi.org/10.1038/nn1790">https://doi.org/10.1038/nn1790</a></p></li>
 </ul>
 </section>
 <section id="baysian-inference-in-the-cortical-circuit">
@@ -1360,8 +1379,8 @@ This tutorial illustrates how variational free-energy approximation of posterior
 <li><p>Bogacz R (2017) A tutorial on the free-energy framework for modelling perception and learning. Journal of Mathematical Psychology. 76, 198–211. <a class="reference external" href="https://doi.org/10.1016/j.jmp.2015.11.003">https://doi.org/10.1016/j.jmp.2015.11.003</a></p></li>
 <li><p>Friston K (2005). A theory of cortical responses. Philos Trans R Soc Lond B Biol Sci, 360, 815-36. <a class="reference external" href="http://doi.org/10.1098/rstb.2005.1622">http://doi.org/10.1098/rstb.2005.1622</a></p></li>
 <li><p>Friston K (2010). The free-energy principle: a unified brain theory? Nat Rev Neurosci, 11, 127-38. <a class="reference external" href="http://doi.org/10.1038/nrn2787">http://doi.org/10.1038/nrn2787</a></p></li>
-<li><p>Lochmann T, Deneve S (2011) Neural processing as causal inference. Current opinion in neurobiology 21:774-781.</p></li>
-<li><p>Funamizu A, Kuhn B, Doya K (2016) Neural substrate of dynamic Bayesian inference in the cerebral cortex. Nature Neuroscience 19:1682-1689.</p></li>
+<li><p>Lochmann T, Deneve S (2011) Neural processing as causal inference. Current opinion in neurobiology 21:774-781. <a class="reference external" href="https://doi.org/10.1016/j.conb.2011.05.018">https://doi.org/10.1016/j.conb.2011.05.018</a></p></li>
+<li><p>Funamizu A, Kuhn B, Doya K (2016) Neural substrate of dynamic Bayesian inference in the cerebral cortex. Nature Neuroscience 19:1682-1689. <a class="reference external" href="https://doi.org/10.1038/nn.4390">https://doi.org/10.1038/nn.4390</a></p></li>
 </ul>
 </section>
 </section>
@@ -1396,7 +1415,7 @@ This tutorial illustrates how variational free-energy approximation of posterior
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1425,6 +1444,7 @@ This tutorial illustrates how variational free-energy approximation of posterior
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1491,7 +1511,7 @@ By Kenji Doya
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -1515,8 +1535,8 @@ By Kenji Doya
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -15,59 +15,53 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Multiple';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Chapter 9. Meta-Learning" href="Meta.html" />
+    <link rel="next" title="Chapter 8. Multiple Agents: Exercise" href="Multiple_Exercise.html" />
     <link rel="prev" title="Chapter 7: Deep Learning: Exercise" href="Deep_Exercise.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -78,28 +72,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -121,12 +110,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -142,6 +139,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="BrainComputation.html">
@@ -160,7 +159,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -172,32 +182,38 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Introduction.html">Chapter 1. Introduction</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Neurons.html">Chapter 2. Neural Modeling and Analysis</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Neurons.html">Chapter 2. Neural Modeling and Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Neurons_Exercise.html">Chapter 2. Neural Modeling and Analysis: Exercise</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Supervised.html">Chapter 3: Supervised Learning</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Supervised.html">Chapter 3: Supervised Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Supervised_Exercise.html">Supervised Learning: Exercise</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Reinforcement.html">Chapter 4. Reinforcement Learning</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Reinforcement.html">Chapter 4. Reinforcement Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Reinforcement_Exercise.html">Chapter 4. Reinforcement Learning: Exercise</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Unsupervised.html">Chapter 5. Unsupervised Learning</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Unsupervised.html">Chapter 5. Unsupervised Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Unsupervised_Exercise.html">Unsupervised Learning: Exercise</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Bayesian.html">Chatper 6. Bayesian Approaches</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Bayesian.html">Chatper 6. Bayesian Approaches</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Bayesian_Exercise.html">Bayesian Approaches: Exercise</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Deep.html">Chapter 7: Deep Learning</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Deep.html">Chapter 7: Deep Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Deep_Exercise.html">Chapter 7: Deep Learning: Exercise</a></li>
 </ul>
-</li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 8. Multiple Agents</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Meta.html">Chapter 9. Meta-Learning</a></li>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Chapter 8. Multiple Agents</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Multiple_Exercise.html">Chapter 8. Multiple Agents: Exercise</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Meta.html">Chapter 9. Meta-Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Meta_Exercise.html">Chapter 9. Meta-Learning: Exercise</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -213,7 +229,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -222,14 +238,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -307,10 +323,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -318,14 +334,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -395,7 +411,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#theory-of-mind">Theory of mind</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#author-to-do-list">Author to do list</a></li>
 </ul>
             </nav>
         </div>
@@ -405,7 +420,7 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="chapter-8-multiple-agents">
 <h1>Chapter 8. Multiple Agents<a class="headerlink" href="#chapter-8-multiple-agents" title="Permalink to this heading">#</a></h1>
@@ -652,7 +667,7 @@ splicing of bit sequences</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7969561bfd7b49023982f78350a1de98ce73e4197384b385000af7d93d950730.png" src="_images/7969561bfd7b49023982f78350a1de98ce73e4197384b385000af7d93d950730.png" />
+<img alt="_images/a788cdbc99011f6080fe98aecc1b01f131931ae2a9f9c8ff6ea3c30eb410b0ad.png" src="_images/a788cdbc99011f6080fe98aecc1b01f131931ae2a9f9c8ff6ea3c30eb410b0ad.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -668,7 +683,7 @@ splicing of bit sequences</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b9329203835d31c5b23435ae8d2f2418b18fc570e37fa1676e0a605fc550b90a.png" src="_images/b9329203835d31c5b23435ae8d2f2418b18fc570e37fa1676e0a605fc550b90a.png" />
+<img alt="_images/5d655a41dcdd77e3a09c81af1572012a03ac4310c1ce8f4a243cfc4ab6414487.png" src="_images/5d655a41dcdd77e3a09c81af1572012a03ac4310c1ce8f4a243cfc4ab6414487.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -682,7 +697,7 @@ splicing of bit sequences</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5a969c37c3df8acca1c4ad0b83e41af8c73cd5bc472f68f0340fe8e92db8d0f0.png" src="_images/5a969c37c3df8acca1c4ad0b83e41af8c73cd5bc472f68f0340fe8e92db8d0f0.png" />
+<img alt="_images/1ef0a23a330184e64af381ae78c061df8a41b1a0db0e84939be3fd77561d6f69.png" src="_images/1ef0a23a330184e64af381ae78c061df8a41b1a0db0e84939be3fd77561d6f69.png" />
 </div>
 </div>
 </section>
@@ -733,7 +748,7 @@ Niv et al. (2002) showed in a reinforcement learning task that reward-dependent 
 They can <em>cooperate</em> by remaining silent to be discharged with no punishment.
 If both <em>defect</em> and tell the truth, they are each given a small punshment.
 If only one of them defects for plea bargaining, he/she is given a small reward while the other who tries to cooperate by remaining silent is given a big punishment.</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-right"><p>you get/buddy gets</p></th>
 <th class="head text-center"><p>buddy cooperates</p></th>
@@ -751,6 +766,7 @@ If only one of them defects for plea bargaining, he/she is given a small reward 
 </tr>
 </tbody>
 </table>
+</div>
 <p>What is the best thing to do in this case?
 Is cooperation a viable strategy?</p>
 </section>
@@ -912,7 +928,7 @@ Is cooperation a viable strategy?</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/014df8788ec863b3499294d3aa91da0aa870157bce3f506dc96051d49385756b.png" src="_images/014df8788ec863b3499294d3aa91da0aa870157bce3f506dc96051d49385756b.png" />
+<img alt="_images/2a2d5c82dca37026400218ecbd0e501faf4043ff621c0ffd0d322a14285c1693.png" src="_images/2a2d5c82dca37026400218ecbd0e501faf4043ff621c0ffd0d322a14285c1693.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -926,7 +942,7 @@ Is cooperation a viable strategy?</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/83fa2d42369714cc306b2a3f547632065c3ab1d9e16b0d6134b6de3b93fdafdf.png" src="_images/83fa2d42369714cc306b2a3f547632065c3ab1d9e16b0d6134b6de3b93fdafdf.png" />
+<img alt="_images/0e299a1c9d08b73fcba87d12572fb2aff96bfe725fa5ea1f9b5be5c8815f869d.png" src="_images/0e299a1c9d08b73fcba87d12572fb2aff96bfe725fa5ea1f9b5be5c8815f869d.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -939,7 +955,7 @@ Is cooperation a viable strategy?</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/06571d1f295d58af74bef098a10669fc046c32dbf6086eed4c05bb5c03284d9c.png" src="_images/06571d1f295d58af74bef098a10669fc046c32dbf6086eed4c05bb5c03284d9c.png" />
+<img alt="_images/6326ed11ec5ff14822f8f34c43b3c80a882245c59945c3918159dcd907ac7e45.png" src="_images/6326ed11ec5ff14822f8f34c43b3c80a882245c59945c3918159dcd907ac7e45.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -952,7 +968,7 @@ Is cooperation a viable strategy?</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d19655be81bad26a8fa2ee450dca35daf7e7f36d5fcf864d4b9ee39f9f825c41.png" src="_images/d19655be81bad26a8fa2ee450dca35daf7e7f36d5fcf864d4b9ee39f9f825c41.png" />
+<img alt="_images/2d30ed6dbe06bd12c2a06d1abab0ac63094c78bcaea78b60f15b1be241a36936.png" src="_images/2d30ed6dbe06bd12c2a06d1abab0ac63094c78bcaea78b60f15b1be241a36936.png" />
 </div>
 </div>
 </section>
@@ -1192,7 +1208,7 @@ or the second order:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b3f1ce79309d0b3801fb3f15ba8510c68cc9419529d1007c49210434274e37a7.png" src="_images/b3f1ce79309d0b3801fb3f15ba8510c68cc9419529d1007c49210434274e37a7.png" />
+<img alt="_images/8412cdbdabb4db82610e246c9e99c7669f934d4b17c00834035df4ea887a59ea.png" src="_images/8412cdbdabb4db82610e246c9e99c7669f934d4b17c00834035df4ea887a59ea.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1210,7 +1226,7 @@ or the second order:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/68e59f1c4e1a8127f9cb8cb4f76cadf5ddb70e55bc55817fb85474d7928795ca.png" src="_images/68e59f1c4e1a8127f9cb8cb4f76cadf5ddb70e55bc55817fb85474d7928795ca.png" />
+<img alt="_images/e071579de2a62f22696e8120b5ac155465dc98f032396f0cc4add2464e8426dc.png" src="_images/e071579de2a62f22696e8120b5ac155465dc98f032396f0cc4add2464e8426dc.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1226,7 +1242,7 @@ or the second order:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/fbf41e3b41b64b356f62ac8d0ed27c818f41a97bb5b33e72855df80242d6baf6.png" src="_images/fbf41e3b41b64b356f62ac8d0ed27c818f41a97bb5b33e72855df80242d6baf6.png" />
+<img alt="_images/0e8121839be80c423118e6fe4f10e3669c1a24e4eae648c141df2c2f85286d3f.png" src="_images/0e8121839be80c423118e6fe4f10e3669c1a24e4eae648c141df2c2f85286d3f.png" />
 </div>
 </div>
 </section>
@@ -1251,7 +1267,7 @@ or the second order:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/793779041e17bbd88bc2b8877e024e524758289780ff56213dcda145c3951f18.png" src="_images/793779041e17bbd88bc2b8877e024e524758289780ff56213dcda145c3951f18.png" />
+<img alt="_images/73fbd03d033121025e489aba92e1802dc4873e2640f548efc593f5e8e005fcd3.png" src="_images/73fbd03d033121025e489aba92e1802dc4873e2640f548efc593f5e8e005fcd3.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1263,7 +1279,7 @@ or the second order:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d0fc08edfafab116c5c08a95013a4514445ba634ebbaf174ada55b55c16e7b78.png" src="_images/d0fc08edfafab116c5c08a95013a4514445ba634ebbaf174ada55b55c16e7b78.png" />
+<img alt="_images/e2176f2c3964fff42cfac933ea7d06e14d3615b7b65a6898889841d717a7e477.png" src="_images/e2176f2c3964fff42cfac933ea7d06e14d3615b7b65a6898889841d717a7e477.png" />
 </div>
 </div>
 </section>
@@ -1345,13 +1361,8 @@ There are also brain imaging experiments to assess what brain circuits are invol
 </li>
 </ul>
 </section>
-<section id="author-to-do-list">
-<h2>Author to do list<a class="headerlink" href="#author-to-do-list" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Evolutionar robotics examples, e.g., Nolfi and Floreano</p></li>
-<li><p>Game learning issues and examples</p></li>
-</ul>
-</section>
+<div class="toctree-wrapper compound">
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1381,7 +1392,7 @@ There are also brain imaging experiments to assess what brain circuits are invol
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1394,11 +1405,11 @@ There are also brain imaging experiments to assess what brain circuits are invol
       </div>
     </a>
     <a class="right-next"
-       href="Meta.html"
+       href="Multiple_Exercise.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Chapter 9. Meta-Learning</p>
+        <p class="prev-next-title">Chapter 8. Multiple Agents: Exercise</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1410,6 +1421,7 @@ There are also brain imaging experiments to assess what brain circuits are invol
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1466,7 +1478,6 @@ There are also brain imaging experiments to assess what brain circuits are invol
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#theory-of-mind">Theory of mind</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#author-to-do-list">Author to do list</a></li>
 </ul>
   </nav></div>
 
@@ -1491,7 +1502,7 @@ By Kenji Doya
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -1515,8 +1526,8 @@ By Kenji Doya
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

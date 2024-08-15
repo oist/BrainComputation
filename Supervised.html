@@ -15,52 +15,46 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -78,28 +72,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -121,12 +110,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -142,6 +139,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="BrainComputation.html">
@@ -160,7 +159,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -172,32 +182,38 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Introduction.html">Chapter 1. Introduction</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Neurons.html">Chapter 2. Neural Modeling and Analysis</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Neurons.html">Chapter 2. Neural Modeling and Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Neurons_Exercise.html">Chapter 2. Neural Modeling and Analysis: Exercise</a></li>
 </ul>
-</li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Chapter 3: Supervised Learning</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Chapter 3: Supervised Learning</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Supervised_Exercise.html">Supervised Learning: Exercise</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Reinforcement.html">Chapter 4. Reinforcement Learning</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Reinforcement.html">Chapter 4. Reinforcement Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Reinforcement_Exercise.html">Chapter 4. Reinforcement Learning: Exercise</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Unsupervised.html">Chapter 5. Unsupervised Learning</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Unsupervised.html">Chapter 5. Unsupervised Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Unsupervised_Exercise.html">Unsupervised Learning: Exercise</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Bayesian.html">Chatper 6. Bayesian Approaches</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Bayesian.html">Chatper 6. Bayesian Approaches</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Bayesian_Exercise.html">Bayesian Approaches: Exercise</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Deep.html">Chapter 7: Deep Learning</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Deep.html">Chapter 7: Deep Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Deep_Exercise.html">Chapter 7: Deep Learning: Exercise</a></li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Multiple.html">Chapter 8. Multiple Agents</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Meta.html">Chapter 9. Meta-Learning</a></li>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Multiple.html">Chapter 8. Multiple Agents</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Multiple_Exercise.html">Chapter 8. Multiple Agents: Exercise</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Meta.html">Chapter 9. Meta-Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Meta_Exercise.html">Chapter 9. Meta-Learning: Exercise</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -213,7 +229,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -222,14 +238,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -307,10 +323,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -318,14 +334,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -401,7 +417,7 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="chapter-3-supervised-learning">
 <h1>Chapter 3: Supervised Learning<a class="headerlink" href="#chapter-3-supervised-learning" title="Permalink to this heading">#</a></h1>
@@ -474,7 +490,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ccef40f3301ad5a2739bda4602ebe0213c9c499baaebd0fda3b12c1e3c4c2268.png" src="_images/ccef40f3301ad5a2739bda4602ebe0213c9c499baaebd0fda3b12c1e3c4c2268.png" />
+<img alt="_images/b45a14af26afac1b773582be01ea8d864d91c83e1f352531bcf63b67da0bb7ed.png" src="_images/b45a14af26afac1b773582be01ea8d864d91c83e1f352531bcf63b67da0bb7ed.png" />
 </div>
 </div>
 </section>
@@ -609,7 +625,7 @@ Then we will make a linear regression model to predict the angular accleration f
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6a5f5c3c8a0837ecec6590e4efc6635353de01448bc3e5b70b9d3317be525d97.png" src="_images/6a5f5c3c8a0837ecec6590e4efc6635353de01448bc3e5b70b9d3317be525d97.png" />
+<img alt="_images/4961fc05e8203501fea83fbece09fe267effd1596a06f6ff359b604dbf8d76fa.png" src="_images/4961fc05e8203501fea83fbece09fe267effd1596a06f6ff359b604dbf8d76fa.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -642,7 +658,7 @@ Then we will make a linear regression model to predict the angular accleration f
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/367d74a028b702ce8b0e69a0864ab140af2dd59c511a3f301da123caacf4b8c7.png" src="_images/367d74a028b702ce8b0e69a0864ab140af2dd59c511a3f301da123caacf4b8c7.png" />
+<img alt="_images/53b7dff0f484d2e18d88797744dce793fe7f3aa36a3ff73072e9db75399ea585.png" src="_images/53b7dff0f484d2e18d88797744dce793fe7f3aa36a3ff73072e9db75399ea585.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -676,7 +692,7 @@ Then we will make a linear regression model to predict the angular accleration f
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/76d842d4671e33764191340ca9426f2e58996c2a8726f0dc56477ca9cc6a2f27.png" src="_images/76d842d4671e33764191340ca9426f2e58996c2a8726f0dc56477ca9cc6a2f27.png" />
+<img alt="_images/5fe12a472aa02f14e6649ea95eb673016d18bd10dd1542ae906c6dbf93011d56.png" src="_images/5fe12a472aa02f14e6649ea95eb673016d18bd10dd1542ae906c6dbf93011d56.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -692,7 +708,7 @@ Then we will make a linear regression model to predict the angular accleration f
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>w = [  0.04755674 -39.98541557  -3.32975196]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>w = [ 1.45494358e-02 -4.70871822e+01 -3.43071462e+00]
 [0, -49.0, -0.6666666666666667]
 </pre></div>
 </div>
@@ -707,7 +723,7 @@ Then we will make a linear regression model to predict the angular accleration f
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.926463180639745
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 1.1027652117146318
 </pre></div>
 </div>
 </div>
@@ -728,7 +744,7 @@ Then we will make a linear regression model to predict the angular accleration f
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/80b0cd91438864fc0a61d5e956468548db484beedff5b419f0a53d382a8b7777.png" src="_images/80b0cd91438864fc0a61d5e956468548db484beedff5b419f0a53d382a8b7777.png" />
+<img alt="_images/87b29703170158ca5bcb8a0778bb3a93e7d0ad6236c04f8d0effd0dfda702827.png" src="_images/87b29703170158ca5bcb8a0778bb3a93e7d0ad6236c04f8d0effd0dfda702827.png" />
 </div>
 </div>
 </section>
@@ -790,7 +806,13 @@ An RBF is give by a decreasing function of the distance from a center point:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/db9a417dc9eebfcda78a1db79378c1e4fa053cd6025c7c4a57559ce5760fdf2d.png" src="_images/db9a417dc9eebfcda78a1db79378c1e4fa053cd6025c7c4a57559ce5760fdf2d.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:10: SyntaxWarning: invalid escape sequence &#39;\p&#39;
+&lt;&gt;:10: SyntaxWarning: invalid escape sequence &#39;\p&#39;
+/var/folders/0z/3cttnw852b959kp4wjh_z_wc0000gn/T/ipykernel_58507/1772074961.py:10: SyntaxWarning: invalid escape sequence &#39;\p&#39;
+  plt.xlabel(&quot;x&quot;); plt.ylabel(&quot;$\phi(x)$&quot;);
+</pre></div>
+</div>
+<img alt="_images/a8fb7f4234410b9dc990c972e23c0dd585e30e83e6d88e19e1ae2393f0bc9d2e.png" src="_images/a8fb7f4234410b9dc990c972e23c0dd585e30e83e6d88e19e1ae2393f0bc9d2e.png" />
 </div>
 </div>
 <p>Here you can generate random samples of functions using RBF.</p>
@@ -805,7 +827,7 @@ An RBF is give by a decreasing function of the distance from a center point:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ec2ae7843501f73369be78230d5cfa640788f87207b7bc9f71355ac586519934.png" src="_images/ec2ae7843501f73369be78230d5cfa640788f87207b7bc9f71355ac586519934.png" />
+<img alt="_images/2a0422b666e4c2cf9700f8c19c394a4a7443192414a95e87c6165a2cc46a32c1.png" src="_images/2a0422b666e4c2cf9700f8c19c394a4a7443192414a95e87c6165a2cc46a32c1.png" />
 </div>
 </div>
 <p>Here are RBFs in 2D input space on a grid.</p>
@@ -826,7 +848,13 @@ An RBF is give by a decreasing function of the distance from a center point:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/100b555d2587e7361700565f6a9a8d0d1e4a9a264a76a215c75f31274f4ef0b7.png" src="_images/100b555d2587e7361700565f6a9a8d0d1e4a9a264a76a215c75f31274f4ef0b7.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:11: SyntaxWarning: invalid escape sequence &#39;\p&#39;
+&lt;&gt;:11: SyntaxWarning: invalid escape sequence &#39;\p&#39;
+/var/folders/0z/3cttnw852b959kp4wjh_z_wc0000gn/T/ipykernel_58507/4022370209.py:11: SyntaxWarning: invalid escape sequence &#39;\p&#39;
+  plt.xlabel(&quot;x1&quot;); plt.ylabel(&quot;x2&quot;); plt.title(&quot;$\phi(x)$&quot;);
+</pre></div>
+</div>
+<img alt="_images/c3676c38f60ccc3c75baf4fcaf82bd133ef1962dd7095c7ebf5bb8ae331aa411.png" src="_images/c3676c38f60ccc3c75baf4fcaf82bd133ef1962dd7095c7ebf5bb8ae331aa411.png" />
 </div>
 </div>
 <section id="example-non-linear-pendulum">
@@ -962,7 +990,7 @@ This is called <em>linear Perceptron</em>.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8283e4d59904e7bac29d1d8346681f02e6cd9bbc958675891b1e8afb7ad7f37d.png" src="_images/8283e4d59904e7bac29d1d8346681f02e6cd9bbc958675891b1e8afb7ad7f37d.png" />
+<img alt="_images/af3911bfda10c5df68a673f9a4cf14b460984cedd3e0897cbd80e29a04fae1ea.png" src="_images/af3911bfda10c5df68a673f9a4cf14b460984cedd3e0897cbd80e29a04fae1ea.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -986,20 +1014,20 @@ This is called <em>linear Perceptron</em>.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.6 ; w =  [-0.1         0.37734155  0.28399488]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/1_/8z4rymn15_s8t_my7w1skyx00000gq/T/ipykernel_84873/2966047756.py:36: RuntimeWarning: invalid value encountered in scalar divide
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/0z/3cttnw852b959kp4wjh_z_wc0000gn/T/ipykernel_58507/2966047756.py:36: RuntimeWarning: invalid value encountered in scalar divide
   x = self.w[1]*(u-self.w[0])/s+self.w[2]*np.array([l,-l])/np.sqrt(s)
-/var/folders/1_/8z4rymn15_s8t_my7w1skyx00000gq/T/ipykernel_84873/2966047756.py:36: RuntimeWarning: invalid value encountered in divide
+/var/folders/0z/3cttnw852b959kp4wjh_z_wc0000gn/T/ipykernel_58507/2966047756.py:36: RuntimeWarning: invalid value encountered in divide
   x = self.w[1]*(u-self.w[0])/s+self.w[2]*np.array([l,-l])/np.sqrt(s)
-/var/folders/1_/8z4rymn15_s8t_my7w1skyx00000gq/T/ipykernel_84873/2966047756.py:37: RuntimeWarning: invalid value encountered in scalar divide
+/var/folders/0z/3cttnw852b959kp4wjh_z_wc0000gn/T/ipykernel_58507/2966047756.py:37: RuntimeWarning: invalid value encountered in scalar divide
   y = self.w[2]*(u-self.w[0])/s+self.w[1]*np.array([-l,l])/np.sqrt(s)
-/var/folders/1_/8z4rymn15_s8t_my7w1skyx00000gq/T/ipykernel_84873/2966047756.py:37: RuntimeWarning: invalid value encountered in divide
+/var/folders/0z/3cttnw852b959kp4wjh_z_wc0000gn/T/ipykernel_58507/2966047756.py:37: RuntimeWarning: invalid value encountered in divide
   y = self.w[2]*(u-self.w[0])/s+self.w[1]*np.array([-l,l])/np.sqrt(s)
 </pre></div>
 </div>
-<img alt="_images/ab6563466d65c2bc8bbb9d85c9d1e69692b9ddcda4e00542dc13fcbeb82aa7ae.png" src="_images/ab6563466d65c2bc8bbb9d85c9d1e69692b9ddcda4e00542dc13fcbeb82aa7ae.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.6 ; w =  [-0.1         0.22832304  0.12773136]
+</pre></div>
+</div>
+<img alt="_images/257ea6caf2791458d0db44b635151476418c2e6689b1dc0b581ed81c61459aed.png" src="_images/257ea6caf2791458d0db44b635151476418c2e6689b1dc0b581ed81c61459aed.png" />
 </div>
 </div>
 </section>
@@ -1079,10 +1107,10 @@ It is often the case that the basis functions are allocated around each data poi
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>n = 20 ; err = 0.3777371237448089 ; w = [-1.07117794  0.52734969  0.38963267]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>n = 20 ; err = 0.5604873208196794 ; w = [-0.45446637  0.42886827  0.21182625]
 </pre></div>
 </div>
-<img alt="_images/b4016ef42866a49475e4ac02eb68c8c6942bd799ac53b0c51c3d1391fdcc2695.png" src="_images/b4016ef42866a49475e4ac02eb68c8c6942bd799ac53b0c51c3d1391fdcc2695.png" />
+<img alt="_images/b550d707d1b53b7c7b6123f06deaabb50d0377becf7bffb14d32e0985d706764.png" src="_images/b550d707d1b53b7c7b6123f06deaabb50d0377becf7bffb14d32e0985d706764.png" />
 </div>
 </div>
 </section>
@@ -1236,10 +1264,10 @@ Instead, we can apply Newton method using the <em>Hessian matrix</em></p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> err = 0.25 ; w = [-1.38121123  0.82973433  0.46721136]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> err = 0.25 ; w = [-1.40467844  0.94737397  0.24290696]
 </pre></div>
 </div>
-<img alt="_images/fb399d062057a25be609c5719a75c348f228d07b37569d76069846a80a40ed00.png" src="_images/fb399d062057a25be609c5719a75c348f228d07b37569d76069846a80a40ed00.png" />
+<img alt="_images/aa6470aa9accf61f23c5dbc487e9e9487207d563906d1f727fdbb980bfe80e7c.png" src="_images/aa6470aa9accf61f23c5dbc487e9e9487207d563906d1f727fdbb980bfe80e7c.png" />
 </div>
 </div>
 </section>
@@ -1353,7 +1381,7 @@ A possible way in which suprevised learning can be helpful is to provide an <em>
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1382,6 +1410,7 @@ A possible way in which suprevised learning can be helpful is to provide an <em>
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1459,7 +1488,7 @@ By Kenji Doya
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -1483,8 +1512,8 @@ By Kenji Doya
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
