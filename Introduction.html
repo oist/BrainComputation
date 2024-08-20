@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
@@ -35,18 +35,16 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
     <script src="_static/scripts/sphinx-book-theme.js"></script>
@@ -140,6 +138,8 @@
         <div class="sidebar-primary-item">
 
   
+    
+  
 
 <a class="navbar-brand logo" href="BrainComputation.html">
   
@@ -161,7 +161,7 @@
 
  <script>
  document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
     <span class="search-button__default-text">Search</span>
     <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
@@ -241,9 +241,9 @@
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -321,10 +321,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -332,14 +332,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -412,7 +412,7 @@ document.write(`
 <p>The progress of artificial intelligence (AI) in the last several years is phenomenal. Playing the master level in the game of Go was supposed to be decades away, but AlphaGo beat human champions.</p>
 <p>Today’s success of AI is based on the combination of <em>deep neural networks</em> and <em>reinforcement learning</em> together with high-performance computing and massive data from the internet.</p>
 <p>Can this <em>deep learning revolution</em> solve all the problems in AI? Certainly not. Deep learning realized human-level vision and hearing, which is enabling applications of AI to areas that were challenging, such as autonomous driving and speech-capable agents. However, there are more to human intelligence than vision and hearing.</p>
-<p>Then what should we futhre learn from the brain and human cognition to bring AI to the next level? Here are some domains in which today’s AI is still limited and learning from the computational architecture of the brain can be beneficial:</p>
+<p>Then what should we further learn from the brain and human cognition to bring AI to the next level? Here are some domains in which today’s AI is still limited and learning from the computational architecture of the brain can be beneficial:</p>
 <ul class="simple">
 <li><p>Energy efficiency</p></li>
 <li><p>Data efficiency</p>
@@ -425,8 +425,8 @@ document.write(`
 <li><p>Autonomy and sociality</p></li>
 </ul>
 <p>To understand how our brain realizes such energy-efficient operation, understanding the biophysics of neurons and the dynamics of their network is imperative. We will start at this level first, although briefly.</p>
-<p>To understand the mechanisms of learning in the brain, we first have to know different frameworks of learning and then understand how they can be computationaly realized efficiently and how they can possibly implemented in the brain.</p>
-<p>How we can imagine the future based on our experience and make a predictive judgement is a big open question. We will consider their possible mechanisms toward the end of this book.</p>
+<p>To understand the mechanisms of learning in the brain, we first have to know different frameworks of learning and then understand how they can be computationally realized efficiently and how they can possibly implemented in the brain.</p>
+<p>How we can imagine the future based on our experience and make a predictive judgment is a big open question. We will consider their possible mechanisms toward the end of this book.</p>
 </section>
 <section id="history-of-the-brain">
 <h2>1.2 History of the brain<a class="headerlink" href="#history-of-the-brain" title="Permalink to this heading">#</a></h2>
@@ -455,9 +455,9 @@ Even invertebrates from worms and insects share almost the same set of molecules
 <ul class="simple">
 <li><p><strong>Learning</strong>: Learning can happen very quickly. An infant learns new objects and words everyday. There are some type of learning that takes longer, such as sophisticated motor skills.</p></li>
 <li><p><strong>Meta-learning</strong>: After we learn one skill, such as skiing, it helps learning a new skill, such as snowboarding, even though the required muscle outputs are quite different. This suggests that the brain has the capability for “learning to learn” or meta-learning.</p></li>
-<li><p><strong>Imitation and cultural evolution</strong>: Mimicking what others do seems like a simple job, but it actually involves sophisticated computation for mapping the vision of other’s movement to own body movements. Even more importantly, imitation is the basis for cultural evolution, by which skills and knowledge can continue to progress beyond inidvidual’s lifetime.</p></li>
-<li><p><strong>Development</strong>: The brain’s neral circuit follows a standard course of development, from embryo to newborn and child to adult. Although the number of neurons in the brain is almost constant after birth, there appears to be genetic and epigenetic mechanisms to regulated how learning goes on in different parts of the brain at different stages of maturation.</p></li>
-<li><p><strong>Evolution</strong>: All those mechanims for adaptation of the brain is defined in the genome, which is a product of millions of years of evolution. Simple animals tend to have small brains speciallized for particular behaviors in particular environments, but can adapt rapidly to new environments by producing many offsprings in relatively short life cycles. Vertabrates, especially mammals, can adapt to a wid range of environments within a lifetime using higher capability of learning.</p></li>
+<li><p><strong>Imitation and cultural evolution</strong>: Mimicking what others do seems like a simple job, but it actually involves sophisticated computation for mapping the vision of other’s movement to own body movements. Even more importantly, imitation is the basis for cultural evolution, by which skills and knowledge can continue to progress beyond individual’s lifetime.</p></li>
+<li><p><strong>Development</strong>: The brain’s neural circuit follows a standard course of development, from embryo to newborn and child to adult. Although the number of neurons in the brain is almost constant after birth, there appears to be genetic and epigenetic mechanisms to regulated how learning goes on in different parts of the brain at different stages of maturation.</p></li>
+<li><p><strong>Evolution</strong>: All those mechanisms for adaptation of the brain is defined in the genome, which is a product of millions of years of evolution. Simple animals tend to have small brains specialized for particular behaviors in particular environments, but can adapt rapidly to new environments by producing many offspring in relatively short life cycles. Vertebrates, especially mammals, can adapt to a wide range of environments within a lifetime using higher capability of learning.</p></li>
 </ul>
 </section>
 <section id="learning-objectives">
@@ -474,7 +474,7 @@ Even invertebrates from worms and insects share almost the same set of molecules
 <figure class="align-default" id="fig-sru">
 <a class="reference internal image-reference" href="_images/SRU.jpg"><img alt="Cerebelum-BG-Cortex" src="_images/SRU.jpg" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2 </span><span class="caption-text">The hypthesis that the cerebellum, the basal ganglia, and the cerebral cortex are specialized in supervised, reinforcement, and unsupervised learning, respectively (Doya, 1999).</span><a class="headerlink" href="#fig-sru" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">The hypothesis that the cerebellum, the basal ganglia, and the cerebral cortex are specialized in supervised, reinforcement, and unsupervised learning, respectively (Doya, 1999).</span><a class="headerlink" href="#fig-sru" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -482,11 +482,11 @@ Even invertebrates from worms and insects share almost the same set of molecules
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Hassabis D, Kumaran D, Summerfield C, Botvinick M (2017) Neuroscience-Inspired Artificial Intelligence. Neuron 95:245-258.</p></li>
-<li><p>Lake BM, Ullman TD, Tenenbaum JB, Gershman SJ (2017) Building machines that learn and think like people. Behav Brain Sci 40:e253.</p></li>
+<li><p>Hassabis D, Kumaran D, Summerfield C, Botvinick M (2017). Neuroscience-inspired artificial intelligence. Neuron, 95, 245-258. <a class="reference external" href="https://doi.org/10.1016/j.neuron.2017.06.011">https://doi.org/10.1016/j.neuron.2017.06.011</a></p></li>
+<li><p>Lake BM, Ullman TD, Tenenbaum JB, Gershman SJ (2017). Building machines that learn and think like people. Behav Brain Sci, 40, e253. <a class="reference external" href="https://doi.org/10.1017/S0140525X16001837">https://doi.org/10.1017/S0140525X16001837</a></p></li>
 <li><p>Minsky M (1986) Society of Mind. New York: Simon and Schuster.</p></li>
-<li><p>Doya K (1999) What are the computations of the cerebellum, the basal ganglia, and the cerebral cortex. Neural Networks 12:961-974.</p></li>
-<li><p>Doya K (2002) Metalearning and Neuromodulation. Neural Networks 15:495–506.</p></li>
+<li><p>Doya K (1999). What are the computations of the cerebellum, the basal ganglia, and the cerebral cortex. Neural Networks, 12, 961-974. <a class="reference external" href="https://doi.org/10.1016/S0893-6080(99)00046-5">https://doi.org/10.1016/S0893-6080(99)00046-5</a></p></li>
+<li><p>Doya K (2002). Metalearning and Neuromodulation. Neural Networks, 15, 495–506. <a class="reference external" href="https://doi.org/10.1016/S0893-6080(02)00044-8">https://doi.org/10.1016/S0893-6080(02)00044-8</a></p></li>
 <li><p>Thrun S, Pratt L, eds (1998) Learning to Learn: Springer.</p></li>
 </ul>
 </section>
@@ -616,8 +616,8 @@ By Kenji Doya
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

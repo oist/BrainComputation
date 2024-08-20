@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
@@ -35,18 +35,16 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
     <script src="_static/scripts/sphinx-book-theme.js"></script>
@@ -142,6 +140,8 @@
         <div class="sidebar-primary-item">
 
   
+    
+  
 
 <a class="navbar-brand logo" href="BrainComputation.html">
   
@@ -163,7 +163,7 @@
 
  <script>
  document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
     <span class="search-button__default-text">Search</span>
     <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
@@ -243,9 +243,9 @@
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -323,10 +323,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -334,14 +334,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -442,9 +442,9 @@ document.write(`
 <section id="biophysical-neuron-models">
 <h2>2.1 Biophysical neuron models<a class="headerlink" href="#biophysical-neuron-models" title="Permalink to this heading">#</a></h2>
 <p>Among variety of cells that compose animal body, what is striking about neurons is their complex shapes: branches of dendrites and long-projecting axons.
-For example, check <a class="reference external" href="http://neuromorpho.org">NeuroMorpho.org</a> for 3D morphological data of thousansa of neurons.
+For example, check <a class="reference external" href="http://neuromorpho.org">NeuroMorpho.org</a> for 3D morphological data of thousands of neurons.
 There are non-neural cells that show electric activities and chemical signaling, but neurons are specialized for collecting signals from thousands of different neurons and sending the output to target neurons far apart.</p>
-<p>Here we introduce basic mathematical models that capture biophysical properties of neurons, namely, electirc excitation, synaptic transmission, and dendritic integtion.</p>
+<p>Here we introduce basic mathematical models that capture biophysical properties of neurons, namely, electric excitation, synaptic transmission, and dendritic integration.</p>
 <section id="hodgkin-huxley-neuron-models">
 <h3>Hodgkin-Huxley neuron models<a class="headerlink" href="#hodgkin-huxley-neuron-models" title="Permalink to this heading">#</a></h3>
 <p>The Hodgkin-Huxley (HH) model considers a neuron as an electric circuit as depicted below.</p>
@@ -455,7 +455,7 @@ There are non-neural cells that show electric activities and chemical signaling,
 </figcaption>
 </figure>
 <p>On the cellular membrane, there are <em>ionic channels</em> that pass specific type of ions. Sodium ions (Na<span class="math notranslate nohighlight">\(^+\)</span>) are scarce inside the cell, so that when sodium channel opens, positive charges flood into the cell to cause excitation. Potassium ions (K<span class="math notranslate nohighlight">\(^+\)</span>) are rich inside the cell, so that when potassium channel opens, positive charges flood out of the cell to cause inhibition. The HH model assumes a ‘leak’ current that put together all other ionic currents.</p>
-<p>The ingeniety of Hodgkin and Huxley is that they inferred from careful data analysis that a single sodium channel consists of three <em>activation</em> gates and one <em>inactivation</em> gate, and a single potassium channel consists of four activation gates. Such structures were later confirmed by genomics and imaging.</p>
+<p>The ingenuity of Hodgkin and Huxley is that they inferred from careful data analysis that a single sodium channel consists of three <em>activation</em> gates and one <em>inactivation</em> gate, and a single potassium channel consists of four activation gates. Such structures were later confirmed by genomics and imaging.</p>
 <p>The electric potential inside the neuron <span class="math notranslate nohighlight">\(V\)</span> follows the following equation:</p>
 <div class="math notranslate nohighlight">
 \[C \frac{dV}{dt} = g_{Na}m^3h(E_{Na}-V) + g_Kn^4(E_K-V) + g_L(E_L-V) + I\]</div>
@@ -538,13 +538,13 @@ They follow the following differential equations with their rates of opening and
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/afefc78326133a6bd363b6c3e0b63cb542ad0b082c30b86d594ce0b571f0322f.png" src="_images/afefc78326133a6bd363b6c3e0b63cb542ad0b082c30b86d594ce0b571f0322f.png" />
+<img alt="_images/a5a9877f00c5e0efdd39b1675dcd87e42c0bf6397a6ca949b6edfcb2698ae1d1.png" src="_images/a5a9877f00c5e0efdd39b1675dcd87e42c0bf6397a6ca949b6edfcb2698ae1d1.png" />
 </div>
 </div>
 </section>
 <section id="integrate-and-fire-neuron-models">
 <h3>Integrate-and-fire neuron models<a class="headerlink" href="#integrate-and-fire-neuron-models" title="Permalink to this heading">#</a></h3>
-<p>The HH model explaines why a spike is generataed and followed by a refractory period based on the activation and inactionvation of sodium and potassium channels.
+<p>The HH model explains why a spike is generated and followed by a refractory period based on the activation and inactivation of sodium and potassium channels.
 We are, however, often interested in how a spike is triggered, rather than and electric mechanisms to create a spike.</p>
 <p><em>Integrate-and-fire</em> (IaF) neurons models considers the dynamics of sub-threshold accumulation of input currents up to a spiking threshold, but take a spike as just an event and then reset the potential. From the HH equation, by removing the sodium and potassium current, we have</p>
 <div class="math notranslate nohighlight">
@@ -552,7 +552,7 @@ We are, however, often interested in how a spike is triggered, rather than and e
 <p>By defining the membrane resistance <span class="math notranslate nohighlight">\(R=\frac{1}{g_L}\)</span> and the time constant <span class="math notranslate nohighlight">\(\tau=RC\)</span>, we have the equation of <em>leaky integration</em></p>
 <div class="math notranslate nohighlight">
 \[\tau\frac{dV(t)}{dt} = -V(t) + E_L + R I(t)\]</div>
-<p>When the membrane potential <span class="math notranslate nohighlight">\(V\)</span> reaches to a threhold <span class="math notranslate nohighlight">\(V_\theta\)</span>, a spike is generated and the membrane potential is reset to <span class="math notranslate nohighlight">\(V_r\)</span>.</p>
+<p>When the membrane potential <span class="math notranslate nohighlight">\(V\)</span> reaches to a threshold <span class="math notranslate nohighlight">\(V_\theta\)</span>, a spike is generated and the membrane potential is reset to <span class="math notranslate nohighlight">\(V_r\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[V(t) = V_r  \quad\mbox{ if } V(t) \ge V_\theta\]</div>
 <p>Below is an example of an IaF model. Here we use <code class="docutils literal notranslate"><span class="pre">ode()</span></code> function to detect reaching to the threshold by the <code class="docutils literal notranslate"><span class="pre">solout</span></code> option.</p>
@@ -607,7 +607,7 @@ We are, however, often interested in how a spike is triggered, rather than and e
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c7e63d07d04109023f2034f8ef168e422182035b29b303ddec45875d102017ba.png" src="_images/c7e63d07d04109023f2034f8ef168e422182035b29b303ddec45875d102017ba.png" />
+<img alt="_images/68a40654eed809d1999e7fad7d7dbe5f56129b735e01482cb0a69a8eac2b50b9.png" src="_images/68a40654eed809d1999e7fad7d7dbe5f56129b735e01482cb0a69a8eac2b50b9.png" />
 </div>
 </div>
 </section>
@@ -662,7 +662,7 @@ We are, however, often interested in how a spike is triggered, rather than and e
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/328096b9e93ec3669351ab3dfefc9491a80a067c7bc1823c75119526e206f3c0.png" src="_images/328096b9e93ec3669351ab3dfefc9491a80a067c7bc1823c75119526e206f3c0.png" />
+<img alt="_images/3d3c4343c106193c2b7010b67188969e683e281f32126aa6a710c7afd0769975.png" src="_images/3d3c4343c106193c2b7010b67188969e683e281f32126aa6a710c7afd0769975.png" />
 </div>
 </div>
 </section>
@@ -688,7 +688,7 @@ We are, however, often interested in how a spike is triggered, rather than and e
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b0f77709c352d448a96e49d931bdc8c3b97ad3931012eb26b3190aa1cb149a51.png" src="_images/b0f77709c352d448a96e49d931bdc8c3b97ad3931012eb26b3190aa1cb149a51.png" />
+<img alt="_images/2e0a079db7b7834e4a8c397012d7d8b7668deed120660194043309ef142ea539.png" src="_images/2e0a079db7b7834e4a8c397012d7d8b7668deed120660194043309ef142ea539.png" />
 </div>
 </div>
 <p>The firing threshold becomes smoother with noise.</p>
@@ -700,7 +700,7 @@ We are, however, often interested in how a spike is triggered, rather than and e
 </section>
 <section id="alpha-function-model-of-synaptic-current">
 <h3>Alpha function model of synaptic current<a class="headerlink" href="#alpha-function-model-of-synaptic-current" title="Permalink to this heading">#</a></h3>
-<p>When a spike travels through an axon and reaches to a synpase, it causes release of neurotransmitter molecules in the synaptic junction, which binds to the receptors on the postsynapic membrane, and cause either opening of ionic channels of the receptor or trigger molecular reactions in the postsynaptic cell.</p>
+<p>When a spike travels through an axon and reaches to a synapse, it causes release of neurotransmitter molecules in the synaptic junction, which binds to the receptors on the postsynaptic membrane, and cause either opening of ionic channels of the receptor or trigger molecular reactions in the postsynaptic cell.</p>
 <p>A simple model to approximate the dynamics of this complex cascades is the <em>alpha function</em>, defined as</p>
 <div class="math notranslate nohighlight">
 \[u(t) = \frac{t}{\tau_s} e^{-\frac{t}{\tau_s}}\]</div>
@@ -723,7 +723,7 @@ We are, however, often interested in how a spike is triggered, rather than and e
 <img alt="_images/420e66a08ca618fe7417b967d71fb1aeea9fa1dd4960d87d5cbb37278ac11eba.png" src="_images/420e66a08ca618fe7417b967d71fb1aeea9fa1dd4960d87d5cbb37278ac11eba.png" />
 </div>
 </div>
-<p>The alpha function is a solution of a second-order dyamics to an impulse input at t=0</p>
+<p>The alpha function is a solution of a second-order dynamics to an impulse input at t=0</p>
 <div class="math notranslate nohighlight">
 \[\tau_s\frac{du_1(t)}{dt} = -u_1(t) + \delta(t=0)\]</div>
 <div class="math notranslate nohighlight">
@@ -824,7 +824,7 @@ We are, however, often interested in how a spike is triggered, rather than and e
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/30ea6bed1d28af336181677c47f86416521f40537bd512226e967927b719ea47.png" src="_images/30ea6bed1d28af336181677c47f86416521f40537bd512226e967927b719ea47.png" />
+<img alt="_images/94fc90372697a902924e7b2740327b119f568b02fe12cdecccc924e77e3a18ee.png" src="_images/94fc90372697a902924e7b2740327b119f568b02fe12cdecccc924e77e3a18ee.png" />
 </div>
 </div>
 </section>
@@ -833,8 +833,8 @@ We are, however, often interested in how a spike is triggered, rather than and e
 <h2>Abstract neuron models<a class="headerlink" href="#abstract-neuron-models" title="Permalink to this heading">#</a></h2>
 <section id="mean-field-models">
 <h3>Mean-field models<a class="headerlink" href="#mean-field-models" title="Permalink to this heading">#</a></h3>
-<p>In the invertebrate neuvous system with small number of neurons, each single neuron has a distinct identity and signals specifit information.
-In the mammarian brain with millons to billions of neurons, on the other hand, neural responses tend to be redundant and distributed.
+<p>In the invertebrate nervous system with small number of neurons, each single neuron has a distinct identity and signals specific information.
+In the mammalian brain with millions to billions of neurons, on the other hand, neural responses tend to be redundant and distributed.
 For example, in the visual cortex, neurons in the same <em>column</em> have similar sensory tuning, such as presentation of edges in the same orientation.
 Moreover, responses of each neuron to the same stimulus can be variable across trials.
 This suggest that information is reliably represented by a population of neurons sharing the same tuning.</p>
@@ -843,7 +843,7 @@ This suggest that information is reliably represented by a population of neurons
 <div class="math notranslate nohighlight">
 \[A(t) = \lim_{\Delta t\rightarrow 0} \frac{n(t;t+\Delta t)}{N\Delta t}\]</div>
 <p>where <span class="math notranslate nohighlight">\(n(t;t+\Delta t)\)</span> is the number of spikes in the short time duration <span class="math notranslate nohighlight">\(\Delta t\)</span>.</p>
-<p>For a population of identical IaF neurons with random homogeneous connections, the pupulation activity <span class="math notranslate nohighlight">\(A(t)\)</span> and average membrane potential <span class="math notranslate nohighlight">\(h(t)\)</span> can be apprximated by the following equations (Gerstner et al., 2014):</p>
+<p>For a population of identical IaF neurons with random homogeneous connections, the population activity <span class="math notranslate nohighlight">\(A(t)\)</span> and average membrane potential <span class="math notranslate nohighlight">\(h(t)\)</span> can be approximated by the following equations (Gerstner et al., 2014):</p>
 <div class="math notranslate nohighlight">
 \[A(t) = F(h(t))\]</div>
 <div class="math notranslate nohighlight">
@@ -884,7 +884,7 @@ Depending on the connection strengths, we can observe point attractor or oscilla
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/033c994a5846b4396d2b42f2676d13c2cd10cc0c31437b071736b94df51ad3ec.png" src="_images/033c994a5846b4396d2b42f2676d13c2cd10cc0c31437b071736b94df51ad3ec.png" />
+<img alt="_images/d94011e8d9333f0f5c32b7001e23a3c7e156a8409b2a334f240b70ebab3bbe85.png" src="_images/d94011e8d9333f0f5c32b7001e23a3c7e156a8409b2a334f240b70ebab3bbe85.png" />
 </div>
 </div>
 </section>
@@ -914,7 +914,7 @@ Depending on the connection strengths, we can observe point attractor or oscilla
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9f219179d5c9db7bfa24102a2b3fb5cdb858380a0e1a0f4a156a028781d62193.png" src="_images/9f219179d5c9db7bfa24102a2b3fb5cdb858380a0e1a0f4a156a028781d62193.png" />
+<img alt="_images/2f428e6f90be586e39005b3d0d8a5a3d16adcf27899b51ee5994afcd59f6ca5b.png" src="_images/2f428e6f90be586e39005b3d0d8a5a3d16adcf27899b51ee5994afcd59f6ca5b.png" />
 </div>
 </div>
 </section>
@@ -941,7 +941,7 @@ Depending on the connection strengths, we can observe point attractor or oscilla
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a579a22c6c7e00f787fc972a5d9b386e5243d7a5fdb3fef8f25abedc8c4835d8.png" src="_images/a579a22c6c7e00f787fc972a5d9b386e5243d7a5fdb3fef8f25abedc8c4835d8.png" />
+<img alt="_images/b371858e9b2870ffafbe19bb6869695bafc0fc3f1c88f312ecb44c5e5f79eb46.png" src="_images/b371858e9b2870ffafbe19bb6869695bafc0fc3f1c88f312ecb44c5e5f79eb46.png" />
 </div>
 </div>
 <section id="activation-functions-sigmoid-relu-and-binary">
@@ -975,14 +975,14 @@ Depending on the connection strengths, we can observe point attractor or oscilla
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b9b3579d2915daf6d45569b836e92daf7f36ce7c3321df88983d258826de4a07.png" src="_images/b9b3579d2915daf6d45569b836e92daf7f36ce7c3321df88983d258826de4a07.png" />
+<img alt="_images/c5c639a0b61e111b92630633c4b0fc6a8712c4c904932fb47e21520096dcea48.png" src="_images/c5c639a0b61e111b92630633c4b0fc6a8712c4c904932fb47e21520096dcea48.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="softmax-function">
 <h3>Softmax function<a class="headerlink" href="#softmax-function" title="Permalink to this heading">#</a></h3>
-<p>When the output of a layer represents a proabaility distribution, it is common to use the <em>softmax</em> function whose outputs sum up to one.</p>
+<p>When the output of a layer represents a probability distribution, it is common to use the <em>softmax</em> function whose outputs sum up to one.</p>
 <div class="math notranslate nohighlight">
 \[f_i(x) = \frac{e^{x_i}}{\sum_j e^{x_j}}\]</div>
 <div class="cell docutils container">
@@ -1012,7 +1012,7 @@ Depending on the connection strengths, we can observe point attractor or oscilla
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f42ad0c7a8df7b9be22510a8728e4b05cd1d246f3fd4401d4bdcf1cbbc628ba6.png" src="_images/f42ad0c7a8df7b9be22510a8728e4b05cd1d246f3fd4401d4bdcf1cbbc628ba6.png" />
+<img alt="_images/65a7ebd4b354b629281ce4ac8ddd2ccd4af1950b416d8156dcda31e4f23ee96a.png" src="_images/65a7ebd4b354b629281ce4ac8ddd2ccd4af1950b416d8156dcda31e4f23ee96a.png" />
 </div>
 </div>
 </section>
@@ -1028,7 +1028,7 @@ Depending on the connection strengths, we can observe point attractor or oscilla
 </section>
 <section id="spike-timining-dependent-placticity-stdp">
 <h3>Spike timining dependent placticity (STDP)<a class="headerlink" href="#spike-timining-dependent-placticity-stdp" title="Permalink to this heading">#</a></h3>
-<p>It has been observed in hippocampus, cortex and other networks that synaptic plasiticity is dependent on the timing of pre- and post-synapic spikes.</p>
+<p>It has been observed in hippocampus, cortex and other networks that synaptic plasticity is dependent on the timing of pre- and post-synapic spikes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>  <span class="c1"># post-pre spike time difference</span>
@@ -1050,24 +1050,24 @@ Depending on the connection strengths, we can observe point attractor or oscilla
 <section id="theories-of-neural-coding">
 <h2>Theories of neural coding<a class="headerlink" href="#theories-of-neural-coding" title="Permalink to this heading">#</a></h2>
 <p>It is certain that neurons carry sensory, motor, or any cognitive information and perform computation by combining and transforming such information.
-But how exectly do they code a variety of information?
+But how exactly do they code a variety of information?
 This is not a trivial problem and there are many theories and debates.</p>
 <section id="rate-coding">
 <h3>Rate coding<a class="headerlink" href="#rate-coding" title="Permalink to this heading">#</a></h3>
 <p>Each neuron encodes a certain variable by its firing rate. This is most evident in sensory receptor neurons and motor neurons.
-For example, the firing rate of a retinal photoreceptor is monotinically related to the strength of the light hitting the cell.</p>
+For example, the firing rate of a retinal photoreceptor is monotonically related to the strength of the light hitting the cell.</p>
 </section>
 <section id="population-coding">
 <h3>Population coding<a class="headerlink" href="#population-coding" title="Permalink to this heading">#</a></h3>
 <p>For motor control and cognitive processing, the brain has to combine multiple modalities of information, such as vision, hearing, touch and proprioception.
 To represent particular combinations of such information, some kind of multi-dimensional non-linear basis functions are required.</p>
 <p><em>Population coding</em> is an idea in which a group of neurons with different response tuning functions represent information by their activity patterns.
-The recepient neurons can extract specific information by weighted sum of their activities.</p>
+The recipient neurons can extract specific information by weighted sum of their activities.</p>
 </section>
 <section id="temporal-coding">
 <h3>Temporal coding<a class="headerlink" href="#temporal-coding" title="Permalink to this heading">#</a></h3>
 <p>In the rate coding framework, what matters is the frequency of spikes of neurons coding the same or related information.
-But there is a possiblity that not just the frequency, but the timing of each spike carry a certain information.</p>
+But there is a possibility that not just the frequency, but the timing of each spike carry a certain information.</p>
 <p>For example, it is known that spikes of some auditory neurons are produced a certain phase of sound wave, which can be helpful for identification of sound source direction by detecting the time difference of the sound arriving in left and right ears.</p>
 <p>A more sophisticated idea is that even at the same firing frequencies, neurons represent related information by the synchrony of spikes.
 Experimental evidence suggests that visual cortex neurons that respond to line segments in a similar orientation spike synchronously for a single connected line, but asynchronously for separate line segments.</p>
@@ -1077,7 +1077,7 @@ Experimental evidence suggests that visual cortex neurons that respond to line s
 <h2>Methods for spike analysis/decoding<a class="headerlink" href="#methods-for-spike-analysis-decoding" title="Permalink to this heading">#</a></h2>
 <section id="peristimulus-time-histogram-psth">
 <h3>Peristimulus time histogram (PSTH)<a class="headerlink" href="#peristimulus-time-histogram-psth" title="Permalink to this heading">#</a></h3>
-<p>A neuron’s repsonse to the same sensory stimulus can vary trial-by-trial.
+<p>A neuron’s response to the same sensory stimulus can vary trial-by-trial.
 While primary sensory neurons respond reliably to sensory stimuli, sensory responses of cortical neurons are known to be highly variable across trials.</p>
 <p>To characterize the average response properties of a neuron, the most typical method is to align the spike trains from different trials at the stimulus onset and count the number of spikes in time bins of tens to hundreds of milliseconds.
 The original spike trains in multiple trials are often called <em>raster plot</em> and the average spike frequency around the time of stimulus onset is called <em>peristimulus time histogram (PSTH)</em>.</p>
@@ -1093,16 +1093,16 @@ That is <em>spike-triggered average (STA)</em> of sensory stimuli.</p>
 <section id="neurons-models">
 <h3>Neurons models<a class="headerlink" href="#neurons-models" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Hodgkin AL, Huxley AF (1952) A quantitative description of membrane current and its application to conduction and excitation in nerve. J. Physiol, 117(4):500–544. <a class="reference external" href="https://doi.org/10.1113/jphysiol.1952.sp004764">https://doi.org/10.1113/jphysiol.1952.sp004764</a></p></li>
+<li><p>Hodgkin AL, Huxley AF (1952) A quantitative description of membrane current and its application to conduction and excitation in nerve. Journal of Physiology, 117(4):500–544. <a class="reference external" href="https://doi.org/10.1113/jphysiol.1952.sp004764">https://doi.org/10.1113/jphysiol.1952.sp004764</a></p></li>
 <li><p>Gerstner W, Kistler WM, Naud R, Paninski L (2014) Neuronal Dynamics: From Single Neurons to Networks and Models of Cognition. <a class="reference external" href="https://www.cambridge.org/core/books/neuronal-dynamics/75375090046733765596191E23B2959D">Cambridge University Press</a>.
 (<a class="reference external" href="http://neuronaldynamics.epfl.ch/">online version and Python exercise</a>)</p></li>
-<li><p>Wilson HR, Cowan JD (1972) Excitatory and inhibitory interactions in localized populations of model neurons. Biophys. J., 12:1–24. <a class="reference external" href="https://doi.org/10.1016/S0006-3495(72)86068-5">https://doi.org/10.1016/S0006-3495(72)86068-5</a></p></li>
+<li><p>Wilson HR, Cowan JD (1972) Excitatory and inhibitory interactions in localized populations of model neurons. Biophysics Journal, 12:1–24. <a class="reference external" href="https://doi.org/10.1016/S0006-3495(72)86068-5">https://doi.org/10.1016/S0006-3495(72)86068-5</a></p></li>
 </ul>
 </section>
 <section id="neural-coding-and-analysis">
 <h3>Neural coding and analysis<a class="headerlink" href="#neural-coding-and-analysis" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Dayan P, Abott LF (2001) Theoretical Neuroscience: Compuational and
+<li><p>Dayan P, Abott LF (2001) Theoretical Neuroscience: Computational and
 Mathematical Modeling of Neural Systems. MIT Press. <a class="reference external" href="https://mitpress.mit.edu/9780262041997/theoretical-neuroscience/">https://mitpress.mit.edu/9780262041997/theoretical-neuroscience/</a></p></li>
 <li><p>Gray CM, Konig P, Engel AK, Singer W (1989) Oscillatory responses in cat visual cortex exhibit inter-columnar synchronization which reflects global stimulus properties. Nature, 338:334–337. <a class="reference external" href="https://doi.org/10.1038/338334a0">https://doi.org/10.1038/338334a0</a></p></li>
 </ul>
@@ -1267,8 +1267,8 @@ By Kenji Doya
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

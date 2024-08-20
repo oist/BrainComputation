@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
@@ -35,18 +35,16 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
     <script src="_static/scripts/sphinx-book-theme.js"></script>
@@ -142,6 +140,8 @@
         <div class="sidebar-primary-item">
 
   
+    
+  
 
 <a class="navbar-brand logo" href="BrainComputation.html">
   
@@ -163,7 +163,7 @@
 
  <script>
  document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
     <span class="search-button__default-text">Search</span>
     <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
@@ -243,9 +243,9 @@
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -323,10 +323,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -334,14 +334,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -433,7 +433,7 @@ document.write(`
 <section id="contents">
 <h2>Contents<a class="headerlink" href="#contents" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>3.1 Function Approximation (Bishop 2006, Chater 3)</p>
+<li><p>3.1 Function Approximation (Bishop 2006, Chapter 3)</p>
 <ul>
 <li><p>Linear regression</p></li>
 <li><p>Least squares – Maximum likelihood</p></li>
@@ -447,7 +447,7 @@ document.write(`
 <li><p>Support vector machine</p></li>
 </ul>
 </li>
-<li><p>3.3 Classical Conditining</p></li>
+<li><p>3.3 Classical Conditioning</p></li>
 <li><p>3.4 Cerebellum</p></li>
 </ul>
 <div class="cell docutils container">
@@ -496,7 +496,7 @@ document.write(`
 </section>
 <section id="function-approximation">
 <h2>3.1 Function Approximation<a class="headerlink" href="#function-approximation" title="Permalink to this heading">#</a></h2>
-<p>A typical case of function approximation in the brain is learning motor-sensory mapping; how does your arm respond to the activation of the muscles. In this case <span class="math notranslate nohighlight">\(\x\)</span> is the acitivation pattern of the arm muscles and <span class="math notranslate nohighlight">\(\y\)</span> is the changes in the arm joint angles, for example. Such an <em>internal model</em> of the body dynamics is very much helpful in motor control. In this case, the supervisor is your musculoskeletal system and sensory neurons.</p>
+<p>A typical case of function approximation in the brain is learning motor-sensory mapping; how does your arm respond to the activation of the muscles. In this case <span class="math notranslate nohighlight">\(\x\)</span> is the activation pattern of the arm muscles and <span class="math notranslate nohighlight">\(\y\)</span> is the changes in the arm joint angles, for example. Such an <em>internal model</em> of the body dynamics is very much helpful in motor control. In this case, the supervisor is your musculoskeletal system and sensory neurons.</p>
 </section>
 <section id="linear-regression">
 <h2>Linear Regression<a class="headerlink" href="#linear-regression" title="Permalink to this heading">#</a></h2>
@@ -560,7 +560,7 @@ y = f(\x;\w) = \w^T \x = \x^T \w.
 </section>
 <section id="maximum-likelihood-estimate">
 <h3>Maximum likelihood estimate<a class="headerlink" href="#maximum-likelihood-estimate" title="Permalink to this heading">#</a></h3>
-<p>A statstician would assume that the target output is generated by a linear model with additional noise</p>
+<p>A statistician would assume that the target output is generated by a linear model with additional noise</p>
 <div class="math notranslate nohighlight">
 \[
     y^*_n = \w^T\x_n + \epsilon_n
@@ -604,7 +604,7 @@ Thus the maximizing the likelihood is equivalent to minimizing the sum of square
 <section id="example-arm-dynamics">
 <h3>Example: Arm dynamics<a class="headerlink" href="#example-arm-dynamics" title="Permalink to this heading">#</a></h3>
 <p>Let us simulate simple second-order dynamics of an arm hanging down and take the data.
-Then we will make a linear regression model to predict the angular accleration from the angle and angular velocity.</p>
+Then we will make a linear regression model to predict the angular acceleration from the angle and angular velocity.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">odeint</span>
@@ -692,7 +692,7 @@ Then we will make a linear regression model to predict the angular accleration f
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f5abe1f28a97964be8232ed12599269f15bf29dc5904150810b2840d15696c06.png" src="_images/f5abe1f28a97964be8232ed12599269f15bf29dc5904150810b2840d15696c06.png" />
+<img alt="_images/38b20ec3a3adbac10d00b6c3d312041ef91fc57f782e3bb8693692b706b69b74.png" src="_images/38b20ec3a3adbac10d00b6c3d312041ef91fc57f782e3bb8693692b706b69b74.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -708,7 +708,7 @@ Then we will make a linear regression model to predict the angular accleration f
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>w = [ -0.31373733 -50.56510703  -3.30940768]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>w = [ 2.73560731e-02 -4.46212163e+01 -3.26865829e+00]
 [0, -49.0, -0.6666666666666667]
 </pre></div>
 </div>
@@ -723,7 +723,7 @@ Then we will make a linear regression model to predict the angular accleration f
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.8592536231728113
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.8942890539940784
 </pre></div>
 </div>
 </div>
@@ -744,7 +744,7 @@ Then we will make a linear regression model to predict the angular accleration f
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/27e9f84777e7cfc79068134afc6912283592b6f0530a1426cb5e6ea667d79eaf.png" src="_images/27e9f84777e7cfc79068134afc6912283592b6f0530a1426cb5e6ea667d79eaf.png" />
+<img alt="_images/dc91cb6f2f942218f7908aff995b0dabf6ca6096baf85525b2dbe8fa6cf2e28d.png" src="_images/dc91cb6f2f942218f7908aff995b0dabf6ca6096baf85525b2dbe8fa6cf2e28d.png" />
 </div>
 </div>
 </section>
@@ -762,9 +762,9 @@ Then we will make a linear regression model to predict the angular accleration f
 \[
     \Delta \w = - \alpha \p{E_n(\w)}{\w} = \alpha(y^*_n - \w^T \x_n)\x_n 
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(\alpha&gt;0\)</span> is a learning rate paramter.</p>
+<p>where <span class="math notranslate nohighlight">\(\alpha&gt;0\)</span> is a learning rate parameter.</p>
 <p>This is called <em>stochastic gradient descent (SGD)</em>, by assuming that <span class="math notranslate nohighlight">\(x_n\)</span> are stochastic samples from the input data space.</p>
-<p>Online learning has several advantages over <em>batch</em> algorithms like linear regrassion that processes all the data at once.
+<p>Online learning has several advantages over <em>batch</em> algorithms like linear regression that processes all the data at once.
 Online learning does not require matrix inversion, which is computationally expensive when dealing with high dimensional data (large <span class="math notranslate nohighlight">\(D\)</span>).
 For a very large dataset (large <span class="math notranslate nohighlight">\(N\)</span>), simply storing a huge <span class="math notranslate nohighlight">\(N\times D\)</span> data matrix <span class="math notranslate nohighlight">\(X\)</span> in the memory can be costly.</p>
 </section>
@@ -779,10 +779,10 @@ called basis functions, and represent the target function by
     f(\x;\w) = \sum_{j=1}^M w_j \phi_j(\x) = \w^T\b{\phi}(\x).
 \)</span>$</p>
 <p>Classically, polynomials <span class="math notranslate nohighlight">\((1, x, x^2, x^3,...)\)</span> or sinusoids <span class="math notranslate nohighlight">\((1, \cos x, \cos 2x,..., \sin x, \sin 2x,...)\)</span> were often used as basis functions, motivated by polynomial expansion or Fourier expansion.</p>
-<p>However, these functions can grow so lage or become so steep when we include higher order terms, which can make learned function chagning wildly.</p>
+<p>However, these functions can grow so large or become so steep when we include higher order terms, which can make learned function changing wildly.</p>
 <section id="radial-basis-functions">
 <h3>Radial Basis Functions<a class="headerlink" href="#radial-basis-functions" title="Permalink to this heading">#</a></h3>
-<p>In sensory nervous systems, neurons tend to respond to signals in a limited range, called <em>receptive field</em>. For example, each visual neuron responds to light stimuli on a small area in the retina. Each auditory neurons repond to a limited range of frequency.</p>
+<p>In sensory nervous systems, neurons tend to respond to signals in a limited range, called <em>receptive field</em>. For example, each visual neuron responds to light stimuli on a small area in the retina. Each auditory neurons respond to a limited range of frequency.</p>
 <p>Partly inspired by such local receptive field properties, a popular class of basis functions is called <em>radial basis function (RBF)</em>.
 An RBF is give by a decreasing function of the distance from a center point:</p>
 <div class="math notranslate nohighlight">
@@ -806,6 +806,12 @@ An RBF is give by a decreasing function of the distance from a center point:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:10: SyntaxWarning: invalid escape sequence &#39;\p&#39;
+&lt;&gt;:10: SyntaxWarning: invalid escape sequence &#39;\p&#39;
+/var/folders/0z/3cttnw852b959kp4wjh_z_wc0000gn/T/ipykernel_1515/1772074961.py:10: SyntaxWarning: invalid escape sequence &#39;\p&#39;
+  plt.xlabel(&quot;x&quot;); plt.ylabel(&quot;$\phi(x)$&quot;);
+</pre></div>
+</div>
 <img alt="_images/a8fb7f4234410b9dc990c972e23c0dd585e30e83e6d88e19e1ae2393f0bc9d2e.png" src="_images/a8fb7f4234410b9dc990c972e23c0dd585e30e83e6d88e19e1ae2393f0bc9d2e.png" />
 </div>
 </div>
@@ -821,7 +827,7 @@ An RBF is give by a decreasing function of the distance from a center point:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a6f1cdd88e5ec8184bbc6bf97f52ebb7e6ac5c4e87015f28c2059d2f8fa7ffad.png" src="_images/a6f1cdd88e5ec8184bbc6bf97f52ebb7e6ac5c4e87015f28c2059d2f8fa7ffad.png" />
+<img alt="_images/9af656e57d86c26ed2f5a3db3bfb55487b392ca214e84a5bdb4f01e9d1e9870e.png" src="_images/9af656e57d86c26ed2f5a3db3bfb55487b392ca214e84a5bdb4f01e9d1e9870e.png" />
 </div>
 </div>
 <p>Here are RBFs in 2D input space on a grid.</p>
@@ -842,6 +848,12 @@ An RBF is give by a decreasing function of the distance from a center point:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:11: SyntaxWarning: invalid escape sequence &#39;\p&#39;
+&lt;&gt;:11: SyntaxWarning: invalid escape sequence &#39;\p&#39;
+/var/folders/0z/3cttnw852b959kp4wjh_z_wc0000gn/T/ipykernel_1515/4022370209.py:11: SyntaxWarning: invalid escape sequence &#39;\p&#39;
+  plt.xlabel(&quot;x1&quot;); plt.ylabel(&quot;x2&quot;); plt.title(&quot;$\phi(x)$&quot;);
+</pre></div>
+</div>
 <img alt="_images/c3676c38f60ccc3c75baf4fcaf82bd133ef1962dd7095c7ebf5bb8ae331aa411.png" src="_images/c3676c38f60ccc3c75baf4fcaf82bd133ef1962dd7095c7ebf5bb8ae331aa411.png" />
 </div>
 </div>
@@ -862,7 +874,7 @@ An RBF is give by a decreasing function of the distance from a center point:</p>
 <div class="math notranslate nohighlight">
 \[ p(C_k|\x) = \frac{p(\x|C_k)p(C_k)}{p(\x)} \]</div>
 <p>Supervised pattern recognition has been highly successful in applications of image and speech recognition.
-However, it is a question whether suprevised learning is relevant for our vision and speech, becuase we do not usually receive labeles for objects or words when we learn to see or hear as infants.
+However, it is a question whether supervised learning is relevant for our vision and speech, because we do not usually receive labels for objects or words when we learn to see or hear as infants.
 <em>Unsupervised learning</em>, covered in Chapter 5, might be a more plausible way of human sensory learning.</p>
 </section>
 <section id="the-perceptron">
@@ -875,7 +887,7 @@ The input vector <span class="math notranslate nohighlight">\(\x\)</span> is con
 \[
     \b{\phi}(\x)=(\phi_1(\x),...,\phi_M(\x))^T.
 \]</div>
-<p>In the simplest case, the feature vector is the same as the input vector <span class="math notranslate nohighlight">\(\b{\phi}(\x)=\x\)</span>, or just augumented by <span class="math notranslate nohighlight">\(1\)</span> to represent bias as <span class="math notranslate nohighlight">\(\b{\phi}(\x)=\pmatrix{1 \\ \x}\)</span>.
+<p>In the simplest case, the feature vector is the same as the input vector <span class="math notranslate nohighlight">\(\b{\phi}(\x)=\x\)</span>, or just augmented by <span class="math notranslate nohighlight">\(1\)</span> to represent bias as <span class="math notranslate nohighlight">\(\b{\phi}(\x)=\pmatrix{1 \\ \x}\)</span>.
 This is called <em>linear Perceptron</em>.</p>
 <p>The output is given by</p>
 <div class="math notranslate nohighlight">
@@ -911,7 +923,7 @@ This is called <em>linear Perceptron</em>.</p>
     = \frac{\alpha}{2}(y^*_n-y_n)\b{\phi}(\x_n)
 \]</div>
 <p>which is a product of the output error and the input to each weight.</p>
-<p>When two classes are <em>linearly separable</em>, the <em>Preceptron converence theorem</em> assures that learning converges to find a proper hyperplane to separate two classes.</p>
+<p>When two classes are <em>linearly separable</em>, the <em>Preceptron convergence theorem</em> assures that learning converges to find a proper hyperplane to separate two classes.</p>
 </section>
 <section id="example-perceptron-in-2d-feature-space">
 <h3>Example: Perceptron in 2D feature space<a class="headerlink" href="#example-perceptron-in-2d-feature-space" title="Permalink to this heading">#</a></h3>
@@ -978,7 +990,7 @@ This is called <em>linear Perceptron</em>.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/027ca499fcf3f5b4ae9c8651cb45d8537f7cbb652d97b8074f86823d0392f9e5.png" src="_images/027ca499fcf3f5b4ae9c8651cb45d8537f7cbb652d97b8074f86823d0392f9e5.png" />
+<img alt="_images/44f15e6545afd429e8e6169ce88ca1e9b8c1b29f2552194e446cda1a8ce3bdbe.png" src="_images/44f15e6545afd429e8e6169ce88ca1e9b8c1b29f2552194e446cda1a8ce3bdbe.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1002,17 +1014,17 @@ This is called <em>linear Perceptron</em>.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.8 ; w =  [-0.2         0.32243894  0.17237236]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 1.2 ; w =  [-0.2         0.34358882  0.23018331]
 </pre></div>
 </div>
-<img alt="_images/01eeb3bb2fff773b5e470e72b6d8f2435f5ad1c6ac643b8aa21002e872fdcadd.png" src="_images/01eeb3bb2fff773b5e470e72b6d8f2435f5ad1c6ac643b8aa21002e872fdcadd.png" />
+<img alt="_images/2418deb30e2b8677e94af4964c80260a54d8daf74c4872badeebf884896cb6df.png" src="_images/2418deb30e2b8677e94af4964c80260a54d8daf74c4872badeebf884896cb6df.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="support-vector-machine">
 <h2>Support Vector Machine<a class="headerlink" href="#support-vector-machine" title="Permalink to this heading">#</a></h2>
-<p>With Perceptron learning rule, the line separating two classess can end up in any configuration so that two classes are separated, which may not be good for <em>generalization</em>, i.e., classification of new data that were not used for training.</p>
+<p>With Perceptron learning rule, the line separating two classes can end up in any configuration so that two classes are separated, which may not be good for <em>generalization</em>, i.e., classification of new data that were not used for training.</p>
 <p>The <em>support vector machine (SVM)</em> (Bishop 2006, section 7.1) tries to find a separation line that has the largest margin to the positive and negative data by minimizing the <em>hinge</em> objective function</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1085,10 +1097,10 @@ It is often the case that the basis functions are allocated around each data poi
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>n = 20 ; err = 0.6118963372257447 ; w = [-0.13066507  0.44717435  0.16336082]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>n = 20 ; err = 0.7454931330168135 ; w = [0.18063336 0.15220346 0.38871948]
 </pre></div>
 </div>
-<img alt="_images/699107b1cad1232538bfa43e1e4e6e95a447b2de388f3d2aa1d68d5242b9d1de.png" src="_images/699107b1cad1232538bfa43e1e4e6e95a447b2de388f3d2aa1d68d5242b9d1de.png" />
+<img alt="_images/c669debf6a69fabc1b2b7e2f2d4008814496be10f07d5d99acfc735bacdd084c.png" src="_images/c669debf6a69fabc1b2b7e2f2d4008814496be10f07d5d99acfc735bacdd084c.png" />
 </div>
 </div>
 </section>
@@ -1242,10 +1254,10 @@ Instead, we can apply Newton method using the <em>Hessian matrix</em></p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> err = 0.25 ; w = [-1.29770171  0.73765105  0.32602163]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> err = 0.25 ; w = [-1.35799968  0.68363289  0.43426131]
 </pre></div>
 </div>
-<img alt="_images/008418dfe7b018d0d76d6a087442f1f106297a15473667d0a50f5808e18cd57c.png" src="_images/008418dfe7b018d0d76d6a087442f1f106297a15473667d0a50f5808e18cd57c.png" />
+<img alt="_images/016c728471197cf7d93dfce362ca9505b154da42dd2bbf9bc519a61fbfeab6c1.png" src="_images/016c728471197cf7d93dfce362ca9505b154da42dd2bbf9bc519a61fbfeab6c1.png" />
 </div>
 </div>
 </section>
@@ -1254,7 +1266,7 @@ Instead, we can apply Newton method using the <em>Hessian matrix</em></p>
 <h2>3.3 Classical Conditioning<a class="headerlink" href="#classical-conditioning" title="Permalink to this heading">#</a></h2>
 <p>Animals have innate behaviors to avoid dangers or to acquire rewards, such as blinking when a strong light or wind hits the eyes or drooling when a food is expected.
 Such response is called a <em>unconditioned response (UR)</em> and the sensory cue to elicit UR is called <em>unconditioned stimulus (US)</em>.</p>
-<p>When an US is repreatedly preceded by another stimulus, such as a sound, animals start to take the same response as UR even before US is presented.
+<p>When an US is repeatedly preceded by another stimulus, such as a sound, animals start to take the same response as UR even before US is presented.
 In this case the response is called a <em>conditioned response (CR)</em> and the sensory cue to elicit CR is called <em>conditioned stimulus (CS)</em>.
 This type of learning is called <em>classical conditioning</em> or <em>Pavlovian conditioning</em> and can be considered as an example of supervised learning.</p>
 <p>The learned mapping can be CS to CR, or CS to US which elicits UR=CR.</p>
@@ -1268,8 +1280,8 @@ This type of learning is called <em>classical conditioning</em> or <em>Pavlovian
 <section id="the-cerebellum">
 <h2>3.4 The Cerebellum<a class="headerlink" href="#the-cerebellum" title="Permalink to this heading">#</a></h2>
 <p>The neural circuit of the cerebellum has a distinctive orthogonal structure. There are a massive number of <em>granule cells</em>, each of which collects inputs from a major input to the cerebellum, <em>the mossy fibers</em>.
-Granule cell axons run parallelly in the lateral direction in the cerebellar cortex, called <em>parallel fibers</em>.
-The output neurons of the cerebellum, <em>Purkinje cells</em>, spread fan-shaped dendrites in the longitudinal direction and receive a large nubmer of parallel fibers.
+Granule cell axons run parallely in the lateral direction in the cerebellar cortex, called <em>parallel fibers</em>.
+The output neurons of the cerebellum, <em>Purkinje cells</em>, spread fan-shaped dendrites in the longitudinal direction and receive a large number of parallel fibers.
 Furthermore, each Purkinje cell is twined by a single axon called <em>climbing fiber</em> from a brain stem nucleus called the <em>inferior olive</em>.</p>
 <section id="cerebellar-perceptron-hyopthesis">
 <h3>Cerebellar Perceptron Hyopthesis<a class="headerlink" href="#cerebellar-perceptron-hyopthesis" title="Permalink to this heading">#</a></h3>
@@ -1282,7 +1294,7 @@ Indeed, cerebellar synaptic plasticity guided by the climbing fiber input was ex
 <section id="cerebellar-internal-model-hyopthesis">
 <h3>Cerebellar Internal Model Hyopthesis<a class="headerlink" href="#cerebellar-internal-model-hyopthesis" title="Permalink to this heading">#</a></h3>
 <p>The cerebellum is known to be important for movement control.
-A possible way in which suprevised learning can be helpful is to provide an <em>internal model</em> of the motor apparatus (Wolpert et al. 1998).</p>
+A possible way in which supervised learning can be helpful is to provide an <em>internal model</em> of the motor apparatus (Wolpert et al. 1998).</p>
 <blockquote>
 <div><p>{figure-md} Fig_FEL
 <img src="https://pub.mdpi-res.com/biomimetics/biomimetics-05-00019/article_deploy/html/images/biomimetics-05-00019-g005.png?1590743622" alt="Feedback Error Learning" width="500px"></p>
@@ -1490,8 +1502,8 @@ By Kenji Doya
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

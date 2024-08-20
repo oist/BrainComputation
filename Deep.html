@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
@@ -35,18 +35,16 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
     <script src="_static/scripts/sphinx-book-theme.js"></script>
@@ -142,6 +140,8 @@
         <div class="sidebar-primary-item">
 
   
+    
+  
 
 <a class="navbar-brand logo" href="BrainComputation.html">
   
@@ -163,7 +163,7 @@
 
  <script>
  document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
     <span class="search-button__default-text">Search</span>
     <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
@@ -243,9 +243,9 @@
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -323,10 +323,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -334,14 +334,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -692,7 +692,7 @@ The blue lines show the propagation of errors through layer 2 to one unit in lay
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/df979391e5aea8d0ac5d4afa3c9c65f2f04dad5f7bd280bf5588de5852beb283.png" src="_images/df979391e5aea8d0ac5d4afa3c9c65f2f04dad5f7bd280bf5588de5852beb283.png" />
+<img alt="_images/f4c30b9212a6c7344cc7719673f9efa2d1c0355c6425383b0f6ebc8ec63517c6.png" src="_images/f4c30b9212a6c7344cc7719673f9efa2d1c0355c6425383b0f6ebc8ec63517c6.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -719,7 +719,7 @@ The blue lines show the propagation of errors through layer 2 to one unit in lay
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c78ad373dbd8297617454d76c0cffdf4e5ab0e1f7d68d2ae37ee8e00768fe2ce.png" src="_images/c78ad373dbd8297617454d76c0cffdf4e5ab0e1f7d68d2ae37ee8e00768fe2ce.png" />
+<img alt="_images/9d2466984445f5b1fc1ea4a7aaf1b1ce88d347c34dc3fb53c0615e3bc12a7431.png" src="_images/9d2466984445f5b1fc1ea4a7aaf1b1ce88d347c34dc3fb53c0615e3bc12a7431.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -734,10 +734,10 @@ The blue lines show the propagation of errors through layer 2 to one unit in lay
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.3856215717053344
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.46732574381351816
 </pre></div>
 </div>
-<img alt="_images/4b458f5c7b51c258b9ccc42cfff00a6d32b7e828c57e63f942bcf1bb35712ec0.png" src="_images/4b458f5c7b51c258b9ccc42cfff00a6d32b7e828c57e63f942bcf1bb35712ec0.png" />
+<img alt="_images/cee1ce4ecdec3350cc776e1f9b0a9213d163ae816799a0cf7d00ea09a56242c2.png" src="_images/cee1ce4ecdec3350cc776e1f9b0a9213d163ae816799a0cf7d00ea09a56242c2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -752,7 +752,7 @@ The blue lines show the propagation of errors through layer 2 to one unit in lay
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9c9ad7b0c3f775445cb3160058eee356a427156b69a471c603c7f5085c6d494a.png" src="_images/9c9ad7b0c3f775445cb3160058eee356a427156b69a471c603c7f5085c6d494a.png" />
+<img alt="_images/12325197ffb2b5c0bc7ba30f34f5793edb44b9681d347fe9efa07eb17a53d0d8.png" src="_images/12325197ffb2b5c0bc7ba30f34f5793edb44b9681d347fe9efa07eb17a53d0d8.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -768,7 +768,7 @@ The blue lines show the propagation of errors through layer 2 to one unit in lay
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5c8dfb6ff5361ed9d3e043e5d8bc85a85b934691c50072ffe156eaa97c13ecac.png" src="_images/5c8dfb6ff5361ed9d3e043e5d8bc85a85b934691c50072ffe156eaa97c13ecac.png" />
+<img alt="_images/0fb01c1089b12ff2ac065a97f8d66c1edecb005f3e0362fd7fb4c2e36de70bc4.png" src="_images/0fb01c1089b12ff2ac065a97f8d66c1edecb005f3e0362fd7fb4c2e36de70bc4.png" />
 </div>
 </div>
 </section>
@@ -867,7 +867,7 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/41789758f4888fde26346cbab028002ca1ad5fbec53bb60e2e7518b0eba7dd7a.png" src="_images/41789758f4888fde26346cbab028002ca1ad5fbec53bb60e2e7518b0eba7dd7a.png" />
+<img alt="_images/025ee92db38a3c54835cefbfc3335ddb6cecd95fb694b50477196feb6ffd074a.png" src="_images/025ee92db38a3c54835cefbfc3335ddb6cecd95fb694b50477196feb6ffd074a.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -882,10 +882,10 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.0008265949024898799
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.0008443935070458782
 </pre></div>
 </div>
-<img alt="_images/b8d261fde72df28ef6aa20ba39d7a8d9e25171e94eac359e3f3f52b991cfc50e.png" src="_images/b8d261fde72df28ef6aa20ba39d7a8d9e25171e94eac359e3f3f52b991cfc50e.png" />
+<img alt="_images/24eedb04ba5a1147243de2322aa29665f5a8fdb1b539888a45025295513ee635.png" src="_images/24eedb04ba5a1147243de2322aa29665f5a8fdb1b539888a45025295513ee635.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -905,7 +905,7 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ca5ce4de8072630f715dbae808baaa66d7d64f933e0d1e919c1805f3f8b3006a.png" src="_images/ca5ce4de8072630f715dbae808baaa66d7d64f933e0d1e919c1805f3f8b3006a.png" />
+<img alt="_images/e613a23703cc06035a1d8ec9e88e312a74f2dc380c10cb58039eb2a2d2e727bc.png" src="_images/e613a23703cc06035a1d8ec9e88e312a74f2dc380c10cb58039eb2a2d2e727bc.png" />
 </div>
 </div>
 </section>
@@ -924,7 +924,7 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3d49a639eba03ffbcebda8634da243e46d732f38c20ff8fea93662e34b006e4c.png" src="_images/3d49a639eba03ffbcebda8634da243e46d732f38c20ff8fea93662e34b006e4c.png" />
+<img alt="_images/bc6ce58dacc7b4b6bc992124ee7e9fabede8f1867da380133ee2c006212cdd42.png" src="_images/bc6ce58dacc7b4b6bc992124ee7e9fabede8f1867da380133ee2c006212cdd42.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -963,7 +963,7 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1a7f49739da149cab7e859e3d3c71d86905c17e3c7477ba5cb2ad7836c870983.png" src="_images/1a7f49739da149cab7e859e3d3c71d86905c17e3c7477ba5cb2ad7836c870983.png" />
+<img alt="_images/94c906a8d5a435e2122dd4e8c2d2ea827d5c63e5ec1d7ed95635ff2570c83240.png" src="_images/94c906a8d5a435e2122dd4e8c2d2ea827d5c63e5ec1d7ed95635ff2570c83240.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -978,10 +978,10 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.04707310495898387
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.04227312940157141
 </pre></div>
 </div>
-<img alt="_images/54859a9814bba27d1be0b3e7726238f72e7af043e33a6a07b5469c033142fa34.png" src="_images/54859a9814bba27d1be0b3e7726238f72e7af043e33a6a07b5469c033142fa34.png" />
+<img alt="_images/5d13bb61421307f89a6d5aac84fc48a54dee3dff08db6921b22c075aadcce216.png" src="_images/5d13bb61421307f89a6d5aac84fc48a54dee3dff08db6921b22c075aadcce216.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1002,7 +1002,7 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2a7864fe1194bf17226ec9531842601928df3013594346416ff04869fac0bc56.png" src="_images/2a7864fe1194bf17226ec9531842601928df3013594346416ff04869fac0bc56.png" />
+<img alt="_images/fab980d77c0af09712ea067fcd7cba6f6e1d74b2acce4ee06ccaa1781af66f57.png" src="_images/fab980d77c0af09712ea067fcd7cba6f6e1d74b2acce4ee06ccaa1781af66f57.png" />
 </div>
 </div>
 </section>
@@ -1261,7 +1261,7 @@ Instead of this stochastic gradient for each data, <em>mini-batch</em> method to
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8a3506e4116b60708677c65c464fecf211373f5e1a8baa6ed4333ba2542a0fba.png" src="_images/8a3506e4116b60708677c65c464fecf211373f5e1a8baa6ed4333ba2542a0fba.png" />
+<img alt="_images/038bc383257d08f8b20513565c804e4d009ec2d7a6f7469c4626a094b74f38c1.png" src="_images/038bc383257d08f8b20513565c804e4d009ec2d7a6f7469c4626a094b74f38c1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1275,7 +1275,7 @@ Instead of this stochastic gradient for each data, <em>mini-batch</em> method to
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/25f16200d4a5f2256004ad1f3589970a5aeea30d7e7456883364423852489295.png" src="_images/25f16200d4a5f2256004ad1f3589970a5aeea30d7e7456883364423852489295.png" />
+<img alt="_images/f35941a483056b6613eff0e2f0b8af89955905e9841641689b309c325e1d48ca.png" src="_images/f35941a483056b6613eff0e2f0b8af89955905e9841641689b309c325e1d48ca.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1288,7 +1288,7 @@ Instead of this stochastic gradient for each data, <em>mini-batch</em> method to
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/279c907404f04c8d6d8f85efbab39cb1995a49cdd11ab732e01aafb52ddaa208.png" src="_images/279c907404f04c8d6d8f85efbab39cb1995a49cdd11ab732e01aafb52ddaa208.png" />
+<img alt="_images/14c7f5974039bd8362d8137c97a6eb0611f27d18d96f3d2895249e8f68378a00.png" src="_images/14c7f5974039bd8362d8137c97a6eb0611f27d18d96f3d2895249e8f68378a00.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1299,7 +1299,7 @@ Instead of this stochastic gradient for each data, <em>mini-batch</em> method to
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/81494f856975c156ee55350eac394aecb64da5cbeaed43ddb21ed133e30f846e.png" src="_images/81494f856975c156ee55350eac394aecb64da5cbeaed43ddb21ed133e30f846e.png" />
+<img alt="_images/8bb218657abebc4b26f6976371ca23ad4b41c71021ac3d7c4c96d741d93a37ca.png" src="_images/8bb218657abebc4b26f6976371ca23ad4b41c71021ac3d7c4c96d741d93a37ca.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1319,7 +1319,7 @@ Instead of this stochastic gradient for each data, <em>mini-batch</em> method to
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6299df94b1f1d611ff4d351dff00d9b68ae7689f78c429cefffdc34355924264.png" src="_images/6299df94b1f1d611ff4d351dff00d9b68ae7689f78c429cefffdc34355924264.png" />
+<img alt="_images/5b94f543b16853340af4dd0a6e184bd096bce4c68cceb2ba3bbefe3048444e5e.png" src="_images/5b94f543b16853340af4dd0a6e184bd096bce4c68cceb2ba3bbefe3048444e5e.png" />
 </div>
 </div>
 </section>
@@ -1618,8 +1618,8 @@ By Kenji Doya
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
