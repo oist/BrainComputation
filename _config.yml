@@ -5,9 +5,10 @@ author: Kenji Doya
 logo: BC_logo.png
 
 # Force re-execution of notebooks on each build.
-#execute:
+execute:
 #  execute_notebooks: force
-#  allow_errors
+  allow_errors: true
+  timeout: -1
 
 # Parse and render settings
 parse:
