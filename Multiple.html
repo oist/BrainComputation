@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Chapter 8. Multiple Agents &#8212; Brain Computation</title>
   
@@ -29,33 +28,35 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Multiple';</script>
@@ -423,7 +424,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="chapter-8-multiple-agents">
-<h1>Chapter 8. Multiple Agents<a class="headerlink" href="#chapter-8-multiple-agents" title="Permalink to this heading">#</a></h1>
+<h1>Chapter 8. Multiple Agents<a class="headerlink" href="#chapter-8-multiple-agents" title="Link to this heading">#</a></h1>
 <div class="math notranslate nohighlight">
 \[ % Latex macros
 \newcommand{\mat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
@@ -432,7 +433,7 @@ document.write(`
 \newcommand{\c}[1]{\mathcal{#1}}
 \]</div>
 <section id="contents">
-<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this heading">#</a></h2>
+<h2>Contents<a class="headerlink" href="#contents" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Evolutionary algorithms</p></li>
 <li><p>Game theory</p></li>
@@ -440,7 +441,7 @@ document.write(`
 </ul>
 </section>
 <section id="evolutionary-algorithms">
-<h2>Evolutionary Algorithms<a class="headerlink" href="#evolutionary-algorithms" title="Permalink to this heading">#</a></h2>
+<h2>Evolutionary Algorithms<a class="headerlink" href="#evolutionary-algorithms" title="Link to this heading">#</a></h2>
 <p>Our brain is a product of the long history of evolution.
 In order to understand the present organization and functioning of our brain, it is mandatory to look back into its evolutionary history.</p>
 <p>Learning and evolution are complementary mechanisms for adaptation in different time and spatial scales.
@@ -462,7 +463,7 @@ Learning can also affect the course of evolution, by providing a wider variety o
 </ul>
 </section>
 <section id="variants-of-evolutionary-algorithms">
-<h2>Variants of evolutionary algorithms<a class="headerlink" href="#variants-of-evolutionary-algorithms" title="Permalink to this heading">#</a></h2>
+<h2>Variants of evolutionary algorithms<a class="headerlink" href="#variants-of-evolutionary-algorithms" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Genetic algorithm (GA) 	(Holland 1976)</p>
 <ul>
@@ -486,7 +487,7 @@ Learning can also affect the course of evolution, by providing a wider variety o
 </li>
 </ul>
 <section id="genotype-phenotype-coding">
-<h3>Genotype/phenotype coding<a class="headerlink" href="#genotype-phenotype-coding" title="Permalink to this heading">#</a></h3>
+<h3>Genotype/phenotype coding<a class="headerlink" href="#genotype-phenotype-coding" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Binary coding: <span class="math notranslate nohighlight">\(b_N,...,b_1\)</span></p></li>
 </ul>
@@ -504,7 +505,7 @@ Learning can also affect the course of evolution, by providing a wider variety o
 </ul>
 </section>
 <section id="selection">
-<h3>Selection<a class="headerlink" href="#selection" title="Permalink to this heading">#</a></h3>
+<h3>Selection<a class="headerlink" href="#selection" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Roulett wheel selection (RWS):
 The selection probability <span class="math notranslate nohighlight">\(p_i\)</span> for an individual of fitness <span class="math notranslate nohighlight">\(f_i\)</span> is given by</p></li>
@@ -524,7 +525,7 @@ Keep winners of subsets made of <span class="math notranslate nohighlight">\(k\)
 </ul>
 </section>
 <section id="mutation">
-<h3>Mutation<a class="headerlink" href="#mutation" title="Permalink to this heading">#</a></h3>
+<h3>Mutation<a class="headerlink" href="#mutation" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Binary coding:
 random filp of each bit</p></li>
@@ -534,7 +535,7 @@ e.g. Gaussian: <span class="math notranslate nohighlight">\(x’ = x + \c{N}(0,\
 </ul>
 </section>
 <section id="crossover">
-<h3>Crossover<a class="headerlink" href="#crossover" title="Permalink to this heading">#</a></h3>
+<h3>Crossover<a class="headerlink" href="#crossover" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Binary coding:
 splicing of bit sequences</p></li>
@@ -547,20 +548,20 @@ splicing of bit sequences</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span> <span class="c1"># for 3D plotting</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mpl_toolkits.mplot3d</span><span class="w"> </span><span class="kn">import</span> <span class="n">Axes3D</span> <span class="c1"># for 3D plotting</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">EvoAlg</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">EvoAlg</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;A basic class of evolutionary algorithms&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fitfun</span><span class="p">,</span> <span class="n">genes</span><span class="p">,</span> <span class="n">amut</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">pcross</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fitfun</span><span class="p">,</span> <span class="n">genes</span><span class="p">,</span> <span class="n">amut</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">pcross</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a new population</span>
 <span class="sd">        genes: (P,C) array of int or float</span>
 <span class="sd">        sigma: mutation size&quot;&quot;&quot;</span>
@@ -574,14 +575,14 @@ splicing of bit sequences</p></li>
         <span class="bp">self</span><span class="o">.</span><span class="n">best</span> <span class="o">=</span> <span class="p">[]</span>    <span class="c1"># current best solution</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">record</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># record of best fitness</span>
 
-    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Evaluate individuals&quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">g</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">genes</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">fits</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fitfun</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">best</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">genes</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fits</span><span class="p">)]</span>  <span class="c1"># best solution</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">record</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fits</span><span class="p">))</span>  <span class="c1"># record best fitness</span>
 
-    <span class="k">def</span> <span class="nf">select</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">select</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Roulette selection&quot;&quot;&quot;</span>
         <span class="n">prob</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fits</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fits</span><span class="p">)</span>  <span class="c1"># make sure non-negative</span>
         <span class="n">prob</span> <span class="o">=</span> <span class="n">prob</span><span class="o">/</span><span class="nb">sum</span><span class="p">(</span><span class="n">prob</span><span class="p">)</span>  <span class="c1"># normalize</span>
@@ -590,7 +591,7 @@ splicing of bit sequences</p></li>
             <span class="n">selected</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multinomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">prob</span><span class="p">))</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># multinulli</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">genes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">genes</span><span class="p">[</span><span class="n">selected</span><span class="p">]</span>  <span class="c1"># update the genome</span>
             
-    <span class="k">def</span> <span class="nf">crossover</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pcross</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">crossover</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pcross</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Point crossover&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">pcross</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">pcross</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pcross</span>  <span class="c1"># use the default</span>
@@ -607,13 +608,13 @@ splicing of bit sequences</p></li>
             <span class="bp">self</span><span class="o">.</span><span class="n">genes</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="n">gene0</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">genes</span><span class="p">[</span><span class="n">q</span><span class="p">]</span> <span class="o">=</span> <span class="n">gene1</span>
 
-    <span class="k">def</span> <span class="nf">mutate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amut</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">mutate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amut</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Mutation by gaussian noise&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">amut</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">amut</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">amut</span>  <span class="c1"># use the default</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">genes</span> <span class="o">+=</span> <span class="n">amut</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">P</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">C</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">generation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amut</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pcross</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">generation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amut</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pcross</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;One generation&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">evaluate</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">select</span><span class="p">()</span>
@@ -621,7 +622,7 @@ splicing of bit sequences</p></li>
         <span class="bp">self</span><span class="o">.</span><span class="n">mutate</span><span class="p">(</span><span class="n">amut</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fits</span>  <span class="c1"># fitness distribution</span>
 
-    <span class="k">def</span> <span class="nf">evolve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gen</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">amut</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pcross</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">evolve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gen</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">amut</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pcross</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Evolve multiple generations&quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">gen</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">generation</span><span class="p">(</span><span class="n">amut</span><span class="p">,</span> <span class="n">pcross</span><span class="p">)</span>
@@ -633,7 +634,7 @@ splicing of bit sequences</p></li>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example of Ex-Or neural network</span>
-<span class="k">def</span> <span class="nf">exor_net</span><span class="p">(</span><span class="n">w</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">exor_net</span><span class="p">(</span><span class="n">w</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Fitness of 2-2-1 network to ExOr; w[9]&quot;&quot;&quot;</span>
     <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>  <span class="c1"># input</span>
     <span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>  <span class="c1"># target</span>
@@ -667,7 +668,7 @@ splicing of bit sequences</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f96bafdca72e09255e75820ac3a740eaf3b54acc2e940689b35171b4329feaf7.png" src="_images/f96bafdca72e09255e75820ac3a740eaf3b54acc2e940689b35171b4329feaf7.png" />
+<img alt="_images/65965f58e1fbb67af89b115f55961de979bee0462c841205896e2b30e089f178.png" src="_images/65965f58e1fbb67af89b115f55961de979bee0462c841205896e2b30e089f178.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -683,7 +684,7 @@ splicing of bit sequences</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a498f41fc7dd3702bb133bd544992aef1be121059e6400b36d1ac179954fa2b2.png" src="_images/a498f41fc7dd3702bb133bd544992aef1be121059e6400b36d1ac179954fa2b2.png" />
+<img alt="_images/6e9553933d63ba319223be706841f207d450991f333f675a9dc49129fdf9ad3e.png" src="_images/6e9553933d63ba319223be706841f207d450991f333f675a9dc49129fdf9ad3e.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -697,13 +698,13 @@ splicing of bit sequences</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d7a883c50d693ff911851de851caf0f36be2dd53602bed8059ababfb57811534.png" src="_images/d7a883c50d693ff911851de851caf0f36be2dd53602bed8059ababfb57811534.png" />
+<img alt="_images/249031c7acf9424beeaa18adf13a8549a658656230aa68859558134c76afe558.png" src="_images/249031c7acf9424beeaa18adf13a8549a658656230aa68859558134c76afe558.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="learning-and-evolution">
-<h2>Learning and evolution<a class="headerlink" href="#learning-and-evolution" title="Permalink to this heading">#</a></h2>
+<h2>Learning and evolution<a class="headerlink" href="#learning-and-evolution" title="Link to this heading">#</a></h2>
 <p>Most learning algorithms have some parameters that need to be tuned.
 In reinforcement learning, design of the reward function is a critical issue.
 One way to design them is to apply an evolutionary algorithm.</p>
@@ -722,7 +723,7 @@ Evolution of parameters for reinforcement learning: <span class="math notranslat
 Niv et al. (2002) showed in a reinforcement learning task that reward-dependent plastcity rule can be evoloved.</p>
 </section>
 <section id="game-theory">
-<h2>Game Theory<a class="headerlink" href="#game-theory" title="Permalink to this heading">#</a></h2>
+<h2>Game Theory<a class="headerlink" href="#game-theory" title="Link to this heading">#</a></h2>
 <p><em>Game theory</em> is a mathematical framework for modeling the interactions among multiple agents.</p>
 <p>In game theory, what we call <em>agents</em> in reinforcement learning is called <em>players</em>, <em>policy</em> is called <em>strategy</em>, and <em>reward</em> or <em>fitness</em> is called <em>pay-off</em>.</p>
 <ul class="simple">
@@ -743,7 +744,7 @@ Niv et al. (2002) showed in a reinforcement learning task that reward-dependent 
 <div class="math notranslate nohighlight">
 \[ \pi(\b{s}) = (\pi_1(\b{s}),...,\pi_n(\b{s})) \]</div>
 <section id="example-prisoners-dilemma">
-<h3>Example: Prisoner’s dilemma<a class="headerlink" href="#example-prisoners-dilemma" title="Permalink to this heading">#</a></h3>
+<h3>Example: Prisoner’s dilemma<a class="headerlink" href="#example-prisoners-dilemma" title="Link to this heading">#</a></h3>
 <p>Two prisoners are under interrogation.
 They can <em>cooperate</em> by remaining silent to be discharged with no punishment.
 If both <em>defect</em> and tell the truth, they are each given a small punshment.
@@ -771,7 +772,7 @@ If only one of them defects for plea bargaining, he/she is given a small reward 
 Is cooperation a viable strategy?</p>
 </section>
 <section id="mixted-strategy">
-<h3>Mixted strategy<a class="headerlink" href="#mixted-strategy" title="Permalink to this heading">#</a></h3>
+<h3>Mixted strategy<a class="headerlink" href="#mixted-strategy" title="Link to this heading">#</a></h3>
 <p>A player’s strategy can be stochastic. That is called <em>mixed strategy</em> in game theory.</p>
 <ul class="simple">
 <li><p><em>mixed strategy</em> : probability of pure strategies</p></li>
@@ -805,7 +806,7 @@ Is cooperation a viable strategy?</p>
 </section>
 </section>
 <section id="two-player-game">
-<h2>Two-Player Game<a class="headerlink" href="#two-player-game" title="Permalink to this heading">#</a></h2>
+<h2>Two-Player Game<a class="headerlink" href="#two-player-game" title="Link to this heading">#</a></h2>
 <p>Pay-off matrix for <em>row player</em></p>
 <div class="math notranslate nohighlight">
 \[ A: a_{s_1,s_2}=\pi_1(s_1,s_2) \]</div>
@@ -813,7 +814,7 @@ Is cooperation a viable strategy?</p>
 <div class="math notranslate nohighlight">
 \[ B: b_{s_1,s_2}=\pi_2(s_1,s_2) \]</div>
 <section id="examples">
-<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">#</a></h3>
+<h3>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Prisoner’s dilemma: <span class="math notranslate nohighlight">\(S=\{cooperate, defect\}\)</span></p></li>
 </ul>
@@ -827,13 +828,13 @@ Is cooperation a viable strategy?</p>
 </section>
 </section>
 <section id="nash-equilibrium">
-<h2>Nash Equilibrium<a class="headerlink" href="#nash-equilibrium" title="Permalink to this heading">#</a></h2>
+<h2>Nash Equilibrium<a class="headerlink" href="#nash-equilibrium" title="Link to this heading">#</a></h2>
 <p>If a player knows other players’ strategies, what would he/she do to maximize own payoff?</p>
 <p><em>Best reply</em> for player <span class="math notranslate nohighlight">\(i\)</span> is a mixed strategy <span class="math notranslate nohighlight">\(\b{x}_i\)</span> that maximizes the payoff given a mixed strategy profile of all players <span class="math notranslate nohighlight">\(X=\mat{\b{x}_1 \\ \vdots \\ \b{x}_n}\)</span>.</p>
 <p><em>Nash equilibrium</em> is defined as a mixed strategy profile <span class="math notranslate nohighlight">\(X\)</span> that is a best reply to itself.</p>
 <p>In other words, any strategy other than <span class="math notranslate nohighlight">\(\b{x}_i\)</span> does not give a higher payoff to player <span class="math notranslate nohighlight">\(i\)</span> while others keep their strategies <span class="math notranslate nohighlight">\(\b{x}_j (j\neq i)\)</span>.</p>
 <section id="id1">
-<h3>Examples<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<h3>Examples<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Prisoner’s dilemma: <span class="math notranslate nohighlight">\(S=\{cooperate, defect\}\)</span></p></li>
 </ul>
@@ -872,28 +873,28 @@ Is cooperation a viable strategy?</p>
 <p>sometimes hawk, sometimes dove: <span class="math notranslate nohighlight">\( \b{x}_1 = \b{x}_2 = (\frac{1}{3},\frac{2}{3}) \)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Game</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Game</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Visualization and simulation for game theory&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">paymat</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">paymat</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Setup a game with payoff matrices&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">paymat</span> <span class="o">=</span> <span class="n">paymat</span>  <span class="c1"># list of payoff matrices</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">paymat</span><span class="p">)</span>  <span class="c1"># number of players</span>
     
-    <span class="k">def</span> <span class="nf">payoff</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">payoff</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Payoffs for a mixed strategy profile X&quot;&quot;&quot;</span>
         <span class="n">pay0</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="nd">@self</span><span class="o">.</span><span class="n">paymat</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="nd">@X</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
         <span class="n">pay1</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="nd">@self</span><span class="o">.</span><span class="n">paymat</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="nd">@X</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
         <span class="k">return</span> <span class="p">[</span><span class="n">pay0</span><span class="p">,</span> <span class="n">pay1</span><span class="p">]</span>
         
-    <span class="k">def</span> <span class="nf">best_reply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">best_reply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Best pure strategies for a mixed strategy profile X&quot;&quot;&quot;</span>
         <span class="n">pay0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">paymat</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="nd">@X</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># payoffs for pure strategies</span>
         <span class="n">pay1</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="nd">@self</span><span class="o">.</span><span class="n">paymat</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
         <span class="k">return</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">pay0</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">pay1</span><span class="p">)]</span>
         <span class="c1"># this misses mixed strategies of two best pure strategies</span>
       
-    <span class="k">def</span> <span class="nf">plot_payoff</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">plot_payoff</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;visualize payoff for mixed strategies for a two-player game&quot;&quot;&quot;</span>
         <span class="c1"># xg, yg = np.mgrid[0:1.01:0.05, 0:1.01:0.05]</span>
         <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span> <span class="c1"># prob of taking a strategy</span>
@@ -928,7 +929,7 @@ Is cooperation a viable strategy?</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2a2d5c82dca37026400218ecbd0e501faf4043ff621c0ffd0d322a14285c1693.png" src="_images/2a2d5c82dca37026400218ecbd0e501faf4043ff621c0ffd0d322a14285c1693.png" />
+<img alt="_images/b5c6cf747e695c978bae110113ea3c4b88a7e272e86218acf95a217c8489cd4f.png" src="_images/b5c6cf747e695c978bae110113ea3c4b88a7e272e86218acf95a217c8489cd4f.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -942,7 +943,7 @@ Is cooperation a viable strategy?</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0e299a1c9d08b73fcba87d12572fb2aff96bfe725fa5ea1f9b5be5c8815f869d.png" src="_images/0e299a1c9d08b73fcba87d12572fb2aff96bfe725fa5ea1f9b5be5c8815f869d.png" />
+<img alt="_images/e46e5ff94b66085f0a303a57c039635f7eca8fe9c013795a6013527dcb74a8f0.png" src="_images/e46e5ff94b66085f0a303a57c039635f7eca8fe9c013795a6013527dcb74a8f0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -955,7 +956,7 @@ Is cooperation a viable strategy?</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6326ed11ec5ff14822f8f34c43b3c80a882245c59945c3918159dcd907ac7e45.png" src="_images/6326ed11ec5ff14822f8f34c43b3c80a882245c59945c3918159dcd907ac7e45.png" />
+<img alt="_images/0137f24edeb9f9a1048496d0ba56184abaad9e9c17253cbfab8af6288e0a77c0.png" src="_images/0137f24edeb9f9a1048496d0ba56184abaad9e9c17253cbfab8af6288e0a77c0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -968,13 +969,13 @@ Is cooperation a viable strategy?</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2d30ed6dbe06bd12c2a06d1abab0ac63094c78bcaea78b60f15b1be241a36936.png" src="_images/2d30ed6dbe06bd12c2a06d1abab0ac63094c78bcaea78b60f15b1be241a36936.png" />
+<img alt="_images/0a0a539aad437deb717c853cad8be2bb9e81fae6ed8e316e293eca2bfd93913e.png" src="_images/0a0a539aad437deb717c853cad8be2bb9e81fae6ed8e316e293eca2bfd93913e.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="symmetric-two-player-games">
-<h2>Symmetric two-player games<a class="headerlink" href="#symmetric-two-player-games" title="Permalink to this heading">#</a></h2>
+<h2>Symmetric two-player games<a class="headerlink" href="#symmetric-two-player-games" title="Link to this heading">#</a></h2>
 <p>If the same rule applies to both players:</p>
 <div class="math notranslate nohighlight">
 \[ \pi_2(s_1,s_2) = \pi_1(s_2,s_1) \]</div>
@@ -989,7 +990,7 @@ In the above examples, the three except matching pennies are symmetric games.</p
 <p>it is called a <em>partnership game</em> or <em>doubly symmetric game</em>.<br />
 In the above examples, coordination game is such an example.</p>
 <section id="normal-form-of-symmetric-two-player-games">
-<h3>Normal form of symmetric two-player games<a class="headerlink" href="#normal-form-of-symmetric-two-player-games" title="Permalink to this heading">#</a></h3>
+<h3>Normal form of symmetric two-player games<a class="headerlink" href="#normal-form-of-symmetric-two-player-games" title="Link to this heading">#</a></h3>
 <p>The best reply does not change if the same amount is added/subtracted from each column of the payoff matrix of a row player.</p>
 <p>Thus any symmetric two-player game</p>
 <div class="math notranslate nohighlight">
@@ -1002,7 +1003,7 @@ In the above examples, coordination game is such an example.</p>
 \[ a_1 = a_{11}-a_{21}, \  a_2 = a_{22}-a_{12}. \]</div>
 <p>Then we can classify all symmetric two-player games into three categories.</p>
 <section id="category-i-a-1-0-a-2-0-or-a-1-0-a-2-0">
-<h4>Category I: <span class="math notranslate nohighlight">\(a_1&lt;0\)</span>, <span class="math notranslate nohighlight">\(a_2&gt;0\)</span> or <span class="math notranslate nohighlight">\(a_1&gt;0\)</span>, <span class="math notranslate nohighlight">\(a_2&lt;0\)</span><a class="headerlink" href="#category-i-a-1-0-a-2-0-or-a-1-0-a-2-0" title="Permalink to this heading">#</a></h4>
+<h4>Category I: <span class="math notranslate nohighlight">\(a_1&lt;0\)</span>, <span class="math notranslate nohighlight">\(a_2&gt;0\)</span> or <span class="math notranslate nohighlight">\(a_1&gt;0\)</span>, <span class="math notranslate nohighlight">\(a_2&lt;0\)</span><a class="headerlink" href="#category-i-a-1-0-a-2-0-or-a-1-0-a-2-0" title="Link to this heading">#</a></h4>
 <p>e.g. Prisoner’s dilemma:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} A = \mat{0 &amp; -4 \\ 1 &amp; -1} \rightarrow A' = \mat{-1 &amp; 0 \\ 0 &amp; 3} \end{split}\]</div>
@@ -1016,7 +1017,7 @@ In the above examples, coordination game is such an example.</p>
 </ul>
 </section>
 <section id="category-ii-a-1-0-a-2-0">
-<h4>Category II: <span class="math notranslate nohighlight">\(a_1&gt;0\)</span>, <span class="math notranslate nohighlight">\(a_2&gt;0\)</span><a class="headerlink" href="#category-ii-a-1-0-a-2-0" title="Permalink to this heading">#</a></h4>
+<h4>Category II: <span class="math notranslate nohighlight">\(a_1&gt;0\)</span>, <span class="math notranslate nohighlight">\(a_2&gt;0\)</span><a class="headerlink" href="#category-ii-a-1-0-a-2-0" title="Link to this heading">#</a></h4>
 <p>e.g. Coordination game:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} A = \mat{2 &amp; 0 \\ 0 &amp; 1} \end{split}\]</div>
@@ -1031,7 +1032,7 @@ In the above examples, coordination game is such an example.</p>
 </ul>
 </section>
 <section id="category-iii-a-1-0-a-2-0">
-<h4>Category III: <span class="math notranslate nohighlight">\(a_1&lt;0\)</span>, <span class="math notranslate nohighlight">\(a_2&lt;0\)</span><a class="headerlink" href="#category-iii-a-1-0-a-2-0" title="Permalink to this heading">#</a></h4>
+<h4>Category III: <span class="math notranslate nohighlight">\(a_1&lt;0\)</span>, <span class="math notranslate nohighlight">\(a_2&lt;0\)</span><a class="headerlink" href="#category-iii-a-1-0-a-2-0" title="Link to this heading">#</a></h4>
 <p>e.g. Hawk-Dove game:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}A = \mat{-2 &amp; 2 \\ 0 &amp; 1}
@@ -1049,13 +1050,13 @@ In the above examples, coordination game is such an example.</p>
 </section>
 </section>
 <section id="evolutionary-game-theory">
-<h2>Evolutionary game theory<a class="headerlink" href="#evolutionary-game-theory" title="Permalink to this heading">#</a></h2>
+<h2>Evolutionary game theory<a class="headerlink" href="#evolutionary-game-theory" title="Link to this heading">#</a></h2>
 <p>The Nash equilibrium in the game theory is an important tool for assessing what strategies a rational (selfish) player would take.
 However, some Nash equilibria like the mixed strategy in the Coordination game (sometimes left, sometimes right) does not look like a good strategy.</p>
 <p><em>Evolutionary Game Theory</em> considers what strategy is stable against introduction of mutants.</p>
 </section>
 <section id="evolutionarily-stable-strategy-ess">
-<h2>Evolutionarily stable strategy (ESS)<a class="headerlink" href="#evolutionarily-stable-strategy-ess" title="Permalink to this heading">#</a></h2>
+<h2>Evolutionarily stable strategy (ESS)<a class="headerlink" href="#evolutionarily-stable-strategy-ess" title="Link to this heading">#</a></h2>
 <p>Here we consider a large population of players.
 Pairs are randomly drawn and play a symmetric two-player game</p>
 <div class="math notranslate nohighlight">
@@ -1088,10 +1089,10 @@ or the second order:</p>
 <p>meaning that in another population where <span class="math notranslate nohighlight">\(\b{y}\)</span> is a majority, <span class="math notranslate nohighlight">\(\b{y}\)</span> can outperform <span class="math notranslate nohighlight">\(\b{x}\)</span> and be another ESS.</p>
 <p>ESS is the best reply to itself, so that <span class="math notranslate nohighlight">\((\b{x},\b{x})\)</span> is a Nash equilibrium, but not all Nash equilibria are ESS, as we see below.</p>
 <section id="ees-in-symmetric-two-player-games">
-<h3>EES in symmetric two-player games<a class="headerlink" href="#ees-in-symmetric-two-player-games" title="Permalink to this heading">#</a></h3>
+<h3>EES in symmetric two-player games<a class="headerlink" href="#ees-in-symmetric-two-player-games" title="Link to this heading">#</a></h3>
 <p>Based on the categorization by the normal forms, let us see which Nash equilibrium is ESS.</p>
 <section id="id2">
-<h4>Category I: <span class="math notranslate nohighlight">\(a_1&lt;0\)</span>, <span class="math notranslate nohighlight">\(a_2&gt;0\)</span> or <span class="math notranslate nohighlight">\(a_1&gt;0\)</span>, <span class="math notranslate nohighlight">\(a_2&lt;0\)</span><a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h4>
+<h4>Category I: <span class="math notranslate nohighlight">\(a_1&lt;0\)</span>, <span class="math notranslate nohighlight">\(a_2&gt;0\)</span> or <span class="math notranslate nohighlight">\(a_1&gt;0\)</span>, <span class="math notranslate nohighlight">\(a_2&lt;0\)</span><a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
 <p>e.g. Prisoner’s dilemma:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} A = \mat{0 &amp; -4 \\ 1 &amp; -1} \rightarrow A' = \mat{-1 &amp; 0 \\ 0 &amp; 3} \end{split}\]</div>
@@ -1105,7 +1106,7 @@ or the second order:</p>
 </ul>
 </section>
 <section id="id3">
-<h4>Category II: <span class="math notranslate nohighlight">\(a_1&gt;0\)</span>, <span class="math notranslate nohighlight">\(a_2&gt;0\)</span><a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h4>
+<h4>Category II: <span class="math notranslate nohighlight">\(a_1&gt;0\)</span>, <span class="math notranslate nohighlight">\(a_2&gt;0\)</span><a class="headerlink" href="#id3" title="Link to this heading">#</a></h4>
 <p>e.g. Coordination game:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} A = \mat{2 &amp; 0 \\ 0 &amp; 1} \end{split}\]</div>
@@ -1120,7 +1121,7 @@ or the second order:</p>
 </ul>
 </section>
 <section id="id4">
-<h4>Category III: <span class="math notranslate nohighlight">\(a_1&lt;0\)</span>, <span class="math notranslate nohighlight">\(a_2&lt;0\)</span><a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h4>
+<h4>Category III: <span class="math notranslate nohighlight">\(a_1&lt;0\)</span>, <span class="math notranslate nohighlight">\(a_2&lt;0\)</span><a class="headerlink" href="#id4" title="Link to this heading">#</a></h4>
 <p>e.g. Hawk-Dove game:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}A = \mat{-2 &amp; 2 \\ 0 &amp; 1}
@@ -1138,7 +1139,7 @@ or the second order:</p>
 </section>
 </section>
 <section id="replicator-dynamics">
-<h2>Replicator Dynamics<a class="headerlink" href="#replicator-dynamics" title="Permalink to this heading">#</a></h2>
+<h2>Replicator Dynamics<a class="headerlink" href="#replicator-dynamics" title="Link to this heading">#</a></h2>
 <p>In addition to analyzing the stablilty of a given strategy, evolutionary game theory allows us to predict how strategies would evolve in time.</p>
 <p>For simplicity we assume that each subpopulation takes one of <span class="math notranslate nohighlight">\(K\)</span> pure strategies.</p>
 <ul class="simple">
@@ -1176,17 +1177,17 @@ or the second order:</p>
 \]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">odeint</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.integrate</span><span class="w"> </span><span class="kn">import</span> <span class="n">odeint</span>
 
-<span class="k">class</span> <span class="nc">RepGame</span><span class="p">(</span><span class="n">Game</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">RepGame</span><span class="p">(</span><span class="n">Game</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Replicator dynamics&quot;&quot;&quot;</span>
     
-    <span class="k">def</span> <span class="nf">repeq</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">repeq</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;replicator equation for odeint&quot;&quot;&quot;</span>
         <span class="n">dx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">paymat</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="nd">@x</span> <span class="o">-</span> <span class="n">x</span><span class="nd">@self</span><span class="o">.</span><span class="n">paymat</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="nd">@x</span><span class="p">)</span><span class="o">*</span><span class="n">x</span>
         <span class="k">return</span> <span class="n">dx</span>
     
-    <span class="k">def</span> <span class="nf">replicator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">tt</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">replicator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">tt</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Replicator dynamimcs</span>
 <span class="sd">        x0: initial population, tt: array of time points&quot;&quot;&quot;</span>
         <span class="n">xt</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">repeq</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">tt</span><span class="p">)</span>
@@ -1208,7 +1209,7 @@ or the second order:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8412cdbdabb4db82610e246c9e99c7669f934d4b17c00834035df4ea887a59ea.png" src="_images/8412cdbdabb4db82610e246c9e99c7669f934d4b17c00834035df4ea887a59ea.png" />
+<img alt="_images/c26806d4bae8adc80575b2f6ff9cde0472fdec9dffae2803f00d4d02b7d4ea4e.png" src="_images/c26806d4bae8adc80575b2f6ff9cde0472fdec9dffae2803f00d4d02b7d4ea4e.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1226,7 +1227,7 @@ or the second order:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e071579de2a62f22696e8120b5ac155465dc98f032396f0cc4add2464e8426dc.png" src="_images/e071579de2a62f22696e8120b5ac155465dc98f032396f0cc4add2464e8426dc.png" />
+<img alt="_images/de4f4b938df3de96888018b045cbe973101654e005b664034f515b577d0a13e2.png" src="_images/de4f4b938df3de96888018b045cbe973101654e005b664034f515b577d0a13e2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1242,12 +1243,12 @@ or the second order:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0e8121839be80c423118e6fe4f10e3669c1a24e4eae648c141df2c2f85286d3f.png" src="_images/0e8121839be80c423118e6fe4f10e3669c1a24e4eae648c141df2c2f85286d3f.png" />
+<img alt="_images/50a6b79ca7abdc1b5e25efaa258f1a3a91faecac2ae9a035f0b951bceeaac0eb.png" src="_images/50a6b79ca7abdc1b5e25efaa258f1a3a91faecac2ae9a035f0b951bceeaac0eb.png" />
 </div>
 </div>
 </section>
 <section id="rock-scissors-paper-game">
-<h2>Rock-scissors-paper game<a class="headerlink" href="#rock-scissors-paper-game" title="Permalink to this heading">#</a></h2>
+<h2>Rock-scissors-paper game<a class="headerlink" href="#rock-scissors-paper-game" title="Link to this heading">#</a></h2>
 <p>Now consider a symmetric two-player game with three pure strategies</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} A = \mat{0 &amp; 1+a &amp; -1 \\ -1 &amp; 0 &amp; 1+a \\ 1+a &amp; -1 &amp; 0} \end{split}\]</div>
@@ -1267,7 +1268,7 @@ or the second order:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/73fbd03d033121025e489aba92e1802dc4873e2640f548efc593f5e8e005fcd3.png" src="_images/73fbd03d033121025e489aba92e1802dc4873e2640f548efc593f5e8e005fcd3.png" />
+<img alt="_images/24d1990264c1ab512a60719fe2f8d2fe58ac1a8c845e25ab186a53c9f7942526.png" src="_images/24d1990264c1ab512a60719fe2f8d2fe58ac1a8c845e25ab186a53c9f7942526.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1279,12 +1280,12 @@ or the second order:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e2176f2c3964fff42cfac933ea7d06e14d3615b7b65a6898889841d717a7e477.png" src="_images/e2176f2c3964fff42cfac933ea7d06e14d3615b7b65a6898889841d717a7e477.png" />
+<img alt="_images/4cbdbc074a0bb3a6bdefdbfaf1ec9201d044e36f150630eb5bff949a2abd1ce8.png" src="_images/4cbdbc074a0bb3a6bdefdbfaf1ec9201d044e36f150630eb5bff949a2abd1ce8.png" />
 </div>
 </div>
 </section>
 <section id="learning-by-multiple-agents">
-<h2>Learning by multiple agents<a class="headerlink" href="#learning-by-multiple-agents" title="Permalink to this heading">#</a></h2>
+<h2>Learning by multiple agents<a class="headerlink" href="#learning-by-multiple-agents" title="Link to this heading">#</a></h2>
 <p>In the evolutionary game theory, each player is assumed to have a fixed strategy for its liftime.
 What if players can change their strategies during their lifetime depending on their experiences.</p>
 <p>Reinforcement learning of <em>multiple agents</em> is an active field of research.
@@ -1294,7 +1295,7 @@ In learning the rock-scissors-paper game, appearance of chaotic dynamics has bee
 <p>Another possible approach is to learn a model of the behaviors of other agents, or even a model of how other agents change their behavior by learning, and then apply model-based approach to find appropriate actions (Suzuki et al. 2012).</p>
 </section>
 <section id="game-theory-in-neuroscience">
-<h2>Game theory in neuroscience<a class="headerlink" href="#game-theory-in-neuroscience" title="Permalink to this heading">#</a></h2>
+<h2>Game theory in neuroscience<a class="headerlink" href="#game-theory-in-neuroscience" title="Link to this heading">#</a></h2>
 <p>Game theoretic settings have been used extensively in cognitive neuroscience research to assess the brain’s mechanisms for cooperative or selfish behaviors.</p>
 <ul class="simple">
 <li><p>Prisoner’s Dilemma</p>
@@ -1309,14 +1310,14 @@ Responder: accept or reject</p></li>
 </ul>
 </section>
 <section id="theory-of-mind">
-<h2>Theory of mind<a class="headerlink" href="#theory-of-mind" title="Permalink to this heading">#</a></h2>
+<h2>Theory of mind<a class="headerlink" href="#theory-of-mind" title="Link to this heading">#</a></h2>
 <p>The capacity for estimating and predicting other’s mental state is called <em>theory of mind</em>.
 Human children acquire such capability during the course of development, but it has been suggested that that capacity is impaired in autistic children.</p>
 <p>There are computational models about how model-bases reinforcement learning agents can perform cooperative behaviors (Yoshida et al. 2008).
 There are also brain imaging experiments to assess what brain circuits are involved in predicting other’s behaviors (Yoshida et al. 2010; Suzuki et al. 2014).</p>
 </section>
 <section id="exercise">
-<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this heading">#</a></h2>
+<h2>Exercise<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Try evolutionary algorithm for an optimization of your interest while varying the methods and parameters for mutaion, crossover, and selection.</p></li>
 </ol>
@@ -1328,7 +1329,7 @@ There are also brain imaging experiments to assess what brain circuits are invol
 </ol>
 </section>
 <section id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Evolutionary algorithms</p>
 <ul>

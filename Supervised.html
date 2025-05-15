@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Chapter 3: Supervised Learning &#8212; Brain Computation</title>
   
@@ -29,33 +28,35 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Supervised';</script>
@@ -420,7 +421,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="chapter-3-supervised-learning">
-<h1>Chapter 3: Supervised Learning<a class="headerlink" href="#chapter-3-supervised-learning" title="Permalink to this heading">#</a></h1>
+<h1>Chapter 3: Supervised Learning<a class="headerlink" href="#chapter-3-supervised-learning" title="Link to this heading">#</a></h1>
 <div class="math notranslate nohighlight">
 \[ % Latex macros
 \newcommand{\mat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
@@ -431,7 +432,7 @@ document.write(`
 \newcommand{\y}{\boldsymbol{y}}
 \]</div>
 <section id="contents">
-<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this heading">#</a></h2>
+<h2>Contents<a class="headerlink" href="#contents" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>3.1 Function Approximation (Bishop 2006, Chapter 3)</p>
 <ul>
@@ -452,10 +453,10 @@ document.write(`
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mpl_toolkits.mplot3d</span><span class="w"> </span><span class="kn">import</span> <span class="n">Axes3D</span>
 </pre></div>
 </div>
 </div>
@@ -490,16 +491,16 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b45a14af26afac1b773582be01ea8d864d91c83e1f352531bcf63b67da0bb7ed.png" src="_images/b45a14af26afac1b773582be01ea8d864d91c83e1f352531bcf63b67da0bb7ed.png" />
+<img alt="_images/7b57b4543f1b8e83118491dca3f0a653fc1a1076b148a533402d5eebaba8bfc4.png" src="_images/7b57b4543f1b8e83118491dca3f0a653fc1a1076b148a533402d5eebaba8bfc4.png" />
 </div>
 </div>
 </section>
 <section id="function-approximation">
-<h2>3.1 Function Approximation<a class="headerlink" href="#function-approximation" title="Permalink to this heading">#</a></h2>
+<h2>3.1 Function Approximation<a class="headerlink" href="#function-approximation" title="Link to this heading">#</a></h2>
 <p>A typical case of function approximation in the brain is learning motor-sensory mapping; how does your arm respond to the activation of the muscles. In this case <span class="math notranslate nohighlight">\(\x\)</span> is the activation pattern of the arm muscles and <span class="math notranslate nohighlight">\(\y\)</span> is the changes in the arm joint angles, for example. Such an <em>internal model</em> of the body dynamics is very much helpful in motor control. In this case, the supervisor is your musculoskeletal system and sensory neurons.</p>
 </section>
 <section id="linear-regression">
-<h2>Linear Regression<a class="headerlink" href="#linear-regression" title="Permalink to this heading">#</a></h2>
+<h2>Linear Regression<a class="headerlink" href="#linear-regression" title="Link to this heading">#</a></h2>
 <p>In the simplest case, the output function is identity <span class="math notranslate nohighlight">\(g(u)=u\)</span>. This is the case of <em>linear regression</em>.</p>
 <p>For <span class="math notranslate nohighlight">\(D\)</span>-dimensional input</p>
 <div class="math notranslate nohighlight">
@@ -537,7 +538,7 @@ y = f(\x;\w) = \w^T \x = \x^T \w.
 \[\begin{split} \y^* = \pmatrix{y^*_1\\ \vdots \\y^*_N}\end{split}\]</div>
 <p>is given, how can we find the appropriate weight vector <span class="math notranslate nohighlight">\(\w\)</span> so that <span class="math notranslate nohighlight">\(\y\)</span> becomes close to <span class="math notranslate nohighlight">\(\y^*\)</span>?</p>
 <section id="least-square-solution">
-<h3>Least square solution<a class="headerlink" href="#least-square-solution" title="Permalink to this heading">#</a></h3>
+<h3>Least square solution<a class="headerlink" href="#least-square-solution" title="Link to this heading">#</a></h3>
 <p>A basic solution is to minimize the squared error between the target output and the model output</p>
 <div class="math notranslate nohighlight">
 \[ E(\w) = \frac{1}{2}\sum_{n=1}^N (\w^T \x_n - y^*_n)^2 
@@ -559,7 +560,7 @@ y = f(\x;\w) = \w^T \x = \x^T \w.
 \]</div>
 </section>
 <section id="maximum-likelihood-estimate">
-<h3>Maximum likelihood estimate<a class="headerlink" href="#maximum-likelihood-estimate" title="Permalink to this heading">#</a></h3>
+<h3>Maximum likelihood estimate<a class="headerlink" href="#maximum-likelihood-estimate" title="Link to this heading">#</a></h3>
 <p>A statistician would assume that the target output is generated by a linear model with additional noise</p>
 <div class="math notranslate nohighlight">
 \[
@@ -602,12 +603,12 @@ Thus the maximizing the likelihood is equivalent to minimizing the sum of square
 <p>This link between minimal error and maximum likelihood is helpful when we consider regularization of parameters and Bayesian perspective in Chapter 6.</p>
 </section>
 <section id="example-arm-dynamics">
-<h3>Example: Arm dynamics<a class="headerlink" href="#example-arm-dynamics" title="Permalink to this heading">#</a></h3>
+<h3>Example: Arm dynamics<a class="headerlink" href="#example-arm-dynamics" title="Link to this heading">#</a></h3>
 <p>Let us simulate simple second-order dynamics of an arm hanging down and take the data.
 Then we will make a linear regression model to predict the angular acceleration from the angle and angular velocity.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">odeint</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.integrate</span><span class="w"> </span><span class="kn">import</span> <span class="n">odeint</span>
 </pre></div>
 </div>
 </div>
@@ -625,7 +626,7 @@ Then we will make a linear regression model to predict the angular acceleration 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4961fc05e8203501fea83fbece09fe267effd1596a06f6ff359b604dbf8d76fa.png" src="_images/4961fc05e8203501fea83fbece09fe267effd1596a06f6ff359b604dbf8d76fa.png" />
+<img alt="_images/5533a6d9daadd478f7ac2cd799a7e38c3161f48be2d4f45485ce7ebee91b3ea1.png" src="_images/5533a6d9daadd478f7ac2cd799a7e38c3161f48be2d4f45485ce7ebee91b3ea1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -635,7 +636,7 @@ Then we will make a linear regression model to predict the angular acceleration 
 <span class="n">mu</span> <span class="o">=</span> <span class="mf">0.1</span>  <span class="c1"># damping: Nm/(rad/s)</span>
 <span class="n">g</span> <span class="o">=</span> <span class="mf">9.8</span>   <span class="c1"># gravity: N/s^2</span>
 <span class="n">I</span> <span class="o">=</span> <span class="p">(</span><span class="n">m</span><span class="o">*</span><span class="n">l</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="mi">3</span> <span class="c1"># inertia for a rod around an end: kg m^2</span>
-<span class="k">def</span> <span class="nf">arm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">arm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;arm dynamics for odeint: x=[th,om]&quot;&quot;&quot;</span>
     <span class="n">th</span><span class="p">,</span> <span class="n">om</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># for readability</span>
     <span class="c1"># angular acceleration</span>
@@ -658,7 +659,7 @@ Then we will make a linear regression model to predict the angular acceleration 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/53b7dff0f484d2e18d88797744dce793fe7f3aa36a3ff73072e9db75399ea585.png" src="_images/53b7dff0f484d2e18d88797744dce793fe7f3aa36a3ff73072e9db75399ea585.png" />
+<img alt="_images/15a0f7ec9e4851d508515b852dc72d4d70de80131091326cf88c1373c69a0616.png" src="_images/15a0f7ec9e4851d508515b852dc72d4d70de80131091326cf88c1373c69a0616.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -692,7 +693,7 @@ Then we will make a linear regression model to predict the angular acceleration 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/38b20ec3a3adbac10d00b6c3d312041ef91fc57f782e3bb8693692b706b69b74.png" src="_images/38b20ec3a3adbac10d00b6c3d312041ef91fc57f782e3bb8693692b706b69b74.png" />
+<img alt="_images/96fd9660c9eea32ec527b23945fe8bb6176564d2b6539110f53b4def55f0fbf9.png" src="_images/96fd9660c9eea32ec527b23945fe8bb6176564d2b6539110f53b4def55f0fbf9.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -708,7 +709,7 @@ Then we will make a linear regression model to predict the angular acceleration 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>w = [ 2.73560731e-02 -4.46212163e+01 -3.26865829e+00]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>w = [  0.13413866 -39.36445255  -3.03634402]
 [0, -49.0, -0.6666666666666667]
 </pre></div>
 </div>
@@ -723,7 +724,7 @@ Then we will make a linear regression model to predict the angular acceleration 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.8942890539940784
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.9332753524785307
 </pre></div>
 </div>
 </div>
@@ -744,13 +745,13 @@ Then we will make a linear regression model to predict the angular acceleration 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/dc91cb6f2f942218f7908aff995b0dabf6ca6096baf85525b2dbe8fa6cf2e28d.png" src="_images/dc91cb6f2f942218f7908aff995b0dabf6ca6096baf85525b2dbe8fa6cf2e28d.png" />
+<img alt="_images/d486915727cdbe173caf98e01fa4213438aa6a693517530fc0cdfb81039c6cbe.png" src="_images/d486915727cdbe173caf98e01fa4213438aa6a693517530fc0cdfb81039c6cbe.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="online-learning">
-<h2>Online Learning<a class="headerlink" href="#online-learning" title="Permalink to this heading">#</a></h2>
+<h2>Online Learning<a class="headerlink" href="#online-learning" title="Link to this heading">#</a></h2>
 <p>In the above, we assumed that all the data are available at once. However, data come in sequence and we would rather learn from the data as they come in.</p>
 <p>The basic way of online learning is to minimize the output error for each input</p>
 <div class="math notranslate nohighlight">
@@ -769,7 +770,7 @@ Online learning does not require matrix inversion, which is computationally expe
 For a very large dataset (large <span class="math notranslate nohighlight">\(N\)</span>), simply storing a huge <span class="math notranslate nohighlight">\(N\times D\)</span> data matrix <span class="math notranslate nohighlight">\(X\)</span> in the memory can be costly.</p>
 </section>
 <section id="basis-functions">
-<h2>Basis Functions<a class="headerlink" href="#basis-functions" title="Permalink to this heading">#</a></h2>
+<h2>Basis Functions<a class="headerlink" href="#basis-functions" title="Link to this heading">#</a></h2>
 <p>For approximating a nonlinear function of <span class="math notranslate nohighlight">\(\x\)</span>, a standard way is to prepare a set of nonlinear functions
 $<span class="math notranslate nohighlight">\(
     \b{\phi}(\x) = (\phi_1(\x),...,\phi_M(\x))^T,
@@ -781,7 +782,7 @@ called basis functions, and represent the target function by
 <p>Classically, polynomials <span class="math notranslate nohighlight">\((1, x, x^2, x^3,...)\)</span> or sinusoids <span class="math notranslate nohighlight">\((1, \cos x, \cos 2x,..., \sin x, \sin 2x,...)\)</span> were often used as basis functions, motivated by polynomial expansion or Fourier expansion.</p>
 <p>However, these functions can grow so large or become so steep when we include higher order terms, which can make learned function changing wildly.</p>
 <section id="radial-basis-functions">
-<h3>Radial Basis Functions<a class="headerlink" href="#radial-basis-functions" title="Permalink to this heading">#</a></h3>
+<h3>Radial Basis Functions<a class="headerlink" href="#radial-basis-functions" title="Link to this heading">#</a></h3>
 <p>In sensory nervous systems, neurons tend to respond to signals in a limited range, called <em>receptive field</em>. For example, each visual neuron responds to light stimuli on a small area in the retina. Each auditory neurons respond to a limited range of frequency.</p>
 <p>Partly inspired by such local receptive field properties, a popular class of basis functions is called <em>radial basis function (RBF)</em>.
 An RBF is give by a decreasing function of the distance from a center point:</p>
@@ -794,7 +795,7 @@ An RBF is give by a decreasing function of the distance from a center point:</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="c1"># Gaussian basis functions in 1D</span>
-<span class="k">def</span> <span class="nf">phi</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">phi</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Gaussian centered at x=c with scale s&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">c</span><span class="p">)</span><span class="o">/</span><span class="n">s</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">M</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># x range</span>
@@ -808,11 +809,11 @@ An RBF is give by a decreasing function of the distance from a center point:</p>
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:10: SyntaxWarning: invalid escape sequence &#39;\p&#39;
 &lt;&gt;:10: SyntaxWarning: invalid escape sequence &#39;\p&#39;
-/var/folders/0z/3cttnw852b959kp4wjh_z_wc0000gn/T/ipykernel_1515/1772074961.py:10: SyntaxWarning: invalid escape sequence &#39;\p&#39;
+/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_59606/1772074961.py:10: SyntaxWarning: invalid escape sequence &#39;\p&#39;
   plt.xlabel(&quot;x&quot;); plt.ylabel(&quot;$\phi(x)$&quot;);
 </pre></div>
 </div>
-<img alt="_images/a8fb7f4234410b9dc990c972e23c0dd585e30e83e6d88e19e1ae2393f0bc9d2e.png" src="_images/a8fb7f4234410b9dc990c972e23c0dd585e30e83e6d88e19e1ae2393f0bc9d2e.png" />
+<img alt="_images/74ce8176d7d6fd31a6a38aeb53c53e910f43afb859ccc66221e152022238e7af.png" src="_images/74ce8176d7d6fd31a6a38aeb53c53e910f43afb859ccc66221e152022238e7af.png" />
 </div>
 </div>
 <p>Here you can generate random samples of functions using RBF.</p>
@@ -827,7 +828,7 @@ An RBF is give by a decreasing function of the distance from a center point:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9af656e57d86c26ed2f5a3db3bfb55487b392ca214e84a5bdb4f01e9d1e9870e.png" src="_images/9af656e57d86c26ed2f5a3db3bfb55487b392ca214e84a5bdb4f01e9d1e9870e.png" />
+<img alt="_images/e96ec76b5da6ec13e9382bb3ac5e0072cda32a6dd3928ed7118385168b38707d.png" src="_images/e96ec76b5da6ec13e9382bb3ac5e0072cda32a6dd3928ed7118385168b38707d.png" />
 </div>
 </div>
 <p>Here are RBFs in 2D input space on a grid.</p>
@@ -850,20 +851,20 @@ An RBF is give by a decreasing function of the distance from a center point:</p>
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:11: SyntaxWarning: invalid escape sequence &#39;\p&#39;
 &lt;&gt;:11: SyntaxWarning: invalid escape sequence &#39;\p&#39;
-/var/folders/0z/3cttnw852b959kp4wjh_z_wc0000gn/T/ipykernel_1515/4022370209.py:11: SyntaxWarning: invalid escape sequence &#39;\p&#39;
+/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_59606/4022370209.py:11: SyntaxWarning: invalid escape sequence &#39;\p&#39;
   plt.xlabel(&quot;x1&quot;); plt.ylabel(&quot;x2&quot;); plt.title(&quot;$\phi(x)$&quot;);
 </pre></div>
 </div>
-<img alt="_images/c3676c38f60ccc3c75baf4fcaf82bd133ef1962dd7095c7ebf5bb8ae331aa411.png" src="_images/c3676c38f60ccc3c75baf4fcaf82bd133ef1962dd7095c7ebf5bb8ae331aa411.png" />
+<img alt="_images/5089f8b458198da0e735e1f8a81b26bad812f2153326774d7a60169cdde79095.png" src="_images/5089f8b458198da0e735e1f8a81b26bad812f2153326774d7a60169cdde79095.png" />
 </div>
 </div>
 <section id="example-non-linear-pendulum">
-<h4>Example: non-linear pendulum<a class="headerlink" href="#example-non-linear-pendulum" title="Permalink to this heading">#</a></h4>
+<h4>Example: non-linear pendulum<a class="headerlink" href="#example-non-linear-pendulum" title="Link to this heading">#</a></h4>
 </section>
 </section>
 </section>
 <section id="pattern-recognition">
-<h2>3.2 Pattern Recognition<a class="headerlink" href="#pattern-recognition" title="Permalink to this heading">#</a></h2>
+<h2>3.2 Pattern Recognition<a class="headerlink" href="#pattern-recognition" title="Link to this heading">#</a></h2>
 <p>Here we consider a problem of classifying input vectors <span class="math notranslate nohighlight">\(\x\)</span> into <span class="math notranslate nohighlight">\(K\)</span> discrete classes <span class="math notranslate nohighlight">\(C_k\)</span>.</p>
 <p>There are three major approaches in pattern classification.</p>
 <ul class="simple">
@@ -878,7 +879,7 @@ However, it is a question whether supervised learning is relevant for our vision
 <em>Unsupervised learning</em>, covered in Chapter 5, might be a more plausible way of human sensory learning.</p>
 </section>
 <section id="the-perceptron">
-<h2>The Perceptron<a class="headerlink" href="#the-perceptron" title="Permalink to this heading">#</a></h2>
+<h2>The Perceptron<a class="headerlink" href="#the-perceptron" title="Link to this heading">#</a></h2>
 <p>The first pattern classification learning machine was called <em>Perceptron</em> (Rosenblatt 1962).</p>
 <p>The original Perceptron consisted of three layers of binary units: S(sensory)-units, A(associative)-units connected randomly with S-units, and R(response)-units.</p>
 <p>Here we formulate the Perceptron in a generalized form.
@@ -902,7 +903,7 @@ This is called <em>linear Perceptron</em>.</p>
 \end{split}\]</div>
 <p>For each input <span class="math notranslate nohighlight">\(\x_n\)</span>, the target output <span class="math notranslate nohighlight">\(y^*_n \in \{+1,-1\}\)</span> is given.</p>
 <section id="perceptron-learning-rule">
-<h3>Perceptron Learning Rule<a class="headerlink" href="#perceptron-learning-rule" title="Permalink to this heading">#</a></h3>
+<h3>Perceptron Learning Rule<a class="headerlink" href="#perceptron-learning-rule" title="Link to this heading">#</a></h3>
 <p>Learning of Perceptron is based on the error function</p>
 <div class="math notranslate nohighlight">
 \[
@@ -926,19 +927,19 @@ This is called <em>linear Perceptron</em>.</p>
 <p>When two classes are <em>linearly separable</em>, the <em>Preceptron convergence theorem</em> assures that learning converges to find a proper hyperplane to separate two classes.</p>
 </section>
 <section id="example-perceptron-in-2d-feature-space">
-<h3>Example: Perceptron in 2D feature space<a class="headerlink" href="#example-perceptron-in-2d-feature-space" title="Permalink to this heading">#</a></h3>
+<h3>Example: Perceptron in 2D feature space<a class="headerlink" href="#example-perceptron-in-2d-feature-space" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Perceptron</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Perceptron</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Linear perceptron: phi(x)=[1,x]&quot;&quot;&quot;</span>
     
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">D</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">D</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a new perceptron&quot;&quot;&quot;</span>
         <span class="c1"># self.w = np.random.randn(D+1)  # output weight</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">D</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>  
         <span class="bp">self</span><span class="o">.</span><span class="n">vis</span> <span class="o">=</span> <span class="kc">False</span>
 
-    <span class="k">def</span> <span class="nf">output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;predict an output from input x&quot;&quot;&quot;</span>
         <span class="n">u</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="nd">@np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="n">x</span><span class="p">]</span>
         <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">u</span><span class="o">&gt;</span><span class="mi">0</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span>
@@ -946,7 +947,7 @@ This is called <em>linear Perceptron</em>.</p>
             <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;yo&quot;</span> <span class="k">if</span> <span class="n">y</span><span class="o">&gt;</span><span class="mi">0</span> <span class="k">else</span> <span class="s2">&quot;bo&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">y</span>
 
-    <span class="k">def</span> <span class="nf">learn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">yt</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">learn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">yt</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;learn from (x, yt) pair&quot;&quot;&quot;</span>
         <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
         <span class="n">error</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">yt</span>
@@ -957,7 +958,7 @@ This is called <em>linear Perceptron</em>.</p>
             <span class="bp">self</span><span class="o">.</span><span class="n">plot_boundary</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">error</span>
     
-    <span class="k">def</span> <span class="nf">plot_boundary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">u</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">plot_boundary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">u</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;plot decision boundary with shift u, length l&quot;&quot;&quot;</span>
         <span class="c1"># weight vector</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">[</span><span class="mi">2</span><span class="p">]],</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
@@ -990,7 +991,7 @@ This is called <em>linear Perceptron</em>.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/44f15e6545afd429e8e6169ce88ca1e9b8c1b29f2552194e446cda1a8ce3bdbe.png" src="_images/44f15e6545afd429e8e6169ce88ca1e9b8c1b29f2552194e446cda1a8ce3bdbe.png" />
+<img alt="_images/56a61527dcd9472f53aa0f4799814dc6db6d6ac4702653b74510b0feb07fa06d.png" src="_images/56a61527dcd9472f53aa0f4799814dc6db6d6ac4702653b74510b0feb07fa06d.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1014,16 +1015,16 @@ This is called <em>linear Perceptron</em>.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 1.2 ; w =  [-0.2         0.34358882  0.23018331]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.8 ; w =  [-0.2         0.09784684  0.15548116]
 </pre></div>
 </div>
-<img alt="_images/2418deb30e2b8677e94af4964c80260a54d8daf74c4872badeebf884896cb6df.png" src="_images/2418deb30e2b8677e94af4964c80260a54d8daf74c4872badeebf884896cb6df.png" />
+<img alt="_images/91e6dfb4465599b69b00b1e897426798cf78fd2481152e4146d683a5ee65f723.png" src="_images/91e6dfb4465599b69b00b1e897426798cf78fd2481152e4146d683a5ee65f723.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="support-vector-machine">
-<h2>Support Vector Machine<a class="headerlink" href="#support-vector-machine" title="Permalink to this heading">#</a></h2>
+<h2>Support Vector Machine<a class="headerlink" href="#support-vector-machine" title="Link to this heading">#</a></h2>
 <p>With Perceptron learning rule, the line separating two classes can end up in any configuration so that two classes are separated, which may not be good for <em>generalization</em>, i.e., classification of new data that were not used for training.</p>
 <p>The <em>support vector machine (SVM)</em> (Bishop 2006, section 7.1) tries to find a separation line that has the largest margin to the positive and negative data by minimizing the <em>hinge</em> objective function</p>
 <div class="math notranslate nohighlight">
@@ -1039,7 +1040,7 @@ It is often the case that the basis functions are allocated around each data poi
     \phi_i(\x) = K(\x,\x_i).
 \]</div>
 <section id="online-svm">
-<h3>Online SVM<a class="headerlink" href="#online-svm" title="Permalink to this heading">#</a></h3>
+<h3>Online SVM<a class="headerlink" href="#online-svm" title="Link to this heading">#</a></h3>
 <p>Here we consider an online version of SVM called <em>Pagasos</em> (Shalev-Shwartz et al. 2010) that has a closer link with Perceptron learning.</p>
 <p>The weights are updated by</p>
 <div class="math notranslate nohighlight">
@@ -1050,14 +1051,14 @@ It is often the case that the basis functions are allocated around each data poi
 <p>The learning rate is gradually decreased as <span class="math notranslate nohighlight">\(\alpha=\frac{1}{\lambda n}\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Pegasos</span><span class="p">(</span><span class="n">Perceptron</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Pegasos</span><span class="p">(</span><span class="n">Perceptron</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Pagasos, online SVM with linear kernel&quot;&quot;&quot;</span>
     
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">D</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">D</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># counter for rate scheduling</span>
         
-    <span class="k">def</span> <span class="nf">learn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">yt</span><span class="p">,</span> <span class="n">lamb</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">learn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">yt</span><span class="p">,</span> <span class="n">lamb</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;learn from (x, y) pair&quot;&quot;&quot;</span>
         <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span>  <span class="c1"># data count</span>
@@ -1097,16 +1098,16 @@ It is often the case that the basis functions are allocated around each data poi
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>n = 20 ; err = 0.7454931330168135 ; w = [0.18063336 0.15220346 0.38871948]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>n = 20 ; err = 0.44162424748001455 ; w = [-1.06181961  0.42969081  0.25593831]
 </pre></div>
 </div>
-<img alt="_images/c669debf6a69fabc1b2b7e2f2d4008814496be10f07d5d99acfc735bacdd084c.png" src="_images/c669debf6a69fabc1b2b7e2f2d4008814496be10f07d5d99acfc735bacdd084c.png" />
+<img alt="_images/fd63a460b6b659e70b3a41126534c809ae05930215633e7a028cc80316a62970.png" src="_images/fd63a460b6b659e70b3a41126534c809ae05930215633e7a028cc80316a62970.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="logistic-regression">
-<h2>Logistic Regression<a class="headerlink" href="#logistic-regression" title="Permalink to this heading">#</a></h2>
+<h2>Logistic Regression<a class="headerlink" href="#logistic-regression" title="Link to this heading">#</a></h2>
 <p>In Perceptron and SVM, the output is binary. We sometimes want to express the certainty in the output by the probability of the data belonging to a class <span class="math notranslate nohighlight">\(p(C_k|\x)\)</span>.</p>
 <p><em>Logistic regression</em> is a probabilistic generalization of linear regression (Bishop 2006, Section 4.3). Its probabilistic output is given by</p>
 <div class="math notranslate nohighlight">
@@ -1129,7 +1130,7 @@ It is often the case that the basis functions are allocated around each data poi
 \]</div>
 </div></blockquote>
 <section id="maximum-likelihood-by-iterative-least-squares">
-<h3>Maximum likelihood by iterative least squares<a class="headerlink" href="#maximum-likelihood-by-iterative-least-squares" title="Permalink to this heading">#</a></h3>
+<h3>Maximum likelihood by iterative least squares<a class="headerlink" href="#maximum-likelihood-by-iterative-least-squares" title="Link to this heading">#</a></h3>
 <p>We can find the weights of logistic regression by the principle of maximum likelihood, the probability of reproducing the data.</p>
 <p>The likelihood of weights <span class="math notranslate nohighlight">\(\w\)</span> for a set of observed data <span class="math notranslate nohighlight">\((X,\y^*)\)</span> is</p>
 <div class="math notranslate nohighlight">
@@ -1186,7 +1187,7 @@ Instead, we can apply Newton method using the <em>Hessian matrix</em></p>
 <p>This algorithm is called <em>iterative reweighted least squares</em>.</p>
 </section>
 <section id="online-logistic-regression">
-<h3>Online logistic regression<a class="headerlink" href="#online-logistic-regression" title="Permalink to this heading">#</a></h3>
+<h3>Online logistic regression<a class="headerlink" href="#online-logistic-regression" title="Link to this heading">#</a></h3>
 <p>From the gradient of negative log likelihood for each data point</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1199,13 +1200,13 @@ Instead, we can apply Newton method using the <em>Hessian matrix</em></p>
 \]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">LogisticRegression</span><span class="p">(</span><span class="n">Perceptron</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">LogisticRegression</span><span class="p">(</span><span class="n">Perceptron</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Logistic regression&quot;&quot;&quot;</span>
     
-    <span class="k">def</span> <span class="nf">sigmoid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">u</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">sigmoid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">u</span><span class="p">):</span>
         <span class="k">return</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">u</span><span class="p">))</span>
     
-    <span class="k">def</span> <span class="nf">output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;output for vector/matrix input x&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># x is a vector</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="n">x</span><span class="p">]</span>
@@ -1220,7 +1221,7 @@ Instead, we can apply Newton method using the <em>Hessian matrix</em></p>
                 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">y</span>
     
-    <span class="k">def</span> <span class="nf">rls</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">yt</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">rls</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">yt</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;reweighted least square with (x, y) pairs&quot;&quot;&quot;</span>
         <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># also set self.X</span>
         <span class="n">error</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">yt</span>
@@ -1254,16 +1255,16 @@ Instead, we can apply Newton method using the <em>Hessian matrix</em></p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> err = 0.25 ; w = [-1.35799968  0.68363289  0.43426131]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> err = 0.25 ; w = [-1.71513346  0.68407834  0.52857261]
 </pre></div>
 </div>
-<img alt="_images/016c728471197cf7d93dfce362ca9505b154da42dd2bbf9bc519a61fbfeab6c1.png" src="_images/016c728471197cf7d93dfce362ca9505b154da42dd2bbf9bc519a61fbfeab6c1.png" />
+<img alt="_images/272c245ab043df888739c7be554958658c7e2aaa31e339cbda0a98c5cfd397ab.png" src="_images/272c245ab043df888739c7be554958658c7e2aaa31e339cbda0a98c5cfd397ab.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="classical-conditioning">
-<h2>3.3 Classical Conditioning<a class="headerlink" href="#classical-conditioning" title="Permalink to this heading">#</a></h2>
+<h2>3.3 Classical Conditioning<a class="headerlink" href="#classical-conditioning" title="Link to this heading">#</a></h2>
 <p>Animals have innate behaviors to avoid dangers or to acquire rewards, such as blinking when a strong light or wind hits the eyes or drooling when a food is expected.
 Such response is called a <em>unconditioned response (UR)</em> and the sensory cue to elicit UR is called <em>unconditioned stimulus (US)</em>.</p>
 <p>When an US is repeatedly preceded by another stimulus, such as a sound, animals start to take the same response as UR even before US is presented.
@@ -1271,20 +1272,20 @@ In this case the response is called a <em>conditioned response (CR)</em> and the
 This type of learning is called <em>classical conditioning</em> or <em>Pavlovian conditioning</em> and can be considered as an example of supervised learning.</p>
 <p>The learned mapping can be CS to CR, or CS to US which elicits UR=CR.</p>
 <section id="eye-blink-conditioning">
-<h3>Eye Blink Conditioning<a class="headerlink" href="#eye-blink-conditioning" title="Permalink to this heading">#</a></h3>
+<h3>Eye Blink Conditioning<a class="headerlink" href="#eye-blink-conditioning" title="Link to this heading">#</a></h3>
 <p>When an airpuff (US) is given around eyes, an animal would blink its eyes (UR). If the airpuff is preceded with a consistent interval by a cue, such as tone (CS), the animal learns to blink (CR) just before the airpuff is given.</p>
 <p>Richard Thompson and colleagues investigated the neural circuit behind this eye-blink conditioning and identified the cerebellum as the major locus of learning (Thompson, 1986).</p>
 <p>While blockade of the cerebellum does not affect eye-blink response itself (US-UR), it blocks learning (CS-CR). The activity of the output neurons of the cerebellum increase their activities as learning progress, as shown above.</p>
 </section>
 </section>
 <section id="the-cerebellum">
-<h2>3.4 The Cerebellum<a class="headerlink" href="#the-cerebellum" title="Permalink to this heading">#</a></h2>
+<h2>3.4 The Cerebellum<a class="headerlink" href="#the-cerebellum" title="Link to this heading">#</a></h2>
 <p>The neural circuit of the cerebellum has a distinctive orthogonal structure. There are a massive number of <em>granule cells</em>, each of which collects inputs from a major input to the cerebellum, <em>the mossy fibers</em>.
 Granule cell axons run parallely in the lateral direction in the cerebellar cortex, called <em>parallel fibers</em>.
 The output neurons of the cerebellum, <em>Purkinje cells</em>, spread fan-shaped dendrites in the longitudinal direction and receive a large number of parallel fibers.
 Furthermore, each Purkinje cell is twined by a single axon called <em>climbing fiber</em> from a brain stem nucleus called the <em>inferior olive</em>.</p>
 <section id="cerebellar-perceptron-hyopthesis">
-<h3>Cerebellar Perceptron Hyopthesis<a class="headerlink" href="#cerebellar-perceptron-hyopthesis" title="Permalink to this heading">#</a></h3>
+<h3>Cerebellar Perceptron Hyopthesis<a class="headerlink" href="#cerebellar-perceptron-hyopthesis" title="Link to this heading">#</a></h3>
 <p>This peculiar organization inspired theorists around 1970 to come up with an idea that the cerebellum may work similar to the Perceptron (Marr 1969; Albus 1971).
 The massive number of granule cells may create a high-dimensional feature representation of the mossy fiber input.
 The single climbing fiber input may sever as the supervising signal to induce plasticity in the parallel-fiber input synapses to the Purkinje cell.</p>
@@ -1292,7 +1293,7 @@ The single climbing fiber input may sever as the supervising signal to induce pl
 Indeed, cerebellar synaptic plasticity guided by the climbing fiber input was experimentally confirmed by Masao Ito (1984, 2000).</p>
 </section>
 <section id="cerebellar-internal-model-hyopthesis">
-<h3>Cerebellar Internal Model Hyopthesis<a class="headerlink" href="#cerebellar-internal-model-hyopthesis" title="Permalink to this heading">#</a></h3>
+<h3>Cerebellar Internal Model Hyopthesis<a class="headerlink" href="#cerebellar-internal-model-hyopthesis" title="Link to this heading">#</a></h3>
 <p>The cerebellum is known to be important for movement control.
 A possible way in which supervised learning can be helpful is to provide an <em>internal model</em> of the motor apparatus (Wolpert et al. 1998).</p>
 <blockquote>
@@ -1304,7 +1305,7 @@ A possible way in which supervised learning can be helpful is to provide an <em>
 </section>
 </section>
 <section id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Bishop CM (2006) Pattern Recognition and Machine Learning. Springer.  <a class="reference external" href="https://www.microsoft.com/en-us/research/people/cmbishop/prml-book/">https://www.microsoft.com/en-us/research/people/cmbishop/prml-book/</a></p>
 <ul>
@@ -1315,14 +1316,14 @@ A possible way in which supervised learning can be helpful is to provide an <em>
 <li><p>Rosenblatt F (1962) Principles of Neurodynamics: Perceptrons and the Theory of Brain Mechanisms. Spartan. <a class="reference external" href="https://babel.hathitrust.org/cgi/pt?id=mdp.39015039846566&amp;amp;view=1up&amp;amp;seq=5">https://babel.hathitrust.org/cgi/pt?id=mdp.39015039846566&amp;view=1up&amp;seq=5</a></p></li>
 </ul>
 <section id="id1">
-<h3>Classical conditioning<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<h3>Classical conditioning<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>McCormick DA, Thompson RF (1984) Neuronal responses of the rabbit cerebellum during acquisition and performance of a classically conditioned nictitating membrane-eyelid response. Journal of Neuroscience, 4 (11) 2811-2822. <a class="reference external" href="https://doi.org/10.1523/JNEUROSCI.04-11-02811.1984">https://doi.org/10.1523/JNEUROSCI.04-11-02811.1984</a></p></li>
 <li><p>Thompson RF (1986) The neurobiology of learning and memory. Sicence, 233, 941-947. <a class="reference external" href="https://doi.org/10.1126/science.3738519">https://doi.org/10.1126/science.3738519</a></p></li>
 </ul>
 </section>
 <section id="cerebellar-perceptron-hypothesis">
-<h3>Cerebellar perceptron hypothesis<a class="headerlink" href="#cerebellar-perceptron-hypothesis" title="Permalink to this heading">#</a></h3>
+<h3>Cerebellar perceptron hypothesis<a class="headerlink" href="#cerebellar-perceptron-hypothesis" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Marr D (1969) A theory of cerebellar cortex. Journal of Physiology, 202:437–470.  <a class="reference external" href="https://doi.org/10.1113/jphysiol.1969.sp008820">https://doi.org/10.1113/jphysiol.1969.sp008820</a></p></li>
 <li><p>Albus JS (1971) A theory of cerebellar function. Mathematical Bioscience, 10:25–61, 1971. <a class="reference external" href="https://doi.org/10.1016/0025-5564(71)90051-4">https://doi.org/10.1016/0025-5564(71)90051-4</a></p></li>
@@ -1330,7 +1331,7 @@ A possible way in which supervised learning can be helpful is to provide an <em>
 </ul>
 </section>
 <section id="cerebellar-internal-model-hypothesis">
-<h3>Cerebellar internal model hypothesis<a class="headerlink" href="#cerebellar-internal-model-hypothesis" title="Permalink to this heading">#</a></h3>
+<h3>Cerebellar internal model hypothesis<a class="headerlink" href="#cerebellar-internal-model-hypothesis" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Kawato M, Furukawa K, Suzuki R (1987). A hierarchical neural-network model for control and learning of voluntary movement. Biol Cybern, 57, 169-85. <a class="reference external" href="https://doi.org/10.1007/BF00364149">https://doi.org/10.1007/BF00364149</a></p></li>
 <li><p>Wolpert DM, Miall RC, Kawato M (1998) Internal models in the cerebellum. Trends in Cognitive Sciences, 2:338–347. <a class="reference external" href="https://doi.org/10.1016/S1364-6613(98)01221-2">https://doi.org/10.1016/S1364-6613(98)01221-2</a></p></li>
