@@ -59,11 +59,9 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Reinforcement';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Reinforcementのコピー';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Chapter 4. Reinforcement Learning: Exercise" href="Reinforcement_Exercise.html" />
-    <link rel="prev" title="Supervised Learning: Exercise" href="Supervised_Exercise.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -126,6 +124,8 @@
       
       
       
+        
+      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -181,7 +181,7 @@
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Introduction.html">Chapter 1. Introduction</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="Neurons.html">Chapter 2. Neural Modeling and Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Neurons_Exercise.html">Chapter 2. Neural Modeling and Analysis: Exercise</a></li>
@@ -191,7 +191,7 @@
 <li class="toctree-l2"><a class="reference internal" href="Supervised_Exercise.html">Supervised Learning: Exercise</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Chapter 4. Reinforcement Learning</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Reinforcement.html">Chapter 4. Reinforcement Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Reinforcement_Exercise.html">Chapter 4. Reinforcement Learning: Exercise</a></li>
 </ul>
 </details></li>
@@ -269,7 +269,7 @@
       
       
       
-      <li><a href="_sources/Reinforcement.ipynb" target="_blank"
+      <li><a href="_sources/Reinforcementのコピー.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -577,11 +577,11 @@ where <span class="math notranslate nohighlight">\(0\le\gamma&lt;1\)</span> is a
         <span class="bp">self</span><span class="o">.</span><span class="n">Ns</span> <span class="o">=</span> <span class="n">nstate</span>   <span class="c1"># number of states</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">Na</span> <span class="o">=</span> <span class="n">naction</span>  <span class="c1"># number of actions</span>
         
-    <span class="k">def</span><span class="w"> </span><span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;start an episode&quot;&quot;&quot;</span>
         <span class="c1"># randomly pick a state</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Ns</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span>
+        <span class="k">return</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">)</span>
     
     <span class="k">def</span><span class="w"> </span><span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;step by an action&quot;&quot;&quot;</span>
@@ -589,7 +589,7 @@ where <span class="math notranslate nohighlight">\(0\le\gamma&lt;1\)</span> is a
         <span class="bp">self</span><span class="o">.</span><span class="n">reward</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>  <span class="c1"># between 0 and 1</span>
         <span class="c1"># random next state</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Ns</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">reward</span>
+        <span class="k">return</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">reward</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -603,13 +603,19 @@ where <span class="math notranslate nohighlight">\(0\le\gamma&lt;1\)</span> is a
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a new agent&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">Ns</span> <span class="o">=</span> <span class="n">nstate</span>   <span class="c1"># number of states</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">Na</span> <span class="o">=</span> <span class="n">naction</span>  <span class="c1"># number of actions</span>
-            
-    <span class="k">def</span><span class="w"> </span><span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">reward</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        
+    <span class="k">def</span><span class="w"> </span><span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;first action, without reward feedback&quot;&quot;&quot;</span>
+        <span class="c1"># randomly pick an action</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Na</span><span class="p">)</span>
+        <span class="k">return</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="p">)</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;learn by reward and take an action&quot;&quot;&quot;</span>
         <span class="c1"># do nothing for reward</span>
         <span class="c1"># randomly pick an action</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Na</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">action</span>
+        <span class="k">return</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -621,29 +627,29 @@ where <span class="math notranslate nohighlight">\(0\le\gamma&lt;1\)</span> is a
 <span class="n">env</span> <span class="o">=</span> <span class="n">Environment</span><span class="p">()</span>
 <span class="n">agent</span> <span class="o">=</span> <span class="n">Agent</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">Ns</span><span class="p">,</span> <span class="n">env</span><span class="o">.</span><span class="n">Na</span><span class="p">)</span>
 <span class="c1"># First contact</span>
-<span class="n">state</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
-<span class="n">action</span> <span class="o">=</span> <span class="n">agent</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+<span class="n">state</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">action</span> <span class="o">=</span> <span class="n">agent</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">([</span><span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">])</span>
 <span class="c1"># Repeat interactoin</span>
 <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
-    <span class="n">state</span><span class="p">,</span> <span class="n">reward</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
-    <span class="n">action</span> <span class="o">=</span> <span class="n">agent</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">reward</span><span class="p">)</span>
+    <span class="n">reward</span><span class="p">,</span> <span class="n">state</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+    <span class="n">action</span> <span class="o">=</span> <span class="n">agent</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">reward</span><span class="p">,</span> <span class="n">state</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">([</span><span class="n">t</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2, 0]
-[0, 0.5495218388317441, 1, 0]
-[1, 0.48042803706666537, 0, 0]
-[2, 0.317375744294911, 1, 1]
-[3, 0.2871449113509028, 1, 1]
-[4, 0.503250462357389, 1, 1]
-[5, 0.6766827276231813, 0, 1]
-[6, 0.8466866133205215, 2, 0]
-[7, 0.12709733920563315, 1, 1]
-[8, 0.6922346508920634, 2, 0]
-[9, 0.07151334537704068, 0, 1]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 0]
+[0, 0.4263517055686392, 2, 0]
+[1, 0.31568692109414775, 0, 0]
+[2, 0.08521569719193522, 2, 0]
+[3, 0.0264396960854546, 1, 0]
+[4, 0.5341077092171749, 0, 1]
+[5, 0.7729876157489636, 0, 0]
+[6, 0.6584464402083325, 2, 1]
+[7, 0.1778192183953078, 0, 0]
+[8, 0.4572805230361444, 0, 0]
+[9, 0.9765867613685799, 2, 0]
 </pre></div>
 </div>
 </div>
@@ -661,15 +667,15 @@ where <span class="math notranslate nohighlight">\(0\le\gamma&lt;1\)</span> is a
     <span class="k">def</span><span class="w"> </span><span class="nf">episode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;One episode&quot;&quot;&quot;</span>
         <span class="c1"># First contact</span>
-        <span class="n">state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
-        <span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">agent</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+        <span class="n">state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        <span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">agent</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
         <span class="c1"># Table of t, r, s, a</span>
         <span class="n">Trsa</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">tmax</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
         <span class="n">Trsa</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">]</span>
         <span class="c1"># Repeat interactoin</span>
         <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">tmax</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
-            <span class="n">state</span><span class="p">,</span> <span class="n">reward</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
-            <span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">agent</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">reward</span><span class="p">)</span>
+            <span class="n">reward</span><span class="p">,</span> <span class="n">state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+            <span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">agent</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">reward</span><span class="p">,</span> <span class="n">state</span><span class="p">)</span>
             <span class="n">Trsa</span><span class="p">[</span><span class="n">t</span><span class="p">,:]</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">]</span>
         <span class="k">return</span><span class="p">(</span><span class="n">Trsa</span><span class="p">)</span>
     
@@ -715,7 +721,7 @@ What is the right policy?</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">reward</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">R</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">]</span>
         <span class="c1"># move left or right and circle</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">action</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">%</span><span class="k">self</span>.Ns  
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">reward</span>
+        <span class="k">return</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">reward</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -736,22 +742,32 @@ What is the right policy?</p>
     
     <span class="k">def</span><span class="w"> </span><span class="nf">boltzmann</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">q</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Boltzmann selection&quot;&quot;&quot;</span>
-        <span class="n">pr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta</span><span class="o">*</span><span class="n">q</span><span class="p">)</span>   <span class="c1"># unnormalized probability</span>
-        <span class="n">pr</span> <span class="o">=</span> <span class="n">pr</span><span class="o">/</span><span class="nb">sum</span><span class="p">(</span><span class="n">pr</span><span class="p">)</span>    <span class="c1"># probability</span>
-        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pr</span><span class="p">),</span> <span class="n">p</span><span class="o">=</span><span class="n">pr</span><span class="p">)</span>
-    
-    <span class="k">def</span><span class="w"> </span><span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">reward</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;learn by reward and take an action&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">reward</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="c1"># TD error: self.state/action retains the previous ones</span>
-            <span class="n">delta</span> <span class="o">=</span> <span class="n">reward</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">gamma</span><span class="o">*</span><span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Q</span><span class="p">[</span><span class="n">state</span><span class="p">,:])</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">Q</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="p">]</span>
-            <span class="c1"># Update the value for previous state and action</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">Q</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="p">]</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="o">*</span><span class="n">delta</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta</span><span class="o">*</span><span class="n">q</span><span class="p">)</span>   <span class="c1"># unnormalized probability</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">/</span><span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>    <span class="c1"># probability</span>
+        <span class="c1"># sample by multinoulli (categorical) distribution</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multinomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">p</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># find the index of 1</span>
+        <span class="c1">#return(np.searchsorted( np.cumsum(p), np.random.random()))</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;first action, without reward feedback&quot;&quot;&quot;</span>
         <span class="c1"># Boltzmann action selection</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">boltzmann</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">Q</span><span class="p">[</span><span class="n">state</span><span class="p">,:])</span>
         <span class="c1"># remember the state</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">state</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">action</span>
+        <span class="k">return</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="p">)</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;learn by reward and take an action&quot;&quot;&quot;</span>
+        <span class="c1"># TD error: self.state/action retains the previous ones</span>
+        <span class="n">delta</span> <span class="o">=</span> <span class="n">reward</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">gamma</span><span class="o">*</span><span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Q</span><span class="p">[</span><span class="n">state</span><span class="p">,:])</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">Q</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="p">]</span>
+        <span class="c1"># Update the value for previous state and action</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Q</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="p">]</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="o">*</span><span class="n">delta</span>
+        <span class="c1"># Boltzmann action selection</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">boltzmann</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">Q</span><span class="p">[</span><span class="n">state</span><span class="p">,:])</span>
+        <span class="c1"># remember the state</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">state</span>
+        <span class="k">return</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -783,7 +799,7 @@ What is the right policy?</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/56f6a7e5e634f9b03fabfcb9e95c2a9e0b114e570d500902535fc7d4fde35a2c.png" src="_images/56f6a7e5e634f9b03fabfcb9e95c2a9e0b114e570d500902535fc7d4fde35a2c.png" />
+<img alt="_images/0bed715a374d0ad95d54aa17cc4843c307294f26078a44bde6e392c48cad61e5.png" src="_images/0bed715a374d0ad95d54aa17cc4843c307294f26078a44bde6e392c48cad61e5.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -795,7 +811,7 @@ What is the right policy?</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ad1f35f41c77d3eb34a3feb3c6b00b711504ab13ca426884426131c22a6c927c.png" src="_images/ad1f35f41c77d3eb34a3feb3c6b00b711504ab13ca426884426131c22a6c927c.png" />
+<img alt="_images/4d4a156670f35d70e1303275891e8b1cf832c385442146788b761733957d3dcd.png" src="_images/4d4a156670f35d70e1303275891e8b1cf832c385442146788b761733957d3dcd.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -808,7 +824,7 @@ What is the right policy?</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8e35b16db26e084b895c7c818c4c7f2389a08fc54c5e984a4f3983c7d9cfea4a.png" src="_images/8e35b16db26e084b895c7c818c4c7f2389a08fc54c5e984a4f3983c7d9cfea4a.png" />
+<img alt="_images/fcc8033091341f22c28781baa8a20e3a9ed57cf748c28b82eb1b31dde473f152.png" src="_images/fcc8033091341f22c28781baa8a20e3a9ed57cf748c28b82eb1b31dde473f152.png" />
 </div>
 </div>
 </section>
@@ -874,8 +890,6 @@ A reinforcement learning model of the basal ganglia (Doya 2007).</p>
 </ul>
 </section>
 </section>
-<div class="toctree-wrapper compound">
-</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -908,24 +922,6 @@ A reinforcement learning model of the basal ganglia (Doya 2007).</p>
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="Supervised_Exercise.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Supervised Learning: Exercise</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="Reinforcement_Exercise.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Chapter 4. Reinforcement Learning: Exercise</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
