@@ -452,8 +452,9 @@ In this case, the problem is simply to estimate the expected reward for each act
 <li><p>state transition rule <span class="math notranslate nohighlight">\(P(s'|s,a)\)</span></p></li>
 <li><p>reward function <span class="math notranslate nohighlight">\(R(s,a,s') = E[r|s,a,s']\)</span></p></li>
 </ul>
-<p>There are two conventions for the time index of reward. The reward following <span class="math notranslate nohighlight">\(a_t\)</span> is denoted as <span class="math notranslate nohighlight">\(r_t\)</span> or <span class="math notranslate nohighlight">\(r_{t+1}\)</span> depending on the literature. Here we take the convention by Sutton and Barto (2018):
-$<span class="math notranslate nohighlight">\((s_t,a_t)\rightarrow (r_{t+1},s_{t+1})\)</span>$</p>
+<p>There are two conventions for the time index of reward. The reward following <span class="math notranslate nohighlight">\(a_t\)</span> is denoted as <span class="math notranslate nohighlight">\(r_t\)</span> or <span class="math notranslate nohighlight">\(r_{t+1}\)</span> depending on the literature. Here we take the convention by Sutton and Barto (2018):</p>
+<div class="math notranslate nohighlight">
+\[(s_t,a_t)\rightarrow (r_{t+1},s_{t+1})\]</div>
 <p>In a dynamical environment, an action at time <span class="math notranslate nohighlight">\(t\)</span> may affect the reward at later times <span class="math notranslate nohighlight">\(r_\tau\)</span>, <span class="math notranslate nohighlight">\(\tau &gt; t\)</span> through the state dynamics.<br />
 From the other viewpoint, a reward at time <span class="math notranslate nohighlight">\(t\)</span> may depend on all the past states and actions at <span class="math notranslate nohighlight">\(\tau&lt;t\)</span>.</p>
 <p>Thus in selecting an action, an agent needs to consider maximizing expected cumulative reward, called <em>return</em></p>
@@ -633,17 +634,17 @@ where <span class="math notranslate nohighlight">\(0\le\gamma&lt;1\)</span> is a
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2, 0]
-[0, 0.5495218388317441, 1, 0]
-[1, 0.48042803706666537, 0, 0]
-[2, 0.317375744294911, 1, 1]
-[3, 0.2871449113509028, 1, 1]
-[4, 0.503250462357389, 1, 1]
-[5, 0.6766827276231813, 0, 1]
-[6, 0.8466866133205215, 2, 0]
-[7, 0.12709733920563315, 1, 1]
-[8, 0.6922346508920634, 2, 0]
-[9, 0.07151334537704068, 0, 1]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 0]
+[0, 0.4104266768344854, 0, 0]
+[1, 0.14491810568427876, 1, 0]
+[2, 0.9438655430171918, 0, 0]
+[3, 0.9779057685884179, 1, 1]
+[4, 0.15472926245009921, 1, 0]
+[5, 0.7198765499517444, 0, 0]
+[6, 0.9257223688638655, 2, 1]
+[7, 0.20074277625499592, 0, 1]
+[8, 0.19772263081645858, 1, 1]
+[9, 0.748551145066364, 0, 0]
 </pre></div>
 </div>
 </div>
@@ -761,14 +762,7 @@ What is the right policy?</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pain-Gain environment and Q-learning agent</span>
 <span class="n">pgq</span> <span class="o">=</span> <span class="n">RL</span><span class="p">(</span><span class="n">PainGain</span><span class="p">,</span> <span class="n">QL</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="c1"># customize parameters</span>
-<span class="n">pgq</span><span class="o">.</span><span class="n">agent</span><span class="o">.</span><span class="n">beta</span> <span class="o">=</span> <span class="mi">1</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pgq</span><span class="o">.</span><span class="n">agent</span><span class="o">.</span><span class="n">gamma</span> <span class="o">=</span> <span class="mf">0.9</span>
+<span class="n">pgq</span><span class="o">.</span><span class="n">agent</span><span class="o">.</span><span class="n">beta</span> <span class="o">=</span> <span class="mi">2</span>
 </pre></div>
 </div>
 </div>
@@ -783,7 +777,7 @@ What is the right policy?</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/56f6a7e5e634f9b03fabfcb9e95c2a9e0b114e570d500902535fc7d4fde35a2c.png" src="_images/56f6a7e5e634f9b03fabfcb9e95c2a9e0b114e570d500902535fc7d4fde35a2c.png" />
+<img alt="_images/1a9cbf92352ab12c869455355db1e2bf0d495d8bf7d5364b93faab1f7c38b78c.png" src="_images/1a9cbf92352ab12c869455355db1e2bf0d495d8bf7d5364b93faab1f7c38b78c.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -795,20 +789,20 @@ What is the right policy?</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ad1f35f41c77d3eb34a3feb3c6b00b711504ab13ca426884426131c22a6c927c.png" src="_images/ad1f35f41c77d3eb34a3feb3c6b00b711504ab13ca426884426131c22a6c927c.png" />
+<img alt="_images/337c722079b0e160c9dde438b049ab6116deaae4619b9642c593dbbedd989fdc.png" src="_images/337c722079b0e160c9dde438b049ab6116deaae4619b9642c593dbbedd989fdc.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Repeat episodes for learning curve</span>
 <span class="n">pgq</span> <span class="o">=</span> <span class="n">RL</span><span class="p">(</span><span class="n">PainGain</span><span class="p">,</span> <span class="n">QL</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">R</span> <span class="o">=</span> <span class="n">pgq</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">R</span> <span class="o">=</span> <span class="n">pgq</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">R</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8e35b16db26e084b895c7c818c4c7f2389a08fc54c5e984a4f3983c7d9cfea4a.png" src="_images/8e35b16db26e084b895c7c818c4c7f2389a08fc54c5e984a4f3983c7d9cfea4a.png" />
+<img alt="_images/c12051089c44768473e9e46b40f2fe5775395e54cedd930d1f8811a885bc5374.png" src="_images/c12051089c44768473e9e46b40f2fe5775395e54cedd930d1f8811a885bc5374.png" />
 </div>
 </div>
 </section>
