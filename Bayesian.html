@@ -372,6 +372,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coin-toss">Coin toss</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#noisy-observation">Noisy observation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayesian-approaches-in-machine-learning">Bayesian approaches in machine learning</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayesian-linear-regression">Bayesian Linear Regression</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#predictive-distribution">Predictive distribution</a></li>
@@ -550,14 +551,14 @@ From the above table, 0.5?</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># take samples</span>
 <span class="n">mu</span> <span class="o">=</span> <span class="mf">0.3</span>  <span class="c1"># probability of head</span>
-<span class="n">N</span> <span class="o">=</span> <span class="mi">6</span>   <span class="c1"># number of samples</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">8</span>   <span class="c1"># number of samples</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="o">-</span><span class="n">mu</span><span class="p">,</span> <span class="n">mu</span><span class="p">])</span> <span class="c1"># binary observation sequence</span>
 <span class="n">y</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 0, 0, 0, 0, 0])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 0, 0, 0, 0, 0, 0, 1])
 </pre></div>
 </div>
 </div>
@@ -567,8 +568,9 @@ From the above table, 0.5?</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dx</span> <span class="o">=</span> <span class="mf">0.01</span>  <span class="c1"># plot step</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dx</span><span class="p">)</span>  <span class="c1"># range of the parameter</span>
 <span class="n">prior</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>  <span class="c1"># Assume a uniform prior</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
 <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>  <span class="c1"># a new figure</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># a new figure</span>
     <span class="c1"># prior</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">x</span><span class="p">,</span> <span class="n">prior</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span>
     <span class="c1"># observation</span>
@@ -583,31 +585,98 @@ From the above table, 0.5?</p>
     <span class="n">marginal</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">prilik</span><span class="p">)</span><span class="o">*</span><span class="n">dx</span>    <span class="c1"># integrate over the parameter range</span>
     <span class="n">posterior</span> <span class="o">=</span> <span class="n">prilik</span><span class="o">/</span><span class="n">marginal</span>  <span class="c1"># normalize</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">x</span><span class="p">,</span> <span class="n">posterior</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$\mu$&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s1">&#39;prior&#39;</span><span class="p">,</span> <span class="s1">&#39;observation&#39;</span><span class="p">,</span> <span class="s1">&#39;likelihood&#39;</span><span class="p">,</span> <span class="s1">&#39;prior*like.&#39;</span><span class="p">,</span> <span class="s1">&#39;posterior&#39;</span><span class="p">))</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;t = </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\mu$&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">t</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s1">&#39;prior&#39;</span><span class="p">,</span> <span class="s1">&#39;observation&#39;</span><span class="p">,</span> <span class="s1">&#39;likelihood&#39;</span><span class="p">,</span> <span class="s1">&#39;prior*like.&#39;</span><span class="p">,</span> <span class="s1">&#39;posterior&#39;</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;t = </span><span class="si">{</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="c1"># posterior as a new prior</span>
     <span class="n">prior</span> <span class="o">=</span> <span class="n">posterior</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:20: SyntaxWarning: invalid escape sequence &#39;\m&#39;
-&lt;&gt;:20: SyntaxWarning: invalid escape sequence &#39;\m&#39;
-/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_59343/3935772410.py:20: SyntaxWarning: invalid escape sequence &#39;\m&#39;
-  plt.xlabel(&#39;$\mu$&#39;)
-</pre></div>
-</div>
-<img alt="_images/fbf6998c82987513cd3d67339ad037fa563b00c61696c865251bf32a3e03c4dc.png" src="_images/fbf6998c82987513cd3d67339ad037fa563b00c61696c865251bf32a3e03c4dc.png" />
-<img alt="_images/5dc800c24010df8ad908eaee60db843fcf66c7271662fcfb7f748b5d769da2ff.png" src="_images/5dc800c24010df8ad908eaee60db843fcf66c7271662fcfb7f748b5d769da2ff.png" />
-<img alt="_images/b982222d2da9acb48c9447589013ac187cb96417c79b2410780b8aa602ca2762.png" src="_images/b982222d2da9acb48c9447589013ac187cb96417c79b2410780b8aa602ca2762.png" />
-<img alt="_images/760888307303041cd01b6a0674babb70a2a5837ef7326502e783fa4a1db02c34.png" src="_images/760888307303041cd01b6a0674babb70a2a5837ef7326502e783fa4a1db02c34.png" />
-<img alt="_images/c559bd6d57b68462980a0bce28ae12f63b1a0ad03eac86fdbdb404b61d3e3ec6.png" src="_images/c559bd6d57b68462980a0bce28ae12f63b1a0ad03eac86fdbdb404b61d3e3ec6.png" />
-<img alt="_images/ae6a3c515d3e8c8f2e82022b54f82ecd78b5808bff76087a6e36dff62b09a6e7.png" src="_images/ae6a3c515d3e8c8f2e82022b54f82ecd78b5808bff76087a6e36dff62b09a6e7.png" />
+<img alt="_images/645f3b57543db5c9506fd6f28dfec81eac278875ad4dafa862a7f835be7bc1b9.png" src="_images/645f3b57543db5c9506fd6f28dfec81eac278875ad4dafa862a7f835be7bc1b9.png" />
 </div>
 </div>
 <p>As more data are collected, the posterior distribution of <span class="math notranslate nohighlight">\(\mu\)</span> becomes sharper and colser to the true value.</p>
 </section>
+</section>
+<section id="noisy-observation">
+<h2>Noisy observation<a class="headerlink" href="#noisy-observation" title="Link to this heading">#</a></h2>
+<p>Estimate the mean <span class="math notranslate nohighlight">\(\mu\)</span> and the standard deviationn <span class="math notranslate nohighlight">\(\sigma\)</span> from noisy observations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Noisy observation: y = N(mu,sigma)</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">mu</span> <span class="o">+</span> <span class="n">sigma</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-0.29650755  0.37821215  1.84774002 -2.78765557  2.26589076  1.19551142
+ -0.17336153  0.83397063 -0.07840148  0.19259326 -2.41061598  3.06239619]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Start from a uniform prior</span>
+<span class="n">rmu</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="n">dmu</span> <span class="o">=</span> <span class="mf">0.2</span>   <span class="c1"># range and step of mu</span>
+<span class="n">rsig</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>  <span class="n">dsig</span> <span class="o">=</span> <span class="mf">0.2</span> <span class="c1"># range and step of sigma</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="n">rmu</span><span class="p">,</span> <span class="n">rmu</span><span class="p">,</span> <span class="n">dmu</span><span class="p">)</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">rsig</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">dsig</span><span class="p">)</span>
+<span class="n">M</span><span class="p">,</span> <span class="n">S</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+<span class="n">prior</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">M</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">rmu</span><span class="o">*</span><span class="n">rsig</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="c1"># observation</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">dsig</span><span class="o">+</span><span class="n">rsig</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">N</span><span class="p">,</span> <span class="s1">&#39;w+&#39;</span><span class="p">)</span>
+    <span class="c1"># likelihood</span>
+    <span class="n">likelihood</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">((</span><span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">-</span><span class="n">M</span><span class="p">)</span><span class="o">/</span><span class="n">S</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span><span class="o">*</span><span class="n">S</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">likelihood</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="n">rmu</span><span class="p">,</span><span class="n">rmu</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">rsig</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\mu$&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\sigma$&#39;</span><span class="p">);</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;likelihood </span><span class="si">{</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="c1"># posterior</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">prilik</span> <span class="o">=</span> <span class="n">prior</span><span class="o">*</span><span class="n">likelihood</span>
+    <span class="c1">#plt.imshow(prilik, extent=(-rmu,rmu,0,rsig))</span>
+    <span class="n">marginal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">prilik</span><span class="p">)</span><span class="o">*</span><span class="n">dmu</span><span class="o">*</span><span class="n">dsig</span>
+    <span class="n">posterior</span> <span class="o">=</span> <span class="n">prilik</span><span class="o">/</span><span class="n">marginal</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">posterior</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="n">rmu</span><span class="p">,</span><span class="n">rmu</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">rsig</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\mu$&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\sigma$&#39;</span><span class="p">);</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;posterior </span><span class="si">{</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">prior</span> <span class="o">=</span> <span class="n">posterior</span>  <span class="c1"># new prior</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/606db10ff6635d996135980d377df77de2adb22f7404c95fddcc23dd7aeb9eb5.png" src="_images/606db10ff6635d996135980d377df77de2adb22f7404c95fddcc23dd7aeb9eb5.png" />
+<img alt="_images/ecfecfdb4d70eb6e8c719ebd29a1eeaf87364bcd0281f7dfc796348ae279744f.png" src="_images/ecfecfdb4d70eb6e8c719ebd29a1eeaf87364bcd0281f7dfc796348ae279744f.png" />
+<img alt="_images/c236c6d638a004f52b88ed12dc4f4ef1cfcfe794e7734f5a21f63bd48b630fd9.png" src="_images/c236c6d638a004f52b88ed12dc4f4ef1cfcfe794e7734f5a21f63bd48b630fd9.png" />
+<img alt="_images/bb09ef5e1ce18794a809ded4dbd53b73e00430e0913866651c227394e3b1e992.png" src="_images/bb09ef5e1ce18794a809ded4dbd53b73e00430e0913866651c227394e3b1e992.png" />
+<img alt="_images/2788a860225a80f287e2d980048c56be21cfa82c91d739746a2f3bbfc06796d9.png" src="_images/2788a860225a80f287e2d980048c56be21cfa82c91d739746a2f3bbfc06796d9.png" />
+<img alt="_images/394c78cf3149856000831d243f13bd33d2e79547711108d6db8a4cf635b6a874.png" src="_images/394c78cf3149856000831d243f13bd33d2e79547711108d6db8a4cf635b6a874.png" />
+<img alt="_images/8e54b8ca9c72264eaac2b03eea40aa3a1314b6b1ba1c2a766b9420a51ad4534a.png" src="_images/8e54b8ca9c72264eaac2b03eea40aa3a1314b6b1ba1c2a766b9420a51ad4534a.png" />
+<img alt="_images/6a388e9dcf0ec15ce0dff7060e4a8ce453799128118b89d614d13438902a07f5.png" src="_images/6a388e9dcf0ec15ce0dff7060e4a8ce453799128118b89d614d13438902a07f5.png" />
+<img alt="_images/6fc8c1197a4ac949746f7fd7202463c8b9b68a137f79b80a38b675e15f05cb38.png" src="_images/6fc8c1197a4ac949746f7fd7202463c8b9b68a137f79b80a38b675e15f05cb38.png" />
+<img alt="_images/fd4674b28dac862d9e7d5db01b7aa983ef6b8cb463abfb29d3e2ee612483de94.png" src="_images/fd4674b28dac862d9e7d5db01b7aa983ef6b8cb463abfb29d3e2ee612483de94.png" />
+<img alt="_images/ea6f61b3f6f23743bc151960eb31d6f4c140ef91c6e6fc9b940afca66a1c9cac.png" src="_images/ea6f61b3f6f23743bc151960eb31d6f4c140ef91c6e6fc9b940afca66a1c9cac.png" />
+<img alt="_images/00ce48777aa87c5283eec59840533911582b8eef01cd59cad644531cf0e33e13.png" src="_images/00ce48777aa87c5283eec59840533911582b8eef01cd59cad644531cf0e33e13.png" />
+</div>
+</div>
 </section>
 <section id="bayesian-approaches-in-machine-learning">
 <h2>Bayesian approaches in machine learning<a class="headerlink" href="#bayesian-approaches-in-machine-learning" title="Link to this heading">#</a></h2>
@@ -700,7 +769,7 @@ where \)</span>p(\epsilon)=\mathcal{N}(0,\beta^{-1})$.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e4383071bf074e5eca61f674fd03a207b256298c3ffd496503ada7ce8d6978f0.png" src="_images/e4383071bf074e5eca61f674fd03a207b256298c3ffd496503ada7ce8d6978f0.png" />
+<img alt="_images/f326422657d04df3be2618d722411019e01b3785a15968c66212dc2df220b790.png" src="_images/f326422657d04df3be2618d722411019e01b3785a15968c66212dc2df220b790.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -751,12 +820,12 @@ where \)</span>p(\epsilon)=\mathcal{N}(0,\beta^{-1})$.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>m = [-0.61091538 -0.05462499]
-S = [[ 0.09746888 -0.08069981]
- [-0.08069981  0.99278423]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>m = [-1.18109368  0.59550667]
+S = [[0.2615659  0.372318  ]
+ [0.372318   0.81227751]]
 </pre></div>
 </div>
-<img alt="_images/ef004d730428c2d8ea5a8f04f9a23e7a2e0e3f999b992765c8afc21e2ac795b6.png" src="_images/ef004d730428c2d8ea5a8f04f9a23e7a2e0e3f999b992765c8afc21e2ac795b6.png" />
+<img alt="_images/1a0e89e672a6323441527c44f39325527b413eeec92d43460809c41296662eb8.png" src="_images/1a0e89e672a6323441527c44f39325527b413eeec92d43460809c41296662eb8.png" />
 </div>
 </div>
 <section id="predictive-distribution">
@@ -836,7 +905,7 @@ S = [[ 0.09746888 -0.08069981]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/84a43d01483f43fcd5a9d40647fac3627fd2f1769243e1ec7eda875af8850dcb.png" src="_images/84a43d01483f43fcd5a9d40647fac3627fd2f1769243e1ec7eda875af8850dcb.png" />
+<img alt="_images/11a020337ae124e2a24c069e52bde8dbeb1e67ff73f06cffffcc591200b84674.png" src="_images/11a020337ae124e2a24c069e52bde8dbeb1e67ff73f06cffffcc591200b84674.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -860,11 +929,11 @@ S = [[ 0.09746888 -0.08069981]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 0.51647468  0.12057582 -0.82710617 -0.77779686 -0.1437502   0.19041077
-  0.508533    0.8704555  -0.0191019  -0.11757823]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 0.36391967  0.22252404 -1.04505018 -0.45994288 -0.02332867  0.07579673
+  0.50329866  0.7265915  -0.21131898 -0.56739785]
 </pre></div>
 </div>
-<img alt="_images/977d5beed4659e8ccb99e810852bd99f5131c5ec68aa9e5a6b53446a97689fb6.png" src="_images/977d5beed4659e8ccb99e810852bd99f5131c5ec68aa9e5a6b53446a97689fb6.png" />
+<img alt="_images/bacf35633111145317ff2698e99be08dfea38e4ee1847b8704244536305e21cf.png" src="_images/bacf35633111145317ff2698e99be08dfea38e4ee1847b8704244536305e21cf.png" />
 </div>
 </div>
 <p>See how <span class="math notranslate nohighlight">\(N\)</span>, <span class="math notranslate nohighlight">\(M\)</span>, <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> affect the performance.</p>
@@ -949,17 +1018,17 @@ S = [[ 0.09746888 -0.08069981]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 0.8656768980275803 1.855238058399829 -28.27701587705443 0.438940357711661
-3 0.7262742163885205 2.4418935908195203 -28.20032702959694 0.5805749168212012
-4 0.35735113672605545 18.641316969199696 -11.771054261902199 0.06265979976158836
-5 0.9134361935627687 21.236753957236147 -10.700105564503778 0.05648203347434633
-6 1.595880874540142 21.31307062374295 -11.09283955491344 0.05643284830182529
-7 2.170473281755866 23.038504785338365 -10.964447539182965 0.06607155723671788
-8 2.7793882753781047 24.579483934369627 -10.661183229255498 0.06048600388449622
-9 3.2277466399970733 25.398750572135295 -10.59212546201068 0.04766674364604378
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 33.778293113514245 2.235354125870604 -23.004360177490817 0.4282154212895307
+3 4.809068595449988 2.353969520142632 -25.904249731742564 0.4217001729584062
+4 0.26086678175653677 29.39264202712211 -7.934591230390508 0.008300982317741172
+5 0.7103208561540388 35.621867349160055 -6.189526459689123 0.00898405424985272
+6 1.3424356751646311 36.3044791989696 -5.941403071117978 0.010284653624427542
+7 1.951385311166175 39.245493383553836 -5.722673291650771 0.013605463974775873
+8 2.471114863612759 44.50507806345025 -4.603746165185857 0.021325326728145622
+9 3.0992991724890615 49.14605097768851 -3.649030413450628 0.03349519189754263
 </pre></div>
 </div>
-<img alt="_images/1d99cf80fcd3ab99c042ed72e1b5a36f8927e4c90fd740f4a841c8f6de8b043d.png" src="_images/1d99cf80fcd3ab99c042ed72e1b5a36f8927e4c90fd740f4a841c8f6de8b043d.png" />
+<img alt="_images/59144ec30abf0653966a8bc4b0de4633af4a50211258a507cf2de737fdf06d25.png" src="_images/59144ec30abf0653966a8bc4b0de4633af4a50211258a507cf2de737fdf06d25.png" />
 </div>
 </div>
 </section>
@@ -1105,7 +1174,7 @@ Graphical model of a chain of states.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 1, 2, 2, 3, 4, 4, 5, 5, 0, 0, 1, 1, 1, 2, 3])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 2, 2, 2, 2, 2, 3, 3, 3, 4, 5, 5, 0, 0, 0, 1])
 </pre></div>
 </div>
 </div>
@@ -1306,7 +1375,7 @@ Graphical model of a chain of states.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4b4b496b749c48469d7c11cfd09306efdc2cb2d604b01c9bf1455328957a8a0c.png" src="_images/4b4b496b749c48469d7c11cfd09306efdc2cb2d604b01c9bf1455328957a8a0c.png" />
+<img alt="_images/c99b99e2028655a63d162f18533508956b5e3a180765f92b9fca03b88b6cd301.png" src="_images/c99b99e2028655a63d162f18533508956b5e3a180765f92b9fca03b88b6cd301.png" />
 </div>
 </div>
 <p>From such noisy intermittent observations, how can we estimate the state?</p>
@@ -1323,7 +1392,7 @@ Graphical model of a chain of states.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/bc1896801fb3238b4dc1c14609779e9c3d049919841b40d7dac330c0cacb6ed4.png" src="_images/bc1896801fb3238b4dc1c14609779e9c3d049919841b40d7dac330c0cacb6ed4.png" />
+<img alt="_images/e7b33517f36d64e5c266294417fa64d58afcc775ef903fe372316085eae86aa4.png" src="_images/e7b33517f36d64e5c266294417fa64d58afcc775ef903fe372316085eae86aa4.png" />
 </div>
 </div>
 <p>Even when there is no useful sensory input, you can predict the state distribution by the dynamic model.
@@ -1462,6 +1531,7 @@ This tutorial illustrates how variational free-energy approximation of posterior
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coin-toss">Coin toss</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#noisy-observation">Noisy observation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayesian-approaches-in-machine-learning">Bayesian approaches in machine learning</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayesian-linear-regression">Bayesian Linear Regression</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#predictive-distribution">Predictive distribution</a></li>
