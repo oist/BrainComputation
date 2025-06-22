@@ -261,6 +261,70 @@
 
 
 
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/oist/BrainComputation/master?urlpath=tree/Bayesian_Exercise.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/oist/BrainComputation/blob/master/Bayesian_Exercise.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+<a href="https://github.com/oist/BrainComputation" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
 <div class="dropdown dropdown-download-buttons">
   <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
     <i class="fas fa-download"></i>
@@ -379,12 +443,7 @@ document.write(`
 <p><strong>1.</strong> Apply Bayesian linear regression with gaussian basis functions to a data sampled from a nonlionear function of your interest and see how <span class="math notranslate nohighlight">\(\alpha\)</span>, <span class="math notranslate nohighlight">\(\beta\)</span>, <span class="math notranslate nohighlight">\(M\)</span> and <span class="math notranslate nohighlight">\(N\)</span> affect the performance.</p>
 <p><strong>2.</strong> Compute the log evidence for the above models and see how that is related to the predictin errors.</p>
 <p><strong>3.</strong> Try forward-backward algorithm with different chains and inputs.</p>
-<p><strong>4.</strong> In the above chain example, we assumed that only one of the <span class="math notranslate nohighlight">\(K\)</span> bits is one. If we allow simultaneous activation, the number of states increases to <span class="math notranslate nohighlight">\(2^K\)</span>, such that the conditional probability has <span class="math notranslate nohighlight">\(2^{K_n}2^{K_{n+1}}\)</span> parameters.</p>
-<p>By using a stochastic neural network,</p>
-<div class="math notranslate nohighlight">
-\[ p(x_{n+1,j}|x_n) = f( \sum_{k=1}^{K_n} w_{jk} x_{nk}) \]</div>
-<p>where <span class="math notranslate nohighlight">\(f(x)=\frac{1}{1+e^{-x}}\)</span>, the conditional probabilty can be defined by <span class="math notranslate nohighlight">\(K_nK_{n+1}\)</span> parameters.</p>
-<p>Try implementing data sampling and inference in such a chain.</p>
+<p><strong>4.</strong> In the dynamic Bayesian inference example, we assumed that only one or no sensor raises a signal at each time. Consider a case where each sensor responds independently with others, possibly with different degree of reliabilites, i.e., setting of the observation models.</p>
 </section>
 
     <script type="text/x-thebe-config">
