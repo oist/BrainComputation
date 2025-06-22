@@ -24,12 +24,19 @@ bibtex_bibfiles:
   - BrainComputation.bib
 
 # Information about where the book exists on the web
-#repository:
-#  url: https://github.com/executablebooks/jupyter-book  # Online location of your book
+repository:
+  url: https://github.com/oist/BrainComputation
 #  path_to_book: docs  # Optional path to your book, relative to the repository root
-#  branch: master  # Which branch of the repository should be used when creating links (optional)
+#  branch: master  # Optional branch of the repository
 
 # Add GitHub buttons to your book
-#html:
+html:
 #  use_issues_button: true
-#  use_repository_button: true
+  use_repository_button: true
+
+# Interactive computing
+launch_buttons:
+  notebook_interface: "classic" # or "jupyterlab"
+  binderhub_url: "https://mybinder.org"  # The URL for your BinderHub
+  colab_url: "https://colab.research.google.com"
+#  deepnote_url: "https://deepnote.com"  # not working right now...
