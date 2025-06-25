@@ -587,11 +587,11 @@ y = w^o_{0} + \sum_{i=1}^M w^o_{i} h_i
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_59354/345111544.py:7: DeprecationWarning: `row_stack` alias is deprecated. Use `np.vstack` directly.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dd/3kwwsm055d1cc1w134st1f580000gn/T/ipykernel_34378/345111544.py:7: DeprecationWarning: `row_stack` alias is deprecated. Use `np.vstack` directly.
   y = np.row_stack((np.tile(Y[l],M[l+1]), np.repeat(Y[l+1],M[l])))
 </pre></div>
 </div>
-<img alt="_images/66d30eb4f7d2ac07cad28e5da1df726ce0bdb714da1ea9f17a770bdba6b15319.png" src="_images/66d30eb4f7d2ac07cad28e5da1df726ce0bdb714da1ea9f17a770bdba6b15319.png" />
+<img alt="_images/404f9a379e31d249b0f98c25f274171930016f9207b38d7b60d8f5bafea8de62.png" src="_images/404f9a379e31d249b0f98c25f274171930016f9207b38d7b60d8f5bafea8de62.png" />
 </div>
 </div>
 <section id="universality-of-multi-layer-neural-networks">
@@ -659,17 +659,17 @@ The blue lines show the propagation of errors through layer 2 to one unit in lay
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_59354/345111544.py:7: DeprecationWarning: `row_stack` alias is deprecated. Use `np.vstack` directly.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dd/3kwwsm055d1cc1w134st1f580000gn/T/ipykernel_34378/345111544.py:7: DeprecationWarning: `row_stack` alias is deprecated. Use `np.vstack` directly.
   y = np.row_stack((np.tile(Y[l],M[l+1]), np.repeat(Y[l+1],M[l])))
-/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_59354/3693421515.py:3: DeprecationWarning: `row_stack` alias is deprecated. Use `np.vstack` directly.
+/var/folders/dd/3kwwsm055d1cc1w134st1f580000gn/T/ipykernel_34378/3693421515.py:3: DeprecationWarning: `row_stack` alias is deprecated. Use `np.vstack` directly.
   plt.plot([3,2], np.row_stack((Y[3],np.repeat(Y[2][1],2)))+0.01, &quot;r&quot;)
-/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_59354/3693421515.py:5: DeprecationWarning: `row_stack` alias is deprecated. Use `np.vstack` directly.
+/var/folders/dd/3kwwsm055d1cc1w134st1f580000gn/T/ipykernel_34378/3693421515.py:5: DeprecationWarning: `row_stack` alias is deprecated. Use `np.vstack` directly.
   plt.plot([3,2], np.row_stack((np.repeat(Y[3],3),np.tile(Y[2],2))), &quot;b&quot;)
-/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_59354/3693421515.py:6: DeprecationWarning: `row_stack` alias is deprecated. Use `np.vstack` directly.
+/var/folders/dd/3kwwsm055d1cc1w134st1f580000gn/T/ipykernel_34378/3693421515.py:6: DeprecationWarning: `row_stack` alias is deprecated. Use `np.vstack` directly.
   plt.plot([2,1], np.row_stack((Y[2],np.repeat(Y[1][1],3))), &quot;b&quot;);
 </pre></div>
 </div>
-<img alt="_images/d239fb195c3d24491312ef29c20a037d53e2bfa8a67223124398dd956c228c79.png" src="_images/d239fb195c3d24491312ef29c20a037d53e2bfa8a67223124398dd956c228c79.png" />
+<img alt="_images/a76e7fe418ddc825a027f1ec6ddbb31caaece05526c94f4ac27485086b65c7f2.png" src="_images/a76e7fe418ddc825a027f1ec6ddbb31caaece05526c94f4ac27485086b65c7f2.png" />
 </div>
 </div>
 <p>Using these error gradients, all the weights can be updated by</p>
@@ -757,7 +757,7 @@ The blue lines show the propagation of errors through layer 2 to one unit in lay
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># sine wave dataset</span>
 <span class="n">N</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="n">sigma</span> <span class="o">=</span> <span class="mf">0.05</span>  <span class="c1"># noise</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mf">0.1</span>  <span class="c1"># noise</span>
 <span class="n">xr</span> <span class="o">=</span> <span class="mi">6</span>  <span class="c1"># range of x</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="n">xr</span><span class="p">,</span> <span class="n">xr</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span> <span class="c1">#.reshape((N,1))</span>
 <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="n">sigma</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">N</span><span class="p">)</span> <span class="c1">#(N,1))</span>
@@ -771,7 +771,7 @@ The blue lines show the propagation of errors through layer 2 to one unit in lay
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ee069403ef884d5a4895454e0043a8f2eee50d2c008f185b4fc79c85666ab0fe.png" src="_images/ee069403ef884d5a4895454e0043a8f2eee50d2c008f185b4fc79c85666ab0fe.png" />
+<img alt="_images/2258e748cbea56e9b510e8686d3e17cc2b56c52ab2ea7c4b247c0cfd16d48ab5.png" src="_images/2258e748cbea56e9b510e8686d3e17cc2b56c52ab2ea7c4b247c0cfd16d48ab5.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -798,13 +798,13 @@ The blue lines show the propagation of errors through layer 2 to one unit in lay
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9eb35599901f2f383fdb6c01c63797ac402b1a701f7aa25b6197e6902d4c3dce.png" src="_images/9eb35599901f2f383fdb6c01c63797ac402b1a701f7aa25b6197e6902d4c3dce.png" />
+<img alt="_images/c462d5668738b39358f91cfbc604f40559c59f58f4155786f94b06aae91d9946.png" src="_images/c462d5668738b39358f91cfbc604f40559c59f58f4155786f94b06aae91d9946.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Train with the data</span>
-<span class="n">mse</span> <span class="o">=</span> <span class="n">dn</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">mse</span> <span class="o">=</span> <span class="n">dn</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">3000</span><span class="p">)</span>
 <span class="c1">#print(dn.W)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;mse =&quot;</span><span class="p">,</span> <span class="n">mse</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>  <span class="c1"># final mse</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">mse</span><span class="p">);</span> 
@@ -813,10 +813,10 @@ The blue lines show the propagation of errors through layer 2 to one unit in lay
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.4366164752152898
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.03551642544353213
 </pre></div>
 </div>
-<img alt="_images/8f456b8768b8699aed8a4e6b10821a6b4bbe9affc07021a9e213bb78d5e995da.png" src="_images/8f456b8768b8699aed8a4e6b10821a6b4bbe9affc07021a9e213bb78d5e995da.png" />
+<img alt="_images/dd659e01a0010f67a4c3a70773f041d749d093276a9cc815493f3e12e1295bcd.png" src="_images/dd659e01a0010f67a4c3a70773f041d749d093276a9cc815493f3e12e1295bcd.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -831,7 +831,7 @@ The blue lines show the propagation of errors through layer 2 to one unit in lay
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/edf2908969672e32b0f70f5914718e18f66aea3312329334403ba1f79cf60554.png" src="_images/edf2908969672e32b0f70f5914718e18f66aea3312329334403ba1f79cf60554.png" />
+<img alt="_images/0feaf2055a594b5a0cd22082811bac3d4d813c78b51e32e8acc5974dcc7c5b59.png" src="_images/0feaf2055a594b5a0cd22082811bac3d4d813c78b51e32e8acc5974dcc7c5b59.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -847,7 +847,7 @@ The blue lines show the propagation of errors through layer 2 to one unit in lay
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/71f00d2a15394a2d197fa2d5e6217c703fc60829c0d519121c19f778d78780e7.png" src="_images/71f00d2a15394a2d197fa2d5e6217c703fc60829c0d519121c19f778d78780e7.png" />
+<img alt="_images/c72d28b1ea67c4ee03852a3dda05065fc3696206f359ef029c248f3419cf629a.png" src="_images/c72d28b1ea67c4ee03852a3dda05065fc3696206f359ef029c248f3419cf629a.png" />
 </div>
 </div>
 </section>
@@ -908,7 +908,7 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ce9254d7588e3ccd764be94451f6404168e5e635eace50262841f238e6d7fb64.png" src="_images/ce9254d7588e3ccd764be94451f6404168e5e635eace50262841f238e6d7fb64.png" />
+<img alt="_images/959ba64d4cecdd07a540d53f143b77055cf0b8998c866c236f9b7126eca3222a.png" src="_images/959ba64d4cecdd07a540d53f143b77055cf0b8998c866c236f9b7126eca3222a.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -946,11 +946,11 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_59354/2164905428.py:11: DeprecationWarning: `row_stack` alias is deprecated. Use `np.vstack` directly.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dd/3kwwsm055d1cc1w134st1f580000gn/T/ipykernel_34378/2164905428.py:11: DeprecationWarning: `row_stack` alias is deprecated. Use `np.vstack` directly.
   plt.plot([0,1], np.row_stack((h0,h1)));
 </pre></div>
 </div>
-<img alt="_images/e252611ffc950f1acf7d0ab424c53609a2cc09a71e853758cf12576593ee8b93.png" src="_images/e252611ffc950f1acf7d0ab424c53609a2cc09a71e853758cf12576593ee8b93.png" />
+<img alt="_images/1b01336d65acf46fc1f8ff0b059c6a5b49af8edd11f4507ec2b868d7a0e81b6e.png" src="_images/1b01336d65acf46fc1f8ff0b059c6a5b49af8edd11f4507ec2b868d7a0e81b6e.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -965,10 +965,10 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.0004420698492747112
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.0009763061116883516
 </pre></div>
 </div>
-<img alt="_images/9882761ff192f4446005e7a4e357dfc0e6f97528bc7d2a23c41fb6b85b1f270c.png" src="_images/9882761ff192f4446005e7a4e357dfc0e6f97528bc7d2a23c41fb6b85b1f270c.png" />
+<img alt="_images/53ac10dbf4d0e93c92809c1b0f10da41fcfa3c0734f3daf956d28fd701285804.png" src="_images/53ac10dbf4d0e93c92809c1b0f10da41fcfa3c0734f3daf956d28fd701285804.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -988,11 +988,11 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_59354/2164905428.py:11: DeprecationWarning: `row_stack` alias is deprecated. Use `np.vstack` directly.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dd/3kwwsm055d1cc1w134st1f580000gn/T/ipykernel_34378/2164905428.py:11: DeprecationWarning: `row_stack` alias is deprecated. Use `np.vstack` directly.
   plt.plot([0,1], np.row_stack((h0,h1)));
 </pre></div>
 </div>
-<img alt="_images/4bd83d25354e29ae13ca9b1f647090d01bbe7711e0995836de309a3cab6fd5fd.png" src="_images/4bd83d25354e29ae13ca9b1f647090d01bbe7711e0995836de309a3cab6fd5fd.png" />
+<img alt="_images/871c0db359ff5bb4c6ef61de77fd488ba619660b02985adfeb33efd304721cf7.png" src="_images/871c0db359ff5bb4c6ef61de77fd488ba619660b02985adfeb33efd304721cf7.png" />
 </div>
 </div>
 </section>
@@ -1011,7 +1011,7 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1dd36b0d157a40d10bfcd9a042af0207cc7a2e595f839ac7e342ee8c1e8c02b8.png" src="_images/1dd36b0d157a40d10bfcd9a042af0207cc7a2e595f839ac7e342ee8c1e8c02b8.png" />
+<img alt="_images/a4b09d5ff21edb807efd104b15fcf35b94e44a57b317286dd7bb65003bfd283f.png" src="_images/a4b09d5ff21edb807efd104b15fcf35b94e44a57b317286dd7bb65003bfd283f.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1050,11 +1050,11 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_59354/3001121381.py:10: DeprecationWarning: `row_stack` alias is deprecated. Use `np.vstack` directly.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dd/3kwwsm055d1cc1w134st1f580000gn/T/ipykernel_34378/3001121381.py:10: DeprecationWarning: `row_stack` alias is deprecated. Use `np.vstack` directly.
   plt.plot([-xr,xr], np.row_stack((h0,h1)))
 </pre></div>
 </div>
-<img alt="_images/a6ed1cb1d350bebacb7fd0b575546e662113700ab3942bf0b60da01457592d71.png" src="_images/a6ed1cb1d350bebacb7fd0b575546e662113700ab3942bf0b60da01457592d71.png" />
+<img alt="_images/ba1affb3ffc7dde78bfe4a01baef4d5fe0a8c23f32ba8c669628b126fa7e6c1d.png" src="_images/ba1affb3ffc7dde78bfe4a01baef4d5fe0a8c23f32ba8c669628b126fa7e6c1d.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1069,10 +1069,10 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.02898870387562905
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.041084220172792715
 </pre></div>
 </div>
-<img alt="_images/ae348595b6cbae46e445a4ecb3dec7e8b04c2880496d4233d14ba8368e99e84d.png" src="_images/ae348595b6cbae46e445a4ecb3dec7e8b04c2880496d4233d14ba8368e99e84d.png" />
+<img alt="_images/ae0794150299ca6720e6cd2ddd8e1fff470bc56957975a49d38632c5c4547dc5.png" src="_images/ae0794150299ca6720e6cd2ddd8e1fff470bc56957975a49d38632c5c4547dc5.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1093,11 +1093,11 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_59354/3001121381.py:10: DeprecationWarning: `row_stack` alias is deprecated. Use `np.vstack` directly.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dd/3kwwsm055d1cc1w134st1f580000gn/T/ipykernel_34378/3001121381.py:10: DeprecationWarning: `row_stack` alias is deprecated. Use `np.vstack` directly.
   plt.plot([-xr,xr], np.row_stack((h0,h1)))
 </pre></div>
 </div>
-<img alt="_images/636d61f5072f961dc07bbe95811370ddf5dafecbd0afc40141017f25d794f3de.png" src="_images/636d61f5072f961dc07bbe95811370ddf5dafecbd0afc40141017f25d794f3de.png" />
+<img alt="_images/7bd021c709e7cae9f47796471aeaad8bea144a088eaad04854b42ed812a7d4f0.png" src="_images/7bd021c709e7cae9f47796471aeaad8bea144a088eaad04854b42ed812a7d4f0.png" />
 </div>
 </div>
 </section>
@@ -1175,11 +1175,11 @@ They were used for pre-training of deep networks for pattern classification, alt
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_59354/345111544.py:7: DeprecationWarning: `row_stack` alias is deprecated. Use `np.vstack` directly.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dd/3kwwsm055d1cc1w134st1f580000gn/T/ipykernel_34378/345111544.py:7: DeprecationWarning: `row_stack` alias is deprecated. Use `np.vstack` directly.
   y = np.row_stack((np.tile(Y[l],M[l+1]), np.repeat(Y[l+1],M[l])))
 </pre></div>
 </div>
-<img alt="_images/f52849b7e61f38a5729b4e793ba505df4c52128f35acf9d62ce5b6cc89098cdb.png" src="_images/f52849b7e61f38a5729b4e793ba505df4c52128f35acf9d62ce5b6cc89098cdb.png" />
+<img alt="_images/b626847f42ad3c9e6a949c58ec6758830945c2bb5662e8360dbdfd1246d804a9.png" src="_images/b626847f42ad3c9e6a949c58ec6758830945c2bb5662e8360dbdfd1246d804a9.png" />
 </div>
 </div>
 <p>Here we represent the state of visible units by <span class="math notranslate nohighlight">\(\b{v}\in\{0,1\}^{M_v}\)</span> and hidden units by <span class="math notranslate nohighlight">\(\b{h}\in\{0,1\}^{M_h}\)</span>.
@@ -1360,7 +1360,7 @@ Instead of this stochastic gradient for each data, <em>mini-batch</em> method to
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c42ff25e39bd2cf95f762dfc6c69f7540da9b1041f3c1984f76c862f074c7b17.png" src="_images/c42ff25e39bd2cf95f762dfc6c69f7540da9b1041f3c1984f76c862f074c7b17.png" />
+<img alt="_images/43ee8d232935b0da2ea991944f08da05fdcefaaa77c28a4283b3e32a41777e2d.png" src="_images/43ee8d232935b0da2ea991944f08da05fdcefaaa77c28a4283b3e32a41777e2d.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1374,7 +1374,7 @@ Instead of this stochastic gradient for each data, <em>mini-batch</em> method to
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1a17c276ceaf7bf0b5c50bd7689404e9731242cea2b90ca8085d67575288e95d.png" src="_images/1a17c276ceaf7bf0b5c50bd7689404e9731242cea2b90ca8085d67575288e95d.png" />
+<img alt="_images/755c94e9d13e282d9cdcecbbf07bb37681a4d08f663f3329baab831204354db5.png" src="_images/755c94e9d13e282d9cdcecbbf07bb37681a4d08f663f3329baab831204354db5.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1387,7 +1387,7 @@ Instead of this stochastic gradient for each data, <em>mini-batch</em> method to
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9b7b61e27731e71298aee788f31338ef936019a3e9d8393d68b210b196491289.png" src="_images/9b7b61e27731e71298aee788f31338ef936019a3e9d8393d68b210b196491289.png" />
+<img alt="_images/9625464c522774e2c217a10ed4f7fb4aa47da177687d306f559ed97af54cfbbe.png" src="_images/9625464c522774e2c217a10ed4f7fb4aa47da177687d306f559ed97af54cfbbe.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1398,7 +1398,7 @@ Instead of this stochastic gradient for each data, <em>mini-batch</em> method to
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1c561d72f611f711cf2883cb248b0a82f85da9e284ee80af1674ff51cd4abbc3.png" src="_images/1c561d72f611f711cf2883cb248b0a82f85da9e284ee80af1674ff51cd4abbc3.png" />
+<img alt="_images/c6a7768d91fa8c46dbe1d09e8ba999b30fe17cbbaafaa85fd0bc03cc63208fe1.png" src="_images/c6a7768d91fa8c46dbe1d09e8ba999b30fe17cbbaafaa85fd0bc03cc63208fe1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1418,7 +1418,7 @@ Instead of this stochastic gradient for each data, <em>mini-batch</em> method to
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e7cc81f40e071d67d26052e03aa4daf5ec02fb28e3532da5029dddb06617f6a6.png" src="_images/e7cc81f40e071d67d26052e03aa4daf5ec02fb28e3532da5029dddb06617f6a6.png" />
+<img alt="_images/155cfabf7e11029471c025764e874c750e1251050b61bcf112db758fd4b943f0.png" src="_images/155cfabf7e11029471c025764e874c750e1251050b61bcf112db758fd4b943f0.png" />
 </div>
 </div>
 </section>
@@ -1459,11 +1459,11 @@ Instead of this stochastic gradient for each data, <em>mini-batch</em> method to
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_59354/345111544.py:7: DeprecationWarning: `row_stack` alias is deprecated. Use `np.vstack` directly.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dd/3kwwsm055d1cc1w134st1f580000gn/T/ipykernel_34378/345111544.py:7: DeprecationWarning: `row_stack` alias is deprecated. Use `np.vstack` directly.
   y = np.row_stack((np.tile(Y[l],M[l+1]), np.repeat(Y[l+1],M[l])))
 </pre></div>
 </div>
-<img alt="_images/da39fdc71d74f5979f1b4a3c8170b163ee335f6a125efe074b12c9d711f62a06.png" src="_images/da39fdc71d74f5979f1b4a3c8170b163ee335f6a125efe074b12c9d711f62a06.png" />
+<img alt="_images/2f76f62263d5f81b62598151854c68a2869da37ff129b510b6e892360776d14c.png" src="_images/2f76f62263d5f81b62598151854c68a2869da37ff129b510b6e892360776d14c.png" />
 </div>
 </div>
 <p>The goal of learning of autoencoder is to reduce the reconstruction error, or to maximize the likelihood of regenerated data</p>
@@ -1494,11 +1494,11 @@ Instead of this stochastic gradient for each data, <em>mini-batch</em> method to
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/6k/5jhd3ffj5h796v6ts63gjksh0000gn/T/ipykernel_59354/345111544.py:7: DeprecationWarning: `row_stack` alias is deprecated. Use `np.vstack` directly.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dd/3kwwsm055d1cc1w134st1f580000gn/T/ipykernel_34378/345111544.py:7: DeprecationWarning: `row_stack` alias is deprecated. Use `np.vstack` directly.
   y = np.row_stack((np.tile(Y[l],M[l+1]), np.repeat(Y[l+1],M[l])))
 </pre></div>
 </div>
-<img alt="_images/8221102abf85978c25377eb85097fb7f847db3e465dbe8e98f4ea8e5234546f2.png" src="_images/8221102abf85978c25377eb85097fb7f847db3e465dbe8e98f4ea8e5234546f2.png" />
+<img alt="_images/c01971e74ed374dec6a8a507db36c001634415121ad081215450b9f16e9ed6bd.png" src="_images/c01971e74ed374dec6a8a507db36c001634415121ad081215450b9f16e9ed6bd.png" />
 </div>
 </div>
 </section>
