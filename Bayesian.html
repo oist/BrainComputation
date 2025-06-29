@@ -62,8 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'Bayesian';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Bayesian Approaches: Exercise" href="Bayesian_Exercise.html" />
-    <link rel="prev" title="Unsupervised Learning: Exercise" href="Unsupervised_Exercise.html" />
+    <link rel="next" title="Appendix: Bayesian Model Fitting by PyStan" href="PyStan.html" />
+    <link rel="prev" title="Exercise: Unsupervised Learning" href="Unsupervised_Exercise.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -184,35 +184,37 @@
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Introduction.html">Chapter 1. Introduction</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="Neurons.html">Chapter 2. Neural Modeling and Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="Neurons_Exercise.html">Chapter 2. Neural Modeling and Analysis: Exercise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Neurons_Exercise.html">Exercise: Neural Modeling and Analysis</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="Supervised.html">Chapter 3: Supervised Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="Supervised_Exercise.html">Supervised Learning: Exercise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Supervised_Exercise.html">Exercise: Supervised Learning</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="Reinforcement.html">Chapter 4. Reinforcement Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="Reinforcement_Exercise.html">Chapter 4. Reinforcement Learning: Exercise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Gymnasium.html">Appendix: Gymnasium</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reinforcement_Exercise.html">Exercise: Reinforcement Learning</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="Unsupervised.html">Chapter 5. Unsupervised Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="Unsupervised_Exercise.html">Unsupervised Learning: Exercise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unsupervised_Exercise.html">Exercise: Unsupervised Learning</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Chatper 6. Bayesian Approaches</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="Bayesian_Exercise.html">Bayesian Approaches: Exercise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PyStan.html">Appendix: Bayesian Model Fitting by PyStan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bayesian_Exercise.html">Exercise: Bayesian Approaches</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="Deep.html">Chapter 7: Deep Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="Deep_Exercise.html">Chapter 7: Deep Learning: Exercise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Deep_Exercise.html">Exercise: Deep Learning</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="Multiple.html">Chapter 8. Multiple Agents</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="Multiple_Exercise.html">Chapter 8. Multiple Agents: Exercise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Multiple_Exercise.html">Exercise:  Multiple Agents</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="Meta.html">Chapter 9. Meta-Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="Meta_Exercise.html">Chapter 9. Meta-Learning: Exercise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Meta_Exercise.html">Exercise: Meta-Learning</a></li>
 </ul>
 </details></li>
 </ul>
@@ -456,9 +458,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidden-markov-model">Hidden Markov model</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approximate-bayesian-inference">Approximate Bayesian inference</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variational-inference">Variational inference</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-methods">Sampling methods:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approximate-bayesian-inference">Approximate Bayesian inference</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variational-inference">Variational inference</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-methods">Sampling methods:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#markov-chain-monte-carlo-mcmc">Markov chain Monte Carlo (MCMC)</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayesian-sensorimotor-processing">Bayesian sensorimotor processing</a></li>
@@ -642,7 +645,7 @@ From the above table, 0.5?</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 0, 0, 1, 0, 1, 1, 0, 0, 0])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 1, 0, 1, 0, 0, 0, 0, 0, 1])
 </pre></div>
 </div>
 </div>
@@ -680,7 +683,7 @@ From the above table, 0.5?</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a7dfcbf64c4a0b484155e0752e83f4f86a2d1838dd7bde547967e178f6052f5c.png" src="_images/a7dfcbf64c4a0b484155e0752e83f4f86a2d1838dd7bde547967e178f6052f5c.png" />
+<img alt="_images/ec298bd40eef7e8cf7715a33ee2911d3901870cadaa1178f7a68b4e38801e660.png" src="_images/ec298bd40eef7e8cf7715a33ee2911d3901870cadaa1178f7a68b4e38801e660.png" />
 </div>
 </div>
 <p>As more data are collected, the posterior distribution of <span class="math notranslate nohighlight">\(\mu\)</span> becomes sharper and colser to the true value.</p>
@@ -706,7 +709,7 @@ From the above table, 0.5?</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/827bb76f56d72354aed0429140874ef852c97b88b737126a4bca125b386aa747.png" src="_images/827bb76f56d72354aed0429140874ef852c97b88b737126a4bca125b386aa747.png" />
+<img alt="_images/59e2e5ae80fbc8dc51b66e81a3f85fcbd06e40dbc8ad4de9bcfeb4e79f9176a3.png" src="_images/59e2e5ae80fbc8dc51b66e81a3f85fcbd06e40dbc8ad4de9bcfeb4e79f9176a3.png" />
 </div>
 </div>
 </section>
@@ -726,8 +729,8 @@ From the above table, 0.5?</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-0.60770741  0.12244718  1.5783317  -2.15012632  2.50516927  1.55528592
-  0.02608912  0.11993414 -1.57572533 -0.06675535]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-0.70635196  1.92218514 -0.68584733  0.2965167  -0.55829412  1.58621975
+ -0.26925025  2.82542414  2.778251    1.31513282]
 </pre></div>
 </div>
 </div>
@@ -776,16 +779,16 @@ From the above table, 0.5?</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6ecee78854ecc200fa3bf28eaa6d40d22f2bcabc9aabb0d329a0b7aa54e3e98e.png" src="_images/6ecee78854ecc200fa3bf28eaa6d40d22f2bcabc9aabb0d329a0b7aa54e3e98e.png" />
-<img alt="_images/5d63133871250c5d4ffc453181fa1ff888a6269912ed285d1ea49a41b9bfc3f6.png" src="_images/5d63133871250c5d4ffc453181fa1ff888a6269912ed285d1ea49a41b9bfc3f6.png" />
-<img alt="_images/4018eab2309d62a2f4c5878a73ecae96f3fc2683834d28d70b553b68fcf4170c.png" src="_images/4018eab2309d62a2f4c5878a73ecae96f3fc2683834d28d70b553b68fcf4170c.png" />
-<img alt="_images/dbca064c61696ea18c438ea43faab3be4aea6f4c41ebc6897a63c29d8f3dab3e.png" src="_images/dbca064c61696ea18c438ea43faab3be4aea6f4c41ebc6897a63c29d8f3dab3e.png" />
-<img alt="_images/62249643172a6b36bb6ea7704242cd1684021a4b39a3f9489d002336fd336ebf.png" src="_images/62249643172a6b36bb6ea7704242cd1684021a4b39a3f9489d002336fd336ebf.png" />
-<img alt="_images/e10d1d89bd084805f46eec6725eaa6749acf8d07778b7e9078cb5efbac06613b.png" src="_images/e10d1d89bd084805f46eec6725eaa6749acf8d07778b7e9078cb5efbac06613b.png" />
-<img alt="_images/300d468c394450f10a962d2e9246061dcc7e071589e43f19fe15e0581247ba2b.png" src="_images/300d468c394450f10a962d2e9246061dcc7e071589e43f19fe15e0581247ba2b.png" />
-<img alt="_images/4687945b17621d7c51ad922d34426a9db214b5e13e4b72e794191012977996db.png" src="_images/4687945b17621d7c51ad922d34426a9db214b5e13e4b72e794191012977996db.png" />
-<img alt="_images/0b5f2f9ed20ea350f58bd5ca007b2daf3538d02bf658ffc475715dea5b721c7b.png" src="_images/0b5f2f9ed20ea350f58bd5ca007b2daf3538d02bf658ffc475715dea5b721c7b.png" />
-<img alt="_images/8c23c8c6c00df87a4e7d39ee0113713b356970182f3cb1c91857b72093d8ec29.png" src="_images/8c23c8c6c00df87a4e7d39ee0113713b356970182f3cb1c91857b72093d8ec29.png" />
+<img alt="_images/a6cb7ec8e83788f93f4c3799a8ae8a156f08ed0b4a255207a49c5ac6baf68532.png" src="_images/a6cb7ec8e83788f93f4c3799a8ae8a156f08ed0b4a255207a49c5ac6baf68532.png" />
+<img alt="_images/11392f3d8c77ac5521fea5dfe13b1e933db2c974cbd607ae9aacdab489bd3f0d.png" src="_images/11392f3d8c77ac5521fea5dfe13b1e933db2c974cbd607ae9aacdab489bd3f0d.png" />
+<img alt="_images/881b815788f5e2c39979f5f735da18eb31b6e78328945b2231ce0eca8be57a9a.png" src="_images/881b815788f5e2c39979f5f735da18eb31b6e78328945b2231ce0eca8be57a9a.png" />
+<img alt="_images/ae1456610f5374542e859f794b91578c16ea1434c6fca2cac2a3366fb1262f14.png" src="_images/ae1456610f5374542e859f794b91578c16ea1434c6fca2cac2a3366fb1262f14.png" />
+<img alt="_images/c9d18440aa79299f7d481657822ebfbb8e78883833a02bc74ed1e19423fc66fe.png" src="_images/c9d18440aa79299f7d481657822ebfbb8e78883833a02bc74ed1e19423fc66fe.png" />
+<img alt="_images/c3215f7c0293c616408f0e2c2ba23a6e941bebd8c4c3c5710e4649b6d0e0e130.png" src="_images/c3215f7c0293c616408f0e2c2ba23a6e941bebd8c4c3c5710e4649b6d0e0e130.png" />
+<img alt="_images/a4d558815c6b2f026e0434a250b94355fe39af5a56873c2aaeafc6997ff3ff39.png" src="_images/a4d558815c6b2f026e0434a250b94355fe39af5a56873c2aaeafc6997ff3ff39.png" />
+<img alt="_images/9872bf0925a6dc98b456d00c260b122f5893decef5fa762ae4a6c405c95ea101.png" src="_images/9872bf0925a6dc98b456d00c260b122f5893decef5fa762ae4a6c405c95ea101.png" />
+<img alt="_images/3b8edba20fe838c236bc8c16eeeaf5f8a169e2d6d353bd6d9149cfae955cddd8.png" src="_images/3b8edba20fe838c236bc8c16eeeaf5f8a169e2d6d353bd6d9149cfae955cddd8.png" />
+<img alt="_images/47369dd58c832f6fb2ee4e97d0eed7f86c4bfe1a1162f17a9cc75105c58809ec.png" src="_images/47369dd58c832f6fb2ee4e97d0eed7f86c4bfe1a1162f17a9cc75105c58809ec.png" />
 </div>
 </div>
 <p>Here we consider a case where <span class="math notranslate nohighlight">\(y\)</span> is an observation of <span class="math notranslate nohighlight">\(x\)</span> with Gaussian noise</p>
@@ -833,7 +836,7 @@ For the presicision, the conjugate prior is a Gamma distribution</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/27301fb96b0bc147020f87b1f7d0c6138c5c6dae54bc0db60cd0c6fbb3a0b041.png" src="_images/27301fb96b0bc147020f87b1f7d0c6138c5c6dae54bc0db60cd0c6fbb3a0b041.png" />
+<img alt="_images/5a1ae1d00f0b6812206b885ed18114a15b0e0d12c1e775fd39319f1e7dcb99eb.png" src="_images/5a1ae1d00f0b6812206b885ed18114a15b0e0d12c1e775fd39319f1e7dcb99eb.png" />
 </div>
 </div>
 </section>
@@ -955,12 +958,12 @@ where \)</span>p(\epsilon)=\mathcal{N}(0,\beta^{-1})$.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b0c7c8c9af1838308b453e18ce30e4a693d5122a125f8fd3c45d6567b455e4da.png" src="_images/b0c7c8c9af1838308b453e18ce30e4a693d5122a125f8fd3c45d6567b455e4da.png" />
-<img alt="_images/430e307dedafee0f084ba23a16c7cb92b4c766f566133818bf1b184d3cd6ff88.png" src="_images/430e307dedafee0f084ba23a16c7cb92b4c766f566133818bf1b184d3cd6ff88.png" />
-<img alt="_images/8036a7ec50d2960923ac6c3977498f589b529196e5367d406fbb697abab9c93f.png" src="_images/8036a7ec50d2960923ac6c3977498f589b529196e5367d406fbb697abab9c93f.png" />
-<img alt="_images/7b570e7f557a5a152e76fcdf63efdceaaf0cd2fb36db3956cd58aee4b05b8869.png" src="_images/7b570e7f557a5a152e76fcdf63efdceaaf0cd2fb36db3956cd58aee4b05b8869.png" />
-<img alt="_images/a07dddaa5584cae4f1cba50ed7c80af754116960d0233ffd6e2618aba880a619.png" src="_images/a07dddaa5584cae4f1cba50ed7c80af754116960d0233ffd6e2618aba880a619.png" />
-<img alt="_images/c564803993a95663daca7c6b7797d4e4a535c5fe0f679be36cddef610e81360d.png" src="_images/c564803993a95663daca7c6b7797d4e4a535c5fe0f679be36cddef610e81360d.png" />
+<img alt="_images/cd8c868669cb5703042c183777b39849dad456abbd3966aa98546750437e41d8.png" src="_images/cd8c868669cb5703042c183777b39849dad456abbd3966aa98546750437e41d8.png" />
+<img alt="_images/d83917b153309daf1d27c59a028312eb01fb3ffeaef939ed56c50e57925df9f4.png" src="_images/d83917b153309daf1d27c59a028312eb01fb3ffeaef939ed56c50e57925df9f4.png" />
+<img alt="_images/1f52fdfb52a3dc60c36c2490185ce6de72bf0d8ee763596af0e84d7d1cdae747.png" src="_images/1f52fdfb52a3dc60c36c2490185ce6de72bf0d8ee763596af0e84d7d1cdae747.png" />
+<img alt="_images/0b0daec5fc3b59edb060c6a47fada88d7d31555da9898038ba0926be4c7783e7.png" src="_images/0b0daec5fc3b59edb060c6a47fada88d7d31555da9898038ba0926be4c7783e7.png" />
+<img alt="_images/0befbe3a34c800531f217093fa93ad647827667e85e090fa88fe16c0e156fe2f.png" src="_images/0befbe3a34c800531f217093fa93ad647827667e85e090fa88fe16c0e156fe2f.png" />
+<img alt="_images/5c19a5e7e1d394810c3655f4376468ece2f8bf9b375b7cd25cc4b38b0e3c3dc8.png" src="_images/5c19a5e7e1d394810c3655f4376468ece2f8bf9b375b7cd25cc4b38b0e3c3dc8.png" />
 </div>
 </div>
 <section id="predictive-distribution">
@@ -993,7 +996,7 @@ where \)</span>p(\epsilon)=\mathcal{N}(0,\beta^{-1})$.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/605d06dff760b6752aadc602cf7e755cca12266f298281f6ca18bc441c3007f6.png" src="_images/605d06dff760b6752aadc602cf7e755cca12266f298281f6ca18bc441c3007f6.png" />
+<img alt="_images/6502caeed6c5b16f748e795ba9f301cc7fc8619a4f7b1b1191eace8947dedaf9.png" src="_images/6502caeed6c5b16f748e795ba9f301cc7fc8619a4f7b1b1191eace8947dedaf9.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1040,7 +1043,7 @@ where \)</span>p(\epsilon)=\mathcal{N}(0,\beta^{-1})$.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/53867a8ee8ff511d1ed68b4aba9fbd6287b07dbf2ce6c752b42cb6edefec5975.png" src="_images/53867a8ee8ff511d1ed68b4aba9fbd6287b07dbf2ce6c752b42cb6edefec5975.png" />
+<img alt="_images/72e3a772f5ccb3efa79b2fe0af58e844507a13890da66ac618f21edc5438dbba.png" src="_images/72e3a772f5ccb3efa79b2fe0af58e844507a13890da66ac618f21edc5438dbba.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1064,11 +1067,11 @@ where \)</span>p(\epsilon)=\mathcal{N}(0,\beta^{-1})$.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 0.28387652  0.30645266 -0.65769741 -0.44243091 -0.2122208   0.03666591
-  0.36660661  0.67812325  0.24105117  0.01089246]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 0.08160849 -0.10824807 -0.61026033 -0.66746323 -0.15525576  0.00855041
+  0.31424315  0.83447899 -0.36854145 -0.20883743]
 </pre></div>
 </div>
-<img alt="_images/68b5f357f36a3ecca43e543ed6f6d43e54220910364237f091dc779766c42066.png" src="_images/68b5f357f36a3ecca43e543ed6f6d43e54220910364237f091dc779766c42066.png" />
+<img alt="_images/9e1ac50e3a8f16347aa8633f7999f858dd345920f260ec9234a99fe0a9f43495.png" src="_images/9e1ac50e3a8f16347aa8633f7999f858dd345920f260ec9234a99fe0a9f43495.png" />
 </div>
 </div>
 <p>See how <span class="math notranslate nohighlight">\(N\)</span>, <span class="math notranslate nohighlight">\(M\)</span>, <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> affect the performance.</p>
@@ -1147,7 +1150,7 @@ where \)</span>p(\epsilon)=\mathcal{N}(0,\beta^{-1})$.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/02b54caea6d9c3a6f755510d33afffe98c2b33b7b3d881fdf64ca83a51226d3b.png" src="_images/02b54caea6d9c3a6f755510d33afffe98c2b33b7b3d881fdf64ca83a51226d3b.png" />
+<img alt="_images/f1c974b1e067eb6a868ffbd202fedd6f539cbf39a4e3777c6011e19a9691e3c3.png" src="_images/f1c974b1e067eb6a868ffbd202fedd6f539cbf39a4e3777c6011e19a9691e3c3.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1176,7 +1179,7 @@ where \)</span>p(\epsilon)=\mathcal{N}(0,\beta^{-1})$.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c7fae920bd56c9ece35f94c6706fa4e3819dee49ce6ff38935ebc21959bd7fa1.png" src="_images/c7fae920bd56c9ece35f94c6706fa4e3819dee49ce6ff38935ebc21959bd7fa1.png" />
+<img alt="_images/84f0d33aa009f2d36cd69fabac27a10f8e4d1501d8ffe1095cb58898fe8b80e6.png" src="_images/84f0d33aa009f2d36cd69fabac27a10f8e4d1501d8ffe1095cb58898fe8b80e6.png" />
 </div>
 </div>
 </section>
@@ -1237,7 +1240,7 @@ where \)</span>p(\epsilon)=\mathcal{N}(0,\beta^{-1})$.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a90dbe7410f5de1c29fceb33e243d4c7dec79ccd9bbd218ac751393c18a57b8c.png" src="_images/a90dbe7410f5de1c29fceb33e243d4c7dec79ccd9bbd218ac751393c18a57b8c.png" />
+<img alt="_images/9d5b2ae2d8efaf1bc74101e644d71ec73fae54ba99f861a2693b3080743f01bb.png" src="_images/9d5b2ae2d8efaf1bc74101e644d71ec73fae54ba99f861a2693b3080743f01bb.png" />
 </div>
 </div>
 </section>
@@ -1371,7 +1374,7 @@ Graphical model of a chain of states.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6294ed7bc400b9046c464a3d351e91643a0f601fd80316bdc3a903014eec5e09.png" src="_images/6294ed7bc400b9046c464a3d351e91643a0f601fd80316bdc3a903014eec5e09.png" />
+<img alt="_images/111a66b931483a9120cb7cf5f88d52b0b9eb535625963aeff88ba2ee52e0fa91.png" src="_images/111a66b931483a9120cb7cf5f88d52b0b9eb535625963aeff88ba2ee52e0fa91.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1383,7 +1386,7 @@ Graphical model of a chain of states.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 1, 1, 1, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 5])
 </pre></div>
 </div>
 </div>
@@ -1397,7 +1400,7 @@ Graphical model of a chain of states.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/86a5c65b6038f0efa7cd6d4959032e5ccb51de3ced50d636908945ab045c7b89.png" src="_images/86a5c65b6038f0efa7cd6d4959032e5ccb51de3ced50d636908945ab045c7b89.png" />
+<img alt="_images/8e088fe7cf1dd80705a6186bdaf9fd64e5a814b6e91a04f541a13fada799b933.png" src="_images/8e088fe7cf1dd80705a6186bdaf9fd64e5a814b6e91a04f541a13fada799b933.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1409,7 +1412,7 @@ Graphical model of a chain of states.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9c5a5697dd1d245b4cf703e4f5b2a151bb6077461c3685c530b2ad95b939527d.png" src="_images/9c5a5697dd1d245b4cf703e4f5b2a151bb6077461c3685c530b2ad95b939527d.png" />
+<img alt="_images/ac0488e366875ac339def9ec78a1a45545bf95ffcbd6d03ff6ddba7665afe8ec.png" src="_images/ac0488e366875ac339def9ec78a1a45545bf95ffcbd6d03ff6ddba7665afe8ec.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1421,7 +1424,7 @@ Graphical model of a chain of states.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/77dc33198bf61791ebcf053299ccb605448d18110c99938d9867894146f46858.png" src="_images/77dc33198bf61791ebcf053299ccb605448d18110c99938d9867894146f46858.png" />
+<img alt="_images/7935061d131cce2876c40ef17ebb6e2e6ffa26b4edb358b34de183e668dfcb33.png" src="_images/7935061d131cce2876c40ef17ebb6e2e6ffa26b4edb358b34de183e668dfcb33.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1433,7 +1436,7 @@ Graphical model of a chain of states.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/dda758c079c4920bc152d8b8ae8377beea05fd4bc356701d2a6a9c2213b3f6ac.png" src="_images/dda758c079c4920bc152d8b8ae8377beea05fd4bc356701d2a6a9c2213b3f6ac.png" />
+<img alt="_images/45a7d79066c7237ce7484a277640a9f360fbea0f59acee8b89fc231ee31c5445.png" src="_images/45a7d79066c7237ce7484a277640a9f360fbea0f59acee8b89fc231ee31c5445.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1445,7 +1448,7 @@ Graphical model of a chain of states.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/450ada51d9f393eb1014783dd68aad341127cfdd92c7a23537a42341bf00f3bc.png" src="_images/450ada51d9f393eb1014783dd68aad341127cfdd92c7a23537a42341bf00f3bc.png" />
+<img alt="_images/4d10a1f21f9753b8424dee45ae9d1fc7d9a015717adc492abd6a0c0760a96450.png" src="_images/4d10a1f21f9753b8424dee45ae9d1fc7d9a015717adc492abd6a0c0760a96450.png" />
 </div>
 </div>
 </section>
@@ -1543,7 +1546,7 @@ Graphical model of a chain of states.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5c68309a3076990f371a6c4c9261742826146e65fcfcda88b7b8e9088c661b40.png" src="_images/5c68309a3076990f371a6c4c9261742826146e65fcfcda88b7b8e9088c661b40.png" />
+<img alt="_images/0f12002896f1979b7222832735a44c6012a71a31536c6bf7a564a599b00e6ec7.png" src="_images/0f12002896f1979b7222832735a44c6012a71a31536c6bf7a564a599b00e6ec7.png" />
 </div>
 </div>
 <p>Suppose we have three coarse position sensors, which send signal only intermittently, and we want to estimate where the mouse is.</p>
@@ -1562,7 +1565,7 @@ Graphical model of a chain of states.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/825c4a327275f432e28879a9efe5ff90bb4fb30ededa0db44e6097d1ea13c943.png" src="_images/825c4a327275f432e28879a9efe5ff90bb4fb30ededa0db44e6097d1ea13c943.png" />
+<img alt="_images/ba7cfa8bc71cd102c039d7d7e9a50eb69b8a00cef9028a00ae41f02e7249ddc6.png" src="_images/ba7cfa8bc71cd102c039d7d7e9a50eb69b8a00cef9028a00ae41f02e7249ddc6.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1584,7 +1587,7 @@ Graphical model of a chain of states.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f93a1620ecef476ff2e90ae77ce488425a727f273297176a32797851b770e3a9.png" src="_images/f93a1620ecef476ff2e90ae77ce488425a727f273297176a32797851b770e3a9.png" />
+<img alt="_images/714feeb7954002608a74d7836db3d588313c4dd7f7af0f432b5116ce02d16ac1.png" src="_images/714feeb7954002608a74d7836db3d588313c4dd7f7af0f432b5116ce02d16ac1.png" />
 </div>
 </div>
 <p>From such noisy intermittent observations, how can we estimate the state?</p>
@@ -1601,7 +1604,7 @@ Graphical model of a chain of states.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ab65933712f40a75b808e0d55d00a4f8f8e54c572c39cdd46331b0017561aabf.png" src="_images/ab65933712f40a75b808e0d55d00a4f8f8e54c572c39cdd46331b0017561aabf.png" />
+<img alt="_images/fd9325b61ba36ab6c1bc9f0bf4c667b808fcb5b8e41f0e0a36a77dbfd7db002f.png" src="_images/fd9325b61ba36ab6c1bc9f0bf4c667b808fcb5b8e41f0e0a36a77dbfd7db002f.png" />
 </div>
 </div>
 <p>Even when there is no useful sensory input, you can predict the state distribution by the dynamic model.
@@ -1611,11 +1614,13 @@ When a sensory input becomes available, prediction is corrected and sharpened.</
 </section>
 <section id="approximate-bayesian-inference">
 <h2>Approximate Bayesian inference<a class="headerlink" href="#approximate-bayesian-inference" title="Link to this heading">#</a></h2>
-<p>For discrete distributions and continuous distributions following Gaussians and others, computation of posterior distribution is not very difficult.</p>
+<p>For discrete distributions and continuous distributions following Gaussians and some others, computation of posterior distribution is not too difficult.</p>
+<p>For example, if the likelihood function and the prior distribution follow certain distributions like Gaussian, we can just keep track of the parameters of the distribution and the normalizing factor is given analytically. For example, if both the likelihood and the prior and Gaussian, we can match the second and first-order coefficients of the exponent as <span class="math notranslate nohighlight">\(-\frac{1}{2\sigma^2}\)</span> and <span class="math notranslate nohighlight">\(\frac{\mu}{\sigma^2}\)</span> and then the normalizing factor is analytically given as <span class="math notranslate nohighlight">\(\sqrt{2\pi\sigma^2}\)</span>.</p>
 <p>But when we deal with an arbitrary high-dimension continous distributions, computation of posterior distribution. Especially the computation of the normalizaing factor (marginal likelihood) can be quite hard for integration over multiple dimensions.</p>
-<p>For such cases, there are approximate Bayesian inference methods, such as:</p>
+<p>For such cases, there are approximate Bayesian inference methods, such as <em>variational inference</em> and <em>sampling methods</em>.</p>
+</section>
 <section id="variational-inference">
-<h3>Variational inference<a class="headerlink" href="#variational-inference" title="Link to this heading">#</a></h3>
+<h2>Variational inference<a class="headerlink" href="#variational-inference" title="Link to this heading">#</a></h2>
 <p>In variational inference, we approximate the posterior distribution by a certain functional form <span class="math notranslate nohighlight">\(q(x)\)</span>, and update it to minimize the discrepancy from the posterior distribuion, usually measured by the <em>KL divergence</em></p>
 <div class="math notranslate nohighlight">
 \[ KL[q(x);p(x|y)] = \int q(x) \log\frac{q(x)}{p(x|y)} dx \]</div>
@@ -1626,8 +1631,8 @@ When a sensory input becomes available, prediction is corrected and sharpened.</
 <p>See Chapter 10 of Bishop (2006) for details.</p>
 </section>
 <section id="sampling-methods">
-<h3>Sampling methods:<a class="headerlink" href="#sampling-methods" title="Link to this heading">#</a></h3>
-<p>In the sampling methods, we approximate a distribution <span class="math notranslate nohighlight">\(p(x)\)</span> by a collection of points <span class="math notranslate nohighlight">\({x_1,...,x_n}\)</span>.</p>
+<h2>Sampling methods:<a class="headerlink" href="#sampling-methods" title="Link to this heading">#</a></h2>
+<p>In the sampling methods, we approximate a distribution <span class="math notranslate nohighlight">\(p(x)\)</span> by a collection of points <span class="math notranslate nohighlight">\(\{x_1,...,x_n\}\)</span>.</p>
 <p>We are often interested in evaluating the expectation of a certain function over the posterior distribution</p>
 <div class="math notranslate nohighlight">
 \[ E_{p(x)}[f(x)] = \int f(x)p(x) dx \]</div>
@@ -1635,7 +1640,64 @@ When a sensory input becomes available, prediction is corrected and sharpened.</
 <div class="math notranslate nohighlight">
 \[ E_{p(x)}[f(x)] = \frac{1}{n} \sum_{i=1}^n f(x_i) \]</div>
 <p>if the distribution of samples <span class="math notranslate nohighlight">\({x_i}\)</span> well approximates <span class="math notranslate nohighlight">\(p(x)\)</span>.</p>
-<p>See Chapter 11 of Bishop (2006) for details.</p>
+<section id="markov-chain-monte-carlo-mcmc">
+<h3>Markov chain Monte Carlo (MCMC)<a class="headerlink" href="#markov-chain-monte-carlo-mcmc" title="Link to this heading">#</a></h3>
+<p><em>Markov chain Monte Carlo (MCMC)</em> takes a new sample near the previous sample and accept or reject it based on unnormalized correlates of the target probability, such as the product of the likelihood and the prior, so that the sequence of samples follows the target distribution, such as the posterior distribution in Bayesian inference.</p>
+<p>A simple example of MCMC is <em>Metropolis sampling</em>, which requires only unnormalized propability <span class="math notranslate nohighlight">\(\tilde{p}(x)\propto p(x)\)</span> of samples for relative comparison.</p>
+<p>A new candidate <span class="math notranslate nohighlight">\(x^*\)</span> is generated by a symmetric proposal distribution <span class="math notranslate nohighlight">\(q(x^*|x_k)=q(x_k|x^*)\)</span>, such as a gaussian distribution, and acctepted with the probability</p>
+<div class="math notranslate nohighlight">
+\[ p_\mbox{acc} = \min(1, \frac{\tilde{p}(x^*)}{\tilde{p}(x_k)}) \]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">metropolis</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">sig</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;metropolis: Metropolis sampling</span>
+<span class="sd">    p:unnormalized probability, x0:initial point,</span>
+<span class="sd">    sig:sd of proposal distribution, m:number of sampling&quot;&quot;&quot;</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>  <span class="c1"># dimension</span>
+    <span class="n">p0</span> <span class="o">=</span> <span class="n">p</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+        <span class="n">x1</span> <span class="o">=</span> <span class="n">x0</span> <span class="o">+</span> <span class="n">sig</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="n">p1</span> <span class="o">=</span> <span class="n">p</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
+        <span class="n">pacc</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">p1</span><span class="o">/</span><span class="n">p0</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span><span class="o">&lt;</span><span class="n">pacc</span><span class="p">:</span>
+            <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
+            <span class="n">x0</span> <span class="o">=</span> <span class="n">x1</span>
+            <span class="n">p0</span> <span class="o">=</span> <span class="n">p1</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">croissant</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;croissant-like unnormalized distribution in 2D&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="mi">4</span>  <span class="c1"># plot rage</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">croissant</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">]))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">P</span><span class="p">)</span>  <span class="c1"># target</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">metropolis</span><span class="p">(</span><span class="n">croissant</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">sig</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">3000</span><span class="p">)</span>
+<span class="n">s</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>  <span class="c1"># accepted samples</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">s</span><span class="p">),</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2742
+</pre></div>
+</div>
+<img alt="_images/804e5fa7280fff56a0de123ab4dfc50b80862272440aba5e4d831dcae0cbdbb6.png" src="_images/804e5fa7280fff56a0de123ab4dfc50b80862272440aba5e4d831dcae0cbdbb6.png" />
+</div>
+</div>
 </section>
 </section>
 <section id="bayesian-sensorimotor-processing">
@@ -1760,15 +1822,15 @@ Left: goal distance tuning of recorded neurons. Right: from the instantaneous ob
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Unsupervised Learning: Exercise</p>
+        <p class="prev-next-title">Exercise: Unsupervised Learning</p>
       </div>
     </a>
     <a class="right-next"
-       href="Bayesian_Exercise.html"
+       href="PyStan.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Bayesian Approaches: Exercise</p>
+        <p class="prev-next-title">Appendix: Bayesian Model Fitting by PyStan</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1817,9 +1879,10 @@ Left: goal distance tuning of recorded neurons. Right: from the instantaneous ob
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidden-markov-model">Hidden Markov model</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approximate-bayesian-inference">Approximate Bayesian inference</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variational-inference">Variational inference</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-methods">Sampling methods:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approximate-bayesian-inference">Approximate Bayesian inference</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variational-inference">Variational inference</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-methods">Sampling methods:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#markov-chain-monte-carlo-mcmc">Markov chain Monte Carlo (MCMC)</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayesian-sensorimotor-processing">Bayesian sensorimotor processing</a></li>

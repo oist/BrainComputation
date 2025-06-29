@@ -62,8 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'Deep';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Chapter 7: Deep Learning: Exercise" href="Deep_Exercise.html" />
-    <link rel="prev" title="Bayesian Approaches: Exercise" href="Bayesian_Exercise.html" />
+    <link rel="next" title="Exercise: Deep Learning" href="Deep_Exercise.html" />
+    <link rel="prev" title="Exercise: Bayesian Approaches" href="Bayesian_Exercise.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -184,35 +184,37 @@
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Introduction.html">Chapter 1. Introduction</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="Neurons.html">Chapter 2. Neural Modeling and Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="Neurons_Exercise.html">Chapter 2. Neural Modeling and Analysis: Exercise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Neurons_Exercise.html">Exercise: Neural Modeling and Analysis</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="Supervised.html">Chapter 3: Supervised Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="Supervised_Exercise.html">Supervised Learning: Exercise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Supervised_Exercise.html">Exercise: Supervised Learning</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="Reinforcement.html">Chapter 4. Reinforcement Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="Reinforcement_Exercise.html">Chapter 4. Reinforcement Learning: Exercise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Gymnasium.html">Appendix: Gymnasium</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reinforcement_Exercise.html">Exercise: Reinforcement Learning</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="Unsupervised.html">Chapter 5. Unsupervised Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="Unsupervised_Exercise.html">Unsupervised Learning: Exercise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unsupervised_Exercise.html">Exercise: Unsupervised Learning</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="Bayesian.html">Chatper 6. Bayesian Approaches</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="Bayesian_Exercise.html">Bayesian Approaches: Exercise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PyStan.html">Appendix: Bayesian Model Fitting by PyStan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bayesian_Exercise.html">Exercise: Bayesian Approaches</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Chapter 7: Deep Learning</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="Deep_Exercise.html">Chapter 7: Deep Learning: Exercise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Deep_Exercise.html">Exercise: Deep Learning</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="Multiple.html">Chapter 8. Multiple Agents</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="Multiple_Exercise.html">Chapter 8. Multiple Agents: Exercise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Multiple_Exercise.html">Exercise:  Multiple Agents</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="Meta.html">Chapter 9. Meta-Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="Meta_Exercise.html">Chapter 9. Meta-Learning: Exercise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Meta_Exercise.html">Exercise: Meta-Learning</a></li>
 </ul>
 </details></li>
 </ul>
@@ -595,11 +597,7 @@ y = w^o_{0} + \sum_{i=1}^M w^o_{i} h_i
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dd/3kwwsm055d1cc1w134st1f580000gn/T/ipykernel_71547/345111544.py:7: DeprecationWarning: `row_stack` alias is deprecated. Use `np.vstack` directly.
-  y = np.row_stack((np.tile(Y[l],M[l+1]), np.repeat(Y[l+1],M[l])))
-</pre></div>
-</div>
-<img alt="_images/404f9a379e31d249b0f98c25f274171930016f9207b38d7b60d8f5bafea8de62.png" src="_images/404f9a379e31d249b0f98c25f274171930016f9207b38d7b60d8f5bafea8de62.png" />
+<img alt="_images/66d30eb4f7d2ac07cad28e5da1df726ce0bdb714da1ea9f17a770bdba6b15319.png" src="_images/66d30eb4f7d2ac07cad28e5da1df726ce0bdb714da1ea9f17a770bdba6b15319.png" />
 </div>
 </div>
 <section id="universality-of-multi-layer-neural-networks">
@@ -667,17 +665,7 @@ The blue lines show the propagation of errors through layer 2 to one unit in lay
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dd/3kwwsm055d1cc1w134st1f580000gn/T/ipykernel_71547/345111544.py:7: DeprecationWarning: `row_stack` alias is deprecated. Use `np.vstack` directly.
-  y = np.row_stack((np.tile(Y[l],M[l+1]), np.repeat(Y[l+1],M[l])))
-/var/folders/dd/3kwwsm055d1cc1w134st1f580000gn/T/ipykernel_71547/3693421515.py:3: DeprecationWarning: `row_stack` alias is deprecated. Use `np.vstack` directly.
-  plt.plot([3,2], np.row_stack((Y[3],np.repeat(Y[2][1],2)))+0.01, &quot;r&quot;)
-/var/folders/dd/3kwwsm055d1cc1w134st1f580000gn/T/ipykernel_71547/3693421515.py:5: DeprecationWarning: `row_stack` alias is deprecated. Use `np.vstack` directly.
-  plt.plot([3,2], np.row_stack((np.repeat(Y[3],3),np.tile(Y[2],2))), &quot;b&quot;)
-/var/folders/dd/3kwwsm055d1cc1w134st1f580000gn/T/ipykernel_71547/3693421515.py:6: DeprecationWarning: `row_stack` alias is deprecated. Use `np.vstack` directly.
-  plt.plot([2,1], np.row_stack((Y[2],np.repeat(Y[1][1],3))), &quot;b&quot;);
-</pre></div>
-</div>
-<img alt="_images/a76e7fe418ddc825a027f1ec6ddbb31caaece05526c94f4ac27485086b65c7f2.png" src="_images/a76e7fe418ddc825a027f1ec6ddbb31caaece05526c94f4ac27485086b65c7f2.png" />
+<img alt="_images/d239fb195c3d24491312ef29c20a037d53e2bfa8a67223124398dd956c228c79.png" src="_images/d239fb195c3d24491312ef29c20a037d53e2bfa8a67223124398dd956c228c79.png" />
 </div>
 </div>
 <p>Using these error gradients, all the weights can be updated by</p>
@@ -779,7 +767,7 @@ The blue lines show the propagation of errors through layer 2 to one unit in lay
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/27c5796653d3c3f5a3db654f2b855a6471ba66d23b9cb86af6a71b27c753861b.png" src="_images/27c5796653d3c3f5a3db654f2b855a6471ba66d23b9cb86af6a71b27c753861b.png" />
+<img alt="_images/f310c9fc21649cbf10be0db837d3325f6b70831a4e4a1377c558a316982d89ba.png" src="_images/f310c9fc21649cbf10be0db837d3325f6b70831a4e4a1377c558a316982d89ba.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -806,7 +794,7 @@ The blue lines show the propagation of errors through layer 2 to one unit in lay
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/15fad051be861e359f8e72bf8de373e22afe86770f392b68fe29e5bc81ba0f1d.png" src="_images/15fad051be861e359f8e72bf8de373e22afe86770f392b68fe29e5bc81ba0f1d.png" />
+<img alt="_images/6c88768e5adefef526c58db6af08ee4deb86fdb01aeb362852a9ac6f11b6a096.png" src="_images/6c88768e5adefef526c58db6af08ee4deb86fdb01aeb362852a9ac6f11b6a096.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -821,10 +809,10 @@ The blue lines show the propagation of errors through layer 2 to one unit in lay
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.024846747681993273
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.03639346081165956
 </pre></div>
 </div>
-<img alt="_images/0882591a313f651bd9aa4736f73268134a59d86e149dfb78a18da70b46890c6c.png" src="_images/0882591a313f651bd9aa4736f73268134a59d86e149dfb78a18da70b46890c6c.png" />
+<img alt="_images/7ec6602286b999fcfa4da5b182ea2da14c523c425cc5766c7c238e49af7e7b52.png" src="_images/7ec6602286b999fcfa4da5b182ea2da14c523c425cc5766c7c238e49af7e7b52.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -839,7 +827,7 @@ The blue lines show the propagation of errors through layer 2 to one unit in lay
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/462ae0cc03a8418361f4716df5b89b7b84d6edb0b2eafe0fa2a507d6e467dee4.png" src="_images/462ae0cc03a8418361f4716df5b89b7b84d6edb0b2eafe0fa2a507d6e467dee4.png" />
+<img alt="_images/8165691fecfc722818070d82fc76ab81a95be1f11b15d64b9f7525e30d35fa7d.png" src="_images/8165691fecfc722818070d82fc76ab81a95be1f11b15d64b9f7525e30d35fa7d.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -855,7 +843,7 @@ The blue lines show the propagation of errors through layer 2 to one unit in lay
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/32115eea65885d961ae498fe61757e678a0aa78747f66036285ca19d5a5dfcf3.png" src="_images/32115eea65885d961ae498fe61757e678a0aa78747f66036285ca19d5a5dfcf3.png" />
+<img alt="_images/57a0fc2424e5d056a409d8bc0ca3f0c7a5b82aa5cd84c63791a2e212c3c5bc3a.png" src="_images/57a0fc2424e5d056a409d8bc0ca3f0c7a5b82aa5cd84c63791a2e212c3c5bc3a.png" />
 </div>
 </div>
 </section>
@@ -916,7 +904,7 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/959ba64d4cecdd07a540d53f143b77055cf0b8998c866c236f9b7126eca3222a.png" src="_images/959ba64d4cecdd07a540d53f143b77055cf0b8998c866c236f9b7126eca3222a.png" />
+<img alt="_images/ce9254d7588e3ccd764be94451f6404168e5e635eace50262841f238e6d7fb64.png" src="_images/ce9254d7588e3ccd764be94451f6404168e5e635eace50262841f238e6d7fb64.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -954,11 +942,7 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dd/3kwwsm055d1cc1w134st1f580000gn/T/ipykernel_71547/2164905428.py:11: DeprecationWarning: `row_stack` alias is deprecated. Use `np.vstack` directly.
-  plt.plot([0,1], np.row_stack((h0,h1)));
-</pre></div>
-</div>
-<img alt="_images/7c4763024cd4d662910e9c4d65b6ed106e124882be70a350924546dc05ff3331.png" src="_images/7c4763024cd4d662910e9c4d65b6ed106e124882be70a350924546dc05ff3331.png" />
+<img alt="_images/61eb7fc86a98b2f777b8369bb327f1d7ceee9db9a0f101f63e8aceebbdedc0ed.png" src="_images/61eb7fc86a98b2f777b8369bb327f1d7ceee9db9a0f101f63e8aceebbdedc0ed.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -973,10 +957,10 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.001254716014021179
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.0045415977493600415
 </pre></div>
 </div>
-<img alt="_images/1a142cba1c347252f0f090a67bcf173714bdc9d1b757de3829d115bd0db60e70.png" src="_images/1a142cba1c347252f0f090a67bcf173714bdc9d1b757de3829d115bd0db60e70.png" />
+<img alt="_images/c2f5dc18d40b4cfd358ac1264ecf7d3c3637fdd2b52ea3422911c8dc527a2f4d.png" src="_images/c2f5dc18d40b4cfd358ac1264ecf7d3c3637fdd2b52ea3422911c8dc527a2f4d.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -996,11 +980,7 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dd/3kwwsm055d1cc1w134st1f580000gn/T/ipykernel_71547/2164905428.py:11: DeprecationWarning: `row_stack` alias is deprecated. Use `np.vstack` directly.
-  plt.plot([0,1], np.row_stack((h0,h1)));
-</pre></div>
-</div>
-<img alt="_images/79999acd2b47d39a46e9fbfcb6f133627dcb6bd01fe5b3dd0b9eda78889f6cad.png" src="_images/79999acd2b47d39a46e9fbfcb6f133627dcb6bd01fe5b3dd0b9eda78889f6cad.png" />
+<img alt="_images/a34949358ee06c738bfdf20a9b7d6caecee6ee00345c994eb6c2105c41ce321e.png" src="_images/a34949358ee06c738bfdf20a9b7d6caecee6ee00345c994eb6c2105c41ce321e.png" />
 </div>
 </div>
 </section>
@@ -1019,7 +999,7 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/496274abcfcf911a9e685fd0bd3b1d2c95f9c16267986dcea3c6d5b89dd968df.png" src="_images/496274abcfcf911a9e685fd0bd3b1d2c95f9c16267986dcea3c6d5b89dd968df.png" />
+<img alt="_images/2ed6e2cbab05a7c9af878d040094297ed712830e8403f3e0a3da2b92704c89ce.png" src="_images/2ed6e2cbab05a7c9af878d040094297ed712830e8403f3e0a3da2b92704c89ce.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1058,17 +1038,13 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dd/3kwwsm055d1cc1w134st1f580000gn/T/ipykernel_71547/3001121381.py:10: DeprecationWarning: `row_stack` alias is deprecated. Use `np.vstack` directly.
-  plt.plot([-xr,xr], np.row_stack((h0,h1)))
-</pre></div>
-</div>
-<img alt="_images/150727184345e1a0580ffbe35f7ba226393d7a557928529a3dc29e05d64295f5.png" src="_images/150727184345e1a0580ffbe35f7ba226393d7a557928529a3dc29e05d64295f5.png" />
+<img alt="_images/ac3b2ea73c35603754f382ea8e3c412c3ee4c056aa57ae846ea028e817d09c08.png" src="_images/ac3b2ea73c35603754f382ea8e3c412c3ee4c056aa57ae846ea028e817d09c08.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Train with the data</span>
-<span class="n">mse</span> <span class="o">=</span> <span class="n">dn</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">yt</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">3000</span><span class="p">)</span>
+<span class="n">mse</span> <span class="o">=</span> <span class="n">dn</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">yt</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
 <span class="c1">#print(dn.W)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;mse =&quot;</span><span class="p">,</span> <span class="n">mse</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>  <span class="c1"># final mse</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">mse</span><span class="p">);</span> 
@@ -1077,10 +1053,10 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.10309997057097008
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mse = 0.035875649576297325
 </pre></div>
 </div>
-<img alt="_images/3d73529b2315ce3823752d4a0f1b02700ec30c7f8f0717f60e20a150971f26a8.png" src="_images/3d73529b2315ce3823752d4a0f1b02700ec30c7f8f0717f60e20a150971f26a8.png" />
+<img alt="_images/cee440884b5ce2eecdf0c714c6989489877081681c4eab020b5821057cdc07e0.png" src="_images/cee440884b5ce2eecdf0c714c6989489877081681c4eab020b5821057cdc07e0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1101,11 +1077,7 @@ E = -y^*\log y -(1-y^*)\log(1-y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dd/3kwwsm055d1cc1w134st1f580000gn/T/ipykernel_71547/3001121381.py:10: DeprecationWarning: `row_stack` alias is deprecated. Use `np.vstack` directly.
-  plt.plot([-xr,xr], np.row_stack((h0,h1)))
-</pre></div>
-</div>
-<img alt="_images/1ff57cdfd764e2b3e9d848f6d3484c27d4dde8a1f19be64b5d7391217080281c.png" src="_images/1ff57cdfd764e2b3e9d848f6d3484c27d4dde8a1f19be64b5d7391217080281c.png" />
+<img alt="_images/841af49aaf6610a7c0fd8497d7966cacdaf405e5cb395d1008a976988cc2d9d3.png" src="_images/841af49aaf6610a7c0fd8497d7966cacdaf405e5cb395d1008a976988cc2d9d3.png" />
 </div>
 </div>
 </section>
@@ -1183,11 +1155,7 @@ They were used for pre-training of deep networks for pattern classification, alt
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dd/3kwwsm055d1cc1w134st1f580000gn/T/ipykernel_71547/345111544.py:7: DeprecationWarning: `row_stack` alias is deprecated. Use `np.vstack` directly.
-  y = np.row_stack((np.tile(Y[l],M[l+1]), np.repeat(Y[l+1],M[l])))
-</pre></div>
-</div>
-<img alt="_images/b626847f42ad3c9e6a949c58ec6758830945c2bb5662e8360dbdfd1246d804a9.png" src="_images/b626847f42ad3c9e6a949c58ec6758830945c2bb5662e8360dbdfd1246d804a9.png" />
+<img alt="_images/f52849b7e61f38a5729b4e793ba505df4c52128f35acf9d62ce5b6cc89098cdb.png" src="_images/f52849b7e61f38a5729b4e793ba505df4c52128f35acf9d62ce5b6cc89098cdb.png" />
 </div>
 </div>
 <p>Here we represent the state of visible units by <span class="math notranslate nohighlight">\(\b{v}\in\{0,1\}^{M_v}\)</span> and hidden units by <span class="math notranslate nohighlight">\(\b{h}\in\{0,1\}^{M_h}\)</span>.
@@ -1368,7 +1336,7 @@ Instead of this stochastic gradient for each data, <em>mini-batch</em> method to
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/43ee8d232935b0da2ea991944f08da05fdcefaaa77c28a4283b3e32a41777e2d.png" src="_images/43ee8d232935b0da2ea991944f08da05fdcefaaa77c28a4283b3e32a41777e2d.png" />
+<img alt="_images/c42ff25e39bd2cf95f762dfc6c69f7540da9b1041f3c1984f76c862f074c7b17.png" src="_images/c42ff25e39bd2cf95f762dfc6c69f7540da9b1041f3c1984f76c862f074c7b17.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1382,7 +1350,7 @@ Instead of this stochastic gradient for each data, <em>mini-batch</em> method to
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/313b30da379f712f71e4ff9388c840ad56066f735bc152c680557a244f5c4820.png" src="_images/313b30da379f712f71e4ff9388c840ad56066f735bc152c680557a244f5c4820.png" />
+<img alt="_images/225b4b34d2b68b6d1c932f9955a9bb2b64d382eb004f969319851b955923048f.png" src="_images/225b4b34d2b68b6d1c932f9955a9bb2b64d382eb004f969319851b955923048f.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1395,7 +1363,7 @@ Instead of this stochastic gradient for each data, <em>mini-batch</em> method to
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d8a17078db7b2516ae85052bea95a3015aad9f54170fc05970fccfbe04a5f28b.png" src="_images/d8a17078db7b2516ae85052bea95a3015aad9f54170fc05970fccfbe04a5f28b.png" />
+<img alt="_images/383ab495d0a49e98f7b87b529bb99061cfc75b188ccd916cb0add6adf32fa096.png" src="_images/383ab495d0a49e98f7b87b529bb99061cfc75b188ccd916cb0add6adf32fa096.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1406,7 +1374,7 @@ Instead of this stochastic gradient for each data, <em>mini-batch</em> method to
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/29848d8eec332fbffe540df5a091c753653db13169390c495b2690d7c6f8fb9a.png" src="_images/29848d8eec332fbffe540df5a091c753653db13169390c495b2690d7c6f8fb9a.png" />
+<img alt="_images/487c7df3ab3e6f877b317fa5cb92f38cdb55a0af418487ce6fd1d75011f0e6d8.png" src="_images/487c7df3ab3e6f877b317fa5cb92f38cdb55a0af418487ce6fd1d75011f0e6d8.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1426,7 +1394,7 @@ Instead of this stochastic gradient for each data, <em>mini-batch</em> method to
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/cd249396953ef8cb0e37aab3ed61f28a4f46fa18397936a99619d9b41a94ab74.png" src="_images/cd249396953ef8cb0e37aab3ed61f28a4f46fa18397936a99619d9b41a94ab74.png" />
+<img alt="_images/687a68aaacbe06e63bd2ed2af86a950623fac0eefede6363a387e7fc1326077c.png" src="_images/687a68aaacbe06e63bd2ed2af86a950623fac0eefede6363a387e7fc1326077c.png" />
 </div>
 </div>
 </section>
@@ -1447,14 +1415,14 @@ Instead of this stochastic gradient for each data, <em>mini-batch</em> method to
 <p>A problem with this approach is that computing <span class="math notranslate nohighlight">\(p_{\theta}(x)\)</span> is often intractable: it is hard to compute the integration over all possible ranges of <span class="math notranslate nohighlight">\(\z\)</span> with a high dimension.</p>
 <p>In the <em>autoencoder</em> framework, we consider two networks:</p>
 <ul class="simple">
-<li><p>The <em>encoder</em> network that maps the data <span class="math notranslate nohighlight">\(\x\)</span> to the latent variable<span class="math notranslate nohighlight">\(\z\)</span>:</p></li>
+<li><p>The <em>encoder</em> network that maps the data <span class="math notranslate nohighlight">\(\x\)</span> to the latent variable <span class="math notranslate nohighlight">\(\z\)</span>:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
     q_\phi(\z|\x)
 \]</div>
 <ul class="simple">
-<li><p>The <em>decoder</em> network to regenerate the data <span class="math notranslate nohighlight">\(\z\)</span> from the latent variable <span class="math notranslate nohighlight">\(\z\)</span>:</p></li>
+<li><p>The <em>decoder</em> network to regenerate the data <span class="math notranslate nohighlight">\(\x\)</span> from the latent variable <span class="math notranslate nohighlight">\(\z\)</span>:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
@@ -1467,11 +1435,7 @@ Instead of this stochastic gradient for each data, <em>mini-batch</em> method to
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dd/3kwwsm055d1cc1w134st1f580000gn/T/ipykernel_71547/345111544.py:7: DeprecationWarning: `row_stack` alias is deprecated. Use `np.vstack` directly.
-  y = np.row_stack((np.tile(Y[l],M[l+1]), np.repeat(Y[l+1],M[l])))
-</pre></div>
-</div>
-<img alt="_images/2f76f62263d5f81b62598151854c68a2869da37ff129b510b6e892360776d14c.png" src="_images/2f76f62263d5f81b62598151854c68a2869da37ff129b510b6e892360776d14c.png" />
+<img alt="_images/da39fdc71d74f5979f1b4a3c8170b163ee335f6a125efe074b12c9d711f62a06.png" src="_images/da39fdc71d74f5979f1b4a3c8170b163ee335f6a125efe074b12c9d711f62a06.png" />
 </div>
 </div>
 <p>The goal of learning of autoencoder is to reduce the reconstruction error, or to maximize the likelihood of regenerated data</p>
@@ -1502,11 +1466,7 @@ Instead of this stochastic gradient for each data, <em>mini-batch</em> method to
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dd/3kwwsm055d1cc1w134st1f580000gn/T/ipykernel_71547/345111544.py:7: DeprecationWarning: `row_stack` alias is deprecated. Use `np.vstack` directly.
-  y = np.row_stack((np.tile(Y[l],M[l+1]), np.repeat(Y[l+1],M[l])))
-</pre></div>
-</div>
-<img alt="_images/c01971e74ed374dec6a8a507db36c001634415121ad081215450b9f16e9ed6bd.png" src="_images/c01971e74ed374dec6a8a507db36c001634415121ad081215450b9f16e9ed6bd.png" />
+<img alt="_images/8221102abf85978c25377eb85097fb7f847db3e465dbe8e98f4ea8e5234546f2.png" src="_images/8221102abf85978c25377eb85097fb7f847db3e465dbe8e98f4ea8e5234546f2.png" />
 </div>
 </div>
 </section>
@@ -1524,9 +1484,12 @@ By downloading such pre-trained weights, anybody can reproduce state-of-the-art 
 <p>Soon after the discovery of orientation selective tuning of cat visual cortex neurons, Hubel &amp; Wiesel further found that there are neurons that show <em>complex</em> receptive fields. Those neurons respond to presentation of bars in particular orientations in different positions in their large receptive fields.</p>
 <p>They suggested a networks architecutre that simple cells sum together inputs from on- or off-center cells in the thalamus, while complex cells sum together inputs from simple cells with similar orientation selectivity.</p>
 <blockquote>
-<div><p><img alt="HybelWiesel1962" src="https://ars.els-cdn.com/content/image/1-s2.0-S0896627301004974-gr1_lrg.jpg" />
-Simple and complex receptive fields proposed by Hubel and Wiesel (adopted from a review by Callaway 2001).</p>
+<div><div>
+<img src="https://ars.els-cdn.com/content/image/1-s2.0-S0896627301004974-gr1_lrg.jpg" width=500"/>
+</div>
+<p>Simple and complex receptive fields proposed by Hubel and Wiesel (adopted from a review by Callaway 2001).</p>
 </div></blockquote>
+<p>This is a historic movie showing how they identified such receptive fields.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">IFrame</span>
@@ -1566,7 +1529,7 @@ Figure 7.3: Prediction of visual cortical neural activities by trained deep neur
 <section id="backpropagation-in-the-brain">
 <h2>Backpropagation in the Brain?<a class="headerlink" href="#backpropagation-in-the-brain" title="Link to this heading">#</a></h2>
 <p>Given the success of backpropagation, people considered whether multi-layer learning like backpropagation can be realized in the brain. It is not biologically possible for the error in the higher layer to be be propagated through the synapses and axons to the lower layer. There are top-down synaptic connections in the cortical circuits, but a chellenge is how they can be kept to be the transpose of bottom-up connections, know as the <em>weight trasport</em> problem.</p>
-<p>There are a number of proposals about how backpropagation-like learning can be possible in the realistic cortical circuits. See Mild</p>
+<p>There are a number of proposals about how backpropagation-like learning can be possible in the realistic cortical circuits, such as Millidge et al. (2022) and Max et al. (2024).</p>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
@@ -1611,7 +1574,7 @@ Figure 7.3: Prediction of visual cortical neural activities by trained deep neur
 <li><p>Hubel DH, Wiesel TN (1962). Receptive fields, binocular interaction and functional architecture in the cat’s visual cortex. Journal of Physiology, 160, 106-154. <a class="reference external" href="https://doi.org/10.1113/jphysiol.1962.sp006837">https://doi.org/10.1113/jphysiol.1962.sp006837</a></p></li>
 <li><p>Callaway EM (2001). Neural mechanisms for the generation of visual complex cells. Neuron, 32, 378-80. <a class="reference external" href="https://doi.org/10.1016/s0896-6273(01)00497-4">https://doi.org/10.1016/s0896-6273(01)00497-4</a></p></li>
 <li><p>Fukushima K (1980). Neocognitron: a self organizing neural network model for a mechanism of pattern recognition unaffected by shift in position. Biol Cybern, 36, 193-202. <a class="reference external" href="https://doi.org/10.1007/BF00344251">https://doi.org/10.1007/BF00344251</a></p></li>
-<li><p>Fukushima K (2014). Modeling Vision with the Neocognitron. Kasabov N, Springer Handbook of Bio-/Neuroinformatics, Springer Berlin Heidelberg, 765-782. <a class="reference external" href="https://doi.org/10.1007/978-3-642-30574-0_44">https://doi.org/10.1007/978-3-642-30574-0_44</a></p></li>
+<li><p>Fukushima K (2014). Modeling Vision with the Neocognitron. Kasabov N, Springer Handbook of Bio-Neuroinformatics, Springer Berlin Heidelberg, 765-782. <a class="reference external" href="https://doi.org/10.1007/978-3-642-30574-0_44">https://doi.org/10.1007/978-3-642-30574-0_44</a></p></li>
 <li><p>Yamins DL, Hong H, Cadieu CF, Solomon EA, Seibert D, DiCarlo JJ (2014). Performance-optimized hierarchical models predict neural responses in higher visual cortex. Proceedings of the National Academy of Sciences USA, 111, 8619-24. <a class="reference external" href="https://doi.org/10.1073/pnas.1403112111">https://doi.org/10.1073/pnas.1403112111</a></p></li>
 <li><p>Horikawa T, Kamitani Y (2017). Generic decoding of seen and imagined objects using hierarchical visual features. Nature Communications, 8. <a class="reference external" href="https://doi.org/10.1038/ncomms15037">https://doi.org/10.1038/ncomms15037</a></p></li>
 </ul>
@@ -1619,7 +1582,7 @@ Figure 7.3: Prediction of visual cortical neural activities by trained deep neur
 <section id="id1">
 <h3>Backpropagation in the brain?<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Millidge B, Tschantz A, Buckley CL (2022). Predictive Coding Approximates Backprop Along Arbitrary Computation Graphs. Neural Comput, 34, 1329-1368. <a class="reference external" href="https://doi.org/10.1162/neco_a_01497">https://doi.org/10.1162/neco_a_01497</a></p></li>
+<li><p>Millidge B, Tschantz A, Buckley CL (2022). Predictive coding approximates backprop along arbitrary computation graphs. Neural Comput, 34, 1329-1368. <a class="reference external" href="https://doi.org/10.1162/neco_a_01497">https://doi.org/10.1162/neco_a_01497</a></p></li>
 <li><p>Max K, Kriener L, Pineda García G, Nowotny T, Jaras I, Senn W, Petrovici MA (2024). Learning efficient backprojections across cortical hierarchies in real time. Nature Machine Intelligence, 6, 619-630. <a class="reference external" href="https://doi.org/10.1038/s42256-024-00845-3">https://doi.org/10.1038/s42256-024-00845-3</a></p></li>
 </ul>
 </section>
@@ -1664,7 +1627,7 @@ Figure 7.3: Prediction of visual cortical neural activities by trained deep neur
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Bayesian Approaches: Exercise</p>
+        <p class="prev-next-title">Exercise: Bayesian Approaches</p>
       </div>
     </a>
     <a class="right-next"
@@ -1672,7 +1635,7 @@ Figure 7.3: Prediction of visual cortical neural activities by trained deep neur
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Chapter 7: Deep Learning: Exercise</p>
+        <p class="prev-next-title">Exercise: Deep Learning</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
