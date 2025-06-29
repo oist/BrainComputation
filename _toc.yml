@@ -12,12 +12,14 @@ chapters:
   - file: Supervised_Exercise
 - file: Reinforcement
   sections:
+  - file: Gymnasium
   - file: Reinforcement_Exercise
 - file: Unsupervised
   sections:
   - file: Unsupervised_Exercise
 - file: Bayesian
   sections:
+  - file: PyStan
   - file: Bayesian_Exercise
 - file: Deep
   sections:
