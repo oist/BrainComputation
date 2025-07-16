@@ -406,9 +406,7 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -424,14 +422,6 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -443,172 +433,6 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="exercise-multiple-agents">
 <h1>Exercise:  Multiple Agents<a class="headerlink" href="#exercise-multiple-agents" title="Link to this heading">#</a></h1>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">from</span><span class="w"> </span><span class="nn">mpl_toolkits.mplot3d</span><span class="w"> </span><span class="kn">import</span> <span class="n">Axes3D</span> <span class="c1"># for 3D plotting</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">EvoAlg</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;A basic class of evolutionary algorithms&quot;&quot;&quot;</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fitfun</span><span class="p">,</span> <span class="n">genes</span><span class="p">,</span> <span class="n">amut</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">pcross</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a new population</span>
-<span class="sd">        genes: (P,C) array of int or float</span>
-<span class="sd">        sigma: mutation size&quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">fitfun</span> <span class="o">=</span> <span class="n">fitfun</span>   <span class="c1"># fitness function</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">genes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">genes</span><span class="p">)</span>  <span class="c1"># initial genotypes</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">P</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">genes</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># population size</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">C</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">genes</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># genetic code length</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">amut</span> <span class="o">=</span> <span class="n">amut</span>  <span class="c1"># mutation amplitude</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">pcross</span> <span class="o">=</span> <span class="n">pcross</span>  <span class="c1"># crossover probability</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">fits</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">P</span><span class="p">)</span>  <span class="c1"># individual fitnesses</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">best</span> <span class="o">=</span> <span class="p">[]</span>    <span class="c1"># current best solution</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">record</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># record of best fitness</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Evaluate individuals&quot;&quot;&quot;</span>
-        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">g</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">genes</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">fits</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fitfun</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">best</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">genes</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fits</span><span class="p">)]</span>  <span class="c1"># best solution</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">record</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fits</span><span class="p">))</span>  <span class="c1"># record best fitness</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">select</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Roulette selection&quot;&quot;&quot;</span>
-        <span class="n">prob</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fits</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fits</span><span class="p">)</span>  <span class="c1"># make sure non-negative</span>
-        <span class="n">prob</span> <span class="o">=</span> <span class="n">prob</span><span class="o">/</span><span class="nb">sum</span><span class="p">(</span><span class="n">prob</span><span class="p">)</span>  <span class="c1"># normalize</span>
-        <span class="n">selected</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">P</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>  <span class="c1"># indices of selected</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">P</span><span class="p">):</span>
-            <span class="n">selected</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multinomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">prob</span><span class="p">))</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># multinulli</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">genes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">genes</span><span class="p">[</span><span class="n">selected</span><span class="p">]</span>  <span class="c1"># update the genome</span>
-            
-    <span class="k">def</span><span class="w"> </span><span class="nf">crossover</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pcross</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Point crossover&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">pcross</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">pcross</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pcross</span>  <span class="c1"># use the default</span>
-        <span class="c1"># make random pairs (assume even population)</span>
-        <span class="n">pairs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">P</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
-        <span class="n">ncross</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">P</span><span class="o">*</span><span class="n">pcross</span><span class="p">)</span>  <span class="c1"># number of crossed pairs</span>
-        <span class="k">for</span> <span class="n">p</span><span class="p">,</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">pairs</span><span class="p">[:</span><span class="n">ncross</span><span class="p">]:</span>
-            <span class="c1">#if np.random.random() &gt; self.pcross:</span>
-            <span class="c1">#    break  # no crossover</span>
-            <span class="n">cp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">C</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1"># cross point</span>
-            <span class="c1">#print(p, q, cp)</span>
-            <span class="n">gene0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">genes</span><span class="p">[</span><span class="n">p</span><span class="p">,:</span><span class="n">cp</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">genes</span><span class="p">[</span><span class="n">q</span><span class="p">,</span><span class="n">cp</span><span class="p">:]]</span>
-            <span class="n">gene1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">genes</span><span class="p">[</span><span class="n">q</span><span class="p">,:</span><span class="n">cp</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">genes</span><span class="p">[</span><span class="n">p</span><span class="p">,</span><span class="n">cp</span><span class="p">:]]</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">genes</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="n">gene0</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">genes</span><span class="p">[</span><span class="n">q</span><span class="p">]</span> <span class="o">=</span> <span class="n">gene1</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">mutate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amut</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Mutation by gaussian noise&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">amut</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">amut</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">amut</span>  <span class="c1"># use the default</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">genes</span> <span class="o">+=</span> <span class="n">amut</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">P</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">C</span><span class="p">)</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">generation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amut</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pcross</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;One generation&quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">evaluate</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">select</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">crossover</span><span class="p">(</span><span class="n">pcross</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">mutate</span><span class="p">(</span><span class="n">amut</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fits</span>  <span class="c1"># fitness distribution</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">evolve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gen</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">amut</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pcross</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Evolve multiple generations&quot;&quot;&quot;</span>
-        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">gen</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">generation</span><span class="p">(</span><span class="n">amut</span><span class="p">,</span> <span class="n">pcross</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">record</span>  <span class="c1"># record of best fitness</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example of Ex-Or neural network</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">exor_net</span><span class="p">(</span><span class="n">w</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Fitness of 2-2-1 network to ExOr; w[9]&quot;&quot;&quot;</span>
-    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>  <span class="c1"># input</span>
-    <span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>  <span class="c1"># target</span>
-    <span class="n">w</span> <span class="o">=</span> <span class="n">w</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>  <span class="c1"># 3 units with bias and two weights</span>
-    <span class="n">err</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">T</span><span class="p">):</span>
-        <span class="n">h</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">w</span><span class="p">[:</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">w</span><span class="p">[:</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">:]</span><span class="nd">@x</span><span class="p">)))</span>  <span class="c1"># hidden units</span>
-        <span class="n">y</span> <span class="o">=</span> <span class="n">w</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">w</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">:],</span><span class="n">h</span><span class="p">)</span>  <span class="c1"># output</span>
-        <span class="n">err</span> <span class="o">+=</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">t</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
-        <span class="c1">#print(h, y, t)</span>
-    <span class="k">return</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">err</span>  <span class="c1"># fitness</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create an instance of evolving ExOr network</span>
-<span class="n">evexor</span> <span class="o">=</span> <span class="n">EvoAlg</span><span class="p">(</span><span class="n">exor_net</span><span class="p">,</span> <span class="n">genes</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">9</span><span class="p">),</span> <span class="n">amut</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">pcross</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run one generation</span>
-<span class="n">fits</span> <span class="o">=</span> <span class="n">evexor</span><span class="o">.</span><span class="n">generation</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">fits</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;fitness&quot;</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/54c3158b44eb0edfd8091827280b4b422e9f2a853c3f08dafd49b885a56a9de5.png" src="_images/54c3158b44eb0edfd8091827280b4b422e9f2a853c3f08dafd49b885a56a9de5.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualize weight distribution</span>
-<span class="n">evexor</span><span class="o">.</span><span class="n">evaluate</span><span class="p">()</span>  <span class="c1"># </span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># plot input weight pairs</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">evexor</span><span class="o">.</span><span class="n">genes</span><span class="p">[:,</span><span class="mi">3</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">evexor</span><span class="o">.</span><span class="n">genes</span><span class="p">[:,</span><span class="mi">3</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">evexor</span><span class="o">.</span><span class="n">fits</span><span class="p">);</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;square&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">();</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/49f4d5500e05aa39fbc5079abdd136d012918c537841a4ef4c09bce3e63c33e9.png" src="_images/49f4d5500e05aa39fbc5079abdd136d012918c537841a4ef4c09bce3e63c33e9.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Evolve generations</span>
-<span class="c1"># You may need to run this many times, or restart if gets stuck</span>
-<span class="n">record</span> <span class="o">=</span> <span class="n">evexor</span><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="n">amut</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">pcross</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;generation&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;fitness&quot;</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/4d7e9195b42c4cc9f5c029cb898424674ba3281118df37ab4c807ec7c894c898.png" src="_images/4d7e9195b42c4cc9f5c029cb898424674ba3281118df37ab4c807ec7c894c898.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline
-</pre></div>
-</div>
-</div>
-</div>
-<section id="exercise">
-<h2>Exercise<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Try evolutionary algorithm for an optimization of your interest while varying the methods and parameters for mutaion, crossover, and selection.</p></li>
 </ol>
@@ -618,7 +442,6 @@ document.write(`
 <ol class="arabic simple" start="3">
 <li><p>See how the replicator dynamics of the rock-scissors-paper game changes with the parameter <span class="math notranslate nohighlight">\(a\)</span>.</p></li>
 </ol>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -675,21 +498,6 @@ document.write(`
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>
