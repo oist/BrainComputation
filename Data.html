@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Brain Computation: A Hands-on Guidebook &#8212; Brain Computation</title>
+    <title>Chapter 10. Neural Data Analysis &#8212; Brain Computation</title>
   
   
   
@@ -57,12 +57,10 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'BrainComputation';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Data';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Chapter 1. Introduction" href="Introduction.html" />
+    <link rel="prev" title="Exercise: Meta-Learning" href="Meta_Exercise.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -125,8 +123,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -145,7 +141,7 @@
     
   
 
-<a class="navbar-brand logo" href="#">
+<a class="navbar-brand logo" href="BrainComputation.html">
   
   
   
@@ -176,13 +172,13 @@
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
+            <li class="toctree-l1">
+                <a class="reference internal" href="BrainComputation.html">
                     Brain Computation: A Hands-on Guidebook
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Introduction.html">Chapter 1. Introduction</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="Neurons.html">Chapter 2. Neural Modeling and Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Neurons_Exercise.html">Exercise: Neural Modeling and Analysis</a></li>
@@ -218,7 +214,7 @@
 <li class="toctree-l2"><a class="reference internal" href="Meta_Exercise.html">Exercise: Meta-Learning</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="Data.html">Chapter 10. Neural Data Analysis</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 10. Neural Data Analysis</a></li>
 </ul>
 
     </div>
@@ -273,7 +269,7 @@
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/oist/BrainComputation/master?urlpath=tree/BrainComputation.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/oist/BrainComputation/master?urlpath=tree/Data.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -291,7 +287,7 @@
       
       
       
-      <li><a href="https://colab.research.google.com/github/oist/BrainComputation/blob/master/BrainComputation.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/oist/BrainComputation/blob/master/Data.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -337,7 +333,7 @@
       
       
       
-      <li><a href="_sources/BrainComputation.ipynb" target="_blank"
+      <li><a href="_sources/Data.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -421,7 +417,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Brain Computation: A Hands-on Guidebook</h1>
+    <h1>Chapter 10. Neural Data Analysis</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -431,12 +427,24 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preface">Preface</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-book">Jupyter Book</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#packages">Packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-make-sense-of-neural-big-data">How to make sense of neural big data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-databases">Neural databases</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-visualization">Data visualization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#peri-event-time-histogram-peth">Peri-event time histogram (PETH)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spike-triggered-average-sta">Spike-triggered average (STA)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-contents">Table of Contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Neural databases</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ica-gpfa">ICA, GPFA</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nmf">NMF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#t-sne-umap">t-SNE, UMAP</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding-analysis">Encoding analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decoding-analysis">Decoding analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#causality-analysis">Causality analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#information-theoretic-approach">Information theoretic approach</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -448,55 +456,129 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="brain-computation-a-hands-on-guidebook">
-<h1>Brain Computation: A Hands-on Guidebook<a class="headerlink" href="#brain-computation-a-hands-on-guidebook" title="Link to this heading">#</a></h1>
-<p>Kenji Doya<br />
-August 2023 in Paris, and ever since in Okinawa</p>
-<section id="preface">
-<h2>Preface<a class="headerlink" href="#preface" title="Link to this heading">#</a></h2>
-<p>The aim of this book is to introduce fundamental principles and basic algorithms of machine learning (ML) and seek their possible realization in the brain. Sample codes in Python and links to on-line resources in neuroniformatics are provided to facilitate intuitive understanding.</p>
-<p>I hope this book will be a helpful guide for students from both computational and biological background to grasp an overview of computational neuroscience and to start exploring novel computational mechanisms of the brain or incorporating insights from the brain for building novel AI systems.</p>
-<section id="jupyter-book">
-<h3>Jupyter Book<a class="headerlink" href="#jupyter-book" title="Link to this heading">#</a></h3>
-<p>This book is made by <em>Jupyter Book</em> (<a class="reference external" href="https://jupyterbook.org">https://jupyterbook.org</a>).
-An important feature is that you can download the source codes as Jupyter Notebook by the Download icon on the top right corner of each chapter.</p>
-<p>Rather than just reading the html or pdf text, please run the codes, change parameters, apply your own data, and modify the codes to see how the algorithms really work (or fails).</p>
-</section>
-<section id="packages">
-<h3>Packages<a class="headerlink" href="#packages" title="Link to this heading">#</a></h3>
-<p>I tried to minimize the dependence on specialized packages to make the sample codes explict, rather than cleanly hiding details in a black box.</p>
-<p>Here are the basic Python packages used in this book.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-10-neural-data-analysis">
+<h1>Chapter 10. Neural Data Analysis<a class="headerlink" href="#chapter-10-neural-data-analysis" title="Link to this heading">#</a></h1>
 <ul class="simple">
-<li><p>jupyter: Jupyter Lab and Notebook</p></li>
-<li><p>numpy: numerical arrays</p></li>
-<li><p>matplotlib: basic graphics</p></li>
-<li><p>ipympl: interactive graphics in Jupyter Lab and Notebook</p></li>
-<li><p>ipython: user interface</p></li>
-<li><p>scipy: scientific computing</p></li>
-<li><p>scikit-learn: machine learning algorithms and sample data</p></li>
+<li><p>Neural databases</p></li>
+<li><p>Data visualization: raster, PETH, STA</p></li>
+<li><p>Dimension reduction: PCA, SVD, NMF, GPFA, ICA, CEBRA</p></li>
+<li><p>Encoding analysis: GLM, DNN</p></li>
+<li><p>Decoding analysis: GLM, DNN</p></li>
+<li><p>Time series analysis: GC, TE, CCM, EE</p></li>
+<li><p>Information theoretic approach: MI, PID</p></li>
 </ul>
-<p>These can be installed by<br />
-<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">jupyter</span> <span class="pre">numpy</span> <span class="pre">matplotlib</span> <span class="pre">ipympl</span> <span class="pre">ipython</span> <span class="pre">scipy</span> <span class="pre">scikit-learn</span></code><br />
-or<br />
-<code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">jupyter</span> <span class="pre">numpy</span> <span class="pre">matplotlib</span> <span class="pre">ipympl</span> <span class="pre">ipython</span> <span class="pre">scipy</span> <span class="pre">scikit-learn</span></code></p>
-</section>
-</section>
-<section id="table-of-contents">
-<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Link to this heading">#</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="Introduction.html">Chapter 1. Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Neurons.html">Chapter 2. Neural Modeling and Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Supervised.html">Chapter 3: Supervised Learning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Reinforcement.html">Chapter 4. Reinforcement Learning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Unsupervised.html">Chapter 5. Unsupervised Learning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Bayesian.html">Chatper 6. Bayesian Approaches</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Deep.html">Chapter 7: Deep Learning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Multiple.html">Chapter 8. Multiple Agents</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Meta.html">Chapter 9. Meta-Learning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Data.html">Chapter 10. Neural Data Analysis</a></li>
-</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.integrate</span><span class="w"> </span><span class="kn">import</span> <span class="n">odeint</span><span class="p">,</span> <span class="n">ode</span>
+</pre></div>
 </div>
+</div>
+</div>
+<section id="how-to-make-sense-of-neural-big-data">
+<h2>How to make sense of neural big data<a class="headerlink" href="#how-to-make-sense-of-neural-big-data" title="Link to this heading">#</a></h2>
+<p>Technological advances have enabled large-scale data about the structure, activities, and functions of the brain. To utilize such large data sets, utilization of not only classic statistics but also scalable machine learning algorithmss are crucial.
+But what algorithm should we use? It depends on the purpose of your analysis.</p>
+<p><strong>Visualization:</strong> The first step of analysis is usually data visualization to grasp the features of the data. Visuallization can often allows you to realize any problems in your data acquisition, such as noise and missing data.</p>
+<p><strong>Categorization:</strong> A typical way of data analysis is to divide them into a number of categories and characterize each of them.</p>
+<p><strong>Components:</strong> In some cases, the data may be composed of a number of components. Unsupervised learning algorithms can be used for extracting such components and then we can characterize each component and the weights of components for each neuron, etc.</p>
+<p><strong>Correlation and Causality:</strong> We often want to see the relationship between sensory inputs, neural activities, and motor responses. Taking a linear correlation across those variables is a common way. There are also methods for inferring causal direction of relationships across varibles.</p>
+<p><strong>Encoding and Decoding:</strong> A single neuron can represent multiple sensory or motor variables. Conversely, a single variables may be represented by a population of neurons. To address many-to-one or many-to-many relationships, multiple regression can be used for information encoding analysis of single neurons and information decoding analysis from a population neuorns.
+Their relationship may also be highly nonlinear. In such a case, the use of deep neural networks is also an option.</p>
+</section>
+<section id="neural-databases">
+<h2>Neural databases<a class="headerlink" href="#neural-databases" title="Link to this heading">#</a></h2>
+<p>Large amount of neural data are now freely available online.</p>
+</section>
+<section id="data-visualization">
+<h2>Data visualization<a class="headerlink" href="#data-visualization" title="Link to this heading">#</a></h2>
+<section id="peri-event-time-histogram-peth">
+<h3>Peri-event time histogram (PETH)<a class="headerlink" href="#peri-event-time-histogram-peth" title="Link to this heading">#</a></h3>
+<p>A neuron’s response to the same sensory stimulus can vary trial-by-trial.</p>
+<p>A <em>raster plot</em> vertically aligns spike trains around the time of a certain event onset, such as stimulus presentation or movement onset, from different trials, to give us some idea of their response profile and variability.</p>
+<p>A <em>peri-event time histogram (PETH)</em> shows the average number of spikes in time bins of tens to hundreds of milliseconds around the event onset. If the event is a sensory stimulus, it is often called <em>peristimulus time histogram (PSTH)</em>.</p>
+</section>
+<section id="spike-triggered-average-sta">
+<h3>Spike-triggered average (STA)<a class="headerlink" href="#spike-triggered-average-sta" title="Link to this heading">#</a></h3>
+<p>Characterizing the response property of a neuron the other way round is to see what happened before a spike is generated.
+That is <em>spike-triggered average (STA)</em> of sensory stimuli.</p>
+</section>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<section id="id1">
+<h3>Neural databases<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>DANDI Archive: <a class="reference external" href="https://dandiarchive.org">https://dandiarchive.org</a></p></li>
+<li><p>EBRAINS: <a class="reference external" href="https://www.ebrains.eu">https://www.ebrains.eu</a></p></li>
+<li><p>BRAIN/MINDS: <a class="reference external" href="https://dataportal.brainminds.jp">https://dataportal.brainminds.jp</a></p></li>
+<li><p>Brainlife: <a class="reference external" href="https://brainlife.io">https://brainlife.io</a></p></li>
+</ul>
+</section>
+<section id="ica-gpfa">
+<h3>ICA, GPFA<a class="headerlink" href="#ica-gpfa" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Makeig S, Bell A, Jung T-P, Sejnowski TJ (1995). Independent Component Analysis of Electroencephalographic Data. <a class="reference external" href="https://proceedings.neurips.cc/paper_files/paper/1995/hash/754dda4b1ba34c6fa89716b85d68532b-Abstract.html">https://proceedings.neurips.cc/paper_files/paper/1995/hash/754dda4b1ba34c6fa89716b85d68532b-Abstract.html</a></p></li>
+<li><p>McKeown MJ, Makeig S, Brown GG, Jung T-P, Kindermann SS, Bell AJ, Sejnowski TJ (1998). Analysis of fMRI data by blind separation into independent spatial components. Human Brain Mapping, 6, 160-188. <a class="reference external" href="https://doi.org/10.1002/(sici)1097-0193(1998)6:3">https://doi.org/10.1002/(sici)1097-0193(1998)6:3</a>&lt;160::Aid-hbm5&gt;<a class="reference external" href="http://3.0.Co">3.0.Co</a>;2-1</p></li>
+<li><p>Yu BM, Cunningham JP, Santhanam G, Ryu SI, Shenoy KV, Sahani M (2009). Gaussian-process factor analysis for low-dimensional single-trial analysis of neural population activity. J Neurophysiol, 102, 614-35. <a class="reference external" href="https://doi.org/10.1152/jn.90941.2008">https://doi.org/10.1152/jn.90941.2008</a></p></li>
+<li><p>Schneider S, Lee JH, Mathis MW (2023). Learnable latent embeddings for joint behavioural and neural analysis. Nature, 617, 360-368. <a class="reference external" href="https://doi.org/10.1038/s41586-023-06031-6">https://doi.org/10.1038/s41586-023-06031-6</a></p>
+<ul>
+<li><p><a class="reference external" href="https://cebra.ai">https://cebra.ai</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="nmf">
+<h3>NMF<a class="headerlink" href="#nmf" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Lee DD, Seung HS (1999). Learning the parts of objects by non-negative matrix factorization. Nature, 401, 788-91. <a class="reference external" href="https://doi.org/10.1038/44565">https://doi.org/10.1038/44565</a></p></li>
+<li><p>Giovannucci A, Friedrich J, Gunn P, Kalfon J, Brown BL, Koay SA, Taxidis J, Najafi F, Gauthier JL, Zhou P, Khakh BS, Tank DW, Chklovskii DB, Pnevmatikakis EA (2019). CaImAn an open source tool for scalable calcium imaging data analysis. Elife, 8. <a class="reference external" href="https://doi.org/10.7554/eLife.38173">https://doi.org/10.7554/eLife.38173</a></p>
+<ul>
+<li><p><a class="reference external" href="https://caiman.readthedocs.io">https://caiman.readthedocs.io</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="t-sne-umap">
+<h3>t-SNE, UMAP<a class="headerlink" href="#t-sne-umap" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Maaten Lvd, Hinton G (2008). Visualizing data using t-SNE. Journal of Machine Learning Research, 9, 2579-2605. <a class="reference external" href="https://www.jmlr.org/papers/v9/vandermaaten08a.html">https://www.jmlr.org/papers/v9/vandermaaten08a.html</a></p></li>
+<li><p>McInnes L, Healy J, Saul N, Großberger L (2018). UMAP: Uniform Manifold Approximation and Projection. Journal of Open Source Software, 3. <a class="reference external" href="https://doi.org/10.21105/joss.00861">https://doi.org/10.21105/joss.00861</a></p></li>
+</ul>
+</section>
+<section id="encoding-analysis">
+<h3>Encoding analysis<a class="headerlink" href="#encoding-analysis" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Shidara M, Kawano K, Gomi H, Kawato M (1993). Inverse-dynamics model eye movement control by Purkinje cells in the cerebellum. Nature, 365, 50-2. <a class="reference external" href="https://doi.org/10.1038/365050a0">https://doi.org/10.1038/365050a0</a></p></li>
+<li><p>Yamins DL, DiCarlo JJ (2016). Using goal-driven deep learning models to understand sensory cortex. Nat Neurosci, 19, 356-65. <a class="reference external" href="https://doi.org/10.1038/nn.4244">https://doi.org/10.1038/nn.4244</a></p></li>
+</ul>
+</section>
+<section id="decoding-analysis">
+<h3>Decoding analysis<a class="headerlink" href="#decoding-analysis" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Miyawaki Y, Uchida H, Yamashita O, Sato MA, Morito Y, Tanabe HC, Sadato N, Kamitani Y (2008). Visual image reconstruction from human brain activity using a combination of multiscale local image decoders. Neuron, 60, 915-29. <a class="reference external" href="https://doi.org/10.1016/j.neuron.2008.11.004">https://doi.org/10.1016/j.neuron.2008.11.004</a></p></li>
+<li><p>Cheng FL, Horikawa T, Majima K, Tanaka M, Abdelhack M, Aoki SC, Hirano J, Kamitani Y (2023). Reconstructing visual illusory experiences from human brain activity. Sci Adv, 9, eadj3906. <a class="reference external" href="https://doi.org/10.1126/sciadv.adj3906">https://doi.org/10.1126/sciadv.adj3906</a></p></li>
+</ul>
+</section>
+<section id="causality-analysis">
+<h3>Causality analysis<a class="headerlink" href="#causality-analysis" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Seth AK, Barrett AB, Barnett L (2015). Granger causality analysis in neuroscience and neuroimaging. J Neurosci, 35, 3293-7. <a class="reference external" href="https://doi.org/10.1523/JNEUROSCI.4399-14.2015">https://doi.org/10.1523/JNEUROSCI.4399-14.2015</a></p></li>
+<li><p>Honey CJ, Kotter R, Breakspear M, Sporns O (2007). Network structure of cerebral cortex shapes functional connectivity on multiple time scales. Proc Natl Acad Sci U S A, 104, 10240-5. <a class="reference external" href="https://doi.org/10.1073/pnas.0701519104">https://doi.org/10.1073/pnas.0701519104</a></p></li>
+<li><p>Shimizu S (2018). Non-Gaussian Methods for Causal Structure Learning. Prev Sci. <a class="reference external" href="https://doi.org/10.1007/s11121-018-0901-x">https://doi.org/10.1007/s11121-018-0901-x</a></p></li>
+<li><p>Shi J, Chen L, Aihara K (2022). Embedding entropy: a nonlinear measure of dynamical causality. J R Soc Interface, 19, 20210766. <a class="reference external" href="https://doi.org/10.1098/rsif.2021.0766">https://doi.org/10.1098/rsif.2021.0766</a></p></li>
+<li><p>Park J, Sugihara G, Pao G (2024). Control of complex systems with generalized embedding and empirical dynamic modeling. PLoS One, 19, e0305408. <a class="reference external" href="https://doi.org/10.1371/journal.pone.0305408">https://doi.org/10.1371/journal.pone.0305408</a></p></li>
+</ul>
+</section>
+<section id="information-theoretic-approach">
+<h3>Information theoretic approach<a class="headerlink" href="#information-theoretic-approach" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Rosas F, Ntranos V, Ellison C, Pollin S, Verhelst M (2016). Understanding Interdependency Through Complex Information Sharing. Entropy, 18. <a class="reference external" href="https://doi.org/10.3390/e18020038">https://doi.org/10.3390/e18020038</a></p></li>
+<li><p>Pica G, Soltanipour M, Panzeri S (2019). Using intersection information to map stimulus information transfer within neural networks. Biosystems, 185, 104028. <a class="reference external" href="https://doi.org/10.1016/j.biosystems.2019.104028">https://doi.org/10.1016/j.biosystems.2019.104028</a></p></li>
+</ul>
+</section>
 </section>
 </section>
 
@@ -530,14 +612,14 @@ or<br />
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="right-next"
-       href="Introduction.html"
-       title="next page">
+    <a class="left-prev"
+       href="Meta_Exercise.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Chapter 1. Introduction</p>
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Exercise: Meta-Learning</p>
       </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -555,12 +637,24 @@ or<br />
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preface">Preface</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-book">Jupyter Book</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#packages">Packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-make-sense-of-neural-big-data">How to make sense of neural big data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-databases">Neural databases</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-visualization">Data visualization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#peri-event-time-histogram-peth">Peri-event time histogram (PETH)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spike-triggered-average-sta">Spike-triggered average (STA)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-contents">Table of Contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Neural databases</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ica-gpfa">ICA, GPFA</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nmf">NMF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#t-sne-umap">t-SNE, UMAP</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding-analysis">Encoding analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decoding-analysis">Decoding analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#causality-analysis">Causality analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#information-theoretic-approach">Information theoretic approach</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
